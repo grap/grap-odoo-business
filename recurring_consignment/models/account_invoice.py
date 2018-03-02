@@ -169,6 +169,10 @@ class AccountInvoice(models.Model):
                 return (
                     'revenue',
                     _("Encaissement de Chiffre d'affaire HT (TVA à 5,5%)"))
+            elif '10' in move_line.tax_code_id.name:
+                return (
+                    'revenue',
+                    _("Encaissement de Chiffre d'affaire HT (TVA à 10,0%)"))
             elif '20' in move_line.tax_code_id.name:
                 return (
                     'revenue',
@@ -176,14 +180,16 @@ class AccountInvoice(models.Model):
             else:
                 return (
                     'revenue',
-                    _("Erreur Produit. TVA non trouvée"))
+                    _("Encaissement de Chiffre d'affaire HT (TVA inconnu)"))
         else:
             # That is Tax
             if '2,1' in move_line.name:
                 return ('tax', _('Encaissement de TVA à 2,1%'))
             elif '5,5' in move_line.name:
                 return ('tax', _('Encaissement de TVA à 5,5%'))
+            elif '10' in move_line.name:
+                return ('tax', _('Encaissement de TVA à 10,0%'))
             elif '20' in move_line.name:
                 return ('tax', _('Encaissement de TVA à 20,0%'))
             else:
-                return ('tax', _('Erreur Taxe. TVA non trouvée'))
+                return ('tax', _('Encaissement de TVA (Taux inconnu)'))
