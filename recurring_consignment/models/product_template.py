@@ -13,6 +13,7 @@ class ProductTemplate(models.Model):
     # Columns Section
     consignor_partner_id = fields.Many2one(
         string='Consignor', comodel_name='res.partner',
+        old_name='consignor_id',
         domain="[('is_consignor', '=', True)]")
 
     is_consignment = fields.Boolean(
