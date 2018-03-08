@@ -25,6 +25,7 @@
     'demo': [
         'demo/product_product.xml',
     ],
+    'pre_init_hook': 'pre_init_hook',
     'images': [
         'static/description/wizard_form.png',
     ],

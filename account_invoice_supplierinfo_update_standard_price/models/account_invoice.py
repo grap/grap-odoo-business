@@ -30,15 +30,27 @@ class AccountInvoice(models.Model):
         for invoice in self.filtered(lambda x: x.type == 'in_invoice'):
             invoice.update({
                 'product_expense_total': sum(
-                    invoice.invoice_line.
-                        filtered(lambda x:
+                    invoice.invoice_line.filtered(
+                        lambda x:
                             not x.product_id or
-                            not x.product_id.is_impact_standard_price).
-                        mapped('price_subtotal')),
+                            not x.product_id.is_impact_standard_price
+                        ).mapped('price_subtotal')),
                 'distributed_expense_total': sum(
-                    invoice.invoice_line.
-                        filtered(lambda x:
+                    invoice.invoice_line.filtered(
+                        lambda x:
                             x.product_id and
-                            x.product_id.is_impact_standard_price).
-                        mapped('price_subtotal')),
+                            x.product_id.is_impact_standard_price
+                        ).mapped('price_subtotal')),
             })
+
+    @api.multi
+    def _get_update_supplierinfo_lines(self):
+        product_obj = self.env['product.product']
+        res = super(AccountInvoice, self)._get_update_supplierinfo_lines()
+        new_res = []
+        for line in res:
+            # Remove products that represent distributed cost
+            product = product_obj.browse(line[2]['product_id'])
+            if not product.is_impact_standard_price:
+                new_res.append(line)
+        return new_res

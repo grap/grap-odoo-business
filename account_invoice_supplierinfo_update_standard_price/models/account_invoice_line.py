@@ -21,9 +21,10 @@ class AccountInvoiceLine(models.Model):
                 factor =\
                     self.uos_id.factor_inv\
                     / self.product_id.uom_id.factor_inv
-            shared_cost = self.price_subtotal / self.invoice_id.price_subtotal
+            line_shared_cost = self.invoice_id.distributed_expense_total * (
+                self.price_subtotal / self.invoice_id.product_expense_total)
             return (
-                shared_cost / self.quantity + (
+                line_shared_cost / self.quantity + (
                     self.price_unit *
                     (1 - self.discount / 100) *
                     (1 - self.discount2 / 100) *
@@ -35,7 +36,7 @@ class AccountInvoiceLine(models.Model):
         self.ensure_one()
         res = super(AccountInvoiceLine, self)._is_correct_partner_info(
             partnerinfo)
-        if not self.product_id or self.product_id.is_impact_standard_price:
+        if not self.product_id:
             return res
         else:
             return res and\
