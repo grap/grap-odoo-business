@@ -15,10 +15,17 @@ class AccountInvoiceLine(models.Model):
         if not self.product_id:
             return 0
         else:
-            return self.price_unit *\
-                (1 - self.discount / 100) *\
-                (1 - self.discount2 / 100) *\
-                (1 - self.discount3 / 100)
+            factor = 1
+            if self.uos_id and self.uos_id.id != self.product_id.uom_id.id:
+                # Making conversion
+                factor =\
+                    self.uos_id.factor_inv\
+                    / self.product_id.uom_id.factor_inv
+            return (
+                self.price_unit *
+                (1 - self.discount / 100) *
+                (1 - self.discount2 / 100) *
+                (1 - self.discount3 / 100)) / factor
 
     @api.multi
     def _is_correct_partner_info(self, partnerinfo):
