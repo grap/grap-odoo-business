@@ -21,18 +21,21 @@ class AccountInvoiceLine(models.Model):
                 factor =\
                     self.uos_id.factor_inv\
                     / self.product_id.uom_id.factor_inv
+            shared_cost = self.price_subtotal / self.invoice_id.price_subtotal
             return (
-                self.price_unit *
-                (1 - self.discount / 100) *
-                (1 - self.discount2 / 100) *
-                (1 - self.discount3 / 100)) / factor
+                shared_cost / self.quantity + (
+                    self.price_unit *
+                    (1 - self.discount / 100) *
+                    (1 - self.discount2 / 100) *
+                    (1 - self.discount3 / 100))
+                ) / factor
 
     @api.multi
     def _is_correct_partner_info(self, partnerinfo):
         self.ensure_one()
         res = super(AccountInvoiceLine, self)._is_correct_partner_info(
             partnerinfo)
-        if not self.product_id:
+        if not self.product_id or self.product_id.is_impact_standard_price:
             return res
         else:
             return res and\
