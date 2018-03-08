@@ -19,6 +19,11 @@
     'installable': True,
     'data': [
         'wizard/wizard_update_invoice_supplierinfo.xml',
+        'views/view_account_invoice.xml',
+        'views/view_product_template.xml',
+    ],
+    'demo': [
+        'demo/product_product.xml',
     ],
     'images': [
         'static/description/wizard_form.png',
