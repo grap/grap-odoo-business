@@ -18,15 +18,17 @@ class TestModule(TransactionCase):
             'account.demo_invoice_0_line_rpanrearpanelshe0')
         self.toner_template = self.env.ref(
             'product.product_product_39_product_template')
+        self.dozen_unit = self.env.ref('product.product_uom_dozen')
 
     # Test Section
-    def test_01_triple_discount(self):
+    def test_01_standard_price(self):
         # Set discounts on account lines
         self.invoice_line.write({
-            'unit_price': 1000,
+            'price_unit': 1000,
             'discount': 10.0,
             'discount2': 20.0,
             'discount3': 30.0,
+            'uos_id': self.dozen_unit.id,
         })
 
         # Launch and confirm Wizard
@@ -61,5 +63,6 @@ class TestModule(TransactionCase):
 
         # Check Correct Standard Price
         self.assertEqual(
-            self.invoice_line.product_id.standard_price, 504,
-            "Confirming wizard should have update Product standard price")
+            self.invoice_line.product_id.standard_price,
+            42,  # (1000 * 0.9 * 0.8 * 0.7) / 12
+            "Confirming wizard should have updated Product standard price")
