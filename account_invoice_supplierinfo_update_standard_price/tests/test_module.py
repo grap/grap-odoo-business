@@ -13,6 +13,7 @@ class TestModule(TransactionCase):
         self.wizard_obj = self.env['wizard.update.invoice.supplierinfo']
         self.supplierinfo_obj = self.env['product.supplierinfo']
         self.partnerinfo_obj = self.env['pricelist.partnerinfo']
+        self.invoice_line_obj = self.env['account.invoice.line']
         self.invoice = self.env.ref('account.demo_invoice_0')
         self.invoice_line_0 = self.env.ref(
             'account.demo_invoice_0_line_rpanrearpanelshe0')
@@ -75,7 +76,8 @@ class TestModule(TransactionCase):
     # Test Section
     def test_02_shared_cost(self):
         # Adding transport cost of 7 € on an invoice of 14 € (14 + 10)
-        self.invoice_line.create({
+        self.invoice_line_obj.create({
+            'name': 'Landing Costs',
             'invoice_id': self.invoice.id,
             'product_id': self.transport_costs_product.id,
             'quantity': 1,

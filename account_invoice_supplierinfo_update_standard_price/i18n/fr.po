@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-08 15:08+0000\n"
-"PO-Revision-Date: 2018-03-08 15:08+0000\n"
+"POT-Creation-Date: 2018-03-08 22:10+0000\n"
+"PO-Revision-Date: 2018-03-08 22:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,36 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_supplierinfo_update_standard_price
+#: help:product.template,is_impact_standard_price:0
+msgid "Check this box if you want that purchasing this product impact the standard price of the products purchased with that product.\n"
+"A typical case is for Landing Cost."
+msgstr "En cochant cette case, acheter ce produit impactera le prix de revient des produits achetés conjointement à ce produit.\n"
+"Cas typique d'utilisation : les frais de transports"
+
+#. module: account_invoice_supplierinfo_update_standard_price
 #: field:wizard.update.invoice.supplierinfo.line,current_standard_price:0
 msgid "Current Standard Price"
 msgstr "Prix de revient actuel"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: model:product.template,name:account_invoice_supplierinfo_update_standard_price.transport_costs_product_product_template
+msgid "Demo Transport costs"
+msgstr "Demo Transport costs"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: field:account.invoice,distributed_expense_total:0
+msgid "Distributed Expenses Total"
+msgstr "Total des charges réparties"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: field:product.template,is_impact_standard_price:0
+msgid "Impact Standard Price"
+msgstr "Impacte le coût de revient"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_account_invoice_line
@@ -29,4 +56,19 @@ msgstr "Ligne de facture"
 #: field:wizard.update.invoice.supplierinfo.line,new_standard_price:0
 msgid "New Standard Price"
 msgstr "Nouveau Prix de revient"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: field:account.invoice,product_expense_total:0
+msgid "Product Expenses Total"
+msgstr "Total des charges d'articles"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: view:account.invoice:account_invoice_supplierinfo_update_standard_price.view_account_invoice_form
+msgid "oe_subtotal_footer_separator"
+msgstr "oe_subtotal_footer_separator"
 
