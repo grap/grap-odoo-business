@@ -6,8 +6,6 @@
 from openerp import api, models
 from openerp.tools.float_utils import float_compare
 
-import openerp.addons.decimal_precision as dp
-
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
