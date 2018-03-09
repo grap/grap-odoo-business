@@ -3,7 +3,10 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api
+from openerp import api, models
+from openerp.tools.float_utils import float_compare
+
+import openerp.addons.decimal_precision as dp
 
 
 class AccountInvoiceLine(models.Model):
@@ -34,13 +37,16 @@ class AccountInvoiceLine(models.Model):
     @api.multi
     def _is_correct_partner_info(self, partnerinfo):
         self.ensure_one()
+        precision_obj = self.env['decimal.precision']
         res = super(AccountInvoiceLine, self)._is_correct_partner_info(
             partnerinfo)
         if not self.product_id:
             return res
         else:
-            return res and\
-                self.product_id.standard_price == self._get_standard_price()
+            return res and not float_compare(
+                self.product_id.standard_price,
+                self._get_standard_price(),
+                precision_digits=precision_obj.precision_get('Product Price'))
 
     @api.multi
     def _prepare_supplier_wizard_line(self, supplierinfo, partnerinfo):
