@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_certifier_organization_manager,Certifier Organization Manager,model_certifier_organization,group_food_manager,1,1,1,1
+access_certifier_organization_all,Certifier Organization All,model_certifier_organization,,1,,,
+access_product_label_manager,Product Label Manager,model_product_label,group_food_manager,1,1,1,1
+access_product_label_all,Product Label All,model_product_label,,1,,,

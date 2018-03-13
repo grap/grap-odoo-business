@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
-# @author Julien WESTE
+# @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import base64
@@ -67,7 +67,7 @@ class ProductProduct(models.Model):
 
     ingredients = fields.Text(string='Ingredients')
 
-    allergen = fields.Text(string='Allergen')
+    allergens = fields.Text(string='Allergens')
 
     origin_description = fields.Char(
         string='Origin Complement', size=64,
@@ -89,7 +89,7 @@ class ProductProduct(models.Model):
 
     label_ids = fields.Many2many(
         comodel_name='product.label', relation='product_label_product_rel',
-        column1='product_id', columné='label_id', string='Labels')
+        column1='product_id', column2='label_id', string='Labels')
 
     social_notation = fields.Selection(
         selection=_NOTATION_KEYS, string='Social notation',

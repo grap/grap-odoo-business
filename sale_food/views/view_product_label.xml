@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="view_product_label_tree" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_label_form" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar oe_left"/>
+                    <div class="oe_title">
+                        <div class="oe_edit_only"><label for="name"/></div>
+                        <h1><field name="name"/></h1>
+                        <label for="code" class="oe_edit_only"/>
+                        <h2><field name="code"/></h2>
+                    </div>
+                    <notebook>
+                        <page string="Information">
+                            <group col="4">
+                                <field name="active"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="mandatory_on_invoice"/>
+                                <field name="is_organic"/>
+                                <newline />
+                                <field name="website" colspan="4"/>
+                                <field name="note" widget="html" colspan="4"/>
+                            </group>
+                        </page>
+                        <page string="Notation">
+                            <group col="4">
+                                <field name="minimum_social_notation"/>
+                                <field name="minimum_local_notation"/>
+                                <field name="minimum_organic_notation"/>
+                                <field name="minimum_packaging_notation"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_label_kanban" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_box oe_kanban_color_border">
+                            <div class="product_label_kanban">
+                                <div class="product_label_kanban_name">
+                                    <a type="edit">
+                                        <field name="code"/>
+                                    </a>
+                                </div>
+                                <div class="product_label_kanban_image">
+                                    <img t-att-src="kanban_image('product.label', 'image', record.id.value)" width="48"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+            </templates>
+            </kanban>
+        </field>
+    </record>
+
+</data></openerp>
