@@ -61,6 +61,10 @@ class ProductProduct(models.Model):
         comodel_name='res.country', string='Origin Country',
         help="Country of production of the product")
 
+    state_id = fields.Many2one(
+        comodel_name='res.country.state', string='Origin State',
+        help="State of production of the product")
+
     department_id = fields.Many2one(
         comodel_name='res.country.department', string='Origin Department',
         help="Department of production of the product")
@@ -165,13 +169,26 @@ class ProductProduct(models.Model):
         if self.categ_id:
             self.is_food = self.categ_id.is_food
 
+    @api.onchange('country_id')
+    def onchange_country_id(self):
+        if self.country_id:
+            if self.state_id and\
+                    self.state_id.country_id != self.country_id:
+                self.state_id = False
+            if self.department_id and\
+                    self.department_id.country_id != self.country_id:
+                self.department_id = False
+
+    @api.onchange('state_id')
+    def onchange_state_id(self):
+        if self.state_id:
+            self.country_id = self.state_id.country_id
+            if self.department_id and\
+                    self.department_id.state_id != self.state_id:
+                self.department_id = False
+
     @api.onchange('department_id')
     def onchange_department_id(self):
         if self.department_id:
+            self.state_id = self.department_id.state_id
             self.country_id = self.department_id.country_id
-
-    @api.onchange('country_id')
-    def onchange_country_id(self):
-        if self.country_id and self.department_id:
-            if self.department_id.country_id != self.country_id:
-                self.department_id = False

@@ -4,7 +4,7 @@
 # @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models  # , tools
+from openerp import api, fields, models, tools
 
 
 class ProductLabel(models.Model):
@@ -16,6 +16,21 @@ class ProductLabel(models.Model):
     name = fields.Char(string='Name', required=True)
 
     image = fields.Binary(string='Image')
+
+    image_medium = fields.Binary(
+        string='Medium-sized image',
+        compute='_compute_images', store=True, multi='images',
+        help="Medium-sized image of the label. It is automatically "
+        "resized as a 128x128px image, with aspect ratio preserved, "
+        "only when the image exceeds one of those sizes. Use this field in"
+        " form views or some kanban views.")
+
+    image_small = fields.Binary(
+        string='Small-sized image',
+        compute='_compute_images', store=True, multi='images',
+        help="Small-sized image of the label. It is automatically "
+        "resized as a 64x64px image, with aspect ratio preserved. "
+        "Use this field anywhere a small image is required.")
 
     active = fields.Boolean(string='Active', default=True)
 
@@ -49,29 +64,10 @@ class ProductLabel(models.Model):
         " If products has no organic label, a text will be displayed"
         " on Price Tag.")
 
-#    image_small = fields.function(
-#            _get_image, fnct_inv=_set_image,
-#            string='Small-sized image', type='binary', multi='_get_image',
-#            store={
-#            product.label = (
-#                    lambda self, cr, uid, ids, c={}: ids, ['image'], 10)}),
-#    image_medium = fields.function(
-#            _get_image, fnct_inv=_set_image,
-#            string='Medium-sized image', type='binary', multi='_get_image',
-#            store={
-#            product.label = (
-#                    lambda self, cr, uid, ids, c={}: ids, ['image'], 10)}),
-
-
-#    # Compute Section
-#    def _get_image(self, cr, uid, ids, name, args, context=None):
-#        res = {}
-#        for label in self.browse(cr, uid, ids, context=context):
-#            res[label.id] = tools.image_get_resized_images(
-#                label.image, avoid_resize_medium=True)
-#        return res
-
-#    def _set_image(self, cr, uid, pId, name, value, args, context=None):
-#        return self.write(
-#            cr, uid, [pId], {'image = tools.image_resize_image_big(value)},
-#            context=context)
+    # Compute Section
+    @api.multi
+    @api.depends('image')
+    def _compute_images(self):
+        for label in self:
+            label.update(tools.image_get_resized_images(
+                label.image, avoid_resize_medium=True))

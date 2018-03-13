@@ -13,17 +13,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="website">http://agriculture.gouv.fr/lagriculture-biologique-ab</field>
         <field name="minimum_organic_notation">4</field>
         <field name="mandatory_on_invoice" eval="True" />
+        <field name="image" type="base64" file="sale_food/static/img/label_agriculture_biologique-image.png"/>
     </record>
 
     <record id="label_max_havelaar" model="product.label">
         <field name="name">Max Havelaar</field>
         <field name="code">MH</field>
         <field name="minimum_social_notation">3</field>
+        <field name="image" type="base64" file="sale_food/static/img/label_max_havelaar-image.png"/>
     </record>
 
     <record id="label_gluten_free" model="product.label">
         <field name="name">Gluten Free</field>
         <field name="code">GF</field>
+        <field name="image" type="base64" file="sale_food/static/img/label_gluten_free-image.png"/>
     </record>
 
 </data></openerp>

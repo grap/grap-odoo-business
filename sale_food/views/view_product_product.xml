@@ -37,6 +37,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <group>
                             <separator string="Origin" colspan="2"/>
                             <field name="country_id"/>
+                            <field name="state_id"/>
                             <field name="department_id"/>
                             <field name="origin_description"/>
                             <field name="maker_description"/>

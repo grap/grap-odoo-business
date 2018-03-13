@@ -39,5 +39,12 @@
         'python': ['cairosvg'],
     },
     'pre_init_hook': 'pre_init_hook',
+    'images': [
+        'static/description/product_category_form.png',
+        'static/description/product_label_kanban.png',
+        'static/description/product_product_form_1.png',
+        'static/description/product_product_form_2.png',
+        'static/description/product_product_form_3.png',
+    ],
     'installable': True,
 }

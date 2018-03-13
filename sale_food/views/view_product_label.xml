@@ -60,7 +60,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.label</field>
         <field name="arch" type="xml">
             <kanban>
-                <field name="image"/>
+                <field name="image_small"/>
                     <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_box oe_kanban_color_border">
@@ -72,7 +72,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </a>
                                 </div>
                                 <div class="product_label_kanban_image">
-                                    <img t-att-src="kanban_image('product.label', 'image', record.id.value)" width="48"/>
+                                    <img t-att-src="kanban_image('product.label', 'image_small', record.id.value)"/>
                                 </div>
                             </div>
                         </div>
