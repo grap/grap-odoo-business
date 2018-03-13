@@ -178,6 +178,10 @@ class ProductProduct(models.Model):
             if self.department_id and\
                     self.department_id.country_id != self.country_id:
                 self.department_id = False
+            return {'domain': {
+                'state_id': [('country_id', '=', self.country_id.id)],
+                'department_id': [('country_id', '=', self.country_id.id)],
+            }}
 
     @api.onchange('state_id')
     def onchange_state_id(self):
@@ -186,6 +190,9 @@ class ProductProduct(models.Model):
             if self.department_id and\
                     self.department_id.state_id != self.state_id:
                 self.department_id = False
+            return {'domain': {
+                'department_id': [('state_id', '=', self.state_id.id)],
+            }}
 
     @api.onchange('department_id')
     def onchange_department_id(self):

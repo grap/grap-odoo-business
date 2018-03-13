@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-13 18:51+0000\n"
-"PO-Revision-Date: 2018-03-13 18:51+0000\n"
+"POT-Creation-Date: 2018-03-13 20:19+0000\n"
+"PO-Revision-Date: 2018-03-13 20:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgid "A product in mercuriale has price that changes very regularly."
 msgstr "Un produit en mercuriale voit son prix changer très fréquemment."
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:126
+#: code:addons/sale_food/models/product_product.py:130
 #, python-format
 msgid "AE"
 msgstr "AE"
@@ -135,7 +135,7 @@ msgid "Country of production of the product"
 msgstr "Pays de production de l'article"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:143
+#: code:addons/sale_food/models/product_product.py:147
 #, python-format
 msgid "Department must belong to the country."
 msgstr "Le département devrait appartenir au pays."
@@ -175,7 +175,7 @@ msgstr "Catégories alimentaires"
 #. module: sale_food
 #: view:product.product:sale_food.view_product_product_form
 msgid "Food Informations"
-msgstr "Informations alimentaires"
+msgstr "Informations Alimentaires"
 
 #. module: sale_food
 #: field:product.product,is_food:0
@@ -252,6 +252,16 @@ msgid "Mandatory on invoice"
 msgstr "Obligatoire sur les factures"
 
 #. module: sale_food
+#: field:product.label,image_medium:0
+msgid "Medium-sized image"
+msgstr "Image de taille moyenne"
+
+#. module: sale_food
+#: help:product.label,image_medium:0
+msgid "Medium-sized image of the label. It is automatically resized as a 128x128px image, with aspect ratio preserved, only when the image exceeds one of those sizes. Use this field in form views or some kanban views."
+msgstr "Medium-sized image of the label. It is automatically resized as a 128x128px image, with aspect ratio preserved, only when the image exceeds one of those sizes. Use this field in form views or some kanban views."
+
+#. module: sale_food
 #: view:product.product:sale_food.view_product_product_search
 #: field:product.product,is_mercuriale:0
 msgid "Mercuriale Product"
@@ -316,12 +326,17 @@ msgstr "Origine Complément"
 #. module: sale_food
 #: field:product.product,country_id:0
 msgid "Origin Country"
-msgstr "Pays d'Origine"
+msgstr "Pays d'origine"
 
 #. module: sale_food
 #: field:product.product,department_id:0
 msgid "Origin Department"
-msgstr "Département d'Origine"
+msgstr "Département d'origine"
+
+#. module: sale_food
+#: field:product.product,state_id:0
+msgid "Origin State"
+msgstr "Région d'origine"
 
 #. module: sale_food
 #: field:product.product,packaging_notation:0
@@ -354,6 +369,16 @@ msgid "Sale Food"
 msgstr "Vente Alimentaire"
 
 #. module: sale_food
+#: field:product.label,image_small:0
+msgid "Small-sized image"
+msgstr "Image de petite taille"
+
+#. module: sale_food
+#: help:product.label,image_small:0
+msgid "Small-sized image of the label. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of the label. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: sale_food
 #: field:product.product,social_notation:0
 msgid "Social notation"
 msgstr "Notation Social"
@@ -363,6 +388,11 @@ msgstr "Notation Social"
 #: field:product.product,spider_chart_image:0
 msgid "Spider Chart"
 msgstr "Radar"
+
+#. module: sale_food
+#: help:product.product,state_id:0
+msgid "State of production of the product"
+msgstr "Région de production du product"
 
 #. module: sale_food
 #: selection:product.product,local_notation:0
@@ -383,19 +413,19 @@ msgid "Website"
 msgstr "Site Web"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:127
+#: code:addons/sale_food/models/product_product.py:131
 #, python-format
 msgid "local"
 msgstr "local"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:128
+#: code:addons/sale_food/models/product_product.py:132
 #, python-format
 msgid "package"
 msgstr "emballage"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:129
+#: code:addons/sale_food/models/product_product.py:133
 #, python-format
 msgid "social"
 msgstr "social"
