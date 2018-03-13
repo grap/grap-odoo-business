@@ -1,3 +1,5 @@
+l10n-france
+
 grap-odoo-incubator https://github.com/grap/grap-odoo-incubator.git 8.0
 
 account-invoicing_account_invoice_triple_discount https://github.com/grap/account-invoicing.git 8.0-backport-account_invoice_triple_discount

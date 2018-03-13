@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="product.product_product_6" model="product.product">
+        <field name="label_ids" eval="[(4, ref('label_agriculture_biologique'))]"/>
+    </record>
+
+    <record id="product.product_product_7" model="product.product">
+        <field name="label_ids" eval="[(4, ref('label_gluten_free'))]"/>
+    </record>
+
+    <record id="product.product_product_11" model="product.product">
+        <field name="social_notation">4</field>
+        <field name="packaging_notation">5</field>
+        <field name="organic_notation">3</field>
+        <field name="local_notation">2</field>
+        <field name="label_ids" eval="[(4, ref('label_max_havelaar'))]"/>
+    </record>
+
+</data></openerp>
