@@ -26,7 +26,7 @@ To configure this module, you need to:
 * Go to 'Sale' / 'Configuration' / 'Food Sales' / 'Labels'
 * create your custom labels
 
-.. figure:: /sale_food/description/product_label_kanban.png
+.. figure:: /sale_food/static/description/product_label_kanban.png
    :width: 600 px
 
 then
@@ -34,7 +34,7 @@ then
 * Go to 'Sale' / 'Configuration' / 'Food Sales' / 'Certifier Organizations'
 * Configure your organizations
 
-.. figure:: /sale_food/description/certifier_organization_tree.png
+.. figure:: /sale_food/static/description/certifier_organization_tree.png
    :width: 600 px
 
 then
@@ -43,7 +43,7 @@ then
 * Configure your categories, checking if the categories contains or not
   food products by default
 
-.. figure:: /sale_food/description/product_category_form.png
+.. figure:: /sale_food/static/description/product_category_form.png
    :width: 600 px
 
 Usage
@@ -54,15 +54,15 @@ To use this module, you need to:
 * Go to to your product form
 * check 'Is food' Checkbox
 
-.. figure:: /sale_food/description/product_product_form_1.png
+.. figure:: /sale_food/static/description/product_product_form_1.png
    :width: 600 px
 
 * tip the food information, in the new tab
 
-.. figure:: /sale_food/description/product_product_form_2.png
+.. figure:: /sale_food/static/description/product_product_form_2.png
    :width: 800 px
 
-.. figure:: /sale_food/description/product_product_form_3.png
+.. figure:: /sale_food/static/description/product_product_form_3.png
    :width: 800 px
 
 Known issues / Roadmap
