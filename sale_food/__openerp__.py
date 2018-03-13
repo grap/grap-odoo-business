@@ -19,6 +19,7 @@
         'security/ir_module_category.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
+        'views/templates.xml',
         'views/view_certifier_organization.xml',
         'views/view_product_label.xml',
         'views/view_product_product.xml',
@@ -28,14 +29,13 @@
     ],
     'demo': [
         'demo/res_groups.xml',
+        'demo/certifier_organization.xml',
         'demo/product_label.xml',
         'demo/product_product.xml',
-    ],
-    'css': [
-        'static/src/css/css.css',
     ],
     'external_dependencies': {
         'python': ['cairosvg'],
     },
+    'pre_init_hook': 'pre_init_hook',
     'installable': True,
 }

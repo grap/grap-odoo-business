@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="fr_bio_01" model="certifier.organization">
+        <field name="name">ECOCERT</field>
+        <field name="code">FR-BIO-01</field>
+    </record>
+
+    <record id="fr_bio_15" model="certifier.organization">
+        <field name="name">Alpes Contrôle</field>
+        <field name="code">FR-BIO-15</field>
+    </record>
+
+</data></openerp>

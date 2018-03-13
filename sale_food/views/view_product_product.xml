@@ -60,10 +60,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </group>
                     </group>
                     <group colspan="4" col="2" string="Ingredients">
-                        <field name="ingredients" widget="text_html" nolabel="1"/>
+                        <field name="ingredients" widget="html" nolabel="1"/>
                     </group>
                     <group colspan="4" col="2" string="Allergens">
-                        <field name="allergens" widget="text_html" nolabel="1"/>
+                        <field name="allergens" widget="html" nolabel="1"/>
                     </group>
                 </page>
             </notebook>
