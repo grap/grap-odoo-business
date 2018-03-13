@@ -38,7 +38,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <field name="mandatory_on_invoice"/>
                                 <field name="is_organic"/>
                                 <newline />
-                                <field name="website" colspan="4"/>
+                                <field name="website" colspan="4" widget="url"/>
                                 <field name="note" widget="html" colspan="4"/>
                             </group>
                         </page>
@@ -67,7 +67,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <div class="product_label_kanban">
                                 <div class="product_label_kanban_name">
                                     <a type="edit">
-                                        <field name="code"/>
+                                        [<field name="code"/>] 
+                                        <field name="name"/>
                                     </a>
                                 </div>
                                 <div class="product_label_kanban_image">

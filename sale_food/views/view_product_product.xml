@@ -16,7 +16,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="department_id"/>
                 <separator/>
                 <filter string="Mercuriale Product" name="is_mercuriale" domain="[('is_mercuriale', '=', True)]"/>
-                <filter string="Food Product" name="is_food" domain="[('is_food', '=', True)]"/>
+                <filter string="Food Products" name="is_food" domain="[('is_food', '=', True)]"/>
             </filter>
         </field>
     </record>
@@ -25,8 +25,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view" />
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']/.." position="before">
+                <div>
+                    <field name="is_food"/>
+                    <label for="is_food"/>
+                </div>
+            </xpath>
             <notebook position="inside">
-                <page string="Food Informations" groups="sale_food.group_food_user">
+                <page string="Food Informations" groups="sale_food.group_food_user" attrs="{'invisible': [('is_food', '=', False)]}">
                     <group colspan="4">
                         <group>
                             <separator string="Origin" colspan="2"/>

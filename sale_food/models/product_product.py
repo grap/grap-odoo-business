@@ -93,19 +93,19 @@ class ProductProduct(models.Model):
 
     social_notation = fields.Selection(
         selection=_NOTATION_KEYS, string='Social notation',
-        required=True, default=0)
+        required=True, default='0')
 
     local_notation = fields.Selection(
         selection=_NOTATION_KEYS, string='Local notation',
-        required=True, default=0)
+        required=True, default='0')
 
     organic_notation = fields.Selection(
         selection=_NOTATION_KEYS, string='Organic notation',
-        required=True, default=0)
+        required=True, default='0')
 
     packaging_notation = fields.Selection(
         selection=_NOTATION_KEYS, string='Packaging notation',
-        required=True, default=0)
+        required=True, default='0')
 
     spider_chart_image = fields.Binary(
         compute='_compute_spider_chart_image', string='Spider Chart',
@@ -132,7 +132,7 @@ class ProductProduct(models.Model):
             cairosvg.svg2png(bytestring=codeSVG, write_to=output)
             product.spider_chart_image = base64.b64encode(output.getvalue())
 
-    # Constraints section
+    # Constrains section
     @api.multi
     @api.constrains('country_id', 'department_id')
     def _check_origin_department_country(self):
@@ -143,41 +143,35 @@ class ProductProduct(models.Model):
                 raise UserError(_('Department must belong to the country.'))
         return True
 
-    # Views section
+    # Onchange section
     @api.onchange(
         'label_ids', 'social_notation', 'local_notation', 'organic_notation',
         'packaging_notation')
     def onchange_label_ids(self):
         for label in self.label_ids:
-            self.social_notation = max(
-                int(self.social_notation), int(label.minimum_social_notation))
-            self.local_notation = max(
-                int(self.local_notation), int(label.minimum_local_notation))
-            self.organic_notation = max(
+            self.social_notation = str(max(
+                int(self.social_notation), int(label.minimum_social_notation)))
+            self.local_notation = str(max(
+                int(self.local_notation), int(label.minimum_local_notation)))
+            self.organic_notation = str(max(
                 int(self.organic_notation),
-                int(label.minimum_organic_notation))
-            self.packaging_notation = max(
+                int(label.minimum_organic_notation)))
+            self.packaging_notation = str(max(
                 int(self.packaging_notation),
-                int(label.minimum_packaging_notation))
+                int(label.minimum_packaging_notation)))
 
-    # TODO, set domain
-#    @api.onchange('country_id', 'department_id')
-#    def onchange_department_id(self):
-#        rcd_obj = self.pool['res.country.department']
-#        if self.department_id:
-#        if department_id:
-#            rcd = rcd_obj.browse(cr, uid, department_id, context=context)
-#            res = {'value': {'country_id': rcd.country_id.id}}
-#        return res
+    @api.onchange('categ_id')
+    def onchange_categ_id_is_food(self):
+        if self.categ_id:
+            self.is_food = self.categ_id.is_food
 
-#    def onchange_country_id(
-#            self, cr, uid, ids, country_id, department_id, context=None):
-#        res = {}
-#        rcd_obj = self.pool['res.country.department']
-#        if not country_id:
-#            res = {'value': {'department_id': None}}
-#        elif department_id:
-#            rcd = rcd_obj.browse(cr, uid, department_id, context=context)
-#            if country_id != rcd.country_id.id:
-#                res = {'value': {'department_id': None}}
-#        return res
+    @api.onchange('department_id')
+    def onchange_department_id(self):
+        if self.department_id:
+            self.country_id = self.department_id.country_id
+
+    @api.onchange('country_id')
+    def onchange_country_id(self):
+        if self.country_id and self.department_id:
+            if self.department_id.country_id != self.country_id:
+                self.department_id = False

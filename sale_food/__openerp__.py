@@ -22,6 +22,7 @@
         'views/templates.xml',
         'views/view_certifier_organization.xml',
         'views/view_product_label.xml',
+        'views/view_product_category.xml',
         'views/view_product_product.xml',
         'views/view_res_company.xml',
         'views/action.xml',
@@ -31,6 +32,7 @@
         'demo/res_groups.xml',
         'demo/certifier_organization.xml',
         'demo/product_label.xml',
+        'demo/product_category.xml',
         'demo/product_product.xml',
     ],
     'external_dependencies': {

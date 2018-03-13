@@ -1,5 +1,8 @@
 # coding: utf-8
-# @author 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
+# Copyright (C) 2016 : tecnativa (https://www.tecnativa.com)
+# Copyright (C) 2018 : GRAP (http://www.grap.coop)
+# @author: Antonio Espinosa <antonio.espinosa@tecnativa.com>
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
