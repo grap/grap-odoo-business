@@ -81,6 +81,12 @@ Known issues / Roadmap
   ``res.partner.certification`` and the fields ``partner_id``,
   ``organization_id``, ``date_start``, ``date_end``
 
+* This module should be refactored into two modules:
+
+1. ``product_food``, that contains food informations
+2. ``product_origin``, that contains origin informations
+3. ``product_notation``, that contains the spider radar mechanism
+
 Credits
 =======
 

@@ -7,20 +7,25 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <openerp><data>
 
-    <record id="product.product_product_6" model="product.product">
-        <field name="label_ids" eval="[(4, ref('label_agriculture_biologique'))]"/>
-    </record>
-
-    <record id="product.product_product_7" model="product.product">
-        <field name="label_ids" eval="[(4, ref('label_gluten_free'))]"/>
-    </record>
-
-    <record id="product.product_product_11" model="product.product">
-        <field name="social_notation">4</field>
+    <record id="biere_pilat_75cl" model="product.product">
+        <field name="name">Bière du Pilat - blonde au chanvre biscanna 75cl</field>
+        <field name="categ_id" ref="food_category" />
+        <field name="uom_id" ref="product.product_uom_unit" />
+        <field name="is_food" eval="True" />
+        <field name="is_alcohol" eval="True" />
+        <field name="ean13">3760143820022</field>
+        <field name="list_price">5.10</field>
+        <field name="volume">0.75</field>
+        <field name="origin_description">Saint Julien Molin Molette</field>
+        <field name="maker_description">Brasserie du Pilat</field>
+        <field name="local_notation">1</field>
+        <field name="social_notation">3</field>
         <field name="packaging_notation">5</field>
-        <field name="organic_notation">3</field>
-        <field name="local_notation">2</field>
-        <field name="label_ids" eval="[(4, ref('label_max_havelaar'))]"/>
+        <field name="organic_notation">4</field>
+        <field name="label_ids" eval="[
+            (4, ref('label_agriculture_biologique')),
+            (4, ref('label_alcool_grossesse')),
+            ]"/>
     </record>
 
 </data></openerp>

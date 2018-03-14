@@ -37,6 +37,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <field name="company_id" groups="base.group_multi_company"/>
                                 <field name="mandatory_on_invoice"/>
                                 <field name="is_organic"/>
+                                <field name="is_alcohol"/>
                                 <newline />
                                 <field name="website" colspan="4" widget="url"/>
                                 <field name="note" widget="html" colspan="4"/>

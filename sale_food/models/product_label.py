@@ -64,6 +64,12 @@ class ProductLabel(models.Model):
         " If products has no organic label, a text will be displayed"
         " on Price Tag.")
 
+    is_alcohol = fields.Boolean(
+        string='Is Alcohol',
+        help="Check this box if this label is a label that mentions that"
+        " products contain alcohol. If checked, the products that"
+        " contains alcohol will have this label set automatically.")
+
     # Compute Section
     @api.multi
     @api.depends('image')

@@ -25,23 +25,7 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     # Constant Section
-    _FRESH_CATEGORY_KEYS = [
-        ('extra', 'Extra'),
-        ('1', 'Category I'),
-        ('2', 'Category II'),
-        ('3', 'Category III'),
-    ]
-
-    _FRESH_RANGE_KEYS = [
-        ('1', '1 - Fresh'),
-        ('2', '2 - Canned'),
-        ('3', '3 - Frozen'),
-        ('4', '4 - Uncooked and Ready to Use'),
-        ('5', '5 - Cooked and Ready to Use'),
-        ('6', '6 - Dehydrated and Shelf'),
-    ]
-
-    _NOTATION_KEYS = [
+    _NOTATION_SELECTION = [
         ('0', 'Unknown'),
         ('1', '1'),
         ('2', '2'),
@@ -52,6 +36,8 @@ class ProductProduct(models.Model):
 
     # Column Section
     is_food = fields.Boolean(string='Food Product')
+
+    is_alcohol = fields.Boolean(string='Contain Alcohol')
 
     is_mercuriale = fields.Boolean(
         string='Mercuriale Product', help="A product in mercuriale has price"
@@ -77,38 +63,26 @@ class ProductProduct(models.Model):
         string='Origin Complement', size=64,
         help="Production location complementary information")
 
-    maker_description = fields.Char(
-        string='Maker', size=64)
-
-    fresh_category = fields.Selection(
-        selection=_FRESH_CATEGORY_KEYS, string='Category for Fresh Product',
-        help="Extra - Hight Quality : product without default ;\n"
-        "Quality I - Good Quality : Product with little defaults ;\n"
-        "Quality II - Normal Quality : Product with default ;\n"
-        "Quality III - Bad Quality : Use this option only in"
-        " specific situation.")
-
-    fresh_range = fields.Selection(
-        selection=_FRESH_RANGE_KEYS, string='Range for Fresh Product')
+    maker_description = fields.Char(string='Maker')
 
     label_ids = fields.Many2many(
         comodel_name='product.label', relation='product_label_product_rel',
         column1='product_id', column2='label_id', string='Labels')
 
     social_notation = fields.Selection(
-        selection=_NOTATION_KEYS, string='Social notation',
+        selection=_NOTATION_SELECTION, string='Social notation',
         required=True, default='0')
 
     local_notation = fields.Selection(
-        selection=_NOTATION_KEYS, string='Local notation',
+        selection=_NOTATION_SELECTION, string='Local notation',
         required=True, default='0')
 
     organic_notation = fields.Selection(
-        selection=_NOTATION_KEYS, string='Organic notation',
+        selection=_NOTATION_SELECTION, string='Organic notation',
         required=True, default='0')
 
     packaging_notation = fields.Selection(
-        selection=_NOTATION_KEYS, string='Packaging notation',
+        selection=_NOTATION_SELECTION, string='Packaging notation',
         required=True, default='0')
 
     spider_chart_image = fields.Binary(
@@ -145,7 +119,30 @@ class ProductProduct(models.Model):
                     product.department_id.country_id.id != \
                     product.country_id.id:
                 raise UserError(_('Department must belong to the country.'))
-        return True
+
+    @api.multi
+    @api.constrains('is_alcohol', 'label_ids')
+    def _check_alcohol_labels(self):
+        label_obj = self.env['product.label']
+        for product in self:
+            if product.is_alcohol:
+                # Check that all the alcohol labels are set
+                alcohol_label_ids = label_obj.search(
+                    [('is_alcohol', '=', True)]).ids
+                if [x for x in alcohol_label_ids
+                        if x not in product.label_ids.ids]:
+                    raise UserError(_(
+                        "Incorrect Setting. the product %s is checked as"
+                        " 'Contain Alcohol' but some related labels are not"
+                        " set.") % (product.name))
+            if product.label_ids.filtered(lambda x: x.is_alcohol):
+                # Check that 'contain Alcohol' is checked
+                if not product.is_alcohol:
+                    raise UserError(_(
+                        "Incorrect Setting. the product %s mention has a label"
+                        " that mention that product contains alcohol, but "
+                        " but the 'Contain Alcohol' is not checked") % (
+                            product.name))
 
     # Onchange section
     @api.onchange(
@@ -168,6 +165,25 @@ class ProductProduct(models.Model):
     def onchange_categ_id_is_food(self):
         if self.categ_id:
             self.is_food = self.categ_id.is_food
+            self.is_alcohol = self.categ_id.is_alcohol
+
+    @api.onchange('is_food')
+    def onchange_is_food(self):
+        if not self.is_food:
+            self.is_alcohol = False
+
+    @api.onchange('is_alcohol')
+    def onchange_is_alcohol(self):
+        label_obj = self.env['product.label']
+        if self.is_alcohol:
+            self.is_food = True
+            alcohol_label_ids = label_obj.search(
+                [('is_alcohol', '=', True)]).ids
+            for alcohol_label_id in alcohol_label_ids:
+                self.label_ids = [(4, alcohol_label_id)]
+        else:
+            self.label_ids = self.label_ids.filtered(
+                lambda x: not x.is_alcohol)
 
     @api.onchange('country_id')
     def onchange_country_id(self):

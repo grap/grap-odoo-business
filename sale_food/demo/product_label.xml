@@ -29,4 +29,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="image" type="base64" file="sale_food/static/img/label_gluten_free-image.png"/>
     </record>
 
+    <record id="label_alcool_grossesse" model="product.label">
+        <field name="name">Alcool pendant la grossesse</field>
+        <field name="code">ALC</field>
+        <field name="website">http://inpes.santepubliquefrance.fr/70000/cp/15/cp152908-alcool-grossesse-risque.asp</field>
+        <field name="is_alcohol" eval="True" />
+        <field name="image" type="base64" file="sale_food/static/img/label_alcool_grossesse-image.png"/>
+    </record>
+
 </data></openerp>

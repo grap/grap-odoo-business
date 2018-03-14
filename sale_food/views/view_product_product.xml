@@ -32,7 +32,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 </div>
             </xpath>
             <notebook position="inside">
-                <page string="Food Informations" groups="sale_food.group_food_user" attrs="{'invisible': [('is_food', '=', False)]}">
+                <page string="Extra Informations" groups="sale_food.group_food_user">
                     <group colspan="4">
                         <group>
                             <separator string="Origin" colspan="2"/>
@@ -44,10 +44,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </group>
                         <group>
                             <separator string="Food" colspan="2"/>
-                            <field name="label_ids" widget="many2many_tags"/>
-                            <field name="fresh_category"/>
-                            <field name="fresh_range"/>
                             <field name="is_mercuriale"/>
+                            <field name="is_alcohol"/>
+                            <field name="label_ids" widget="many2many_tags"/>
                         </group>
                     </group>
                     <group colspan="4" col="4">
@@ -66,11 +65,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             </group>
                         </group>
                     </group>
-                    <group colspan="4" col="2" string="Ingredients">
-                        <field name="ingredients" widget="html" nolabel="1"/>
-                    </group>
-                    <group colspan="4" col="2" string="Allergens">
-                        <field name="allergens" widget="html" nolabel="1"/>
+                    <group attrs="{'invisible': [('is_food', '=', False)]}">
+                        <group string="Ingredients">
+                            <field name="ingredients" widget="html" nolabel="1"/>
+                        </group>
+                        <group string="Allergens">
+                            <field name="allergens" widget="html" nolabel="1"/>
+                        </group>
                     </group>
                 </page>
             </notebook>
