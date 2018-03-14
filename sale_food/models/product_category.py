@@ -18,7 +18,7 @@ class ProductCategory(models.Model):
     is_alcohol = fields.Boolean(
         string='Contain Alcohol', help="If this box is checked, the"
         " products that belong to that category will be set as"
-        "'Contain alcohol' by default")
+        " 'Contain alcohol' by default")
 
     @api.multi
     @api.constrains('is_food', 'is_alcohol')

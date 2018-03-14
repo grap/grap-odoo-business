@@ -139,8 +139,8 @@ class ProductProduct(models.Model):
                 # Check that 'contain Alcohol' is checked
                 if not product.is_alcohol:
                     raise UserError(_(
-                        "Incorrect Setting. the product %s mention has a label"
-                        " that mention that product contains alcohol, but "
+                        "Incorrect Setting. the product %s has a label"
+                        " that mentions that the product contains alcohol, "
                         " but the 'Contain Alcohol' is not checked") % (
                             product.name))
 
