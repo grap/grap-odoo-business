@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 13:37+0000\n"
-"PO-Revision-Date: 2018-03-14 13:37+0000\n"
+"POT-Creation-Date: 2018-03-20 13:51+0000\n"
+"PO-Revision-Date: 2018-03-20 13:51+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgid "A product in mercuriale has price that changes very regularly."
 msgstr "Un produit en mercuriale voit son prix changer très fréquemment."
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:104
+#: code:addons/sale_food/models/product_product.py:120
 #, python-format
 msgid "AE"
 msgstr "AE"
@@ -39,18 +39,34 @@ msgstr "Actif"
 
 #. module: sale_food
 #: view:product.product:sale_food.view_product_product_form
+#: field:product.product,allergens:0
 msgid "Allergens"
 msgstr "Allergènes"
-
-#. module: sale_food
-#: model:product.template,name:sale_food.biere_pilat_75cl_product_template
-msgid "Bière du Pilat - blonde au chanvre biscanna 75cl"
-msgstr "Bière du Pilat - blonde au chanvre biscanna 75cl"
 
 #. module: sale_food
 #: help:product.label,mandatory_on_invoice:0
 msgid "By checking this field, the label will be printed on all the customers invoices."
 msgstr "En cochant cette case, le label sera imprimé sur toutes les factures clients."
+
+#. module: sale_food
+#: selection:product.product,fresh_category:0
+msgid "Category I"
+msgstr "Catégorie I"
+
+#. module: sale_food
+#: selection:product.product,fresh_category:0
+msgid "Category II"
+msgstr "Catégorie II"
+
+#. module: sale_food
+#: selection:product.product,fresh_category:0
+msgid "Category III"
+msgstr "Catégorie III"
+
+#. module: sale_food
+#: field:product.product,fresh_category:0
+msgid "Category for Fresh Product"
+msgstr "Catégorie de produits frais"
 
 #. module: sale_food
 #: field:res.company,certifier_organization_id:0
@@ -80,24 +96,12 @@ msgid "Code"
 msgstr "Code"
 
 #. module: sale_food
-#: field:product.pricetag.type,color:0
-msgid "Color"
-msgstr "Couleur"
-
-#. module: sale_food
-#: help:product.pricetag.type,color:0
-#: help:res.company,pricetag_color:0
-msgid "Color of the Pricetag by default. Format #RRGGBB"
-msgstr "Couleur de l'étiquette par défaut. Format #RRGGBB"
-
-#. module: sale_food
 #: model:ir.model,name:sale_food.model_res_company
 msgid "Companies"
 msgstr "Sociétés"
 
 #. module: sale_food
 #: field:product.label,company_id:0
-#: field:product.pricetag.type,company_id:0
 msgid "Company"
 msgstr "Société"
 
@@ -120,19 +124,17 @@ msgstr "Pays de production de l'article"
 #. module: sale_food
 #: field:certifier.organization,create_uid:0
 #: field:product.label,create_uid:0
-#: field:product.pricetag.type,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
 #. module: sale_food
 #: field:certifier.organization,create_date:0
 #: field:product.label,create_date:0
-#: field:product.pricetag.type,create_date:0
 msgid "Created on"
 msgstr "Created on"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:121
+#: code:addons/sale_food/models/product_product.py:137
 #, python-format
 msgid "Department must belong to the country."
 msgstr "Le département devrait appartenir au pays."
@@ -145,9 +147,24 @@ msgstr "Département de production de l'article"
 #. module: sale_food
 #: field:certifier.organization,display_name:0
 #: field:product.label,display_name:0
-#: field:product.pricetag.type,display_name:0
 msgid "Display Name"
 msgstr "Display Name"
+
+#. module: sale_food
+#: selection:product.product,fresh_category:0
+msgid "Extra"
+msgstr "Extra"
+
+#. module: sale_food
+#: help:product.product,fresh_category:0
+msgid "Extra - Hight Quality : product without default ;\n"
+"Quality I - Good Quality : Product with little defaults ;\n"
+"Quality II - Normal Quality : Product with default ;\n"
+"Quality III - Bad Quality : Use this option only in specific situation."
+msgstr "Extra - Excellente Qualité : Article sans défaut ;\n"
+"Qualité I - Bonne Qualité : Article avec quelques défauts ;\n"
+"Qualité II - Qualité Normal : Article avec défauts ;\n"
+"Qualité III - Mauvaise Qualité : N'utilisez cette option que dans des cas spécifiques."
 
 #. module: sale_food
 #: view:product.product:sale_food.view_product_product_form
@@ -155,7 +172,6 @@ msgid "Extra Informations"
 msgstr "Informations Complémentaires"
 
 #. module: sale_food
-#: model:product.category,name:sale_food.food_category
 #: view:product.product:sale_food.view_product_product_form
 msgid "Food"
 msgstr "Alimentaire"
@@ -164,6 +180,11 @@ msgstr "Alimentaire"
 #: view:product.category:sale_food.view_product_category_search
 msgid "Food Categories"
 msgstr "Catégories alimentaires"
+
+#. module: sale_food
+#: field:product.product,is_food:0
+msgid "Food Product"
+msgstr "Produit alimentaire"
 
 #. module: sale_food
 #: view:product.product:sale_food.view_product_product_search
@@ -178,14 +199,8 @@ msgstr "Ventes Alimentaire"
 #. module: sale_food
 #: field:certifier.organization,id:0
 #: field:product.label,id:0
-#: field:product.pricetag.type,id:0
 msgid "ID"
 msgstr "ID"
-
-#. module: sale_food
-#: help:product.category,is_food:0
-msgid "If this box is checked, the products that belong to that category will be set as 'Food Product' by default"
-msgstr "Si cette case est cochée, les produits qui sont associés à cette categorie seront marqué comme 'Produit alimentaire' par défaut"
 
 #. module: sale_food
 #: help:product.category,is_alcohol:0
@@ -193,31 +208,31 @@ msgid "If this box is checked, the products that belong to that category will be
 msgstr "Si cette case est cochée, les produits associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
 
 #. module: sale_food
+#: help:product.category,is_food:0
+msgid "If this box is checked, the products that belong to that category will be set as 'Food Product' by default"
+msgstr "Si cette case est cochée, les produits qui sont associés à cette categorie seront marqué comme 'Produit alimentaire' par défaut"
+
+#. module: sale_food
 #: field:product.label,image:0
 msgid "Image"
 msgstr "Image"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:134
+#: code:addons/sale_food/models/product_product.py:157
+#, python-format
+msgid "Incorrect Setting. the product %s has a label that mentions that the product contains alcohol,  but the 'Contain Alcohol' is not checked"
+msgstr "Paramétrage incorrect. Le produit %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
+
+#. module: sale_food
+#: code:addons/sale_food/models/product_product.py:150
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:141
-#, python-format
-msgid "Incorrect Setting. the product %s has a label that mentions that the product contains alcohol, but the 'Contain Alcohol' is not checked"
-msgstr "Paramétrage incorrect. Le produit %s a un label qui mentionne que le produit contient de l'alcoo, mais la case 'Contient de l'alcool' n'est pas cochée"
-
-#. module: sale_food
 #: view:product.label:sale_food.view_product_label_form
 msgid "Information"
 msgstr "Information"
-
-#. module: sale_food
-#: model:product.template,name:sale_food.infusion_girl_power_product_template
-msgid "Infusion La Girl Power (vrac)"
-msgstr "Infusion La Girl Power (vrac)"
 
 #. module: sale_food
 #: view:product.product:sale_food.view_product_product_form
@@ -245,21 +260,18 @@ msgstr "Labels"
 #. module: sale_food
 #: field:certifier.organization,__last_update:0
 #: field:product.label,__last_update:0
-#: field:product.pricetag.type,__last_update:0
 msgid "Last Modified on"
 msgstr "Last Modified on"
 
 #. module: sale_food
 #: field:certifier.organization,write_uid:0
 #: field:product.label,write_uid:0
-#: field:product.pricetag.type,write_uid:0
 msgid "Last Updated by"
 msgstr "Last Updated by"
 
 #. module: sale_food
 #: field:certifier.organization,write_date:0
 #: field:product.label,write_date:0
-#: field:product.pricetag.type,write_date:0
 msgid "Last Updated on"
 msgstr "Last Updated on"
 
@@ -326,6 +338,11 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: sale_food
+#: view:product.category:sale_food.view_product_category_search
+msgid "Not Food Categories"
+msgstr "Catégories non alimentaires"
+
+#. module: sale_food
 #: view:product.label:sale_food.view_product_label_form
 msgid "Notation"
 msgstr "Notation"
@@ -366,19 +383,14 @@ msgid "Origin Department"
 msgstr "Département d'Origine"
 
 #. module: sale_food
+#: field:product.product,state_id:0
+msgid "Origin State"
+msgstr "Région d'origine"
+
+#. module: sale_food
 #: field:product.product,packaging_notation:0
 msgid "Packaging notation"
 msgstr "Notation Emballage"
-
-#. module: sale_food
-#: field:res.company,pricetag_color:0
-msgid "Pricetag Color"
-msgstr "Couleur de l'étiquette"
-
-#. module: sale_food
-#: field:product.product,pricetag_type_id:0
-msgid "Pricetag Type"
-msgstr "Type d'étiquette"
 
 #. module: sale_food
 #: field:product.product,pricetag_color:0
@@ -442,9 +454,9 @@ msgid "Spider Chart"
 msgstr "Radar"
 
 #. module: sale_food
-#: field:product.pricetag.type,name:0
-msgid "Type Name"
-msgstr "Nom du Type"
+#: help:product.product,state_id:0
+msgid "State of production of the product"
+msgstr "Région de production du produit"
 
 #. module: sale_food
 #: selection:product.product,local_notation:0
@@ -465,19 +477,19 @@ msgid "Website"
 msgstr "Site Web"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:105
+#: code:addons/sale_food/models/product_product.py:121
 #, python-format
 msgid "local"
 msgstr "local"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:106
+#: code:addons/sale_food/models/product_product.py:122
 #, python-format
 msgid "package"
 msgstr "emballage"
 
 #. module: sale_food
-#: code:addons/sale_food/models/product_product.py:107
+#: code:addons/sale_food/models/product_product.py:123
 #, python-format
 msgid "social"
 msgstr "social"

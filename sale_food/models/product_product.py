@@ -25,6 +25,13 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     # Constant Section
+    _FRESH_CATEGORY_SELECTION = [
+        ('extra', 'Extra'),
+        ('1', 'Category I'),
+        ('2', 'Category II'),
+        ('3', 'Category III'),
+    ]
+
     _NOTATION_SELECTION = [
         ('0', 'Unknown'),
         ('1', '1'),
@@ -64,6 +71,15 @@ class ProductProduct(models.Model):
         help="Production location complementary information")
 
     maker_description = fields.Char(string='Maker')
+
+    fresh_category = fields.Selection(
+        selection=_FRESH_CATEGORY_SELECTION,
+        string='Category for Fresh Product',
+        help="Extra - Hight Quality : product without default ;\n"
+        "Quality I - Good Quality : Product with little defaults ;\n"
+        "Quality II - Normal Quality : Product with default ;\n"
+        "Quality III - Bad Quality : Use this option only in"
+        " specific situation.")
 
     label_ids = fields.Many2many(
         comodel_name='product.label', relation='product_label_product_rel',

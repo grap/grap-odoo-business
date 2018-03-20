@@ -12,6 +12,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <field name="parent_id" position="after">
                 <filter string="Food Categories" name="is_food" domain="[('is_food', '=', True)]"/>
+                <filter string="Not Food Categories" name="not_is_food" domain="[('is_food', '=', False)]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_category_tree" model="ir.ui.view" >
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view"/>
+        <field name="arch" type="xml">
+            <field name="complete_name" position="after">
+                <field name="is_food"/>
             </field>
         </field>
     </record>
