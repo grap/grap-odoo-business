@@ -380,10 +380,10 @@ class ProductScaleLog(models.Model):
             else:
                 system_map[log.scale_system_id] = [log]
 
-        for scale_system, logs in system_map.iteritems():
+        for scale_system, log_list in system_map.iteritems():
 
             # Open FTP Connection
-            ftp = self.ftp_connection_open(logs[0].scale_system_id)
+            ftp = self.ftp_connection_open(log_list[0].scale_system_id)
             if not ftp:
                 return False
 
@@ -393,7 +393,7 @@ class ProductScaleLog(models.Model):
             external_text_lst = []
             screen_text_lst = []
 
-            for log in logs:
+            for log in log_list:
                 if log.product_text:
                     product_text_lst.append(log.product_text)
                 if log.external_text:
@@ -403,7 +403,7 @@ class ProductScaleLog(models.Model):
 
             # Push First Image for constrains reason
             for product_line in scale_system.product_line_ids:
-                for log in logs:
+                for log in log_list:
                     if product_line.type == 'product_image':
                         # send product image
                         self.ftp_connection_push_image_file(
@@ -436,6 +436,7 @@ class ProductScaleLog(models.Model):
 
             # Mark logs as sent
             now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            logs = self.browse([x.id for x in log_list])
             logs.write({
                 'sent': True,
                 'last_send_date': now,
