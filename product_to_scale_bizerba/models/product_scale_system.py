@@ -74,24 +74,12 @@ class ProductScaleSystem(models.Model):
     # Default Section
     @api.model
     def _default_company_id(self):
-        return False
+        return self.env.user.company_id.id
 
     # Compute Section
     @api.multi
     @api.depends('product_line_ids.field_id')
     def _compute_field_ids(self):
-        return True
-#        for system in self:
-#            field_ids = []
-#            for product_line in system.product_line_ids:
-#                if product_line.field_id:
-#                    res[system.id].append(product_line.field_id.id)
-#        return res
-
-#    _defaults = {
-
-#        company_id = lambda s, cr, uid, c: s.pool.get('res.company').
-#        _company_default_get(cr, uid, 'product.template', context=c),
-#        product_text_file_pattern = ,
-#        external_text_file_pattern = ,
-#    }
+        for system in self:
+            system.field_ids = system.product_line_ids.filtered(
+                lambda x: x.field_id).mapped('field_id').ids

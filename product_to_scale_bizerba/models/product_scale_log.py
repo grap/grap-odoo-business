@@ -213,7 +213,7 @@ class ProductScaleLog(models.Model):
 
     @api.model
     def _generate_screen_texts(self, scale_group):
-        product_obj = self.pool['product.product']
+        product_obj = self.env['product.product']
         lines = []
 
         products = product_obj.search(
