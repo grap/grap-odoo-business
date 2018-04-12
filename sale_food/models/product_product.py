@@ -62,6 +62,9 @@ class ProductProduct(models.Model):
         comodel_name='res.country.department', string='Origin Department',
         help="Department of production of the product")
 
+    expiration_date_day = fields.Integer(
+        string='Day quantity Before Expiration Date')
+
     ingredients = fields.Text(string='Ingredients')
 
     allergens = fields.Text(string='Allergens')
