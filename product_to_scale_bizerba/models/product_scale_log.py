@@ -9,7 +9,7 @@ import logging
 from datetime import datetime
 
 from openerp import api, fields, models, tools
-from openerp.exceptions import Warning as UserError
+from openerp.exceptions import Warning
 
 _logger = logging.getLogger(__name__)
 
@@ -178,7 +178,7 @@ class ProductScaleLog(models.Model):
             log.product_text = product_text + break_line
             log.external_text = break_line.join(external_texts) + break_line
             log.external_text_display = '\n'.join(
-                    [x.replace('\n', '') for x in external_texts])
+                [x.replace('\n', '') for x in external_texts])
 
     # Private Section
     @api.model
@@ -268,7 +268,7 @@ class ProductScaleLog(models.Model):
                 ftp.login()
             return ftp
         except:
-            raise UserError(
+            raise Warning(
                 "Connection to ftp://%s@%s failed." % (
                     scale_system.ftp_login, scale_system.ftp_url))
 
@@ -298,7 +298,7 @@ class ProductScaleLog(models.Model):
             try:
                 ftp.storbinary('STOR ' + distant_path, f)
             except:
-                raise UserError(
+                raise Warning(
                     "Unable to push the file %s on the FTP server.\n"
                     "Possible reasons :\n"
                     " * Incorrect access right for the current FTP user\n"
