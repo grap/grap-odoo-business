@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp><data>
+
+    <template
+        id="assets_backend" name="recurring_consignment assets" inherit_id="web.assets_backend"
+        >
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/recurring_consignment/static/src/js/recurring_consignment.js"
+                >
+            </script>
+        </xpath>
+    </template>
+
+</data></openerp>
