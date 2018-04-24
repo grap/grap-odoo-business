@@ -49,6 +49,13 @@ class ProductTemplate(models.Model):
                 self.tax_group_id = False
 
     # Constrains Section
+    @api.constrains('is_consignment_commission', 'available_in_pos')
+    def _check_is_consignment_commission_pos(self):
+        if self.filtered(
+                lambda x: x.is_consignment_commission and x.available_in_pos):
+            raise UserError(_(
+                "A consignment product can not be available in PoS"))
+
     @api.constrains('standard_price', 'consignor_partner_id', 'seller_ids')
     def _check_consignor_partner_id_fields(self):
         for template in self:
@@ -88,11 +95,14 @@ class ProductTemplate(models.Model):
             pricelist_obj.consignmment_drop(drop_template_ids)
         if new_template_ids:
             pricelist_obj.consignmment_create(new_template_ids)
-        if vals.get('is_consignment_commission', False):
-            raise UserError(_(
-                "You can not change the value of the field"
-                " 'Is Consignment Commission'. You can disable this product"
-                " and create a new one properly."))
+        if vals.get('recurring_consignment', False):
+            for template in self:
+                if template.recurring_consignment !=\
+                        vals.get('recurring_consignment', False):
+                    raise UserError(_(
+                        "You can not change the value of the field"
+                        " 'Is Consignment Commission'. You can disable"
+                        " this product and create a new one properly."))
         return super(ProductTemplate, self).write(vals)
 
     # Custom Section
