@@ -135,11 +135,13 @@ class ProductTemplate(models.Model):
         return vals
 
     @api.multi
-    def _prepare_consignment_exception(self, pricelist_version):
+    def _prepare_consignment_exception(
+            self, pricelist_version, consignment_pricelist):
         self.ensure_one()
         return {
             'product_tmpl_id': self.id,
             'price_version_id': pricelist_version.id,
             'sequence': 1,
-            'base': self.env.ref('product.list_price').id,
+            'base': -1,
+            'base_pricelist_id': consignment_pricelist.id,
         }

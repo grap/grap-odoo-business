@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_pricelist_view_tree" />
         <field name="arch" type="xml">
             <field name="active" position="before">
-                <field name="for_consigned_product"/>
+                <field name="consignment_pricelist_id"/>
             </field>
         </field>
     </record>
@@ -21,7 +21,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_pricelist_view" />
         <field name="arch" type="xml">
             <field name="active" position="after">
-                <field name="for_consigned_product"/>
+                <field name="consignment_pricelist_id"/>
             </field>
         </field>
     </record>
