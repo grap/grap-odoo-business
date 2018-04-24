@@ -10,29 +10,32 @@ class ProductPricelist(models.Model):
     _inherit = 'product.pricelist'
 
     # Column Section
-    for_consigned_product = fields.Boolean(
-        string='For Consigned Products', default=True)
+    consignment_pricelist_id = fields.Many2one(
+        comodel_name='product.pricelist',
+        string='Pricelist for Consigned Products')
 
     # Overload Section
     @api.model
     def create(self, vals):
         pricelist = super(ProductPricelist, self).create(vals)
-        if not pricelist.for_consigned_product:
-            pricelist._consignmment_create_multi()
+        if pricelist.consignment_pricelist_id:
+            pricelist._consignmment_update_multi()
         return pricelist
 
     @api.multi
     def write(self, vals):
         res = super(ProductPricelist, self).write(vals)
-        if 'for_consigned_product' in vals:
-            self._consignmment_create_multi()
+        if 'consignment_pricelist_id' in vals:
+            self._consignmment_update_multi()
         return res
 
     @api.model
     def consignmment_create(self, template_ids):
-        pricelists = self.search([('type', '=', 'sale')])
+        pricelists = self.search([
+            ('type', '=', 'sale'),
+            ('consignment_pricelist_id', '!=', False)])
         templates = self.env['product.template'].browse(template_ids)
-        pricelists._consignmment_create_multi(templates)
+        pricelists._consignmment_update_multi(templates)
 
     @api.model
     def consignmment_drop(self, template_ids):
@@ -43,11 +46,11 @@ class ProductPricelist(models.Model):
         items.unlink()
 
     @api.multi
-    def _consignmment_create_multi(self, templates=False):
+    def _consignmment_update_multi(self, templates=False):
         item_obj = self.env['product.pricelist.item']
         template_obj = self.env['product.template']
         for pricelist in self:
-            if pricelist.for_consigned_product:
+            if not pricelist.consignment_pricelist_id:
                 # Drop all previous exceptions
                 items = pricelist.mapped('version_id.items_id').filtered(
                     lambda x: x.product_tmpl_id.consignor_partner_id)
@@ -61,4 +64,5 @@ class ProductPricelist(models.Model):
                 for template in templates:
                     for version in pricelist.version_id:
                         item_obj.create(
-                            template._prepare_consignment_exception(version))
+                            template._prepare_consignment_exception(
+                                version, pricelist.consignment_pricelist_id))

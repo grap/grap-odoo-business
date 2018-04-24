@@ -26,8 +26,10 @@ class TestRecurringConsignment(TransactionCase):
             'recurring_consignment.consignor_1')
         self.consignor_2 = self.env.ref(
             'recurring_consignment.consignor_2')
-        self.sale_pricelist = self.env.ref(
-            'recurring_consignment.sale_pricelist')
+        self.sale_pricelist_10 = self.env.ref(
+            'recurring_consignment.sale_pricelist_10')
+        self.sale_pricelist_50 = self.env.ref(
+            'recurring_consignment.sale_pricelist_50')
         self.customer_invoice_1 = self.env.ref(
             'recurring_consignment.customer_invoice_1')
         self.customer_invoice_2 = self.env.ref(
@@ -38,6 +40,7 @@ class TestRecurringConsignment(TransactionCase):
             'recurring_consignment.commission_product_vat_20')
         self.vat_5_exclude = self.env.ref(
             'simple_tax_account.vat_5_exclude')
+        self.product_category = self.env.ref('product.product_category_all')
 
     # Test Section
     def test_01_change_consignor_possible(self):
@@ -61,31 +64,38 @@ class TestRecurringConsignment(TransactionCase):
             self.consigned_product_vat_5.consignor_partner_id =\
                 self.consignor_2.id
 
-    def test_04_pricelist_existing_product_active(self):
-        """Test if pricelist mechanism works fine for existing products"""
-        self.sale_pricelist.for_consigned_product = True
+    def test_04_pricelist_existing_product_alternative(self):
+        """Test if alternative pricelist mechanism works fine for existing
+        products"""
+        self.sale_pricelist_50.consignment_pricelist_id = False
+        self.sale_pricelist_50.consignment_pricelist_id =\
+            self.sale_pricelist_10
         self._test_pricelist(self.consigned_product_vat_5, True)
 
-    def test_05_pricelist_existing_product(self):
-        """Test if pricelist mechanism works fine for existing products"""
-        self.sale_pricelist.for_consigned_product = False
+    def test_05_pricelist_existing_product_normal(self):
+        """Test if normal pricelist mechanism works fine for existing
+        products"""
+        self.sale_pricelist_50.consignment_pricelist_id = False
         self._test_pricelist(self.consigned_product_vat_5, False)
 
-    def test_06_pricelist_create_product_active(self):
+    def test_06_pricelist_create_product_alternative(self):
         """Test if pricelist mechanism works fine for created products"""
-        self.sale_pricelist.for_consigned_product = True
+        self.sale_pricelist_50.consignment_pricelist_id =\
+            self.sale_pricelist_10
         product = self.product_obj.create({
             'name': 'New Product',
+            'categ_id': self.product_category.id,
             'list_price': 100,
             'consignor_partner_id': self.consignor_1.id,
         })
         self._test_pricelist(product, True)
 
-    def test_07_pricelist_create_product_inactive(self):
+    def test_07_pricelist_create_product_normal(self):
         """Test if pricelist mechanism works fine for created products"""
-        self.sale_pricelist.for_consigned_product = False
+        self.sale_pricelist_50.consignment_pricelist_id = False
         product = self.product_obj.create({
             'name': 'New Product',
+            'categ_id': self.product_category.id,
             'list_price': 100,
             'consignor_partner_id': self.consignor_1.id,
         })
@@ -136,17 +146,16 @@ class TestRecurringConsignment(TransactionCase):
             commission_invoice,
             'recurring_consignment.template_account_invoice_consignment')
 
-    def _test_pricelist(self, product, active):
+    def _test_pricelist(self, product, alternative):
         list_price = product.list_price
-        res = self.sale_pricelist.price_get(product.id, 1)
-        if active:
+        res = self.sale_pricelist_50.price_get(product.id, 1)
+        if alternative:
             self.assertEqual(
-                res[self.sale_pricelist.id], list_price / 2,
-                "Pricelist should be applyed if pricelist"
-                " 'for consigned product' is checked")
+                res[self.sale_pricelist_50.id], list_price * 0.9,
+                "Alternative Pricelist should be applyed if it is set")
         else:
-            res = self.sale_pricelist.price_get(product.id, 1)
+            res = self.sale_pricelist_50.price_get(product.id, 1)
             self.assertEqual(
-                res[self.sale_pricelist.id], list_price,
-                "Pricelist should not be applyed if pricelist"
-                " 'for consigned product' is not checked")
+                res[self.sale_pricelist_50.id], list_price * 0.5,
+                "Default pricelist should be applyed if pricelist"
+                " if no alternative pricelist is set.")
