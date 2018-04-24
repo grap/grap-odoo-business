@@ -51,6 +51,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="uom_id" ref="product.product_uom_unit"/>
         <field name="uom_po_id" ref="product.product_uom_unit"/>
         <field name="sale_ok" eval="True"/>
+        <field name="available_in_pos" eval="False"/>
+        <field name="is_consignment_commission" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="tax_group_id" ref="tax_group_5_vat_include"/>
     </record>
@@ -64,6 +66,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="uom_id" ref="product.product_uom_unit"/>
         <field name="uom_po_id" ref="product.product_uom_unit"/>
         <field name="sale_ok" eval="True"/>
+        <field name="available_in_pos" eval="False"/>
+        <field name="is_consignment_commission" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="tax_group_id" ref="tax_group_20_vat_exclude"/>
     </record>
