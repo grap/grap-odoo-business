@@ -5,6 +5,7 @@
 
 from openerp.tests.common import TransactionCase
 from openerp.exceptions import Warning as UserError
+from openerp.exceptions import ValidationError
 
 
 class TestRecurringConsignment(TransactionCase):
@@ -14,6 +15,8 @@ class TestRecurringConsignment(TransactionCase):
         super(TestRecurringConsignment, self).setUp()
 
         self.product_obj = self.env['product.product']
+        self.session_obj = self.env['pos.session']
+        self.order_obj = self.env['pos.order']
         self.invoice_obj = self.env['account.invoice']
         self.wizard_obj = self.env['invoice.commission.wizard']
         self.report_obj = self.env['report']
@@ -41,6 +44,7 @@ class TestRecurringConsignment(TransactionCase):
         self.vat_5_exclude = self.env.ref(
             'simple_tax_account.vat_5_exclude')
         self.product_category = self.env.ref('product.product_category_all')
+        self.main_config = self.env.ref('point_of_sale.pos_config_main')
 
     # Test Section
     def test_01_change_consignor_possible(self):
@@ -145,6 +149,19 @@ class TestRecurringConsignment(TransactionCase):
         self.report_obj.get_html(
             commission_invoice,
             'recurring_consignment.template_account_invoice_consignment')
+
+    # Test Section
+    def test_09_pos_order_constrains(self):
+        """[Functional Test] Check if creating a pos order with consignor
+        is blocked"""
+        self.session = self.session_obj.create(
+            {'config_id': self.main_config.id})
+        self.session.open_cb()
+        with self.assertRaises(ValidationError):
+            self.order_obj.create({
+                'session_id': self.session.id,
+                'partner_id': self.consignor_1.id,
+            })
 
     def _test_pricelist(self, product, alternative):
         list_price = product.list_price
