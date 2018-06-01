@@ -10,5 +10,5 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     prepare_categ_id = fields.Many2one(
-            comodel_name='product.prepare.category',
-            string='Prepare Category')
+        comodel_name='product.prepare.category',
+        string='Prepare Category')
