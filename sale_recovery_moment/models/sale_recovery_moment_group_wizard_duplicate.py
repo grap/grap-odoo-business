@@ -82,12 +82,12 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
     def onchange_day_delay(self):
         if self.day_delay and self.group_id:
             self.next_min_sale_date = (datetime.strptime(
-                    self.group_id.min_sale_date, '%Y-%m-%d %H:%M:%S') +
-                    relativedelta(days=self.day_delay)).strftime(
+                self.group_id.min_sale_date, '%Y-%m-%d %H:%M:%S') +
+                relativedelta(days=self.day_delay)).strftime(
                     '%Y-%m-%d')
             self.next_max_sale_date = (datetime.strptime(
-                    self.group_id.max_sale_date, '%Y-%m-%d %H:%M:%S') +
-                    relativedelta(days=self.day_delay)).strftime(
+                self.group_id.max_sale_date, '%Y-%m-%d %H:%M:%S') +
+                relativedelta(days=self.day_delay)).strftime(
                     '%Y-%m-%d')
         else:
             self.next_min_sale_date = False
