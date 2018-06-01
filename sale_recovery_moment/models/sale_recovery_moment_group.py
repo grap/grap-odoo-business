@@ -205,7 +205,7 @@ class SaleRecoveryMomentGroup(models.Model):
             SELECT id
             FROM sale_recovery_moment_group
             WHERE %s;""" % (where)
-        self.env.cr.execute(sql_req)
+        self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
         res = self.env.cr.fetchall()
         return [('id', 'in', map(lambda x:x[0], res))]
 
