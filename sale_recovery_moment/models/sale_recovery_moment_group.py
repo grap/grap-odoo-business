@@ -202,11 +202,9 @@ class SaleRecoveryMomentGroup(models.Model):
         for item in sql_lst[1:]:
             where += " OR %s" % (item)
 
-        sql_req = """
-            SELECT id
-            FROM sale_recovery_moment_group
-            WHERE %s;""" % (where)
+        req = "SELECT id FROM sale_recovery_moment_group WHERE %s;" % (where)
 
+        sql_req = req  # pylint: disable=sql-injection
         self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
         res = self.env.cr.fetchall()
         return [('id', 'in', map(lambda x:x[0], res))]
