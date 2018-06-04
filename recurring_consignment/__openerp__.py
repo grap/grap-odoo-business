@@ -37,6 +37,7 @@
         'views/view_product_pricelist.xml',
         'views/action.xml',
         'views/menu.xml',
+        'views/templates.xml',
     ],
     'demo': [
         'demo/res_groups.xml',
