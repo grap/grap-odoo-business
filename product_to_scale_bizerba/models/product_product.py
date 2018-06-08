@@ -16,7 +16,7 @@ class ProductProduct(models.Model):
 
     # Column Section
     scale_group_id = fields.Many2one(
-        comodel_name='product.scale.group', string='Scale Group')
+        comodel_name='product.scale.group', string='Scale Group', copy=False)
 
     external_id_bizerba = fields.Char(
         compute='_compute_external_id_bizerba',
@@ -102,13 +102,6 @@ class ProductProduct(models.Model):
         system_fields = [x.name for x in system.field_ids]
         vals_fields = vals.keys()
         return set(system_fields).intersection(vals_fields)
-
-    # Overload Section
-    @api.multi
-    def copy(self, default=None):
-        default = default and default or {}
-        default['scale_group_id'] = False
-        return super(ProductProduct, self).copy(default=default)
 
     @api.model
     def create(self, vals):
