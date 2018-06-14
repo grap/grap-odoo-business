@@ -3,9 +3,9 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    'name': 'Product - Taxes Group',
+    'name': 'Product - Taxes Group - OBSOLETE',
     'summary': 'Simplify taxes management for products with Taxes Group',
-    'version': '0.1',
+    'version': '8.0.6.0.0',
     'category': 'product',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
@@ -13,6 +13,8 @@
     'depends': [
         'account',
         'stock',
+        'account_product_fiscal_classification',
+        'recurring_consignment',
     ],
     'data': [
         'security/ir_rule.xml',
@@ -20,11 +22,6 @@
         'view/action.xml',
         'view/view.xml',
         'view/menu.xml',
-    ],
-    'demo': [
-        'demo/account_tax.yml',
-        'demo/tax_group.yml',
-        'demo/product_product.yml',
     ],
     'installable': True,
 }

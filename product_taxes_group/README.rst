@@ -7,7 +7,9 @@
 Obsolete Product Taxes Group
 ============================
 
-Please use instead, OCA module ``product_fiscal_classification``
+Please use instead, OCA module ``account_product_fiscal_classification``
+
+migration script:
 
 Credits
 =======

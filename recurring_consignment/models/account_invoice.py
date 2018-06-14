@@ -18,6 +18,10 @@ class AccountInvoice(models.Model):
         inverse_name='consignment_invoice_id',
         string='Commissionned Lines', readonly=True)
 
+    @api.constrains('partner_id')
+    def _check_partner_id_recurring_consignment(self):
+        self.mapped('invoice_line')._check_invoice_line_recurring_consignment()
+
     # Public Function
     @api.model
     def get_commission_information_summary(self, invoice):

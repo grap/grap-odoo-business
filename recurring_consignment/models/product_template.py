@@ -44,7 +44,7 @@ class ProductTemplate(models.Model):
             self.seller_ids = False
             if len(self.consignor_partner_id.
                     consignor_fiscal_classification_ids):
-                self.fiscal_classification_id =self.consignor_partner_id.\
+                self.fiscal_classification_id = self.consignor_partner_id.\
                     consignor_fiscal_classification_ids[0]
             else:
                 self.fiscal_classification_id = False
