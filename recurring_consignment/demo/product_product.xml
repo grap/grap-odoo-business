@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_ok" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="tax_group_id" ref="tax_group_5_consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_consignor_1"/>
     </record>
 
     <record id="consigned_product_consignor_1_vat_5_2" model="product.product">
@@ -23,7 +23,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_ok" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="tax_group_id" ref="tax_group_5_consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_consignor_1"/>
     </record>
 
     <record id="consigned_product_consignor_1_vat_20" model="product.product">
@@ -33,7 +33,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_ok" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="tax_group_id" ref="tax_group_20_consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_consignor_1"/>
     </record>
 
     <record id="consigned_product_consignor_1_vat_20_2" model="product.product">
@@ -43,7 +43,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_ok" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="tax_group_id" ref="tax_group_20_consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_consignor_1"/>
     </record>
 
     <record id="commission_product_vat_5" model="product.product">
@@ -54,7 +54,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="available_in_pos" eval="False"/>
         <field name="is_consignment_commission" eval="True"/>
         <field name="purchase_ok" eval="False"/>
-        <field name="tax_group_id" ref="tax_group_5_vat_include"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_vat_include"/>
     </record>
 
     <record id="tax_code_base_5" model="account.tax.code">
@@ -69,7 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="available_in_pos" eval="False"/>
         <field name="is_consignment_commission" eval="True"/>
         <field name="purchase_ok" eval="False"/>
-        <field name="tax_group_id" ref="tax_group_20_vat_exclude"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_vat_exclude"/>
     </record>
 
     <record id="tax_code_base_20" model="account.tax.code">
