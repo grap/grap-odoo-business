@@ -19,8 +19,9 @@ class ResPartner(models.Model):
         string='Consignment Account', comodel_name='account.account',
         domain="[('type', 'in', ['other', 'receivable', 'payable'])]")
 
-    consignor_tax_group_ids = fields.One2many(
-        string='Taxes Groups', comodel_name='tax.group',
+    consignor_fiscal_classification_ids = fields.One2many(
+        string='Fiscal Classifications',
+        comodel_name='account.product.fiscal.classification',
         inverse_name='consignor_partner_id', readonly=True)
 
     # Constrains Section

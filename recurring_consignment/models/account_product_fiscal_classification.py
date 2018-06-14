@@ -7,8 +7,8 @@ from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
-class TaxGroup(models.Model):
-    _inherit = 'tax.group'
+class AccountProductFiscalClassification(models.Model):
+    _inherit = 'account.product.fiscal.classification'
 
     # Columns Section
     consignor_partner_id = fields.Many2one(
@@ -16,11 +16,11 @@ class TaxGroup(models.Model):
         domain="[('is_consignor', '=', True)]")
 
     # Constrains Section
-    @api.constrains('supplier_tax_ids', 'consignor_partner_id')
-    def _check_consignor_supplier_tax_ids(self):
-        for tax_group in self:
-            if (tax_group.consignor_partner_id and
-                    len(tax_group.supplier_tax_ids)):
+    @api.constrains('sale_tax_ids', 'consignor_partner_id')
+    def _check_consignor_sale_tax_ids(self):
+        for fiscal_classification in self:
+            if (fiscal_classification.consignor_partner_id and
+                    len(fiscal_classification.purchase_tax_ids)):
                 raise UserError(_(
-                    "You can not set Supplier Taxes for taxes Groups used for"
-                    " consignment"))
+                    "You can not set Supplier Taxes for Fiscal Classification"
+                    "used for consignment"))

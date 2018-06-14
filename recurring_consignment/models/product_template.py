@@ -23,7 +23,7 @@ class ProductTemplate(models.Model):
     is_consignment_commission = fields.Boolean(
         string='Is Consignment Commission')
 
-    tax_group_id = fields.Many2one(  # Overload to update domain
+    fiscal_classification_id = fields.Many2one(  # Overload to update domain
         domain="[('company_id', '=', company_id),"
         "('consignor_partner_id', '=', consignor_partner_id)]")
 
@@ -42,11 +42,12 @@ class ProductTemplate(models.Model):
         else:
             self.standard_price = 0
             self.seller_ids = False
-            if len(self.consignor_partner_id.consignor_tax_group_ids):
-                self.tax_group_id =\
-                    self.consignor_partner_id.consignor_tax_group_ids[0]
+            if len(self.consignor_partner_id.
+                    consignor_fiscal_classification_ids):
+                self.fiscal_classification_id =self.consignor_partner_id.\
+                    consignor_fiscal_classification_ids[0]
             else:
-                self.tax_group_id = False
+                self.fiscal_classification_id = False
 
     # Constrains Section
     @api.constrains('is_consignment_commission', 'available_in_pos')

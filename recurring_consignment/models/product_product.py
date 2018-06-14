@@ -17,8 +17,9 @@ class ProductProduct(models.Model):
         else:
             self.standard_price = 0
             self.seller_ids = False
-            if len(self.consignor_partner_id.consignor_tax_group_ids):
-                self.tax_group_id =\
-                    self.consignor_partner_id.consignor_tax_group_ids[0]
+            if len(self.consignor_partner_id.
+                    consignor_fiscal_classification_ids):
+                self.fiscal_classification_id = self.consignor_partner_id.\
+                    consignor_fiscal_classification_ids[0]
             else:
-                self.tax_group_id = False
+                self.fiscal_classification_id = False
