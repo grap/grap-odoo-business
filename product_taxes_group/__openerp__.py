@@ -17,11 +17,6 @@
         'recurring_consignment',
     ],
     'data': [
-        'security/ir_rule.xml',
-        'security/ir_model_access.yml',
-        'view/action.xml',
-        'view/view.xml',
-        'view/menu.xml',
     ],
     'installable': True,
 }
