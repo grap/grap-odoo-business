@@ -17,6 +17,7 @@
         'recurring_consignment',
     ],
     'data': [
+        'security/ir_model_access.yml'
     ],
     'installable': True,
 }
