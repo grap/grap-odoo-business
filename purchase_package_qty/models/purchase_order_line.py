@@ -19,7 +19,7 @@ class PurchaseOrderLine(models.Model):
         for line in self.filtered(
                 lambda x: x.product_id and
                 x.order_id.state not in ('draft', 'sent')):
-            change, new_qty, package_qty, uom_name =\
+            change, new_qty, package_qty =\
                 self._get_package_qty_info(
                     line.product_id, line.order_id.partner_id,
                     line.product_qty)
@@ -42,6 +42,7 @@ class PurchaseOrderLine(models.Model):
             date_order=False, fiscal_position_id=False, date_planned=False,
             name=False, price_unit=False, state='draft'):
         product_obj = self.env['product.product']
+        partner_obj = self.env['res.partner']
         res = super(PurchaseOrderLine, self).onchange_product_id(
             pricelist_id, product_id, qty, uom_id, partner_id,
             date_order=date_order, fiscal_position_id=fiscal_position_id,
@@ -50,21 +51,21 @@ class PurchaseOrderLine(models.Model):
         product = product_obj.browse(product_id)
         partner = partner_obj.browse(partner_id)
         if product and partner:
-            change, new_qty, package_qty, uom_name =\
+            change, new_qty, package_qty =\
                 self._get_package_qty_info(product, partner, qty)
             if change:
                 res['warning'] = {
                     'title': _('Warning!'),
                     'message': _(
                         "The selected supplier only sells"
-                        "this product by %s %s") % (package_qty, uom_name)}
+                        "this product by %s %s") % (
+                            package_qty, product.uom_po_id.name)}
                 res['value'].update({'product_qty': new_qty})
         return res
 
-
     # Custom Section
     @api.model
-    def _get_package_qty_info(self, product, partner, quantity):
+    def _get_package_qty_info(self, product, partner, qty):
         change = False
         new_qty = 0
         for supplierinfo in product.seller_ids.filtered(
@@ -75,4 +76,4 @@ class PurchaseOrderLine(models.Model):
                     int(qty / package_qty) != qty / package_qty):
                 change = True
                 new_qty = ceil(qty / package_qty) * package_qty
-        return change, new_qty, package_qty, uom_name
+        return change, new_qty, package_qty
