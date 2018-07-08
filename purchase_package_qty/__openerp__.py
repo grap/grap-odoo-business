@@ -17,5 +17,9 @@
     'data': [
         'views/view_product_supplierinfo.xml',
     ],
+    'demo': [
+        'demo/product_template.xml',
+        'demo/purchase_order.xml',
+    ],
     'installable': True,
 }

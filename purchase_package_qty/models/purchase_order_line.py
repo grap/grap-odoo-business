@@ -68,6 +68,7 @@ class PurchaseOrderLine(models.Model):
     def _get_package_qty_info(self, product, partner, qty):
         change = False
         new_qty = 0
+        package_qty = False
         for supplierinfo in product.seller_ids.filtered(
                 lambda x: x.name.id == partner.id):
             package_qty = supplierinfo.package_qty
