@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/grap/grap-odoo-business.svg?branch=8.0)](https://travis-ci.org/grap/grap-odoo-business?branch=8.0)
+[![codecov](https://codecov.io/gh/grap/grap-odoo-business/branch/8.0/graph/badge.svg)](https://codecov.io/gh/grap/grap-odoo-business)
 [![Coverage Status](https://coveralls.io/repos/github/grap/grap-odoo-business/badge.svg?branch=8.0)](https://coveralls.io/github/grap/grap-odoo-business?branch=8.0)
 [![Code Climate](https://codeclimate.com/github/grap/grap-odoo-business/badges/gpa.svg)](https://codeclimate.com/github/grap/grap-odoo-business)
 
