@@ -17,6 +17,7 @@
         'views/view_account_product_fiscal_classification.xml',
     ],
     'images': [
-        'static/description/img/product_template_warning.png'
+        'static/description/product_template_warning.png',
+        'static/description/account_product_fiscal_classification_form.png',
     ],
 }
