@@ -9,7 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="consignor_1" model="res.partner">
         <field name="name">Consignor 1 (with VAT)</field>
         <field name="customer" eval="True" />
-        <field name="supplier" eval="False" />
+        <field name="supplier" eval="True" />
         <field name="is_consignor" eval="True" />
         <field name="consignment_commission" eval="20.0" />
         <field name="consignment_account_id" ref="account_consignor_1"/>
@@ -18,7 +18,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="consignor_2" model="res.partner">
         <field name="name">Consignor 2 (without VAT)</field>
         <field name="customer" eval="True" />
-        <field name="supplier" eval="False" />
+        <field name="supplier" eval="True" />
         <field name="is_consignor" eval="True" />
         <field name="consignment_commission" eval="30.0" />
         <field name="consignment_account_id" ref="account_consignor_2"/>

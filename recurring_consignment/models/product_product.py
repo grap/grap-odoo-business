@@ -11,15 +11,6 @@ class ProductProduct(models.Model):
 
     # Onchange Section
     @api.onchange('consignor_partner_id')
-    def onchange_consignor_partner_id(self):
-        if not self.consignor_partner_id:
-            return
-        else:
-            self.standard_price = 0
-            self.seller_ids = False
-            if len(self.consignor_partner_id.
-                    consignor_fiscal_classification_ids):
-                self.fiscal_classification_id = self.consignor_partner_id.\
-                    consignor_fiscal_classification_ids[0]
-            else:
-                self.fiscal_classification_id = False
+    def onchange_consignor_partner_id_variant(self):
+        ProductTemplate = self.env['product.template']
+        ProductTemplate._onchange_consignor_partner_id(self)

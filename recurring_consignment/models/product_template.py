@@ -36,18 +36,32 @@ class ProductTemplate(models.Model):
 
     # Onchange Section
     @api.onchange('consignor_partner_id')
-    def onchange_consignor_partner_id(self):
-        if not self.consignor_partner_id:
+    def onchange_consignor_partner_id_template(self):
+        self._onchange_consignor_partner_id(self)
+
+    @api.model
+    def _onchange_consignor_partner_id(self, item):
+        """Private function called with product or template in the item."""
+        if not item.consignor_partner_id:
             return
         else:
-            self.standard_price = 0
-            self.seller_ids = False
-            if len(self.consignor_partner_id.
+            item.standard_price = 0
+            item.seller_ids = False
+            vals = {
+                'pricelist_ids': [], 'name': item.consignor_partner_id.id,
+                'sequence': 1,
+                'company_id': item.company_id.id,
+                'delay': 1, 'min_qty': 0,
+                'product_code': False,
+                'product_name': False,
+            }
+            item.seller_ids = [(0, False, vals)]
+            if len(item.consignor_partner_id.
                     consignor_fiscal_classification_ids):
-                self.fiscal_classification_id = self.consignor_partner_id.\
+                item.fiscal_classification_id = item.consignor_partner_id.\
                     consignor_fiscal_classification_ids[0]
             else:
-                self.fiscal_classification_id = False
+                item.fiscal_classification_id = False
 
     # Constrains Section
     @api.constrains('is_consignment_commission', 'available_in_pos')
@@ -59,14 +73,15 @@ class ProductTemplate(models.Model):
 
     @api.constrains('standard_price', 'consignor_partner_id', 'seller_ids')
     def _check_consignor_partner_id_fields(self):
-        for template in self:
-            if template.consignor_partner_id:
-                if template.standard_price:
-                    raise UserError(_(
-                        "A consigned product must have null Cost Price"))
-                if len(template.seller_ids):
-                    raise UserError(_(
-                        "A consigned product must not have suppliers defined"))
+        for template in self.filtered(lambda x: x.consignor_partner_id):
+            if template.standard_price:
+                raise UserError(_(
+                    "A consigned product must have null Cost Price"))
+            if len(template.seller_ids.filtered(
+                    lambda x: x.name != template.consignor_partner_id)):
+                raise UserError(_(
+                    "A consigned product can only have the consignor"
+                    " in the field 'Suppliers'."))
 
     # Overload Section
     @api.model
@@ -106,7 +121,6 @@ class ProductTemplate(models.Model):
                         " this product and create a new one properly."))
         return super(ProductTemplate, self).write(vals)
 
-    # Custom Section
     @api.multi
     def _check_consignor_changes(self, vals):
         stock_move_obj = self.env['stock.move']
