@@ -19,16 +19,8 @@ Account Invoice - Standard Price Update
 
 |badge1| |badge2| |badge3| 
 
-This module is a glue module installed if the following modules are installed:
-
-* ``account_invoice_triple_discount`` (account-invoicing OCA repository)
-* ``account_invoice_supplierinfo_update_discount`` (account-invoicing OCA repository)
-* ``product_supplierinfo_triple_discount`` (purchase-workflow OCA repository)
-
-It allows to update the three discounts on supplierinfo, if the invoice line
-has different discount values.
-
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/account_invoice_supplierinfo_update_standard_price/static/description/wizard_form.png
+It allows to update the standard price on products if the product has different
+standard prices.
 
 **Table of contents**
 
