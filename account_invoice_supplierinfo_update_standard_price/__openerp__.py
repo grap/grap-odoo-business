@@ -16,7 +16,6 @@
         'account_invoice_supplierinfo_update',
         'account_invoice_supplierinfo_update_triple_discount',
     ],
-    'installable': True,
     'data': [
         'wizard/wizard_update_invoice_supplierinfo.xml',
         'views/view_account_invoice.xml',
@@ -29,4 +28,5 @@
     'images': [
         'static/description/wizard_form.png',
     ],
+    'installable': True,
 }
