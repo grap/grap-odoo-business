@@ -8,7 +8,7 @@
     'summary': 'Synchronize Odoo database with Retail Connect Bizerba System',
     'version': '8.0.2.0.0',
     'category': 'Product',
-    'author': 'GRAP',
+    'author': 'GRAP, La Louve',
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
