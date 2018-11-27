@@ -6,7 +6,7 @@ by the same consignor and can not be provided by another way.
 
 For other implementation of consigment you could see:
 
-* (vendor_consignment_stock)[https://github.com/OCA/purchase-workflow];
+* [vendor_consignment_stock](https://github.com/OCA/purchase-workflow)
 
 
 **Functionality**

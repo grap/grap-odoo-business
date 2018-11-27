@@ -22,7 +22,7 @@ Stock Picking - Quick Edit
 This module extends Odoo Stock module to provide a wizard to easily edit
 picking, adding or changing moves quantities.
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_quick_edit/static/description/wizard_form.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_quick_edit/static/description/stock_picking_quick_edit_wizard_form.png
 
 **Table of contents**
 
