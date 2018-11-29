@@ -23,14 +23,14 @@ This module tries to simplify the warehouse kanban view
 
 **BEFORE**
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_type_image/static/description/warehouse_avant.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_type_image/static/description/warehouse_before.png
    :alt: Warehouse before
    :width: 900
 
 **AFTER**
 
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_type_image/static/description/warehouse_apres.png
+.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/stock_picking_type_image/static/description/warehouse_after.png
    :alt: Warehouse after
    :width: 900
 
