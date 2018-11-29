@@ -29,7 +29,6 @@
         'views/action_related.xml',
         'views/view_product_prepare_category.xml',
         'views/view_product_product.xml',
-        'views/view_res_company.xml',
         'views/view_sale_order.xml',
         'views/view_sale_recovery_moment.xml',
         'views/view_sale_recovery_moment_group.xml',
