@@ -18,7 +18,6 @@
         'sale_order_line_price_subtotal_gross',
         'sale_recovery_moment',
         'simple_tax_sale',
-        'grap_qweb_report',
     ],
     'data': [
         'security/ir_rule.xml',
