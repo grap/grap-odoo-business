@@ -17,7 +17,7 @@ class ProductUom(models.Model):
 
     # Fields Section
     eshop_description = fields.Char(
-        string='Description for the eShop', required=True)
+        string='Description for the eShop', default='/')
 
     # Overload Section
     @api.multi
