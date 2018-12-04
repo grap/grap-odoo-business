@@ -5,6 +5,7 @@
 
 
 from openerp import _, api, models
+from openerp.tools import config
 
 
 class SaleOrder(models.Model):
@@ -122,7 +123,11 @@ class SaleOrder(models.Model):
                 ('user_id', '=', user.id),
             ])
             for order in orders:
-                order.with_context(send_email=True).action_button_confirm()
+                # Do not send email in test / demo context
+                if config.options.get('test_enable', False):
+                    order.action_button_confirm()
+                else:
+                    order.with_context(send_email=True).action_button_confirm()
 
     # Custom Section
     def _eshop_sale_order_info(self, order):
