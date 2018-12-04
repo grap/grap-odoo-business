@@ -22,6 +22,9 @@ class TestModule(TransactionCase):
 
     # Test Section
     def test_01_login(self):
+        # The following line make the test working if user_partners_access
+        # is installed
+        self.customer.active = True
         res = self.ResPartner.login(self.customer.email, 'eshop_password')
         self.assertNotEqual(
             res, False, "Correct Credentials should be accepted")
