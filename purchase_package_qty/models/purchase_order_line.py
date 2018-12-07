@@ -13,6 +13,8 @@ from openerp.exceptions import Warning as UserError
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
+    _ROUNDING_TOLERANCE = 10 ** -6
+
     # Constraints section
     @api.constrains('product_id', 'product_qty')
     def _check_purchase_qty(self):
@@ -57,9 +59,14 @@ class PurchaseOrderLine(models.Model):
                 res['warning'] = {
                     'title': _('Warning!'),
                     'message': _(
-                        "The selected supplier only sells"
-                        "this product by %s %s") % (
-                            package_qty, product.uom_po_id.name)}
+                        " The quantity {qty} ({uom}) is not correct because"
+                        " the current supplier only sells"
+                        " this product by {package_qty} ({uom}).\n\n"
+                        "The quantity has been set"
+                        " to {new_qty} ({uom})").format(
+                            qty=qty, uom=product.uom_po_id.name,
+                            package_qty=package_qty, new_qty=new_qty)
+                }
                 res['value'].update({'product_qty': new_qty})
         return res
 
@@ -73,8 +80,9 @@ class PurchaseOrderLine(models.Model):
                 lambda x: x.name.id == partner.id):
             package_qty = supplierinfo.package_qty
             indicative = supplierinfo.indicative_package
-            if (not(indicative) and
-                    int(qty / package_qty) != qty / package_qty):
+            if (not(indicative) and abs(
+                    int(qty / package_qty) - (qty / package_qty)) >
+                    self._ROUNDING_TOLERANCE):
                 change = True
                 new_qty = ceil(qty / package_qty) * package_qty
         return change, new_qty, package_qty
