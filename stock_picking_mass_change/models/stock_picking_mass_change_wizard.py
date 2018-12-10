@@ -142,5 +142,6 @@ class StockPickingMassChangeWizard(models.TransientModel):
                     line.move_id.name, line.move_id.product_qty,
                     line.target_qty),
                 'product_uom_qty': line.target_qty,
+                'product_uos_qty': line.target_qty,
                 'product_uom': self.product_uom_id.id,
             })
