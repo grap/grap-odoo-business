@@ -42,13 +42,9 @@ class EshopCategory(models.Model):
 
     image = fields.Binary(string='Image')
 
-    image_medium = fields.Binary(
-        compute='_compute_multi_image',
-        string='Medium-sized image', store=True)
+    image_medium = fields.Binary(string='Medium-sized image')
 
-    image_small = fields.Binary(
-        compute='_compute_multi_image',
-        string='Small-sized image', store=True)
+    image_small = fields.Binary(string='Small-sized image')
 
     parent_id = fields.Many2one(
         comodel_name='eshop.category', string='Parent Category',
@@ -130,30 +126,38 @@ class EshopCategory(models.Model):
             category.available_product_qty = len(available_product_ids)
             category.child_qty = len(category.child_ids)
 
-    @api.multi
-    @api.depends('image')
-    def _compute_multi_image(self):
-        for category in self:
-            image_data = tools.image_get_resized_images(
-                category.image, avoid_resize_medium=True)
-            category.image_small = image_data['image_small']
-            category.image_medium = image_data['image_medium']
-
-    # @api.multi
-    # def _set_image(self, cr, uid, pId, name, value, args, context=None):
-    #     return self.write(
-    #         cr, uid, [pId], {'image': tools.image_resize_image_big(value)},
-    #         context=context)
-
     # Overload Section
+    @api.model
+    def create(self, vals):
+        self.image_resize_images(vals)
+        return super(EshopCategory, self).create(vals)
+
     @api.multi
     def write(self, vals):
         """Overload in this part, because write function is not called
         in mixin model. TODO: Check if this weird behavior still occures
         in more recent Odoo versions.
         """
+        self.image_resize_images(vals)
         self._write_eshop_invalidate(vals)
         return super(EshopCategory, self).write(vals)
+
+    # Custom Section
+    def image_resize_images(self, vals):
+        # TODO V10+ replace by tools.image_resize_images
+        image_data = vals.get('image', False)
+        if not image_data:
+            image_data = vals.get('image_medium', False)
+        if not image_data:
+            image_data = vals.get('image_small', False)
+        if not image_data:
+            return
+        res = tools.image_get_resized_images(image_data)
+        vals.update({
+            'image': image_data,
+            'image_medium': res['image_medium'],
+            'image_small': res['image_small'],
+        })
 
     # Name Function
     @api.model
