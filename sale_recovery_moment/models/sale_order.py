@@ -19,6 +19,11 @@ class SaleOrder(models.Model):
         comodel_name='sale.recovery.moment.group', readonly=True,
         string='Recovery Moment Group', store=True)
 
+    recovery_place_id = fields.Many2one(
+        related='recovery_moment_id.place_id',
+        comodel_name='sale.recovery.place', readonly=True,
+        string='Recovery Place', store=True)
+
     # Overload Section
     @api.model
     def create(self, vals):
@@ -29,6 +34,23 @@ class SaleOrder(models.Model):
     def write(self, vals):
         self._set_requested_date_from_moment_id(vals)
         return super(SaleOrder, self).write(vals)
+
+    @api.multi
+    def action_button_confirm(self):
+        SaleOrderLine = self.env['sale.order.line']
+        for order in self.filtered(lambda x: x.recovery_place_id):
+            product = order.recovery_place_id.shipping_product_id
+            if product:
+                line_vals = SaleOrderLine.product_id_change(
+                    order.pricelist_id.id, product.id,
+                    partner_id=order.partner_id.id).get('value')
+                line_vals.update({
+                    'order_id': order.id,
+                    'product_id': product.id,
+                })
+                SaleOrderLine.create(line_vals)
+
+        return super(SaleOrder, self).action_button_confirm()
 
     @api.model
     def _prepare_procurement_group(self, order):

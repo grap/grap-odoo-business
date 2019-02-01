@@ -45,6 +45,7 @@
         'demo/sale_recovery_moment.xml',
         'demo/product_prepare_category.xml',
         'demo/sale_order.xml',
+        'demo/product_product.xml',
         'demo/res_groups.xml',
     ],
     'images': [
