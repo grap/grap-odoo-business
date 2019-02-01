@@ -40,6 +40,12 @@ class SaleRecoveryPlace(models.Model):
 
     country_id = fields.Many2one(comodel_name='res.country', string='Country')
 
+    shipping_product_id = fields.Many2one(
+        comodel_name='product.product', domain="[('type', '=', 'service')]",
+        string='Shipping Cost Product', help="If set, this product will"
+        " be added automatically to the sale order, when it is confirmed,"
+        " if the sale order is associated to this recovery place.")
+
     # Compute Section
     @api.multi
     @api.depends(

@@ -23,6 +23,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="zip">75008</field>
         <field name="company_id" ref="base.main_company"/>
         <field name="country_id" ref="base.fr"/>
+        <field name="shipping_product_id" ref="product_shipping_cost"/>
     </record>
 
 </data></openerp>
