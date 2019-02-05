@@ -35,6 +35,11 @@ Configuration
 
 .. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/sale_recovery_moment/static/description/sale_recovery_place_tree.png
 
+Note:
+
+If you set a shipping product on your recovery place, it will be added to
+the sale order, when confirming it.
+
 * A ``sale.recovery.moment`` is a moment during the customers have the
   possibility to recover their sales; A recovery moment is described by a min
   date and a max date for the recovery and a place where the sale orders is
