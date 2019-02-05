@@ -28,14 +28,14 @@ msgstr "Retour"
 #: code:addons/pos_tare/static/src/xml/pos_tare.xml:18
 #, python-format
 msgid "Gross Weight"
-msgstr "Poid Brut"
+msgstr "Poids Brut"
 
 #. module: pos_tare
 #. openerp-web
 #: code:addons/pos_tare/static/src/xml/pos_tare.xml:31
 #, python-format
 msgid "Net Weight"
-msgstr "Poid Net"
+msgstr "Poids Net"
 
 #. module: pos_tare
 #. openerp-web
