@@ -12,18 +12,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <field name="company_id" position="after">
                 <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
+                <field name="recovery_place_id" groups="sale_recovery_moment.recovery_user"/>
                 <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
             </field>
         </field>
     </record>
 
-    <record id="view_sale_order_view" model="ir.ui.view">
+    <record id="view_sale_order_tree_1" model="ir.ui.view">
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_tree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
                 <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
-                <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_sale_order_tree_2" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
             </field>
         </field>
     </record>
@@ -35,10 +45,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="partner_id" position="after">
                 <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
                 <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
+                <field name="recovery_place_id" groups="sale_recovery_moment.recovery_user"/>
             </field>
             <xpath expr="//filter[@string='Salesperson']" position="after">
                 <filter string="Recovery Group" context="{'group_by':'recovery_group_id'}" groups="sale_recovery_moment.recovery_user"/>
                 <filter string="Recovery Moment" context="{'group_by':'recovery_moment_id'}" groups="sale_recovery_moment.recovery_user"/>
+                <filter string="Recovery Place"
+                    context="{'group_by':'recovery_place_id'}" groups="sale_recovery_moment.recovery_user"/>
             </xpath>
         </field>
     </record>
