@@ -40,12 +40,12 @@
         'views/menu.xml',
     ],
     'demo': [
+        'demo/product_product.xml',
         'demo/sale_recovery_place.xml',
         'demo/sale_recovery_moment_group.xml',
         'demo/sale_recovery_moment.xml',
         'demo/product_prepare_category.xml',
         'demo/sale_order.xml',
-        'demo/product_product.xml',
         'demo/res_groups.xml',
     ],
     'images': [
