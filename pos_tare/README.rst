@@ -13,9 +13,9 @@ Point Of Sale - Tare
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-GRAP%2Fgrap--odoo--business-lightgray.png?logo=github
-    :target: https://github.com/GRAP/grap-odoo-business/tree/8.0/pos_tare
-    :alt: GRAP/grap-odoo-business
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-business/tree/8.0/pos_tare
+    :alt: grap/grap-odoo-business
 
 |badge1| |badge2| |badge3| 
 
@@ -23,7 +23,7 @@ Give the possibility to the user to provide Gross weight and Tare weight.
 This will compute automatically net weight and set it to the current
 selected order
 
-.. figure:: https://raw.githubusercontent.com/GRAP/grap-odoo-business/8.0/pos_tare/static/description/pos_tare.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/pos_tare/static/description/pos_tare.png
 
 The screen will be displayed only for 'to_weight' products and if scale is
 enabled in PoS Configuration.
@@ -41,10 +41,10 @@ For the time being, this module disable Scale functionnality.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/GRAP/grap-odoo-business/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-business/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/GRAP/grap-odoo-business/issues/new?body=module:%20pos_tare%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20pos_tare%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -66,7 +66,7 @@ Maintainers
 
 
 
-This module is part of the `GRAP/grap-odoo-business <https://github.com/GRAP/grap-odoo-business/tree/8.0/pos_tare>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/8.0/pos_tare>`_ project on GitHub.
 
 
 You are welcome to contribute.
