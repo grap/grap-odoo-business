@@ -3,8 +3,9 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
+from openerp import _, api, models
 from openerp.tools.float_utils import float_compare
+from openerp.exceptions import Warning as UserError
 
 
 class AccountInvoiceLine(models.Model):
@@ -22,8 +23,15 @@ class AccountInvoiceLine(models.Model):
                 factor =\
                     self.uos_id.factor_inv\
                     / self.product_id.uom_id.factor_inv
-            line_shared_cost = self.invoice_id.distributed_expense_total * (
-                self.price_subtotal / self.invoice_id.product_expense_total)
+            if self.invoice_id.product_expense_total != 0:
+                line_shared_cost =\
+                    self.invoice_id.distributed_expense_total * (
+                        self.price_subtotal /
+                        self.invoice_id.product_expense_total)
+            else:
+                raise UserError(_(
+                    "We can't check prices"
+                    " for a invoice whose total is null"))
             return (
                 line_shared_cost / self.quantity + (
                     self.price_unit *

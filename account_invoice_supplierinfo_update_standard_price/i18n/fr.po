@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_invoice_supplierinfo_update_standard_price
+#   * account_invoice_supplierinfo_update_standard_price
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-08 22:10+0000\n"
-"PO-Revision-Date: 2018-03-08 22:10+0000\n"
+"POT-Creation-Date: 2019-03-15 11:03+0000\n"
+"PO-Revision-Date: 2019-03-15 11:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,11 +28,6 @@ msgid "Current Standard Price"
 msgstr "Prix de revient actuel"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: model:product.template,name:account_invoice_supplierinfo_update_standard_price.transport_costs_product_product_template
-msgid "Demo Transport costs"
-msgstr "Demo Transport costs"
-
-#. module: account_invoice_supplierinfo_update_standard_price
 #: field:account.invoice,distributed_expense_total:0
 msgid "Distributed Expenses Total"
 msgstr "Total des charges réparties"
@@ -50,7 +45,7 @@ msgstr "Facture"
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Ligne de facture"
+msgstr "Lignes de facture"
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: field:wizard.update.invoice.supplierinfo.line,new_standard_price:0
@@ -68,7 +63,12 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: account_invoice_supplierinfo_update_standard_price
+#: code:addons/account_invoice_supplierinfo_update_standard_price/models/account_invoice_line.py:32
+#, python-format
+msgid "We can't check prices for a invoice whose total is null"
+msgstr "On ne peut pas vérifier les prix pour une facture nulle."
+
+#. module: account_invoice_supplierinfo_update_standard_price
 #: view:account.invoice:account_invoice_supplierinfo_update_standard_price.view_account_invoice_form
 msgid "oe_subtotal_footer_separator"
 msgstr "oe_subtotal_footer_separator"
-
