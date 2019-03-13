@@ -13,7 +13,6 @@
     'license': 'AGPL-3',
     'depends': [
         'account_product_fiscal_classification',
-        'simple_tax_account',
         'purchase',
         'account_voucher',
         'point_of_sale',

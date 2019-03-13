@@ -42,7 +42,7 @@ class TestRecurringConsignment(TransactionCase):
         self.commission_product_vat_20 = self.env.ref(
             'recurring_consignment.commission_product_vat_20')
         self.vat_5_exclude = self.env.ref(
-            'simple_tax_account.vat_5_exclude')
+            'recurring_consignment.vat_5_exclude')
         self.product_category = self.env.ref('product.product_category_all')
         self.main_config = self.env.ref('point_of_sale.pos_config_main')
 
