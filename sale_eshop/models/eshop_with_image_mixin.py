@@ -16,8 +16,7 @@ class EshopWithImageMixin(models.AbstractModel):
     _eshop_image_fields = []
 
     image_write_date = fields.Datetime(
-        readonly=True, required=True,
-        default=lambda s: s._default_image_write_date())
+        readonly=True, default=lambda s: s._default_image_write_date())
 
     image_write_date_hash = fields.Char(
         compute='_compute_image_write_date_hash', store=True)
