@@ -51,8 +51,5 @@
         'demo/sale_order.xml',
 
     ],
-    'css': [
-        'static/src/css/recurring_consignment.css',
-    ],
     'installable': True,
 }
