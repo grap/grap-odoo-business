@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="partnerinfo_1" model="pricelist.partnerinfo">
+        <field name="suppinfo_id" ref="product.product_supplierinfo_1"/>
+        <field name="min_quantity">100</field>
+        <field name="price">99</field>
+    </record>
+
+    <record id="partnerinfo_2" model="pricelist.partnerinfo">
+        <field name="suppinfo_id" ref="product.product_supplierinfo_1"/>
+        <field name="min_quantity">0</field>
+        <field name="price">100</field>
+        <field name="discount">20</field>
+        <field name="discount2">25</field>
+        <field name="discount3">10</field>
+    </record>
+
+</data></openerp>
+
