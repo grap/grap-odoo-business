@@ -58,7 +58,6 @@ class ResPartner(models.Model):
     def _prepare_vals_consignor(self, vals):
         if vals.get('is_consignor', False):
             vals.update({
-                'simple_tax_type': 'excluded',
                 'property_account_payable': vals.get(
                     'consignment_account_id', False),
                 'property_account_receivable': vals.get(
@@ -80,7 +79,6 @@ class ResPartner(models.Model):
         """ prevent to write incorrect values for consignors"""
         if any(self.mapped('is_consignor')):
             if len(self) == 1:
-                vals.pop('simple_tax_type', False)
                 vals.pop('property_account_payable', False)
                 vals.pop('property_account_receivable', False)
                 if 'consignment_account_id' in vals:
@@ -91,11 +89,11 @@ class ResPartner(models.Model):
                             'consignment_account_id', False),
                     })
             elif set([
-                    'simple_tax_type', 'property_account_payable',
+                    'property_account_payable',
                     'property_account_receivable',
                     'consignment_account_id']) & set(vals.keys()):
                 raise UserError(_(
-                    "You can not change this settings (Tax Type and"
+                    "You can not change this settings ("
                     " Accounting Properties) for many partners if some"
                     " of them are consignors."))
         return vals

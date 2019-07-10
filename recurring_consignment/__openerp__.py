@@ -13,7 +13,6 @@
     'license': 'AGPL-3',
     'depends': [
         'account_product_fiscal_classification',
-        'simple_tax_account',
         'purchase',
         'account_voucher',
         'point_of_sale',
@@ -50,9 +49,7 @@
         'demo/account_invoice.xml',
         'demo/product_pricelist.xml',
         'demo/sale_order.xml',
-    ],
-    'css': [
-        'static/src/css/recurring_consignment.css',
+
     ],
     'installable': True,
 }
