@@ -71,15 +71,7 @@ class InvoiceCommissionWizard(models.TransientModel):
                     grouped_data[key].append(line)
 
             # Make Commission Invoice
-            invoice_vals = {
-                'partner_id': wizard.consignor_partner_id.id,
-                'date_invoice': wizard.period_id.date_stop,
-                'is_consignment_invoice': True,
-                'type': 'out_invoice',
-                'name': _('Commission Invoices (%s)') % wizard.period_id.code,
-                'account_id':
-                wizard.consignor_partner_id.consignment_account_id.id,
-            }
+            invoice_vals = wizard._prepare_invoice()
             invoice = invoice_obj.create(invoice_vals)
             invoice_ids.append(invoice.id)
 
@@ -114,29 +106,66 @@ class InvoiceCommissionWizard(models.TransientModel):
         # Return action that displays new invoices
         result = self.env.ref('account.action_invoice_tree1').read()[0]
         result['domain'] =\
-            "[('id', 'in', ["+','.join(map(str, invoice_ids))+"])]"
+            "[('id', 'in', [" + ','.join(map(str, invoice_ids)) + "])]"
         return result
+
+    @api.multi
+    def _prepare_invoice(self):
+        self.ensure_one()
+        partner = self.consignor_partner_id
+        return {
+            'partner_id': partner.id,
+            'date_invoice': self.period_id.date_stop,
+            'is_consignment_invoice': True,
+            'type': 'out_invoice',
+            'name': _('Commission Invoices (%s)') % self.period_id.code,
+            'account_id': partner.consignment_account_id.id,
+            'fiscal_position': partner.property_account_position.id,
+        }
 
     @api.multi
     def _prepare_invoice_line(self, key, value, invoice):
         self.ensure_one()
-        wizard = self[0]
-        invoice_line_obj = self.env['account.invoice.line']
-        rate = wizard.consignor_partner_id.consignment_commission
+        AccountInvoiceLine = self.env['account.invoice.line']
+        AccountTax = self.env['account.tax']
+
+        rate = self.consignor_partner_id.consignment_commission
         total_credit = 0
         product = value[0].tax_code_id.consignment_product_id
         for line in value:
             total_credit += line.credit - line.debit
-        res = invoice_line_obj.product_id_change(
+        res = AccountInvoiceLine.product_id_change(
             product.id, product.uom_id.id, qty=1,
-            type='out_invoice', partner_id=wizard.consignor_partner_id.id,
-            )['value']
+            type='out_invoice', partner_id=self.consignor_partner_id.id,
+            fposition_id=invoice.fiscal_position.id)['value']
+
+        # Compute price, depending on the tax settings
+        taxes = AccountTax.browse(res['invoice_line_tax_id'])
+        if len(taxes) > 1:
+            raise UserError(_(
+                "Incorrect fiscal settings block the possibility"
+                " to generate commission invoices : Too many taxes %s") % (
+                ', '.join(taxes.mapped('name'))))
+
+        price_unit = total_credit * rate / 100
+
+        if taxes:
+            tax = taxes[0]
+            if tax.type != 'percent':
+                raise UserError(_(
+                    "Incorrect fiscal settings block the possibility"
+                    " to generate commission invoices : Incorrect tax type"
+                    " on the tax %s") % (tax.name))
+
+            if tax.price_include:
+                price_unit *= (1 + tax.amount)
+
         res.update({
             'product_id': product.id,
             'invoice_id': invoice.id,
-            'price_unit': total_credit * rate / 100,
+            'price_unit': price_unit,
             'invoice_line_tax_id': [(6, False, res['invoice_line_tax_id'])],
-            'name':  _(
+            'name': _(
                 "Commission on Sale or Refunds\n"
                 "(Rate : %.2f %%; Base : %.2f € ; Period %s)") % (
                 rate, total_credit, str(value[0].period_id.code)),

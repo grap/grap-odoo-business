@@ -16,8 +16,8 @@ class AccountProductFiscalClassification(models.Model):
         domain="[('is_consignor', '=', True)]")
 
     # Constrains Section
-    @api.constrains('sale_tax_ids', 'consignor_partner_id')
-    def _check_consignor_sale_tax_ids(self):
+    @api.constrains('purchase_tax_ids', 'sale_tax_ids', 'consignor_partner_id')
+    def _check_consignor_tax_ids(self):
         for fiscal_classification in self:
             if (fiscal_classification.consignor_partner_id and
                     len(fiscal_classification.purchase_tax_ids)):

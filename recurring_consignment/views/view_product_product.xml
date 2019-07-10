@@ -20,10 +20,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="consignor_partner_id" groups="recurring_consignment.group_consignment_user"/>
                 </group>
             </field>
-            <xpath expr="//div[@name='buttons']" position="inside">
-                <span class="consigment_label" attrs="{'invisible': [('is_consignment','=', False)]}"
-                    groups="recurring_consignment.group_consignment_user">Consigment</span>
-            </xpath>
         </field>
     </record>
 
