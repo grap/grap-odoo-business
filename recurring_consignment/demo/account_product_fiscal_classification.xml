@@ -8,12 +8,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="fiscal_classification_5_vat_include" model="account.product.fiscal.classification">
         <field name="name">Tax Group 5% (5% VAT Incl.)</field>
-        <field name="sale_tax_ids" eval="[(4, ref('simple_tax_account.vat_5_include'))]"/>
+        <field name="sale_tax_ids" eval="[(4, ref('vat_5_include'))]"/>
     </record>
 
     <record id="fiscal_classification_20_vat_exclude" model="account.product.fiscal.classification">
         <field name="name">Tax Group 20% (20% VAT Excl.)</field>
-        <field name="sale_tax_ids" eval="[(4, ref('simple_tax_account.vat_20_exclude'))]"/>
+        <field name="sale_tax_ids" eval="[(4, ref('vat_20_exclude'))]"/>
     </record>
 
     <record id="fiscal_classification_5_consignor_1" model="account.product.fiscal.classification">

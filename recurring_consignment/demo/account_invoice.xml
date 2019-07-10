@@ -15,7 +15,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="state">draft</field>
         <field name="type">out_invoice</field>
         <field name="account_id" ref="account.a_recv"/>
-        <field name="name">My Invoice #2</field>
+        <field name="name">My Invoice #1</field>
     </record>
 
     <record id="customer_invoice_1_line_1" model="account.invoice.line">

@@ -41,8 +41,10 @@ class TestRecurringConsignment(TransactionCase):
             'recurring_consignment.commission_product_vat_5')
         self.commission_product_vat_20 = self.env.ref(
             'recurring_consignment.commission_product_vat_20')
-        self.vat_5_exclude = self.env.ref(
-            'simple_tax_account.vat_5_exclude')
+        self.vat_5_include = self.env.ref(
+            'recurring_consignment.vat_5_include')
+        self.vat_20_exclude = self.env.ref(
+            'recurring_consignment.vat_20_exclude')
         self.product_category = self.env.ref('product.product_category_all')
         self.main_config = self.env.ref('point_of_sale.pos_config_main')
 
@@ -133,15 +135,28 @@ class TestRecurringConsignment(TransactionCase):
         self.assertEqual(
             len(lines_20), 1, "One 20% commission line should be generated")
 
-        # Check first line details
+        # Check line #1 details (Tax Incl)
         line_5 = lines_5[0]
         self.assertEqual(
-            line_5.quantity, 1, "Incorrect Commission Price Unit.")
+            line_5.quantity, 1, "Incorrect Commission Quantity.")
         self.assertEqual(
-            line_5.price_unit, 2100, "Incorrect Commission Price Unit.")
+            line_5.price_unit, 2100 * 1.05,
+            "Incorrect Commission Price Unit, awaiing "
+            "(10,000 + 500) * 0.2 * 1.05")
         self.assertEqual(
-            line_5.invoice_line_tax_id.ids, [self.vat_5_exclude.id],
-            "Incorrect Commission VAT.")
+            line_5.invoice_line_tax_id.ids, [self.vat_5_include.id],
+            "Incorrect Commission Tax.")
+
+        # Check line #2 details (Tax Excl)
+        line_20 = lines_20[0]
+        self.assertEqual(
+            line_20.quantity, 1, "Incorrect Commission Quantity.")
+        self.assertEqual(
+            line_20.price_unit, 20,
+            "Incorrect Commission Price Unit, awaiting 100 * 0.2")
+        self.assertEqual(
+            line_20.invoice_line_tax_id.ids, [self.vat_20_exclude.id],
+            "Incorrect Commission Tax.")
 
         self.report_obj.get_action(
             commission_invoice,
@@ -150,7 +165,6 @@ class TestRecurringConsignment(TransactionCase):
             commission_invoice,
             'recurring_consignment.template_account_invoice_consignment')
 
-    # Test Section
     def test_09_pos_order_constrains(self):
         """[Functional Test] Check if creating a pos order with consignor
         is blocked"""
