@@ -20,7 +20,6 @@ class ResPartner(models.Model):
     _eshop_invalidation_fields = [
         'name', 'lang', 'email', 'eshop_active', 'eshop_state',
         'phone', 'mobile', 'street', 'street2', 'zip', 'city',
-        'simple_tax_type',
     ]
 
     _PASSWORD_LENGTH = 6
