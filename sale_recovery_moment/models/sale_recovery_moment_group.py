@@ -60,7 +60,8 @@ class SaleRecoveryMomentGroup(models.Model):
         string='Recovery Moments')
 
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company', required=True)
+        comodel_name='res.company', string='Company', required=True,
+        default=lambda x: x._default_company_id())
 
     order_qty = fields.Integer(
         compute='_compute_order_multi', multi='order', store=True,

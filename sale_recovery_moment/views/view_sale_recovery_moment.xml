@@ -10,10 +10,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
             <tree string="Recovery Moments" editable="bottom" colors="red:is_complete == True; blue: max_order_qty == 0;">
+                <field name="is_complete" invisible="1" />
                 <field name="place_id"/>
                 <field name="max_order_qty" string="Max"/>
                 <field name="min_recovery_date"/>
-                <field name="is_complete" invisible="1" />
                 <field name="max_recovery_date"/>
                 <field name="description"/>
                 <field name="valid_order_qty" string="V.S.O. Qty"/>
@@ -56,6 +56,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="group_id"/>
                             <field name="place_id"/>
                             <field name="max_order_qty"/>
+                            <field name="specific_min_sale_date" attrs="{'invisible': [('group_id', '!=', False)]}"/>
+                            <field name="specific_max_sale_date" attrs="{'invisible': [('group_id', '!=', False)]}"/>
+                            <field name="min_sale_date" attrs="{'invisible': [('group_id', '=', False)]}"/>
+                            <field name="max_sale_date" attrs="{'invisible': [('group_id', '=', False)]}"/>
                             <field name="min_recovery_date"/>
                             <field name="max_recovery_date"/>
                             <field name="company_id" groups="base.group_multi_company"/>

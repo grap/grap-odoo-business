@@ -11,12 +11,16 @@ from openerp.exceptions import Warning as UserError
 class SaleRecoveryMoment(models.Model):
     _description = 'Recovery Moment'
     _name = 'sale.recovery.moment'
-    _order = 'min_recovery_date, max_recovery_date, place_id'
+    _order = 'min_recovery_date desc, max_recovery_date desc, place_id'
 
     # Defaults Section
     @api.model
     def _default_code(self):
         return self.env['ir.sequence'].get('sale.recovery.moment')
+
+    @api.model
+    def _default_company_id(self):
+        return self.env.user.company_id
 
     # Columns Section
     code = fields.Char(
@@ -29,12 +33,26 @@ class SaleRecoveryMoment(models.Model):
         comodel_name='sale.recovery.place', string='Place', required=True)
 
     group_id = fields.Many2one(
-        comodel_name='sale.recovery.moment.group',
-        string='Recovery Moment Group', ondelete='cascade', required=True)
+        string='Recovery Moment Group',
+        comodel_name='sale.recovery.moment.group')
 
     company_id = fields.Many2one(
-        related='group_id.company_id', comodel_name='res.company',
-        string='Company', store=True, readonly=True)
+        string='Company', comodel_name='res.company', required=True,
+        default=_default_company_id)
+
+    specific_min_sale_date = fields.Datetime(
+        string='Specific Minimum date for the Sale')
+
+    specific_max_sale_date = fields.Datetime(
+        string='Specific Maximum date for the Sale')
+
+    min_sale_date = fields.Datetime(
+        string='Minimum date for the Sale', compute='_compute_sale_date',
+        store=True)
+
+    max_sale_date = fields.Datetime(
+        string='Maximum date for the Sale', compute='_compute_sale_date',
+        store=True)
 
     min_recovery_date = fields.Datetime(
         string='Minimum date for the Recovery', required=True)
@@ -81,6 +99,18 @@ class SaleRecoveryMoment(models.Model):
     # Compute Section
     @api.multi
     @api.depends(
+        'group_id.min_sale_date', 'group_id.max_sale_date',
+        'specific_min_sale_date', 'specific_max_sale_date')
+    def _compute_sale_date(self):
+        for moment in self.filtered(lambda x: x.group_id):
+            moment.min_sale_date = moment.group_id.min_sale_date
+            moment.max_sale_date = moment.group_id.max_sale_date
+        for moment in self.filtered(lambda x: not x.group_id):
+            moment.min_sale_date = moment.specific_min_sale_date
+            moment.max_sale_date = moment.specific_max_sale_date
+
+    @api.multi
+    @api.depends(
         'order_ids', 'order_ids.recovery_moment_id', 'order_ids.state',
         'max_order_qty')
     def _compute_order_multi(self):
@@ -122,12 +152,17 @@ class SaleRecoveryMoment(models.Model):
     @api.depends(
         'code', 'min_recovery_date', 'place_id', 'group_id.short_name')
     def _compute_name(self):
-        for recovery_moment in self:
-            recovery_moment.name = "%s - %s - %s - %s" % (
-                recovery_moment.code,
-                recovery_moment.group_id.short_name,
-                recovery_moment.place_id.name,
-                recovery_moment.min_recovery_date)
+        for moment in self.filtered(lambda x: x.group_id):
+            moment.name = "%s - %s - %s - %s" % (
+                moment.code,
+                moment.group_id.short_name,
+                moment.place_id.name,
+                moment.min_recovery_date)
+        for moment in self.filtered(lambda x: not x.group_id):
+            moment.name = "%s - %s - %s" % (
+                moment.code,
+                moment.place_id.name,
+                moment.min_recovery_date)
 
     # Constraint Section
     @api.multi
