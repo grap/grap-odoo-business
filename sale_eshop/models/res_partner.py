@@ -80,6 +80,7 @@ class ResPartner(models.Model):
     @api.multi
     def button_send_credentials(self):
         self._send_credentials()
+        return True
 
     # Eshop API - Section
     @api.model
@@ -123,15 +124,9 @@ class ResPartner(models.Model):
     # Private Section
     @api.multi
     def _send_credentials(self):
-        # TODO
-        # imd_obj = self.pool['ir.model.data']
-        # et_obj = self.pool['email.template']
-        # et = imd_obj.get_object(
-        #     cr, uid, 'sale_eshop', 'eshop_send_crendential_template')
-
-        # for rp in self.browse(cr, uid, ids, context=context):
-        #     et_obj.send_mail(cr, uid, et.id, rp.id, True, context=context)
-        return True
+        template = self.env.ref('sale_eshop.eshop_send_crendential_template')
+        for partner in self:
+            template.send_mail(partner.id, force_send=True)
 
     @api.multi
     def _generate_credentials(self):
