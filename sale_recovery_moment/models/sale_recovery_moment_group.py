@@ -157,18 +157,6 @@ class SaleRecoveryMomentGroup(models.Model):
             else:
                 moment_group.state = 'finished_recovery'
 
-    def _search_ean_duplicates_exist(self, operator, operand):
-        products = self.search([])
-        res = products._get_ean_duplicates()
-        if operator == '=' and operand is True:
-            product_ids = res.keys()
-        elif operator == '=' and operand is False:
-            product_ids = list(set(products.ids) - set(res.keys()))
-        else:
-            raise ValidationError(_(
-                "Operator '%s' not implemented.") % (operator))
-        return [('id', 'in', product_ids)]
-
     # Search Functions Section
     def _search_state(self, operator, operand):
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

@@ -3,6 +3,8 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from datetime import datetime
+
 from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
 from openerp.exceptions import Warning as UserError
@@ -12,6 +14,14 @@ class SaleRecoveryMoment(models.Model):
     _description = 'Recovery Moment'
     _name = 'sale.recovery.moment'
     _order = 'min_recovery_date desc, max_recovery_date desc, place_id'
+
+    _STATE_SELECTION = [
+        ('futur', 'Futur'),
+        ('pending_sale', 'Pending Sale'),
+        ('finished_sale', 'Finished Sale'),
+        ('pending_recovery', 'Pending Recovery'),
+        ('finished_recovery', 'Finished Recovery')
+    ]
 
     # Defaults Section
     @api.model
@@ -96,7 +106,26 @@ class SaleRecoveryMoment(models.Model):
         compute='_compute_picking_multi', multi='picking', store=True,
         string='Valid Delivery Orders Quantity')
 
+    state = fields.Selection(
+        compute='_compute_state', string='State', search='_search_state',
+        selection=_STATE_SELECTION)
+
     # Compute Section
+    @api.multi
+    def _compute_state(self):
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        for moment_group in self:
+            if now < moment_group.min_sale_date:
+                moment_group.state = 'futur'
+            elif now < moment_group.max_sale_date:
+                moment_group.state = 'pending_sale'
+            elif now < moment_group.min_recovery_date:
+                moment_group.state = 'finished_sale'
+            elif now < moment_group.max_recovery_date:
+                moment_group.state = 'pending_recovery'
+            else:
+                moment_group.state = 'finished_recovery'
+
     @api.multi
     @api.depends(
         'group_id.min_sale_date', 'group_id.max_sale_date',
@@ -163,6 +192,46 @@ class SaleRecoveryMoment(models.Model):
                 moment.code,
                 moment.place_id.name,
                 moment.min_recovery_date)
+
+    # Search Functions Section
+    def _search_state(self, operator, operand):
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        if operator not in ('=', 'in'):
+            raise UserError(_(
+                "The Operator %s is not implemented !") % (operator))
+        if operator == '=':
+            lst = [operand]
+        else:
+            lst = operand
+        sql_lst = []
+        if 'futur' in lst:
+            sql_lst.append(
+                "('%s' < min_sale_date)" % (now))
+        if 'pending_sale' in lst:
+            sql_lst.append((
+                "(min_sale_date < '%s'" +
+                " AND '%s' < max_sale_date)") % (now, now))
+        if 'finished_sale' in lst:
+            sql_lst.append((
+                "(max_sale_date < '%s'" +
+                " AND '%s'<min_recovery_date)") % (now, now))
+        if 'pending_recovery' in lst:
+            sql_lst.append((
+                "(min_recovery_date < '%s'" +
+                " AND '%s' < max_recovery_date)") % (now, now))
+        if 'finished_recovery' in lst:
+            sql_lst.append(
+                "(max_recovery_date < '%s')" % (now))
+
+        where = sql_lst[0]
+        for item in sql_lst[1:]:
+            where += " OR %s" % (item)
+
+        req = "SELECT id FROM sale_recovery_moment WHERE %s;" % (where)
+        sql_req = req  # pylint: disable=sql-injection
+        self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
+        res = self.env.cr.fetchall()
+        return [('id', 'in', map(lambda x:x[0], res))]
 
     # Constraint Section
     @api.multi
