@@ -14,7 +14,7 @@ class ResPartner(models.Model):
     @api.multi
     def write(self, vals):
         self._check_users_partners_access()
-        return super(ResPartner, self).write(vals)
+        return super().write(vals)
 
     @api.multi
     def unlink(self):
@@ -25,7 +25,6 @@ class ResPartner(models.Model):
     @api.multi
     def _disable_users_partners(self):
         self.write({
-            'active': False,
             'company_id': False,
             'customer': False,
             'supplier': False,

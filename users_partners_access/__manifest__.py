@@ -14,7 +14,7 @@
         'base',
     ],
     'demo': [
-        'demo/res_groups.yml',
+        'demo/res_groups.xml',
     ],
     'post_init_hook': 'post_init_hook',
     'installable': True,

@@ -12,6 +12,6 @@ class ResUsers(models.Model):
     # Overload Section
     @api.model
     def create(self, vals):
-        user = super(ResUsers, self).create(vals)
+        user = super().create(vals)
         user.partner_id._disable_users_partners()
         return user
