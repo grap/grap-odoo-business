@@ -23,5 +23,5 @@
     'qweb': [
         'static/src/xml/pos_tare.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

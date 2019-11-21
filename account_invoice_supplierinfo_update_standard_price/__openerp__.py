@@ -28,5 +28,5 @@
     'images': [
         'static/description/wizard_form.png',
     ],
-    'installable': True,
+    'installable': False,
 }

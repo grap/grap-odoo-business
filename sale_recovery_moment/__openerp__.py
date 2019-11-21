@@ -54,5 +54,5 @@
         'static/description/sale_recovery_moment_calendar.png',
         'static/description/sale_prepare_category_tree.png',
     ],
-    'installable': True,
+    'installable': False,
 }

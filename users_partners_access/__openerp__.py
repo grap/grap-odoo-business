@@ -18,5 +18,5 @@
         'demo/res_groups.yml',
     ],
     'post_init_hook': 'post_init_hook',
-    'installable': True,
+    'installable': False,
 }
