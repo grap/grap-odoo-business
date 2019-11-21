@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,8 +5,8 @@
 
 from math import ceil
 
-from openerp import _, api, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, models
+from odoo.exceptions import Warning as UserError
 
 
 class PurchaseOrderLine(models.Model):
