@@ -43,5 +43,5 @@
         'demo/res_groups.xml',
         'demo/res_partner.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
