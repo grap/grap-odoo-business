@@ -46,5 +46,5 @@
         'static/description/product_product_form_2.png',
         'static/description/product_product_form_3.png',
     ],
-    'installable': True,
+    'installable': False,
 }

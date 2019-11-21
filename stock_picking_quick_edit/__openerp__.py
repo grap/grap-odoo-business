@@ -18,5 +18,5 @@
         'views/view_stock_picking_quick_edit_wizard.xml',
         'views/view_stock_picking.xml',
     ],
-    'installable': True,
+    'installable': False,
 }

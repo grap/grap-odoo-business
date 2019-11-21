@@ -25,5 +25,5 @@
         '/static/description/wizard_form_fifo.png',
         '/static/description/wizard_form_pro_rata.png',
     ],
-    'installable': True,
+    'installable': False,
 }

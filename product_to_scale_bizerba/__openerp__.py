@@ -39,4 +39,5 @@
         'demo/product_product.xml',
         'demo/decimal_precision.xml',
     ],
+    'installable': False,
 }
