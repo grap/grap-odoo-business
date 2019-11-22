@@ -17,7 +17,9 @@
         'views/view_product_supplierinfo.xml',
     ],
     'demo': [
+        'demo/res_groups.xml',
         'demo/product_template.xml',
+        'demo/product_supplierinfo.xml',
         'demo/purchase_order.xml',
     ],
     'installable': True,
