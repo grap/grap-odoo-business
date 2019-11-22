@@ -14,7 +14,7 @@
         'stock_account',
     ],
     'demo': [
-        'demo/res_groups.xml',
+        'demo/account_account.xml',
         'demo/product_category.xml',
     ],
     'installable': True,
