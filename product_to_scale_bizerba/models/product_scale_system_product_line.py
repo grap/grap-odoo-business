@@ -1,13 +1,13 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models
+from odoo import fields, models
 
 
 class ProductScaleSystemProductLine(models.Model):
     _name = 'product.scale.system.product.line'
+    _description = "Product Scale System Product Line"
     _order = 'scale_system_id, sequence'
 
     _TYPE_SELECTION = [
@@ -25,11 +25,11 @@ class ProductScaleSystemProductLine(models.Model):
     # Column Section
     scale_system_id = fields.Many2one(
         comodel_name='product.scale.system', string='Scale System',
-        required=True, ondelete='cascade', select=True)
+        required=True, ondelete='cascade', index=True)
 
     company_id = fields.Many2one(
         related='scale_system_id.company_id', string='Company',
-        comodel_name='res.company', store=True, select=True)
+        comodel_name='res.company', store=True, index=True)
 
     code = fields.Char(string='Bizerba Code', required=True)
 

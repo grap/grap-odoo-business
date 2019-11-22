@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -8,8 +7,8 @@ import os
 import logging
 from datetime import datetime
 
-from openerp import api, fields, models, tools
-from openerp.exceptions import Warning
+from odoo import api, fields, models, tools
+from odoo.exceptions import Warning
 
 _logger = logging.getLogger(__name__)
 
@@ -23,7 +22,7 @@ except ImportError:
 
 class ProductScaleLog(models.Model):
     _name = 'product.scale.log'
-    _inherit = 'ir.needaction_mixin'
+    _description = "Product Scale Log"
     _order = 'log_date desc, id desc'
 
     _EXTERNAL_SIZE_ID_RIGHT = 4
@@ -54,7 +53,7 @@ class ProductScaleLog(models.Model):
 
     # Column Section
     log_date = fields.Datetime(
-        string='Log Date', required=True, readonly=True, select=True)
+        string='Log Date', required=True, readonly=True, index=True)
 
     scale_group_id = fields.Many2one(
         comodel_name='product.scale.group', string='Scale Group',
@@ -88,7 +87,7 @@ class ProductScaleLog(models.Model):
         selection=_ACTION_SELECTION, string='Action', required=True,
         readonly=True)
 
-    sent = fields.Boolean(string='Is Sent', readonly=True, select=True)
+    sent = fields.Boolean(string='Is Sent', readonly=True, index=True)
 
     last_send_date = fields.Datetime('Last Send Date', readonly=True)
 
@@ -250,10 +249,6 @@ class ProductScaleLog(models.Model):
 
     # View Section
     @api.model
-    def _needaction_count(self, domain=None, context=None):
-        return len(self.search([('sent', '=', False)]))
-
-    @api.model
     def ftp_connection_open(self, scale_system):
         """Return a new FTP connection with found parameters."""
         _logger.info("Trying to connect to ftp://%s@%s" % (
@@ -355,7 +350,7 @@ class ProductScaleLog(models.Model):
                     log.scale_group_id.screen_obsolete:
                 log_group_ids[log.scale_group_id.id] = log.id
 
-        for group_id, log_id in log_group_ids.iteritems():
+        for group_id, log_id in log_group_ids.items():
             group = scale_group_obj.browse(group_id)
             log = self.browse(log_id)
             break_line =\
@@ -380,7 +375,7 @@ class ProductScaleLog(models.Model):
             else:
                 system_map[log.scale_system_id] = [log]
 
-        for scale_system, log_list in system_map.iteritems():
+        for scale_system, log_list in system_map.items():
 
             # Open FTP Connection
             ftp = self.ftp_connection_open(log_list[0].scale_system_id)
@@ -440,7 +435,7 @@ class ProductScaleLog(models.Model):
             logs.write({
                 'sent': True,
                 'last_send_date': now,
-                })
+            })
 
     @api.model
     def cron_send_to_scale(self):

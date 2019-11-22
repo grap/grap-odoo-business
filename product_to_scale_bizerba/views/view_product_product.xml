@@ -5,7 +5,7 @@ Copyright (C) 2016-Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_product_product_form" model="ir.ui.view">
         <field name="model">product.product</field>
@@ -18,7 +18,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="scale_group_id"/>
                             <field name="scale_tare_weight"/>
                         </group>
-                        <group groups="base.group_no_one">
+                        <group groups="product_to_scale_bizerba.group_manager">
                             <button name="send_scale_create" type="object" string="Resend Creation To the Scale System"
                                 colspan="2"/>
                             <button name="send_scale_write" type="object" string="Resend Update To the Scale System"
@@ -37,14 +37,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_search_form_view"/>
         <field name="arch" type="xml">
             <field name="categ_id" position="after">
-                <field name="scale_group_id"
-                        groups="product_to_scale_bizerba.group_user"/>
+                <field name="scale_group_id" groups="product_to_scale_bizerba.group_user"/>
             </field>
-            <xpath expr="//filter[@string='Category']" position="after">
-               <filter string="Category" context="{'group_by' : 'scale_group_id'}" 
-                        groups="product_to_scale_bizerba.group_user"/>
-            </xpath>
         </field>
     </record>
 
-</data></openerp>
+</odoo>

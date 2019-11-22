@@ -6,5 +6,4 @@
 * Improve description, adding features and screenshots.
 
 * When migrating, recover commits like this one:
-
-https://github.com/AwesomeFoodCoops/odoo-production/commit/b8a15baf82c63973313ae2cbae8ec281477f2cc7
+  https://github.com/AwesomeFoodCoops/odoo-production/commit/b8a15baf82c63973313ae2cbae8ec281477f2cc7

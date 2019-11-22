@@ -5,7 +5,7 @@ Copyright (C) 2016-Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_product_scale_log_tree" model="ir.ui.view">
         <field name="model">product.scale.log</field>
@@ -52,11 +52,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="external_text_display" colspan="4"/>
                         <field name="screen_text_display" colspan="4"/>
                     </group>
-                    
-                    
                 </sheet>
             </form>
         </field>
     </record>
 
-</data></openerp>
+    <record id="action_product_scale_log" model="ir.actions.act_window">
+        <field name="name">Logs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.scale.log</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_product_scale_log"
+        parent="menu_scale_root" sequence="3"
+        action="action_product_scale_log" groups="product_to_scale_bizerba.group_manager"/>
+
+</odoo>
