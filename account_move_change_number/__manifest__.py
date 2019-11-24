@@ -1,10 +1,9 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Account - Move Change Number',
-    'version': '8.0.1.0.0',
+    'version': "12.0.1.0.0",
     'category': 'Accounting',
     'summary': "Allow special user to rename account move",
     'author': 'GRAP',
@@ -19,6 +18,9 @@
     ],
     'demo': [
         'demo/res_groups.xml',
+        'demo/account_journal.xml',
+        'demo/account_account.xml',
+        'demo/account_invoice.xml',
     ],
-    'installable': False,
+    'installable': True,
 }

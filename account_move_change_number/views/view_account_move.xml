@@ -5,7 +5,7 @@ Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_account_move_form" model="ir.ui.view">
         <field name="model">account.move</field>
@@ -14,9 +14,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <button name="button_cancel" position="after">
                 <button name="rename_account_move_change_number" 
                     string="Rename Account Move (change Number)" type="object" states="posted"
-                    groups="account_move_change_number.res_group_account_move_change_number_manager" confirm="Are you sure you want to rename this entry ?"/>
+                    groups="account_move_change_number.group_account_move_change_number" confirm="Are you sure you want to rename this entry ?"/>
             </button>
         </field>
     </record>
 
-</data></openerp>
+</odoo>
