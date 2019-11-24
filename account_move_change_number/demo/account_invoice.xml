@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="demo_invoice_1" model="account.invoice">
+        <field name="journal_id" ref="demo_journal_1"/>
+        <field name="partner_id" ref="base.res_partner_2"/>
+        <field name="date">2020-01-01</field>
+    </record>
+
+    <record id="demo_invoice_line_1" model="account.invoice.line">
+        <field name="invoice_id" ref="demo_invoice_1"/>
+        <field name="product_id" ref="product.product_product_4d"/>
+        <field name="account_id" ref="demo_account_1"/>
+        <field name="name">Invoice line</field>
+        <field name="quantity">10</field>
+        <field name="price_unit">20</field>
+    </record>
+
+<!--     <function model="account.move" name="action_post">
+        <value eval="[ref('demo_move_1')]"/>
+    </function> -->
+
+        <function name="action_invoice_open" model="account.invoice">
+            <value eval="[ref('account_move_change_number.demo_invoice_1')]"/>
+        </function>
+
+</odoo>

@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_move_change_number
+#   * account_move_change_number
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-03 15:41+0000\n"
-"PO-Revision-Date: 2015-12-03 15:41+0000\n"
+"POT-Creation-Date: 2019-11-24 15:59+0000\n"
+"PO-Revision-Date: 2019-11-24 15:59+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,26 +16,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_move_change_number
-#: code:addons/account_move_change_number/model/account_move.py:53
+#: code:addons/account_move_change_number/models/account_move.py:34
 #, python-format
 msgid "\n"
 "Account move renamed. Old name : %s. New name : %s. Rename date : %s. Author : %s."
 msgstr "\n"
-"Pièce comptable renommée. Ancien nom: %s. Nouveau nom: %s. Date de l'opération: %s. Auteur: %s."
+"Pièce comptable renommée. Ancien nom: %s. Nouveau nom: %s. Date de l'opération: %s. Auteur·e: %s."
 
 #. module: account_move_change_number
-#: code:_description:0
+#: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form
+msgid "Are you sure you want to rename this entry ?"
+msgstr "Etes vous sûr·e de vouloir renommer la pièce comptable ?"
+
+#. module: account_move_change_number
+#: model:res.groups,name:account_move_change_number.group_account_move_change_number
+msgid "Change Account Move Number"
+msgstr "Changer la numérotation des pièces comptables"
+
+#. module: account_move_change_number
 #: model:ir.model,name:account_move_change_number.model_account_move
-#, python-format
-msgid "Account Entry"
-msgstr "Pièce comptable"
+msgid "Journal Entries"
+msgstr "Pièces comptables"
 
 #. module: account_move_change_number
-#: model:res.groups,name:account_move_change_number.res_group_account_move_change_number_manager
-msgid "Account Move - Change Number"
-msgstr "Pièce Comptable - Changer la numérotation"
-
-#. module: account_move_change_number
-#: view:account.move:0
+#: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form
 msgid "Rename Account Move (change Number)"
-msgstr "Renommer la pièce comptable (Changer la numérotation)"
+msgstr "Pièce Comptable - Changer la numérotation"

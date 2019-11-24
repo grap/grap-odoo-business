@@ -5,11 +5,11 @@ Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
-    <record id="res_group_account_move_change_number_manager" model="res.groups">
-        <field name="name">Account Move - Change Number</field>
+    <record id="group_account_move_change_number" model="res.groups">
+        <field name="name">Change Account Move Number</field>
         <field name="category_id" ref="base.module_category_usability" />
     </record>
 
-</data></openerp>
+</odoo>
