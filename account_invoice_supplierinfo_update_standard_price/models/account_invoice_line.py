@@ -1,11 +1,10 @@
-# coding: utf-8
 # Copyright (C) 2018-Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, api, models
-from openerp.tools.float_utils import float_compare
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, models
+from odoo.tools.float_utils import float_compare
+from odoo.exceptions import Warning as UserError
 
 
 class AccountInvoiceLine(models.Model):
@@ -17,12 +16,6 @@ class AccountInvoiceLine(models.Model):
         if not self.product_id:
             return 0
         else:
-            factor = 1
-            if self.uos_id and self.uos_id.id != self.product_id.uom_id.id:
-                # Making conversion
-                factor =\
-                    self.uos_id.factor_inv\
-                    / self.product_id.uom_id.factor_inv
             if self.invoice_id.product_expense_total != 0:
                 line_shared_cost =\
                     self.invoice_id.distributed_expense_total * (
@@ -32,32 +25,34 @@ class AccountInvoiceLine(models.Model):
                 raise UserError(_(
                     "We can't check prices"
                     " for a invoice whose total is null"))
-            return (
-                line_shared_cost / self.quantity + (
-                    self.price_unit *
-                    (1 - self.discount / 100) *
-                    (1 - self.discount2 / 100) *
-                    (1 - self.discount3 / 100))
-                ) / factor
+            uom = self.uom_id or self.product_id.uom_id
+            return self.invoice_id.currency_id.round(
+                uom._compute_price(
+                    line_shared_cost + (
+                        self.price_unit *
+                        (1 - self.discount / 100) *
+                        (1 - self.discount2 / 100) *
+                        (1 - self.discount3 / 100)
+                    ),
+                    self.product_id.uom_id
+                ))
 
     @api.multi
-    def _is_correct_partner_info(self, partnerinfo):
+    def _is_correct_price(self, supplierinfo):
         self.ensure_one()
-        precision_obj = self.env['decimal.precision']
-        res = super(AccountInvoiceLine, self)._is_correct_partner_info(
-            partnerinfo)
+        DecimalPrecision = self.env['decimal.precision']
+        res = super()._is_correct_price(supplierinfo)
         if not self.product_id:
             return res
         else:
             return res and not float_compare(
                 self.product_id.standard_price,
                 self._get_standard_price(),
-                precision_digits=precision_obj.precision_get('Product Price'))
+                precision_digits=DecimalPrecision.precision_get('Product Price'))
 
     @api.multi
-    def _prepare_supplier_wizard_line(self, supplierinfo, partnerinfo):
-        res = super(AccountInvoiceLine, self)._prepare_supplier_wizard_line(
-            supplierinfo, partnerinfo)
+    def _prepare_supplier_wizard_line(self, supplierinfo):
+        res = super()._prepare_supplier_wizard_line(supplierinfo)
         if self.product_id:
             res.update({
                 'current_standard_price': self.product_id.standard_price,
