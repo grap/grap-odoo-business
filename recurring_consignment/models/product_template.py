@@ -1,10 +1,9 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError
 
 
 class ProductTemplate(models.Model):
@@ -23,9 +22,11 @@ class ProductTemplate(models.Model):
     is_consignment_commission = fields.Boolean(
         string='Is Consignment Commission')
 
-    fiscal_classification_id = fields.Many2one(  # Overload to update domain
+    # Overload to update domain
+    fiscal_classification_id = fields.Many2one(
         domain="[('company_id', '=', company_id),"
-        "('consignor_partner_id', '=', consignor_partner_id)]")
+        "('consignor_partner_id', '=', consignor_partner_id)"
+        "]")
 
     # Compute Section
     @api.depends('consignor_partner_id')
@@ -64,13 +65,6 @@ class ProductTemplate(models.Model):
                 item.fiscal_classification_id = False
 
     # Constrains Section
-    @api.constrains('is_consignment_commission', 'available_in_pos')
-    def _check_is_consignment_commission_pos(self):
-        if self.filtered(
-                lambda x: x.is_consignment_commission and x.available_in_pos):
-            raise UserError(_(
-                "A consignment product can not be available in PoS"))
-
     @api.constrains('standard_price', 'consignor_partner_id', 'seller_ids')
     def _check_consignor_partner_id_fields(self):
         for template in self.filtered(lambda x: x.consignor_partner_id):
@@ -87,14 +81,14 @@ class ProductTemplate(models.Model):
     @api.model
     def create(self, vals):
         vals = self._update_vals_consignor(vals)
-        res = super(ProductTemplate, self).create(vals)
+        res = super().create(vals)
         if vals.get('consignor_partner_id', False):
             self.env['product.pricelist'].consignmment_create([res.id])
         return res
 
     @api.multi
     def write(self, vals):
-        pricelist_obj = self.env['product.pricelist']
+        ProductPricelist = self.env['product.pricelist']
         self._check_consignor_changes(vals)
         vals = self._update_vals_consignor(vals)
         drop_template_ids = []
@@ -108,9 +102,9 @@ class ProductTemplate(models.Model):
                         vals.get('consignor_partner_id')):
                     new_template_ids.append(template.id)
         if drop_template_ids:
-            pricelist_obj.consignmment_drop(drop_template_ids)
+            ProductPricelist.consignmment_drop(drop_template_ids)
         if new_template_ids:
-            pricelist_obj.consignmment_create(new_template_ids)
+            ProductPricelist.consignmment_create(new_template_ids)
         if vals.get('recurring_consignment', False):
             for template in self:
                 if template.recurring_consignment !=\
@@ -119,26 +113,17 @@ class ProductTemplate(models.Model):
                         "You can not change the value of the field"
                         " 'Is Consignment Commission'. You can disable"
                         " this product and create a new one properly."))
-        return super(ProductTemplate, self).write(vals)
+        return super().write(vals)
 
     @api.multi
     def _check_consignor_changes(self, vals):
-        stock_move_obj = self.env['stock.move']
-        invoice_line_obj = self.env['account.invoice.line']
+        AccountInvoiceLine = self.env['account.invoice.line']
         if vals.get('consignor_partner_id', False):
             for template in self:
                 product_ids = template.product_variant_ids.ids
                 if template.consignor_partner_id.id !=\
                         vals.get('consignor_partner_id', False):
-                    moves = stock_move_obj.search([
-                        ('product_id', 'in', product_ids)])
-                    if len(moves):
-                        raise UserError(_(
-                            "You can not change the value of the field"
-                            " 'Consignor' because the product is associated"
-                            " to one or more stock Moves. You should"
-                            " disable the product and create a new one."))
-                    invoice_lines = invoice_line_obj.search([
+                    invoice_lines = AccountInvoiceLine.search([
                         ('product_id', 'in', product_ids)])
                     if len(invoice_lines):
                         raise UserError(_(
@@ -149,24 +134,12 @@ class ProductTemplate(models.Model):
 
     @api.model
     def _update_vals_consignor(self, vals):
-        partner_obj = self.env['res.partner']
+        ResPartner = self.env['res.partner']
         if vals.get('consignor_partner_id', False):
-            partner = partner_obj.browse(vals.get('consignor_partner_id'))
+            partner = ResPartner.browse(vals.get('consignor_partner_id'))
             vals['purchase_ok'] = True
-            vals['property_account_income'] =\
+            vals['property_account_income_id'] =\
                 partner.consignment_account_id.id
-            vals['property_account_expense'] =\
+            vals['property_account_expense_id'] =\
                 partner.consignment_account_id.id
         return vals
-
-    @api.multi
-    def _prepare_consignment_exception(
-            self, pricelist_version, consignment_pricelist):
-        self.ensure_one()
-        return {
-            'product_tmpl_id': self.id,
-            'price_version_id': pricelist_version.id,
-            'sequence': 1,
-            'base': -1,
-            'base_pricelist_id': consignment_pricelist.id,
-        }

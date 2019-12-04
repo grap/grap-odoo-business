@@ -5,15 +5,11 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <menuitem id="menu_consignment"
         name="Consignment"
         parent="account.menu_finance" sequence="3"
         groups="recurring_consignment.group_consignment_user"/>
 
-    <menuitem id="menu_res_partner" 
-        parent="menu_consignment" sequence="1"
-        action="action_res_partner"/>
-
-</data></openerp>
+</odoo>

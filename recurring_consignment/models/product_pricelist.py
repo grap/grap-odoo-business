@@ -1,9 +1,8 @@
-# coding: utf-8
 # Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class ProductPricelist(models.Model):
@@ -17,14 +16,14 @@ class ProductPricelist(models.Model):
     # Overload Section
     @api.model
     def create(self, vals):
-        pricelist = super(ProductPricelist, self).create(vals)
+        pricelist = super().create(vals)
         if pricelist.consignment_pricelist_id:
             pricelist._consignmment_update_multi()
         return pricelist
 
     @api.multi
     def write(self, vals):
-        res = super(ProductPricelist, self).write(vals)
+        res = super().write(vals)
         if 'consignment_pricelist_id' in vals:
             self._consignmment_update_multi()
         return res
@@ -32,7 +31,6 @@ class ProductPricelist(models.Model):
     @api.model
     def consignmment_create(self, template_ids):
         pricelists = self.search([
-            ('type', '=', 'sale'),
             ('consignment_pricelist_id', '!=', False)])
         templates = self.env['product.template'].browse(template_ids)
         pricelists._consignmment_update_multi(templates)
@@ -40,29 +38,29 @@ class ProductPricelist(models.Model):
     @api.model
     def consignmment_drop(self, template_ids):
         # Drop all previous exceptions
-        pricelists = self.search([('type', '=', 'sale')])
-        items = pricelists.mapped('version_id.items_id').filtered(
+        pricelists = self.search([])
+        items = pricelists.mapped('item_ids').filtered(
             lambda x: x.product_tmpl_id.id in template_ids)
         items.unlink()
 
     @api.multi
     def _consignmment_update_multi(self, templates=False):
-        item_obj = self.env['product.pricelist.item']
-        template_obj = self.env['product.template']
+        ProductPricelistItem = self.env['product.pricelist.item']
+        ProductTemplate = self.env['product.template']
         for pricelist in self:
-            if not pricelist.consignment_pricelist_id:
+            if not templates:
                 # Drop all previous exceptions
-                items = pricelist.mapped('version_id.items_id').filtered(
+                items = pricelist.mapped('item_ids').filtered(
                     lambda x: x.product_tmpl_id.consignor_partner_id)
                 items.unlink()
-            else:
+            if pricelist.consignment_pricelist_id:
                 if not templates:
                     # Create exceptions for all templates
-                    templates = template_obj.with_context(
+                    templates = ProductTemplate.with_context(
                         active_test=False).search(
                             [('consignor_partner_id', '!=', False)])
                 for template in templates:
-                    for version in pricelist.version_id:
-                        item_obj.create(
-                            template._prepare_consignment_exception(
-                                version, pricelist.consignment_pricelist_id))
+                    ProductPricelistItem.create(
+                        ProductPricelistItem._prepare_consignment_exception(
+                            pricelist, template,
+                        ))

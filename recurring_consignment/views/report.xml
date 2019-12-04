@@ -5,7 +5,7 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <report id="action_report_account_invoice" name="action.account.invoice"
         model="account.invoice"
@@ -16,4 +16,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         string="Commission Invoice Receipt"
         />
 
-</data></openerp>
+</odoo>
