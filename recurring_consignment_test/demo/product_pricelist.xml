@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="sale_pricelist_10" model="product.pricelist">
+        <field name="name">My Pricelist (-10%)</field>
+    </record>
+
+    <record id="sale_pricelist_item_10" model="product.pricelist.item">
+        <field name="applied_on">3_global</field>
+        <field name="pricelist_id" ref="sale_pricelist_10" />
+         <field name="compute_price">percentage</field>
+        <field name="percent_price">10</field>
+         <field name="base">list_price</field>
+    </record>
+
+    <record id="sale_pricelist_50" model="product.pricelist">
+        <field name="name">My Pricelist (-50%)</field>
+        <field name="consignment_pricelist_id" ref="sale_pricelist_10"/>
+    </record>
+
+    <record id="sale_pricelist_item_50" model="product.pricelist.item">
+        <field name="applied_on">3_global</field>
+        <field name="pricelist_id" ref="sale_pricelist_50" />
+         <field name="compute_price">percentage</field>
+        <field name="percent_price">50</field>
+         <field name="base">list_price</field>
+    </record>
+
+</odoo>

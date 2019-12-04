@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo noupdate="1">
+
+<!--     <record id="account_receivable" model="account.account">
+        <field name="name">Receivable Account</field>
+        <field name="code">411-CONS</field>
+        <field name="reconcile" eval="True"/>
+        <field name="user_type_id" ref="account.data_account_type_receivable"/>
+    </record>
+ -->
+    <record id="account_consignor_1" model="account.account">
+        <field name="name">Demo Account For Consignor #1</field>
+        <field name="code">467-CONS-1</field>
+        <field name="reconcile" eval="True"/>
+        <field name="user_type_id" ref="account.data_account_type_payable"/>
+    </record>
+
+    <record id="account_consignor_2" model="account.account">
+        <field name="name">Demo Account For Consignor #2</field>
+        <field name="code">467-CONS-2</field>
+        <field name="reconcile" eval="True"/>
+        <field name="user_type_id" ref="account.data_account_type_payable"/>
+    </record>
+
+    <record id="account_income_commission" model="account.account">
+        <field name="name">Commission Account</field>
+        <field name="code">706-CONS</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+    </record>
+
+</odoo>
