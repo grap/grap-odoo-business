@@ -4,13 +4,13 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_product_pricelist_tree" model="ir.ui.view">
         <field name="model">product.pricelist</field>
         <field name="inherit_id" ref="product.product_pricelist_view_tree" />
         <field name="arch" type="xml">
-            <field name="active" position="before">
+            <field name="currency_id" position="before">
                 <field name="consignment_pricelist_id"/>
             </field>
         </field>
@@ -20,10 +20,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.pricelist</field>
         <field name="inherit_id" ref="product.product_pricelist_view" />
         <field name="arch" type="xml">
-            <field name="active" position="after">
+            <field name="company_id" position="before">
                 <field name="consignment_pricelist_id"/>
             </field>
         </field>
     </record>
 
-</data></openerp>
+</odoo>

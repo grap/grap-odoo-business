@@ -5,7 +5,7 @@ Copyright (C) 2015-Today GRAP (http://www.grap.coop)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="view_res_partner_form" model="ir.ui.view">
         <field name="model">res.partner</field>
@@ -19,9 +19,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <group string="Consignment" attrs="{'invisible': [('is_consignor','=', False)]}" colspan="4" col="4">
                     <field name="consignment_account_id" groups="recurring_consignment.group_consignment_manager" colspan="4"/>
                     <field name="consignment_commission" groups="recurring_consignment.group_consignment_user"/>
-                    <button name="%(action_invoice_commission_wizard)d" string="Make Commissions Invoice"
-                            type="action" icon="terp-dolar" groups="recurring_consignment.group_consignment_user"
-                            colspan="2"/>
+                    <button name="%(action_invoice_commission_wizard)d"
+                        string="Make Commissions Invoice" type="action"
+                        groups="recurring_consignment.group_consignment_user"
+                        icon="fa-euro"
+                        colspan="2"/>
                 </group>
             </xpath>
         </field>
@@ -35,7 +37,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="is_consignor" groups="recurring_consignment.group_consignment_manager"/>
                 <field name="consignment_commission" groups="recurring_consignment.group_consignment_user"/>
                 <field name="consignment_account_id" groups="recurring_consignment.group_consignment_manager"/>
-                <button name="%(action_invoice_commission_wizard)d" string="Make Commissions Invoice" type="action" icon="terp-dolar"
+                <button name="%(action_invoice_commission_wizard)d"
+                    string="Make Commissions Invoice" type="action"
+                    icon="fa-euro"
                     groups="recurring_consignment.group_consignment_user" attrs="{'invisible': [('is_consignor','=', False)]}"/>
             </tree>
         </field>
@@ -51,4 +55,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></openerp>
+    <record id="action_res_partner" model="ir.actions.act_window">
+        <field name="name">Consignors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_is_consignor':1}</field>
+        <field name="view_id" ref="view_res_partner_tree" />
+    </record>
+
+    <menuitem id="menu_res_partner"
+        parent="menu_consignment" sequence="1"
+        action="action_res_partner"/>
+
+    <act_window name="Create Commission Invoices"
+        res_model="invoice.commission.wizard"
+        src_model="res.partner"
+        view_mode="form"
+        multi="True"
+        target="new"
+        key2="client_action_multi"
+        id="action_partner_mass_commission"
+    />
+
+</odoo>

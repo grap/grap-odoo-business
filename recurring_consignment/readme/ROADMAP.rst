@@ -17,3 +17,7 @@
 
 * Full new API should let possible to remove duplicated code in
   product_product.py and product_template.py files. (on change system)
+
+
+FIX ME, on dirait que ça se rajoute, les item sur les pricelist, qqch
+chie dans la colle.
