@@ -5,7 +5,7 @@ Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
 @author Julien WESTE
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="label_agriculture_biologique" model="product.label">
         <field name="name">Agriculture Biologique</field>
@@ -37,4 +37,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="image" type="base64" file="sale_food/static/img/label_alcool_grossesse-image.png"/>
     </record>
 
-</data></openerp>
+</odoo>

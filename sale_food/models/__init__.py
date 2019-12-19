@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from . import certifier_organization
 from . import product_label
 from . import product_category
