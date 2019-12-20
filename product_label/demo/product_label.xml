@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="label_agriculture_biologique" model="product.label">
+        <field name="name">Agriculture Biologique</field>
+        <field name="code">AB</field>
+        <field name="website">http://agriculture.gouv.fr/lagriculture-biologique-ab</field>
+        <field name="display_on_invoice" eval="True" />
+        <field name="image" type="base64" file="product_label/static/img/label_agriculture_biologique-image.png"/>
+    </record>
+
+    <record id="label_max_havelaar" model="product.label">
+        <field name="name">Max Havelaar</field>
+        <field name="code">MH</field>
+        <field name="image" type="base64" file="product_label/static/img/label_max_havelaar-image.png"/>
+    </record>
+
+    <record id="label_gluten_free" model="product.label">
+        <field name="name">Gluten Free</field>
+        <field name="code">GF</field>
+        <field name="display_on_invoice" eval="True" />
+        <field name="image" type="base64" file="product_label/static/img/label_gluten_free-image.png"/>
+    </record>
+
+</odoo>
