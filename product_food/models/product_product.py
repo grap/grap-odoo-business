@@ -11,6 +11,12 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     # Constant Section
+    _ORIGIN_TYPE_SELECTION = [
+        ('eu', "EU"),
+        ('no_eu', "No EU"),
+        ('eu_no_eu', "EU / No EU"),
+    ]
+
     _ORGANIC_TYPE_SELECTION = [
         ('01_organic', "Organic"),
         ('02_agroecological', "Agroecological"),
@@ -23,16 +29,21 @@ class ProductProduct(models.Model):
     is_alimentary = fields.Boolean(
         string="Is Alimentary")
 
+    certifier_organization_id = fields.Many2one(
+        comodel_name="certifier.organization",
+        string="Certifier Organization",
+    )
+
     is_uncertifiable = fields.Boolean(
         string="Not Certifiable",
         help="Check this for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
-        " that comes from the see")
+        " that comes from the sea")
 
     is_alcohol = fields.Boolean(string="Contain Alcohol")
 
-    expiration_date_day = fields.Integer(
-        string="Day quantity Before Expiration Date"
+    best_before_date_day = fields.Integer(
+        string="Best Before Date Day"
     )
 
     ingredients = fields.Text(string="Ingredients")
@@ -42,6 +53,11 @@ class ProductProduct(models.Model):
     organic_type = fields.Selection(
         selection=_ORGANIC_TYPE_SELECTION, string="Organic Category",
         compute="_compute_organic_type"
+    )
+
+    origin_type = fields.Selection(
+        selection=_ORIGIN_TYPE_SELECTION,
+        string="Origin Type",
     )
 
     # Compute Section
@@ -66,11 +82,11 @@ class ProductProduct(models.Model):
     @api.multi
     @api.constrains("is_alcohol", "label_ids")
     def _check_alcohol_labels(self):
-        label_obj = self.env["product.label"]
+        ProductLabel = self.env["product.label"]
         for product in self:
             if product.is_alcohol:
                 # Check that all the alcohol labels are set
-                alcohol_label_ids = label_obj.search(
+                alcohol_label_ids = ProductLabel.search(
                     [("is_alcohol", "=", True)]
                 ).ids
                 if [
@@ -112,10 +128,10 @@ class ProductProduct(models.Model):
 
     @api.onchange("is_alcohol")
     def onchange_is_alcohol(self):
-        label_obj = self.env["product.label"]
+        ProductLabel = self.env["product.label"]
         if self.is_alcohol:
             self.is_alimentary = True
-            alcohol_label_ids = label_obj.search(
+            alcohol_label_ids = ProductLabel.search(
                 [("is_alcohol", "=", True)]
             ).ids
             for alcohol_label_id in alcohol_label_ids:
