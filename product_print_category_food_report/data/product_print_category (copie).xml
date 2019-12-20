@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="category_label_normal" model="product.print.category">
+        <field name="name">Normal - 76x31mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_normal" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_small" model="product.print.category">
+        <field name="name">Normal (small) - 76x33mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_small" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_big" model="product.print.category">
+        <field name="name">Normal (big) - 76x43mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_big" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_bulk_selling" model="product.print.category">
+        <field name="name">Vrac - 93x93mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_bulk_selling" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_bulk_selling_applimage" model="product.print.category">
+        <field name="name">Vrac - Applimage 52x101mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_bulk_selling_applimage" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_small_square" model="product.print.category">
+        <field name="name">Carré - 30*30mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_small_square" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_middle_square" model="product.print.category">
+        <field name="name">Carré - 40x36mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_middle_square" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_large_square" model="product.print.category">
+        <field name="name">Carré - 92x85mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_large_square" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+    <record id="category_label_counter" model="product.print.category">
+        <field name="name">Comptoir - 72*123mm</field>
+        <field name="qweb_view_id" ref="qweb_template_label_counter" />
+        <field name="field_ids" eval="[
+            (4, ref('product.field_product_product_name')),
+            (4, ref('product.field_product_product_ean13')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_uom_id')),
+            (4, ref('product_print_category_food_report.field_product_product_pricetag_type_id')),
+            (4, ref('product.field_product_product_list_price'))]" />
+    </record>
+
+</odoo>

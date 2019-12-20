@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- You must multiply by 1.226 to get the css measure for the product -->
+    <!-- Exemple : you want a 3cm width in reality, you must write width: 3,68 -->
+    <template id="qweb_template_label_normal">
+        <style type="text/css">
+            body{
+                font-family: liberation, arial, verdana, sans-serif;
+            }
+            div.product {
+                border: 1px solid grey; 
+                background-color:white;
+                width:9.3cm; height:3.8cm;
+                margin : 0 -0.2cm -0.1cm 0;
+                padding : 5px;
+            }
+            div.floating_box {
+                display : inline-block;
+                vertical-align: top;
+            }
+            div.label_left {
+                width : 5.8cm;
+            }
+            div.label_right {
+                width : 3cm;
+                height: 3.6cm;
+                overflow: hidden;
+            }
+            div.label_right_noimage {
+                width : 3cm;
+                height: 3.6cm;
+                overflow: hidden;
+                position: relative; top: 1.9em;
+            }
+            div.product_informations {
+                text-align:left; font-size:8px;
+                overflow : hidden;
+            }
+            div.product_name{
+                font-size:15px; font-weight:bold;
+                height: 1.3cm;
+                padding-bottom : 5px;
+                padding-top : 5px;
+                overflow: hidden;
+            }
+            div.pricetag_second_product_price {
+                font-size: 20px; font-weight: bold;
+                text-align: center;
+                overflow: hidden;
+            }
+            div.pricetag_second_product_price_noimage {
+                font-size: 35px; font-weight: bold;
+                text-align: center;
+                overflow: hidden;
+            }
+            div.pricetag_second_price_uom_text {
+                font-size: 10px; font-weight: bold;
+                text-align: center; line-height: 0.5em;
+            }
+            div.pricetag_second_price_uom_text_noimage {
+                font-size: 13px; font-weight: bold;
+                text-align: center; line-height: 0.5em;
+            }
+            div.product_price {
+                font-size: 26px; font-weight: bold;
+                height: 1cm; line-height: 1cm;
+                text-align: center;
+                overflow: hidden;
+            }
+            div.product_price_noimage {
+                font-size: 32px; font-weight: bold;
+                height: 1.2cm; line-height: 1cm;
+                text-align: center;
+                overflow: hidden;
+            }
+            div.product_price_per_uom_qty, div.product_price_per_uom_price {
+                width : 45%;
+                text-align : center;
+                font-size:9px;
+                height : 0.8cm;
+                overflow : hidden;
+                word-wrap : normal;
+            }
+            div.product_price_per_uom_price_only {
+                font-size: 9px; line-height: 3em;
+                width: 100%; text-align: center;
+            }
+            div.product_sell_by_weight {
+                font-weight: bold;
+                font-size: 13px;
+                text-align: center;
+                position: relative;
+                bottom: 0.7em;
+                right: 0.2em;
+            }
+            div.label_bottom_right {
+                margin-top:0.2cm;
+                text-align:center; font-size:7px;
+                overflow:hidden;
+                font-family:monospace;
+                position: relative; top: 6px;
+            }
+            div.product_labels, div.organic_text{
+                height:1.0cm;
+                float:left;
+                text-align:left;
+                padding-top: 2px;
+            }            
+            div.product_labels{
+                padding-left : 2px; overflow: hidden;
+                font-size:9px; max-width: 3cm;
+            }
+            img.product_label{
+                width:0.6cm; height:0.6cm; margin: 0.1cm 0.1cm 0.1cm -0.05cm;
+            }
+            div.organic_text{
+                max-width: 2.7cm;
+                position: relative; top: 0.17cm;
+                font-size: 6px;
+            }
+            div.wrap_ean13_image{
+                overflow: hidden;
+                position: relative;
+                height: 1.1cm;
+                bottom: 30px;
+                right: 5px;
+            }
+            img.ean13_image{
+                /* NOT YET SUPPORTED BY wkhtmltopdf clip-path: polygon(10% 20%, 90% 20%, 90% 40%, 0% 40%); */
+                width:6.7cm;
+                position: relative;
+                top: 0.5cm;
+            }
+            img.product_image{
+                width: 2cm; height: 2cm;
+                position: relative; bottom: 0.20cm; left: 0.37cm;
+            }
+        </style>
+        <br/>
+        <t t-foreach="category_data['lines']" t-as="line">
+            <t t-foreach="line.quantity" t-as="q">
+                <div class="product floating_box">
+                    <div class="label_left floating_box">
+                        <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
+                            <t t-esc="line.product_id.name"/>
+                        </div>
+                    </div>
+                    <div class="label_right_noimage floating_box">
+                        <!-- <t t-if="not line.product_id.pricetag_special_quantity_price"> -->
+                            <div class="product_price_noimage">
+                                <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                            </div>
+                        <!-- </t> -->
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>
+
+
