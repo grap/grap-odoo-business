@@ -3,7 +3,7 @@
 # @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Origin Information for Products",
+    "name": "Origin for Products",
     "version": "12.0.1.0.0",
     "category": "Sales",
     "author": "GRAP",
@@ -11,11 +11,10 @@
     "license": "AGPL-3",
     "depends": [
         "product",
-        # TODO Wait for https://github.com/OCA/web/issues/1464
-        # "web_domain_field",
     ],
     "data": [
         "views/view_product_product.xml",
+        "views/view_product_template.xml",
     ],
     "demo": [
         "demo/product_product.xml",

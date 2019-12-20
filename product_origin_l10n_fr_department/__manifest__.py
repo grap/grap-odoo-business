@@ -12,6 +12,7 @@
     "depends": ["product_origin", "l10n_fr_department"],
     "data": [
         "views/view_product_product.xml",
+        "views/view_product_template.xml",
     ],
     "demo": [
         "demo/product_product.xml",

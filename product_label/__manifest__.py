@@ -18,6 +18,7 @@
         "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "views/view_product_product.xml",
+        "views/view_product_template.xml",
         "views/view_product_label.xml",
         "report/report_account_invoice.xml",
     ],

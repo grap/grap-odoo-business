@@ -9,7 +9,7 @@
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
-    "depends": ["product_label"],
+    "depends": ["product_label", "product_origin"],
     "data": [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
@@ -17,6 +17,7 @@
         "views/view_product_label.xml",
         "views/view_product_category.xml",
         "views/view_product_product.xml",
+        "views/view_product_template.xml",
         "views/view_res_company.xml",
     ],
     "demo": [

@@ -14,9 +14,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="state_id" position="after">
                 <field name="department_id"/>
              </field>
-            <field name="state_id_domain" position="after">
-                <field name="department_id_domain" invisible="1"/>
-            </field>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_variant" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_origin.view_product_product_form_variant" />
+        <field name="arch" type="xml">
+            <field name="state_id" position="after">
+                <field name="department_id"/>
+             </field>
         </field>
     </record>
 
