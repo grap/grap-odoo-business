@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="product_label.label_agriculture_biologique" model="product.label">
+        <field name="organic_type">01_organic</field>
+    </record>
+
+    <record id="label_alcool_grossesse" model="product.label">
+        <field name="name">Alcool and Pregnancy</field>
+        <field name="code">ALC</field>
+        <field name="website">http://inpes.santepubliquefrance.fr/70000/cp/15/cp152908-alcool-grossesse-risque.asp</field>
+        <field name="is_alcohol" eval="True" />
+        <field name="image" type="base64" file="product_food/static/img/label_alcool_grossesse-image.png"/>
+    </record>
+
+    <record id="label_demeter" model="product.label">
+        <field name="name">Demeter</field>
+        <field name="code">DEM</field>
+        <field name="website">https://www.demeter.fr/</field>
+        <field name="organic_type">02_agroecological</field>
+        <field name="image" type="base64" file="product_food/static/img/label_demeter-image.png"/>
+    </record>
+
+</odoo>

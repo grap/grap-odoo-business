@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_label.view_product_product_form" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="before">
+                <field name="is_alimentary"/>
+                <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                <field name="expiration_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+            </field>
+            <field name="label_ids" position="after">
+                <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                <field name="organic_type"/>
+            </field>
+            <notebook position="inside">
+                <page name="alimentary_composition" string="Alimentary Composition"
+                    attrs="{'invisible': [('is_alimentary', '=', False)]}">
+                    <group>
+                        <group string="Ingredients">
+                            <field name="ingredients" widget="html" nolabel="1"/>
+                        </group>
+                        <group string="Allergens">
+                            <field name="allergens" widget="html" nolabel="1"/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>
