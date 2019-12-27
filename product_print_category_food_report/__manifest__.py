@@ -11,6 +11,10 @@
     "license": "AGPL-3",
     "depends": [
         "product_print_category",
+        "product_food",
+        "product_label",
+        "product_origin",
+        "product_origin_l10n_fr_department",
     ],
     "data": [
         "security/ir_rule.xml",

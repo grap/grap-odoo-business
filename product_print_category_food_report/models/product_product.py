@@ -19,18 +19,10 @@ class ProductProduct(models.Model):
         compute="_compute_pricetag_organic_text"
     )
 
-    pricetag_display_spider_chart = fields.Boolean(
-        compute="_compute_pricetag_display_spider_chart"
-    )
-
     pricetag_origin = fields.Char(compute="_compute_pricetag_origin")
 
     report_extra_food_info = fields.Char(
         compute="_compute_report_extra_food_info"
-    )
-
-    report_label_ids_info = fields.Char(
-        compute="_compute_report_label_ids_info"
     )
 
     pricetag_special_quantity_price = fields.Boolean(
@@ -74,31 +66,16 @@ class ProductProduct(models.Model):
     def _compute_pricetag_organic_text(self):
         for product in self:
             res = ""
-            if product.is_food:
-                organic = any(
-                    product.label_ids.filtered(lambda x: x.is_organic)
-                )
-                if organic:
+            # We need organic text only in weighed product
+            if product.uom_id.category_id.measure_type == "weight" :
+                if product_organic_type in ["01_organic"] :
                     if product.company_id.certifier_organization_id:
                         res = _("Organic Product, certified by %s") % (
                             product.company_id.certifier_organization_id.code
                         )
                 elif not product.company_id.pricetag_ignore_organic_warning:
-                    res = _("Not From Organic Farming")
+                    res = _("Not From Organic Farming") 
             product.pricetag_organic_text = res
-
-    @api.multi
-    def _compute_pricetag_display_spider_chart(self):
-        for product in self:
-            notation = [
-                product.social_notation,
-                product.organic_notation,
-                product.packaging_notation,
-                product.local_notation,
-            ]
-            if "0" in notation:
-                notation = filter(lambda a: a != "0", notation)
-            product.pricetag_display_spider_chart = len(notation) >= 3
 
     @api.multi
     def _compute_pricetag_origin(self):
@@ -126,24 +103,6 @@ class ProductProduct(models.Model):
                 product.pricetag_origin = localization_info
 
     @api.multi
-    def _compute_report_extra_food_info(self):
-        for product in self:
-            info = []
-            if product.country_id:
-                info.append(_("Country: %s") % product.country_id.name)
-            if product.fresh_category:
-                info.append(_("Fresh Category: %s") % product.fresh_category)
-            product.report_extra_food_info = ", ".join(info)
-
-    @api.multi
-    def _compute_report_label_ids_info(self):
-        for product in self:
-            label_info = product.label_ids.filtered(
-                lambda x: x.mandatory_on_invoice
-            ).mapped("code")
-            product.report_label_ids_info = ", ".join(label_info)
-
-    @api.multi
     def _compute_pricetag_second_price(self):
         for product in self.filtered(lambda x: x.list_price):
             if product.pricetag_uom_id:
@@ -161,9 +120,9 @@ class ProductProduct(models.Model):
                 product.pricetag_second_price = (
                     product.list_price / product.volume
                 )
-            elif product.weight_net:
+            elif product.weight:
                 product.pricetag_is_second_price = True
                 product.pricetag_second_price_uom_text = _("Price per Kilo")
                 product.pricetag_second_price = (
-                    product.list_price / product.weight_net
+                    product.list_price / product.weight
                 )

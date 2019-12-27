@@ -44,6 +44,41 @@ report changes
     * display customer name
     * display pricelist if it does'nt contain "catalogue in the name"
 
+ROADMAP
+--------
+
+At the moment, price should not be longer than 4 numbers and one dot
+→ When wkhtmltopdf will works with grid system, we would be able to use fit-content
+
+INSTALL
+---------
+
+
+    Update WKHTMLTOPDF:
+
+        I had version 0.12.1 so I updated to version 0.12.5
+
+    A new System parameter:
+
+        I added another System Parameter:
+
+            Key: web.base.url.freeze
+
+            Value: True
+
+    Change my report definition:
+
+  Utiliser web basic layout
+
+  <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="objs">
+            <div class="page">
+                <!--REPORT CODE...-->
+            </div>
+        </t>
+    </t>
+</template>
+
 Credits
 =======
 
