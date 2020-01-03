@@ -1,5 +1,6 @@
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin DUPONT (https://twitter.com/pondupont)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
@@ -19,7 +20,11 @@
     "data": [
         "security/ir_rule.xml",
         "security/ir.model.access.csv",
-        "report/qweb_template_product_product.xml",
+        "report/qweb_pricetag_bulk_long.xml",
+        "report/qweb_pricetag_bulk_square.xml",
+        "report/qweb_pricetag_counter.xml",
+        "report/qweb_pricetag_normal.xml",
+        "report/qweb_pricetag_square.xml",
         "views/action.xml",
         "views/menu.xml",
         "views/view_res_company.xml",

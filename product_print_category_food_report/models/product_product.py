@@ -68,7 +68,7 @@ class ProductProduct(models.Model):
             res = ""
             # We need organic text only in weighed product
             if product.uom_id.category_id.measure_type == "weight" :
-                if product_organic_type in ["01_organic"] :
+                if product.organic_type in ["01_organic"] :
                     if product.company_id.certifier_organization_id:
                         res = _("Organic Product, certified by %s") % (
                             product.company_id.certifier_organization_id.code
