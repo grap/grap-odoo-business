@@ -15,7 +15,8 @@ class StockPreparationCategory(models.Model):
 
     sequence = fields.Integer(string="Sequence", required=True)
 
-    code = fields.Char(string="Code", required=True,
+    code = fields.Char(
+        string="Code", required=True,
         help="This field will be used on the picking reports")
 
     color = fields.Char(string="Color", required=True, default="#FFFFFF")

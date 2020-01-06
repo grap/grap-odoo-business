@@ -1,18 +1,18 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
 
-from openerp import _, api, fields, models
-from openerp.exceptions import ValidationError
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
+from odoo.exceptions import Warning as UserError
 
 
 class SaleRecoveryMoment(models.Model):
     _description = "Recovery Moment"
     _name = "sale.recovery.moment"
+    _description = "Recovery Moments"
     _order = "min_recovery_date desc, max_recovery_date desc, place_id"
 
     _STATE_SELECTION = [
@@ -23,18 +23,12 @@ class SaleRecoveryMoment(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    # Defaults Section
-    @api.model
-    def _default_code(self):
-        return self.env["ir.sequence"].get("sale.recovery.moment")
-
-    @api.model
-    def _default_company_id(self):
-        return self.env.user.company_id
-
     # Columns Section
     code = fields.Char(
-        string="Code", readonly=True, required=True, default=_default_code
+        string="Code",
+        readonly=True,
+        required=True,
+        default=lambda x: x._default_code(),
     )
 
     name = fields.Char(string="Name", compute="_compute_name", store=True)
@@ -44,7 +38,7 @@ class SaleRecoveryMoment(models.Model):
     )
 
     group_id = fields.Many2one(
-        string="Recovery Moment Group",
+        string="Recovery Group",
         comodel_name="sale.recovery.moment.group",
     )
 
@@ -52,7 +46,7 @@ class SaleRecoveryMoment(models.Model):
         string="Company",
         comodel_name="res.company",
         required=True,
-        default=_default_company_id,
+        default=lambda x: x._default_company_id(),
     )
 
     specific_min_sale_date = fields.Datetime(
@@ -150,10 +144,35 @@ class SaleRecoveryMoment(models.Model):
         selection=_STATE_SELECTION,
     )
 
+    # Defaults Section
+    @api.model
+    def _default_company_id(self):
+        return self.env.user.company_id
+
+    # Overload Section
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals['code'] = self.env['ir.sequence'].next_by_code('sale.recovery.moment')
+        return super().create(vals_list)
+
+    @api.multi
+    def unlink(self):
+        if self.filtered(lambda x: x.valid_order_qty):
+            raise UserError(
+                _(
+                    "You can not delete this Recovery Moment because there"
+                    " is Valid Sale Orders associated.\nPlease move"
+                    " Sale orders on an other Recovery Moment and contact"
+                    " your customers."
+                )
+            )
+        return super().unlink()
+
     # Compute Section
     @api.multi
     def _compute_state(self):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        now = datetime.now()
         for moment_group in self:
             if now < moment_group.min_sale_date:
                 moment_group.state = "futur"
@@ -174,12 +193,19 @@ class SaleRecoveryMoment(models.Model):
         "specific_max_sale_date",
     )
     def _compute_sale_date(self):
-        for moment in self.filtered(lambda x: x.group_id):
-            moment.min_sale_date = moment.group_id.min_sale_date
-            moment.max_sale_date = moment.group_id.max_sale_date
-        for moment in self.filtered(lambda x: not x.group_id):
-            moment.min_sale_date = moment.specific_min_sale_date
-            moment.max_sale_date = moment.specific_max_sale_date
+        for moment in self:
+            if moment.specific_min_sale_date:
+                moment.min_sale_date = moment.specific_min_sale_date
+            elif moment.group_id:
+                moment.min_sale_date = moment.group_id.min_sale_date
+            else:
+                moment.max_sale_date = False
+            if moment.specific_max_sale_date:
+                moment.max_sale_date = moment.specific_max_sale_date
+            elif moment.group_id:
+                moment.max_sale_date = moment.group_id.max_sale_date
+            else:
+                moment.min_sale_date = False
 
     @api.multi
     @api.depends(
@@ -293,7 +319,7 @@ class SaleRecoveryMoment(models.Model):
         sql_req = req  # pylint: disable=sql-injection
         self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
         res = self.env.cr.fetchall()
-        return [("id", "in", map(lambda x: x[0], res))]
+        return [("id", "in", [x[0] for x in res])]
 
     # Constraint Section
     @api.multi
@@ -307,17 +333,3 @@ class SaleRecoveryMoment(models.Model):
                         " Date of Recovery."
                     )
                 )
-
-    # Overload Section
-    @api.multi
-    def unlink(self):
-        if self.filtered(lambda x: x.valid_order_qty):
-            raise UserError(
-                _(
-                    "You can not delete this Recovery Moment because there"
-                    " is Valid Sale Orders associated.\nPlease move"
-                    " Sale orders on an other Recovery Moment and contact"
-                    " your customers."
-                )
-            )
-        return super(SaleRecoveryMoment, self).unlink()

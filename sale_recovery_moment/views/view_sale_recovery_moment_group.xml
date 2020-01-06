@@ -4,7 +4,7 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_sale_recovery_moment_group_search" model="ir.ui.view">
         <field name="model">sale.recovery.moment.group</field>
@@ -27,14 +27,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="name"/>
                 <field name="min_sale_date"/>
                 <field name="max_sale_date"/>
-                <field name="valid_order_qty" string="V.S.O. Qty"/>
-                <button name="%(action_sale_order_recovery_moment_group_valid)d" icon="gtk-find" string="See" type="action"/>
                 <field name="order_qty" string="S.O. Qty"/>
-                <button name="%(action_sale_order_recovery_moment_group)d" icon="gtk-find" string="See" type="action" />
-                <field name="valid_picking_qty" string="V.D.O. Qty"/>
-                <button name="%(action_stock_picking_recovery_moment_group_valid)d" icon="gtk-find" string="See" type="action"/>
+                <button name="%(action_recovery_moment_group_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
+                <field name="valid_order_qty" string="V.S.O. Qty"/>
+                <button name="%(action_recovery_moment_group_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action"/>
                 <field name="picking_qty" string="D.O. Qty"/>
-                <button name="%(action_stock_picking_recovery_moment_group)d" icon="gtk-find" string="See" type="action"/>
+                <button name="%(action_recovery_moment_group_2_stock_picking)d" icon="fa-truck" string="See" type="action"/>
+                <field name="valid_picking_qty" string="V.D.O. Qty"/>
+                <button name="%(action_recovery_moment_group_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
                 <field name="excl_total" sum="Total"/>
                 <field name="incl_total" sum="Total"/>
                 <field name="company_id" groups="base.group_multi_company"/>
@@ -84,4 +84,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-</data></openerp>
+    <record id="action_sale_recovery_moment_group" model="ir.actions.act_window">
+        <field name="name">Recovery Moment Groups</field>
+        <field name="res_model">sale.recovery.moment.group</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_not_finished':1}</field>
+    </record>
+
+    <menuitem id="menu_sale_recovery_moment_group"
+        sequence="11"
+        parent="sale.sale_order_menu"
+        action="action_sale_recovery_moment_group"/>
+
+</odoo>

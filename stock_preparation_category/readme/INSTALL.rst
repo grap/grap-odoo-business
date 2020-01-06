@@ -3,4 +3,4 @@
 
 * Install the extra OCA ``server-ux`` module ``mass_sorting`` to have the possibility
   to reorder the moves of your pickings, independently of the order of the sale
-  or purchase order lines. 
+  or purchase order lines.
