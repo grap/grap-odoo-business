@@ -7,22 +7,32 @@ from openerp import api, fields, models
 
 
 class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+    _inherit = "sale.order"
 
     # Column Section
     recovery_moment_id = fields.Many2one(
-        comodel_name='sale.recovery.moment', string='Recovery Moment',
-        copy=False, readonly=True, states={'draft': [('readonly', False)]})
+        comodel_name="sale.recovery.moment",
+        string="Recovery Moment",
+        copy=False,
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
 
     recovery_group_id = fields.Many2one(
-        related='recovery_moment_id.group_id',
-        comodel_name='sale.recovery.moment.group', readonly=True,
-        string='Recovery Moment Group', store=True)
+        related="recovery_moment_id.group_id",
+        comodel_name="sale.recovery.moment.group",
+        readonly=True,
+        string="Recovery Moment Group",
+        store=True,
+    )
 
     recovery_place_id = fields.Many2one(
-        related='recovery_moment_id.place_id',
-        comodel_name='sale.recovery.place', readonly=True,
-        string='Recovery Place', store=True)
+        related="recovery_moment_id.place_id",
+        comodel_name="sale.recovery.place",
+        readonly=True,
+        string="Recovery Place",
+        store=True,
+    )
 
     # Overload Section
     @api.model
@@ -37,17 +47,18 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_button_confirm(self):
-        SaleOrderLine = self.env['sale.order.line']
+        SaleOrderLine = self.env["sale.order.line"]
         for order in self.filtered(lambda x: x.recovery_place_id):
             product = order.recovery_place_id.shipping_product_id
             if product:
                 line_vals = SaleOrderLine.product_id_change(
-                    order.pricelist_id.id, product.id,
-                    partner_id=order.partner_id.id).get('value')
-                line_vals.update({
-                    'order_id': order.id,
-                    'product_id': product.id,
-                })
+                    order.pricelist_id.id,
+                    product.id,
+                    partner_id=order.partner_id.id,
+                ).get("value")
+                line_vals.update(
+                    {"order_id": order.id, "product_id": product.id,}
+                )
                 SaleOrderLine.create(line_vals)
 
         return super(SaleOrder, self).action_button_confirm()
@@ -55,9 +66,9 @@ class SaleOrder(models.Model):
     @api.model
     def _prepare_procurement_group(self, order):
         res = super(SaleOrder, self)._prepare_procurement_group(order)
-        res.update({
-            'recovery_moment_id': order.recovery_moment_id.id,
-        })
+        res.update(
+            {"recovery_moment_id": order.recovery_moment_id.id,}
+        )
         return res
 
     @api.model
@@ -65,21 +76,23 @@ class SaleOrder(models.Model):
         """"Change 'date_expected' of the stock.move generated during sale
         confirmation, to set the one defined by the Recovery Moment"""
         res = super(SaleOrder, self)._prepare_order_line_move(
-            order, line, picking_id, date_planned)
+            order, line, picking_id, date_planned
+        )
 
         if line.order_id.recovery_moment_id:
             # We take into account the min date of the recovery moment
-            res['date_expected'] =\
-                line.order_id.recovery_moment_id.min_recovery_date
+            res[
+                "date_expected"
+            ] = line.order_id.recovery_moment_id.min_recovery_date
         elif line.order_id.requested_date:
             # we take into account the expected_date of the sale
-            res['date_expected'] = line.order_id.requested_date
+            res["date_expected"] = line.order_id.requested_date
         return res
 
     # Custom Section
     @api.model
     def _set_requested_date_from_moment_id(self, vals):
-        moment_obj = self.env['sale.recovery.moment']
-        if vals.get('recovery_moment_id', False):
-            moment = moment_obj.browse(vals.get('recovery_moment_id'))
-            vals['requested_date'] = moment.min_recovery_date
+        moment_obj = self.env["sale.recovery.moment"]
+        if vals.get("recovery_moment_id", False):
+            moment = moment_obj.browse(vals.get("recovery_moment_id"))
+            vals["requested_date"] = moment.min_recovery_date

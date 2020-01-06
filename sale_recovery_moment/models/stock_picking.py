@@ -7,13 +7,17 @@ from openerp import fields, models
 
 
 class StockPicking(models.Model):
-    _inherit = 'stock.picking'
+    _inherit = "stock.picking"
 
     # Column Section
     recovery_moment_id = fields.Many2one(
-        comodel_name='sale.recovery.moment', string='Recovery Moment')
+        comodel_name="sale.recovery.moment", string="Recovery Moment"
+    )
 
     recovery_group_id = fields.Many2one(
-        related='recovery_moment_id.group_id',
-        comodel_name='sale.recovery.moment.group', store=True,
-        string='Recovery Moment Group', readonly=True)
+        related="recovery_moment_id.group_id",
+        comodel_name="sale.recovery.moment.group",
+        store=True,
+        string="Recovery Moment Group",
+        readonly=True,
+    )
