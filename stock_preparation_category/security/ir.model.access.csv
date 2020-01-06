@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_preparation_category_reader,Stock Preparation Category Reader,model_stock_preparation_category,preparation_user,1,,,
+access_stock_preparation_category_manager,Stock Preparation Category Manager,model_stock_preparation_category,preparation_manager,1,1,1,1
