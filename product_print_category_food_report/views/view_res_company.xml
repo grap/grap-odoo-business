@@ -12,10 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='print_category_id']" position="after">
-                <group string="Pricetag">
-                    <field name="pricetag_color"/>
-                    <field name="pricetag_ignore_organic_warning"/>
-                </group>
+                <field name="pricetag_color"/>
             </xpath>
         </field>
     </record>

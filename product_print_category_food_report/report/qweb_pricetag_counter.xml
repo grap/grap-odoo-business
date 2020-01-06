@@ -25,21 +25,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             </div>
                             <!-- Price -->
                             <div class="price_area">
-                                <t t-if="not line.product_id.pricetag_special_quantity_price">
-                                    <div class="product_price">
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
-                                        <!-- /KG OU /PCE -->
-                                        <t t-if="line.product_id.uom_id.category_id.name == 'Weight'"><span class="product_sell_by_weight">/KG</span></t>
-                                        <t t-if="not line.product_id.uom_id.category_id.name == 'Weight'">
-                                            <t t-if="line.product_id.uom_id.category_id.name == 'Unit'"><span class="product_sell_by_weight">/PCE</span></t>
-                                        </t>
-                                    </div>
-                                </t>
                                 <t t-if="line.product_id.pricetag_special_quantity_price">
                                     <div class="second_product_price">
                                         <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
                                             <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                         </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="product_price">
+                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                        <!-- /KG OU /PCE -->
+                                        <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><span class="product_sell_by_weight">/KG</span></t>
+                                        <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span class="product_sell_by_weight">/PCE</span></t>
                                     </div>
                                 </t>
                             </div>
@@ -65,11 +63,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </t>
                                     <t t-if="line.product_id.pricetag_special_quantity_price">
                                         <span class="product_price_per_uom_price_only">
-                                            <t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><span>Prix au litre : </span></t>
-                                            <t t-if="not line.product_id.uom_id.category_id.name == 'Volume'">
-                                                <t t-if="not line.product_id.uom_id.category_id.name == 'Weight'"><span>Prix à la pièce : </span></t>
-                                                <t t-if="line.product_id.uom_id.category_id.name == 'Weight'"><span>Prix au kilo : </span></t>
-                                            </t>
+                                            <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Prix au litre : </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span>Prix à la pièce : </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Prix au kilo : </span></t>
                                             <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                         </span>
                                     </t>

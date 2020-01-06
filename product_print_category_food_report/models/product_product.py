@@ -67,14 +67,16 @@ class ProductProduct(models.Model):
         for product in self:
             res = ""
             # We need organic text only in weighed product
-            if product.uom_id.category_id.measure_type == "weight" :
-                if product.organic_type in ["01_organic"] :
-                    if product.company_id.certifier_organization_id:
-                        res = _("Organic Product, certified by %s") % (
-                            product.company_id.certifier_organization_id.code
-                        )
-                elif not product.company_id.pricetag_ignore_organic_warning:
-                    res = _("Not From Organic Farming") 
+            if product.uom_id.category_id.measure_type == "weight" and\
+                    product.is_alimentary is True:
+                    if product.organic_type in ["01_organic"]:
+                        if product.company_id.certifier_organization_id:
+                            res = _("Organic Product, certified by %s") % (
+                                product.company_id.
+                                certifier_organization_id.code
+                            )
+                    else:
+                        res = _("Not From Organic Farming")
             product.pricetag_organic_text = res
 
     @api.multi

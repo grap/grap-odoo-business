@@ -33,7 +33,8 @@
         overflow: hidden;
     }
     .label_ingredients {
-        height: 2.3cm;
+        height: 2.4cm;
+        margin-bottom: 0.1cm;
         overflow: hidden;
     }
     .label_allergens {
@@ -43,7 +44,7 @@
     .product_labels, .organic_text{
         overflow: hidden; float:left;
         text-align:left;
-    }            
+    }
     .product_labels{
         font-size:8px;  
         height:1cm; width: 100%;
@@ -63,8 +64,9 @@
         text-align: center; 
     }
     .product_price_per_uom_price_only {
-        font-size: 12px; height: 0.5cm;
+        font-size: 12px;
         width: 100%; text-align: center;
+        position : relative; bottom : 0.7cm;
     }
     .product_price_per_uom_price_big {
         width: 100%;
@@ -74,19 +76,19 @@
     }
     .product_price_big {
         font-size: 30px; text-align: center;
-        margin-top:2px;
+        position: relative; bottom: 0.2cm;
     }
     span.product_uom {
         font-size:22px;
     }
     .product_uom_special {
         font-size: 12px; font-weight: bold;
-        height: 0.5cm;
+        position: relative; bottom: 0.37cm;
     }
     .wrap_barcode_image{
         overflow: hidden;
         position: relative;
-        top: 5px; left: 20px;
+        top: 0.1cm; left: 20px;
     }
     .wrap_barcode_image > img{
         width: 5.5cm;

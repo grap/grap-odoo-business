@@ -11,7 +11,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product_print_category.view_product_product_form"/>
         <field name="arch" type="xml">
             <field name="to_print" position="after">
-                <separator string="Pricetag" colspan="2"/>
                 <field name="pricetag_type_id" />
                 <field name="pricetag_uom_id" />
             </field>

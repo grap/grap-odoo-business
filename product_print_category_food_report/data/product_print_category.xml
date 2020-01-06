@@ -52,7 +52,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="category_pricetag_counter" model="product.print.category">
-        <field name="name">Counter pricetag - 72*123mm</field>
+        <field name="name">Counter pricetag - 55*94mm</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_counter" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),

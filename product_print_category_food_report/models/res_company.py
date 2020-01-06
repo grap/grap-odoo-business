@@ -10,22 +10,9 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     pricetag_color = fields.Char(
-        "Pricetag Color",
+        string="Pricetag Color",
         required=True,
         size=7,
         default="#FFFFFF",
         help="Color of the Pricetag by default. Format #RRGGBB",
-    )
-
-    pricetag_ignore_organic_warning = fields.Boolean(
-        string="Ignore Organic Warning",
-        help="Check this box if you want"
-        " to hide the mention 'Not From Organic Farming' that is displayed"
-        " on pricetags for foods products that don't have an organic label",
-    )
-
-    report_sale_invoice_origin = fields.Boolean(
-        string="Display origin in sale invoice report",
-        help="Check this box"
-        " if you want to display the name/reference in sale invoice report",
     )

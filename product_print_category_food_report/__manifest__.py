@@ -4,9 +4,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "GRAP - Custom Qweb Reports",
+    "name": "Product print category food report",
     "version": "12.0.1.0.0",
-    "category": "GRAP - Custom",
+    "summary": "Food report like pricetags",
+    "category": "Product",
     "author": "GRAP",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",

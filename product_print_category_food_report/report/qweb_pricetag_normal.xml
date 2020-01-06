@@ -16,8 +16,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </xpath>
     </template>
 
-    <!-- You must multiply by 1.226 to get the css measure for the product -->
-    <!-- Exemple : you want a 3cm width in reality, you must write width: 3,68 -->
     <template id="qweb_template_pricetag_normal">
         <t t-call="web.basic_layout">
             <t t-foreach="category_data['lines']" t-as="line">
@@ -29,14 +27,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-esc="line.product_id.name"/>
                             </div>
                             <div class="product_informations" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
-                                <t t-if="line.product_id.barcode"><b><t t-esc="line.product_id.barcode"/></b><br/></t>
                                 <t t-if="not line.product_id.barcode">
                                     <t t-if="line.product_id.default_code"><b><t t-esc="line.product_id.default_code"/></b><br/></t>
                                 </t>
                                 <t t-if="line.product_id.pricetag_origin">Origine : <b><t t-esc="line.product_id.pricetag_origin"/></b><br/></t>
-                                <t t-if="not line.product_id.pricetag_origin"><br/></t>
-                                <t t-if="line.product_id.maker_description">Producteur : <b><t t-esc="line.product_id.maker_description"/></b><br/></t>
-                                <t t-if="not line.product_id.maker_description"><br/></t>
+                                <t t-else=""><br/></t>
+                                <t t-if="line.product_id.maker_description">Fabriquant·e : <b><t t-esc="line.product_id.maker_description"/></b><br/></t>
+                                <t t-else=""><br/></t>
                             </div>
                             <div class="product_labels">
                                 <!-- Product Label -->
@@ -66,17 +63,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                 </div>
                                 <!-- Le kilo // La pièce -->
-                                <t t-if="line.product_id.uom_id.category_id.name == 'Weight'"><div class="product_sell_by_weight">le kilo</div></t>
-                                <t t-if="not line.product_id.uom_id.category_id.name == 'Weight'">
-                                    <t t-if="line.product_id.uom_id.category_id.name == 'Unit'"><div class="product_sell_by_weight">la pièce</div></t>
-                                </t>
+                                <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">le kilo</div></t>
+                                <t t-else=""><div class="product_sell_by_weight">la pièce</div></t>
                                 <!-- Poids (Kg) ou Volume (L) du produit -->
                                 <t t-if="line.product_id.pricetag_is_second_price">
                                     <div class="product_price_per_uom_qty floating_box">
                                         <t t-if="line.product_id.volume">Volume<br/><b><t t-esc="line.product_id.volume"/> L</b><br/></t>
-                                        <t t-if="not line.product_id.volume">
-                                            <t t-if="line.product_id.weight">Poids net<br/><b><t t-esc="line.product_id.weight"/> kg</b><br/></t>
-                                        </t>
+                                        <t t-elif="line.product_id.weight_net">Poids net<br/><b><t t-esc="line.product_id.weight_net"/> kg</b><br/></t>
                                     </div>
                                     <!-- Prix au Kg ou au L -->
                                     <div class="product_price_per_uom_price floating_box">
@@ -93,11 +86,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <div class="pricetag_second_price_uom_text_noimage"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                 </div>
                                 <div class="product_price_per_uom_price_only floating_box">
-                                    <t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><span>Au L : </span></t>
-                                    <t t-if="not line.product_id.uom_id.category_id.name == 'Volume'">
-                                        <t t-if="not line.product_id.uom_id.category_id.name == 'Weight'"><span>Pièce : </span></t>
-                                        <t t-if="line.product_id.uom_id.category_id.name == 'Weight'"><span>Au kg : </span></t>
-                                    </t>
+                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Au L : </span></t>
+                                    <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Au kg : </span></t>
+                                    <t t-else=""><span>Pièce : </span></t>
                                     <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                 </div>
                             </t>
