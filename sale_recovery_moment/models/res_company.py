@@ -7,6 +7,6 @@ from openerp import fields, models
 
 
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
-    manage_recovery_moment = fields.Boolean(string='Manage Recovery Moment')
+    manage_recovery_moment = fields.Boolean(string="Manage Recovery Moment")

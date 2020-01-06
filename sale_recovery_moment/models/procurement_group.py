@@ -7,7 +7,8 @@ from openerp import fields, models
 
 
 class ProcurementGroup(models.Model):
-    _inherit = 'procurement.group'
+    _inherit = "procurement.group"
 
     recovery_moment_id = fields.Many2one(
-        comodel_name='sale.recovery.moment', string='Recovery Moment')
+        comodel_name="sale.recovery.moment", string="Recovery Moment"
+    )
