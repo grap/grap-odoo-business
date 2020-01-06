@@ -1,18 +1,18 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError, ValidationError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError, ValidationError
 
-import openerp.addons.decimal_precision as dp
+import odoo.addons.decimal_precision as dp
 
 
 class SaleRecoveryMomentGroup(models.Model):
     _name = "sale.recovery.moment.group"
+    _description = "Recovery Groups"
     _order = "min_sale_date desc, name"
 
     _STATE_SELECTION = [
@@ -23,18 +23,9 @@ class SaleRecoveryMomentGroup(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    # Defaults Section
-    @api.model
-    def _default_code(self):
-        return self.env["ir.sequence"].get("sale.recovery.moment.group")
-
-    @api.model
-    def _default_company_id(self):
-        return self.env.user.company_id.id
-
     # Column Section
     code = fields.Char(
-        string="Code", readonly=True, required=True, default=_default_code
+        string="Code", readonly=True, required=True
     )
 
     short_name = fields.Char(string="Short Name", required=True)
@@ -108,7 +99,7 @@ class SaleRecoveryMomentGroup(models.Model):
         compute="_compute_total_multi",
         multi="total",
         store=True,
-        digits_compute=dp.get_precision("Account"),
+        digits=dp.get_precision("Account"),
         string="Total (VAT Excluded)",
     )
 
@@ -116,7 +107,7 @@ class SaleRecoveryMomentGroup(models.Model):
         compute="_compute_total_multi",
         multi="total",
         store=True,
-        digits_compute=dp.get_precision("Account"),
+        digits=dp.get_precision("Account"),
         string="Total (VAT Included)",
     )
 
@@ -126,6 +117,19 @@ class SaleRecoveryMomentGroup(models.Model):
         search="_search_state",
         selection=_STATE_SELECTION,
     )
+
+    # Defaults Section
+    @api.model
+    def _default_company_id(self):
+        return self.env.user.company_id.id
+
+    # Overload Section
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals['code'] = self.env['ir.sequence'].next_by_code(
+                'sale.recovery.moment.group')
+        return super().create(vals_list)
 
     # Compute Section
     @api.multi
@@ -186,7 +190,7 @@ class SaleRecoveryMomentGroup(models.Model):
 
     @api.multi
     def _compute_state(self):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        now = datetime.now()
         for moment_group in self:
             if now < moment_group.min_sale_date:
                 moment_group.state = "futur"
@@ -243,7 +247,7 @@ class SaleRecoveryMomentGroup(models.Model):
         sql_req = req  # pylint: disable=sql-injection
         self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
         res = self.env.cr.fetchall()
-        return [("id", "in", map(lambda x: x[0], res))]
+        return [("id", "in", [x[0] for x in res])]
 
     # Constraint Section
     @api.multi
@@ -257,12 +261,3 @@ class SaleRecoveryMomentGroup(models.Model):
                         " Date of Sale."
                     )
                 )
-
-    # Overload Section
-    def copy(self):
-        raise UserError(
-            _(
-                "You can not duplicate by this way, please use the"
-                " Duplicate Button in the Form view."
-            )
-        )
