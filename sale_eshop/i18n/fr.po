@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* sale_eshop
+#	* sale_recovery_moment
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 18:54+0000\n"
-"PO-Revision-Date: 2015-11-29 18:54+0000\n"
+"POT-Creation-Date: 2020-01-06 21:45+0000\n"
+"PO-Revision-Date: 2020-01-06 21:45+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,589 +15,554 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: sale_eshop
-#: model:email.template,body_html:sale_eshop.eshop_send_crendential_template
-msgid "\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Hello, ${object.name}</p>\n"
-"    <p>Here is your credentials to access to the purchase website of ${object.company_id.name}:</p>\n"
-"    <p>\n"
-"        <ul>\n"
-"            <li>Web Site: ${object.company_id.eshop_url}</li>\n"
-"            <li>Login: ${object.email}</li>\n"
-"            <li>Password: ${object.eshop_password}</li>\n"
-"        </ul>\n"
-"    </p>\n"
-"% if object.eshop_state == 'email_to_confirm':\n"
-"    Please finish your registration by clicking on this <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">activation link</a>.\n"
-"% endif\n"
-"    <p>Have a nice day</p>\n"
-"</div>\n"
-"            "
-msgstr "\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Bonjour, ${object.name}</p>\n"
-"    <p>Vous trouverez ci-dessous vos identifiants pour accéder au site de commande en ligne de ${object.company_id.name} :</p>\n"
-"    <p>\n"
-"        <ul>\n"
-"            <li>Site Web : ${object.company_id.eshop_url}</li>\n"
-"            <li>Login : ${object.email}</li>\n"
-"            <li>Mot de passe : ${object.eshop_password}</li>\n"
-"        </ul>\n"
-"    </p>\n"
-"% if object.eshop_state == 'email_to_confirm':\n"
-"    Merci de finir votre inscription en cliquant sur ce <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">lien d'activation</a>.\n"
-"% endif\n"
-"<p>Bonne Journée.</p>\n"
-"</div>\n"
-"            "
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:69
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:235
 #, python-format
-msgid " The quantity '%.3f' for the product '%s' is under the minimum quantity '%.3f'. A %d%% surcharge has been applied."
-msgstr " La quantité '%.3f' pour le produit '%s' est en deça de la quantité minimum '%.3f'. Un surcoût de %d%% pour le déconditionnement a été appliqué."
+msgid "%d / %d Orders"
+msgstr "%d / %d Bons de commande"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:93
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:240
 #, python-format
-msgid "'%.3f' is not a valid quantity for %s, the  minimum quantity is %'%.3f'. The quantity has been automatically increased in your shopping cart."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimum est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
+msgid "%d Order(s)"
+msgstr "%d Bon(s) de commande"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:78
-#, python-format
-msgid "'%.3f' is not a valid quantity for %s, the minimum quantity is '%.3f'. The quantity  has been automatically increased in your shopping cart."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimum est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__active
+msgid "Active"
+msgstr "Actif"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:87
-#: code:addons/sale_eshop/model/sale_order_line.py:103
-#, python-format
-msgid "'%.3f' is not a valid quantity for %s, the quantity has been rounded to '%.3f'."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité a été arrondie à '%.3f'."
-
-#. module: sale_eshop
-#: constraint:eshop.category:0
-msgid "A 'view' Category can not belongs products;\n"
-"A 'normal' Category can not belongs childs categories.\n"
-""
-msgstr "Une catégorie de type 'vue' ne peux pas contenir de produits;\n"
-"Une catégorie de type 'normal' ne peux pas contenir de catégories.\n"
-""
-
-#. module: sale_eshop
-#: help:eshop.category,type:0
-msgid "A category of the view type is a virtual category that can be used as the parent of another category to create a hierarchical structure."
-msgstr "Une catégorie de type 'vue' est une catégorie virtuelle qui peut être utilisée comme parent d'une autre catégorie, pour créer une architecture."
-
-#. module: sale_eshop
-#: field:res.company,eshop_register_allowed:0
-msgid "Allow new customer to register on eShop"
-msgstr "Autorise un nouveau client à s'enregistrer sur la eBoutique"
-
-#. module: sale_eshop
-#: view:wizard.change.product.category:0
-msgid "Apply"
-msgstr "Valider"
-
-#. module: sale_eshop
-#: field:eshop.category,available_product_ids:0
-msgid "Available Products"
-msgstr "Articles disponibles"
-
-#. module: sale_eshop
-#: field:eshop.category,available_product_qty:0
-msgid "Available Products Quantity"
-msgstr "Nombre d'articles disponibles"
-
-#. module: sale_eshop
-#: selection:product.product,eshop_state:0
-msgid "Available for Sale"
-msgstr "Disponible à la vente"
-
-#. module: sale_eshop
-#: field:res.partner,eshop_active:0
-msgid "Can buy on eShop"
-msgstr "Peut acheter en ligne"
-
-#. module: sale_eshop
-#: view:wizard.change.product.category:0
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_wizard_duplicate_form
 msgid "Cancel"
 msgstr "Annuler"
 
-#. module: sale_eshop
-#: field:eshop.category,type:0
-msgid "Category Type"
-msgstr "Type de catégorie"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__city
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "City"
+msgstr "Ville"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:196
-#, python-format
-msgid "Category with Childs!"
-msgstr "Catégorie avec des enfants!"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__code
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__code
+msgid "Code"
+msgstr "Code"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:203
-#, python-format
-msgid "Category with Products!"
-msgstr "Catégorie avec des articles!"
-
-#. module: sale_eshop
-#: field:eshop.category,child_ids:0
-msgid "Child Categories"
-msgstr "Catégories Enfants"
-
-#. module: sale_eshop
-#: view:eshop.category:0
-msgid "Childs Categories"
-msgstr "Catégories Enfants"
-
-#. module: sale_eshop
-#: field:eshop.category,child_qty:0
-msgid "Childs Quantity"
-msgstr "Nombre de Catégories Enfants"
-
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_res_company
-#, python-format
-msgid "Companies"
-msgstr "Sociétés"
-
-#. module: sale_eshop
-#: field:eshop.category,company_id:0
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__company_id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__company_id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__company_id
 msgid "Company"
 msgstr "Société"
 
-#. module: sale_eshop
-#: view:res.partner:0
-msgid "Confirm Customer"
-msgstr "Valider le client"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__complete_name
+msgid "Complete Name"
+msgstr "Nom Complet"
 
-#. module: sale_eshop
-#: model:ir.actions.act_window,name:sale_eshop.action_res_partner
-#: model:ir.ui.menu,name:sale_eshop.menu_res_partner_3
-#: view:res.partner:0
-msgid "Customers (eShop)"
-msgstr "Clients (eBoutique)"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__country_id
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "Country"
+msgstr "Pays"
 
-#. module: sale_eshop
-#: field:account.tax,eshop_description:0
-#: field:product.uom,eshop_description:0
-msgid "Description for the eShop"
-msgstr "Description pour la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__create_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__create_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__create_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__create_uid
+msgid "Created by"
+msgstr "Créé par"
 
-#. module: sale_eshop
-#: selection:res.partner,eshop_state:0
-msgid "Disabled"
-msgstr "Désactivé"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__create_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__create_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__create_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__create_date
+msgid "Created on"
+msgstr "Créé le"
 
-#. module: sale_eshop
-#: selection:res.partner,eshop_state:0
-msgid "EMail To Confirm"
-msgstr "EMail à confirmer"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "D.O. Qty"
+msgstr "# BL"
 
-#. module: sale_eshop
-#: selection:res.partner,eshop_state:0
-msgid "Enabled"
-msgstr "Activé"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__day_delay
+msgid "Delay (Day)"
+msgstr "Délai (En jours)"
 
-#. module: sale_eshop
-#: field:product.product,eshop_end_date:0
-msgid "End Date of Sale"
-msgstr "Date de Fin de Vente"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_2_stock_picking
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_stock_picking
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__picking_ids
+msgid "Delivery Orders"
+msgstr "Livraisons"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:138
-#: code:addons/sale_eshop/model/model.py:147
-#: code:addons/sale_eshop/model/model.py:167
-#, python-format
-msgid "Error !"
-msgstr "Erreur !"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__picking_qty
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__picking_qty
+msgid "Delivery Orders Quantity"
+msgstr "Nombre de bons de livraison"
 
-#. module: sale_eshop
-#: field:product.product,eshop_taxes_description:0
-msgid "Eshop Taxes Description"
-msgstr "Description des taxes sur la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__description
+msgid "Description"
+msgstr "Description"
 
-#. module: sale_eshop
-#: field:res.company,eshop_facebook_url:0
-msgid "Facebook URL"
-msgstr "URL Facebook"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__display_name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__display_name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__display_name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
 
-#. module: sale_eshop
-#: selection:res.partner,eshop_state:0
-msgid "First Purchase"
-msgstr "Premier achat"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_wizard_duplicate_form
+msgid "Duplicate"
+msgstr "Dupliquer"
 
-#. module: sale_eshop
-#: view:res.partner:0
-msgid "Generate Credentials"
-msgstr "Générer les identifiants"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_sale_recovery_moment_group_wizard_duplicate
+msgid "Duplicate Group"
+msgstr "Dupliquer le groupe"
 
-#. module: sale_eshop
-#: field:res.company,eshop_google_plus_url:0
-msgid "Google Plus URL"
-msgstr "URL Google Plus"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
+msgid "Finished"
+msgstr "Terminé"
 
-#. module: sale_eshop
-#: field:res.company,has_eshop:0
-msgid "Has eShop"
-msgstr "A une boutique en ligne"
+#. module: sale_recovery_moment
+#: selection:sale.recovery.moment,state:0
+#: selection:sale.recovery.moment.group,state:0
+msgid "Finished Recovery"
+msgstr "Récupération Terminée"
 
-#. module: sale_eshop
-#: field:eshop.category,image:0
-msgid "Image"
-msgstr "Image"
+#. module: sale_recovery_moment
+#: selection:sale.recovery.moment,state:0
+#: selection:sale.recovery.moment.group,state:0
+msgid "Finished Sale"
+msgstr "Vente Terminée"
 
-#. module: sale_eshop
-#: field:res.company,eshop_home_image:0
-msgid "Image for the eShop Home Page"
-msgstr "Image pour la page d'accueil de la eBoutique"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
+#: selection:sale.recovery.moment,state:0
+#: selection:sale.recovery.moment.group,state:0
+msgid "Futur"
+msgstr "Futur"
 
-#. module: sale_eshop
-#: field:res.company,eshop_invalidation_cache_url:0
-msgid "Invalidation Cache URL"
-msgstr "URL d'invalidation du cache"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__group_id
+msgid "Group to Duplicate"
+msgstr "Groupe à dupliquer"
 
-#. module: sale_eshop
-#: model:res.groups,name:sale_eshop.res_groups_is_eshop
-msgid "Is eShop"
-msgstr "Est eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__id
+msgid "ID"
+msgstr "ID"
 
-#. module: sale_eshop
-#: help:eshop.category,image:0
-msgid "Limited to 1024x1024px."
-msgstr "Limité à 1024x1024px."
+#. module: sale_recovery_moment
+#: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_place__shipping_product_id
+msgid "If set, this product will be added automatically to the sale order, when it is confirmed, if the sale order is associated to this recovery place."
+msgstr "If set, this product will be added automatically to the sale order, when it is confirmed, if the sale order is associated to this recovery place."
 
-#. module: sale_eshop
-#: field:res.company,eshop_manage_unpacking:0
-msgid "Manage Unpacking on eShop"
-msgstr "Manage Unpacking on eShop"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__is_complete
+msgid "Is Complete"
+msgstr "Est complet"
 
-#. module: sale_eshop
-#: model:res.groups,name:sale_eshop.res_groups_eshop_manager
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment____last_update
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group____last_update
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate____last_update
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__write_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__write_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__write_uid
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__write_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__write_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__write_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: sale_recovery_moment
+#: model:res.groups,name:sale_recovery_moment.recovery_manager
 msgid "Manager"
 msgstr "Responsable"
 
-#. module: sale_eshop
-#: field:eshop.category,image_medium:0
-msgid "Medium-sized image"
-msgstr "Image de taille moyenne"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "Max"
+msgstr "Max"
 
-#. module: sale_eshop
-#: field:res.company,eshop_minimum_price:0
-msgid "Minimum Price by eShop"
-msgstr "Prix minimum pour la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__max_order_qty
+msgid "Max Order Quantity"
+msgstr "Quantité Maximum de Vente"
 
-#. module: sale_eshop
-#: field:product.product,eshop_minimum_qty:0
-msgid "Minimum Quantity for eShop"
-msgstr "Quantité minimum pour la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__max_recovery_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__max_recovery_date
+msgid "Maximum date for the Recovery"
+msgstr "Date de fin de retrait"
 
-#. module: sale_eshop
-#: view:eshop.category:0
-#: model:ir.actions.act_window,name:sale_eshop.action_change_product_category
-#: view:wizard.change.product.category:0
-msgid "Move to other eShop Category"
-msgstr "Déplacer dans une autre Catégorie de eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__max_sale_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__max_sale_date
+msgid "Maximum date for the Sale"
+msgstr "Date de Fin de Vente"
 
-#. module: sale_eshop
-#: field:eshop.category,complete_name:0
-#: field:eshop.category,name:0
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__min_recovery_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__min_recovery_date
+msgid "Minimum date for the Recovery"
+msgstr "Date de début de retrait"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__min_sale_date
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__min_sale_date
+msgid "Minimum date for the Sale"
+msgstr "Date de début de vente"
+
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
+msgid "Moments"
+msgstr "Retraits"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__name
 msgid "Name"
 msgstr "Nom"
 
-#. module: sale_eshop
-#: field:wizard.change.product.category,new_eshop_category_id:0
-msgid "New eShop Category"
-msgstr "Nouvelle Catégorie de eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__next_max_sale_date
+msgid "Next Maximum Sale"
+msgstr "Prochaine date de fin de vente"
 
-#. module: sale_eshop
-#: selection:eshop.category,type:0
-msgid "Normal"
-msgstr "Normal"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__next_min_sale_date
+msgid "Next Minimum Sale Date"
+msgstr "Prochaine date de début de vente"
 
-#. module: sale_eshop
-#: field:wizard.change.product.category,old_eshop_category_id:0
-msgid "Old eShop Category"
-msgstr "Ancienne Catégorie de la eBoutique"
-
-#. module: sale_eshop
-#: field:eshop.category,parent_id:0
-msgid "Parent Category"
-msgstr "Catégorie Parent"
-
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_res_partner
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:244
 #, python-format
-msgid "Partner"
-msgstr "Partenaire"
+msgid "No Orders"
+msgstr "Pas de commande"
 
-#. module: sale_eshop
-#: field:res.partner,eshop_password:0
-msgid "Password on eShop"
-msgstr "Mot de Passe sur la eBoutique"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
+msgid "Not Finished"
+msgstr "Non terminé"
 
-#. module: sale_eshop
-#: view:res.partner:0
-msgid "Prevent User to use eShop"
-msgstr "Empêcher l'utilisateur d'utiliser la eBoutique"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
+msgid "Pending"
+msgstr "En cours"
 
-#. module: sale_eshop
-#: field:res.company,eshop_pricelist_id:0
-msgid "Pricelist Used on eShop"
-msgstr "Liste de prix utilisée pour la eBoutique"
+#. module: sale_recovery_moment
+#: selection:sale.recovery.moment,state:0
+#: selection:sale.recovery.moment.group,state:0
+msgid "Pending Recovery"
+msgstr "Récupération en cours"
 
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_product_product
-#, python-format
-msgid "Product"
-msgstr "Article"
+#. module: sale_recovery_moment
+#: selection:sale.recovery.moment,state:0
+#: selection:sale.recovery.moment.group,state:0
+msgid "Pending Sale"
+msgstr "Vente en cours"
 
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_product_uom
-#, python-format
-msgid "Product Unit of Measure"
-msgstr "Unité de mesure du produit"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__place_id
+msgid "Place"
+msgstr "Lieu"
 
-#. module: sale_eshop
-#: view:eshop.category:0
-#: field:eshop.category,product_ids:0
-msgid "Products"
-msgstr "Articles"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__day_delay
+msgid "Please set a positive number here.\n"
+"The wizard will duplicate the current group moving forwar dall the dates by the delay."
+msgstr "Merci de renseigner un nombre positif.\n"
+"Le Wizard va dupliquer le groupe en changeant les dates par le délai indiqué."
 
-#. module: sale_eshop
-#: model:ir.actions.act_window,name:sale_eshop.action_product_product
-#: model:ir.ui.menu,name:sale_eshop.menu_product_product_3
-#: view:product.product:0
-msgid "Products (eShop)"
-msgstr "Articles (eBoutique)"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__quota_description
+msgid "Quota Description"
+msgstr "Description du Quota"
 
-#. module: sale_eshop
-#: field:eshop.category,product_qty:0
-msgid "Products Quantity"
-msgstr "Quantité d'articles"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_order__recovery_group_id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__group_id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_stock_picking__recovery_group_id
+msgid "Recovery Group"
+msgstr "Groupe de retraits"
 
-#. module: sale_eshop
-#: field:res.company,eshop_list_view_enabled:0
-msgid "Provide a List view to realize quick purchase."
-msgstr "Fourni une vue liste pour réaliser des achats rapides"
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_sale_recovery_moment_group_wizard_duplicate
+msgid "Recovery Group Duplication Wizard"
+msgstr "Assistant de duplication de groupes de retrait"
 
-#. module: sale_eshop
-#: field:product.product,eshop_rounded_qty:0
-msgid "Rounded Quantity for eShop"
-msgstr "Arrondie en Quantité sur la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_sale_recovery_moment_group
+msgid "Recovery Groups"
+msgstr "Groupes de retraits"
 
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_sale_order
-#, python-format
-msgid "Sales Order"
-msgstr "Commande de ventes"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_order_form
+msgid "Recovery Information"
+msgstr "Information sur le retrait"
 
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_sale_order_line
-#, python-format
-msgid "Sales Order Line"
-msgstr "Ligne de commandes de vente"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_order__recovery_moment_id
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_stock_picking__recovery_moment_id
+msgid "Recovery Moment"
+msgstr "Retrait"
 
-#. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_sale_shop
-#, python-format
-msgid "Sales Shop"
-msgstr "Magasin"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_sale_recovery_moment_group
+#: model:ir.ui.menu,name:sale_recovery_moment.menu_sale_recovery_moment_group
+msgid "Recovery Moment Groups"
+msgstr "Groupes de récupération"
 
-#. module: sale_eshop
-#: view:res.partner:0
-msgid "Send Credentials"
-msgstr "Envoyer les identifiants"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__moment_ids
+#: model:ir.ui.menu,name:sale_recovery_moment.menu_sale_recovery_moment
+msgid "Recovery Moments"
+msgstr "Moments de récupération"
 
-#. module: sale_eshop
-#: field:eshop.category,sequence:0
-msgid "Sequence"
-msgstr "Séquence"
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_sale_recovery_place
+msgid "Recovery Place"
+msgstr "Lieu de retrait"
 
-#. module: sale_eshop
-#: view:product.product:0
-#: view:res.partner:0
-msgid "Set On eShop"
-msgstr "Paramétré dans la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_sale_recovery_place
+#: model:ir.ui.menu,name:sale_recovery_moment.menu_sale_recovery_place
+msgid "Recovery Places"
+msgstr "Lieux de récupération"
 
-#. module: sale_eshop
-#: field:res.company,eshop_image_small:0
-msgid "Small Image for the eShop Menu"
-msgstr "Petite image pour le menu de la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.module.category,name:sale_recovery_moment.module_category_recovery
+msgid "Recovery Sales"
+msgstr "Ventes avec Récupération"
 
-#. module: sale_eshop
-#: field:eshop.category,image_small:0
-msgid "Small-sized image"
-msgstr "Image de petite taille"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "S.O. Qty"
+msgstr "# BdC"
 
-#. module: sale_eshop
-#: field:product.product,eshop_start_date:0
-msgid "Start Date of Sale"
-msgstr "Date de Début de vente"
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_sale_order
+msgid "Sale Order"
+msgstr "Bon de commande"
 
-#. module: sale_eshop
-#: field:res.partner,eshop_state:0
-msgid "State on eShop"
-msgstr "Etat dans la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_2_sale_order
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_sale_order
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__order_ids
+msgid "Sale Orders"
+msgstr "Ventes"
 
-#. module: sale_eshop
-#: code:_description:0
-#, python-format
-msgid "Tax"
-msgstr "Taxe"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__order_qty
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__order_qty
+msgid "Sale Orders Quantity"
+msgstr "Nombre de ventes"
 
-#. module: sale_eshop
-#: selection:product.product,eshop_state:0
-msgid "Temporarily Disabled"
-msgstr "Désactivé temporairement"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "See"
+msgstr "Voir"
 
-#. module: sale_eshop
-#: field:res.company,eshop_home_text:0
-msgid "Text for the eShop Home Page"
-msgstr "Texte pour la page d'accueil de la eBoutique"
+#. module: sale_recovery_moment
+#: model:product.product,name:sale_recovery_moment.product_shipping_cost
+#: model:product.template,name:sale_recovery_moment.product_shipping_cost_product_template
+msgid "Shipping Cost"
+msgstr "Frais de livraison"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/product_product.py:46
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__shipping_product_id
+msgid "Shipping Cost Product"
+msgstr "Article pour les frais de livraison"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__short_name
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__short_name
+msgid "Short Name"
+msgstr "Nom court"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__specific_max_sale_date
+msgid "Specific Maximum date for the Sale"
+msgstr "Date maximum spécifique pour la vente"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__specific_min_sale_date
+msgid "Specific Minimum date for the Sale"
+msgstr "Date minimum spécifique pour la vente"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__state
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__state
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__state_id
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "State"
+msgstr "État"
+
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_stock_move
+msgid "Stock Move"
+msgstr "Mouvement de stock"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__street
+msgid "Street"
+msgstr "Rue"
+
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "Street..."
+msgstr "Rue..."
+
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "Street...(Complement)"
+msgstr "Rue...(Complément)"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__street2
+msgid "Street2"
+msgstr "Rue 2"
+
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:284
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:211
 #, python-format
 msgid "The Operator %s is not implemented !"
-msgstr "L'opérateur %s n'est pas implémenté !"
+msgstr "L'opérateur %s n'est pas implémenté' !"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order.py:119
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:331
 #, python-format
-msgid "The Shopping Cart has been successfully deleted."
-msgstr "Le panier a été supprimé avec succès"
+msgid "The minimum Date of Recovery must be before the maximum Date of Recovery."
+msgstr "La date de début de récupération doit précéder la date de fin de récupération."
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order.py:125
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:259
 #, python-format
-msgid "The line has been successfully deleted"
-msgstr "La ligne a été supprimée avec succès"
+msgid "The minimum Date of Sale must be before the maximum Date of Sale."
+msgstr "La date de début de vente doit précéder la date de fin de vente."
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/product_product.py:93
-#, python-format
-msgid "This arg %s is not implemented !"
-msgstr "L'argument %s n'est pas implémenté !"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+msgid "Total"
+msgstr "Total"
 
-#. module: sale_eshop
-#: field:res.company,eshop_twitter_url:0
-msgid "Twitter URL"
-msgstr "URL Twitter"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__excl_total
+msgid "Total (VAT Excluded)"
+msgstr "Total (HT)"
 
-#. module: sale_eshop
-#: selection:product.product,eshop_state:0
-msgid "Unavailable for Sale"
-msgstr "Indisponible à la vente"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__incl_total
+msgid "Total (VAT Included)"
+msgstr "Total (TTC)"
 
-#. module: sale_eshop
-#: field:product.product,eshop_unpack_qty:0
-msgid "Unpack Quantity for eShop"
-msgstr "Quantité de déconditionement pour la eBoutique"
+#. module: sale_recovery_moment
+#: model:ir.model,name:sale_recovery_moment.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
 
-#. module: sale_eshop
-#: field:product.product,eshop_unpack_surcharge:0
-msgid "Unpack Surcharge for eShop"
-msgstr "Supplément de déconditionement pour la eBoutique"
+#. module: sale_recovery_moment
+#: model:product.product,uom_name:sale_recovery_moment.product_shipping_cost
+#: model:product.template,uom_name:sale_recovery_moment.product_shipping_cost_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
 
-#. module: sale_eshop
-#: model:res.groups,name:sale_eshop.res_groups_eshop_user
+#. module: sale_recovery_moment
+#: model:res.groups,name:sale_recovery_moment.recovery_user
 msgid "User"
 msgstr "Utilisateur"
 
-#. module: sale_eshop
-#: field:res.company,eshop_vat_included:0
-msgid "VAT Included for eShop"
-msgstr "Prix TTC sur la eBoutique"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "V.D.O. Qty"
+msgstr "# BL OK"
 
-#. module: sale_eshop
-#: selection:eshop.category,type:0
-msgid "View"
-msgstr "Vue"
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "V.S.O. Qty"
+msgstr "# BdC OK"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:138
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_2_stock_picking_valid
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_stock_picking_valid
+msgid "Valid Delivery Orders"
+msgstr "Bons de livraison valides"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__valid_picking_qty
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__valid_picking_qty
+msgid "Valid Delivery Orders Quantity"
+msgstr "Nombre de bons de livraison valides"
+
+#. module: sale_recovery_moment
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_2_sale_order_valid
+#: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_sale_order_valid
+msgid "Valid Sale Orders"
+msgstr "Ventes valides"
+
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__valid_order_qty
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__valid_order_qty
+msgid "Valid Sale Orders Quantity"
+msgstr "Nombre de ventes valides"
+
+#. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:163
 #, python-format
-msgid "You can not change this values because the eShop datas can not be updated."
-msgstr "Vous ne pouvez pas changer ces valeurs car les données de la eBoutique ne peuvent être mises à jour."
+msgid "You can not delete this Recovery Moment because there is Valid Sale Orders associated.\n"
+"Please move Sale orders on an other Recovery Moment and contact your customers."
+msgstr "Vous ne pouvez pas supprimer ce moment de récupération car des bons de commandes valides lui sont associés.\n"
+"Veuillez déplacer ces bons de commandes dans un autre moment de récupération et contacter vos clients."
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:147
-#: code:addons/sale_eshop/model/model.py:167
-#, python-format
-msgid "You can not change this values because the eShop datas can not be updated. \n"
-" - Code : %s"
-msgstr "Vous ne pouvez pas changer ces valeurs car les données de la eBoutique ne peuvent être mises à jour. \n"
-" - Code : %s"
+#. module: sale_recovery_moment
+#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__zip
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_place_form
+msgid "ZIP"
+msgstr "Code postal"
 
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:197
-#, python-format
-msgid "You cannot delete the category '%s' because it contents %s child categories. Please move child categories to another Category First."
-msgstr "Vous ne pouvez pas supprimer la catégorie '%s' car elle contient %s catégories enfants. Veuillez déplacer d'abord les catégories enfants dans une autre catégorie."
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:204
-#, python-format
-msgid "You cannot delete the category '%s' because it contents %s products. Please move products to another Category First."
-msgstr "Vous ne pouvez pas supprimer cette catégorie '%s' car elle contient %s articles. Veuillez déplacer d'abord les articles dans une autre catégorie."
-
-#. module: sale_eshop
-#: model:ir.module.category,name:sale_eshop.module_category_eshop
-#: view:res.company:0
-msgid "eShop"
-msgstr "eBoutique"
-
-#. module: sale_eshop
-#: model:email.template,subject:sale_eshop.eshop_send_crendential_template
-msgid "eShop Access"
-msgstr "Accès à la eBoutique"
-
-#. module: sale_eshop
-#: view:eshop.category:0
-#: model:ir.actions.act_window,name:sale_eshop.action_eshop_category
-#: model:ir.ui.menu,name:sale_eshop.menu_eshop_category
-msgid "eShop Categories"
-msgstr "Catégories eBoutique"
-
-#. module: sale_eshop
-#: field:product.product,eshop_category_id:0
-msgid "eShop Category"
-msgstr "Catégorie eBoutique"
-
-#. module: sale_eshop
-#: model:ir.ui.menu,name:sale_eshop.menu_eshop
-#: view:res.company:0
-#: view:res.partner:0
-msgid "eShop Sale"
-msgstr "Vente eBoutique"
-
-#. module: sale_eshop
-#: field:product.product,eshop_state:0
-msgid "eShop State"
-msgstr "Etat dans la eBoutique"
-
-#. module: sale_eshop
-#: field:res.company,eshop_title:0
-msgid "eShop Title"
-msgstr "Title de la eBoutique"
-
-#. module: sale_eshop
-#: field:res.company,eshop_url:0
-msgid "eShop URL"
-msgstr "URL de la eBoutique"
-
-#. module: sale_eshop
-#: view:wizard.change.product.category:0
-msgid "or"
-msgstr "ou"
+#. module: sale_recovery_moment
+#: model:product.product,weight_uom_name:sale_recovery_moment.product_shipping_cost
+#: model:product.template,weight_uom_name:sale_recovery_moment.product_shipping_cost_product_template
+msgid "kg"
+msgstr "kg"
