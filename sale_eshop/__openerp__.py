@@ -13,6 +13,7 @@
     'depends': [
         'mail',
         'product',
+        'email_template',
         'sale',
         'sale_food',
         'sale_order_line_price_subtotal_gross',
