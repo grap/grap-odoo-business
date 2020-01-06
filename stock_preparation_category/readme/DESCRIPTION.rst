@@ -1,2 +1,5 @@
-This module extends the functionality of sale module to provide extra models
-to handle sales with organized by the saler in a calendar.
+This module extends the functionality of stock module to provide an
+extra concept "Preparation Categories", on the product models. (template and variants)
+
+There categories are usefull for the preparators of the pickings to identify
+the products that are robust, fragile, etc.

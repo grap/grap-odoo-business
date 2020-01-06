@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Delivery Slip Part-->
+    <template id="report_stock_picking_delivery_slip" inherit_id="stock.report_delivery_document">
+
+
+        <!-- not done picking -->
+        <xpath expr="//table[2]/thead/tr/th" position="before">
+            <th groups="stock.preparation_user"><strong>Category</strong></th>
+        </xpath>
+
+        <xpath expr="//table[2]/tbody/tr/td/span[@t-field='move.product_id']/.." position="before">
+            <td t-attf-style="background-color: {{ move.preparation_categ_id.color }}"
+                groups="stock.preparation_user">
+                <span t-field="move.preparation_categ_id.code"/>
+            </td>
+        </xpath>
+
+        <!-- Done picking -->
+        <xpath expr="//table[3]/thead/tr/th" position="before">
+            <th groups="stock.preparation_user"><strong>Category</strong></th>
+        </xpath>
+
+        <xpath expr="//table[3]/tbody/tr/td/span[@t-field='move_line.product_id']/.." position="before">
+            <td t-attf-style="background-color: {{ move_line.product_id.preparation_categ_id.color }}"
+                groups="stock.preparation_user">
+                <span t-field="move_line.product_id.preparation_categ_id.code"/>
+            </td>
+        </xpath>
+
+    </template>
+
+
+    <!-- Picking Operations Part-->
+    <template id="report_stock_picking_picking_operations" inherit_id="stock.report_picking">
+
+        <xpath expr="//table[2]/thead/tr/th" position="before">
+            <th groups="stock.preparation_user"><strong>Category</strong></th>
+        </xpath>
+
+        <xpath expr="//table[2]/tbody//span[@t-field='ml.product_id.display_name']/.." position="before">
+            <td t-attf-style="background-color: {{ move.preparation_categ_id.color }}"
+                groups="stock.preparation_user">
+                <span t-field="ml.product_id.preparation_categ_id.code"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

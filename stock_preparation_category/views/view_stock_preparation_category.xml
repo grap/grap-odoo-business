@@ -4,7 +4,7 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_stock_preparation_category_tree" model="ir.ui.view">
         <field name="model">stock.preparation.category</field>
@@ -15,7 +15,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="code"/>
                 <field name="name"/>
                 <field name="company_id" groups="base.group_multi_company"/>
-                <field name="active" invisible="1"/>
+                <field name="active" widget="boolean_toggle"/>
             </tree>
         </field>
     </record>
@@ -24,25 +24,33 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">stock.preparation.category</field>
         <field name="arch" type="xml">
             <form>
+                <header/>
                 <sheet>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
                         <h2><field name="name"/></h2>
                     </div>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="%(stock_preparation_category.action_stock_preparation_category_2_product_product)d"
+                            type="action"
+                            icon="fa-sitemap" class="oe_stat_button">
+                            <field string="Products" name="product_qty" widget="statinfo" />
+                        </button>
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+
                     <group col="4">
                         <field name="sequence"/>
                         <field name="code"/>
                         <field name="color" widget="color"/>
-                        <field name="active"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
-                    <notebook>
-                        <page string="Products">
-                            <group col="4">
-                                <field name="product_ids" nolabel="1" colspan="4"/>
-                            </group>
-                        </page>
-                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -53,11 +61,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="res_model">stock.preparation.category</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 
     <menuitem id="menu_stock_preparation_category"
-        sequence="1"
-        parent="menu_sale_preparation_config"
+        sequence="15"
+        parent="stock.menu_product_in_config_stock"
         action="action_stock_preparation_category"/>
 
-</data></openerp>
+</odoo>

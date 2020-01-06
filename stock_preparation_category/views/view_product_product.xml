@@ -4,26 +4,35 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_product_product_form" model="ir.ui.view">
         <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_normal_form_view" />
-        <field name="arch" type="xml">
-            <field name="state" position="after">
-                <field name="prepare_categ_id" groups="preparation_user"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="view_product_product_search" model="ir.ui.view">
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_search_form_view"/>
-        <field name="arch" type="xml">
+         <field name="inherit_id" ref="product.product_normal_form_view" />
+         <field name="arch" type="xml">
             <field name="categ_id" position="after">
-                <field name="prepare_categ_id" groups="preparation_user"/>
+                <field name="preparation_categ_id"  groups="stock_preparation_category.preparation_user"/>
             </field>
         </field>
     </record>
 
-</data></openerp>
+    <record id="view_product_product_form_variant" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view" />
+        <field name="arch" type="xml">
+            <field name="attribute_value_ids" position="after">
+                <field name="preparation_categ_id"  groups="stock_preparation_category.preparation_user"/>
+            </field>
+        </field>
+    </record>
+
+
+
+    <record id="action_stock_preparation_category_2_product_product" model="ir.actions.act_window">
+        <field name="name">Product Variants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="context">{'search_default_preparation_categ_id': [active_id], 'default_preparation_categ_id': active_id}</field>
+    </record>
+
+</odoo>
