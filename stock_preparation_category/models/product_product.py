@@ -7,8 +7,9 @@ from openerp import fields, models
 
 
 class ProductProduct(models.Model):
-    _inherit = 'product.product'
+    _inherit = "product.product"
 
     preparation_categ_id = fields.Many2one(
-        comodel_name='stock.preparation.category',
-        string='Preparation Category')
+        comodel_name="stock.preparation.category",
+        string="Preparation Category",
+    )

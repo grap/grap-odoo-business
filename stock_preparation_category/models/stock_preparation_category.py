@@ -7,8 +7,8 @@ from openerp import api, fields, models
 
 
 class StockPreparationCategory(models.Model):
-    _name = 'stock.preparation.category'
-    _order = 'sequence, name'
+    _name = "stock.preparation.category"
+    _order = "sequence, name"
 
     # Default Section
     @api.model
@@ -16,20 +16,24 @@ class StockPreparationCategory(models.Model):
         return self.env.user.company_id.id
 
     # Column Section
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string="Name", required=True)
 
-    sequence = fields.Integer(string='Sequence', required=True)
+    sequence = fields.Integer(string="Sequence", required=True)
 
-    code = fields.Char(string='Code', required=True, size=5)
+    code = fields.Char(string="Code", required=True, size=5)
 
-    color = fields.Char(string='Color', required=True, default='#FFFFFF')
+    color = fields.Char(string="Color", required=True, default="#FFFFFF")
 
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company',
-        default=_default_company_id)
+        comodel_name="res.company",
+        string="Company",
+        default=_default_company_id,
+    )
 
-    active = fields.Boolean(string='Active', default=True)
+    active = fields.Boolean(string="Active", default=True)
 
     product_ids = fields.One2many(
-        comodel_name='product.product', inverse_name='prepare_categ_id',
-        string='Products')
+        comodel_name="product.product",
+        inverse_name="prepare_categ_id",
+        string="Products",
+    )
