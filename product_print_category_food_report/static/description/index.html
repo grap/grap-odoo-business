@@ -369,8 +369,18 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/quentinDupont/grap-odoo-business/tree/12.0_ADD_prod_print_categ_food_report/product_print_category_food_report"><img alt="quentinDupont/grap-odoo-business" src="https://img.shields.io/badge/github-quentinDupont%2Fgrap--odoo--business-lightgray.png?logo=github" /></a></p>
 <p>This module extends product_print_category by adding nice reports food related.
-At the moment, we create five different pricetag reports :
-- Normal pricetag “classic format” 76x31mm</p>
+At the moment, we create five different pricetag reports.</p>
+<p>Specifications :</p>
+<ul class="simple">
+<li>We add a <tt class="docutils literal">pricetag_type</tt> which permits to assign a color for the pricetags.</li>
+<li>We can choose a second unity of measure in order to display the price with a more appropriate unity (for example for very expensive products)</li>
+<li>Thanks to product_food module, ingredients, allergens are displayed in bulk reports</li>
+<li>Thanks to product_label and product_origin, we also display labels and origin</li>
+</ul>
+<p>Here is what’s look like the reports :</p>
+<ul class="simple">
+<li>Normal pricetag “classic format” 76x31mm</li>
+</ul>
 <div class="figure">
 <img alt="https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_prod_print_categ_food_report/product_print_category_food_report/static/img/pricetag_normal.png" src="https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_prod_print_categ_food_report/product_print_category_food_report/static/img/pricetag_normal.png" />
 </div>
@@ -423,19 +433,15 @@ At the moment, we create five different pricetag reports :
 To make it wortk in your report :</p>
 <ol class="arabic simple">
 <li>Update wkhtmltopdf to version 0.12.5</li>
-<li><dl class="first docutils">
-<dt>Add new system parameter:</dt>
-<dd>Key: web.base.url.freeze
-Value: True</dd>
-</dl>
-</li>
-<li>Change your report definition by using web_basic_layout</li>
+<li>Add new system parameter : <tt class="docutils literal">Key: web.base.url.freeze Value: True</tt></li>
+<li>Change your report definition by using web_basic_layout <tt class="docutils literal">&lt;template&gt; &lt;t <span class="pre">t-call=&quot;web.basic_layout&quot;&gt;your</span> <span class="pre">things&lt;/t&gt;</span> &lt;/template&gt;</tt></li>
 </ol>
 </div>
 <div class="section" id="for-your-css">
 <h2><a class="toc-backref" href="#id3">For your css</a></h2>
 <p>To use custom css in report, we can use inline css or externalize css file (even scss).
 For this purpose, add your css file in web.report_assets_common</p>
+<p><tt class="docutils literal">&lt;template <span class="pre">id=&quot;id_css_for_my_report&quot;</span> <span class="pre">inherit_id=&quot;web.report_assets_common&quot;&gt;</span> &lt;xpath <span class="pre">expr=&quot;.&quot;</span> <span class="pre">position=&quot;inside&quot;&gt;</span> &lt;link <span class="pre">href=&quot;/product_print_category_food_report/static/css/my_css.scss&quot;</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">type=&quot;text/scss&quot;/&gt;</span> &lt;/xpath&gt; &lt;/template&gt;</tt></p>
 <p>Beware, all css file will be shared, so you can’t have the same css calling rules for two differents results.
 You can use scss nesting for that purpose.</p>
 </div>

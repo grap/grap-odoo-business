@@ -6,8 +6,8 @@ To make it wortk in your report :
 
 1. Update wkhtmltopdf to version 0.12.5
 2. Add new system parameter : ``Key: web.base.url.freeze Value: True``
-3. Change your report definition by using web_basic_layout
-``<template> <t t-call="web.basic_layout">your things</t> </template>``
+3. Change your report definition by using web_basic_layout ``<template> <t t-call="web.basic_layout">your things</t> </template>``
+
 
 For your css
 ~~~~~~~~~~~~

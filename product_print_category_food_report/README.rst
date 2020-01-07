@@ -24,7 +24,7 @@ At the moment, we create five different pricetag reports.
 
 Specifications :
 
-- We add a `pricetag_type` which permits to assign a color for the pricetags.
+- We add a ``pricetag_type`` which permits to assign a color for the pricetags.
 
 - We can choose a second unity of measure in order to display the price with a more appropriate unity (for example for very expensive products)
 
@@ -70,8 +70,8 @@ To make it wortk in your report :
 
 1. Update wkhtmltopdf to version 0.12.5
 2. Add new system parameter : ``Key: web.base.url.freeze Value: True``
-3. Change your report definition by using web_basic_layout
-``<template> <t t-call="web.basic_layout">your things</t> </template>``
+3. Change your report definition by using web_basic_layout ``<template> <t t-call="web.basic_layout">your things</t> </template>``
+
 
 For your css
 ~~~~~~~~~~~~

@@ -3,7 +3,7 @@ At the moment, we create five different pricetag reports.
 
 Specifications :
 
-- We add a `pricetag_type` which permits to assign a color for the pricetags.
+- We add a ``pricetag_type`` which permits to assign a color for the pricetags.
 
 - We can choose a second unity of measure in order to display the price with a more appropriate unity (for example for very expensive products)
 
