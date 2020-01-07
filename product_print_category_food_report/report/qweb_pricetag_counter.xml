@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- We add css in assets common, file shared for custom reports -->
+    <template id="css_qweb_template_counter" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/product_print_category_food_report/static/css/pricetag_base.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/product_print_category_food_report/static/css/pricetag_counter.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+
+    <template id="qweb_template_pricetag_counter">
+        <t t-call="web.basic_layout">
+            <t t-foreach="category_data['lines']" t-as="line">
+                <t t-foreach="line.quantity" t-as="q">
+                    <div class="counter_pricetag floating_box">
+                            <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
+                                <t t-esc="line.product_id.name"/>
+                            </div>
+                            <!-- Price -->
+                            <div class="price_area">
+                                <t t-if="line.product_id.pricetag_special_quantity_price">
+                                    <div class="second_product_price">
+                                        <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
+                                            <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="product_price">
+                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                        <!-- /KG OU /PCE -->
+                                        <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><span class="product_sell_by_weight">/KG</span></t>
+                                        <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span class="product_sell_by_weight">/PCE</span></t>
+                                    </div>
+                                </t>
+                            </div>
+                            <div class="label_bottom">
+                                <!-- Product labels -->
+                                <span class="product_labels">
+                                    <t t-foreach="line.product_id.label_ids" t-as="label">
+                                            <img class="product_label" t-attf-src="data:image/*;base64,{{label.image}}" t-att-alt="label.name"/>
+                                     </t>
+                                </span>
+                                <!-- Price per uom -->
+                                <span class="product_price_per_uom_price_area">
+                                    <t t-if="not line.product_id.pricetag_special_quantity_price">
+                                        <!-- Prix au Kg ou au L -->
+                                        <t t-if="line.product_id.pricetag_is_second_price">
+                                            <span class="product_price_per_uom_price">
+                                                <t t-if="line.product_id.pricetag_is_second_price">
+                                                    <t t-esc="line.product_id.pricetag_second_price_uom_text"/>:
+                                                    <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b>
+                                                </t>
+                                            </span>
+                                        </t>
+                                    </t>
+                                    <t t-if="line.product_id.pricetag_special_quantity_price">
+                                        <span class="product_price_per_uom_price_only">
+                                            <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Prix au litre : </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span>Prix à la pièce : </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Prix au kilo : </span></t>
+                                            <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                        </span>
+                                    </t>
+                                </span>
+                            </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
