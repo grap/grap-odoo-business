@@ -1,3 +1,6 @@
 account-invoicing
 l10n-france
 web
+
+grap-odoo-incubator	https://github.com/quentinDupont/grap-odoo-incubator	12.0_product_print_category
+grap-odoo-business	https://github.com/legalsylvain/grap-odoo-business	12.0-IMP-food_modules
