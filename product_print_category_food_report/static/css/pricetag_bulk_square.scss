@@ -1,0 +1,131 @@
+.bulk_pricetag_square {
+    border: 2px solid black; 
+    background-color:white;
+    width:11.40cm; height:11.37cm;
+    margin : 0 -0.1cm 0.05cm 0;
+
+    .label_top {
+        display : inline-block;
+        overflow: hidden;
+        height : 2cm;
+        width : 100%;
+        border-bottom: 3px solid black;
+    }
+    .label_left {
+        width : 6cm;
+        border-right: 3px solid;
+        height: 9.35cm;
+        position: relative;
+        bottom: 2px;
+        padding-top: 2px;
+    }
+    .label_left_div {
+        padding: 5px 8px;
+        overflow: hidden;
+    }
+    .label_right {
+        width: 5cm;
+        display: inline-block;
+        padding: 4px 8px;
+        font-size : 15px;
+    }
+    .company_logo {
+        display: inline-block;
+        width : 26%;
+        height: 100%;
+        border-right: 3px solid black;
+        text-align: center;
+    }
+    img.company_logo_image {
+        height: 1.6cm;
+        max-width: 2.6cm;
+        position: relative; top: 7px; left: 1px;
+    }
+    .product_name{
+        font-size:18px; font-weight:bold;
+        text-transform: uppercase;
+        overflow: hidden;
+        display: inline-block;
+        width : 73%; height: 1.3cm;
+        padding-left: 7px;
+        vertical-align: top;
+        line-height: 1.3em;
+        position: relative; top: 1.2em;
+        text-align: center;
+    }
+    .label_ingredients {
+        font-size: 14px;
+        line-height: 1.2em;
+        height: 5.1cm;
+    }
+    .label_allergens {
+        font-size: 12px;
+        height: 2cm;
+    }
+    .label_bulk_infos {
+        font-size: 13px;
+        line-height: 1.5em;
+        height: 1.3cm;
+    }
+    .label_maker, .label_origin {
+        height : 1.7cm;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+    .product_price {
+        position: relative;
+        text-align: center; 
+    }
+    .product_price_per_uom_price_only {
+        font-size: 12px;
+        width: 100%; text-align: center;
+        position: relative; bottom: 5px;
+    }
+    .product_price_per_uom_price_big {
+        height: 3cm; width: 5.33cm;
+        overflow: hidden;
+        word-wrap: normal;
+        border-top: 3px solid;
+        position: relative;
+        top: 10px; right: 13px;
+    }
+    .product_price_big {
+        position: relative; top: 27px;
+        font-size: 40px; text-align: center;
+    }
+    span.product_uom {
+        font-size:22px;
+    }
+    .product_uom_special {
+        font-size: 15px;
+        position: relative;
+        bottom: 8px; font-weight: bold;
+    }
+    .product_labels, .organic_text{
+        overflow: hidden; float:left;
+        text-align:left;
+    }            
+    .product_labels{
+        padding-left : 2px; margin-top: 2px;
+        font-size:9px;  
+        height:1.5cm; width: 100%;
+    }
+    img.product_label{
+        width:1.5cm; height:1.5cm;
+    }
+    .organic_text{
+        font-size: 9px;
+    }
+    .wrap_barcode_image{
+        overflow: hidden;
+        position: relative;
+        height: 1.1cm;
+        bottom: 21px;
+        right: 5px;
+    }
+    .wrap_barcode_image > img{
+        width: 5.5cm;
+        position: relative;
+        top: 0.3cm;
+    }
+}

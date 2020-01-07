@@ -1,0 +1,72 @@
+.square_pricetag {
+    border: 1px solid grey; 
+    background-color:white;
+    width:4.91cm; height:4.42cm;
+    margin : 0 -0.2cm -0.1cm 0;
+    padding : 5px;
+
+    .product_labels{
+        max-width: 0.8cm; max-height: 2cm;
+        float:left; margin-top: 0.1cm;
+        overflow: hidden;
+    }
+    img.product_label{
+        width:0.7cm; height:0.7cm;
+    }
+    .price_area {
+        display: initial;
+        position: relative;
+        bottom: 0.2cm;
+    }
+    .product_name{
+        font-size:12px; font-weight:bold;
+        padding-bottom : 6px; padding-top : 5px;
+        margin-top: 0.25cm;
+        overflow: hidden; height: 1.1cm;
+        text-align: center; 
+    }
+    .pricetag_second_product_price {
+        font-size: 25px; font-weight: bold;
+        text-align: center;
+        overflow: hidden;
+    }
+    .pricetag_second_price_uom_text {
+        font-size: 13px; font-weight: bold;
+        text-align: center; line-height: 0.5em;
+    }
+    .product_price {
+        font-size: 25px; font-weight: bold;
+        line-height: 1cm;
+        position: relative; right: 0.2cm;
+        text-align: center;
+        overflow: hidden;
+    }
+    .product_price_per_uom_price {
+        text-align: center;
+        font-size:9px;
+        height: 0.5cm; 
+        position : relative; right: 0.2cm;
+        overflow : hidden;
+    }
+    .product_price_per_uom_price_only {
+        font-size: 9px; line-height: 3em;
+        width: 100%; text-align: center;
+    }
+    .product_sell_by_weight {
+        font-size: 11px;
+        text-align: center;
+        position: relative;
+        bottom: 0.7em;
+        right: 0.8em;
+    }
+
+    .wrap_barcode_image{
+        overflow: hidden;
+        position: relative;
+        height: 0.5cm; bottom: 0.1cm;
+    }
+    .wrap_barcode_image > img{
+        width: 4.42cm;
+        position : relative; left: 0.2cm;
+    }
+}

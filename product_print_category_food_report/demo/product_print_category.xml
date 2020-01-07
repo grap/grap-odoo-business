@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="category_pricetag_normal" model="product.print.category">
+        <field name="product_ids" eval="[
+            (4, ref('product_origin.biere_pilat_75cl')),
+            (4, ref('product_food.product_biere_sans_gluten')),
+        ]" />
+    </record>
+
+    <record id="category_pricetag_bulk_selling_applimage" model="product.print.category">
+        <field name="product_ids" eval="[
+            (4, ref('chick_pea')),
+        ]" />
+    </record>
+
+    <record id="category_pricetag_bulk_selling" model="product.print.category">
+        <field name="product_ids" eval="[
+            (4, ref('green_lens')),
+        ]" />
+    </record>
+
+    <record id="category_pricetag_middle_square" model="product.print.category">
+        <field name="product_ids" eval="[
+            (4, ref('product_label.infusion_girl_power')),
+        ]" />
+    </record>
+
+    <record id="category_pricetag_counter" model="product.print.category">
+        <field name="product_ids" eval="[
+            (4, ref('organic_smoked_tofu')),
+        ]" />
+    </record>
+
+</odoo>

@@ -1,0 +1,104 @@
+.bulk_pricetag_long {
+    border: 2px solid black;
+    background-color:white;
+    width:6.37cm; height:12.38cm;
+    margin : 0 -0.1cm 0.05cm 0;
+
+    .label_top {
+        height: 2cm;
+    }
+    .label_middle {
+        padding: 0.1cm; height:6.5cm; 
+    }
+    .product_name{
+        font-size:18px; font-weight:bold;
+        text-transform: uppercase;
+        overflow: hidden;
+        display: inline-block;
+        width : 100%; height: 1.3cm;
+        vertical-align: top;
+        line-height: 1.3em;
+        position: relative; top: 0.8em;
+        text-align: center;
+    }
+    .font_middle {
+        font-size: 14px;
+    }
+    .font_small {
+        font-size: 10px;
+    }
+    .label_maker, .label_origin {
+        height : 1.1cm;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+    .label_ingredients {
+        height: 2.4cm;
+        margin-bottom: 0.1cm;
+        overflow: hidden;
+    }
+    .label_allergens {
+        height: 1.5cm;
+        overflow: hidden;
+    }
+    .product_labels, .organic_text{
+        overflow: hidden; float:left;
+        text-align:left;
+    }
+    .product_labels{
+        font-size:8px;  
+        height:1cm; width: 100%;
+        margin-top: 0.2cm;
+    }
+    img.product_label {
+        width:1cm; height:1cm;
+    }
+    .organic_text {
+        font-size: 7px; height: 0.5cm;
+    }
+    .label_price {
+        height: 2.55cm; 
+    }
+    .product_price {
+        position: relative;
+        text-align: center; 
+    }
+    .product_price_per_uom_price_only {
+        font-size: 12px;
+        width: 100%; text-align: center;
+        position : relative; bottom : 0.7cm;
+    }
+    .product_price_per_uom_price_big {
+        width: 100%;
+        overflow: hidden;
+        word-wrap: normal;
+        border-top: 3px solid;
+    }
+    .product_price_big {
+        font-size: 30px; text-align: center;
+        position: relative; bottom: 0.2cm;
+    }
+    span.product_uom {
+        font-size:22px;
+    }
+    .product_uom_special {
+        font-size: 12px; font-weight: bold;
+        position: relative; bottom: 0.37cm;
+    }
+    .wrap_barcode_image{
+        overflow: hidden;
+        position: relative;
+        top: 0.1cm; left: 20px;
+    }
+    .wrap_barcode_image > img{
+        width: 5.5cm;
+        position: relative;
+        top: 0.6cm;
+    }
+    .wrap_product_code {
+        text-align: center;
+        position: relative;
+        top: 28px;
+        font-style: italic;
+    }
+}

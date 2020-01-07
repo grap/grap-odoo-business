@@ -1,0 +1,54 @@
+.counter_pricetag {
+    border: 1px solid grey; 
+    background-color:white;
+    width:11.6cm; height:6.8cm;
+    margin : 0 -0.2cm -0.1cm 0;
+    position: relative;
+
+    .floating_box {
+        display : inline-block;
+        vertical-align: top;
+    }
+    .product_name{
+        font-size:40px; font-weight:bold; line-height: 1em;
+        text-align: center;
+        margin-top: 1.2cm;
+        max-height: 2.15em; overflow: hidden;
+    }
+    .price_area {
+        margin-top: 10px;
+        text-align: center;
+    }
+    .label_bottom{
+        display: inline;
+        position: absolute;
+        bottom: 0.2cm;
+    }
+    span.product_price_per_uom_price_area {
+        width: 5cm;
+    }
+    span.product_labels{
+        width: 2cm;
+        margin-left: 0.2cm;
+    }
+    img.product_label{
+        width:1.5cm; height:1.5cm;
+    }
+    .pricetag_second_product_price {
+        font-size: 40px; font-weight: bold;
+        overflow: hidden; display: inline;
+    }
+    .pricetag_second_price_uom_text {
+        font-size: 20px; font-weight: bold;
+        line-height: 0.5em; display: inline
+    }
+    .product_price, .second_product_price {
+        font-size: 40px; font-weight: bold; display: inline;
+    }
+    span.product_price_per_uom_price, span.product_price_per_uom_price_only {
+        font-size: 25px;
+    }
+    span.product_sell_by_weight {
+        font-size: 40px;
+    }
+}
