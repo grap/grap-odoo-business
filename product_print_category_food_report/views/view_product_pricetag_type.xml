@@ -15,7 +15,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <notebook>
                         <group col="4">
                             <field name="name"/>
-                            <field name="company_id" groups="base.group_multi_company"/>
                             <field name="color"/>
                         </group>
                     </notebook>
@@ -30,7 +29,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <tree>
                 <field name="name"/>
                 <field name="color" widget="color"/>
-                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
     </record>

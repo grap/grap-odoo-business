@@ -10,12 +10,6 @@ class ProductPricetagType(models.Model):
     _name = "product.pricetag.type"
 
     # Column Section
-    company_id = fields.Many2one(
-        comodel_name="res.company",
-        string="Company",
-        default=lambda s: s._default_company_id(),
-    )
-
     name = fields.Char(string="Type Name", required=True)
 
     color = fields.Char(
