@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- We add css in assets common, file shared for custom reports -->
+    <template id="css_qweb_template_pricetag_bulk_long" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/product_print_category_food_report/static/css/pricetag_base.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/product_print_category_food_report/static/css/pricetag_bulk_long.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+
+    <template id="qweb_template_pricetag_bulk_long">
+        <t t-call="web.basic_layout">
+            <t t-foreach="category_data['lines']" t-as="line">
+                <t t-foreach="line.quantity" t-as="q">
+                    <div class="bulk_pricetag_long floating_box">
+                        <!-- Nom -->
+                        <div class="label_top" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }} !important;">
+                            <div class="product_name">
+                                <t t-esc="line.product_id.name"/>
+                            </div>
+                        </div>
+                        <div class="label_middle">
+                            <!-- Partie Info produits (origine, label) -->
+                            <div class="label_origin font_middle">
+                                <t t-if="line.product_id.pricetag_origin"><b>Origine</b><br/><t t-esc="line.product_id.pricetag_origin"/><br/></t>
+                                <t t-else=""><span class="empty_field"><b>Origine</b></span><br/></t>
+                            </div>
+                            <div class="label_maker font_small">
+                                <t t-if="line.product_id.maker_description"><b>Fabriquant·e</b><br/><t t-esc="line.product_id.maker_description"/><br/></t>
+                                <t t-else=""><span class="empty_field"><b>Fabriquant·e</b></span><br/></t>
+                            </div>
+                            <!-- Partie Info produits (ingrédient, allergenes) -->
+                            <div class="label_ingredients font_small">
+                                <t t-if="not line.product_id.ingredients == '&lt;p>&lt;br>&lt;/p>'"><b>Ingrédients</b><br/><t t-raw="line.product_id.ingredients"/></t>
+                                <t t-else=""><span class="empty_field"><b>Ingrédients</b></span><br/></t>
+                            </div>
+                            <div class="label_allergens font_small">
+                                <t t-if="not line.product_id.allergens == '&lt;p>&lt;br>&lt;/p>'"><b>Allergènes</b><br/><t t-raw="line.product_id.allergens"/><br/></t>
+                             </div>
+                            <!-- Logos -->
+                            <div class="product_labels font_middle">
+                                <t t-foreach="line.product_id.label_ids" t-as="label">
+                                    <img class="product_label" t-attf-src="data:image/*;base64,{{label.image}}" t-att-alt="label.name"/>
+                                </t>
+                            </div>
+                            <div class="organic_text font_middle">
+                                <t t-if="line.product_id.pricetag_organic_text">
+                                    <t t-esc="line.product_id.pricetag_organic_text"/><br/>
+                                </t>
+                            </div>
+                        </div>
+                        <!-- Prix -->
+                        <div class="label_bottom">
+                            <div class="label_price">
+                                <t t-if="line.product_id.pricetag_special_quantity_price">
+                                    <div class="product_price_per_uom_price_big">
+                                        <div class="product_price_big">
+                                            <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b><!-- 
+                                             --><div class="product_uom_special"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
+                                        </div>
+                                    </div>
+                                    <div class="product_price_per_uom_price_only floating_box">
+                                        <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Au L : </span></t>
+                                        <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Au kg : </span></t>
+                                        <t t-else=""><span>Pièce : </span></t>
+                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                    </div>
+                                </t>
+                                <t t-if="not line.product_id.pricetag_special_quantity_price">
+                                    <div class="product_price_per_uom_price_big">
+                                        <div class="product_price_big">
+                                            <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!-- 
+                                             --><t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><!-- 
+                                                 --><span class="product_uom">/L</span><br/>
+                                            </t>
+                                            <t t-else=""><span class="product_uom">/kg</span><br/></t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                            <!-- BARCODE -->
+                            <div class="label_barcode">
+                                <t t-if="line.product_id.barcode">
+                                    <div class="wrap_barcode_image">
+                                        <img t-if="len(line.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN13', line.product_id.barcode)"/>
+                                        <img t-elif="len(line.product_id.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN8', line.product_id.barcode)"/>
+                                        <img t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('Code128', line.product_id.barcode)"/>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="line.product_id.default_code">
+                                        <div class="wrap_product_code font_small">
+                                            Code interne : <b><t t-esc="line.product_id.default_code"/></b><br/>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
