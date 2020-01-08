@@ -37,7 +37,7 @@ class ProductProduct(models.Model):
 
     pricetag_second_price = fields.Float(
         compute="_compute_pricetag_second_price",
-        digits_compute=dp.get_precision("Product Price"),
+        digits=dp.get_precision("Product Price"),
         multi="pricetag_second_price",
     )
 
