@@ -8,6 +8,7 @@ from odoo import api, fields, models
 
 class ProductPricetagType(models.Model):
     _name = "product.pricetag.type"
+    _description = "Product pricetag type linked with a colour"
 
     # Column Section
     name = fields.Char(string="Type Name", required=True)
