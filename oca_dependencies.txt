@@ -1,3 +1,4 @@
 account-invoicing
+account-fiscal-rule
 l10n-france
 web
