@@ -18,6 +18,7 @@
         'sale_food',
         'sale_order_line_price_subtotal_gross',
         'sale_recovery_moment',
+        'product_standard_margin',
     ],
     'data': [
         'security/ir_rule.xml',
@@ -38,6 +39,7 @@
     'demo': [
         'demo/res_company.xml',
         'demo/eshop_category.xml',
+        'demo/account_tax.xml',
         'demo/product_product.xml',
         'demo/product_uom.xml',
         'demo/res_users.xml',

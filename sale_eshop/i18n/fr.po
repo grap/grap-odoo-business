@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* sale_eshop
+#   * sale_eshop
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-29 18:54+0000\n"
-"PO-Revision-Date: 2015-11-29 18:54+0000\n"
+"POT-Creation-Date: 2020-01-30 10:29+0000\n"
+"PO-Revision-Date: 2020-01-30 10:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,72 +19,92 @@ msgstr ""
 #: model:email.template,body_html:sale_eshop.eshop_send_crendential_template
 msgid "\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Hello, ${object.name}</p>\n"
-"    <p>Here is your credentials to access to the purchase website of ${object.company_id.name}:</p>\n"
-"    <p>\n"
-"        <ul>\n"
-"            <li>Web Site: ${object.company_id.eshop_url}</li>\n"
-"            <li>Login: ${object.email}</li>\n"
-"            <li>Password: ${object.eshop_password}</li>\n"
-"        </ul>\n"
-"    </p>\n"
+"<p>Hello, ${object.name}</p>\n"
+"<p>Here is your credentials to access to the purchase website of ${object.company_id.name}:</p>\n"
+"<p>\n"
+"    <ul>\n"
+"        <li>Web Site: ${object.company_id.eshop_url}</li>\n"
+"        <li>Login: ${object.email}</li>\n"
+"        <li>Password: ${object.eshop_password}</li>\n"
+"    </ul>\n"
+"</p>\n"
 "% if object.eshop_state == 'email_to_confirm':\n"
-"    Please finish your registration by clicking on this <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">activation link</a>.\n"
+"Please finish your registration by clicking on this <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">activation link</a>.\n"
 "% endif\n"
-"    <p>Have a nice day</p>\n"
+"<p>Have a nice day</p>\n"
 "</div>\n"
-"            "
+"        "
 msgstr "\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Bonjour, ${object.name}</p>\n"
-"    <p>Vous trouverez ci-dessous vos identifiants pour accéder au site de commande en ligne de ${object.company_id.name} :</p>\n"
-"    <p>\n"
-"        <ul>\n"
-"            <li>Site Web : ${object.company_id.eshop_url}</li>\n"
-"            <li>Login : ${object.email}</li>\n"
-"            <li>Mot de passe : ${object.eshop_password}</li>\n"
-"        </ul>\n"
-"    </p>\n"
+"<p>Bonjour, ${object.name}</p>\n"
+"<p>Vous trouverez ci-dessous vos identifiants pour accéder au site de commande en ligne de ${object.company_id.name} :</p>\n"
+"<p>\n"
+"    <ul>\n"
+"        <li>Site Web : ${object.company_id.eshop_url}</li>\n"
+"        <li>Identifiant : ${object.email}</li>\n"
+"        <li>Mot de passe : ${object.eshop_password}</li>\n"
+"    </ul>\n"
+"</p>\n"
 "% if object.eshop_state == 'email_to_confirm':\n"
-"    Merci de finir votre inscription en cliquant sur ce <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">lien d'activation</a>.\n"
+"Merci de finir votre inscription en cliquant sur ce <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">lien d'activation</a>.\n"
 "% endif\n"
 "<p>Bonne Journée.</p>\n"
 "</div>\n"
-"            "
+"        "
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:69
+#: code:addons/sale_eshop/models/sale_order_line.py:41
 #, python-format
 msgid " The quantity '%.3f' for the product '%s' is under the minimum quantity '%.3f'. A %d%% surcharge has been applied."
-msgstr " La quantité '%.3f' pour le produit '%s' est en deça de la quantité minimum '%.3f'. Un surcoût de %d%% pour le déconditionnement a été appliqué."
+msgstr " La quantité '%.3f' pour le produit '%s' est sous la quantité minimum '%.3f'. Un surcout de  %d%% a été appliqué."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:93
+#: code:addons/sale_eshop/models/eshop_category.py:104
+#, python-format
+msgid "%s / %s"
+msgstr "%s / %s"
+
+
+#. module: sale_eshop
+#: code:addons/sale_eshop/models/sale_order_line.py:65
 #, python-format
 msgid "'%.3f' is not a valid quantity for %s, the  minimum quantity is %'%.3f'. The quantity has been automatically increased in your shopping cart."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimum est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
+msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimale est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:78
+#: code:addons/sale_eshop/models/sale_order_line.py:50
 #, python-format
 msgid "'%.3f' is not a valid quantity for %s, the minimum quantity is '%.3f'. The quantity  has been automatically increased in your shopping cart."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimum est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
+msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimale est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order_line.py:87
-#: code:addons/sale_eshop/model/sale_order_line.py:103
+#: code:addons/sale_eshop/models/sale_order_line.py:59
+#: code:addons/sale_eshop/models/sale_order_line.py:75
 #, python-format
 msgid "'%.3f' is not a valid quantity for %s, the quantity has been rounded to '%.3f'."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité a été arrondie à '%.3f'."
+msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité a été arrondi à '%.3f'."
 
 #. module: sale_eshop
-#: constraint:eshop.category:0
-msgid "A 'view' Category can not belongs products;\n"
-"A 'normal' Category can not belongs childs categories.\n"
-""
-msgstr "Une catégorie de type 'vue' ne peux pas contenir de produits;\n"
-"Une catégorie de type 'normal' ne peux pas contenir de catégories.\n"
-""
+#: model:account.tax,name:sale_eshop.tax_15_vat_excl
+msgid "15% VAT EXCL."
+msgstr "15% HT"
+
+#. module: sale_eshop
+#: model:account.tax,name:sale_eshop.tax_15_vat_incl
+msgid "15% VAT INCL."
+msgstr "15% TTC"
+
+#. module: sale_eshop
+#: code:addons/sale_eshop/models/eshop_category.py:95
+#, python-format
+msgid "A 'normal' Category can not belongs childs categories"
+msgstr "Une catégorie 'normal' ne peut pas contenir de catégories enfant"
+
+#. module: sale_eshop
+#: code:addons/sale_eshop/models/eshop_category.py:92
+#, python-format
+msgid "A 'view' Category can not belongs products"
+msgstr "Une catégorie 'vue' ne peut pas contenir d'articles"
 
 #. module: sale_eshop
 #: help:eshop.category,type:0
@@ -97,11 +117,17 @@ msgid "Allow new customer to register on eShop"
 msgstr "Autorise un nouveau client à s'enregistrer sur la eBoutique"
 
 #. module: sale_eshop
-#: view:wizard.change.product.category:0
-msgid "Apply"
-msgstr "Valider"
+#: model:product.template,name:sale_eshop.product_apple_product_template
+msgid "Apple"
+msgstr "Apple"
 
 #. module: sale_eshop
+#: view:wizard.res.company.eshop.setting:sale_eshop.view_wizard_res_company_eshop_setting_form
+msgid "Apply Settings"
+msgstr "Appliquer le paramétrage"
+
+#. module: sale_eshop
+#: view:eshop.category:sale_eshop.view_eshop_category_form
 #: field:eshop.category,available_product_ids:0
 msgid "Available Products"
 msgstr "Articles disponibles"
@@ -117,14 +143,29 @@ msgid "Available for Sale"
 msgstr "Disponible à la vente"
 
 #. module: sale_eshop
+#: view:product.product:sale_eshop.view_product_product_search
+msgid "Available on eShop"
+msgstr "Disponible en eBoutique"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_banana_product_template
+msgid "Banana"
+msgstr "Banana"
+
+#. module: sale_eshop
 #: field:res.partner,eshop_active:0
 msgid "Can buy on eShop"
 msgstr "Peut acheter en ligne"
 
 #. module: sale_eshop
-#: view:wizard.change.product.category:0
+#: view:wizard.res.company.eshop.setting:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Cancel"
 msgstr "Annuler"
+
+#. module: sale_eshop
+#: view:eshop.category:sale_eshop.view_eshop_category_form
+msgid "Categories"
+msgstr "Categories"
 
 #. module: sale_eshop
 #: field:eshop.category,type:0
@@ -132,25 +173,8 @@ msgid "Category Type"
 msgstr "Type de catégorie"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:196
-#, python-format
-msgid "Category with Childs!"
-msgstr "Catégorie avec des enfants!"
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:203
-#, python-format
-msgid "Category with Products!"
-msgstr "Catégorie avec des articles!"
-
-#. module: sale_eshop
 #: field:eshop.category,child_ids:0
 msgid "Child Categories"
-msgstr "Catégories Enfants"
-
-#. module: sale_eshop
-#: view:eshop.category:0
-msgid "Childs Categories"
 msgstr "Catégories Enfants"
 
 #. module: sale_eshop
@@ -159,9 +183,7 @@ msgid "Childs Quantity"
 msgstr "Nombre de Catégories Enfants"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_res_company
-#, python-format
 msgid "Companies"
 msgstr "Sociétés"
 
@@ -171,16 +193,44 @@ msgid "Company"
 msgstr "Société"
 
 #. module: sale_eshop
-#: view:res.partner:0
+#: field:wizard.res.company.eshop.setting,company_id:0
+msgid "Company id"
+msgstr "Company id"
+
+#. module: sale_eshop
+#: view:res.partner:sale_eshop.view_res_partner_form
+#: view:res.partner:sale_eshop.view_res_partner_tree
 msgid "Confirm Customer"
 msgstr "Valider le client"
 
 #. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_res_country
+msgid "Country"
+msgstr "Pays"
+
+#. module: sale_eshop
+#: field:eshop.category,create_uid:0
+#: field:wizard.res.company.eshop.setting,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: sale_eshop
+#: field:eshop.category,create_date:0
+#: field:wizard.res.company.eshop.setting,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_res_partner
 #: model:ir.ui.menu,name:sale_eshop.menu_res_partner_3
-#: view:res.partner:0
+#: view:res.partner:sale_eshop.view_res_partner_tree
 msgid "Customers (eShop)"
 msgstr "Clients (eBoutique)"
+
+#. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_res_country_department
+msgid "Department"
+msgstr "Département"
 
 #. module: sale_eshop
 #: field:account.tax,eshop_description:0
@@ -189,9 +239,57 @@ msgid "Description for the eShop"
 msgstr "Description pour la eBoutique"
 
 #. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_apple_product_template
+msgid "Description of Apple"
+msgstr "Description of Apple"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_banana_product_template
+msgid "Description of Banana"
+msgstr "Description of Banana"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_garlic_product_template
+msgid "Description of Garlic"
+msgstr "Description of Garlic"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_leek_product_template
+msgid "Description of Leek"
+msgstr "Description of Leek"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_onion_product_template
+msgid "Description of Onions"
+msgstr "Description of Onions"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_pepper_product_template
+msgid "Description of Pepper"
+msgstr "Description of Pepper"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_potato_product_template
+msgid "Description of Potato"
+msgstr "Description of Potato"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_strawberry_product_template
+msgid "Description of Strawberry. 250 gram container"
+msgstr "Description of Strawberry. 250 gram container"
+
+#. module: sale_eshop
 #: selection:res.partner,eshop_state:0
 msgid "Disabled"
 msgstr "Désactivé"
+
+#. module: sale_eshop
+#: field:eshop.category,display_name:0
+#: field:eshop.mixin,display_name:0
+#: field:eshop.with.image.mixin,display_name:0
+#: field:wizard.res.company.eshop.setting,display_name:0
+msgid "Display Name"
+msgstr "Nom affiché"
 
 #. module: sale_eshop
 #: selection:res.partner,eshop_state:0
@@ -209,12 +307,9 @@ msgid "End Date of Sale"
 msgstr "Date de Fin de Vente"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:138
-#: code:addons/sale_eshop/model/model.py:147
-#: code:addons/sale_eshop/model/model.py:167
-#, python-format
-msgid "Error !"
-msgstr "Erreur !"
+#: field:product.product,eshop_description:0
+msgid "Eshop Description"
+msgstr "Description eBoutique"
 
 #. module: sale_eshop
 #: field:product.product,eshop_taxes_description:0
@@ -223,6 +318,7 @@ msgstr "Description des taxes sur la eBoutique"
 
 #. module: sale_eshop
 #: field:res.company,eshop_facebook_url:0
+#: field:wizard.res.company.eshop.setting,eshop_facebook_url:0
 msgid "Facebook URL"
 msgstr "URL Facebook"
 
@@ -232,7 +328,13 @@ msgid "First Purchase"
 msgstr "Premier achat"
 
 #. module: sale_eshop
-#: view:res.partner:0
+#: model:product.template,name:sale_eshop.product_garlic_product_template
+msgid "Garlic"
+msgstr "Garlic"
+
+#. module: sale_eshop
+#: view:res.partner:sale_eshop.view_res_partner_form
+#: view:res.partner:sale_eshop.view_res_partner_tree
 msgid "Generate Credentials"
 msgstr "Générer les identifiants"
 
@@ -247,19 +349,52 @@ msgid "Has eShop"
 msgstr "A une boutique en ligne"
 
 #. module: sale_eshop
+#: field:eshop.category,id:0
+#: field:eshop.mixin,id:0
+#: field:eshop.with.image.mixin,id:0
+#: field:wizard.res.company.eshop.setting,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_eshop
 #: field:eshop.category,image:0
 msgid "Image"
 msgstr "Image"
 
 #. module: sale_eshop
-#: field:res.company,eshop_home_image:0
-msgid "Image for the eShop Home Page"
-msgstr "Image pour la page d'accueil de la eBoutique"
+#: field:eshop.category,image_write_date:0
+#: field:eshop.with.image.mixin,image_write_date:0
+#: field:product.label,image_write_date:0
+#: field:product.product,image_write_date:0
+#: field:res.company,image_write_date:0
+msgid "Image write date"
+msgstr "Image write date"
 
 #. module: sale_eshop
-#: field:res.company,eshop_invalidation_cache_url:0
-msgid "Invalidation Cache URL"
-msgstr "URL d'invalidation du cache"
+#: field:eshop.category,image_write_date_hash:0
+#: field:eshop.with.image.mixin,image_write_date_hash:0
+#: field:product.label,image_write_date_hash:0
+#: field:product.product,image_write_date_hash:0
+#: field:res.company,image_write_date_hash:0
+msgid "Image write date hash"
+msgstr "Image write date hash"
+
+#. module: sale_eshop
+#: view:res.company:sale_eshop.view_res_company_form
+msgid "Images and Texts"
+msgstr "Images et textes"
+
+#. module: sale_eshop
+#: field:res.company,eshop_instagram_url:0
+#: field:wizard.res.company.eshop.setting,eshop_google_plus_url:0
+#: field:wizard.res.company.eshop.setting,eshop_instagram_url:0
+msgid "Instagram URL"
+msgstr "URL Instagram"
+
+#. module: sale_eshop
+#: field:res.company,eshop_invalidation_key:0
+msgid "Invalidation Key"
+msgstr "Clé d'invalidation"
 
 #. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_is_eshop
@@ -267,14 +402,39 @@ msgid "Is eShop"
 msgstr "Est eBoutique"
 
 #. module: sale_eshop
-#: help:eshop.category,image:0
-msgid "Limited to 1024x1024px."
-msgstr "Limité à 1024x1024px."
+#: field:eshop.category,__last_update:0
+#: field:eshop.mixin,__last_update:0
+#: field:eshop.with.image.mixin,__last_update:0
+#: field:wizard.res.company.eshop.setting,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: sale_eshop
+#: field:eshop.category,write_uid:0
+#: field:wizard.res.company.eshop.setting,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: sale_eshop
+#: field:eshop.category,write_date:0
+#: field:wizard.res.company.eshop.setting,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_leek_product_template
+msgid "Leek"
+msgstr "Leek"
 
 #. module: sale_eshop
 #: field:res.company,eshop_manage_unpacking:0
-msgid "Manage Unpacking on eShop"
-msgstr "Manage Unpacking on eShop"
+msgid "Manage Unpacking"
+msgstr "Gérer le déconditionnement"
+
+#. module: sale_eshop
+#: field:res.company,eshop_manage_recovery_moment:0
+msgid "Manage recovery Moment"
+msgstr "Gérer les points de retraits"
 
 #. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_eshop_manager
@@ -297,22 +457,10 @@ msgid "Minimum Quantity for eShop"
 msgstr "Quantité minimum pour la eBoutique"
 
 #. module: sale_eshop
-#: view:eshop.category:0
-#: model:ir.actions.act_window,name:sale_eshop.action_change_product_category
-#: view:wizard.change.product.category:0
-msgid "Move to other eShop Category"
-msgstr "Déplacer dans une autre Catégorie de eBoutique"
-
-#. module: sale_eshop
 #: field:eshop.category,complete_name:0
 #: field:eshop.category,name:0
 msgid "Name"
 msgstr "Nom"
-
-#. module: sale_eshop
-#: field:wizard.change.product.category,new_eshop_category_id:0
-msgid "New eShop Category"
-msgstr "Nouvelle Catégorie de eBoutique"
 
 #. module: sale_eshop
 #: selection:eshop.category,type:0
@@ -320,9 +468,9 @@ msgid "Normal"
 msgstr "Normal"
 
 #. module: sale_eshop
-#: field:wizard.change.product.category,old_eshop_category_id:0
-msgid "Old eShop Category"
-msgstr "Ancienne Catégorie de la eBoutique"
+#: model:product.template,name:sale_eshop.product_onion_product_template
+msgid "Onion"
+msgstr "Onion"
 
 #. module: sale_eshop
 #: field:eshop.category,parent_id:0
@@ -330,9 +478,7 @@ msgid "Parent Category"
 msgstr "Catégorie Parent"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_res_partner
-#, python-format
 msgid "Partner"
 msgstr "Partenaire"
 
@@ -342,41 +488,51 @@ msgid "Password on eShop"
 msgstr "Mot de Passe sur la eBoutique"
 
 #. module: sale_eshop
-#: view:res.partner:0
+#: model:product.template,name:sale_eshop.product_pepper_product_template
+msgid "Pepper"
+msgstr "Pepper"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_potato_product_template
+msgid "Potato"
+msgstr "Potato"
+
+#. module: sale_eshop
+#: view:res.partner:sale_eshop.view_res_partner_form
+#: view:res.partner:sale_eshop.view_res_partner_tree
 msgid "Prevent User to use eShop"
 msgstr "Empêcher l'utilisateur d'utiliser la eBoutique"
 
 #. module: sale_eshop
 #: field:res.company,eshop_pricelist_id:0
-msgid "Pricelist Used on eShop"
-msgstr "Liste de prix utilisée pour la eBoutique"
+msgid "Pricelist Used"
+msgstr "Liste de prix utilisé"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_product_product
-#, python-format
 msgid "Product"
 msgstr "Article"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_product_uom
-#, python-format
 msgid "Product Unit of Measure"
 msgstr "Unité de mesure du produit"
 
 #. module: sale_eshop
-#: view:eshop.category:0
+#: model:product.template,name:sale_eshop.product_without_image_product_template
+msgid "Product Without Image"
+msgstr "Article sans image"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_disabled_product_template
+msgid "Product disabled for eshop"
+msgstr "Article désactivé pour la eBoutique"
+
+#. module: sale_eshop
+#: view:eshop.category:sale_eshop.view_eshop_category_form
 #: field:eshop.category,product_ids:0
 msgid "Products"
 msgstr "Articles"
-
-#. module: sale_eshop
-#: model:ir.actions.act_window,name:sale_eshop.action_product_product
-#: model:ir.ui.menu,name:sale_eshop.menu_product_product_3
-#: view:product.product:0
-msgid "Products (eShop)"
-msgstr "Articles (eBoutique)"
 
 #. module: sale_eshop
 #: field:eshop.category,product_qty:0
@@ -394,28 +550,18 @@ msgid "Rounded Quantity for eShop"
 msgstr "Arrondie en Quantité sur la eBoutique"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_sale_order
-#, python-format
 msgid "Sales Order"
 msgstr "Commande de ventes"
 
 #. module: sale_eshop
-#: code:_description:0
 #: model:ir.model,name:sale_eshop.model_sale_order_line
-#, python-format
 msgid "Sales Order Line"
 msgstr "Ligne de commandes de vente"
 
 #. module: sale_eshop
-#: code:_description:0
-#: model:ir.model,name:sale_eshop.model_sale_shop
-#, python-format
-msgid "Sales Shop"
-msgstr "Magasin"
-
-#. module: sale_eshop
-#: view:res.partner:0
+#: view:res.partner:sale_eshop.view_res_partner_form
+#: view:res.partner:sale_eshop.view_res_partner_tree
 msgid "Send Credentials"
 msgstr "Envoyer les identifiants"
 
@@ -425,8 +571,8 @@ msgid "Sequence"
 msgstr "Séquence"
 
 #. module: sale_eshop
-#: view:product.product:0
-#: view:res.partner:0
+#: view:product.product:sale_eshop.view_product_product_search
+#: view:res.partner:sale_eshop.view_res_partner_search
 msgid "Set On eShop"
 msgstr "Paramétré dans la eBoutique"
 
@@ -441,6 +587,12 @@ msgid "Small-sized image"
 msgstr "Image de petite taille"
 
 #. module: sale_eshop
+#: view:res.company:sale_eshop.view_res_company_form
+#: view:wizard.res.company.eshop.setting:sale_eshop.view_wizard_res_company_eshop_setting_form
+msgid "Social Network"
+msgstr "Réseau social"
+
+#. module: sale_eshop
 #: field:product.product,eshop_start_date:0
 msgid "Start Date of Sale"
 msgstr "Date de Début de vente"
@@ -451,10 +603,14 @@ msgid "State on eShop"
 msgstr "Etat dans la eBoutique"
 
 #. module: sale_eshop
-#: code:_description:0
-#, python-format
+#: model:product.template,name:sale_eshop.product_strawberry_product_template
+msgid "Strawberry (250 gr)"
+msgstr "Strawberry (250 gr)"
+
+#. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_account_tax
 msgid "Tax"
-msgstr "Taxe"
+msgstr "Taxes"
 
 #. module: sale_eshop
 #: selection:product.product,eshop_state:0
@@ -463,35 +619,42 @@ msgstr "Désactivé temporairement"
 
 #. module: sale_eshop
 #: field:res.company,eshop_home_text:0
+#: field:wizard.res.company.eshop.setting,eshop_home_text:0
 msgid "Text for the eShop Home Page"
 msgstr "Texte pour la page d'accueil de la eBoutique"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/product_product.py:46
+#: view:wizard.res.company.eshop.setting:sale_eshop.view_wizard_res_company_eshop_setting_form
+msgid "Texts"
+msgstr "Textes"
+
+#. module: sale_eshop
+#: code:addons/sale_eshop/models/product_product.py:208
 #, python-format
 msgid "The Operator %s is not implemented !"
 msgstr "L'opérateur %s n'est pas implémenté !"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order.py:119
+#: code:addons/sale_eshop/models/sale_order.py:101
 #, python-format
 msgid "The Shopping Cart has been successfully deleted."
-msgstr "Le panier a été supprimé avec succès"
+msgstr "Le panier a été supprimé avec succès."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/sale_order.py:125
+#: code:addons/sale_eshop/models/sale_order.py:106
 #, python-format
 msgid "The line has been successfully deleted"
 msgstr "La ligne a été supprimée avec succès"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/product_product.py:93
+#: code:addons/sale_eshop/models/product_product.py:254
 #, python-format
 msgid "This arg %s is not implemented !"
 msgstr "L'argument %s n'est pas implémenté !"
 
 #. module: sale_eshop
 #: field:res.company,eshop_twitter_url:0
+#: field:wizard.res.company.eshop.setting,eshop_twitter_url:0
 msgid "Twitter URL"
 msgstr "URL Twitter"
 
@@ -517,8 +680,8 @@ msgstr "Utilisateur"
 
 #. module: sale_eshop
 #: field:res.company,eshop_vat_included:0
-msgid "VAT Included for eShop"
-msgstr "Prix TTC sur la eBoutique"
+msgid "VAT Included"
+msgstr "TTC"
 
 #. module: sale_eshop
 #: selection:eshop.category,type:0
@@ -526,35 +689,9 @@ msgid "View"
 msgstr "Vue"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:138
-#, python-format
-msgid "You can not change this values because the eShop datas can not be updated."
-msgstr "Vous ne pouvez pas changer ces valeurs car les données de la eBoutique ne peuvent être mises à jour."
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/model.py:147
-#: code:addons/sale_eshop/model/model.py:167
-#, python-format
-msgid "You can not change this values because the eShop datas can not be updated. \n"
-" - Code : %s"
-msgstr "Vous ne pouvez pas changer ces valeurs car les données de la eBoutique ne peuvent être mises à jour. \n"
-" - Code : %s"
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:197
-#, python-format
-msgid "You cannot delete the category '%s' because it contents %s child categories. Please move child categories to another Category First."
-msgstr "Vous ne pouvez pas supprimer la catégorie '%s' car elle contient %s catégories enfants. Veuillez déplacer d'abord les catégories enfants dans une autre catégorie."
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/model/eshop_category.py:204
-#, python-format
-msgid "You cannot delete the category '%s' because it contents %s products. Please move products to another Category First."
-msgstr "Vous ne pouvez pas supprimer cette catégorie '%s' car elle contient %s articles. Veuillez déplacer d'abord les articles dans une autre catégorie."
-
-#. module: sale_eshop
 #: model:ir.module.category,name:sale_eshop.module_category_eshop
-#: view:res.company:0
+#: view:product.product:sale_eshop.view_product_product_form
+#: view:res.company:sale_eshop.view_res_company_form
 msgid "eShop"
 msgstr "eBoutique"
 
@@ -564,7 +701,9 @@ msgid "eShop Access"
 msgstr "Accès à la eBoutique"
 
 #. module: sale_eshop
-#: view:eshop.category:0
+#: view:eshop.category:sale_eshop.view_eshop_category_form
+#: view:eshop.category:sale_eshop.view_eshop_category_search
+#: view:eshop.category:sale_eshop.view_eshop_category_tree
 #: model:ir.actions.act_window,name:sale_eshop.action_eshop_category
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_category
 msgid "eShop Categories"
@@ -577,10 +716,20 @@ msgstr "Catégorie eBoutique"
 
 #. module: sale_eshop
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop
-#: view:res.company:0
-#: view:res.partner:0
+#: view:res.partner:sale_eshop.view_res_partner_form
 msgid "eShop Sale"
 msgstr "Vente eBoutique"
+
+#. module: sale_eshop
+#: view:res.company:sale_eshop.view_res_company_form
+msgid "eShop Sale Setting"
+msgstr "Paramétrage eBoutique"
+
+#. module: sale_eshop
+#: model:ir.actions.act_window,name:sale_eshop.action_wizard_res_company_eshop_setting
+#: model:ir.ui.menu,name:sale_eshop.menu_wizard_res_company_eshop_setting
+msgid "eShop Settings"
+msgstr "Paramétrages eBoutique"
 
 #. module: sale_eshop
 #: field:product.product,eshop_state:0
@@ -596,8 +745,3 @@ msgstr "Title de la eBoutique"
 #: field:res.company,eshop_url:0
 msgid "eShop URL"
 msgstr "URL de la eBoutique"
-
-#. module: sale_eshop
-#: view:wizard.change.product.category:0
-msgid "or"
-msgstr "ou"

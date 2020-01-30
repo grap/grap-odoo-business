@@ -58,8 +58,8 @@ class SaleOrder(models.Model):
             # We set a not null quantity
             res = SaleOrderLine.product_id_change(
                 order.pricelist_id.id, product_id,
-                qty=quantity, partner_id=partner_id)
-
+                qty=quantity, partner_id=partner_id,
+                fiscal_position=order.fiscal_position.id)
             line_vals = {k: v for k, v in res['value'].items()}
 
             # F& !! ORM

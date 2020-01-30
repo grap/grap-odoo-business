@@ -42,7 +42,7 @@ class ResCompany(models.Model):
     eshop_manage_unpacking = fields.Boolean(string='Manage Unpacking')
 
     eshop_manage_recovery_moment = fields.Boolean(
-        string='Manage recvoery Moment')
+        string='Manage recovery Moment')
 
     eshop_title = fields.Char(string='eShop Title')
 

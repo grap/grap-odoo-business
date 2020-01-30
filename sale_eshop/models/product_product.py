@@ -18,6 +18,7 @@ class ProductProduct(models.Model):
 
     _eshop_invalidation_fields = [
         'name', 'uom_id', 'image', 'image_medium', 'list_price',
+        'list_price_vat_excl',
         'eshop_category_id', 'label_ids', 'eshop_minimum_qty',
         'eshop_rounded_qty', 'origin_description', 'maker_description',
         'fresh_category', 'eshop_description', 'country_id',
@@ -145,6 +146,7 @@ FROM (
     pp.default_code default_code,
     pt.name,
     pt.list_price list_price,
+    pp.list_price_vat_excl list_price_vat_excl,
     ec.id category_id,
     ec.sequence category_sequence,
     ec.name category_name,
