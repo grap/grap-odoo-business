@@ -23,6 +23,29 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[product_food](product_food/) | 12.0.1.0.0 | Sale - Food Information for Products
+[product_label](product_label/) | 12.0.1.0.0 | Product Labels
+[product_origin](product_origin/) | 12.0.1.0.0 | Origin Information for Products
+[product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.0 | Origin Information for Products (French Departments)
+
+
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 8.0.1.0.0 (unported) | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[account_move_change_number](account_move_change_number/) | 8.0.1.0.0 (unported) | Allow special user to rename account move
+[product_category_recursive_property](product_category_recursive_property/) | 8.0.2.0.0 (unported) | Propagate recursively properties for product category
+[product_to_scale_bizerba](product_to_scale_bizerba/) | 8.0.2.0.0 (unported) | Synchronize Odoo database with Retail Connect Bizerba System
+[purchase_package_qty](purchase_package_qty/) | 8.0.2.0.0 (unported) | Purchase - Package Quantity
+[recurring_consignment](recurring_consignment/) | 8.0.2.0.0 (unported) | Sale - Handle Recurring Consignment
+[sale_eshop](sale_eshop/) | 8.0.4.0.0 (unported) | Allow connection to Odoo eShop Project
+[sale_line_change_custom](sale_line_change_custom/) | 8.0.1.0.0 (unported) | Sale - Custom Behaviour on Line Changes
+[sale_recovery_moment](sale_recovery_moment/) | 8.0.1.0.0 (unported) | Manage Recovery Moments and Places for Sale Order
+[stock_picking_mass_change](stock_picking_mass_change/) | 8.0.2.0.0 (unported) | Possibility to change massively a product for many pickings
+[stock_picking_quick_edit](stock_picking_quick_edit/) | 8.0.1.0.0 (unported) | Possibility to quickly edit a stock picking
+[stock_picking_type_image](stock_picking_type_image/) | 8.0.1.0.0 (unported) | Add an image and refactor Stock Picking Type kanban view
+[users_partners_access](users_partners_access/) | 8.0.3.0.0 (unported) | Users Partners Access
 
 [//]: # (end addons)
 
