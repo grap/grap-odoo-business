@@ -53,9 +53,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-
-
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/8.0/account_invoice_supplierinfo_update_standard_price>`_ project on GitHub.
-
 
 You are welcome to contribute.

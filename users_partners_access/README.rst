@@ -76,9 +76,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-
-
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/8.0/users_partners_access>`_ project on GitHub.
-
 
 You are welcome to contribute.
