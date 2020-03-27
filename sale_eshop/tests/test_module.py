@@ -14,7 +14,7 @@ class TestModule(TransactionCase):
         self.ResPartner = self.env['res.partner'].sudo(self.eshop_user)
         self.SaleOrder = self.env['sale.order'].sudo(self.eshop_user)
         self.ProductProduct = self.env['product.product'].sudo(self.eshop_user)
-        self.customer = self.env.ref('base.partner_root')
+        self.customer = self.env.ref('sale_eshop.demo_eshop_user')
         self.banana = self.env.ref('sale_eshop.product_banana')
         self.apple = self.env.ref('sale_eshop.product_apple')
         self.product_disabled = self.env.ref('sale_eshop.product_disabled')
@@ -25,17 +25,18 @@ class TestModule(TransactionCase):
         # The following line make the test working if user_partners_access
         # is installed
         self.customer.active = True
-        res = self.ResPartner.login(self.customer.email, 'eshop_password')
+        res = self.ResPartner.login(
+            self.customer.email, self.customer.eshop_password)
         self.assertNotEqual(
             res, False, "Correct Credentials should be accepted")
 
-        res = self.ResPartner.login(self.customer.email, 'bad_password')
+        res = self.ResPartner.login(self.customer.email, 'BAD_PASSWORD')
         self.assertEqual(
             res, False, "Bad Credentials should be refused")
 
         res = self.ResPartner.login(self.customer.email, 'admin')
         self.assertNotEqual(
-            res, False, "Addmin Password should be accepted")
+            res, False, "Admin Password should be accepted")
 
     def test_02_load_products(self):
         result = self.ProductProduct.get_current_eshop_product_list()
