@@ -79,7 +79,9 @@ class ResPartner(models.Model):
 
     @api.multi
     def button_send_credentials(self):
-        self._send_credentials()
+        template = self.env.ref('sale_eshop.eshop_send_crendential_template')
+        for partner in self:
+            template.send_mail(partner.id, force_send=True)
         return True
 
     # Eshop API - Section
@@ -119,15 +121,9 @@ class ResPartner(models.Model):
         # Create partner
         partner = self.create(vals)
         # Send an email
-        return partner._send_credentials()
+        return partner.button_send_credentials()
 
     # Private Section
-    @api.multi
-    def _send_credentials(self):
-        template = self.env.ref('sale_eshop.eshop_send_crendential_template')
-        for partner in self:
-            template.send_mail(partner.id, force_send=True)
-
     @api.multi
     def _generate_credentials(self):
         for partner in self:
