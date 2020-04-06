@@ -19,6 +19,7 @@
         <field name="eshop_manage_recovery_moment" eval="True"/>
         <field name="eshop_list_view_enabled" eval="True"/>
         <field name="eshop_register_allowed" eval="True"/>
+        <field name="invalidation_key">INVALIDATION_KEY</field>
         <field name="eshop_image_small" type="base64" file="sale_eshop/static/src/img/demo/res_company/image_small.png"/>
     </record>
 
