@@ -110,7 +110,7 @@ class ResPartner(models.Model):
         # Create partner
         partner = self.create(vals)
         # Send an email
-        return partner.button_send_credentials()
+        return partner.send_credentials()
 
     @api.model
     def eshop_email_confirm(self, partner_id, email):
