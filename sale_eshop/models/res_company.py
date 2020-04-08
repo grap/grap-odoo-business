@@ -19,6 +19,7 @@ class ResCompany(models.Model):
         'eshop_home_text',
         'name', 'has_eshop', 'eshop_minimum_price', 'eshop_title',
         'eshop_url', 'website', 'eshop_list_view_enabled',
+        "eshop_tree_view_enabled",
         'eshop_facebook_url', 'eshop_twitter_url', 'eshop_google_plus_url',
         'eshop_google_plus_url', 'eshop_instagram_url',
         'eshop_image_small',
@@ -63,10 +64,16 @@ class ResCompany(models.Model):
     eshop_vat_included = fields.Boolean(string='VAT Included')
 
     eshop_register_allowed = fields.Boolean(
-        string='Allow new customer to register on eShop')
+        string="Allow Register",
+        help='Allow new customer to register on eShop')
 
     eshop_list_view_enabled = fields.Boolean(
-        string='Provide a List view to realize quick purchase.')
+        string="Enable List View", default=True,
+        help='Provide a List view to realize quick purchase.')
+
+    eshop_tree_view_enabled = fields.Boolean(
+        string="Enable Tree View", default=True,
+        help='Provide a Tree view to navigate into the catalog.')
 
     # Overload Section
     @api.multi

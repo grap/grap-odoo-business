@@ -44,7 +44,7 @@ class SaleOrder(models.Model):
 
     @api.model
     def eshop_delete_sale_order_line(self, partner_id, line_id):
-        order = self.eshop_delete_current_sale_order(partner_id)
+        order = self.eshop_get_current_sale_order(partner_id)
         if order:
             line = order.order_line.filtered(lambda x: x.id == line_id)
             if line:
@@ -151,16 +151,15 @@ class SaleOrder(models.Model):
 
     @api.model
     def eshop_select_recovery_moment(
-        self, sale_order_id, recovery_moment_id
+        self, partner_id, recovery_moment_id
     ):
-
         recovery_moment = self.env["sale.recovery.moment"].browse(
             recovery_moment_id)
         # Todo Check if the moment is complete
         if recovery_moment.is_complete:
             return "recovery_moment_complete"
         else:
-            order = self.browse(sale_order_id)
+            order = self.eshop_get_current_sale_order(partner_id)
             order.write({
                 'recovery_moment_id': recovery_moment_id,
             })
