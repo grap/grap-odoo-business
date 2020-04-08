@@ -17,7 +17,7 @@ class ResPartner(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'single'
 
-    _eshop_invalidation_fields = [
+    _eshop_fields = [
         'name', 'lang', 'email', 'eshop_state',
         'phone', 'mobile', 'street', 'street2', 'zip', 'city',
     ]

@@ -9,9 +9,26 @@ from openerp.tools import config
 
 
 class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+    _name = 'sale.order'
+    _inherit = ['sale.order', 'eshop.mixin']
+
+    # Inherit Section
+    _eshop_invalidation_type = 'single'
+
+    _eshop_fields = [
+        'amount_total', 'note', 'amount_untaxed', 'amount_tax',
+    ]
 
     # API Section
+    @api.model
+    def eshop_custom_load_data(self, partner_id):
+        domain = [
+            ('partner_id', '=', partner_id),
+            ('user_id', '=', self.env.user.id),
+            ('state', '=', 'draft'),
+        ]
+        return self.eshop_load_data(domain)
+
     @api.model
     def eshop_get_current_sale_order(self, partner_id):
         order_ids = self.search([
@@ -26,6 +43,20 @@ class SaleOrder(models.Model):
         if order:
             order.unlink()
         return True
+
+    @api.model
+    def eshop_delete_sale_order_line(self, partner_id, line_id):
+        order = self.eshop_delete_current_sale_order(partner_id)
+        if order:
+            line = order.order_line.filtered(lambda x: x.id == line_id)
+            if line:
+                if len(order.order_line) == 1:
+                    order.unlink()
+                    return "order_deleted"
+                else:
+                    line.unlink()
+                    return "line_deleted"
+        return False
 
     @api.model
     def eshop_set_note(self, partner_id, note):

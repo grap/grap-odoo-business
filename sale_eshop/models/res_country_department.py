@@ -13,7 +13,7 @@ class ResCountryDepartment(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'multiple'
 
-    _eshop_invalidation_fields = ['name']
+    _eshop_fields = ['name']
 
     # Overload Section
     @api.multi

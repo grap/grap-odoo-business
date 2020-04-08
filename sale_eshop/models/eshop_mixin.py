@@ -15,12 +15,12 @@ _logger = logging.getLogger(__name__)
 class EshopMixin(models.AbstractModel):
     _name = 'eshop.mixin'
 
+    _eshop_fields = []
     _eshop_invalidation_type = False
-    _eshop_invalidation_fields = []
 
     @api.model
     def _get_eshop_fields(self):
-        fields = self._eshop_invalidation_fields
+        fields = self._eshop_fields
         fields.append('id')
         has_image = False
         for field in fields:
@@ -57,7 +57,7 @@ class EshopMixin(models.AbstractModel):
                         "Error when calling invalidation url '%s' "
                         " status Code : %s (company #%d)" % (
                             url, req.status_code, company.id))
-            except:
+            except Exception:
                 _logger.error(
                     "Unable to call the invalidation url '%s' "
                     "(company #%d)" % (url, company.id))
@@ -73,7 +73,7 @@ class EshopMixin(models.AbstractModel):
 
         update_fields = vals.keys()
         intersec_fields = [
-            x for x in self._eshop_invalidation_fields if x in update_fields]
+            x for x in self._eshop_fields if x in update_fields]
         if not intersec_fields:
             # No fields synchronised has changed
             return

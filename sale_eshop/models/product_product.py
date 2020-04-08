@@ -16,7 +16,7 @@ class ProductProduct(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'single'
 
-    _eshop_invalidation_fields = [
+    _eshop_fields = [
         'name', 'uom_id', 'image', 'image_medium', 'list_price',
         'list_price_vat_excl',
         'eshop_category_id', 'label_ids', 'eshop_minimum_qty',

@@ -13,7 +13,7 @@ class ProductUom(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'multiple'
 
-    _eshop_invalidation_fields = ['id', 'name', 'eshop_description']
+    _eshop_fields = ['id', 'name', 'eshop_description']
 
     # Fields Section
     eshop_description = fields.Char(

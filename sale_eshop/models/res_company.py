@@ -15,7 +15,7 @@ class ResCompany(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'single'
 
-    _eshop_invalidation_fields = [
+    _eshop_fields = [
         'eshop_home_text',
         'name', 'has_eshop', 'eshop_minimum_price', 'eshop_title',
         'eshop_url', 'website', 'eshop_list_view_enabled',

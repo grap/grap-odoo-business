@@ -13,7 +13,7 @@ class ProductLabel(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'multiple'
 
-    _eshop_invalidation_fields = ['name', 'code', 'image', 'image_small']
+    _eshop_fields = ['name', 'code', 'image', 'image_small']
 
     _eshop_image_fields = ['image', 'image_small']
 
