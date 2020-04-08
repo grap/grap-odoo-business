@@ -116,16 +116,16 @@ class ProductProduct(models.Model):
 
     # API eshop Section
     @api.model
-    def get_current_eshop_product_list(self, order_id=False):
+    def get_current_eshop_product_list(self, partner_id=False):
         """The aim of this function is to deal with delay of response of
         the odoo-eshop, module.
         This will return a list of data, used for catalog inline view."""
         SaleOrder = self.env['sale.order']
+        order = SaleOrder.eshop_get_current_sale_order(partner_id)
         res = []
         line_dict = {}
         # Get current quantities ordered
-        if order_id:
-            order = SaleOrder.browse(order_id)
+        if order:
             for order_line in order.order_line:
                 line_dict[order_line.product_id.id] = {
                     'qty': order_line.product_uom_qty,

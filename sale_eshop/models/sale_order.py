@@ -13,23 +13,39 @@ class SaleOrder(models.Model):
 
     # API Section
     @api.model
-    def eshop_get_current_sale_order_id(self, partner_id):
+    def eshop_get_current_sale_order(self, partner_id):
         order_ids = self.search([
             ('partner_id', '=', partner_id),
             ('user_id', '=', self.env.user.id),
             ('state', '=', 'draft')])
-        return order_ids and order_ids[0].id or False
+        return order_ids and order_ids[0] or False
+
+    @api.model
+    def eshop_delete_current_sale_order(self, partner_id):
+        order = self.eshop_get_current_sale_order(partner_id)
+        if order:
+            order.unlink()
+        return True
+
+    @api.model
+    def eshop_set_note(self, partner_id, note):
+        order = self.eshop_get_current_sale_order(partner_id)
+        if order:
+            order.write({"note": note})
+            return order.note
+        return ""
 
     @api.model
     def eshop_set_quantity(
-            self, partner_id, product_id, quantity, method):
+            self, partner_id, product_id, quantity, method
+    ):
         """@method : 'set' / 'add'"""
         SaleOrderLine = self.env['sale.order.line']
         ResPartner = self.env['res.partner']
 
-        order_id = self.eshop_get_current_sale_order_id(partner_id)
+        order = self.eshop_get_current_sale_order(partner_id)
 
-        if not order_id:
+        if not order:
             # Create Sale Order
             partner = ResPartner.browse(partner_id)
             if partner.property_product_pricelist:
@@ -42,8 +58,6 @@ class SaleOrder(models.Model):
                 'partner_shipping_id': partner_id,
                 'pricelist_id': pricelist_id,
             })
-        else:
-            order = self.browse(order_id)
 
         # Search Line
         current_line = False
@@ -95,7 +109,6 @@ class SaleOrder(models.Model):
                 if len(order.order_line) == 1:
                     # We unlink the whole order
                     order.unlink()
-                    order_id = False
                     res['messages'] = [_(
                         "The Shopping Cart has been successfully deleted.")]
                 else:
@@ -107,10 +120,23 @@ class SaleOrder(models.Model):
         res.update(self._eshop_sale_order_info(order))
         return res
 
-    @api.multi
-    def eshop_set_as_sent(self):
-        self.signal_workflow('quotation_sent')
-        return True
+    @api.model
+    def eshop_select_recovery_moment(
+        self, sale_order_id, recovery_moment_id
+    ):
+
+        recovery_moment = self.env["sale.recovery.moment"].browse(
+            recovery_moment_id)
+        # Todo Check if the moment is complete
+        if recovery_moment.is_complete:
+            return "recovery_moment_complete"
+        else:
+            order = self.browse(sale_order_id)
+            order.write({
+                'recovery_moment_id': recovery_moment_id,
+            })
+            order.signal_workflow('quotation_sent')
+            return "quotation_sent"
 
     @api.model
     def _eshop_cron_confirm_orders(self):

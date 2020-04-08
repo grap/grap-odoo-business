@@ -75,7 +75,7 @@ class ResPartner(models.Model):
         return True
 
     @api.model
-    def login(self, login, password):
+    def eshop_login(self, login, password):
         ResUsers = self.env['res.users']
         if not password:
             return False
@@ -131,6 +131,15 @@ class ResPartner(models.Model):
         # eshop_state is "email_to_confirm"
         partner.write({"eshop_state": "enabled"})
         return "enabled"
+
+    @api.model
+    def eshop_password_lost(self, email):
+        partners = self.search([('email', '=', email)])
+        if len(partners) > 1:
+            return "too_many_email"
+        elif len(partners) == 1:
+            partners.send_credentials()
+        return "credential_maybe_sent"
 
     # Private Section
     @api.multi
