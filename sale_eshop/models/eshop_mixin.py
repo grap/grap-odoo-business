@@ -3,13 +3,8 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import logging
-import requests
-from requests.compat import urljoin
-
+from datetime import datetime
 from openerp import api, models
-
-_logger = logging.getLogger(__name__)
 
 
 class EshopMixin(models.AbstractModel):
@@ -43,33 +38,18 @@ class EshopMixin(models.AbstractModel):
     def _get_eshop_domain(self):
         return []
 
-    def _invalidate_eshop(self, company, item_id, fields):
-
-        base_url = company.eshop_url
-        private_key = company.eshop_invalidation_key
-        if base_url and private_key:
-            url = urljoin(base_url, "invalidation_cache/%s/%s/%d/" % (
-                private_key, self._name, item_id))
-            try:
-                req = requests.get(url, verify=False)
-                if req.status_code != 200:
-                    _logger.error(
-                        "Error when calling invalidation url '%s' "
-                        " status Code : %s (company #%d)" % (
-                            url, req.status_code, company.id))
-            except Exception:
-                _logger.error(
-                    "Unable to call the invalidation url '%s' "
-                    "(company #%d)" % (url, company.id))
-        else:
-            _logger.info(
-                "Invalidation has not been possible because"
-                " eshop_url and or eshop_invalidation_key is not available"
-                " for company %d" % company.id)
+    def _invalidate_eshop(self, company, item_identifier):
+        EshopQueueJob = self.env["eshop.queue.job"]
+        EshopQueueJob.sudo().create({
+            "job_date": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            "model_name": self._name,
+            "item_identifier": item_identifier,
+            "company_id": company.id,
+        })
 
     @api.multi
     def _write_eshop_invalidate(self, vals):
-        company_obj = self.env['res.company']
+        ResCompany = self.env['res.company']
 
         update_fields = vals.keys()
         intersec_fields = [
@@ -82,15 +62,13 @@ class EshopMixin(models.AbstractModel):
         if self._eshop_invalidation_type == 'single':
             for item in self:
                 if self._name == 'res.company' and item.has_eshop:
-                    self._invalidate_eshop(item, item.id, intersec_fields)
+                    self._invalidate_eshop(item, item.id)
 
                 elif self._name != 'res.company' and item.company_id.has_eshop:
-                    self._invalidate_eshop(
-                        item.company_id, item.id, intersec_fields)
+                    self._invalidate_eshop(item.company_id, item.id)
 
         elif self._eshop_invalidation_type == 'multiple':
-            for company in company_obj.sudo().search(
+            for company in ResCompany.sudo().search(
                     [('has_eshop', '=', True)]):
                 for id in self.ids:
-                    self._invalidate_eshop(
-                        company, id, intersec_fields)
+                    self._invalidate_eshop(company, id)

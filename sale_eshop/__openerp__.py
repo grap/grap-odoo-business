@@ -30,6 +30,7 @@
         'views/menu.xml',
         'views/view_account_tax.xml',
         'views/view_eshop_category.xml',
+        'views/view_eshop_queue_job.xml',
         'views/view_product_product.xml',
         'views/view_product_uom.xml',
         'views/view_res_company.xml',
