@@ -13,8 +13,6 @@ class SaleOrder(models.Model):
     _inherit = ['sale.order', 'eshop.mixin']
 
     # Inherit Section
-    _eshop_invalidation_type = 'single'
-
     _eshop_fields = [
         'amount_total', 'note', 'amount_untaxed', 'amount_tax',
     ]

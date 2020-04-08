@@ -10,7 +10,31 @@ from openerp import _, api, models
 
 
 class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
+    _name = 'sale.order.line'
+    _inherit = ['sale.order.line', 'eshop.mixin']
+
+    # Inherit Section
+    _eshop_fields = [
+        'product_id', 'product_uom', "price_unit", "tax_id",
+        "discount", "product_uom_qty", "price_subtotal_gross",
+        "price_subtotal",
+    ]
+
+    # API Section
+    @api.model
+    def eshop_custom_load_data(self, order_id):
+        domain = [
+            ('order_id', '=', order_id),
+        ]
+        items = self.eshop_load_data(domain)
+        for item in items:
+            tax_ids = item["tax_id"]
+            product_uom_id = item["product_uom"]
+            item.pop("tax_id")
+            item.pop("product_uom")
+            item["tax_ids"] = tax_ids
+            item["product_uom_id"] = product_uom_id
+        return items
 
     # Overload Section
     @api.multi

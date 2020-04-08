@@ -76,7 +76,8 @@ class ResCompany(models.Model):
         in more recent Odoo versions.
         """
         self._write_eshop_invalidate(vals)
-        return super(ResCompany, self).write(vals)
+        res = super(ResCompany, self).write(vals)
+        return res
 
     # Eshop APi - Section
     @api.model
