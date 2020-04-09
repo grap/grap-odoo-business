@@ -23,8 +23,7 @@ class ProductProduct(models.Model):
         'eshop_rounded_qty', 'origin_description', 'maker_description',
         'fresh_category', 'eshop_description', 'country_id',
         'department_id', 'default_code',
-        'eshop_taxes_description', 'eshop_unpack_qty',
-        'eshop_unpack_surcharge',
+        'eshop_taxes_description',
     ]
 
     _eshop_image_fields = ['image', 'image_medium', 'image_small']
@@ -52,12 +51,6 @@ class ProductProduct(models.Model):
 
     eshop_rounded_qty = fields.Float(
         string='Rounded Quantity for eShop', required=True, default=0)
-
-    eshop_unpack_qty = fields.Float(
-        string='Unpack Quantity for eShop', required=True, default=0)
-
-    eshop_unpack_surcharge = fields.Float(
-        string='Unpack Surcharge for eShop', required=True, default=0)
 
     eshop_description = fields.Text(type='Text', string='Eshop Description')
 
@@ -158,8 +151,6 @@ FROM (
     pt.uom_id,
     uom.eshop_description uom_eshop_description,
     pp.eshop_minimum_qty,
-    pp.eshop_unpack_qty,
-    pp.eshop_unpack_surcharge,
     array_to_string(array_agg(tax_rel.tax_id)
         OVER (PARTITION BY tax_rel.prod_id), ',') tax_ids
     FROM product_product pp

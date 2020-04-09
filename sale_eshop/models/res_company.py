@@ -25,7 +25,6 @@ class ResCompany(models.Model):
         'eshop_image_small',
         'eshop_vat_included', 'eshop_register_allowed',
         'eshop_manage_recovery_moment',
-        'eshop_manage_unpacking',
     ]
 
     _eshop_image_fields = ['eshop_image_small']
@@ -39,8 +38,6 @@ class ResCompany(models.Model):
         comodel_name='product.pricelist', string='Pricelist Used')
 
     eshop_minimum_price = fields.Float(string='Minimum Price by eShop')
-
-    eshop_manage_unpacking = fields.Boolean(string='Manage Unpacking')
 
     eshop_manage_recovery_moment = fields.Boolean(
         string='Manage recovery Moment')

@@ -113,6 +113,12 @@ class ResPartner(models.Model):
         return partner.send_credentials()
 
     @api.model
+    def update_from_eshop(self, partner_id, vals):
+        partner = self.browse(partner_id)
+        partner.write(vals)
+        return True
+
+    @api.model
     def eshop_email_confirm(self, partner_id, email):
         partners = self.browse([partner_id])
         if not partners:

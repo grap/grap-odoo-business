@@ -39,4 +39,8 @@
         <field name="users" eval="[(4, ref('eshop_user'))]" />
     </record>
 
+    <record id="base.group_sale_manager" model="res.groups" >
+        <field name="users" eval="[(4, ref('eshop_user'))]" />
+    </record>
+
 </data></openerp>

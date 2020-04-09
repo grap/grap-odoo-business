@@ -44,13 +44,10 @@ class SaleOrderLine(models.Model):
             lang=False, update_tax=True, date_order=False, packaging=False,
             fiscal_position=False, flag=False):
         """
-        Manage minimum / rounded and unpacking quantity. (with surcharge)
+        Manage minimum / rounded quantity.
         return 'info' value instead of 'warning' value to avoid blocking
         message for end users.
         """
-        print("===============")
-        print("product_id_change")
-        print("===============")
         is_eshop = self.env.user.has_group('sale_eshop.res_groups_is_eshop')
         infos = []
         computed_discount = False
@@ -61,40 +58,13 @@ class SaleOrderLine(models.Model):
             if product.eshop_minimum_qty:
                 rounded_qty = self._eshop_round_value(product, qty)
                 if qty < product.eshop_minimum_qty:
-                    if product.eshop_unpack_qty:
-                        if rounded_qty < product.eshop_minimum_qty:
-                            # rounding qty didn't make it reach the minimum qty
-                            infos.append(_(
-                                " The quantity '%.3f' for the product '%s' is"
-                                " under the minimum quantity '%.3f'. A %d%%"
-                                " surcharge has been applied.") % (
-                                qty, product.name,
-                                product.eshop_minimum_qty,
-                                product.eshop_unpack_surcharge))
-                            discount = - product.eshop_unpack_surcharge
-                        else:
-                            infos.append(_(
-                                "'%.3f' is not a valid quantity for %s, the"
-                                " minimum quantity is '%.3f'. The quantity"
-                                "  has been automatically increased in your"
-                                " shopping cart.") % (
-                                qty, product.name,
-                                product.eshop_minimum_qty))
-                        if qty != rounded_qty:
-                            # The quantity has been rounded
-                            infos.append(_(
-                                "'%.3f' is not a valid quantity for %s, the"
-                                " quantity has been rounded to '%.3f'.") % (
-                                qty, product.name, rounded_qty))
-                            qty = rounded_qty
-                    else:
-                        infos.append(_(
-                            "'%.3f' is not a valid quantity for %s, the "
-                            " minimum quantity is %'%.3f'. The quantity has"
-                            " been automatically increased in your shopping"
-                            " cart.") % (
-                            qty, product.name, product.eshop_minimum_qty))
-                        qty = product.eshop_minimum_qty
+                    infos.append(_(
+                        "'%.3f' is not a valid quantity for %s, the "
+                        " minimum quantity is %'%.3f'. The quantity has"
+                        " been automatically increased in your shopping"
+                        " cart.") % (
+                        qty, product.name, product.eshop_minimum_qty))
+                    qty = product.eshop_minimum_qty
                 else:
                     if qty != rounded_qty:
                         # The quantity has been rounded
@@ -120,10 +90,7 @@ class SaleOrderLine(models.Model):
     # Custom Section
     @api.model
     def _eshop_round_value(self, product, qty):
-        if product.eshop_unpack_qty and qty < product.eshop_minimum_qty:
-            rounded_qty = product.eshop_unpack_qty
-        else:
-            rounded_qty = product.eshop_rounded_qty
+        rounded_qty = product.eshop_rounded_qty
         digit = len(str(float(rounded_qty) - int(rounded_qty)).split('.')[1])
         division = float(qty) / rounded_qty
         if division % 1 == 0:
