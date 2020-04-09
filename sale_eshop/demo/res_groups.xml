@@ -39,5 +39,4 @@
         <field name="users" eval="[(4, ref('eshop_user'))]" />
     </record>
 
-
 </data></openerp>

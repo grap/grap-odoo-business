@@ -48,7 +48,9 @@ class SaleOrderLine(models.Model):
         return 'info' value instead of 'warning' value to avoid blocking
         message for end users.
         """
-
+        print("===============")
+        print("product_id_change")
+        print("===============")
         is_eshop = self.env.user.has_group('sale_eshop.res_groups_is_eshop')
         infos = []
         computed_discount = False
