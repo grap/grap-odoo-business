@@ -48,7 +48,15 @@ class ProductProduct(models.Model):
 
     ingredients = fields.Text(string="Ingredients")
 
-    allergens = fields.Text(string="Allergens")
+    allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        relation="product_allergen_product_rel",
+        column1="product_id",
+        column2="allergen_id",
+        string="Allergens",
+    )
+
+    allergens = fields.Text(string="Allergens Complement")
 
     organic_type = fields.Selection(
         selection=_ORGANIC_TYPE_SELECTION, string="Organic Category",
