@@ -12,4 +12,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="category_id" ref="base.module_category_usability"/>
     </record>
 
+    <record id="group_allergen_manager" model="res.groups">
+        <field name="name">Allergens Creation</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+
 </odoo>

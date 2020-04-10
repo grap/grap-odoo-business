@@ -50,8 +50,15 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
-    allergens = fields.Text(
+    allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        related="product_variant_ids.allergen_ids",
         string="Allergens",
+        readonly=False
+    )
+
+    allergens = fields.Text(
+        string="Allergens Complement",
         related="product_variant_ids.allergens",
         readonly=False,
     )
