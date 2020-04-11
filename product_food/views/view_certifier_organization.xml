@@ -13,6 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <tree>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="website"/>
             </tree>
         </field>
     </record>
@@ -22,12 +23,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active"
+                                type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active"
+                                widget="boolean_button" options="{'terminology': 'archive'}"/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <div class="oe_edit_only"><label for="name"/></div>
                         <h1><field name="name"/></h1>
                         <label for="code" class="oe_edit_only"/>
                         <h2><field name="code"/></h2>
                     </div>
+                    <notebook>
+                        <page string="Information">
+                            <group col="4">
+                                <field name="website" colspan="4" widget="url"/>
+                                <field name="note" widget="html" colspan="4"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -41,8 +57,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_certifier_organization" 
-        parent="sale.prod_config_main" sequence="25" 
+    <menuitem id="menu_certifier_organization"
+        parent="sale.prod_config_main" sequence="25"
         action="action_certifier_organization"/>
 
 </odoo>

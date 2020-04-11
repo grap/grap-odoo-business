@@ -9,11 +9,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="fr_bio_01" model="certifier.organization">
         <field name="name">ECOCERT</field>
         <field name="code">FR-BIO-01</field>
+        <field name="website">http://www.ecocert.fr/</field>
     </record>
 
     <record id="fr_bio_15" model="certifier.organization">
         <field name="name">Alpes Contrôle</field>
         <field name="code">FR-BIO-15</field>
+        <field name="website">https://www.alpes-controles.fr/</field>
     </record>
 
 </odoo>

@@ -36,7 +36,7 @@ class ProductProduct(models.Model):
 
     is_uncertifiable = fields.Boolean(
         string="Not Certifiable",
-        help="Check this for alimentary products that are"
+        help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
         " that comes from the sea")
 
@@ -105,8 +105,8 @@ class ProductProduct(models.Model):
                     raise UserError(
                         _(
                             "Incorrect Setting. the product %s is checked as"
-                            " 'Contain Alcohol' but some related labels are not"
-                            " set."
+                            " 'Contain Alcohol' but some related labels are"
+                            " not set."
                         )
                         % (product.name)
                     )
@@ -116,8 +116,9 @@ class ProductProduct(models.Model):
                     raise UserError(
                         _(
                             "Incorrect Setting. the product %s has a label"
-                            " that mentions that the product contains alcohol, "
-                            " but the 'Contain Alcohol' is not checked"
+                            " that mentions that the product contains "
+                            " alcohol, but the 'Contain Alcohol' is not"
+                            " checked."
                         )
                         % (product.name)
                     )

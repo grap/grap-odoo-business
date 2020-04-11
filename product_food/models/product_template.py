@@ -28,7 +28,7 @@ class ProductTemplate(models.Model):
         string="Not Certifiable",
         related="product_variant_ids.is_uncertifiable",
         readonly=False,
-        help="Check this for alimentary products that are"
+        help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
         " that comes from the sea")
 
@@ -73,7 +73,7 @@ class ProductTemplate(models.Model):
     origin_type = fields.Selection(
         selection=lambda self: self.env['product.product']._fields[
             'origin_type'].selection,
-        string="Organic Type",
+        string="Origin Type",
         related="product_variant_ids.origin_type",
         readonly=False,
     )

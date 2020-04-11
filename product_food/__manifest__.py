@@ -3,7 +3,7 @@
 # @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Sale - Food Information for Products",
+    "name": "Products - Food Informations",
     "version": "12.0.1.0.0",
     "category": "Sales",
     "author": "GRAP",
@@ -31,6 +31,8 @@
         "demo/product_product.xml",
     ],
     "images": [
+        "static/description/certifier_organization_form.png",
+        "static/description/product_allergen_form.png",
     ],
     "installable": True,
 }

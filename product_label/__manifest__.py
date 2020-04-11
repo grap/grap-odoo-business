@@ -21,6 +21,7 @@
         "views/view_product_template.xml",
         "views/view_product_label.xml",
         "report/report_account_invoice.xml",
+        "report/report_sale_order.xml",
     ],
     "demo": [
         "demo/res_groups.xml",

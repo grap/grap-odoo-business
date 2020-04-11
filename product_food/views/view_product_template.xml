@@ -36,7 +36,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </group>
                         <group string="Allergens">
                             <field name="allergen_ids" widget="many2many_tags"/>
-                            <field name="allergens" widget="html" nolabel="1"/>
+                            <field name="allergens" widget="html" nolabel="1" colspan="2"/>
                         </group>
                     </group>
                 </page>
