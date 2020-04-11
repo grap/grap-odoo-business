@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* sale_food
+#   * product_food
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 13:51+0000\n"
-"PO-Revision-Date: 2018-03-20 13:51+0000\n"
+"POT-Creation-Date: 2020-04-11 14:00+0000\n"
+"PO-Revision-Date: 2020-04-11 14:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,482 +15,356 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: sale_food
-#: code:addons/sale_food/models/product_category.py:28
+#. module: product_food
+#: code:addons/product_food/models/product_category.py:32
 #, python-format
-msgid "'Contain Food Products' should be checked for categories set as 'Contain Alcohol'"
-msgstr "'Contient des produits alimentaire' doit être coché pour les categories 'contient de l'alcool'"
+msgid "'Is Alimentary' should be checked for categories set as 'Contain Alcohol'"
+msgstr "'Est alimentaire' doit être coché pour les categories 'contient de l'alcool'"
 
-#. module: sale_food
-#: help:product.product,is_mercuriale:0
-msgid "A product in mercuriale has price that changes very regularly."
-msgstr "Un produit en mercuriale voit son prix changer très fréquemment."
-
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:120
-#, python-format
-msgid "AE"
-msgstr "AE"
-
-#. module: sale_food
-#: field:product.label,active:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__active
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__active
 msgid "Active"
 msgstr "Actif"
 
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-#: field:product.product,allergens:0
+#. module: product_food
+#: selection:product.label,organic_type:0
+#: selection:product.product,organic_type:0
+msgid "Agroecological"
+msgstr "Agro-écologique"
+
+#. module: product_food
+#: selection:product.product,organic_type:0
+msgid "Aliment Not Certified"
+msgstr "Aliment non certifié"
+
+#. module: product_food
+#: selection:product.product,organic_type:0
+msgid "Aliment Uncertifiable"
+msgstr "Aliment non certifiable"
+
+#. module: product_food
+#: model:product.category,name:product_food.alimentary_category
+msgid "Alimentary"
+msgstr "Alimentaire"
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Alimentary Composition"
+msgstr "Composition alimentaire"
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Alimentary Informations"
+msgstr "Informations alimentaires"
+
+#. module: product_food
+#: model:ir.actions.act_window,name:product_food.action_product_allergen
+#: model:ir.model,name:product_food.model_product_allergen
+#: model:ir.model.fields,field_description:product_food.field_product_product__allergen_ids
+#: model:ir.model.fields,field_description:product_food.field_product_template__allergen_ids
+#: model:ir.ui.menu,name:product_food.menu_product_allergen
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
 msgid "Allergens"
 msgstr "Allergènes"
 
-#. module: sale_food
-#: help:product.label,mandatory_on_invoice:0
-msgid "By checking this field, the label will be printed on all the customers invoices."
-msgstr "En cochant cette case, le label sera imprimé sur toutes les factures clients."
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__allergens
+#: model:ir.model.fields,field_description:product_food.field_product_template__allergens
+msgid "Allergens Complement"
+msgstr "Allergènes (complément)"
 
-#. module: sale_food
-#: selection:product.product,fresh_category:0
-msgid "Category I"
-msgstr "Catégorie I"
+#. module: product_food
+#: model:res.groups,name:product_food.group_allergen_manager
+msgid "Allergens Creation"
+msgstr "Création d'allergènes"
 
-#. module: sale_food
-#: selection:product.product,fresh_category:0
-msgid "Category II"
-msgstr "Catégorie II"
+#. module: product_food
+#: model:product.product,name:product_food.product_arachide_toaste
+#: model:product.template,name:product_food.product_arachide_toaste_product_template
+msgid "Arachide Bio Toasté - Jean Hervé"
+msgstr "Arachide Bio Toasté - Jean Hervé"
 
-#. module: sale_food
-#: selection:product.product,fresh_category:0
-msgid "Category III"
-msgstr "Catégorie III"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__best_before_date_day
+#: model:ir.model.fields,field_description:product_food.field_product_template__best_before_date_day
+msgid "Best Before Date Day"
+msgstr "DLC (en Jour)"
 
-#. module: sale_food
-#: field:product.product,fresh_category:0
-msgid "Category for Fresh Product"
-msgstr "Catégorie de produits frais"
+#. module: product_food
+#: model:product.product,name:product_food.product_biere_sans_gluten
+#: model:product.template,name:product_food.product_biere_sans_gluten_product_template
+msgid "Bière Lammsbrau sans gluten 33cl"
+msgstr "Bière Lammsbrau sans gluten 33cl"
 
-#. module: sale_food
-#: field:res.company,certifier_organization_id:0
+#. module: product_food
+#: model:ir.model,name:product_food.model_certifier_organization
+#: model:ir.model.fields,field_description:product_food.field_product_product__certifier_organization_id
+#: model:ir.model.fields,field_description:product_food.field_product_template__certifier_organization_id
+#: model:ir.model.fields,field_description:product_food.field_res_company__certifier_organization_id
 msgid "Certifier Organization"
 msgstr "Organisation certificatrice"
 
-#. module: sale_food
-#: model:ir.actions.act_window,name:sale_food.action_certifier_organization
-#: model:ir.ui.menu,name:sale_food.menu_certifier_organization
+#. module: product_food
+#: model:ir.actions.act_window,name:product_food.action_certifier_organization
+#: model:ir.ui.menu,name:product_food.menu_certifier_organization
 msgid "Certifier Organizations"
 msgstr "Organisations certificatrices"
 
-#. module: sale_food
-#: help:product.label,is_alcohol:0
+#. module: product_food
+#: model:res.groups,name:product_food.group_certifier_manager
+msgid "Certifier Organizations Creation"
+msgstr "Création d'organisations certificatrices"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_product__is_uncertifiable
+#: model:ir.model.fields,help:product_food.field_product_template__is_uncertifiable
+msgid "Check this box for alimentary products that are uncertifiable by definition. For exemple: Products that comes from the sea"
+msgstr "cocher cette case pour les articles alimentaires qui sont non certifiable par définition. par exemple, les produits issues de la mer."
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_label__is_alcohol
 msgid "Check this box if this label is a label that mentions that products contain alcohol. If checked, the products that contains alcohol will have this label set automatically."
-msgstr "Cochez cette case si ce label mentionne que les produits contient de l'alcool. Si la case est coché, les produits qui contiennent de l'alcool se verront affecté ce label automatiquement"
+msgstr "Cocher cette case si le label est un label qui mentionne que l'article contient de l'alcool. Si coché, les articles qui contiennent de l'alcool auront ce label automatiquement paramétré"
 
-#. module: sale_food
-#: help:product.label,is_organic:0
-msgid "Check this box if this label is an organic label. If products has no organic label, a text will be displayed on Price Tag."
-msgstr "Cochez cette case si ce label est un label biologique. Si des articles n'ont aucun label biologique, un texte sera affiché sur l'étiquette."
-
-#. module: sale_food
-#: field:certifier.organization,code:0
-#: field:product.label,code:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__code
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__code
 msgid "Code"
 msgstr "Code"
 
-#. module: sale_food
-#: model:ir.model,name:sale_food.model_res_company
+#. module: product_food
+#: model:ir.model,name:product_food.model_res_company
 msgid "Companies"
 msgstr "Sociétés"
 
-#. module: sale_food
-#: field:product.label,company_id:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__company_id
 msgid "Company"
 msgstr "Société"
 
-#. module: sale_food
-#: field:product.category,is_alcohol:0
-#: field:product.product,is_alcohol:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_alcohol
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_alcohol
 msgid "Contain Alcohol"
 msgstr "Contient de l'alcool"
 
-#. module: sale_food
-#: field:product.category,is_food:0
-msgid "Contain Food Products"
-msgstr "Contient des produits alimentaires"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__is_alcohol
+msgid "Contain Alcohol Products"
+msgstr "Contient des articles avec alcool"
 
-#. module: sale_food
-#: help:product.product,country_id:0
-msgid "Country of production of the product"
-msgstr "Pays de production de l'article"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__is_alimentary
+msgid "Contain Alimentary Products"
+msgstr "Contient des articles alimentaires"
 
-#. module: sale_food
-#: field:certifier.organization,create_uid:0
-#: field:product.label,create_uid:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_uid
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Créé par"
 
-#. module: sale_food
-#: field:certifier.organization,create_date:0
-#: field:product.label,create_date:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_date
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Créé le"
 
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:137
-#, python-format
-msgid "Department must belong to the country."
-msgstr "Le département devrait appartenir au pays."
-
-#. module: sale_food
-#: help:product.product,department_id:0
-msgid "Department of production of the product"
-msgstr "Département de production de l'article"
-
-#. module: sale_food
-#: field:certifier.organization,display_name:0
-#: field:product.label,display_name:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__display_name
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nom affiché"
 
-#. module: sale_food
-#: selection:product.product,fresh_category:0
-msgid "Extra"
-msgstr "Extra"
+#. module: product_food
+#: selection:product.product,origin_type:0
+msgid "EU"
+msgstr "UE"
 
-#. module: sale_food
-#: help:product.product,fresh_category:0
-msgid "Extra - Hight Quality : product without default ;\n"
-"Quality I - Good Quality : Product with little defaults ;\n"
-"Quality II - Normal Quality : Product with default ;\n"
-"Quality III - Bad Quality : Use this option only in specific situation."
-msgstr "Extra - Excellente Qualité : Article sans défaut ;\n"
-"Qualité I - Bonne Qualité : Article avec quelques défauts ;\n"
-"Qualité II - Qualité Normal : Article avec défauts ;\n"
-"Qualité III - Mauvaise Qualité : N'utilisez cette option que dans des cas spécifiques."
+#. module: product_food
+#: selection:product.product,origin_type:0
+msgid "EU / No EU"
+msgstr "UE / Non UE"
 
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-msgid "Extra Informations"
-msgstr "Informations Complémentaires"
-
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-msgid "Food"
-msgstr "Alimentaire"
-
-#. module: sale_food
-#: view:product.category:sale_food.view_product_category_search
-msgid "Food Categories"
-msgstr "Catégories alimentaires"
-
-#. module: sale_food
-#: field:product.product,is_food:0
-msgid "Food Product"
-msgstr "Produit alimentaire"
-
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_search
-msgid "Food Products"
-msgstr "Produits alimentaires"
-
-#. module: sale_food
-#: model:ir.ui.menu,name:sale_food.menu_sale_food
-msgid "Food Sales"
-msgstr "Ventes Alimentaire"
-
-#. module: sale_food
-#: field:certifier.organization,id:0
-#: field:product.label,id:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__id
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__id
 msgid "ID"
 msgstr "ID"
 
-#. module: sale_food
-#: help:product.category,is_alcohol:0
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_category__is_alimentary
+msgid "If this box is checked, the products that belong to that category will be set as 'Alimentary Product' by default"
+msgstr "Si cette case est cochée, les articles qui sont associés à cette categorie seront marqué comme 'Articles alimentaire' par défaut"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_category__is_alcohol
 msgid "If this box is checked, the products that belong to that category will be set as 'Contain alcohol' by default"
-msgstr "Si cette case est cochée, les produits associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
+msgstr "Si cette case est cochée, les articles associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
 
-#. module: sale_food
-#: help:product.category,is_food:0
-msgid "If this box is checked, the products that belong to that category will be set as 'Food Product' by default"
-msgstr "Si cette case est cochée, les produits qui sont associés à cette categorie seront marqué comme 'Produit alimentaire' par défaut"
-
-#. module: sale_food
-#: field:product.label,image:0
-msgid "Image"
-msgstr "Image"
-
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:157
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:117
 #, python-format
-msgid "Incorrect Setting. the product %s has a label that mentions that the product contains alcohol,  but the 'Contain Alcohol' is not checked"
-msgstr "Paramétrage incorrect. Le produit %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
+msgid "Incorrect Setting. the product %s has a label that mentions that the product contains  alcohol, but the 'Contain Alcohol' is not checked."
+msgstr "Paramétrage incorrect. L'article %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
 
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:150
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:106
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
 
-#. module: sale_food
-#: view:product.label:sale_food.view_product_label_form
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_certifier_organization_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Information"
 msgstr "Information"
 
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-#: field:product.product,ingredients:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__ingredients
+#: model:ir.model.fields,field_description:product_food.field_product_template__ingredients
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
 msgid "Ingredients"
 msgstr "Ingrédients"
 
-#. module: sale_food
-#: field:product.label,is_alcohol:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_label__is_alcohol
 msgid "Is Alcohol"
-msgstr "Alcool"
+msgstr "Contient de l'alcool"
 
-#. module: sale_food
-#: field:product.label,is_organic:0
-msgid "Is Organic"
-msgstr "Est biologique"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_alimentary
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_alimentary
+msgid "Is Alimentary"
+msgstr "Est alimentaire"
 
-#. module: sale_food
-#: model:ir.actions.act_window,name:sale_food.action_product_label
-#: model:ir.ui.menu,name:sale_food.menu_product_label
-#: field:product.product,label_ids:0
-msgid "Labels"
-msgstr "Labels"
-
-#. module: sale_food
-#: field:certifier.organization,__last_update:0
-#: field:product.label,__last_update:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization____last_update
+#: model:ir.model.fields,field_description:product_food.field_product_allergen____last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Dernière modification le"
 
-#. module: sale_food
-#: field:certifier.organization,write_uid:0
-#: field:product.label,write_uid:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__write_uid
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Dernière mise à jour par"
 
-#. module: sale_food
-#: field:certifier.organization,write_date:0
-#: field:product.label,write_date:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__write_date
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Dernière mise à jour le"
 
-#. module: sale_food
-#: field:product.product,local_notation:0
-msgid "Local notation"
-msgstr "Notation Local"
-
-#. module: sale_food
-#: field:product.product,maker_description:0
-msgid "Maker"
-msgstr "Producteur"
-
-#. module: sale_food
-#: model:res.groups,name:sale_food.group_food_manager
-msgid "Manager"
-msgstr "Responsable"
-
-#. module: sale_food
-#: field:product.label,mandatory_on_invoice:0
-msgid "Mandatory on invoice"
-msgstr "Obligatoire sur les factures"
-
-#. module: sale_food
-#: field:product.label,image_medium:0
-msgid "Medium-sized image"
-msgstr "Image de taille moyenne"
-
-#. module: sale_food
-#: help:product.label,image_medium:0
-msgid "Medium-sized image of the label. It is automatically resized as a 128x128px image, with aspect ratio preserved, only when the image exceeds one of those sizes. Use this field in form views or some kanban views."
-msgstr "Medium-sized image of the label. It is automatically resized as a 128x128px image, with aspect ratio preserved, only when the image exceeds one of those sizes. Use this field in form views or some kanban views."
-
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_search
-#: field:product.product,is_mercuriale:0
-msgid "Mercuriale Product"
-msgstr "Produit en Mercuriale"
-
-#. module: sale_food
-#: field:product.label,minimum_local_notation:0
-msgid "Minimum Local Notation"
-msgstr "Notation Local Minimum"
-
-#. module: sale_food
-#: field:product.label,minimum_organic_notation:0
-msgid "Minimum Organic Notation"
-msgstr "Notation Agro Ecologique Minimum"
-
-#. module: sale_food
-#: field:product.label,minimum_packaging_notation:0
-msgid "Minimum Packaging Notation"
-msgstr "Notation Emballage Minimum"
-
-#. module: sale_food
-#: field:product.label,minimum_social_notation:0
-msgid "Minimum Social Notation"
-msgstr "Notation Social Minimum"
-
-#. module: sale_food
-#: field:certifier.organization,name:0
-#: field:product.label,name:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__name
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__name
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Name"
 msgstr "Nom"
 
-#. module: sale_food
-#: view:product.category:sale_food.view_product_category_search
-msgid "Not Food Categories"
-msgstr "Catégories non alimentaires"
+#. module: product_food
+#: selection:product.product,origin_type:0
+msgid "No EU"
+msgstr "Non UE"
 
-#. module: sale_food
-#: view:product.label:sale_food.view_product_label_form
-msgid "Notation"
-msgstr "Notation"
+#. module: product_food
+#: selection:product.product,organic_type:0
+msgid "Not Alimentary"
+msgstr "Non alimentaire"
 
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-msgid "Notations"
-msgstr "Notations"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_uncertifiable
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_uncertifiable
+msgid "Not Certifiable"
+msgstr "Non certifiable"
 
-#. module: sale_food
-#: field:product.label,note:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__note
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__note
 msgid "Note"
 msgstr "Note"
 
-#. module: sale_food
-#: field:product.product,organic_notation:0
-msgid "Organic notation"
-msgstr "Notation agro-écologique"
+#. module: product_food
+#: selection:product.label,organic_type:0
+#: selection:product.product,organic_type:0
+msgid "Organic"
+msgstr "Biologique"
 
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-msgid "Origin"
-msgstr "Origine"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_label__organic_type
+#: model:ir.model.fields,field_description:product_food.field_product_product__organic_type
+#: model:ir.model.fields,field_description:product_food.field_product_template__organic_type
+msgid "Organic Category"
+msgstr "Catégorie biologique"
 
-#. module: sale_food
-#: field:product.product,origin_description:0
-msgid "Origin Complement"
-msgstr "Origine Complément"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__origin_type
+#: model:ir.model.fields,field_description:product_food.field_product_template__origin_type
+msgid "Origin Type"
+msgstr "Catégorie d'Origine"
 
-#. module: sale_food
-#: field:product.product,country_id:0
-msgid "Origin Country"
-msgstr "Pays d'Origine"
-
-#. module: sale_food
-#: field:product.product,department_id:0
-msgid "Origin Department"
-msgstr "Département d'Origine"
-
-#. module: sale_food
-#: field:product.product,state_id:0
-msgid "Origin State"
-msgstr "Région d'origine"
-
-#. module: sale_food
-#: field:product.product,packaging_notation:0
-msgid "Packaging notation"
-msgstr "Notation Emballage"
-
-#. module: sale_food
-#: field:product.product,pricetag_color:0
-msgid "Pricetag color"
-msgstr "Couleur d'étiquette"
-
-#. module: sale_food
-#: field:product.product,pricetag_organic_text:0
-msgid "Pricetag organic text"
-msgstr "Pricetag organic text"
-
-#. module: sale_food
-#: field:product.product,pricetag_origin:0
-msgid "Pricetag origin"
-msgstr "Pricetag origin"
-
-#. module: sale_food
-#: model:ir.model,name:sale_food.model_product_product
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_product
 msgid "Product"
 msgstr "Article"
 
-#. module: sale_food
-#: model:ir.model,name:sale_food.model_product_category
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_category
 msgid "Product Category"
-msgstr "Catégorie d'articles"
+msgstr "Catégorie d'article"
 
-#. module: sale_food
-#: model:ir.model,name:sale_food.model_product_uom_categ
-msgid "Product uom categ"
-msgstr "Catégorie d'UdM d'article"
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_label
+msgid "Product Labels"
+msgstr "Labels d'articles"
 
-#. module: sale_food
-#: help:product.product,origin_description:0
-msgid "Production location complementary information"
-msgstr "Information complémentaire sur la production"
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__product_qty
+msgid "Product Quantity"
+msgstr "Quantité d'articles"
 
-#. module: sale_food
-#: model:ir.module.category,name:sale_food.module_category_food
-msgid "Sale Food"
-msgstr "Vente Alimentaire"
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
 
-#. module: sale_food
-#: field:product.label,image_small:0
-msgid "Small-sized image"
-msgstr "Image de taille moyenne"
+#. module: product_food
+#: model:ir.actions.act_window,name:product_food.action_product_allergen_2_product_product
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__product_ids
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Products"
+msgstr "Articles"
 
-#. module: sale_food
-#: help:product.label,image_small:0
-msgid "Small-sized image of the label. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
-msgstr "Small-sized image of the label. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+#. module: product_food
+#: model:product.product,uom_name:product_food.product_arachide_toaste
+#: model:product.product,uom_name:product_food.product_biere_sans_gluten
+#: model:product.template,uom_name:product_food.product_arachide_toaste_product_template
+#: model:product.template,uom_name:product_food.product_biere_sans_gluten_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
 
-#. module: sale_food
-#: field:product.product,social_notation:0
-msgid "Social notation"
-msgstr "Notation Social"
-
-#. module: sale_food
-#: view:product.product:sale_food.view_product_product_form
-#: field:product.product,spider_chart_image:0
-msgid "Spider Chart"
-msgstr "Radar"
-
-#. module: sale_food
-#: help:product.product,state_id:0
-msgid "State of production of the product"
-msgstr "Région de production du produit"
-
-#. module: sale_food
-#: selection:product.product,local_notation:0
-#: selection:product.product,organic_notation:0
-#: selection:product.product,packaging_notation:0
-#: selection:product.product,social_notation:0
-msgid "Unknown"
-msgstr "Inconnu"
-
-#. module: sale_food
-#: model:res.groups,name:sale_food.group_food_user
-msgid "User"
-msgstr "Utilisateur"
-
-#. module: sale_food
-#: field:product.label,website:0
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_certifier_organization__website
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__website
 msgid "Website"
 msgstr "Site Web"
 
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:121
-#, python-format
-msgid "local"
-msgstr "local"
-
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:122
-#, python-format
-msgid "package"
-msgstr "emballage"
-
-#. module: sale_food
-#: code:addons/sale_food/models/product_product.py:123
-#, python-format
-msgid "social"
-msgstr "social"
+#. module: product_food
+#: model:product.product,weight_uom_name:product_food.product_arachide_toaste
+#: model:product.product,weight_uom_name:product_food.product_biere_sans_gluten
+#: model:product.template,weight_uom_name:product_food.product_arachide_toaste_product_template
+#: model:product.template,weight_uom_name:product_food.product_biere_sans_gluten_product_template
+msgid "kg"
+msgstr "kg"
 

@@ -1,12 +1,6 @@
-To use this module, you need to:
+To use this module, you need to to your product variants or templates
+and set the information in the following two tabs.
 
-* Go to to your product form
-* check 'Is food' Checkbox
+.. figure:: ../static/description/product_label_form_alimentary_information.png
 
-.. figure:: ../static/description/product_product_form_1.png
-
-* tip the food information, in the new tab
-
-.. figure:: ../static/description/product_product_form_2.png
-
-.. figure:: ../static/description/product_product_form_3.png
+.. figure:: ../static/description/product_label_form_alimentary_composition.png

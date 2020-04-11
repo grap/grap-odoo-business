@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="uom_id" ref="uom.product_uom_unit" />
         <field name="is_alimentary" eval="True" />
         <field name="list_price">2.70</field>
-        <field name="label_ids" eval="[
+        <field name="allergen_ids" eval="[
             (4, ref('allergen_peanut')),
         ]"/>
         <field name="label_ids" eval="[
