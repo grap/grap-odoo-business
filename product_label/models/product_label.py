@@ -23,10 +23,10 @@ class ProductLabel(models.Model):
 
     note = fields.Text(string="Note")
 
-    display_on_invoice = fields.Boolean(
-        string="Display on Invoices",
+    display_on_report = fields.Boolean(
+        string="Display on Reports",
         help="By checking this field, the label will be printed on"
-        " all the invoices.",
+        " all the official documents.",
     )
 
     product_ids = fields.Many2many(

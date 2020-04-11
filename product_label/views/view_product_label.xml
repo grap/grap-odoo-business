@@ -53,7 +53,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <group col="4">
                                 <field name="code"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
-                                <field name="display_on_invoice"/>
+                                <field name="display_on_report"/>
                                 <newline />
                                 <field name="website" colspan="4" widget="url"/>
                                 <field name="note" widget="html" colspan="4"/>
@@ -65,42 +65,49 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-<!--     <record id="view_product_label_kanban" model="ir.ui.view">
+    <record id="view_product_label_kanban" model="ir.ui.view">
         <field name="model">product.label</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban class="o_res_partner_kanban">
+                <field name="id"/>
+                <field name="code"/>
+                <field name="name"/>
                 <field name="image_small"/>
-                    <templates>
+                <field name="product_qty"/>
+                <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_box oe_kanban_color_border">
-                            <div class="product_label_kanban">
-                                <div class="product_label_kanban_name">
-                                    <a type="edit">
-                                        [<field name="code"/>] 
-                                        <field name="name"/>
-                                    </a>
-                                </div>
-                                <div class="product_label_kanban_image">
-                                    <img t-att-src="kanban_image('product.label', 'image_small', record.id.value)"/>
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <img class="o_kanban_image" t-att-src="kanban_image('product.label', 'image_small', record.id.raw_value)" t-att-alt="record.name"/>
+
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_partner_heading">
+                                    <t t-if="record.code.raw_value">
+                                        <field name="code"/> - </t>
+                                    <field name="name"/>
+                                </strong>
+                                <div class="oe_kanban_partner_links">
+                                    <span t-if="record.product_qty.value>0" class="badge badge-pill"><i class="fa fa-fw fa-list" role="img" aria-label="Products" title="Products"/>
+                                        <t t-esc="record.product_qty.value"/> Products
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </t>
-            </templates>
+                </templates>
             </kanban>
         </field>
-    </record> -->
+    </record>
 
     <record id="action_product_label" model="ir.actions.act_window">
         <field name="name">Labels</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">product.label</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
-    <menuitem id="menu_product_label" 
-        parent="sale.prod_config_main" sequence="20" 
+    <menuitem id="menu_product_label"
+        parent="sale.prod_config_main" sequence="20"
         action="action_product_label"/>
 
 </odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order" inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="//span[@t-field='line.name']" position="after">
+            <t t-if="line.product_label_description">
+                (<i><span t-field="line.product_label_description"/></i>)
+            </t>
+        </xpath>
+
+
+        <xpath expr="//div[hasclass('page')]" position="after">
+            <t t-if="doc.label_ids">
+
+                <h3>Labels Detail</h3>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>More information</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+
+                        <t t-as="label" t-foreach="doc.label_ids">
+                            <tr>
+                                <td><img t-if="label.image_small"
+                                    t-att-src="image_data_uri(label.image_small)"
+                                    width="30" height="30"/></td>
+                                <td><span t-esc="label.code"/></td>
+                                <td><span t-esc="label.name"/></td>
+                                <td>
+                                    <a t-if="label.website" t-att-href="label.website">
+                                        <t t-esc="label.website"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>
