@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_template_form" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_label.view_product_template_form" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="replace"/>
+
+            <notebook position="inside">
+                <page name="alimentary_information" string="Alimentary Informations"
+                     attrs="{'invisible': [('product_variant_count', '>', 1)]}">
+                    <group col="4">
+                        <field name="is_alimentary"/>
+                        <newline/>
+                        <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="best_before_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="label_ids" widget="many2many_tags" colspan="4"/>
+                        <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="certifier_organization_id" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="organic_type"/>
+                    </group>
+                </page>
+
+                <page name="alimentary_composition" string="Alimentary Composition"
+                    attrs="{'invisible': ['|', ('is_alimentary', '=', False), ('product_variant_count', '>', 1)]}">
+                    <group>
+                        <group string="Ingredients">
+                            <field name="ingredients" widget="html" nolabel="1"/>
+                        </group>
+                        <group string="Allergens">
+                            <field name="allergen_ids" widget="many2many_tags"/>
+                            <field name="allergens" widget="html" nolabel="1" colspan="2"/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+
+        </field>
+    </record>
+
+    <record id="view_product_template_form_origin" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_origin.view_product_template_form" />
+        <field name="arch" type="xml">
+            <field name="country_id" position="before">
+                <field name="origin_type" attrs="{'invisible': ['|', ('is_alimentary', '=', False), ('product_variant_count', '>', 1)]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

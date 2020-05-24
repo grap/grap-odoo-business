@@ -1,13 +1,12 @@
-# Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+# Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
-# @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = "account.invoice.line"
+class SaleOrderLine(models.Model):
+    _inherit = "sale.order.line"
 
     product_label_description = fields.Char(
         string="Product Labels Description",

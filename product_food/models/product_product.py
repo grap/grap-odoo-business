@@ -11,6 +11,12 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     # Constant Section
+    _ORIGIN_TYPE_SELECTION = [
+        ('eu', "EU"),
+        ('no_eu', "No EU"),
+        ('eu_no_eu', "EU / No EU"),
+    ]
+
     _ORGANIC_TYPE_SELECTION = [
         ('01_organic', "Organic"),
         ('02_agroecological', "Agroecological"),
@@ -23,25 +29,43 @@ class ProductProduct(models.Model):
     is_alimentary = fields.Boolean(
         string="Is Alimentary")
 
+    certifier_organization_id = fields.Many2one(
+        comodel_name="certifier.organization",
+        string="Certifier Organization",
+    )
+
     is_uncertifiable = fields.Boolean(
         string="Not Certifiable",
-        help="Check this for alimentary products that are"
+        help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
-        " that comes from the see")
+        " that comes from the sea")
 
     is_alcohol = fields.Boolean(string="Contain Alcohol")
 
-    expiration_date_day = fields.Integer(
-        string="Day quantity Before Expiration Date"
+    best_before_date_day = fields.Integer(
+        string="Best Before Date Day"
     )
 
     ingredients = fields.Text(string="Ingredients")
 
-    allergens = fields.Text(string="Allergens")
+    allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        relation="product_allergen_product_rel",
+        column1="product_id",
+        column2="allergen_id",
+        string="Allergens",
+    )
+
+    allergens = fields.Text(string="Allergens Complement")
 
     organic_type = fields.Selection(
         selection=_ORGANIC_TYPE_SELECTION, string="Organic Category",
         compute="_compute_organic_type"
+    )
+
+    origin_type = fields.Selection(
+        selection=_ORIGIN_TYPE_SELECTION,
+        string="Origin Type",
     )
 
     # Compute Section
@@ -66,11 +90,11 @@ class ProductProduct(models.Model):
     @api.multi
     @api.constrains("is_alcohol", "label_ids")
     def _check_alcohol_labels(self):
-        label_obj = self.env["product.label"]
+        ProductLabel = self.env["product.label"]
         for product in self:
             if product.is_alcohol:
                 # Check that all the alcohol labels are set
-                alcohol_label_ids = label_obj.search(
+                alcohol_label_ids = ProductLabel.search(
                     [("is_alcohol", "=", True)]
                 ).ids
                 if [
@@ -81,8 +105,8 @@ class ProductProduct(models.Model):
                     raise UserError(
                         _(
                             "Incorrect Setting. the product %s is checked as"
-                            " 'Contain Alcohol' but some related labels are not"
-                            " set."
+                            " 'Contain Alcohol' but some related labels are"
+                            " not set."
                         )
                         % (product.name)
                     )
@@ -92,8 +116,9 @@ class ProductProduct(models.Model):
                     raise UserError(
                         _(
                             "Incorrect Setting. the product %s has a label"
-                            " that mentions that the product contains alcohol, "
-                            " but the 'Contain Alcohol' is not checked"
+                            " that mentions that the product contains "
+                            " alcohol, but the 'Contain Alcohol' is not"
+                            " checked."
                         )
                         % (product.name)
                     )
@@ -112,10 +137,10 @@ class ProductProduct(models.Model):
 
     @api.onchange("is_alcohol")
     def onchange_is_alcohol(self):
-        label_obj = self.env["product.label"]
+        ProductLabel = self.env["product.label"]
         if self.is_alcohol:
             self.is_alimentary = True
-            alcohol_label_ids = label_obj.search(
+            alcohol_label_ids = ProductLabel.search(
                 [("is_alcohol", "=", True)]
             ).ids
             for alcohol_label_id in alcohol_label_ids:

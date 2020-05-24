@@ -21,11 +21,6 @@ msgid "Department"
 msgstr "Département"
 
 #. module: product_origin_l10n_fr_department
-#: model:ir.model.fields,field_description:product_origin_l10n_fr_department.field_product_product__department_id_domain
-msgid "Department Id Domain"
-msgstr "Domaine (Département)"
-
-#. module: product_origin_l10n_fr_department
 #: code:addons/product_origin_l10n_fr_department/models/product_product.py:29
 #, python-format
 msgid "Department must belong to the state."

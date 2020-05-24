@@ -11,16 +11,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product_label.view_product_product_form" />
         <field name="arch" type="xml">
-            <field name="label_ids" position="before">
-                <field name="is_alimentary"/>
-                <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-                <field name="expiration_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-            </field>
-            <field name="label_ids" position="after">
-                <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-                <field name="organic_type"/>
-            </field>
+            <field name="label_ids" position="replace"/>
+
             <notebook position="inside">
+                <page name="alimentary_information" string="Alimentary Informations">
+                    <group col="4">
+                        <field name="is_alimentary"/>
+                        <newline/>
+                        <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="best_before_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="label_ids" widget="many2many_tags" colspan="4"/>
+                        <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="organic_type"/>
+                    </group>
+                </page>
+
                 <page name="alimentary_composition" string="Alimentary Composition"
                     attrs="{'invisible': [('is_alimentary', '=', False)]}">
                     <group>
@@ -28,11 +33,68 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="ingredients" widget="html" nolabel="1"/>
                         </group>
                         <group string="Allergens">
-                            <field name="allergens" widget="html" nolabel="1"/>
+                            <field name="label_ids" widget="many2many_tags"/>
+                            <field name="allergens" widget="html" nolabel="1" colspan="2"/>
                         </group>
                     </group>
                 </page>
             </notebook>
+
+        </field>
+    </record>
+
+    <record id="view_product_product_form_origin" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_origin.view_product_product_form" />
+        <field name="arch" type="xml">
+
+            <field name="country_id" position="before">
+                <field name="origin_type" attrs="{'invisible': ['|', ('is_alimentary', '=', False), ('product_variant_count', '>', 1)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_variant" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_label.view_product_product_form_variant" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="replace"/>
+
+            <xpath expr="//group[@name='codes']/.." position="after">
+
+                <group col="4" name="alimentary_information" string="Alimentary Informations">
+                    <field name="is_alimentary"/>
+                    <newline/>
+                    <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                    <field name="best_before_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                    <field name="label_ids" widget="many2many_tags" colspan="4"/>
+                    <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                    <field name="organic_type"/>
+                </group>
+
+                <group name="alimentary_composition" string="Alimentary Composition"
+                    attrs="{'invisible': [('is_alimentary', '=', False)]}">
+                    <group string="Ingredients">
+                        <field name="ingredients" widget="html" nolabel="1"/>
+                    </group>
+                    <group string="Allergens">
+                        <field name="label_ids" widget="many2many_tags"/>
+                        <field name="allergens" widget="html" nolabel="1"/>
+                    </group>
+                </group>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_product_product_form_variant_origin" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_origin.view_product_product_form_variant" />
+        <field name="arch" type="xml">
+            <field name="country_id" position="before">
+                <field name="origin_type" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+            </field>
         </field>
     </record>
 

@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Agriculture Biologique</field>
         <field name="code">AB</field>
         <field name="website">http://agriculture.gouv.fr/lagriculture-biologique-ab</field>
-        <field name="display_on_invoice" eval="True" />
+        <field name="display_on_report" eval="True" />
         <field name="image" type="base64" file="product_label/static/img/label_agriculture_biologique-image.png"/>
     </record>
 
@@ -24,7 +24,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="label_gluten_free" model="product.label">
         <field name="name">Gluten Free</field>
         <field name="code">GF</field>
-        <field name="display_on_invoice" eval="True" />
+        <field name="display_on_report" eval="True" />
         <field name="image" type="base64" file="product_label/static/img/label_gluten_free-image.png"/>
     </record>
 
