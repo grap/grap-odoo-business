@@ -1,4 +1,4 @@
-That module allows special user to rename account move.
+That module allows special users to rename account move.
 
 Usefull if the account move doesn't have the good numeration.
 (for exemple if you change account move sequence)
