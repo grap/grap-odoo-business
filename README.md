@@ -27,11 +27,11 @@ addon | version | summary
 [product_label](product_label/) | 12.0.1.0.0 | Product Labels
 [product_origin](product_origin/) | 12.0.1.0.0 | Origin Information for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.0 | Origin Information for Products (French Departments)
-[recurring_consignment](recurring_consignment/) | 12.0.1.0.0 | Sale - Handle Recurring Consignment
-[recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.0.0 | Glue module for Recurring Consignment and PoS modules
-[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.0 | Glue module for Recurring Consignment and Purchase modules
-[recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.0.0 | Glue module for Recurring Consignment and Sale modules
-[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.0.0 | Test module for Recurring_ Consignment Module
+[recurring_consignment](recurring_consignment/) | 12.0.1.0.1 | Sale - Handle Recurring Consignment
+[recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.0.1 | Glue module for Recurring Consignment and PoS modules
+[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Purchase modules
+[recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Sale modules
+[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.0.1 | Test module for Recurring_ Consignment Module
 
 
 Unported addons
