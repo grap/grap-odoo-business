@@ -1,10 +1,9 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError
 
 
 class ResPartner(models.Model):
@@ -13,7 +12,7 @@ class ResPartner(models.Model):
     # Columns Section
     is_consignor = fields.Boolean(string='Is Consignor')
 
-    consignment_commission = fields.Float(string='Consignment Commission Rate')
+    consignment_commission = fields.Float(string='Commission Rate')
 
     consignment_account_id = fields.Many2one(
         string='Consignment Account', comodel_name='account.account',
@@ -45,22 +44,22 @@ class ResPartner(models.Model):
     @api.model
     def create(self, vals):
         vals = self._prepare_vals_consignor(vals)
-        return super(ResPartner, self).create(vals)
+        return super().create(vals)
 
     @api.multi
     def write(self, vals):
         self._prevent_uncheck_is_consignor(vals)
         vals = self._prevent_change_is_consignor(vals)
-        return super(ResPartner, self).write(vals)
+        return super().write(vals)
 
     # Custom Section
     @api.model
     def _prepare_vals_consignor(self, vals):
         if vals.get('is_consignor', False):
             vals.update({
-                'property_account_payable': vals.get(
+                'property_account_payable_id': vals.get(
                     'consignment_account_id', False),
-                'property_account_receivable': vals.get(
+                'property_account_receivable_id': vals.get(
                     'consignment_account_id', False),
             })
         return vals
@@ -79,18 +78,18 @@ class ResPartner(models.Model):
         """ prevent to write incorrect values for consignors"""
         if any(self.mapped('is_consignor')):
             if len(self) == 1:
-                vals.pop('property_account_payable', False)
-                vals.pop('property_account_receivable', False)
+                vals.pop('property_account_payable_id', False)
+                vals.pop('property_account_receivable_id', False)
                 if 'consignment_account_id' in vals:
                     vals.update({
-                        'property_account_payable': vals.get(
+                        'property_account_payable_id': vals.get(
                             'consignment_account_id', False),
-                        'property_account_receivable': vals.get(
+                        'property_account_receivable_id': vals.get(
                             'consignment_account_id', False),
                     })
             elif set([
-                    'property_account_payable',
-                    'property_account_receivable',
+                    'property_account_payable_id',
+                    'property_account_receivable_id',
                     'consignment_account_id']) & set(vals.keys()):
                 raise UserError(_(
                     "You can not change this settings ("

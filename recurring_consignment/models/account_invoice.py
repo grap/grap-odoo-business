@@ -1,9 +1,8 @@
-# coding: utf-8
 # Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, api, fields, models
+from odoo import _, api, fields, models
 
 
 class AccountInvoice(models.Model):
@@ -20,22 +19,23 @@ class AccountInvoice(models.Model):
 
     @api.constrains('partner_id')
     def _check_partner_id_recurring_consignment(self):
-        self.mapped('invoice_line')._check_invoice_line_recurring_consignment()
+        self.mapped(
+            'invoice_line_ids')._check_invoice_line_recurring_consignment()
 
     # Public Function
     @api.model
     def get_commission_information_summary(self, invoice):
-        move_line_obj = self.env['account.move.line']
+        AccountMoveLine = self.env['account.move.line']
         groups = {}
         res = []
-        sorted_lines = move_line_obj.search(
+        sorted_lines = AccountMoveLine.search(
             [('id', 'in', invoice.consignment_line_ids.ids)],
-            order='tax_code_id, name')
+            order='tax_line_id desc, name')
         for move_line in sorted_lines:
             key = self._get_commission_key(move_line)
             groups.setdefault(key, [])
             groups[key].append(move_line)
-        for key, value in groups.iteritems():
+        for key, value in groups.items():
             (kind, name) = key
             amount = 0
             for move_line in value:
@@ -49,11 +49,11 @@ class AccountInvoice(models.Model):
 
     @api.model
     def get_commission_information_accounting_detail(self, invoice):
-        move_line_obj = self.env['account.move.line']
+        AccountMoveLine = self.env['account.move.line']
         res = []
-        sorted_lines = move_line_obj.search(
+        sorted_lines = AccountMoveLine.search(
             [('id', 'in', invoice.consignment_line_ids.ids)],
-            order='date, move_id, tax_code_id, name')
+            order='date, move_id, tax_line_id desc, name')
         for move_line in sorted_lines:
             tmp = self._get_commission_key(move_line)
             res.append({
@@ -68,18 +68,16 @@ class AccountInvoice(models.Model):
 
     @api.model
     def get_commission_information_product_detail(self, invoice):
-        product_obj = self.env['product.product']
+        ProductProduct = self.env['product.product']
 
-        invoice_obj = self.env['account.invoice']
-        invoice_line_obj = self.env['account.invoice.line']
-        order_obj = self.env['pos.order']
-        order_line_obj = self.env['pos.order.line']
+        AccountInvoice = self.env['account.invoice']
+        AccountInvoiceLine = self.env['account.invoice.line']
 
         groups = {}
         res = []
 
         # Get Product ids
-        consignor_products = product_obj.with_context(
+        consignor_products = ProductProduct.with_context(
             active_test=False).search([
                 ('consignor_partner_id', '=', invoice.partner_id.id)])
 
@@ -88,9 +86,9 @@ class AccountInvoice(models.Model):
             set([x.move_id.id for x in invoice.consignment_line_ids]))
 
         # Get related invoice
-        com_invoices = invoice_obj.search([('move_id', 'in', move_ids)])
+        com_invoices = AccountInvoice.search([('move_id', 'in', move_ids)])
 
-        com_invoice_lines = invoice_line_obj.search([
+        com_invoice_lines = AccountInvoiceLine.search([
             ('invoice_id', 'in', com_invoices.ids),
             ('product_id', 'in', consignor_products.ids),
         ])
@@ -112,39 +110,10 @@ class AccountInvoice(models.Model):
                 com_invoice_line.price_subtotal,
             }
 
-        # Tricky. The ORM call this function when basic user without
-        # PoS Access want to print invoices
-        if self.env.user.has_group(
-                'recurring_consignment.group_consignment_user'):
-            # Get related pos order
-            com_orders = order_obj.search([('account_move', 'in', move_ids)])
-
-            com_order_lines = order_line_obj.search([
-                ('order_id', 'in', com_orders.ids),
-                ('product_id', 'in', consignor_products.ids),
-            ])
-
-            for com_order_line in com_order_lines:
-                key = (
-                    com_order_line.product_id.id,
-                    com_order_line.price_unit,
-                    com_order_line.discount,
-                )
-                groups.setdefault(key, {
-                    'quantity': 0,
-                    'total_vat_excl': 0,
-                })
-                groups[key] = {
-                    'quantity': groups[key]['quantity'] +
-                    com_order_line.qty,
-                    'total_vat_excl': groups[key]['total_vat_excl'] +
-                    com_order_line.price_subtotal,
-                }
-
         # Compute sum of each product
-        for key, value in groups.iteritems():
+        for key, value in groups.items():
             (product_id, price_unit, discount) = key
-            product = product_obj.browse(product_id)
+            product = ProductProduct.browse(product_id)
             res.append({
                 'product_code': product.default_code,
                 'product_name': product.name,
@@ -158,42 +127,19 @@ class AccountInvoice(models.Model):
             key=lambda k: (
                 k['product_name'], - k['price_unit'], k['discount']))
 
-    # TODO improve me
-    # Please, I, don't like this kind of code
-    # I'm so ashamed... (with french sentences..., bad boy...)
     @api.model
     def _get_commission_key(self, move_line):
-        if move_line.tax_code_id.consignment_product_id:
-            # That is Vat Excl Revenue
-            if '2,1' in move_line.tax_code_id.name:
-                return (
-                    'revenue',
-                    _("Encaissement de Chiffre d'affaire HT (TVA à 2,1%)"))
-            elif '5,5' in move_line.tax_code_id.name:
-                return (
-                    'revenue',
-                    _("Encaissement de Chiffre d'affaire HT (TVA à 5,5%)"))
-            elif '10' in move_line.tax_code_id.name:
-                return (
-                    'revenue',
-                    _("Encaissement de Chiffre d'affaire HT (TVA à 10,0%)"))
-            elif '20' in move_line.tax_code_id.name:
-                return (
-                    'revenue',
-                    _("Encaissement de Chiffre d'affaire HT (TVA à 20,0%)"))
-            else:
-                return (
-                    'revenue',
-                    _("Encaissement de Chiffre d'affaire HT (TVA inconnu)"))
+        if move_line.tax_line_id.consignment_product_id:
+            tax = move_line.tax_line_id
+            # That is Tax line
+            return (
+                'tax',
+                _("Tax Collected %s") % (tax.amount)
+            )
         else:
-            # That is Tax
-            if '2,1' in move_line.name:
-                return ('tax', _('Encaissement de TVA à 2,1%'))
-            elif '5,5' in move_line.name:
-                return ('tax', _('Encaissement de TVA à 5,5%'))
-            elif '10' in move_line.name:
-                return ('tax', _('Encaissement de TVA à 10,0%'))
-            elif '20' in move_line.name:
-                return ('tax', _('Encaissement de TVA à 20,0%'))
-            else:
-                return ('tax', _('Encaissement de TVA (Taux inconnu)'))
+            return (
+                'revenue',
+                _("Income Collected. Taxes: %s" % (
+                    ", ".join([str(x.amount) for x in move_line.tax_ids])
+                ))
+            )

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="consigned_product_consignor_1_vat_5" model="product.product">
+        <field name="name">My Consigned Product (with VAT 5% - Consignor 1)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_consignor_1"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_5_2" model="product.product">
+        <field name="name">My Consigned Product #2 (with VAT 5% - Consignor 1)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_consignor_1"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_20" model="product.product">
+        <field name="name">My Consigned Product (with VAT 20% - Consignor 1)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_consignor_1"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_20_2" model="product.product">
+        <field name="name">My Consigned Product #2 (with VAT 20% - Consignor 1)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_consignor_1"/>
+    </record>
+
+    <record id="commission_product_vat_5" model="product.product">
+        <field name="name">Commission (5% Price Incl.) (For Products VAT 5%)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="is_consignment_commission" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_5_vat_include"/>
+        <field name="property_account_income_id" ref="account_income_commission"/>
+    </record>
+
+    <record id="commission_product_vat_20" model="product.product">
+        <field name="name">Commission (20% Price Excl., For Products VAT 20%)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok" eval="True"/>
+        <field name="is_consignment_commission" eval="True"/>
+        <field name="purchase_ok" eval="False"/>
+        <field name="fiscal_classification_id" ref="fiscal_classification_20_vat_exclude"/>
+        <field name="property_account_income_id" ref="account_income_commission"/>
+    </record>
+
+</odoo>

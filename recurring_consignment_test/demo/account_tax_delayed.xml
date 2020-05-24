@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="tax_5_consignor_1" model="account.tax">
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="consignment_product_id" ref="commission_product_vat_5"/>
+    </record>
+
+    <record id="tax_20_consignor_1" model="account.tax">
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="consignment_product_id" ref="commission_product_vat_20"/>
+    </record>
+
+</odoo>

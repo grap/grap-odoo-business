@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="report_invoice_consignment" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@class='page']" position="after">
+
+<t t-if="o.is_consignment_invoice">
+
+            <!-- CONSIGNMENT SUMMARY-->
+            <div class="page" style="page-break-before:always;">
+
+                <h2>Commission Summary</h2>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th colspan="3">
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Commission</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+
+                        <t t-set="summary_lines"
+                            t-value="o.get_commission_information_summary(o)" />
+                        <t t-set="total" t-value="0" />
+
+                        <t t-foreach="summary_lines" t-as="summary_line">
+                            <t t-set="total" t-value="total + summary_line['amount']" />
+                            <tr>
+                                <td><span t-esc="summary_line['name']" /></td>
+                                <td><t t-if="summary_line['is_commission']">Yes</t></td>
+                                <td style="text-align:right">
+                                    <span t-esc="summary_line['amount']"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+
+                <div class="clearfix">
+                    <div id="total_to_reverse" class="row">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                            <table class="table table-sm;page-break-inside: avoid;">
+                                <tr class="border-black o_total">
+                                    <td><strong>Cashed</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_total">
+                                    <td><strong>Commission</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="- o.amount_total"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_total">
+                                    <td><strong>To reverse</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total - o.amount_total"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT DETAILS-->
+            <div class="page" style="page-break-before:always;">
+                <h2>Product Details</h2>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%">Product</th>
+                            <th style="width: 12%">Qty</th>
+                            <th style="width: 12%">Unit Price</th>
+                            <th style="width: 12%">Discount</th>
+                            <th style="width: 14%">Total (Vat Excl)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-set="product_lines"
+                            t-value="o.get_commission_information_product_detail(o)" />
+                        <t t-set="total_vat_excl" t-value="0" />
+                        <t t-foreach="product_lines" t-as="product_line">
+                            <t t-set="total_vat_excl"
+                                t-value="total_vat_excl + product_line['total_vat_excl']" />
+                            <tr>
+                                <td>
+                                    <span t-esc="product_line['product_code']" /> 
+                                    <span t-esc="product_line['product_name']" />
+                                </td>
+                                <td style="text-align:right"><span t-esc="'%.3f' % product_line['quantity']" /></td>
+                                <td style="text-align:right">
+                                    <span t-esc="product_line['price_unit']"
+                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                                <td style="text-align:right"><span t-esc="'%.2f' % product_line['discount']" /> %</td>
+                                <td style="text-align:right">
+                                    <span t-esc="product_line['total_vat_excl']"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4" style="text-align:right">Total</th>
+                            <td style="text-align:right"><span t-esc="total_vat_excl"
+                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- ACCOUNTING MOVES DETAILS-->
+            <div class="page" style="page-break-before:always;">
+                <h2>Account Moves Details</h2>
+                    Note:<br/>
+                    the debit values may correspond to: <br/>
+                    * a return of products on the part of the customer,<br/>
+                    * a return of deposit in the case of returnable product,<br/>
+                    * a cancellation of all or part of a sale following an input error<br/>
+
+                <table class="table table-sm o_main_table">
+                    <thead>
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Origin</th>
+                            <th>Name</th>
+                            <th>Comm.</th>
+                            <th style="text-align:right">Debit</th>
+                            <th style="text-align:right">Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+
+                        <t t-set="accounting_lines"
+                            t-value="o.get_commission_information_accounting_detail(o)" />
+                        <t t-set="total_debit" t-value="0" />
+                        <t t-set="total_credit" t-value="0" />
+
+                        <t t-foreach="accounting_lines" t-as="accounting_line">
+
+                            <t t-set="total_debit" t-value=" total_debit + accounting_line['debit']" />
+                            <t t-set="total_credit" t-value="total_credit + accounting_line['credit']" />
+
+                            <tr>
+                                <td><span t-esc="accounting_line['date']"/></td>
+                                <td><span t-esc="accounting_line['name']" /></td>
+                                <td><span t-esc="accounting_line['description']" /></td>
+                                <td>
+                                    <t t-if="accounting_line['is_commission']">X</t>
+                                </td>
+                                <td style="text-align:right">
+                                    <t t-if="accounting_line['debit']">
+                                        <span t-esc="accounting_line['debit']"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </t>
+                                </td>
+                                <td style="text-align:right">
+                                    <t t-if="accounting_line['credit']">
+                                        <span t-esc="accounting_line['credit']"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4" style="text-align:right">Total</th>
+                            <td style="text-align:right"><span t-esc="total_debit"
+                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                            <td style="text-align:right"><span t-esc="total_credit"
+                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+</t>
+
+        </xpath>
+    </template>
+
+</odoo>
