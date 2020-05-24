@@ -20,7 +20,10 @@ Origin Information for Products (French Departments)
 |badge1| |badge2| |badge3| 
 
 This module extends the functionality of Product Origin module to add
-french department on product forms.
+french department on products.
+
+The field is defined on ``product.product`` model and can be set also
+on ``product.template`` models, in a mono variant context.
 
 **Table of contents**
 
