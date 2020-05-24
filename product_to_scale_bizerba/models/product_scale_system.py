@@ -1,13 +1,13 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class ProductScaleSystem(models.Model):
     _name = 'product.scale.system'
+    _description = "Product Scale System"
 
     # Constant section
     _ENCODING_SELECTION = [
@@ -18,7 +18,7 @@ class ProductScaleSystem(models.Model):
     name = fields.Char(string='Name', required=True)
 
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company', select=True,
+        comodel_name='res.company', string='Company', index=True,
         default=lambda s: s._default_company_id())
 
     active = fields.Boolean(string='Active', default=True)

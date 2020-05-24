@@ -1,14 +1,13 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError
 
-import openerp.addons.decimal_precision as dp
+import odoo.addons.decimal_precision as dp
 
 
 class ProductProduct(models.Model):
@@ -27,7 +26,7 @@ class ProductProduct(models.Model):
         "field : product_id_field_id")
 
     scale_tare_weight = fields.Float(
-        digits_compute=dp.get_precision('Stock Weight'),
+        digits=dp.get_precision('Stock Weight'),
         string='Scale Tare Weight', help="Set here Constant tare weight"
         " for the given product. This tare will be substracted when"
         " the product is weighted. Usefull only for weightable product.\n"
@@ -148,7 +147,7 @@ class ProductProduct(models.Model):
         res = super(ProductProduct, self).write(vals)
 
         # Send Deferred Log
-        for product_id, action in defered.iteritems():
+        for product_id, action in defered.items():
             product = self.browse(product_id)
             product._send_to_scale_bizerba(
                 action, product.scale_group_id,
