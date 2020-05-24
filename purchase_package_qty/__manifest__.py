@@ -5,7 +5,7 @@
 
 {
     'name': 'Purchase - Package Quantity',
-    'version': "12.0.1.0.0",
+    'version': "12.0.1.0.1",
     'category': 'Purchase',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
