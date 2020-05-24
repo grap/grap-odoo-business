@@ -23,7 +23,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[account_move_change_number](account_move_change_number/) | 12.0.1.0.0 | Allow special user to rename account move
+[account_move_change_number](account_move_change_number/) | 12.0.1.0.1 | Allow special user to rename account move
 [product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
 [product_label](product_label/) | 12.0.1.0.1 | Product Labels
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
