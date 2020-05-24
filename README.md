@@ -34,6 +34,7 @@ addon | version | summary
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Sale modules
 [recurring_consignment_test](recurring_consignment_test/) | 12.0.1.0.1 | Test module for Recurring_ Consignment Module
+[users_partners_access](users_partners_access/) | 12.0.1.0.0 | Users Partners Access
 
 
 Unported addons
@@ -49,7 +50,6 @@ addon | version | summary
 [stock_picking_mass_change](stock_picking_mass_change/) | 8.0.2.0.0 (unported) | Possibility to change massively a product for many pickings
 [stock_picking_quick_edit](stock_picking_quick_edit/) | 8.0.1.0.0 (unported) | Possibility to quickly edit a stock picking
 [stock_picking_type_image](stock_picking_type_image/) | 8.0.1.0.0 (unported) | Add an image and refactor Stock Picking Type kanban view
-[users_partners_access](users_partners_access/) | 8.0.3.0.0 (unported) | Users Partners Access
 
 [//]: # (end addons)
 
