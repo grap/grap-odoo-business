@@ -30,6 +30,7 @@ addon | version | summary
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.1 | Origin Information for Products (French Departments)
 [product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.1.0.1 | Synchronize Odoo database with Retail Connect Bizerba System
+[purchase_package_qty](purchase_package_qty/) | 12.0.1.0.0 | Purchase - Package Quantity
 [recurring_consignment](recurring_consignment/) | 12.0.1.0.1 | Sale - Handle Recurring Consignment
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.0.1 | Glue module for Recurring Consignment and PoS modules
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Purchase modules
@@ -45,7 +46,6 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 8.0.1.0.0 (unported) | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
-[purchase_package_qty](purchase_package_qty/) | 8.0.2.0.0 (unported) | Purchase - Package Quantity
 [sale_eshop](sale_eshop/) | 8.0.4.0.0 (unported) | Allow connection to Odoo eShop Project
 [sale_line_change_custom](sale_line_change_custom/) | 8.0.1.0.0 (unported) | Sale - Custom Behaviour on Line Changes
 [stock_picking_mass_change](stock_picking_mass_change/) | 8.0.2.0.0 (unported) | Possibility to change massively a product for many pickings
