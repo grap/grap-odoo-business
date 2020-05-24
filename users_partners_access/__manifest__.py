@@ -5,7 +5,7 @@
 {
     'name': 'Users Partners access',
     'summary': 'Users Partners Access',
-    'version': "12.0.1.0.0",
+    'version': "12.0.1.0.1",
     'category': 'base',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
