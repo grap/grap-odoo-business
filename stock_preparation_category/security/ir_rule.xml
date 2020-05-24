@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="rule_stock_preparation_category" model="ir.rule">
+        <field name="name">Product Prepare Category Rule</field>
+        <field name="model_id" ref="model_stock_preparation_category" />
+        <field name="global" eval="True" />
+        <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
+    </record>
+
+</odoo>

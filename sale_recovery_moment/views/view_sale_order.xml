@@ -4,37 +4,18 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_sale_order_form" model="ir.ui.view">
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <field name="company_id" position="after">
-                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
-                <field name="recovery_place_id" groups="sale_recovery_moment.recovery_user"/>
-                <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="view_sale_order_tree_1" model="ir.ui.view">
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_tree"/>
-        <field name="arch" type="xml">
-            <field name="partner_id" position="after">
-                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
-            </field>
-        </field>
-    </record>
-
-    <record id="view_sale_order_tree_2" model="ir.ui.view">
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree"/>
-        <field name="arch" type="xml">
-            <field name="partner_id" position="after">
-                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
-            </field>
+            <group name="sale_shipping" position="after">
+                <group string="Recovery Information" name="recovery_information" groups="sale_recovery_moment.recovery_user">
+                    <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
+                    <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
+                </group>
+            </group>
         </field>
     </record>
 
@@ -43,17 +24,44 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
                 <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
-                <field name="recovery_place_id" groups="sale_recovery_moment.recovery_user"/>
+                <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user"/>
             </field>
-            <xpath expr="//filter[@string='Salesperson']" position="after">
-                <filter string="Recovery Group" context="{'group_by':'recovery_group_id'}" groups="sale_recovery_moment.recovery_user"/>
-                <filter string="Recovery Moment" context="{'group_by':'recovery_moment_id'}" groups="sale_recovery_moment.recovery_user"/>
-                <filter string="Recovery Place"
-                    context="{'group_by':'recovery_place_id'}" groups="sale_recovery_moment.recovery_user"/>
-            </xpath>
         </field>
     </record>
 
-</data></openerp>
+    <record id="action_recovery_moment_2_sale_order" model="ir.actions.act_window">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{'search_default_recovery_moment_id': active_id}</field>
+    </record>
+
+    <record id="action_recovery_moment_2_sale_order_valid" model="ir.actions.act_window">
+        <field name="name">Valid Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+        <field name="context">{'search_default_recovery_moment_id': active_id}</field>
+    </record>
+
+    <record id="action_recovery_moment_group_2_sale_order" model="ir.actions.act_window">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="context">{'search_default_recovery_group_id': active_id}</field>
+    </record>
+
+    <record id="action_recovery_moment_group_2_sale_order_valid" model="ir.actions.act_window">
+        <field name="name">Valid Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+        <field name="context">{'search_default_recovery_group_id': active_id}</field>
+    </record>
+
+</odoo>

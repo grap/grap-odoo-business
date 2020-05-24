@@ -4,20 +4,20 @@ Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
-    <record id="product_prepare_category_breakable" model="product.prepare.category">
+    <record id="stock_preparation_category_breakable" model="stock.preparation.category">
         <field name="name">Breakable</field>
         <field name="code">BRK</field>
         <field name="sequence">1</field>
         <field name="color">#FF0</field>
     </record>
 
-    <record id="product_prepare_category_tough" model="product.prepare.category">
+    <record id="stock_preparation_category_tough" model="stock.preparation.category">
         <field name="name">Tough</field>
         <field name="code">TGH</field>
         <field name="sequence">2</field>
         <field name="color">#DDD</field>
     </record>
 
-</data></openerp>
+</odoo>

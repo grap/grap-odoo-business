@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo><data noupdate="1">
+
+    <record id="stock_picking_outgoing" model="stock.picking">
+        <field name="picking_type_id" ref="stock.picking_type_out"/>
+        <field name="origin">stock_preparation_category Module</field>
+        <field name="partner_id" ref="base.res_partner_1"/>
+        <field name="date" eval="DateTime.today() - timedelta(days=20)"/>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_dest_id" ref="stock.stock_location_customers"/>
+    </record>
+
+    <record id="stock_move_1" model="stock.move">
+        <field name="picking_id" ref="stock_picking_outgoing"/>
+        <field name="name" model="stock.move" eval="obj().env.ref('product.product_order_01').name"/>
+        <field name="product_id" ref="product.product_order_01"/>
+        <field name="product_uom" ref="uom.product_uom_unit"/>
+        <field name="product_uom_qty">50</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_dest_id" ref="stock.stock_location_stock"/>
+        <field name="move_line_ids" eval="[(0, 0, {
+                'product_id': ref('product.product_order_01'),
+                'qty_done': 50,
+                'product_uom_id': ref('uom.product_uom_unit'),
+                'location_id': ref('stock.stock_location_stock'),
+                'location_dest_id': ref('stock.stock_location_customers'),
+            })]"/>
+    </record>
+
+    <record id="stock_move_2" model="stock.move">
+        <field name="picking_id" ref="stock_picking_outgoing"/>
+        <field name="name" model="stock.move" eval="obj().env.ref('product.product_product_4').name"/>
+        <field name="product_id" ref="product.product_product_4"/>
+        <field name="product_uom" ref="uom.product_uom_unit"/>
+        <field name="product_uom_qty">30</field>
+        <field name="location_id" ref="stock.stock_location_stock"/>
+        <field name="location_dest_id" ref="stock.stock_location_stock"/>
+        <field name="move_line_ids" eval="[(0, 0, {
+                'product_id': ref('product.product_product_4'),
+                'qty_done': 30,
+                'product_uom_id': ref('uom.product_uom_unit'),
+                'location_id': ref('stock.stock_location_stock'),
+                'location_dest_id': ref('stock.stock_location_customers'),
+            })]"/>
+    </record>
+
+</data></odoo>
