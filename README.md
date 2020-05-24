@@ -24,6 +24,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_move_change_number](account_move_change_number/) | 12.0.1.0.1 | Allow special user to rename account move
+[product_category_recursive_property](product_category_recursive_property/) | 12.0.1.0.0 | Propagate recursively properties for product category
 [product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
 [product_label](product_label/) | 12.0.1.0.1 | Product Labels
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
@@ -44,7 +45,6 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 8.0.1.0.0 (unported) | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
-[product_category_recursive_property](product_category_recursive_property/) | 8.0.2.0.0 (unported) | Propagate recursively properties for product category
 [purchase_package_qty](purchase_package_qty/) | 8.0.2.0.0 (unported) | Purchase - Package Quantity
 [sale_eshop](sale_eshop/) | 8.0.4.0.0 (unported) | Allow connection to Odoo eShop Project
 [sale_line_change_custom](sale_line_change_custom/) | 8.0.1.0.0 (unported) | Sale - Custom Behaviour on Line Changes
