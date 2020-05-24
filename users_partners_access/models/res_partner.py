@@ -1,11 +1,10 @@
-# coding: utf-8
 # Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from openerp import _, api, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, models
+from odoo.exceptions import Warning as UserError
 
 
 class ResPartner(models.Model):
@@ -15,7 +14,7 @@ class ResPartner(models.Model):
     @api.multi
     def write(self, vals):
         self._check_users_partners_access()
-        return super(ResPartner, self).write(vals)
+        return super().write(vals)
 
     @api.multi
     def unlink(self):
@@ -26,7 +25,6 @@ class ResPartner(models.Model):
     @api.multi
     def _disable_users_partners(self):
         self.write({
-            'active': False,
             'company_id': False,
             'customer': False,
             'supplier': False,

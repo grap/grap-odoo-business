@@ -9,16 +9,18 @@ access.
 
 With this module:
 
-* the users partners will be disabled. This will force saler / purchaser
-  to create new partner (if the user is a customer or a supplier too)
-* the users partners will have no company, this will fix all bug access;
+* the users partners will not be customer / supplier.
+  This will force saler / purchaser to create new partner
+  (if the user is a customer or a supplier too)
+
+* the users partners will have no company, this will fix all bug access
 
 
 **Technically**
 
 All partners associated to a user:
 
-* have ``active``, ``customer``, ``supplier`` checkbox disabled;
+* have ``customer``, ``supplier`` checkbox disabled;
 * have ``company_id`` empty;
 
-Only members of 'Administration / Access Rights' could update partners;
+Only members of 'Administration / Access Rights' could update partners.
