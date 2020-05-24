@@ -2,3 +2,5 @@ account-invoicing
 account-fiscal-rule
 l10n-france
 web
+
+ grap-odoo-incubator	https://github.com/grap/grap-odoo-incubator/	12.0
