@@ -1,19 +1,18 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models
+from odoo import api, models
 
 
 class ProductCategory(models.Model):
     _inherit = 'product.category'
 
     _PRODUCT_CATEGORY_PROPERTY_LIST = [
-        'property_account_income_categ',
-        'property_account_expense_categ',
-        'property_stock_account_input_categ',
-        'property_stock_account_output_categ',
+        'property_account_income_categ_id',
+        'property_account_expense_categ_id',
+        'property_stock_account_input_categ_id',
+        'property_stock_account_output_categ_id',
         'property_stock_valuation_account_id',
         'property_stock_journal',
     ]
@@ -22,14 +21,14 @@ class ProductCategory(models.Model):
     @api.model
     def create(self, vals):
         vals.update(self._get_vals_from_parent(vals.get('parent_id', False)))
-        category = super(ProductCategory, self).create(vals)
+        category = super().create(vals)
         category._propagate_properties_to_childs(vals)
         return category
 
     @api.multi
     def write(self, vals):
         vals.update(self._get_vals_from_parent(vals.get('parent_id', False)))
-        res = super(ProductCategory, self).write(vals)
+        res = super().write(vals)
         self._propagate_properties_to_childs(vals)
         return res
 

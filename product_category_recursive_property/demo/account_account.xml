@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
+@author Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+    <record id="account_expense" model="account.account">
+        <field name="code">607xxx</field>
+        <field name="name">Expense Account</field>
+        <field name="user_type_id" ref="account.data_account_type_expenses"/>
+    </record>
+
+    <record id="account_income" model="account.account">
+        <field name="code">707xxx</field>
+        <field name="name">Income Account</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+    </record>
+
+</odoo>
