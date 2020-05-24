@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2013 - Today: GRAP (http://www.grap.coop)
 # @author Julien WESTE
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -6,7 +5,7 @@
 
 {
     'name': 'Purchase - Package Quantity',
-    'version': '8.0.2.0.0',
+    'version': "12.0.1.0.0",
     'category': 'Purchase',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
@@ -18,8 +17,10 @@
         'views/view_product_supplierinfo.xml',
     ],
     'demo': [
+        'demo/res_groups.xml',
         'demo/product_template.xml',
+        'demo/product_supplierinfo.xml',
         'demo/purchase_order.xml',
     ],
-    'installable': False,
+    'installable': True,
 }

@@ -5,19 +5,18 @@ Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_product_supplierinfo_form" model="ir.ui.view">
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_form_view" />
         <field name="arch" type="xml">
-            <field name="min_qty" position="replace"/>
-            <field name="delay" position="after">
-                <group col="6" colspan="4">
-                    <field name="min_qty"/>
-                    <field name="package_qty"/>
-                    <field name="indicative_package"/>
-                </group>
+            <field name="product_tmpl_id" position="after">
+                <label for="package_qty"/>
+                <div>
+                    <field name="package_qty" class="oe_inline"/>
+                    <field name="product_uom" class="oe_inline" groups="uom.group_uom"/>
+                </div>
             </field>
         </field>
     </record>
@@ -26,11 +25,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_tree_view" />
         <field name="arch" type="xml">
-            <field name="min_qty" position="after">
+            <field name="min_qty" position="before">
                 <field name="package_qty"/>
-                <field name="indicative_package"/>
             </field>
         </field>
     </record>
 
-</data></openerp>
+</odoo>
