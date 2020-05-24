@@ -4,7 +4,7 @@
 
 {
     'name': 'Recurring Consignment - Point of Sale',
-    'version': "12.0.1.0.0",
+    'version': "12.0.1.0.1",
     'summary': 'Glue module for Recurring Consignment and PoS modules',
     'category': 'Sale',
     'author': 'GRAP',
