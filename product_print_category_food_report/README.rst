@@ -13,9 +13,9 @@ Product print category food report
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-quentinDupont%2Fgrap--odoo--business-lightgray.png?logo=github
-    :target: https://github.com/quentinDupont/grap-odoo-business/tree/12.0_ADD_food_report/product_print_category_food_report
-    :alt: quentinDupont/grap-odoo-business
+.. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
+    :target: https://github.com/grap/grap-odoo-business/tree/12.0/product_print_category_food_report
+    :alt: grap/grap-odoo-business
 
 |badge1| |badge2| |badge3| 
 
@@ -36,23 +36,23 @@ Here is what's look like the reports :
 
 - Normal pricetag "classic format" 76x31mm
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_food_report/product_print_category_food_report/static/img/pricetag_normal.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_print_category_food_report/static/img/pricetag_normal.png
 
 - Bulk pricetag long designed for Applimage bulk equipment 52x101mm
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_food_report/product_print_category_food_report/static/img/pricetag_bulk_long.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_print_category_food_report/static/img/pricetag_bulk_long.png
 
 - Bulk pricetag square 93x93mm
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_food_report/product_print_category_food_report/static/img/pricetag_bulk_square.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_print_category_food_report/static/img/pricetag_bulk_square.png
 
 - Square pricetag 40x36mm
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_food_report/product_print_category_food_report/static/img/pricetag_square.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_print_category_food_report/static/img/pricetag_square.png
 
 - Counter pricetag - 72*123mm
 
-.. figure:: https://raw.githubusercontent.com/quentinDupont/grap-odoo-business/12.0_ADD_food_report/product_print_category_food_report/static/img/pricetag_counter.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_print_category_food_report/static/img/pricetag_counter.png
 
 **Table of contents**
 
@@ -87,10 +87,10 @@ You can use scss nesting for that purpose.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/quentinDupont/grap-odoo-business/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-business/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/quentinDupont/grap-odoo-business/issues/new?body=module:%20product_print_category_food_report%0Aversion:%2012.0_ADD_food_report%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20product_print_category_food_report%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -111,6 +111,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `quentinDupont/grap-odoo-business <https://github.com/quentinDupont/grap-odoo-business/tree/12.0_ADD_food_report/product_print_category_food_report>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/12.0/product_print_category_food_report>`_ project on GitHub.
 
 You are welcome to contribute.
