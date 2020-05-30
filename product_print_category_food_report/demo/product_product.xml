@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="product.product_product_5" model="product.product">
+        <field name="pricetag_uom_id" ref="uom_100_gr"/>
+        <field name="pricetag_type_id" ref="type_local_product" />
+    </record>
+
+    <record id="product.product_product_6" model="product.product">
+        <field name="pricetag_type_id" ref="type_local_product" />
+    </record>
+
+    <record id="organic_smoked_tofu" model="product.product">
+        <field name="name">Smoked organic tofu 200g</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">4012359111104</field>
+        <field name="list_price">2.6</field>
+        <field name="weight">0.2</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="maker_description">Taifun</field>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+    </record>
+
+    <record id="chick_pea" model="product.product">
+        <field name="name">Chick peas (bulk)</field>
+        <field name="uom_id" ref="uom.product_uom_kgm" />
+        <field name="uom_po_id" ref="uom.product_uom_kgm" />
+        <field name="list_price">5.45</field>
+    </record>
+
+    <record id="green_lens" model="product.product">
+        <field name="name">Green lens (bulk)</field>
+        <field name="uom_id" ref="uom.product_uom_kgm" />
+        <field name="uom_po_id" ref="uom.product_uom_gram" />
+        <field name="list_price">5.25</field>
+    </record>
+
+</odoo>

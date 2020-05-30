@@ -1,0 +1,81 @@
+.normal_pricetag {
+    border: 1px solid grey; 
+    background-color:white;
+    margin : 0 -0.2cm -0.1cm 0;
+    padding : 5px;
+
+    .pricetag_right {
+        overflow: hidden;
+        position: relative; top: 1.9em;
+    }
+    .product_informations {
+        text-align:left;
+        overflow : hidden;
+    }
+    .product_name{
+        font-size:15px; font-weight:bold;
+        height: 1.3cm;
+        padding-bottom : 5px;
+        padding-top : 5px;
+        overflow: hidden;
+    }
+    .pricetag_second_product_price {
+        font-weight: bold;
+        text-align: center;
+        overflow: hidden;
+    }
+    .pricetag_second_price_uom_text {
+        font-weight: bold;
+        text-align: center; line-height: 0.5em;
+    }
+    .product_price {
+        font-size: 26px; font-weight: bold;
+        height: 1cm; line-height: 1cm;
+        text-align: center;
+        overflow: hidden;
+    }
+    .product_price_per_uom_qty, .product_price_per_uom_price {
+        width : 45%;
+        text-align : center;
+        font-size:9px;
+        height : 0.8cm;
+        overflow : hidden;
+        word-wrap : normal;
+    }
+    .product_price_per_uom_price_only {
+        font-size: 9px; line-height: 3em;
+        width: 100%; text-align: center;
+    }
+    .product_sell_by_weight {
+        font-weight: bold;
+        font-size: 13px;
+        text-align: center;
+        position: relative;
+        right: 0.2em;
+    }
+    .pricetag_bottom_right {
+        margin-top:0.2cm;
+        text-align:center; font-size:7px;
+        overflow:hidden;
+        font-family:monospace;
+        position: relative; top: 6px;
+    }
+    .product_labels, .organic_text{
+        float:left;
+        text-align:left;
+        padding-top: 2px;
+    }
+    .product_labels{
+        padding-left : 2px; overflow: hidden;
+        font-size:9px; max-width: 2.9cm;
+    }
+    .wrap_barcode_image{
+        overflow: hidden;
+        position: relative;
+        bottom: 0.3cm;
+        width:100%;
+    }
+    .wrap_barcode_image > img{
+        width: 100%; height: 0.3cm;
+    }
+}
