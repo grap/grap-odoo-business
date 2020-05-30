@@ -3,4 +3,6 @@ account-fiscal-rule
 l10n-france
 web
 
- grap-odoo-incubator	https://github.com/grap/grap-odoo-incubator/	12.0
+ grap-odoo-incubator    https://github.com/grap/grap-odoo-incubator/    12.0
+
+account_invoicing_triple_discount   https://github.com/legalsylvain/account-invoicing   12.0-mig-account_invoice_supplierinfo_update_discount
