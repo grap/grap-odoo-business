@@ -7,17 +7,18 @@ from openerp import api, fields, models
 
 
 class ProductUom(models.Model):
-    _name = 'product.uom'
-    _inherit = ['product.uom', 'eshop.mixin']
+    _name = "product.uom"
+    _inherit = ["product.uom", "eshop.mixin"]
 
     # Inherit Section
-    _eshop_invalidation_type = 'multiple'
+    _eshop_invalidation_type = "multiple"
 
-    _eshop_fields = ['id', 'name', 'eshop_description']
+    _eshop_fields = ["id", "name", "eshop_description"]
 
     # Fields Section
     eshop_description = fields.Char(
-        string='Description for the eShop', default='/')
+        string="Description for the eShop", default="/"
+    )
 
     # Overload Section
     @api.multi
@@ -32,4 +33,4 @@ class ProductUom(models.Model):
     # Overwrite section
     @api.model
     def _get_eshop_domain(self):
-        return [('eshop_description', '!=', False)]
+        return [("eshop_description", "!=", False)]

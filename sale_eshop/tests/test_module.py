@@ -7,20 +7,20 @@ from openerp.tests.common import TransactionCase
 
 
 class TestModule(TransactionCase):
-
     def setUp(self):
         super(TestModule, self).setUp()
-        self.eshop_user = self.env.ref('sale_eshop.eshop_user')
-        self.ResPartner = self.env['res.partner'].sudo(self.eshop_user)
-        self.SaleOrder = self.env['sale.order'].sudo(self.eshop_user)
-        self.ProductProduct = self.env['product.product'].sudo(self.eshop_user)
-        self.customer = self.env.ref('sale_eshop.demo_eshop_user')
-        self.banana = self.env.ref('sale_eshop.product_banana')
-        self.apple = self.env.ref('sale_eshop.product_apple')
-        self.product_disabled = self.env.ref('sale_eshop.product_disabled')
-        self.product_not_available = self.env.ref('stock.product_icecream')
+        self.eshop_user = self.env.ref("sale_eshop.eshop_user")
+        self.ResPartner = self.env["res.partner"].sudo(self.eshop_user)
+        self.SaleOrder = self.env["sale.order"].sudo(self.eshop_user)
+        self.ProductProduct = self.env["product.product"].sudo(self.eshop_user)
+        self.customer = self.env.ref("sale_eshop.demo_eshop_user")
+        self.banana = self.env.ref("sale_eshop.product_banana")
+        self.apple = self.env.ref("sale_eshop.product_apple")
+        self.product_disabled = self.env.ref("sale_eshop.product_disabled")
+        self.product_not_available = self.env.ref("stock.product_icecream")
         self.recovery_moment = self.env.ref(
-            "sale_recovery_moment.recovery_moment_1")
+            "sale_recovery_moment.recovery_moment_1"
+        )
 
     # Test Section
     def test_01_login(self):
@@ -28,71 +28,91 @@ class TestModule(TransactionCase):
         # is installed
         self.customer.active = True
         res = self.ResPartner.eshop_login(
-            self.customer.email, self.customer.eshop_password)
+            self.customer.email, self.customer.eshop_password
+        )
         self.assertNotEqual(
-            res, False, "Correct Credentials should be accepted")
+            res, False, "Correct Credentials should be accepted"
+        )
 
-        res = self.ResPartner.eshop_login(self.customer.email, 'BAD_PASSWORD')
-        self.assertEqual(
-            res, False, "Bad Credentials should be refused")
+        res = self.ResPartner.eshop_login(self.customer.email, "BAD_PASSWORD")
+        self.assertEqual(res, False, "Bad Credentials should be refused")
 
-        res = self.ResPartner.eshop_login(self.customer.email, 'admin')
-        self.assertNotEqual(
-            res, False, "Admin Password should be accepted")
+        res = self.ResPartner.eshop_login(self.customer.email, "admin")
+        self.assertNotEqual(res, False, "Admin Password should be accepted")
 
     def test_02_load_products(self):
         result = self.ProductProduct.get_current_eshop_product_list()
         self.assertNotEqual(
-            len(result), 0, "Loading products should return a non empty list")
+            len(result), 0, "Loading products should return a non empty list"
+        )
 
     def test_03_product_available(self):
         self.assertEqual(
-            self.product_not_available.eshop_state, 'unavailable',
-            "Bad state for unavailable product")
+            self.product_not_available.eshop_state,
+            "unavailable",
+            "Bad state for unavailable product",
+        )
 
         self.assertEqual(
-            self.banana.eshop_state, 'available',
-            "Bad state for available product")
+            self.banana.eshop_state,
+            "available",
+            "Bad state for available product",
+        )
 
         self.assertEqual(
-            self.product_disabled.eshop_state, 'disabled',
-            "Bad state for disabled product")
+            self.product_disabled.eshop_state,
+            "disabled",
+            "Bad state for disabled product",
+        )
 
     def test_03_sale_order_process(self):
         # Create Order
         self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 3, 'add')
-        order = self.SaleOrder.eshop_get_current_sale_order(
-            self.customer.id)
+            self.customer.id, self.banana.id, 3, "add"
+        )
+        order = self.SaleOrder.eshop_get_current_sale_order(self.customer.id)
         self.assertNotEqual(
-            order, False,
+            order,
+            False,
             "Adding a product for a customer that don't have sale order"
-            " should create a new sale order")
+            " should create a new sale order",
+        )
 
         # Add quantity to the same product
         self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 2, 'add')
+            self.customer.id, self.banana.id, 2, "add"
+        )
         order_line = order.order_line[0]
         self.assertEqual(
-            order_line.product_uom_qty, 5,
-            "Adding a quantity should sum with the previous quantity")
+            order_line.product_uom_qty,
+            5,
+            "Adding a quantity should sum with the previous quantity",
+        )
 
         # set new quantity to the same product
         self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 1, 'set')
+            self.customer.id, self.banana.id, 1, "set"
+        )
         self.assertEqual(
-            order_line.product_uom_qty, 1,
-            "setting a quantity should erase previous quantity")
+            order_line.product_uom_qty,
+            1,
+            "setting a quantity should erase previous quantity",
+        )
 
         # Select a recovery moment
         self.SaleOrder.eshop_select_recovery_moment(
-            self.customer.id, self.recovery_moment.id)
+            self.customer.id, self.recovery_moment.id
+        )
         self.assertEqual(
-            order.state, 'sent',
-            "Finishing an order in the eshop should set the order as 'sent'")
+            order.state,
+            "sent",
+            "Finishing an order in the eshop should set the order as 'sent'",
+        )
 
         # Simulate cron
         self.SaleOrder.sudo()._eshop_cron_confirm_orders()
         self.assertNotEqual(
-            order.state, 'sent',
-            "Once cron has been run, orders should not be in 'sent' state.")
+            order.state,
+            "sent",
+            "Once cron has been run, orders should not be in 'sent' state.",
+        )
