@@ -427,11 +427,6 @@ msgid "Leek"
 msgstr "Leek"
 
 #. module: sale_eshop
-#: field:res.company,eshop_manage_unpacking:0
-msgid "Manage Unpacking"
-msgstr "Gérer le déconditionnement"
-
-#. module: sale_eshop
 #: field:res.company,eshop_manage_recovery_moment:0
 msgid "Manage recovery Moment"
 msgstr "Gérer les points de retraits"
@@ -662,16 +657,6 @@ msgstr "URL Twitter"
 #: selection:product.product,eshop_state:0
 msgid "Unavailable for Sale"
 msgstr "Indisponible à la vente"
-
-#. module: sale_eshop
-#: field:product.product,eshop_unpack_qty:0
-msgid "Unpack Quantity for eShop"
-msgstr "Quantité de déconditionement pour la eBoutique"
-
-#. module: sale_eshop
-#: field:product.product,eshop_unpack_surcharge:0
-msgid "Unpack Surcharge for eShop"
-msgstr "Supplément de déconditionement pour la eBoutique"
 
 #. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_eshop_user

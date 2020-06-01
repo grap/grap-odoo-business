@@ -15,16 +15,16 @@ class ResCompany(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'single'
 
-    _eshop_invalidation_fields = [
+    _eshop_fields = [
         'eshop_home_text',
         'name', 'has_eshop', 'eshop_minimum_price', 'eshop_title',
         'eshop_url', 'website', 'eshop_list_view_enabled',
+        "eshop_tree_view_enabled",
         'eshop_facebook_url', 'eshop_twitter_url', 'eshop_google_plus_url',
         'eshop_google_plus_url', 'eshop_instagram_url',
         'eshop_image_small',
         'eshop_vat_included', 'eshop_register_allowed',
         'eshop_manage_recovery_moment',
-        'eshop_manage_unpacking',
     ]
 
     _eshop_image_fields = ['eshop_image_small']
@@ -38,8 +38,6 @@ class ResCompany(models.Model):
         comodel_name='product.pricelist', string='Pricelist Used')
 
     eshop_minimum_price = fields.Float(string='Minimum Price by eShop')
-
-    eshop_manage_unpacking = fields.Boolean(string='Manage Unpacking')
 
     eshop_manage_recovery_moment = fields.Boolean(
         string='Manage recovery Moment')
@@ -63,10 +61,16 @@ class ResCompany(models.Model):
     eshop_vat_included = fields.Boolean(string='VAT Included')
 
     eshop_register_allowed = fields.Boolean(
-        string='Allow new customer to register on eShop')
+        string="Allow Register",
+        help='Allow new customer to register on eShop')
 
     eshop_list_view_enabled = fields.Boolean(
-        string='Provide a List view to realize quick purchase.')
+        string="Enable List View", default=True,
+        help='Provide a List view to realize quick purchase.')
+
+    eshop_tree_view_enabled = fields.Boolean(
+        string="Enable Tree View", default=True,
+        help='Provide a Tree view to navigate into the catalog.')
 
     # Overload Section
     @api.multi
@@ -76,7 +80,8 @@ class ResCompany(models.Model):
         in more recent Odoo versions.
         """
         self._write_eshop_invalidate(vals)
-        return super(ResCompany, self).write(vals)
+        res = super(ResCompany, self).write(vals)
+        return res
 
     # Eshop APi - Section
     @api.model

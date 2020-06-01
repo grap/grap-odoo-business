@@ -16,13 +16,14 @@
                         <field name="has_eshop"/>
                         <field name="eshop_url"/>
                         <field name="eshop_title" colspan="4" />
-                        <field name="eshop_manage_unpacking"/>
                         <field name="eshop_manage_recovery_moment"/>
                         <field name="eshop_minimum_price"/>
                         <field name="eshop_pricelist_id"/>
                         <field name="eshop_vat_included"/>
                         <field name="eshop_register_allowed" />
                         <field name="eshop_list_view_enabled" />
+                        <field name="eshop_tree_view_enabled" />
+                        <newline/>
                         <field name="eshop_invalidation_key" colspan="4" />
                     </group>
                     <group string="Social Network" col="4">

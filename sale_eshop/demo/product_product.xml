@@ -52,8 +52,6 @@
         <field name="eshop_category_id" ref="category_fruit" />
         <field name="eshop_minimum_qty">1.0</field>
         <field name="eshop_rounded_qty">0.2</field>
-        <field name="eshop_unpack_qty">0.5</field>
-        <field name="eshop_unpack_surcharge">20</field>
         <field name="uom_id" ref="product.product_uom_kgm" />
         <field name="uom_po_id" ref="product.product_uom_kgm"/>
         <field name="uos_id" ref="product.product_uom_kgm" />

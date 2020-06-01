@@ -13,7 +13,7 @@ class AccountTax(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'multiple'
 
-    _eshop_invalidation_fields = ['eshop_description']
+    _eshop_fields = ['eshop_description']
 
     # Field Section
     eshop_description = fields.Char(
