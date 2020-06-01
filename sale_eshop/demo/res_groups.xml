@@ -7,6 +7,10 @@
 
 <openerp><data>
 
+    <record id="account.group_account_manager" model="res.groups" >
+        <field name="users" eval="[(4, ref('base.user_root'))]" />
+    </record>
+
     <record id="res_groups_eshop_user" model="res.groups" >
         <field name="users" eval="[(4, ref('base.user_demo'))]" />
     </record>
@@ -27,9 +31,16 @@
         <field name="users" eval="[(4, ref('base.user_root'))]" />
     </record>
 
+    <record id="base.group_multi_company" model="res.groups" >
+        <field name="users" eval="[(4, ref('base.user_root'))]" />
+    </record>
+
     <record id="res_groups_is_eshop" model="res.groups" >
         <field name="users" eval="[(4, ref('eshop_user'))]" />
     </record>
 
+    <record id="base.group_sale_manager" model="res.groups" >
+        <field name="users" eval="[(4, ref('eshop_user'))]" />
+    </record>
 
 </data></openerp>

@@ -36,8 +36,6 @@
                     <field name="eshop_category_id" colspan="4"/>
                     <field name="eshop_minimum_qty"/>
                     <field name="eshop_rounded_qty"/>
-                    <field name="eshop_unpack_qty"/>
-                    <field name="eshop_unpack_surcharge"/>
                     <field name="eshop_state"/>
                     <newline/>
                     <field name="eshop_description" widget="html" colspan="4" />

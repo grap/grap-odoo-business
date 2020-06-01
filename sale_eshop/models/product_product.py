@@ -16,14 +16,14 @@ class ProductProduct(models.Model):
     # Inherit Section
     _eshop_invalidation_type = 'single'
 
-    _eshop_invalidation_fields = [
+    _eshop_fields = [
         'name', 'uom_id', 'image', 'image_medium', 'list_price',
+        'list_price_vat_excl',
         'eshop_category_id', 'label_ids', 'eshop_minimum_qty',
         'eshop_rounded_qty', 'origin_description', 'maker_description',
         'fresh_category', 'eshop_description', 'country_id',
         'department_id', 'default_code',
-        'eshop_taxes_description', 'eshop_unpack_qty',
-        'eshop_unpack_surcharge',
+        'eshop_taxes_description',
     ]
 
     _eshop_image_fields = ['image', 'image_medium', 'image_small']
@@ -51,12 +51,6 @@ class ProductProduct(models.Model):
 
     eshop_rounded_qty = fields.Float(
         string='Rounded Quantity for eShop', required=True, default=0)
-
-    eshop_unpack_qty = fields.Float(
-        string='Unpack Quantity for eShop', required=True, default=0)
-
-    eshop_unpack_surcharge = fields.Float(
-        string='Unpack Surcharge for eShop', required=True, default=0)
 
     eshop_description = fields.Text(type='Text', string='Eshop Description')
 
@@ -115,16 +109,16 @@ class ProductProduct(models.Model):
 
     # API eshop Section
     @api.model
-    def get_current_eshop_product_list(self, order_id=False):
+    def get_current_eshop_product_list(self, partner_id=False):
         """The aim of this function is to deal with delay of response of
         the odoo-eshop, module.
         This will return a list of data, used for catalog inline view."""
         SaleOrder = self.env['sale.order']
+        order = SaleOrder.eshop_get_current_sale_order(partner_id)
         res = []
         line_dict = {}
         # Get current quantities ordered
-        if order_id:
-            order = SaleOrder.browse(order_id)
+        if order:
             for order_line in order.order_line:
                 line_dict[order_line.product_id.id] = {
                     'qty': order_line.product_uom_qty,
@@ -145,6 +139,7 @@ FROM (
     pp.default_code default_code,
     pt.name,
     pt.list_price list_price,
+    pp.list_price_vat_excl list_price_vat_excl,
     ec.id category_id,
     ec.sequence category_sequence,
     ec.name category_name,
@@ -156,8 +151,6 @@ FROM (
     pt.uom_id,
     uom.eshop_description uom_eshop_description,
     pp.eshop_minimum_qty,
-    pp.eshop_unpack_qty,
-    pp.eshop_unpack_surcharge,
     array_to_string(array_agg(tax_rel.tax_id)
         OVER (PARTITION BY tax_rel.prod_id), ',') tax_ids
     FROM product_product pp

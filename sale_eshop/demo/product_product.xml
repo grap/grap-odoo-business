@@ -18,6 +18,7 @@
         <field name="uom_po_id" ref="product.product_uom_kgm"/>
         <field name="uos_id" ref="product.product_uom_kgm" />
         <field name="description_sale">Description of Banana</field>
+        <field name="taxes_id" eval="[(4, ref('tax_15_vat_incl'))]"/>
         <field name="type">consu</field>
         <field name="image" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_banana.jpg"/>
         <field name="label_ids" eval="[
@@ -35,6 +36,7 @@
         <field name="uom_id" ref="product.product_uom_unit" />
         <field name="uom_po_id" ref="product.product_uom_unit"/>
         <field name="uos_id" ref="product.product_uom_unit" />
+        <field name="taxes_id" eval="[(4, ref('tax_15_vat_excl'))]"/>
         <field name="description_sale">Description of Strawberry. 250 gram container</field>
         <field name="type">consu</field>
         <field name="image" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_strawberry.jpg"/>
@@ -50,8 +52,6 @@
         <field name="eshop_category_id" ref="category_fruit" />
         <field name="eshop_minimum_qty">1.0</field>
         <field name="eshop_rounded_qty">0.2</field>
-        <field name="eshop_unpack_qty">0.5</field>
-        <field name="eshop_unpack_surcharge">20</field>
         <field name="uom_id" ref="product.product_uom_kgm" />
         <field name="uom_po_id" ref="product.product_uom_kgm"/>
         <field name="uos_id" ref="product.product_uom_kgm" />

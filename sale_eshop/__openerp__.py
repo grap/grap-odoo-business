@@ -18,6 +18,8 @@
         'sale_food',
         'sale_order_line_price_subtotal_gross',
         'sale_recovery_moment',
+        'product_standard_margin',
+        "grap_qweb_report",
     ],
     'data': [
         'security/ir_rule.xml',
@@ -29,6 +31,7 @@
         'views/menu.xml',
         'views/view_account_tax.xml',
         'views/view_eshop_category.xml',
+        'views/view_eshop_queue_job.xml',
         'views/view_product_product.xml',
         'views/view_product_uom.xml',
         'views/view_res_company.xml',
@@ -38,11 +41,12 @@
     'demo': [
         'demo/res_company.xml',
         'demo/eshop_category.xml',
+        'demo/account_tax.xml',
         'demo/product_product.xml',
         'demo/product_uom.xml',
         'demo/res_users.xml',
         'demo/res_groups.xml',
         'demo/res_partner.xml',
     ],
-    'installable': False,
+    'installable': True,
 }
