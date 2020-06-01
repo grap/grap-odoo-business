@@ -5,10 +5,10 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="account.group_account_manager" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="res_groups_eshop_user" model="res.groups" >
@@ -16,31 +16,31 @@
     </record>
 
     <record id="res_groups_eshop_manager" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="base.group_no_one" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
-    <record id="base.group_sale_salesman" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+    <record id="sales_team.group_sale_salesman" model="res.groups" >
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="sale.group_discount_per_so_line" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="base.group_multi_company" model="res.groups" >
-        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 
     <record id="res_groups_is_eshop" model="res.groups" >
         <field name="users" eval="[(4, ref('eshop_user'))]" />
     </record>
 
-    <record id="base.group_sale_manager" model="res.groups" >
+    <record id="sales_team.group_sale_manager" model="res.groups" >
         <field name="users" eval="[(4, ref('eshop_user'))]" />
     </record>
 
-</data></openerp>
+</odoo>

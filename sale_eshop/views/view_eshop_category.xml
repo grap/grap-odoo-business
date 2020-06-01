@@ -4,7 +4,7 @@
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="action_eshop_category" model="ir.actions.act_window">
         <field name="name">eShop Categories</field>
@@ -26,7 +26,9 @@
     <record id="view_eshop_category_tree" model="ir.ui.view">
         <field name="model">eshop.category</field>
         <field name="arch" type="xml">
-            <tree string="eShop Categories" colors="blue: type == 'view'; gray: available_product_qty == 0;">
+            <tree string="eShop Categories"
+                    decoration-info="type == 'view'"
+                    decoration-muted="available_product_qty == 0">
                 <field name="sequence" widget="handle"/>
                 <field name="complete_name"/>
                 <field name="child_qty"/>
@@ -54,15 +56,18 @@
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </div>
+
                     <div class="oe_right oe_button_box" name="buttons">
                         <button type="action" class="oe_stat_button"
                             icon="fa-list-ol"
                             name="%(product.product_normal_action)d"
                             attrs="{'invisible': [('type', '=', 'view')]}" context="{'search_default_eshop_category_id': active_id,'default_eshop_category_id': active_id, 'search_default_filter_eshop_available': 1}">
-                            <div>
-                                <strong><field name="available_product_qty"/></strong><br/>
-                                Available Products
+
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="available_product_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Available Products</span>
                             </div>
+
                         </button>
 
                         <button type="action" class="oe_stat_button"
@@ -70,9 +75,9 @@
                             name="%(product.product_normal_action)d"
                             attrs="{'invisible': [('type', '=', 'view')]}" context="{'search_default_eshop_category_id': active_id,'default_eshop_category_id': active_id,
                             }">
-                            <div>
-                                <strong><field name="product_qty"/></strong><br/>
-                                Products
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="product_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Products</span>
                             </div>
                         </button>
 
@@ -80,9 +85,9 @@
                             icon="fa-list-ul"
                             name="%(sale_eshop.action_eshop_category)d"
                             attrs="{'invisible': [('type', '=', 'normal')]}" context="{'search_default_parent_id': active_id,'default_parent_id': active_id}">
-                            <div>
-                                <strong><field name="child_qty"/></strong><br/>
-                                Categories
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="child_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Categories</span>
                             </div>
                         </button>
 
@@ -93,8 +98,8 @@
         </field>
     </record>
 
-    <menuitem id="menu_eshop_category" 
+    <menuitem id="menu_eshop_category"
         parent="menu_eshop" sequence="1"
         action="action_eshop_category"/>
 
-</data></openerp>
+</odoo>

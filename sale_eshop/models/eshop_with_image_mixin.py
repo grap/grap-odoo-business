@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2014-Today GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -6,7 +5,7 @@
 import hashlib
 from datetime import datetime
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class EshopWithImageMixin(models.AbstractModel):
@@ -29,7 +28,7 @@ class EshopWithImageMixin(models.AbstractModel):
     def _compute_image_write_date_hash(self):
         for item in self:
             item.image_write_date_hash = hashlib.sha1(
-                str(item.image_write_date)
+                str(item.image_write_date).encode("utf8")
             ).hexdigest()
 
     # Default Part
@@ -44,18 +43,18 @@ class EshopWithImageMixin(models.AbstractModel):
     @api.model
     def create(self, vals):
         vals.update({"image_write_date": self._get_image_write_date()})
-        return super(EshopWithImageMixin, self).create(vals)
+        return super().create(vals)
 
     @api.multi
     def _write_eshop_invalidate(self, vals):
         if list(set(self._eshop_image_fields) & set(vals.keys())):
             vals.update({"image_write_date": self._get_image_write_date()})
-        return super(EshopWithImageMixin, self)._write_eshop_invalidate(vals)
+        return super()._write_eshop_invalidate(vals)
 
     # Overload section
     @api.model
     def _get_eshop_fields(self):
-        fields = super(EshopWithImageMixin, self)._get_eshop_fields()
+        fields = super()._get_eshop_fields()
         for field in fields:
             if "image" in field:
                 fields.remove(field)

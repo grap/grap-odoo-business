@@ -1,8 +1,12 @@
 account-invoicing
 account-fiscal-rule
 l10n-france
+margin-analysis
+queue
 web
 
- grap-odoo-incubator    https://github.com/grap/grap-odoo-incubator/    12.0
+grap-odoo-incubator    https://github.com/grap/grap-odoo-incubator/    12.0
 
 account_invoicing_triple_discount   https://github.com/legalsylvain/account-invoicing   12.0-mig-account_invoice_supplierinfo_update_discount
+
+margin_analysis_product_standard_margin   https://github.com/legalsylvain/margin-analysis   12.0-mig-product_standard_margin

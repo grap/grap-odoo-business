@@ -4,7 +4,7 @@
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="res_groups_eshop_user" model="res.groups">
         <field name="name">User</field>
@@ -20,11 +20,11 @@
     <record id="res_groups_is_eshop" model="res.groups">
         <field name="name">Is eShop</field>
         <field name="implied_ids" eval="[
-            (4, ref('base.group_sale_salesman')),
+            (4, ref('sales_team.group_sale_salesman')),
             (4, ref('res_groups_eshop_user')),
             (4, ref('sale_recovery_moment.recovery_user')),
         ]" />
 
     </record>
 
-</data></openerp>
+</odoo>

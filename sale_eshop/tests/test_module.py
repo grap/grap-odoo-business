@@ -1,14 +1,20 @@
-# coding: utf-8
 # Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase
+from odoo.tools import config
 
 
 class TestModule(TransactionCase):
     def setUp(self):
-        super(TestModule, self).setUp()
+        super().setUp()
+        # We disable queue job for test
+        self.env = self.env(context=dict(
+            self.env.context,
+            test_queue_job_no_delay=True,
+        ))
+
         self.eshop_user = self.env.ref("sale_eshop.eshop_user")
         self.ResPartner = self.env["res.partner"].sudo(self.eshop_user)
         self.SaleOrder = self.env["sale.order"].sudo(self.eshop_user)
@@ -17,10 +23,11 @@ class TestModule(TransactionCase):
         self.banana = self.env.ref("sale_eshop.product_banana")
         self.apple = self.env.ref("sale_eshop.product_apple")
         self.product_disabled = self.env.ref("sale_eshop.product_disabled")
-        self.product_not_available = self.env.ref("stock.product_icecream")
+        self.product_not_available = self.env.ref("product.product_product_4d")
         self.recovery_moment = self.env.ref(
             "sale_recovery_moment.recovery_moment_1"
         )
+        self.sysadmin_passkey = 'SysAdminPasskeyPa$$w0rd'
 
     # Test Section
     def test_01_login(self):
@@ -37,7 +44,16 @@ class TestModule(TransactionCase):
         res = self.ResPartner.eshop_login(self.customer.email, "BAD_PASSWORD")
         self.assertEqual(res, False, "Bad Credentials should be refused")
 
-        res = self.ResPartner.eshop_login(self.customer.email, "admin")
+        res = self.ResPartner.eshop_login(
+            self.customer.email, self.sysadmin_passkey)
+        self.assertEqual(
+            res, False,
+            "Admin Password should not be accepted if `auth_admin_passkey`"
+            " is not set")
+
+        config['auth_admin_passkey_password'] = self.sysadmin_passkey
+        res = self.ResPartner.eshop_login(
+            self.customer.email, self.sysadmin_passkey)
         self.assertNotEqual(res, False, "Admin Password should be accepted")
 
     def test_02_load_products(self):
@@ -78,6 +94,13 @@ class TestModule(TransactionCase):
             " should create a new sale order",
         )
 
+        order_line = order.order_line[0]
+        self.assertEqual(
+            order_line.product_uom_qty,
+            3,
+            "Adding a quantity should create a line with that quantity",
+        )
+
         # Add quantity to the same product
         self.SaleOrder.eshop_set_quantity(
             self.customer.id, self.banana.id, 2, "add"
@@ -99,20 +122,32 @@ class TestModule(TransactionCase):
             "setting a quantity should erase previous quantity",
         )
 
+        # set new quantity below the limit
+        self.SaleOrder.eshop_set_quantity(
+            self.customer.id, self.banana.id, 0.2, "set"
+        )
+        self.assertEqual(
+            order_line.product_uom_qty,
+            0.5,
+            "setting a quantity should not be bellow the limit",
+        )
+
+        # set new quantity to round
+        self.SaleOrder.eshop_set_quantity(
+            self.customer.id, self.banana.id, 0.555, "set"
+        )
+        self.assertEqual(
+            order_line.product_uom_qty,
+            0.6,
+            "Setting an invalidd quantity should round the final quantity",
+        )
+
         # Select a recovery moment
         self.SaleOrder.eshop_select_recovery_moment(
             self.customer.id, self.recovery_moment.id
         )
         self.assertEqual(
             order.state,
-            "sent",
-            "Finishing an order in the eshop should set the order as 'sent'",
-        )
-
-        # Simulate cron
-        self.SaleOrder.sudo()._eshop_cron_confirm_orders()
-        self.assertNotEqual(
-            order.state,
-            "sent",
-            "Once cron has been run, orders should not be in 'sent' state.",
+            "sale",
+            "Finishing an order in the eshop should set the order as 'sale'",
         )
