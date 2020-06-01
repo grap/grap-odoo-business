@@ -1,12 +1,11 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
 
-from openerp import _, api, fields, models
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import Warning as UserError
 
 
 class ProductProduct(models.Model):
@@ -29,7 +28,6 @@ class ProductProduct(models.Model):
         "eshop_rounded_qty",
         "origin_description",
         "maker_description",
-        "fresh_category",
         "eshop_description",
         "country_id",
         "department_id",
@@ -78,15 +76,13 @@ class ProductProduct(models.Model):
     )
 
     # Compute Section
-    @api.multi
-    @api.depends("taxes_id.eshop_description")
+    @api.depends("taxes_id.description")
     def _compute_eshop_taxes_description(self):
         for product in self:
             product.eshop_taxes_description = ", ".join(
-                product.mapped("taxes_id.eshop_description")
+                product.mapped("taxes_id.description")
             )
 
-    @api.multi
     @api.depends(
         "eshop_category_id",
         "sale_ok",
@@ -103,7 +99,7 @@ class ProductProduct(models.Model):
             ):
                 product.eshop_state = "unavailable"
             else:
-                dateNow = datetime.now().strftime("%Y-%m-%d")
+                dateNow = fields.date.today()
                 if product.eshop_start_date and product.eshop_end_date:
                     if (
                         product.eshop_start_date <= dateNow
@@ -124,16 +120,6 @@ class ProductProduct(models.Model):
                         product.eshop_state = "disabled"
                 else:
                     product.eshop_state = "available"
-
-    # Overload Section
-    @api.multi
-    def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        self._write_eshop_invalidate(vals)
-        return super(ProductProduct, self).write(vals)
 
     # API eshop Section
     @api.model
@@ -185,7 +171,7 @@ FROM (
     FROM product_product pp
     INNER JOIN product_template pt on pt.id = pp.product_tmpl_id
     INNER JOIN eshop_category ec on ec.id = pp.eshop_category_id
-    INNER JOIN product_uom uom on uom.id = pt.uom_id
+    INNER JOIN uom_uom uom on uom.id = pt.uom_id
     LEFT OUTER JOIN product_taxes_rel tax_rel ON tax_rel.prod_id = pt.id
     WHERE pt.company_id = %s
     AND pt.sale_ok
@@ -296,7 +282,7 @@ order by category_sequence, category_name, name;
         sql_req += " WHERE %s;" % (where)
         self.env.cr.execute(sql_req)
         res = self.env.cr.fetchall()
-        return [("id", "in", map(lambda x: x[0], res))]
+        return [("id", "in", [x[0] for x in res])]
 
     # Overwrite section
     @api.model

@@ -5,7 +5,7 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="demo_eshop_user" model="res.partner" >
         <field name="name">Demo Eshop User</field>
@@ -21,4 +21,4 @@
 
     </record>
 
-</data></openerp>
+</odoo>

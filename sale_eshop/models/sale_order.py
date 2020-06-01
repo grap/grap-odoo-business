@@ -1,11 +1,11 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from openerp import _, api, models
-from openerp.tools import config
+from odoo import _, api, models
+
+from odoo.addons.queue_job.job import job
 
 
 class SaleOrder(models.Model):
@@ -60,7 +60,7 @@ class SaleOrder(models.Model):
                 else:
                     line.unlink()
                     return "line_deleted"
-        return False
+        return True
 
     @api.model
     def eshop_set_note(self, partner_id, note):
@@ -68,7 +68,6 @@ class SaleOrder(models.Model):
         if order:
             order.write({"note": note})
             return order.note
-        return ""
 
     @api.model
     def eshop_set_quantity(self, partner_id, product_id, quantity, method):
@@ -104,35 +103,26 @@ class SaleOrder(models.Model):
                 break
 
         if quantity != 0:
-            # We set a not null quantity
-            res = SaleOrderLine.product_id_change(
-                order.pricelist_id.id,
-                product_id,
-                qty=quantity,
-                partner_id=partner_id,
-                fiscal_position=order.fiscal_position.id,
-            )
-            line_vals = {k: v for k, v in res["value"].items()}
-
-            # F& !! ORM
-            if line_vals["tax_id"]:
-                line_vals["tax_id"] = [[6, False, line_vals["tax_id"]]]
-            else:
-                line_vals["tax_id"] = [[6, False, []]]
-
-            # Create line if needed
             if not current_line:
-                line_vals["product_id"] = product_id
-                line_vals["order_id"] = order.id
-                current_line = SaleOrderLine.create(line_vals)
+                new_line = SaleOrderLine.new()
+                new_line.product_id = product_id
+                new_line.order_id = order.id
+                new_line.product_uom_qty = quantity
+                new_line.product_id_change()
+                new_line_vals = SaleOrderLine._convert_to_write(
+                    new_line._cache)
+                current_line = SaleOrderLine.create(new_line_vals)
             else:
-                current_line.write(line_vals)
+                current_line.product_uom_qty = quantity
+                current_line.product_id_change()
+            messages = current_line.eshop_apply_minimum_quantity()
+
             res = {
-                "messages": res["infos"],
+                "messages": messages,
                 "quantity": current_line.product_uom_qty,
                 "changed": (quantity != current_line.product_uom_qty),
                 "price_subtotal": current_line.price_subtotal,
-                "price_subtotal_gross": current_line.price_subtotal_gross,
+                "price_total": current_line.price_total,
                 "discount": current_line.discount,
             }
         else:
@@ -140,7 +130,7 @@ class SaleOrder(models.Model):
                 "quantity": 0,
                 "changed": False,
                 "price_subtotal": 0,
-                "price_subtotal_gross": 0,
+                "price_total": 0,
                 "discount": 0,
             }
             if current_line:
@@ -165,32 +155,22 @@ class SaleOrder(models.Model):
         recovery_moment = self.env["sale.recovery.moment"].browse(
             recovery_moment_id
         )
-        # Todo Check if the moment is complete
+        # Check if the moment is complete
         if recovery_moment.is_complete:
             return "recovery_moment_complete"
         else:
             order = self.eshop_get_current_sale_order(partner_id)
             order.write(
-                {"recovery_moment_id": recovery_moment_id,}
+                {"recovery_moment_id": recovery_moment_id}
             )
-            order.signal_workflow("quotation_sent")
-            return "quotation_sent"
+            self.with_delay()._eshop_confirm_sale_order(order.id)
+        return True
 
     @api.model
-    def _eshop_cron_confirm_orders(self):
-        eshop_group = self.env.ref("sale_eshop.res_groups_is_eshop")
-        eshop_users = eshop_group.users
-        for user in eshop_users:
-            local_self = self.sudo(user)
-            orders = local_self.search(
-                [("state", "=", "sent"), ("user_id", "=", user.id),]
-            )
-            for order in orders:
-                # Do not send email in test / demo context
-                if config.options.get("test_enable", False):
-                    order.action_button_confirm()
-                else:
-                    order.with_context(send_email=True).action_button_confirm()
+    @job(default_channel='root.sale_eshop_confirm_order')
+    def _eshop_confirm_sale_order(self, order_id):
+        order = self.browse(order_id)
+        order.with_context(send_email=True).action_confirm()
 
     # Custom Section
     def _eshop_sale_order_info(self, order):

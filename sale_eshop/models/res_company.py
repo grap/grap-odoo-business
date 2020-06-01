@@ -1,9 +1,8 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 # from .model import _ESHOP_OPENERP_MODELS
 
@@ -27,8 +26,6 @@ class ResCompany(models.Model):
         "eshop_tree_view_enabled",
         "eshop_facebook_url",
         "eshop_twitter_url",
-        "eshop_google_plus_url",
-        "eshop_google_plus_url",
         "eshop_instagram_url",
         "eshop_image_small",
         "eshop_vat_included",
@@ -63,8 +60,6 @@ class ResCompany(models.Model):
 
     eshop_instagram_url = fields.Char(string="Instagram URL")
 
-    eshop_google_plus_url = fields.Char(string="Google Plus URL")
-
     eshop_home_text = fields.Html(string="Text for the eShop Home Page")
 
     eshop_image_small = fields.Binary(string="Small Image for the eShop Menu")
@@ -86,17 +81,6 @@ class ResCompany(models.Model):
         default=True,
         help="Provide a Tree view to navigate into the catalog.",
     )
-
-    # Overload Section
-    @api.multi
-    def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        self._write_eshop_invalidate(vals)
-        res = super(ResCompany, self).write(vals)
-        return res
 
     # Eshop APi - Section
     @api.model

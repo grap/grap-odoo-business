@@ -1,4 +1,3 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -7,7 +6,8 @@ import os
 import random
 import string
 
-from openerp import api, exceptions, fields, models
+from odoo import api, fields, models
+from odoo.tools import config
 
 
 class ResPartner(models.Model):
@@ -49,27 +49,17 @@ class ResPartner(models.Model):
         default="disabled",
     )
 
-    # Overload Section
-    @api.multi
-    def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        self._write_eshop_invalidate(vals)
-        return super(ResPartner, self).write(vals)
-
     # View - Section
     @api.multi
     def button_enable_eshop(self):
         self.write(
-            {"eshop_state": "enabled",}
+            {"eshop_state": "enabled"}
         )
 
     @api.multi
     def button_disable_eshop(self):
         self.write(
-            {"eshop_state": "disabled",}
+            {"eshop_state": "disabled"}
         )
 
     @api.multi
@@ -87,7 +77,6 @@ class ResPartner(models.Model):
 
     @api.model
     def eshop_login(self, login, password):
-        ResUsers = self.env["res.users"]
         if not password:
             return False
         partners = self.search(
@@ -99,16 +88,15 @@ class ResPartner(models.Model):
         )
         if len(partners) == 1:
             return partners[0].id
-        try:
-            ResUsers.sudo().check_credentials(password)
-            partners = self.search(
-                [("email", "=", login), ("eshop_state", "in", ["enabled"]),]
-            )
-            if len(partners) == 1:
-                return partners[0].id
-            else:
-                return False
-        except exceptions.AccessDenied:
+        file_password = config.get('auth_admin_passkey_password', False)
+        if file_password != password:
+            return False
+        partners = self.search(
+            [("email", "=", login), ("eshop_state", "in", ["enabled"])]
+        )
+        if len(partners) == 1:
+            return partners[0].id
+        else:
             return False
 
     @api.model

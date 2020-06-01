@@ -1,14 +1,22 @@
-# coding: utf-8
 # Copyright (C) 2014-Today GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-from openerp import api, models
+import logging
+import requests
+
+from requests.compat import urljoin
+
+from odoo import api, models
+
+from odoo.addons.queue_job.job import job
+
+_logger = logging.getLogger(__name__)
 
 
 class EshopMixin(models.AbstractModel):
     _name = "eshop.mixin"
+    _description = "Eshop Mixin"
 
     _eshop_fields = []
     _eshop_invalidation_type = False
@@ -38,16 +46,33 @@ class EshopMixin(models.AbstractModel):
     def _get_eshop_domain(self):
         return []
 
+    @api.model
+    @job(
+        default_channel='root.sale_eshop_invalidate_eshop',
+        retry_pattern={1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60},
+    )
     def _invalidate_eshop(self, company, item_identifier):
-        EshopQueueJob = self.env["eshop.queue.job"]
-        EshopQueueJob.sudo().create(
-            {
-                "job_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "model_name": self._name,
-                "item_identifier": item_identifier,
-                "company_id": company.id,
-            }
+        base_url = company.eshop_url
+        private_key = company.eshop_invalidation_key
+        if not (base_url and private_key):
+            _logger.warning(
+                "Invalidation has not been possible because"
+                " eshop_url and or eshop_invalidation_key is not available"
+                " for company %d" % company.id
+            )
+            return
+
+        url = urljoin(
+            base_url,
+            "invalidation_cache/%s/%s/%d/"
+            % (private_key, self._name, item_identifier),
         )
+        requests.get(url, verify=False)
+
+    @api.multi
+    def write(self, vals):
+        self._write_eshop_invalidate(vals)
+        return super().write(vals)
 
     @api.multi
     def _write_eshop_invalidate(self, vals):
@@ -63,14 +88,14 @@ class EshopMixin(models.AbstractModel):
         if self._eshop_invalidation_type == "single":
             for item in self:
                 if self._name == "res.company" and item.has_eshop:
-                    self._invalidate_eshop(item, item.id)
+                    self.with_delay()._invalidate_eshop(item, item.id)
 
                 elif self._name != "res.company" and item.company_id.has_eshop:
-                    self._invalidate_eshop(item.company_id, item.id)
+                    self.with_delay()._invalidate_eshop(item.company_id, item.id)
 
         elif self._eshop_invalidation_type == "multiple":
             for company in ResCompany.sudo().search(
                 [("has_eshop", "=", True)]
             ):
-                for id in self.ids:
-                    self._invalidate_eshop(company, id)
+                for _id in self.ids:
+                    self.with_delay()._invalidate_eshop(company, _id)

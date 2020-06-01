@@ -5,14 +5,14 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
-    <record id="product.product_uom_kgm" model="product.uom" >
+    <record id="uom.product_uom_kgm" model="uom.uom" >
         <field name="eshop_description">Kilo</field>
     </record>
 
-    <record id="product.product_uom_unit" model="product.uom" >
+    <record id="uom.product_uom_unit" model="uom.uom" >
         <field name="eshop_description">Unit</field>
     </record>
 
-</data></openerp>
+</odoo>

@@ -1,10 +1,9 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, api, fields, models, tools
-from openerp.exceptions import Warning as UserError
+from odoo import _, api, fields, models, tools
+from odoo.exceptions import Warning as UserError
 
 
 class EshopCategory(models.Model):
@@ -35,12 +34,12 @@ class EshopCategory(models.Model):
     ]
 
     # Columns Section
-    name = fields.Char(string="Name", required=True, select=True)
+    name = fields.Char(string="Name", required=True, index=True)
 
     company_id = fields.Many2one(
         comodel_name="res.company",
         string="Company",
-        select=True,
+        index=True,
         required=True,
         default=lambda s: s._default_company_id(),
     )
@@ -48,19 +47,20 @@ class EshopCategory(models.Model):
     sequence = fields.Integer(string="Sequence", required=True, default=1)
 
     complete_name = fields.Char(
-        string="Name", store=True, compute="_compute_complete_name"
+        string="Complete Name", store=True,
+        compute="_compute_complete_name",
     )
 
-    image = fields.Binary(string="Image")
+    image = fields.Binary(string="Image", attachment=True)
 
-    image_medium = fields.Binary(string="Medium-sized image")
+    image_medium = fields.Binary(string="Medium-sized image", attachment=True)
 
-    image_small = fields.Binary(string="Small-sized image")
+    image_small = fields.Binary(string="Small-sized image", attachment=True)
 
     parent_id = fields.Many2one(
         comodel_name="eshop.category",
         string="Parent Category",
-        select=True,
+        index=True,
         domain="[('type', '=', 'view')]",
     )
 
@@ -127,7 +127,6 @@ class EshopCategory(models.Model):
                 )
 
     # Compute Section
-    @api.multi
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
         for category in self:
@@ -139,60 +138,26 @@ class EshopCategory(models.Model):
             else:
                 category.complete_name = category.name
 
-    @api.multi
     @api.depends("product_ids", "child_ids")
     def _compute_multi_child(self):
-        ProductProduct = self.env["product.product"]
-        all_product_ids = ProductProduct.search(
-            [("eshop_category_id", "in", self.ids),]
-        ).ids
-        all_available_product_ids = ProductProduct.search(
-            [("id", "in", all_product_ids), ("eshop_state", "=", "available"),]
-        ).ids
         for category in self:
-            product_ids = category.product_ids.ids
-            available_product_ids = list(
-                set(all_available_product_ids) & set(product_ids)
-            )
-            category.product_qty = len(product_ids)
-            category.available_product_ids = available_product_ids
-            category.available_product_qty = len(available_product_ids)
+            available_products = category.product_ids.filtered(
+                lambda x: x.eshop_state == "available")
+            category.product_qty = len(category.product_ids)
+            category.available_product_ids = available_products
+            category.available_product_qty = len(available_products)
             category.child_qty = len(category.child_ids)
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        self.image_resize_images(vals)
-        return super(EshopCategory, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            tools.image_resize_images(vals, sizes={'image': (1024, None)})
+        return super().create(vals_list)
 
-    @api.multi
     def write(self, vals):
-        """Overload in this part, because write function is not called
-        in mixin model. TODO: Check if this weird behavior still occures
-        in more recent Odoo versions.
-        """
-        self.image_resize_images(vals)
-        self._write_eshop_invalidate(vals)
-        return super(EshopCategory, self).write(vals)
-
-    # Custom Section
-    def image_resize_images(self, vals):
-        # TODO V10+ replace by tools.image_resize_images
-        image_data = vals.get("image", False)
-        if not image_data:
-            image_data = vals.get("image_medium", False)
-        if not image_data:
-            image_data = vals.get("image_small", False)
-        if not image_data:
-            return
-        res = tools.image_get_resized_images(image_data)
-        vals.update(
-            {
-                "image": image_data,
-                "image_medium": res["image_medium"],
-                "image_small": res["image_small"],
-            }
-        )
+        tools.image_resize_images(vals, sizes={'image': (1024, None)})
+        return super().write(vals)
 
     # Name Function
     @api.model
@@ -202,7 +167,6 @@ class EshopCategory(models.Model):
         )
         return recs.name_get()
 
-    @api.multi
     @api.depends("complete_name")
     def name_get(self):
         res = []

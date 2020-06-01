@@ -1,25 +1,22 @@
-# coding: utf-8
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
     "name": "Sale - eShop",
-    "version": "8.0.4.0.0",
+    "version": "12.0.1.0.1",
     "summary": "Allow connection to Odoo eShop Project",
     "category": "Sale",
     "author": "GRAP",
     "license": "AGPL-3",
     "depends": [
-        "mail",
-        "product",
-        "email_template",
         "sale",
-        "sale_food",
-        "sale_order_line_price_subtotal_gross",
+        "product_label",
+        "l10n_fr_department",
         "sale_recovery_moment",
+        "product_origin_l10n_fr_department",
         "product_standard_margin",
-        "grap_qweb_report",
+        "queue_job",
     ],
     "data": [
         "security/ir_rule.xml",
@@ -27,13 +24,10 @@
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "data/email_template.xml",
-        "data/ir_cron.xml",
         "views/menu.xml",
-        "views/view_account_tax.xml",
         "views/view_eshop_category.xml",
-        "views/view_eshop_queue_job.xml",
         "views/view_product_product.xml",
-        "views/view_product_uom.xml",
+        "views/view_uom_uom.xml",
         "views/view_res_company.xml",
         "views/view_res_partner.xml",
         "views/view_wizard_res_company_eshop_setting.xml",
@@ -43,7 +37,7 @@
         "demo/eshop_category.xml",
         "demo/account_tax.xml",
         "demo/product_product.xml",
-        "demo/product_uom.xml",
+        "demo/uom_uom.xml",
         "demo/res_users.xml",
         "demo/res_groups.xml",
         "demo/res_partner.xml",

@@ -5,7 +5,7 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
     <record model="eshop.category" id="category_without_image">
         <field name="name">Category without Image</field>
         <field name="type">normal</field>
@@ -31,4 +31,4 @@
         <field name="image" type="base64" file="sale_eshop/static/src/img/demo/eshop_category/category_vegetable.jpg"/>
     </record>
 
-</data></openerp>
+</odoo>

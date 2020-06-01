@@ -5,22 +5,22 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="tax_15_vat_excl" model="account.tax">
         <field name="name">15% VAT EXCL.</field>
-        <field name="eshop_description">15%HT</field>
-        <field name="type">percent</field>
-        <field name="amount">0.15</field>
+        <field name="description">15%</field>
+        <field name="amount_type">percent</field>
+        <field name="amount">15</field>
         <field name="price_include" eval="False"/>
     </record>
 
     <record id="tax_15_vat_incl" model="account.tax">
         <field name="name">15% VAT INCL.</field>
-        <field name="eshop_description">15%TTC</field>
-        <field name="type">percent</field>
-        <field name="amount">0.15</field>
+        <field name="description">15%</field>
+        <field name="amount_type">percent</field>
+        <field name="amount">15</field>
         <field name="price_include" eval="True"/>
     </record>
 
-</data></openerp>
+</odoo>
