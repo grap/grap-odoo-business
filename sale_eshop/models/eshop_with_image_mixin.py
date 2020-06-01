@@ -10,24 +10,27 @@ from openerp import api, fields, models
 
 
 class EshopWithImageMixin(models.AbstractModel):
-    _name = 'eshop.with.image.mixin'
-    _inherit = 'eshop.mixin'
+    _name = "eshop.with.image.mixin"
+    _inherit = "eshop.mixin"
 
     _eshop_image_fields = []
 
     image_write_date = fields.Datetime(
-        readonly=True, default=lambda s: s._default_image_write_date())
+        readonly=True, default=lambda s: s._default_image_write_date()
+    )
 
     image_write_date_hash = fields.Char(
-        compute='_compute_image_write_date_hash', store=True)
+        compute="_compute_image_write_date_hash", store=True
+    )
 
     # Compute Section
     @api.multi
-    @api.depends('image_write_date')
+    @api.depends("image_write_date")
     def _compute_image_write_date_hash(self):
         for item in self:
             item.image_write_date_hash = hashlib.sha1(
-                str(item.image_write_date)).hexdigest()
+                str(item.image_write_date)
+            ).hexdigest()
 
     # Default Part
     @api.model
@@ -40,13 +43,13 @@ class EshopWithImageMixin(models.AbstractModel):
 
     @api.model
     def create(self, vals):
-        vals.update({'image_write_date': self._get_image_write_date()})
+        vals.update({"image_write_date": self._get_image_write_date()})
         return super(EshopWithImageMixin, self).create(vals)
 
     @api.multi
     def _write_eshop_invalidate(self, vals):
         if list(set(self._eshop_image_fields) & set(vals.keys())):
-            vals.update({'image_write_date': self._get_image_write_date()})
+            vals.update({"image_write_date": self._get_image_write_date()})
         return super(EshopWithImageMixin, self)._write_eshop_invalidate(vals)
 
     # Overload section
@@ -54,8 +57,8 @@ class EshopWithImageMixin(models.AbstractModel):
     def _get_eshop_fields(self):
         fields = super(EshopWithImageMixin, self)._get_eshop_fields()
         for field in fields:
-            if 'image' in field:
+            if "image" in field:
                 fields.remove(field)
-        fields.append('image_write_date')
-        fields.append('image_write_date_hash')
+        fields.append("image_write_date")
+        fields.append("image_write_date_hash")
         return fields

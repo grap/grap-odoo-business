@@ -11,32 +11,43 @@ from openerp import api, exceptions, fields, models
 
 
 class ResPartner(models.Model):
-    _name = 'res.partner'
-    _inherit = ['res.partner', 'eshop.mixin']
+    _name = "res.partner"
+    _inherit = ["res.partner", "eshop.mixin"]
 
     # Inherit Section
-    _eshop_invalidation_type = 'single'
+    _eshop_invalidation_type = "single"
 
     _eshop_fields = [
-        'name', 'lang', 'email', 'eshop_state',
-        'phone', 'mobile', 'street', 'street2', 'zip', 'city',
+        "name",
+        "lang",
+        "email",
+        "eshop_state",
+        "phone",
+        "mobile",
+        "street",
+        "street2",
+        "zip",
+        "city",
     ]
 
     _PASSWORD_LENGTH = 6
-    _PASSWORD_CHARS = string.ascii_letters + '23456789'
+    _PASSWORD_CHARS = string.ascii_letters + "23456789"
 
     _ESHOP_STATE_SELECTION = [
-        ('disabled', 'Disabled'),
-        ('email_to_confirm', 'EMail To Confirm'),
-        ('enabled', 'Enabled'),
+        ("disabled", "Disabled"),
+        ("email_to_confirm", "EMail To Confirm"),
+        ("enabled", "Enabled"),
     ]
 
     # Columns Section
-    eshop_password = fields.Char(string='Password on eShop', readonly=True)
+    eshop_password = fields.Char(string="Password on eShop", readonly=True)
 
     eshop_state = fields.Selection(
-        selection=_ESHOP_STATE_SELECTION, string='State on eShop',
-        readonly=True, default='disabled')
+        selection=_ESHOP_STATE_SELECTION,
+        string="State on eShop",
+        readonly=True,
+        default="disabled",
+    )
 
     # Overload Section
     @api.multi
@@ -51,15 +62,15 @@ class ResPartner(models.Model):
     # View - Section
     @api.multi
     def button_enable_eshop(self):
-        self.write({
-            'eshop_state': 'enabled',
-        })
+        self.write(
+            {"eshop_state": "enabled",}
+        )
 
     @api.multi
     def button_disable_eshop(self):
-        self.write({
-            'eshop_state': 'disabled',
-        })
+        self.write(
+            {"eshop_state": "disabled",}
+        )
 
     @api.multi
     def button_generate_send_credentials(self):
@@ -69,29 +80,30 @@ class ResPartner(models.Model):
     # Eshop API - Section
     @api.multi
     def send_credentials(self):
-        template = self.env.ref('sale_eshop.eshop_send_crendential_template')
+        template = self.env.ref("sale_eshop.eshop_send_crendential_template")
         for partner in self:
             template.send_mail(partner.id, force_send=True)
         return True
 
     @api.model
     def eshop_login(self, login, password):
-        ResUsers = self.env['res.users']
+        ResUsers = self.env["res.users"]
         if not password:
             return False
-        partners = self.search([
-            ('email', '=', login),
-            ('eshop_password', '=', password),
-            ('eshop_state', 'in', ['enabled']),
-        ])
+        partners = self.search(
+            [
+                ("email", "=", login),
+                ("eshop_password", "=", password),
+                ("eshop_state", "in", ["enabled"]),
+            ]
+        )
         if len(partners) == 1:
             return partners[0].id
         try:
             ResUsers.sudo().check_credentials(password)
-            partners = self.search([
-                ('email', '=', login),
-                ('eshop_state', 'in', ['enabled']),
-            ])
+            partners = self.search(
+                [("email", "=", login), ("eshop_state", "in", ["enabled"]),]
+            )
             if len(partners) == 1:
                 return partners[0].id
             else:
@@ -101,12 +113,14 @@ class ResPartner(models.Model):
 
     @api.model
     def create_from_eshop(self, vals):
-        vals.update({
-            'name': vals['first_name'] + ' ' + vals['last_name'],
-            'eshop_state': 'email_to_confirm',
-        })
-        vals.pop('first_name', False)
-        vals.pop('last_name', False)
+        vals.update(
+            {
+                "name": vals["first_name"] + " " + vals["last_name"],
+                "eshop_state": "email_to_confirm",
+            }
+        )
+        vals.pop("first_name", False)
+        vals.pop("last_name", False)
         # Create partner
         partner = self.create(vals)
         # Send an email
@@ -128,10 +142,10 @@ class ResPartner(models.Model):
         if partner.email != email:
             return "bad_email"
 
-        if partner.eshop_state in ['enabled']:
+        if partner.eshop_state in ["enabled"]:
             return "still_confirmed"
 
-        if partner.eshop_state in ['disabled']:
+        if partner.eshop_state in ["disabled"]:
             return "disabled"
 
         # eshop_state is "email_to_confirm"
@@ -140,7 +154,7 @@ class ResPartner(models.Model):
 
     @api.model
     def eshop_password_lost(self, email):
-        partners = self.search([('email', '=', email)])
+        partners = self.search([("email", "=", email)])
         if len(partners) > 1:
             return "too_many_email"
         elif len(partners) == 1:
@@ -151,15 +165,19 @@ class ResPartner(models.Model):
     @api.multi
     def _generate_credentials(self):
         for partner in self:
-            random.seed = (os.urandom(1024))
-            password = ''.join(random.choice(
-                self._PASSWORD_CHARS) for i in range(self._PASSWORD_LENGTH))
-            partner.write({
-                "eshop_password": password,
-                "eshop_state": "email_to_confirm",
-            })
+            random.seed = os.urandom(1024)
+            password = "".join(
+                random.choice(self._PASSWORD_CHARS)
+                for i in range(self._PASSWORD_LENGTH)
+            )
+            partner.write(
+                {
+                    "eshop_password": password,
+                    "eshop_state": "email_to_confirm",
+                }
+            )
 
     # Overwrite section
     @api.model
     def _get_eshop_domain(self):
-        return [('eshop_state', 'in', ["email_to_confirm", "enabled"])]
+        return [("eshop_state", "in", ["email_to_confirm", "enabled"])]

@@ -10,92 +10,120 @@ from openerp.exceptions import Warning as UserError
 
 
 class ProductProduct(models.Model):
-    _name = 'product.product'
-    _inherit = ['product.product', 'eshop.with.image.mixin']
+    _name = "product.product"
+    _inherit = ["product.product", "eshop.with.image.mixin"]
 
     # Inherit Section
-    _eshop_invalidation_type = 'single'
+    _eshop_invalidation_type = "single"
 
     _eshop_fields = [
-        'name', 'uom_id', 'image', 'image_medium', 'list_price',
-        'list_price_vat_excl',
-        'eshop_category_id', 'label_ids', 'eshop_minimum_qty',
-        'eshop_rounded_qty', 'origin_description', 'maker_description',
-        'fresh_category', 'eshop_description', 'country_id',
-        'department_id', 'default_code',
-        'eshop_taxes_description',
+        "name",
+        "uom_id",
+        "image",
+        "image_medium",
+        "list_price",
+        "list_price_vat_excl",
+        "eshop_category_id",
+        "label_ids",
+        "eshop_minimum_qty",
+        "eshop_rounded_qty",
+        "origin_description",
+        "maker_description",
+        "fresh_category",
+        "eshop_description",
+        "country_id",
+        "department_id",
+        "default_code",
+        "eshop_taxes_description",
     ]
 
-    _eshop_image_fields = ['image', 'image_medium', 'image_small']
+    _eshop_image_fields = ["image", "image_medium", "image_small"]
 
     _ESHOP_STATE_SELECTION = [
-        ('available', 'Available for Sale'),
-        ('disabled', 'Temporarily Disabled'),
-        ('unavailable', 'Unavailable for Sale'),
+        ("available", "Available for Sale"),
+        ("disabled", "Temporarily Disabled"),
+        ("unavailable", "Unavailable for Sale"),
     ]
 
     eshop_category_id = fields.Many2one(
-        comodel_name='eshop.category', string='eShop Category',
-        domain=[('type', '=', 'normal')])
+        comodel_name="eshop.category",
+        string="eShop Category",
+        domain=[("type", "=", "normal")],
+    )
 
-    eshop_start_date = fields.Date(string='Start Date of Sale')
+    eshop_start_date = fields.Date(string="Start Date of Sale")
 
-    eshop_end_date = fields.Date(string='End Date of Sale')
+    eshop_end_date = fields.Date(string="End Date of Sale")
 
     eshop_state = fields.Selection(
-        string='eShop State', selection=_ESHOP_STATE_SELECTION,
-        compute='_compute_eshop_state', search='_search_eshop_state')
+        string="eShop State",
+        selection=_ESHOP_STATE_SELECTION,
+        compute="_compute_eshop_state",
+        search="_search_eshop_state",
+    )
 
     eshop_minimum_qty = fields.Float(
-        string='Minimum Quantity for eShop', required=True, default=0)
+        string="Minimum Quantity for eShop", required=True, default=0
+    )
 
     eshop_rounded_qty = fields.Float(
-        string='Rounded Quantity for eShop', required=True, default=0)
+        string="Rounded Quantity for eShop", required=True, default=0
+    )
 
-    eshop_description = fields.Text(type='Text', string='Eshop Description')
+    eshop_description = fields.Text(type="Text", string="Eshop Description")
 
     eshop_taxes_description = fields.Char(
-        compute='_compute_eshop_taxes_description',
-        string='Eshop Taxes Description')
+        compute="_compute_eshop_taxes_description",
+        string="Eshop Taxes Description",
+    )
 
     # Compute Section
     @api.multi
-    @api.depends('taxes_id.eshop_description')
+    @api.depends("taxes_id.eshop_description")
     def _compute_eshop_taxes_description(self):
         for product in self:
-            product.eshop_taxes_description = ', '.join(
-                product.mapped('taxes_id.eshop_description'))
+            product.eshop_taxes_description = ", ".join(
+                product.mapped("taxes_id.eshop_description")
+            )
 
     @api.multi
     @api.depends(
-        'eshop_category_id', 'sale_ok', 'active', 'eshop_start_date',
-        'eshop_end_date')
+        "eshop_category_id",
+        "sale_ok",
+        "active",
+        "eshop_start_date",
+        "eshop_end_date",
+    )
     def _compute_eshop_state(self):
         for product in self:
             if not (
-                    product.eshop_category_id and product.sale_ok and
-                    product.active):
-                product.eshop_state = 'unavailable'
+                product.eshop_category_id
+                and product.sale_ok
+                and product.active
+            ):
+                product.eshop_state = "unavailable"
             else:
-                dateNow = datetime.now().strftime('%Y-%m-%d')
+                dateNow = datetime.now().strftime("%Y-%m-%d")
                 if product.eshop_start_date and product.eshop_end_date:
-                    if product.eshop_start_date <= dateNow \
-                            and dateNow <= product.eshop_end_date:
-                        product.eshop_state = 'available'
+                    if (
+                        product.eshop_start_date <= dateNow
+                        and dateNow <= product.eshop_end_date
+                    ):
+                        product.eshop_state = "available"
                     else:
-                        product.eshop_state = 'disabled'
+                        product.eshop_state = "disabled"
                 elif product.eshop_start_date:
                     if product.eshop_start_date <= dateNow:
-                        product.eshop_state = 'available'
+                        product.eshop_state = "available"
                     else:
-                        product.eshop_state = 'disabled'
+                        product.eshop_state = "disabled"
                 elif product.eshop_end_date:
                     if dateNow <= product.eshop_end_date:
-                        product.eshop_state = 'available'
+                        product.eshop_state = "available"
                     else:
-                        product.eshop_state = 'disabled'
+                        product.eshop_state = "disabled"
                 else:
-                    product.eshop_state = 'available'
+                    product.eshop_state = "available"
 
     # Overload Section
     @api.multi
@@ -113,7 +141,7 @@ class ProductProduct(models.Model):
         """The aim of this function is to deal with delay of response of
         the odoo-eshop, module.
         This will return a list of data, used for catalog inline view."""
-        SaleOrder = self.env['sale.order']
+        SaleOrder = self.env["sale.order"]
         order = SaleOrder.eshop_get_current_sale_order(partner_id)
         res = []
         line_dict = {}
@@ -121,13 +149,14 @@ class ProductProduct(models.Model):
         if order:
             for order_line in order.order_line:
                 line_dict[order_line.product_id.id] = {
-                    'qty': order_line.product_uom_qty,
-                    'discount': order_line.discount,
+                    "qty": order_line.product_uom_qty,
+                    "discount": order_line.discount,
                 }
 
         company_id = self.env.user.company_id.id
 
-        self.env.cr.execute("""
+        self.env.cr.execute(
+            """
 SELECT
     distinct tmp.*,
     array_to_string(array_agg(label_rel.label_id)
@@ -167,42 +196,48 @@ FROM (
 LEFT OUTER JOIN product_label_product_rel label_rel
     ON label_rel.product_id = tmp.id
 order by category_sequence, category_name, name;
-""", (company_id,))
+""",
+            (company_id,),
+        )
         columns = self.env.cr.description
         for value in self.env.cr.fetchall():
             product_id = value[0]
             tmp = {}
             for (index, column) in enumerate(value):
-                if '_ids' in columns[index][0]:
+                if "_ids" in columns[index][0]:
                     tmp[columns[index][0]] = sorted(
-                        [int(x) for x in column.split(',') if x])
+                        [int(x) for x in column.split(",") if x]
+                    )
                 else:
                     tmp[columns[index][0]] = column
             if product_id in line_dict:
-                tmp.update({
-                    'qty': line_dict[product_id]['qty'],
-                    'discount': line_dict[product_id]['discount'],
-                })
+                tmp.update(
+                    {
+                        "qty": line_dict[product_id]["qty"],
+                        "discount": line_dict[product_id]["discount"],
+                    }
+                )
             else:
-                tmp.update({'qty': 0, 'discount': 0})
-            if tmp['default_code'] is None:
-                tmp['default_code'] = False
+                tmp.update({"qty": 0, "discount": 0})
+            if tmp["default_code"] is None:
+                tmp["default_code"] = False
 
             res.append(tmp)
 
         return res
 
     def _search_eshop_state(self, operator, value):
-        dateNow = datetime.now().strftime('%Y-%m-%d')
-        if operator not in ('=', 'in'):
-            raise UserError(_(
-                "The Operator %s is not implemented !" % (operator)))
-        if operator == '=':
+        dateNow = datetime.now().strftime("%Y-%m-%d")
+        if operator not in ("=", "in"):
+            raise UserError(
+                _("The Operator %s is not implemented !" % (operator))
+            )
+        if operator == "=":
             lst = [value]
         else:
             lst = value
         sql_lst = []
-        if 'available' in lst and len(lst) == 1:
+        if "available" in lst and len(lst) == 1:
             sql_lst.append(
                 """((
                         eshop_start_date is not null
@@ -211,13 +246,17 @@ order by category_sequence, category_name, name;
                         eshop_start_date <= '%s'
                         AND '%s' <= eshop_end_date
                     )
-                )""" % (dateNow, dateNow))
+                )"""
+                % (dateNow, dateNow)
+            )
             sql_lst.append(
                 """((
                         eshop_start_date is null
                         AND eshop_end_date is not null)
                     AND ('%s' <= eshop_end_date)
-                )""" % (dateNow))
+                )"""
+                % (dateNow)
+            )
             sql_lst.append(
                 """((
                         eshop_start_date is not null
@@ -225,12 +264,17 @@ order by category_sequence, category_name, name;
                     AND (
                         eshop_start_date <= '%s'
                     )
-                )""" % (dateNow))
+                )"""
+                % (dateNow)
+            )
             sql_lst.append(
                 """(eshop_start_date is null
-                    AND eshop_end_date is null)""")
+                    AND eshop_end_date is null)"""
+            )
             for i in range(0, len(sql_lst)):
-                sql_lst[i] = """(
+                sql_lst[
+                    i
+                ] = """(
                     eshop_category_id IS NOT NULL
                     AND id in (
                         SELECT pp.id
@@ -239,10 +283,11 @@ order by category_sequence, category_name, name;
                             ON pp.product_tmpl_id = pt.id
                             AND pt.sale_ok is true)
                     AND active is true
-                    AND (%s))""" % (sql_lst[i])
+                    AND (%s))""" % (
+                    sql_lst[i]
+                )
         else:
-            raise UserError(_(
-                "This arg %s is not implemented !" % (value)))
+            raise UserError(_("This arg %s is not implemented !" % (value)))
 
         where = sql_lst[0]
         for item in sql_lst[1:]:
@@ -251,9 +296,9 @@ order by category_sequence, category_name, name;
         sql_req += " WHERE %s;" % (where)
         self.env.cr.execute(sql_req)
         res = self.env.cr.fetchall()
-        return [('id', 'in', map(lambda x:x[0], res))]
+        return [("id", "in", map(lambda x: x[0], res))]
 
     # Overwrite section
     @api.model
     def _get_eshop_domain(self):
-        return [('eshop_state', '=', 'available')]
+        return [("eshop_state", "=", "available")]

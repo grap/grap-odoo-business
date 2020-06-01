@@ -7,17 +7,18 @@ from openerp import api, fields, models
 
 
 class AccountTax(models.Model):
-    _name = 'account.tax'
-    _inherit = ['account.tax', 'eshop.mixin']
+    _name = "account.tax"
+    _inherit = ["account.tax", "eshop.mixin"]
 
     # Inherit Section
-    _eshop_invalidation_type = 'multiple'
+    _eshop_invalidation_type = "multiple"
 
-    _eshop_fields = ['eshop_description']
+    _eshop_fields = ["eshop_description"]
 
     # Field Section
     eshop_description = fields.Char(
-        string='Description for the eShop', default='/')
+        string="Description for the eShop", default="/"
+    )
 
     # Overload Section
     @api.multi

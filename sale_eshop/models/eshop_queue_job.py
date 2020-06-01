@@ -13,38 +13,41 @@ _logger = logging.getLogger(__name__)
 
 
 class EshopQueueJob(models.Model):
-    _name = 'eshop.queue.job'
-    _inherit = 'ir.needaction_mixin'
-    _order = 'job_date desc'
+    _name = "eshop.queue.job"
+    _inherit = "ir.needaction_mixin"
+    _order = "job_date desc"
 
     job_date = fields.Datetime(
-        string='Job Date', required=True, readonly=True, select=True)
+        string="Job Date", required=True, readonly=True, select=True
+    )
 
-    company_id = fields.Many2one(
-        comodel_name="res.company")
+    company_id = fields.Many2one(comodel_name="res.company")
 
     model_name = fields.Char(required=True)
 
     item_identifier = fields.Integer(required=True)
 
-    state = fields.Selection(selection=[
-        ("draft", "Draft"),
-        ("done", "Done"),
-        ("skipped", "Skipped"),
-        ("errored", "Errored"),
-    ], default="draft")
+    state = fields.Selection(
+        selection=[
+            ("draft", "Draft"),
+            ("done", "Done"),
+            ("skipped", "Skipped"),
+            ("errored", "Errored"),
+        ],
+        default="draft",
+    )
 
     # View Section
     @api.model
     def _needaction_count(self, domain=None, context=None):
-        return len(self.search([('state', 'not in', ["done", "skipped"])]))
+        return len(self.search([("state", "not in", ["done", "skipped"])]))
 
     # Cron Section
     @api.model
     def cron_run(self):
         jobs = self.search(
-            [("state", "not in", ["done", "skipped"])],
-            order="job_date")
+            [("state", "not in", ["done", "skipped"])], order="job_date"
+        )
         jobs.send_invalidation()
 
     @api.multi
@@ -59,15 +62,19 @@ class EshopQueueJob(models.Model):
                 _logger.warning(
                     "Invalidation has not been possible because"
                     " eshop_url and or eshop_invalidation_key is not available"
-                    " for company %d" % job.company_id.id)
+                    " for company %d" % job.company_id.id
+                )
                 continue
 
             if signature in done_list:
                 job.state = "skipped"
                 continue
 
-            url = urljoin(base_url, "invalidation_cache/%s/%s/%d/" % (
-                private_key, job.model_name, job.item_identifier))
+            url = urljoin(
+                base_url,
+                "invalidation_cache/%s/%s/%d/"
+                % (private_key, job.model_name, job.item_identifier),
+            )
             try:
                 req = requests.get(url, verify=False)
                 if req.status_code == 200:
@@ -77,10 +84,12 @@ class EshopQueueJob(models.Model):
                     job.state = "errored"
                     _logger.error(
                         "Error when calling invalidation url '%s' "
-                        " status Code : %s (company #%d)" % (
-                            url, req.status_code, job.company_id.id))
+                        " status Code : %s (company #%d)"
+                        % (url, req.status_code, job.company_id.id)
+                    )
             except Exception:
                 job.state = "errored"
                 _logger.error(
                     "Unable to call the invalidation url '%s' "
-                    "(company #%d)" % (url, job.company_id.id))
+                    "(company #%d)" % (url, job.company_id.id)
+                )

@@ -7,13 +7,13 @@ from openerp import api, models
 
 
 class ResCountry(models.Model):
-    _name = 'res.country'
-    _inherit = ['res.country', 'eshop.mixin']
+    _name = "res.country"
+    _inherit = ["res.country", "eshop.mixin"]
 
     # Inherit Section
-    _eshop_invalidation_type = 'multiple'
+    _eshop_invalidation_type = "multiple"
 
-    _eshop_fields = ['name']
+    _eshop_fields = ["name"]
 
     # Overload Section
     @api.multi
