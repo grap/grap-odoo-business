@@ -14,28 +14,31 @@ class TestModule(TransactionCase):
         self.ResPartner = self.env['res.partner'].sudo(self.eshop_user)
         self.SaleOrder = self.env['sale.order'].sudo(self.eshop_user)
         self.ProductProduct = self.env['product.product'].sudo(self.eshop_user)
-        self.customer = self.env.ref('base.partner_root')
+        self.customer = self.env.ref('sale_eshop.demo_eshop_user')
         self.banana = self.env.ref('sale_eshop.product_banana')
         self.apple = self.env.ref('sale_eshop.product_apple')
         self.product_disabled = self.env.ref('sale_eshop.product_disabled')
         self.product_not_available = self.env.ref('stock.product_icecream')
+        self.recovery_moment = self.env.ref(
+            "sale_recovery_moment.recovery_moment_1")
 
     # Test Section
     def test_01_login(self):
         # The following line make the test working if user_partners_access
         # is installed
         self.customer.active = True
-        res = self.ResPartner.login(self.customer.email, 'eshop_password')
+        res = self.ResPartner.eshop_login(
+            self.customer.email, self.customer.eshop_password)
         self.assertNotEqual(
             res, False, "Correct Credentials should be accepted")
 
-        res = self.ResPartner.login(self.customer.email, 'bad_password')
+        res = self.ResPartner.eshop_login(self.customer.email, 'BAD_PASSWORD')
         self.assertEqual(
             res, False, "Bad Credentials should be refused")
 
-        res = self.ResPartner.login(self.customer.email, 'admin')
+        res = self.ResPartner.eshop_login(self.customer.email, 'admin')
         self.assertNotEqual(
-            res, False, "Addmin Password should be accepted")
+            res, False, "Admin Password should be accepted")
 
     def test_02_load_products(self):
         result = self.ProductProduct.get_current_eshop_product_list()
@@ -59,17 +62,16 @@ class TestModule(TransactionCase):
         # Create Order
         self.SaleOrder.eshop_set_quantity(
             self.customer.id, self.banana.id, 3, 'add')
-        order_id = self.SaleOrder.eshop_get_current_sale_order_id(
+        order = self.SaleOrder.eshop_get_current_sale_order(
             self.customer.id)
         self.assertNotEqual(
-            order_id, False,
+            order, False,
             "Adding a product for a customer that don't have sale order"
             " should create a new sale order")
 
         # Add quantity to the same product
         self.SaleOrder.eshop_set_quantity(
             self.customer.id, self.banana.id, 2, 'add')
-        order = self.SaleOrder.browse(order_id)
         order_line = order.order_line[0]
         self.assertEqual(
             order_line.product_uom_qty, 5,
@@ -82,8 +84,9 @@ class TestModule(TransactionCase):
             order_line.product_uom_qty, 1,
             "setting a quantity should erase previous quantity")
 
-        # Finish the order
-        order.eshop_set_as_sent()
+        # Select a recovery moment
+        self.SaleOrder.eshop_select_recovery_moment(
+            self.customer.id, self.recovery_moment.id)
         self.assertEqual(
             order.state, 'sent',
             "Finishing an order in the eshop should set the order as 'sent'")

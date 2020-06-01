@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<openerp><data>
+
+    <record id="action_eshop_queue_job" model="ir.actions.act_window">
+        <field name="name">eShop Queue Jobs</field>
+        <field name="res_model">eshop.queue.job</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_eshop_queue_job_search" model="ir.ui.view">
+        <field name="model">eshop.queue.job</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="model_name"/>
+                <field name="company_id" groups="base.group_multi_company" />
+            </search>
+        </field>
+    </record>
+
+    <record id="view_eshop_queue_job_tree" model="ir.ui.view">
+        <field name="model">eshop.queue.job</field>
+        <field name="arch" type="xml">
+            <tree colors="blue: state == 'draft'; gray: state == 'done';red: state=='errored'">
+                <field name="job_date"/>
+                <field name="model_name"/>
+                <field name="item_identifier"/>
+                <field name="state"/>
+                <field name="company_id" groups="base.group_multi_company" />
+                <button name="send_invalidation" type="object" string="Send to eShop" groups="sale_eshop.res_groups_eshop_manager" attrs="{'invisible': [('state', 'in', ['done', 'skipped'])]}" />
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_eshop_queue_job"
+        parent="menu_eshop" sequence="5"
+        action="action_eshop_queue_job"/>
+
+</data></openerp>

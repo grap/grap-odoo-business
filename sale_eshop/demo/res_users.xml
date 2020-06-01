@@ -10,6 +10,7 @@
     <record id="eshop_user" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Eshop User</field>
         <field name="login">eshop_user</field>
+        <field name="email">eshop_user@yourcompany.example.com</field>
         <field name="password">demo</field>
         <field name="company_id" ref="base.main_company"/>
         <field name="company_ids" eval="[(4, ref('base.main_company'))]" />
