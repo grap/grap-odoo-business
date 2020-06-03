@@ -14,7 +14,7 @@ Sale - eShop
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-business/tree/8.0/sale_eshop
+    :target: https://github.com/grap/grap-odoo-business/tree/12.0/sale_eshop
     :alt: grap/grap-odoo-business
 
 |badge1| |badge2| |badge3| 
@@ -30,10 +30,10 @@ eShop Categories
 Add a new model ``eshop.category`` to have the possibility to dispatch products
 for the eshop.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/eshop_category_tree.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/eshop_category_tree.png
    :width: 800 px
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/eshop_category_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/eshop_category_form.png
    :width: 800 px
 
 
@@ -44,7 +44,7 @@ Add new fields on ``res.partner`` to handle authentication on the eshop.
 It is maid with a couple ``email`` and ``eshop_password``.
 
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/res_partner_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/res_partner_form.png
    :width: 800 px
 
 Products
@@ -61,7 +61,7 @@ Furthermore, it is possible to allow consumers to buy less than the minimum
 quantity, setting 'Unpack Quantity' value. In that case, a surcharge can
 be applied in the field 'Unpack Surcharge'.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/product_product_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/product_product_form.png
    :width: 800 px
 
 
@@ -70,7 +70,7 @@ Companies
 
 General settings are available via company form.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/res_company_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/res_company_form.png
    :width: 800 px
 
 The important fields are :
@@ -83,7 +83,7 @@ Some of cosmectics fields are available in a wizard, to be change by end users.
 
 you have to go in 'Sale' / 'Configuration' / 'eShop Sale' / 'eShop Settings'
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/8.0/sale_eshop/static/description/wizard_res_company_eshop_setting_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/sale_eshop/static/description/wizard_res_company_eshop_setting_form.png
    :width: 800 px
 
 Other models
@@ -116,6 +116,13 @@ Technical Informations
 .. contents::
    :local:
 
+Installation
+============
+
+If ``auth_admin_passkey`` is installed, and correctly set,
+the authentication in the eshop can be used with the file password,
+present in the key ``auth_admin_passkey_password``.
+
 Known issues / Roadmap
 ======================
 
@@ -128,7 +135,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-business/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20sale_eshop%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20sale_eshop%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -148,6 +155,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/8.0/sale_eshop>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/12.0/sale_eshop>`_ project on GitHub.
 
 You are welcome to contribute.
