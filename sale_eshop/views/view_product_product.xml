@@ -4,7 +4,7 @@
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
     <record id="view_product_product_search" model="ir.ui.view">
         <field name="model">product.product</field>
@@ -36,8 +36,6 @@
                     <field name="eshop_category_id" colspan="4"/>
                     <field name="eshop_minimum_qty"/>
                     <field name="eshop_rounded_qty"/>
-                    <field name="eshop_unpack_qty"/>
-                    <field name="eshop_unpack_surcharge"/>
                     <field name="eshop_state"/>
                     <newline/>
                     <field name="eshop_description" widget="html" colspan="4" />
@@ -46,4 +44,4 @@
         </field>
     </record>
 
-</data></openerp>
+</odoo>

@@ -5,7 +5,7 @@
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data noupdate="0">
+<odoo>
 
     <record id="rule_eshop_category" model="ir.rule">
         <field name="name">eShop Category Rule</field>
@@ -14,4 +14,4 @@
         <field name="domain_force">[('company_id', '=', user.company_id.id)]</field>
     </record>
 
-</data></openerp>
+</odoo>

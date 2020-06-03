@@ -5,14 +5,16 @@
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 
-<openerp><data>
+<odoo>
 
     <record id="eshop_user" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Eshop User</field>
         <field name="login">eshop_user</field>
+        <field name="email">eshop_user@yourcompany.example.com</field>
         <field name="password">demo</field>
         <field name="company_id" ref="base.main_company"/>
         <field name="company_ids" eval="[(4, ref('base.main_company'))]" />
+        <field name="tz">Europe/Brussels</field>
     </record>
 
-</data></openerp>
+</odoo>

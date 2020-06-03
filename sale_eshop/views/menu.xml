@@ -4,10 +4,10 @@
     @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
-<openerp><data>
+<odoo>
 
-    <menuitem id="menu_eshop" 
+    <menuitem id="menu_eshop"
         name="eShop Sale" sequence="30"
-        parent="base.menu_base_config"/>
+        parent="sale.menu_sale_config"/>
 
-</data></openerp>
+</odoo>

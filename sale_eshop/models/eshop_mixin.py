@@ -1,35 +1,38 @@
-# coding: utf-8
 # Copyright (C) 2014-Today GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
 import requests
+
 from requests.compat import urljoin
 
-from openerp import api, models
+from odoo import api, models
+
+from odoo.addons.queue_job.job import job
 
 _logger = logging.getLogger(__name__)
 
 
 class EshopMixin(models.AbstractModel):
-    _name = 'eshop.mixin'
+    _name = "eshop.mixin"
+    _description = "Eshop Mixin"
 
+    _eshop_fields = []
     _eshop_invalidation_type = False
-    _eshop_invalidation_fields = []
 
     @api.model
     def _get_eshop_fields(self):
-        fields = self._eshop_invalidation_fields
-        fields.append('id')
+        fields = self._eshop_fields
+        fields.append("id")
         has_image = False
         for field in fields:
             has_image = True
-            if 'image' in field:
+            if "image" in field:
                 fields.remove(field)
                 has_image = True
         if has_image:
-            fields.append('write_date')
+            fields.append("write_date")
         return fields
 
     @api.model
@@ -43,54 +46,56 @@ class EshopMixin(models.AbstractModel):
     def _get_eshop_domain(self):
         return []
 
-    def _invalidate_eshop(self, company, item_id, fields):
-
+    @api.model
+    @job(
+        default_channel='root.sale_eshop_invalidate_eshop',
+        retry_pattern={1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60},
+    )
+    def _invalidate_eshop(self, company, item_identifier):
         base_url = company.eshop_url
         private_key = company.eshop_invalidation_key
-        if base_url and private_key:
-            url = urljoin(base_url, "invalidation_cache/%s/%s/%d/" % (
-                private_key, self._name, item_id))
-            try:
-                req = requests.get(url, verify=False)
-                if req.status_code != 200:
-                    _logger.error(
-                        "Error when calling invalidation url '%s' "
-                        " status Code : %s (company #%d)" % (
-                            url, req.status_code, company.id))
-            except:
-                _logger.error(
-                    "Unable to call the invalidation url '%s' "
-                    "(company #%d)" % (url, company.id))
-        else:
-            _logger.info(
+        if not (base_url and private_key):
+            _logger.warning(
                 "Invalidation has not been possible because"
                 " eshop_url and or eshop_invalidation_key is not available"
-                " for company %d" % company.id)
+                " for company %d" % company.id
+            )
+            return
+
+        url = urljoin(
+            base_url,
+            "invalidation_cache/%s/%s/%d/"
+            % (private_key, self._name, item_identifier),
+        )
+        requests.get(url, verify=False)
+
+    @api.multi
+    def write(self, vals):
+        self._write_eshop_invalidate(vals)
+        return super().write(vals)
 
     @api.multi
     def _write_eshop_invalidate(self, vals):
-        company_obj = self.env['res.company']
+        ResCompany = self.env["res.company"]
 
         update_fields = vals.keys()
-        intersec_fields = [
-            x for x in self._eshop_invalidation_fields if x in update_fields]
+        intersec_fields = [x for x in self._eshop_fields if x in update_fields]
         if not intersec_fields:
             # No fields synchronised has changed
             return
 
         # Some fields are loaded and cached by the eShop
-        if self._eshop_invalidation_type == 'single':
+        if self._eshop_invalidation_type == "single":
             for item in self:
-                if self._name == 'res.company' and item.has_eshop:
-                    self._invalidate_eshop(item, item.id, intersec_fields)
+                if self._name == "res.company" and item.has_eshop:
+                    self.with_delay()._invalidate_eshop(item, item.id)
 
-                elif self._name != 'res.company' and item.company_id.has_eshop:
-                    self._invalidate_eshop(
-                        item.company_id, item.id, intersec_fields)
+                elif self._name != "res.company" and item.company_id.has_eshop:
+                    self.with_delay()._invalidate_eshop(item.company_id, item.id)
 
-        elif self._eshop_invalidation_type == 'multiple':
-            for company in company_obj.sudo().search(
-                    [('has_eshop', '=', True)]):
-                for id in self.ids:
-                    self._invalidate_eshop(
-                        company, id, intersec_fields)
+        elif self._eshop_invalidation_type == "multiple":
+            for company in ResCompany.sudo().search(
+                [("has_eshop", "=", True)]
+            ):
+                for _id in self.ids:
+                    self.with_delay()._invalidate_eshop(company, _id)
