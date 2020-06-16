@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="biere_pilat_75cl" model="product.product">
+        <field name="name">Bière du Pilat - Brune 75cl</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="list_price">5.10</field>
+        <field name="local_notation">4</field>
+        <field name="social_notation">3</field>
+        <field name="packaging_notation">5</field>
+        <field name="organic_notation">4</field>
+    </record>
+
+</odoo>
