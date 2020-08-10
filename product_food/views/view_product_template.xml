@@ -12,6 +12,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product_label.view_product_template_form" />
         <field name="arch" type="xml">
             <field name="label_ids" position="replace"/>
+            <field name="list_price" position="after">
+                <field name="unit_price" widget="monetary"/>
+            </field>
 
             <notebook position="inside">
                 <page name="alimentary_information" string="Alimentary Informations"
