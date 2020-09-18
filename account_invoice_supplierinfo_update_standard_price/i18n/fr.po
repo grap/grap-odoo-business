@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-15 11:03+0000\n"
-"PO-Revision-Date: 2019-03-15 11:03+0000\n"
+"POT-Creation-Date: 2020-09-18 11:11+0000\n"
+"PO-Revision-Date: 2020-09-18 11:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,24 +16,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: help:product.template,is_impact_standard_price:0
+#: model:ir.model.fields,help:account_invoice_supplierinfo_update_standard_price.field_product_product__is_impact_standard_price
+#: model:ir.model.fields,help:account_invoice_supplierinfo_update_standard_price.field_product_template__is_impact_standard_price
 msgid "Check this box if you want that purchasing this product impact the standard price of the products purchased with that product.\n"
 "A typical case is for Landing Cost."
 msgstr "En cochant cette case, acheter ce produit impactera le prix de revient des produits achetés conjointement à ce produit.\n"
 "Cas typique d'utilisation : les frais de transports"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: field:wizard.update.invoice.supplierinfo.line,current_standard_price:0
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_wizard_update_invoice_supplierinfo_line__current_standard_price
 msgid "Current Standard Price"
 msgstr "Prix de revient actuel"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: field:account.invoice,distributed_expense_total:0
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_account_invoice__distributed_expense_total
 msgid "Distributed Expenses Total"
 msgstr "Total des charges réparties"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: field:product.template,is_impact_standard_price:0
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_product_product__is_impact_standard_price
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_product_template__is_impact_standard_price
 msgid "Impact Standard Price"
 msgstr "Impacte le coût de revient"
 
@@ -45,15 +47,15 @@ msgstr "Facture"
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Lignes de facture"
+msgstr "Ligne de facture"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: field:wizard.update.invoice.supplierinfo.line,new_standard_price:0
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_wizard_update_invoice_supplierinfo_line__new_standard_price
 msgid "New Standard Price"
 msgstr "Nouveau Prix de revient"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: field:account.invoice,product_expense_total:0
+#: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_account_invoice__product_expense_total
 msgid "Product Expenses Total"
 msgstr "Total des charges d'articles"
 
@@ -63,12 +65,18 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: code:addons/account_invoice_supplierinfo_update_standard_price/models/account_invoice_line.py:32
+#: code:addons/account_invoice_supplierinfo_update_standard_price/models/account_invoice_line.py:25
 #, python-format
 msgid "We can't check prices for a invoice whose total is null"
 msgstr "On ne peut pas vérifier les prix pour une facture nulle."
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: view:account.invoice:account_invoice_supplierinfo_update_standard_price.view_account_invoice_form
-msgid "oe_subtotal_footer_separator"
-msgstr "oe_subtotal_footer_separator"
+#: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo_line
+msgid "Wizard Line to update supplierinfo"
+msgstr "Line d'assistant de mise à jour des informations fournisseurs"
+
+#. module: account_invoice_supplierinfo_update_standard_price
+#: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo
+msgid "Wizard to update supplierinfo"
+msgstr "Assistant de mise à jour des informations fournisseurs"
+
