@@ -23,7 +23,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.0.2 | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.0.3 | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_move_change_number](account_move_change_number/) | 12.0.1.0.1 | Allow special user to rename account move
 [product_category_recursive_property](product_category_recursive_property/) | 12.0.1.0.1 | Propagate recursively properties for product category
 [product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
@@ -32,15 +32,15 @@ addon | version | summary
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.1 | Origin Information for Products (French Departments)
 [product_print_category_food_report](product_print_category_food_report/) | 12.0.1.0.1 | Food report like pricetags
-[product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.1.0.1 | Synchronize Odoo database with Retail Connect Bizerba System
+[product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.1.0.2 | Synchronize Odoo database with Retail Connect Bizerba System
 [purchase_package_qty](purchase_package_qty/) | 12.0.1.0.1 | Purchase - Package Quantity
-[recurring_consignment](recurring_consignment/) | 12.0.1.0.1 | Sale - Handle Recurring Consignment
+[recurring_consignment](recurring_consignment/) | 12.0.1.0.2 | Sale - Handle Recurring Consignment
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.0.1 | Glue module for Recurring Consignment and PoS modules
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Sale modules
 [recurring_consignment_test](recurring_consignment_test/) | 12.0.1.0.1 | Test module for Recurring_ Consignment Module
-[sale_eshop](sale_eshop/) | 12.0.1.0.2 | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.0.1 | Manage Recovery Moments and Places for Sale Order
+[sale_eshop](sale_eshop/) | 12.0.1.0.3 | Allow connection to Odoo eShop Project
+[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.0.2 | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.0.1 | Manage Preparation Categories for stock moves
 [users_partners_access](users_partners_access/) | 12.0.1.0.1 | Users Partners Access
 
