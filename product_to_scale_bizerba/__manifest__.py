@@ -5,7 +5,7 @@
 {
     'name': 'Product - Send to Bizerba Scales (Retail Connect)',
     'summary': 'Synchronize Odoo database with Retail Connect Bizerba System',
-    'version': "12.0.1.0.1",
+    'version': "12.0.1.0.2",
     'category': 'Product',
     'author': 'GRAP, La Louve',
     'website': 'http://www.grap.coop',
