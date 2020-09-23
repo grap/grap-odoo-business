@@ -36,8 +36,9 @@ class InvoiceCommissionWizard(models.TransientModel):
                     'partner_id': consignor.id,
                     'consignment_account_id': consignor.consignment_account_id,
                     'consignment_commission': consignor.consignment_commission,
-                    'move_line_qty': WizardLine._get_move_lines_with_values(
-                        consignor, self._default_max_date())
+                    'move_line_qty': len(
+                        WizardLine._get_move_lines_with_values(
+                            consignor, self._default_max_date()))
                 })
             )
         return line_vals
@@ -80,11 +81,12 @@ class InvoiceCommissionWizard(models.TransientModel):
             # Get lines to commission
             all_lines = wizard_line._get_move_lines()
 
-            for product_line in all_lines.filtered(lambda x: not x.tax_line_id):
+            for product_line in all_lines.filtered(
+                    lambda x: not x.tax_line_id):
                 # We select only product lines (=non tax lines)
-                    key = wizard_line._get_line_key(product_line)
-                    grouped_data.setdefault(key, [])
-                    grouped_data[key].append(product_line)
+                key = wizard_line._get_line_key(product_line)
+                grouped_data.setdefault(key, [])
+                grouped_data[key].append(product_line)
 
             # Create lines
             for key, product_lines in grouped_data.items():
