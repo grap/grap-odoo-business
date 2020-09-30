@@ -115,7 +115,7 @@ class InvoiceCommissionWizardLine(models.TransientModel):
     @api.model
     def _get_line_key(self, move_line):
         date = move_line.move_id.date
-        return (date.year, date.month, move_line.tax_ids.ids[0])
+        return (date.year, date.month, str(set(move_line.tax_ids.ids)))
 
     @api.model
     def _get_move_lines_with_values(self, partner, max_date):
