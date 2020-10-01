@@ -7,17 +7,36 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <record id="action_product_pricetag_type_2_product_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.product</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('pricetag_type_id', '=', active_id)]</field>
+    </record>
+
     <record id="view_product_pricetag_type_form" model="ir.ui.view">
         <field name="model">product.pricetag.type</field>
         <field name="arch" type="xml">
             <form>
+                <header/>
+
                 <sheet>
-                    <notebook>
-                        <group col="4">
-                            <field name="name"/>
-                            <field name="color"/>
-                        </group>
-                    </notebook>
+                    <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                        <button class="oe_stat_button" type="action" icon="fa-list"
+                            name="%(action_product_pricetag_type_2_product_product)d">
+                            <field string="Products" name="product_qty" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <field name="color" widget="color"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
                 </sheet>
             </form>
         </field>
@@ -32,5 +51,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             </tree>
         </field>
     </record>
+
+    <record id="action_product_pricetag_type" model="ir.actions.act_window">
+        <field name="name">Pricetag Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.pricetag.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_product_pricetag_type"
+        parent="sale.prod_config_main" sequence="6"
+        action="action_product_pricetag_type"/>
 
 </odoo>
