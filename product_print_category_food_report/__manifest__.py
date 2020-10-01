@@ -25,8 +25,6 @@
         "report/qweb_pricetag_counter.xml",
         "report/qweb_pricetag_normal.xml",
         "report/qweb_pricetag_square.xml",
-        "views/action.xml",
-        "views/menu.xml",
         "views/view_res_company.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",
