@@ -59,17 +59,24 @@ class ProductProduct(models.Model):
         'packaging_notation')
     def _compute_spider_chart_image(self):
         for product in self:
-            codeSVG = radar_template.CodeSVG % {
-                'y_social': 105 - (15 * int(product.social_notation)),
-                'x_organic': 105 + (15 * int(product.organic_notation)),
-                'y_packaging': 105 + (15 * int(product.packaging_notation)),
-                'x_local': 105 - (15 * int(product.local_notation)),
-                'organic_name': _('AE'),
-                'local_name': _('local'),
-                'packaging_name': _('package'),
-                'social_name': _('social'),
-            }
-            tmpFile = tempfile.TemporaryFile()
-            cairosvg.svg2png(bytestring=codeSVG, write_to=tmpFile)
-            tmpFile.seek(0)
-            product.spider_chart_image = base64.b64encode(tmpFile.read())
+            if (product.social_notation and
+                    product.organic_notation and
+                    product.packaging_notation and
+                    product.local_notation):
+                codeSVG = radar_template.CodeSVG % {
+                    'y_social': 105 - (15 * int(product.social_notation)),
+                    'x_organic': 105 + (15 * int(product.organic_notation)),
+                    'y_packaging':
+                    105 + (15 * int(product.packaging_notation)),
+                    'x_local': 105 - (15 * int(product.local_notation)),
+                    'organic_name': _('AE'),
+                    'local_name': _('local'),
+                    'packaging_name': _('package'),
+                    'social_name': _('social'),
+                }
+                tmpFile = tempfile.TemporaryFile()
+                cairosvg.svg2png(bytestring=codeSVG, write_to=tmpFile)
+                tmpFile.seek(0)
+                product.spider_chart_image = base64.b64encode(tmpFile.read())
+            else:
+                product.spider_chart_image = False
