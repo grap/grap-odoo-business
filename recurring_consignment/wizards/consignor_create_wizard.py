@@ -14,13 +14,14 @@ class ConsignorCreateWizard(models.TransientModel):
     @api.multi
     def _get_account_prefix(self):
         self.ensure_one()
-        # TODO FIXME, not habile, bill.
+        # For the time being, we have no other cases
         return "467"
 
     @api.multi
     def _get_tax_included(self):
         self.ensure_one()
-        # TODO FIXME, not habile, bill.
+        # for the time being, we have no B2B company
+        # with consignors
         return True
 
     # Columns Section
@@ -55,13 +56,15 @@ class ConsignorCreateWizard(models.TransientModel):
         FiscalClassification = self.env['account.product.fiscal.classification']
 
         # Create Objects
+        sequence = self.env['ir.sequence'].next_by_code(
+            'consignor.create.wizard')
         account = AccountAccount.create(self._prepare_account())
-        partner = ResPartner.create(self._prepare_partner(account))
+        partner = ResPartner.create(self._prepare_partner(sequence, account))
         for product in self.product_ids:
             tax = AccountTax.create(self._prepare_tax(
-                account, partner, product))
+                sequence, account, partner, product))
             FiscalClassification.create(self._prepare_fiscal_classification(
-                partner, tax))
+                sequence, partner, tax))
 
         # Return view with the new consignor
         action = self.env.ref('base.action_partner_form').read()[0]
@@ -79,23 +82,30 @@ class ConsignorCreateWizard(models.TransientModel):
         self.ensure_one()
         return {
             'name': self.name,
-            'code': "%s%s" % (self._get_account_prefix(), self.account_suffix),
+            'company_id': self.env.user.company_id.id,
+            'code': "{prefix}{suffix}".format(
+                prefix=self._get_account_prefix(),
+                suffix=self.account_suffix),
             'reconcile': True,
             'user_type_id':
             self.env.ref("account.data_account_type_payable").id
         }
 
     @api.multi
-    def _prepare_tax(self, account, partner, commission_product):
+    def _prepare_tax(self, sequence, account, partner, commission_product):
         self.ensure_one()
-        vat_amount = commission_product.taxes_id[0].amount
+        amount = commission_product.taxes_id[0].amount
         return {
-            'name': _("VAT %s - %s %s" % (
-                vat_amount,
-                self.is_vat_subject and " " or _("NOT VAT SUBJECT -"),
-                self.name,
-            )),
-            'amount': self.is_vat_subject and vat_amount or 0.0,
+            'name': "{sequence} - {amount:.1f} -{vat_subject}{name}"
+            .format(
+                sequence=sequence,
+                amount=amount,
+                vat_subject=self.is_vat_subject and " "
+                or _(" NOT SUBJECT TO VAT - "),
+                name=self.name,
+                ),
+            'company_id': self.env.user.company_id.id,
+            'amount': self.is_vat_subject and amount or 0.0,
             'amount_type': 'percent',
             'price_include': self._get_tax_included(),
             'account_id': account.id,
@@ -104,18 +114,29 @@ class ConsignorCreateWizard(models.TransientModel):
             'consignment_product_id': commission_product.id,
         }
 
-    def _prepare_fiscal_classification(self, partner, tax):
+    def _prepare_fiscal_classification(self, sequence, partner, tax):
         return {
-            'name': tax.name,
+            'name': _(
+                "{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}"
+            ).format(
+                sequence=sequence,
+                amount=tax.consignment_product_id.taxes_id[0].amount,
+                vat_subject=self.is_vat_subject and " "
+                or _(" NOT SUBJECT TO VAT - "),
+                name=self.name,
+                ),
             'sale_tax_ids': [(4, tax.id)],
             'consignor_partner_id': partner.id,
         }
 
     @api.multi
-    def _prepare_partner(self, account):
+    def _prepare_partner(self, sequence, account):
         self.ensure_one()
         return {
-            'name': self.name,
+            'name': "{sequence} - {name}". format(
+                sequence=sequence,
+                name=self.name,
+            ),
             'consignment_account_id': account.id,
             'consignment_commission': self.rate,
             'is_consignor': True,
