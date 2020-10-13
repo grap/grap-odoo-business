@@ -28,7 +28,7 @@ addon | version | summary
 [product_category_recursive_property](product_category_recursive_property/) | 12.0.1.0.1 | Propagate recursively properties for product category
 [product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
 [product_label](product_label/) | 12.0.1.0.1 | Product Labels
-[product_notation](product_notation/) | 12.0.3.0.5 | Product Notation
+[product_notation](product_notation/) | 12.0.3.0.6 | Product Notation
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.1 | Origin Information for Products (French Departments)
 [product_print_category_food_report](product_print_category_food_report/) | 12.0.1.0.2 | Food report like pricetags
