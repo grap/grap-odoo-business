@@ -2,7 +2,12 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import logging
+
 from openupgradelib import openupgrade
+
+logger = logging.getLogger(__name__)
+
 
 column_renames = {
     'product_product': [
@@ -11,6 +16,7 @@ column_renames = {
 }
 
 
-@openupgrade.migrate(use_env=True)
+@openupgrade.migrate(no_version=True, use_env=True)
 def migrate(env, version):
+    logger.info("Preserve image fields")
     openupgrade.rename_columns(env.cr, column_renames)
