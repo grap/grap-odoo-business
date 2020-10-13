@@ -4,7 +4,7 @@
 
 {
     'name': 'Recurring Consignment',
-    'version': "12.0.1.0.3",
+    'version': "12.0.1.0.5",
     'summary': 'Sale - Handle Recurring Consignment',
     'category': 'Sale',
     'author': 'GRAP',
@@ -31,5 +31,6 @@
     'demo': [
         'demo/res_groups.xml',
     ],
+    'post_init_hook': 'create_consignor_sequence',
     'installable': True,
 }
