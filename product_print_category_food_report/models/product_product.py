@@ -19,6 +19,9 @@ class ProductProduct(models.Model):
         compute="_compute_pricetag_organic_text"
     )
 
+    pricetag_display_spider_chart = fields.Boolean(
+        compute='_compute_pricetag_display_spider_chart')
+
     pricetag_origin = fields.Char(compute="_compute_pricetag_origin")
 
     report_extra_food_info = fields.Char(
@@ -78,6 +81,18 @@ class ProductProduct(models.Model):
                 else:
                     res = _("Not From Organic Farming")
             product.pricetag_organic_text = res
+
+    @api.multi
+    def _compute_pricetag_display_spider_chart(self):
+        for product in self:
+            notation = [
+                product.social_notation,
+                product.organic_notation,
+                product.packaging_notation,
+                product.local_notation,
+            ]
+            result = [x for x in notation if x != "0"]
+            product.pricetag_display_spider_chart = (len(result) >= 3)
 
     @api.multi
     def _compute_pricetag_origin(self):
