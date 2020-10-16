@@ -4,8 +4,6 @@
 
 from odoo import api, fields, models
 
-# from .model import _ESHOP_OPENERP_MODELS
-
 
 class ResCompany(models.Model):
     _name = "res.company"
@@ -20,7 +18,6 @@ class ResCompany(models.Model):
         "has_eshop",
         "eshop_minimum_price",
         "eshop_title",
-        "eshop_url",
         "website",
         "eshop_list_view_enabled",
         "eshop_tree_view_enabled",
@@ -36,8 +33,6 @@ class ResCompany(models.Model):
     _eshop_image_fields = ["eshop_image_small"]
 
     # Columns Section
-    eshop_invalidation_key = fields.Char(string="Invalidation Key")
-
     has_eshop = fields.Boolean(string="Has eShop")
 
     eshop_pricelist_id = fields.Many2one(
@@ -51,8 +46,6 @@ class ResCompany(models.Model):
     )
 
     eshop_title = fields.Char(string="eShop Title")
-
-    eshop_url = fields.Char(string="eShop URL")
 
     eshop_facebook_url = fields.Char(string="Facebook URL")
 
@@ -82,13 +75,62 @@ class ResCompany(models.Model):
         help="Provide a Tree view to navigate into the catalog.",
     )
 
-    # Eshop APi - Section
-    @api.model
-    def get_eshop_model(self):
-        return False
-        # return _ESHOP_OPENERP_MODELS
+    # fields related to ir.config_parameter
+    eshop_url = fields.Char(
+        string="eShop URL",
+        compute="_compute_eshop_url",
+    )
+
+    eshop_invalidation_key = fields.Char(
+        string="Invalidation Key",
+        compute="_compute_eshop_invalidation_key",
+    )
+
+    # Compute Section
+    def _compute_eshop_url(self):
+        IrConfigParameter = self.env['ir.config_parameter']
+        for company in self:
+            company.eshop_url = IrConfigParameter.get_param(
+                'sale_eshop.eshop_url__%d' % company.id)
+
+    def _compute_eshop_invalidation_key(self):
+        IrConfigParameter = self.env['ir.config_parameter']
+        for company in self:
+            company.eshop_invalidation_key = IrConfigParameter.get_param(
+                'sale_eshop.eshop_invalidation_key__%d' % company.id)
 
     # Overwrite section
     @api.model
     def _get_eshop_domain(self):
         return [("id", "=", self.env.user.company_id.id)]
+
+    @api.model
+    def create(self, vals):
+        res = super().create(vals)
+        res._create_parameter_if_not_exists()
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super().write(vals)
+        self._create_parameter_if_not_exists()
+        return res
+
+    @api.multi
+    def _create_parameter_if_not_exists(self):
+        IrConfigParameter = self.env['ir.config_parameter']
+        for company in self.filtered(lambda x: x.has_eshop):
+            key = 'sale_eshop.eshop_url__%d' % company.id
+            param = IrConfigParameter.search([("key", "=", key)])
+            if not param:
+                IrConfigParameter.create({
+                    "key": key,
+                    "value": "unset",
+                })
+            key = 'sale_eshop.eshop_invalidation_key__%d' % company.id
+            param = IrConfigParameter.search([("key", "=", key)])
+            if not param:
+                IrConfigParameter.create({
+                    "key": key,
+                    "value": "unset",
+                })

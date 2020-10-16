@@ -4,8 +4,6 @@
 
 from odoo import api, fields, models
 
-# from .model import _ESHOP_OPENERP_MODELS
-
 
 class WizardResCompanyEshopSetting(models.TransientModel):
     _name = "wizard.res.company.eshop.setting"
