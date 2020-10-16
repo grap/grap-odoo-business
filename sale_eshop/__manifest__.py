@@ -4,7 +4,7 @@
 
 {
     "name": "Sale - eShop",
-    "version": "12.0.1.0.3",
+    "version": "12.0.1.0.4",
     "summary": "Allow connection to Odoo eShop Project",
     "category": "Sale",
     "author": "GRAP",
