@@ -41,6 +41,7 @@
         "demo/res_users.xml",
         "demo/res_groups.xml",
         "demo/res_partner.xml",
+        "demo/ir_config_parameter.xml",
     ],
     "installable": True,
 }
