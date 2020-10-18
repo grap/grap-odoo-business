@@ -18,5 +18,5 @@ column_renames = {
 
 @openupgrade.migrate(no_version=True, use_env=True)
 def migrate(env, version):
-    logger.info("Preserve image fields")
+    logger.info("[product_notation] Preserve image fields ...")
     openupgrade.rename_columns(env.cr, column_renames)

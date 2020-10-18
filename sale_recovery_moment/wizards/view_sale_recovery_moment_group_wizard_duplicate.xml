@@ -14,8 +14,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="group_id" colspan="4"/>
                     <field name="short_name"/>
                     <field name="day_delay"/>
-                    <field name="next_min_sale_date"/>
-                    <field name="next_max_sale_date"/>
+                    <field name="next_min_sale_date" force_save="1"/>
+                    <field name="next_max_sale_date" force_save="1"/>
                 </group>
                 <footer>
                     <button name="duplicate_group" string="Duplicate" type="object" class="btn-primary"/>

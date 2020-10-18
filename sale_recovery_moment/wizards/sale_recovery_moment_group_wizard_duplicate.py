@@ -50,13 +50,7 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         SaleRecoveryMomentGroup = self.env["sale.recovery.moment.group"]
 
         # Create new group
-        group_vals = {
-            "short_name": self.short_name,
-            "min_sale_date": self.next_min_sale_date,
-            "max_sale_date": self.next_max_sale_date,
-            "company_id": self.group_id.company_id.id,
-        }
-        new_group = SaleRecoveryMomentGroup.create(group_vals)
+        new_group = SaleRecoveryMomentGroup.create(self._prepare_group_vals())
 
         # Create New Moment
         for moment in self.group_id.moment_ids:
@@ -93,3 +87,12 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         else:
             self.next_min_sale_date = False
             self.next_max_sale_date = False
+
+    @api.multi
+    def _prepare_group_vals(self):
+        return {
+            "short_name": self.short_name,
+            "min_sale_date": self.next_min_sale_date,
+            "max_sale_date": self.next_max_sale_date,
+            "company_id": self.group_id.company_id.id,
+        }
