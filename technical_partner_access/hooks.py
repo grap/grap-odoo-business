@@ -9,5 +9,8 @@ from odoo.api import Environment
 def post_init_hook(cr, pool):
     env = Environment(cr, SUPERUSER_ID, {})
     ResUsers = env['res.users']
+    ResCompany = env['res.company']
     users = ResUsers.with_context(active_test=False).search([])
-    users.mapped('partner_id')._disable_users_partners()
+    users.mapped('partner_id').write({"is_odoo_user": True})
+    companies = ResCompany.with_context(active_test=False).search([])
+    companies.mapped('partner_id').write({"is_odoo_company": True})

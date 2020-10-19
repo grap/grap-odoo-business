@@ -7,20 +7,35 @@ change when the user change company. So the associated partner will be
 "available or not", depending of user configuration. This generates error
 access.
 
+same problem can ocurres with company partners
+
 With this module:
 
-* the users partners will not be customer / supplier.
+* the users partners will not accesible by default.
   This will force saler / purchaser to create new partner
   (if the user is a customer or a supplier too)
 
 * the users partners will have no company, this will fix all bug access
+
+* the companies partners will not accesible by default.
+  This will force saler / purchaser to create new partner
+  (if the cpmpany is a customer or a supplier too)
+
+
 
 
 **Technically**
 
 All partners associated to a user:
 
-* have ``customer``, ``supplier`` checkbox disabled;
-* have ``company_id`` empty;
+* have ``company_id`` empty
+* have a field ``is_odoo_user`` checked
+* can be searched, only if ``show_odoo_user=True`` is in the context
 
-Only members of 'Administration / Access Rights' could update partners.
+All partners associated to a company:
+
+* have a field ``is_odoo_company`` checked
+* can be search, only if ``show_odoo_company=True`` is in the context
+
+
+Only members of 'Administration / Access Rights' could update those partners.

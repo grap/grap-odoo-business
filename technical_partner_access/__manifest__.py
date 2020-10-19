@@ -3,8 +3,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Users Partners access',
-    'summary': 'Users Partners Access',
+    'name': 'Technical Partners Access',
+    'summary': "Limit the access of the partners created when creating"
+    " companies and users.",
     'version': "12.0.1.0.1",
     'category': 'base',
     'author': 'GRAP',

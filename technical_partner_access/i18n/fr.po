@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * technical_partner_access
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-19 08:34+0000\n"
+"PO-Revision-Date: 2020-10-19 08:34+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: technical_partner_access
+#: model:ir.model,name:technical_partner_access.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: technical_partner_access
+#: model:ir.model,name:technical_partner_access.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: technical_partner_access
+#: model:ir.model.fields,field_description:technical_partner_access.field_res_partner__is_odoo_company
+#: model:ir.model.fields,field_description:technical_partner_access.field_res_users__is_odoo_company
+msgid "Is an Odoo Company"
+msgstr "Est une société dans Odoo"
+
+#. module: technical_partner_access
+#: model:ir.model.fields,field_description:technical_partner_access.field_res_partner__is_odoo_user
+#: model:ir.model.fields,field_description:technical_partner_access.field_res_users__is_odoo_user
+msgid "Is an Odoo User"
+msgstr "Est un utilisateur dans Odoo"
+
+#. module: technical_partner_access
+#: model:ir.model,name:technical_partner_access.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: technical_partner_access
+#: code:addons/technical_partner_access/models/res_partner.py:46
+#, python-format
+msgid "You must be part of the group Administration / Access Rights to update partners associated to users or companies.\n"
+"- %s"
+msgstr "Vous devez membres du groupe 'Administration / Groupe d'accès' pour mettre à jour les partenaires associés aux utilisateurs ou aux sociétés.\n"
+"- %s"
+
