@@ -6,12 +6,12 @@
 from odoo import api, models
 
 
-class ResUsers(models.Model):
-    _inherit = 'res.users'
+class ResCompany(models.Model):
+    _inherit = 'res.company'
 
     # Overload Section
     @api.model
     def create(self, vals):
-        user = super().create(vals)
-        user.partner_id._disable_users_partners()
-        return user
+        company = super().create(vals)
+        company.partner_id.is_odoo_company = True
+        return company
