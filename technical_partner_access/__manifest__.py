@@ -6,7 +6,7 @@
     'name': 'Technical Partners Access',
     'summary': "Limit the access of the partners created when creating"
     " companies and users.",
-    'version': "12.0.1.0.1",
+    'version': "12.0.1.0.2",
     'category': 'base',
     'author': 'GRAP',
     'website': 'http://www.grap.coop',
