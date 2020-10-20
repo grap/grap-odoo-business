@@ -16,7 +16,7 @@ class ResPartner(models.Model):
 
     consignment_account_id = fields.Many2one(
         string='Consignment Account', comodel_name='account.account',
-        domain="[('type', 'in', ['other', 'receivable', 'payable'])]")
+        readonly=True)
 
     consignor_fiscal_classification_ids = fields.One2many(
         string='Fiscal Classifications',
