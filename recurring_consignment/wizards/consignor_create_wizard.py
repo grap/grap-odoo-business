@@ -138,6 +138,8 @@ class ConsignorCreateWizard(models.TransientModel):
                 name=self.name,
             ),
             'consignment_account_id': account.id,
+            'property_account_receivable_id': account.id,
+            'property_account_payable_id': account.id,
             'consignment_commission': self.rate,
             'is_consignor': True,
             'customer': False,
