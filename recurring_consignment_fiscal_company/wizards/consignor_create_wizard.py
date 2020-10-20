@@ -18,8 +18,9 @@ class ConsignorCreateWizard(models.TransientModel):
         return res
 
     @api.multi
-    def _prepare_tax(self, account, partner, commission_product):
-        res = super()._prepare_tax(account, partner, commission_product)
+    def _prepare_tax(self, sequence, account, partner, commission_product):
+        res = super()._prepare_tax(
+            sequence, account, partner, commission_product)
         res.update({
             "company_id": self.env.user.company_id.fiscal_company_id.id,
         })

@@ -39,7 +39,7 @@ class ResCompany(models.Model):
         return {
             "name": "Consignor sequence",
             "code": "consignor.create.wizard",
-            "implementation": "standard",
+            "implementation": "no_gap",
             "company_id": self.id,
             "prefix": "Prod",
             "padding": 3,
