@@ -19,6 +19,7 @@
         "product_origin_l10n_fr_department",
     ],
     "data": [
+        "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "report/qweb_pricetag_bulk_long.xml",
         "report/qweb_pricetag_bulk_square.xml",
