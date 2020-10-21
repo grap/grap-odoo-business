@@ -123,6 +123,13 @@ If ``auth_admin_passkey`` is installed, and correctly set,
 the authentication in the eshop can be used with the file password,
 present in the key ``auth_admin_passkey_password``.
 
+Configuration
+=============
+
+You should set the following key values in the ``ir.config_parameter`` table,
+(or in the ``[ir.config_parameter]`` section of your ``odoo.cfg`` file, if you
+are using the module ``server_environmnet_ir_config_parameter``)
+
 Known issues / Roadmap
 ======================
 
