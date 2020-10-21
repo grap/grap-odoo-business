@@ -68,8 +68,8 @@ class ProductProduct(models.Model):
         string="Origin Type",
     )
 
-    unit_price = fields.Float(
-        compute='_compute_unit_price',
+    price_per_unit = fields.Float(
+        compute='_compute_price_per_unit',
         string='Unit Price')
 
     # Compute Section
@@ -91,7 +91,7 @@ class ProductProduct(models.Model):
                 product.organic_type = "05_not_alimentary"
 
     @api.depends("weight", "volume", "list_price")
-    def _compute_unit_price(self):
+    def _compute_price_per_unit(self):
         for product in self:
             if product.weight != 0 and product.volume != 0:
                 raise UserError(
@@ -102,12 +102,12 @@ class ProductProduct(models.Model):
                     )
                     % (product.name)
                 )
-            elif product.weight != 0:
-                product.unit_price = product.list_price / product.weight
-            elif product.volume != 0:
-                product.unit_price = product.list_price / product.volume
+            elif product.weight not in [0, 1]:
+                product.price_per_unit = product.list_price / product.weight
+            elif product.volume not in [0, 1]:
+                product.price_per_unit = product.list_price / product.volume
             else:
-                product.unit_price = 0
+                product.price_per_unit = 0
 
     # Constrains Section
     @api.multi

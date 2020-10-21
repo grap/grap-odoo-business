@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 15:59+0000\n"
-"PO-Revision-Date: 2020-08-08 15:59+0000\n"
+"POT-Creation-Date: 2020-10-21 14:04+0000\n"
+"PO-Revision-Date: 2020-10-21 14:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -240,7 +240,7 @@ msgstr "Est alimentaire"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization____last_update
 #: model:ir.model.fields,field_description:product_food.field_product_allergen____last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr "Dernière Modification le"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__write_uid
@@ -310,7 +310,7 @@ msgstr "Article"
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_category
 msgid "Product Category"
-msgstr "Catégorie d'article"
+msgstr "Catégorie d'articles"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_label
@@ -335,9 +335,9 @@ msgid "Products"
 msgstr "Articles"
 
 #. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__unit_price
-#: model:ir.model.fields,field_description:product_food.field_product_template__unit_price
-msgid "Unit Price"
+#: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
+#: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
+msgid "Price per Unit"
 msgstr "Prix à l'unité"
 
 #. module: product_food
