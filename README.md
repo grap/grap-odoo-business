@@ -28,7 +28,7 @@ addon | version | summary
 [product_category_recursive_property](product_category_recursive_property/) | 12.0.1.0.1 | Propagate recursively properties for product category
 [product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
 [product_label](product_label/) | 12.0.1.0.1 | Product Labels
-[product_notation](product_notation/) | 12.0.3.0.6 | Product Notation
+[product_notation](product_notation/) | 12.0.3.0.7 | Product Notation
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.0.1 | Origin Information for Products (French Departments)
 [product_print_category_food_report](product_print_category_food_report/) | 12.0.1.0.3 | Food report like pricetags
@@ -40,8 +40,8 @@ addon | version | summary
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.0.1 | Glue module for Recurring Consignment and Sale modules
 [recurring_consignment_test](recurring_consignment_test/) | 12.0.1.0.1 | Test module for Recurring_ Consignment Module
-[sale_eshop](sale_eshop/) | 12.0.1.0.4 | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.0.2 | Manage Recovery Moments and Places for Sale Order
+[sale_eshop](sale_eshop/) | 12.0.1.0.5 | Allow connection to Odoo eShop Project
+[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.0.3 | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.0.1 | Manage Preparation Categories for stock moves
 [technical_partner_access](technical_partner_access/) | 12.0.1.0.2 | Limit the access of the partners created when creating companies and users.
 
