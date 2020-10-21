@@ -15,6 +15,7 @@
         "product_print_category",
         "product_food",
         "product_label",
+        "product_notation",
         "product_origin",
         "product_origin_l10n_fr_department",
     ],

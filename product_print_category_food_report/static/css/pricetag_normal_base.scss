@@ -6,7 +6,6 @@
 
     .pricetag_right {
         overflow: hidden;
-        position: relative; top: 1.9em;
     }
     .product_informations {
         text-align:left;
@@ -35,10 +34,11 @@
         overflow: hidden;
     }
     .product_price_per_uom_qty, .product_price_per_uom_price {
-        width : 45%;
+        width : 40%;
+        position : relative;
+        left: 0.5em; bottom: 1em;
         text-align : center;
-        font-size:9px;
-        height : 0.8cm;
+        font-size:7px;
         overflow : hidden;
         word-wrap : normal;
     }
@@ -48,7 +48,7 @@
     }
     .product_sell_by_weight {
         font-weight: bold;
-        font-size: 13px;
+        font-size: 8px;
         text-align: center;
         position: relative;
         right: 0.2em;

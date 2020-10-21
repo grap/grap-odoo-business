@@ -8,21 +8,24 @@
         width : 3.05cm;
         height: 3.6cm;
     }
+    .pricetag_right_no_spider_chart {
+        position: relative; top: 1.4em;
+    }
     .product_informations {
         font-size:8px;
     }
     .pricetag_second_product_price {
-        font-size: 33px
+        font-size: 28px
     }
     .pricetag_second_price_uom_text {
-        font-size: 13px;
+        font-size: 11px;
     }
     .product_price {
         font-size: 32px;
-        height: 1.2cm; line-height: 1cm;
+        height: 1.1cm; line-height: 1cm;
     }
     .product_sell_by_weight {
-        bottom: 0.7em;
+        bottom: 1.4em;
     }
     .product_labels, .organic_text{
         height:1.0cm;
@@ -35,4 +38,9 @@
         position: relative; top: 0.17cm;
         font-size: 6px;
     }
+    .spider_chart_image{
+        height : 1.8cm;
+        position: relative; left:0.5cm; bottom: 0.3cm;
+    }
+
 }
