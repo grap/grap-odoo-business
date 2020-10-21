@@ -78,9 +78,9 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
-    unit_price = fields.Float(
+    price_per_unit = fields.Float(
         string="Unit Price",
-        compute='_compute_unit_price',
+        compute='_compute_price_per_unit',
     )
 
     # Compute Section
@@ -90,8 +90,8 @@ class ProductTemplate(models.Model):
         ProductProduct._compute_organic_type(self)
 
     @api.depends("weight", "volume", "list_price")
-    def _compute_unit_price(self):
-        ProductProduct._compute_unit_price(self)
+    def _compute_price_per_unit(self):
+        ProductProduct._compute_price_per_unit(self)
 
     # Onchange Section
     @api.onchange("categ_id")
