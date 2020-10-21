@@ -19,5 +19,5 @@ attachment_fields = {
 
 @openupgrade.migrate(no_version=True, use_env=True)
 def migrate(env, version):
-    logger.info("Converting fields to attachement")
+    logger.info("[product_notation] Converting fields to attachement")
     openupgrade_90.convert_binary_field_to_attachment(env, attachment_fields)
