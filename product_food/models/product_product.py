@@ -68,6 +68,10 @@ class ProductProduct(models.Model):
         string="Origin Type",
     )
 
+    price_per_unit = fields.Float(
+        compute='_compute_price_per_unit',
+        string='Unit Price')
+
     # Compute Section
     @api.depends(
         "label_ids.organic_type", "is_alimentary", "is_uncertifiable")
@@ -85,6 +89,25 @@ class ProductProduct(models.Model):
                     product.organic_type = "04_uncertified"
             else:
                 product.organic_type = "05_not_alimentary"
+
+    @api.depends("weight", "volume", "list_price")
+    def _compute_price_per_unit(self):
+        for product in self:
+            if product.weight != 0 and product.volume != 0:
+                raise UserError(
+                    _(
+                        "Incorrect Setting. "
+                        "The product %s could not have"
+                        " volume AND weight at the same time."
+                    )
+                    % (product.name)
+                )
+            elif product.weight not in [0, 1]:
+                product.price_per_unit = product.list_price / product.weight
+            elif product.volume not in [0, 1]:
+                product.price_per_unit = product.list_price / product.volume
+            else:
+                product.price_per_unit = 0
 
     # Constrains Section
     @api.multi

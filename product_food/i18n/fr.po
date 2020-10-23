@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-11 14:00+0000\n"
-"PO-Revision-Date: 2020-04-11 14:00+0000\n"
+"POT-Creation-Date: 2020-10-21 14:04+0000\n"
+"PO-Revision-Date: 2020-10-21 14:04+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,11 +42,6 @@ msgstr "Aliment non certifié"
 #: selection:product.product,organic_type:0
 msgid "Aliment Uncertifiable"
 msgstr "Aliment non certifiable"
-
-#. module: product_food
-#: model:product.category,name:product_food.alimentary_category
-msgid "Alimentary"
-msgstr "Alimentaire"
 
 #. module: product_food
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
@@ -86,22 +81,10 @@ msgid "Allergens Creation"
 msgstr "Création d'allergènes"
 
 #. module: product_food
-#: model:product.product,name:product_food.product_arachide_toaste
-#: model:product.template,name:product_food.product_arachide_toaste_product_template
-msgid "Arachide Bio Toasté - Jean Hervé"
-msgstr "Arachide Bio Toasté - Jean Hervé"
-
-#. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__best_before_date_day
 #: model:ir.model.fields,field_description:product_food.field_product_template__best_before_date_day
 msgid "Best Before Date Day"
 msgstr "DLC (en Jour)"
-
-#. module: product_food
-#: model:product.product,name:product_food.product_biere_sans_gluten
-#: model:product.template,name:product_food.product_biere_sans_gluten_product_template
-msgid "Bière Lammsbrau sans gluten 33cl"
-msgstr "Bière Lammsbrau sans gluten 33cl"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_certifier_organization
@@ -137,7 +120,7 @@ msgstr "Cocher cette case si le label est un label qui mentionne que l'article c
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__code
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__code
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_res_company
@@ -197,7 +180,7 @@ msgstr "UE / Non UE"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__id
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: product_food
 #: model:ir.model.fields,help:product_food.field_product_category__is_alimentary
@@ -210,23 +193,28 @@ msgid "If this box is checked, the products that belong to that category will be
 msgstr "Si cette case est cochée, les articles associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:117
+#: code:addons/product_food/models/product_product.py:98
+#, python-format
+msgid "Incorrect Setting. The product %s could not have volume AND weight at the same time."
+msgstr "Paramétrage incorrect. L'article %s ne peut pas être paramétré avec volume ET un poids en même temps."
+
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:140
 #, python-format
 msgid "Incorrect Setting. the product %s has a label that mentions that the product contains  alcohol, but the 'Contain Alcohol' is not checked."
 msgstr "Paramétrage incorrect. L'article %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:106
+#: code:addons/product_food/models/product_product.py:129
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
-
 
 #. module: product_food
 #: model_terms:ir.ui.view,arch_db:product_food.view_certifier_organization_form
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Information"
-msgstr "Information"
+msgstr ""
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__ingredients
@@ -252,7 +240,7 @@ msgstr "Est alimentaire"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization____last_update
 #: model:ir.model.fields,field_description:product_food.field_product_allergen____last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr "Dernière Modification le"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__write_uid
@@ -293,7 +281,7 @@ msgstr "Non certifiable"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__note
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__note
 msgid "Note"
-msgstr "Note"
+msgstr ""
 
 #. module: product_food
 #: selection:product.label,organic_type:0
@@ -322,7 +310,7 @@ msgstr "Article"
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_category
 msgid "Product Category"
-msgstr "Catégorie d'article"
+msgstr "Catégorie d'articles"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_label
@@ -347,24 +335,13 @@ msgid "Products"
 msgstr "Articles"
 
 #. module: product_food
-#: model:product.product,uom_name:product_food.product_arachide_toaste
-#: model:product.product,uom_name:product_food.product_biere_sans_gluten
-#: model:product.template,uom_name:product_food.product_arachide_toaste_product_template
-#: model:product.template,uom_name:product_food.product_biere_sans_gluten_product_template
-msgid "Unit(s)"
-msgstr "Unité(s)"
+#: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
+#: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
+msgid "Price per Unit"
+msgstr "Prix à l'unité"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__website
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__website
 msgid "Website"
 msgstr "Site Web"
-
-#. module: product_food
-#: model:product.product,weight_uom_name:product_food.product_arachide_toaste
-#: model:product.product,weight_uom_name:product_food.product_biere_sans_gluten
-#: model:product.template,weight_uom_name:product_food.product_arachide_toaste_product_template
-#: model:product.template,weight_uom_name:product_food.product_biere_sans_gluten_product_template
-msgid "kg"
-msgstr "kg"
-
