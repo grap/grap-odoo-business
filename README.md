@@ -26,7 +26,7 @@ addon | version | summary
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.0.3 | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_move_change_number](account_move_change_number/) | 12.0.1.0.1 | Allow special user to rename account move
 [product_category_recursive_property](product_category_recursive_property/) | 12.0.1.0.1 | Propagate recursively properties for product category
-[product_food](product_food/) | 12.0.1.0.1 | Products - Food Informations
+[product_food](product_food/) | 12.0.1.0.2 | Products - Food Informations
 [product_label](product_label/) | 12.0.1.0.1 | Product Labels
 [product_notation](product_notation/) | 12.0.3.0.7 | Product Notation
 [product_origin](product_origin/) | 12.0.1.0.1 | Origin for Products
