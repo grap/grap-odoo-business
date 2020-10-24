@@ -2,8 +2,6 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import timedelta
-
 from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
@@ -46,10 +44,9 @@ class InvoiceCommissionWizardLine(models.TransientModel):
     def _prepare_invoice(self):
         self.ensure_one()
         partner = self.partner_id
-        date_invoice = self.max_date - timedelta(days=1)
         return {
             'partner_id': partner.id,
-            'date_invoice': date_invoice,
+            'date_invoice': self.max_date,
             'is_consignment_invoice': True,
             'type': 'out_invoice',
             'account_id': self.consignment_account_id.id,
@@ -137,7 +134,7 @@ class InvoiceCommissionWizardLine(models.TransientModel):
 
         # Get lines to commission
         domain = [
-            ('date', '<', max_date),
+            ('date', '<=', max_date),
             ('account_id', '=', partner.consignment_account_id.id),
             ('journal_id', 'in', journals.ids),
             ('consignment_invoice_id', '=', False),
