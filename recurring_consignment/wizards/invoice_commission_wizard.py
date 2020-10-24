@@ -1,7 +1,7 @@
 # Copyright (C) 2017 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
+from datetime import timedelta
 
 from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
@@ -17,7 +17,7 @@ class InvoiceCommissionWizard(models.TransientModel):
         required=True,
         default=lambda x: x._default_max_date(),
         help="The commission will be computed for the sale"
-        " until this date.")
+        " until this date included.")
 
     wizard_line_ids = fields.One2many(
         comodel_name="invoice.commission.wizard.line",
@@ -45,7 +45,7 @@ class InvoiceCommissionWizard(models.TransientModel):
 
     def _default_max_date(self):
         today = fields.date.today()
-        return fields.date(today.year, today.month, 1)
+        return fields.date(today.year, today.month, 1) - timedelta(days=1)
 
     @api.onchange("max_date")
     def _onchange_max_date(self):
@@ -60,13 +60,6 @@ class InvoiceCommissionWizard(models.TransientModel):
         AccountInvoice = self.env['account.invoice']
         invoice_ids = []
         grouped_data = {}
-
-        # Check
-        if self.max_date.day != 1:
-            raise UserError(_(
-                "Invalide date. You can only make commission invoice "
-                " for a full month. Please select a date with a day "
-                " that is the first day of the month."))
 
         for wizard_line in self.wizard_line_ids:
 
