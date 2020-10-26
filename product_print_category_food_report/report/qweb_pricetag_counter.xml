@@ -63,9 +63,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </t>
                                     <t t-if="line.product_id.pricetag_special_quantity_price">
                                         <span class="product_price_per_uom_price_only">
-                                            <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Prix au litre : </span></t>
-                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span>Prix à la pièce : </span></t>
-                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Prix au kilo : </span></t>
+                                            <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Price per liter: </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><span>Price per unit: </span></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Price per kilo: </span></t>
                                             <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                         </span>
                                     </t>

@@ -41,9 +41,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                 </div>
                                 <div class="product_price_per_uom_price_only">
-                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Au L : </span></t>
-                                    <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Au kg : </span></t>
-                                    <t t-else=""><span>Pièce : </span></t>
+                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Per L : </span></t>
+                                    <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Per kg : </span></t>
+                                    <t t-else=""><span>Unit : </span></t>
                                     <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                 </div>
                             </t>
@@ -52,8 +52,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                 </div>
                                 <!-- Le kilo // La pièce -->
-                                <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">le kilo</div></t>
-                                <t t-else=""><div class="product_sell_by_weight">la pièce</div></t>
+                                <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">per kilo</div></t>
+                                <t t-else=""><div class="product_sell_by_weight">per unit</div></t>
                                 <!-- Prix au Kg ou au L -->
                                 <t t-if="line.product_id.pricetag_is_second_price">
                                     <div class="product_price_per_uom_price">
