@@ -9,8 +9,9 @@ from openupgradelib import openupgrade_90
 
 logger = logging.getLogger(__name__)
 
+
 attachment_fields = {
-    'eshop.category': [
+    'product.label': [
         ('image', None),
         ('image_medium', None),
         ('image_small', None),
@@ -20,5 +21,5 @@ attachment_fields = {
 
 @openupgrade.migrate(no_version=True, use_env=True)
 def migrate(env, version):
-    logger.info("[sale_eshop] Converting fields to attachement ...")
+    logger.info("[product_label] Converting fields to attachement")
     openupgrade_90.convert_binary_field_to_attachment(env, attachment_fields)
