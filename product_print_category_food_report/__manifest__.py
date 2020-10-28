@@ -5,7 +5,7 @@
 
 {
     "name": "Product print category food report",
-    "version": "12.0.1.0.5",
+    "version": "12.0.1.0.6",
     "summary": "Food report like pricetags",
     "category": "Product",
     "author": "GRAP",
