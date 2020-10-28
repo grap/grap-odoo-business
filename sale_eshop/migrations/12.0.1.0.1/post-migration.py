@@ -12,6 +12,8 @@ logger = logging.getLogger(__name__)
 attachment_fields = {
     'eshop.category': [
         ('image', None),
+        ('image_medium', None),
+        ('image_small', None),
     ],
 }
 
