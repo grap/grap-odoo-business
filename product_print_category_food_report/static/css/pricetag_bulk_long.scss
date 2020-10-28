@@ -93,12 +93,17 @@
     .wrap_barcode_image > img{
         width: 5.5cm;
         position: relative;
-        top: 0.6cm;
+        top: 1cm;
     }
     .wrap_product_code {
         text-align: center;
         position: relative;
         top: 28px;
         font-style: italic;
+    }
+    .write_date{
+        text-align: center;
+        font-size: 5px;
+        white-space: nowrap;
     }
 }

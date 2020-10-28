@@ -96,6 +96,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <div class="floating_box">
                                     <img class="spider_chart_image" t-att-src="'data:image/png;base64,%s' % to_text(line.product_id.spider_chart_image)"/>
                                 </div>
+                                <!-- Write date -->
+                                <div class="write_date">
+                                    <t t-if="line.product_id.write_date">
+                                        Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
+                                    </t>
+                                </div>
                             </div>
                         </t>
                         <t t-if="not line.product_id.pricetag_display_spider_chart">
@@ -134,6 +140,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                     </div>
                                 </t>
+                                <!-- Write date -->
+                                <div class="write_date">
+                                    <t t-if="line.product_id.write_date">
+                                        Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
+                                    </t>
+                                </div>
                             </div>
                         </t>
                     </div>
