@@ -326,6 +326,13 @@ msgid "Pricetag UoM"
 msgstr "UdM de l'étiquette"
 
 #. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
+msgid "Printed"
+msgstr "Imprimée le"
+
+#. module: product_print_category_food_report
 #: model:ir.model,name:product_print_category_food_report.model_product_product
 msgid "Product"
 msgstr "Article"
