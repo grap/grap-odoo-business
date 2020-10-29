@@ -86,7 +86,7 @@ class ConsignorCreateWizard(models.TransientModel):
             'code': "{prefix}{suffix}".format(
                 prefix=self._get_account_prefix(),
                 suffix=self.account_suffix),
-            'reconcile': True,
+            'reconcile': False,
             'user_type_id':
             self.env.ref("account.data_account_type_payable").id
         }
