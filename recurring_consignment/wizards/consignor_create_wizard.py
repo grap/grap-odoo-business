@@ -105,6 +105,8 @@ class ConsignorCreateWizard(models.TransientModel):
                 name=self.name,
                 ),
             'company_id': self.env.user.company_id.id,
+            'description': self.is_vat_subject
+            and "{amount:.1f}%".format(amount=amount) or '0%',
             'amount': self.is_vat_subject and amount or 0.0,
             'amount_type': 'percent',
             'price_include': self._get_tax_included(),
