@@ -16,6 +16,7 @@ class SaleRecoveryMomentGroup(models.Model):
     _order = "min_sale_date desc, name"
 
     _STATE_SELECTION = [
+        ("undefined", "Undefined"),
         ("futur", "Futur"),
         ("pending_sale", "Pending Sale"),
         ("finished_sale", "Finished Sale"),
@@ -25,7 +26,7 @@ class SaleRecoveryMomentGroup(models.Model):
 
     # Column Section
     code = fields.Char(
-        string="Code", readonly=True, required=True
+        string="Code", readonly=True, required=True, default="/"
     )
 
     short_name = fields.Char(string="Short Name", required=True)
@@ -192,7 +193,9 @@ class SaleRecoveryMomentGroup(models.Model):
     def _compute_state(self):
         now = datetime.now()
         for moment_group in self:
-            if now < moment_group.min_sale_date:
+            if not moment_group.moment_ids:
+                moment_group.state = "undefined"
+            elif now < moment_group.min_sale_date:
                 moment_group.state = "futur"
             elif now < moment_group.max_sale_date:
                 moment_group.state = "pending_sale"
