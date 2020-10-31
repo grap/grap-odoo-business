@@ -75,7 +75,23 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <group col="4">
                                 <field name="min_recovery_date"/>
                                 <field name="max_recovery_date"/>
-                                <field name="moment_ids" nolabel="1" colspan="4"/>
+                                <field name="moment_ids" nolabel="1" colspan="4">
+                                    <tree editable="bottom">
+                                        <field name="place_id"/>
+                                        <field name="max_order_qty" string="Max"/>
+                                        <field name="min_recovery_date"/>
+                                        <field name="max_recovery_date"/>
+                                        <field name="description"/>
+                                        <field name="order_qty" string="S.O. Qty"/>
+                                        <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
+                                        <field name="valid_order_qty" string="V.S.O. Qty"/>
+                                        <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
+                                        <field name="picking_qty" string="D.O. Qty" />
+                                        <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" />
+                                        <field name="valid_picking_qty" string="V.D.O. Qty"/>
+                                        <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
+                                    </tree>
+                                </field>
                             </group>
                         </page>
                     </notebook>
