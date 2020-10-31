@@ -6,13 +6,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo noupdate="1">
 
-<!--     <record id="account_receivable" model="account.account">
-        <field name="name">Receivable Account</field>
-        <field name="code">411-CONS</field>
-        <field name="reconcile" eval="True"/>
-        <field name="user_type_id" ref="account.data_account_type_receivable"/>
-    </record>
- -->
     <record id="account_consignor_1" model="account.account">
         <field name="name">Demo Account For Consignor #1</field>
         <field name="code">467-CONS-1</field>
