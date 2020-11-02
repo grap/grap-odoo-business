@@ -19,7 +19,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<b>Allergens</b><br/>"
-msgstr "b>Allergènes</b><br/>"
+msgstr "<b>Allergènes</b><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
