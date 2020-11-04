@@ -31,7 +31,7 @@ msgstr "<b>Ingrédients</b><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<b>Maker</b><br/>"
-msgstr "<b>Fabriquant·e</b><br/>"
+msgstr "<b>Producteur·rice</b><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
@@ -49,7 +49,7 @@ msgstr "<span class=\"empty_field\"><b>Ingrédients</b></span><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<span class=\"empty_field\"><b>Maker</b></span><br/>"
-msgstr "<span class=\"empty_field\"><b>Fabriquant·e</b></span><br/>"
+msgstr "<span class=\"empty_field\"><b>Producteur·rice</b></span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
@@ -227,7 +227,7 @@ msgstr "Dernière mise à jour le"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
 msgid "Maker:"
-msgstr "Fabriquant·e"
+msgstr "Producteur·rice :"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__name
