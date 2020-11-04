@@ -24,10 +24,6 @@ class ProductProduct(models.Model):
 
     pricetag_origin = fields.Char(compute="_compute_pricetag_origin")
 
-    report_extra_food_info = fields.Char(
-        compute="_compute_report_extra_food_info"
-    )
-
     pricetag_special_quantity_price = fields.Boolean(
         default=False,
         compute="_compute_pricetag_second_price",
