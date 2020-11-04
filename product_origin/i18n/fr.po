@@ -6,20 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-30 14:46+0000\n"
-"PO-Revision-Date: 2019-12-30 14:46+0000\n"
+"POT-Creation-Date: 2020-11-04 12:39+0000\n"
+"PO-Revision-Date: 2020-11-04 12:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: product_origin
-#: model:product.product,name:product_origin.biere_pilat_75cl
-#: model:product.template,name:product_origin.biere_pilat_75cl_product_template
-msgid "Bière du Pilat - blonde au chanvre biscanna 75cl"
-msgstr "Bière du Pilat - blonde au chanvre biscanna 75cl"
 
 #. module: product_origin
 #: model:ir.model.fields,field_description:product_origin.field_product_product__country_id
@@ -37,14 +31,19 @@ msgstr "Pays de production du pays"
 #: model:ir.model.fields,field_description:product_origin.field_product_product__maker_description
 #: model:ir.model.fields,field_description:product_origin.field_product_template__maker_description
 msgid "Maker"
-msgstr "Fabriquant"
+msgstr "Producteur·rice"
 
 #. module: product_origin
-#: model_terms:ir.ui.view,arch_db:product_origin.product_template_form_view
 #: model_terms:ir.ui.view,arch_db:product_origin.view_product_product_form
 #: model_terms:ir.ui.view,arch_db:product_origin.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_origin.view_product_template_form
 msgid "Origin"
 msgstr "Origine"
+
+#. module: product_origin
+#: model:ir.model.fields,field_description:product_origin.field_product_product__origin_description
+msgid "Origin (Complement)"
+msgstr "Origine complément"
 
 #. module: product_origin
 #: model:ir.model,name:product_origin.model_product_product
@@ -57,7 +56,6 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: product_origin
-#: model:ir.model.fields,field_description:product_origin.field_product_product__origin_description
 #: model:ir.model.fields,field_description:product_origin.field_product_template__origin_description
 msgid "Production Origin Complement"
 msgstr "Origine complément"
@@ -66,28 +64,16 @@ msgstr "Origine complément"
 #: model:ir.model.fields,field_description:product_origin.field_product_product__state_id
 #: model:ir.model.fields,field_description:product_origin.field_product_template__state_id
 msgid "State"
-msgstr "État"
+msgstr "Région"
 
 #. module: product_origin
-#: code:addons/product_origin/models/product_product.py:37
+#: code:addons/product_origin/models/product_product.py:35
 #, python-format
 msgid "State must belong to the country."
-msgstr "La région doit appartenir au pays"
+msgstr "La région doit appartenir au pays."
 
 #. module: product_origin
 #: model:ir.model.fields,help:product_origin.field_product_product__state_id
 #: model:ir.model.fields,help:product_origin.field_product_template__state_id
 msgid "State of production of the product"
-msgstr "Région de prodution de l'article"
-
-#. module: product_origin
-#: model:product.product,uom_name:product_origin.biere_pilat_75cl
-#: model:product.template,uom_name:product_origin.biere_pilat_75cl_product_template
-msgid "Unit(s)"
-msgstr "Unité(s)"
-
-#. module: product_origin
-#: model:product.product,weight_uom_name:product_origin.biere_pilat_75cl
-#: model:product.template,weight_uom_name:product_origin.biere_pilat_75cl_product_template
-msgid "kg"
-msgstr "kg"
+msgstr "Région de production de l'article"
