@@ -28,7 +28,7 @@ class SaleRecoveryMoment(models.Model):
         string="Code",
         readonly=True,
         required=True,
-        default=lambda x: x._default_code(),
+        default="/",
     )
 
     name = fields.Char(string="Name", compute="_compute_name", store=True)
