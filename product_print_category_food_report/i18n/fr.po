@@ -360,11 +360,6 @@ msgid "Products Quantity"
 msgstr "Nombre d'articles"
 
 #. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__report_extra_food_info
-msgid "Report Extra Food Info"
-msgstr "Info alimentaire pour les rapports"
-
-#. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_product_product__pricetag_uom_id
 msgid "Set an alternative Unit of Mesure if you want to display the price on your pricetags relative to this Unit."
 msgstr "Définir une unité de mesure alternative si vous voulez afficher un prix relatif à cette unité sur votre étiquette"
