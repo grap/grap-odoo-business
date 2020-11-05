@@ -15,6 +15,7 @@ class ResCompany(models.Model):
     def create(self, vals):
         res = super().create(vals)
         res._create_consignor_sequence()
+        return res
 
     @api.multi
     def _create_consignor_sequence(self):
