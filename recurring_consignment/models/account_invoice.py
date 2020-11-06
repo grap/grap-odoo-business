@@ -139,7 +139,7 @@ class AccountInvoice(models.Model):
         else:
             return (
                 'revenue',
-                _("Income Collected. Taxes: %s" % (
+                _("Income Collected. Taxes: %s") % (
                     ", ".join([str(x.amount) for x in move_line.tax_ids])
-                ))
+                )
             )
