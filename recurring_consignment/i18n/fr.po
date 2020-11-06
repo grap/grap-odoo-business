@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-24 10:11+0000\n"
-"PO-Revision-Date: 2020-10-24 10:11+0000\n"
+"POT-Creation-Date: 2020-11-06 17:34+0000\n"
+"PO-Revision-Date: 2020-11-06 17:34+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #. module: recurring_consignment
 #: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:104
-#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:125
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:127
 #, python-format
 msgid " NOT SUBJECT TO VAT - "
 msgstr "NON ASSUJETTI A TVA - "
@@ -30,7 +30,7 @@ msgstr "<strong>Encaissé</strong>"
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
 msgid "<strong>Commission</strong>"
-msgstr "<strong>Commission</strong>"
+msgstr ""
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
@@ -95,12 +95,12 @@ msgstr "Annuler"
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
 msgid "Comm."
-msgstr "Comm."
+msgstr ""
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
 msgid "Commission"
-msgstr "Commission"
+msgstr ""
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__rate
@@ -194,7 +194,7 @@ msgstr "Dépôt vendeurs"
 #. module: recurring_consignment
 #: model:ir.model,name:recurring_consignment.model_res_partner
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #. module: recurring_consignment
 #: model:ir.actions.act_window,name:recurring_consignment.action_partner_mass_commission
@@ -267,7 +267,7 @@ msgstr "Catégorie fiscale"
 #: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__id
 #: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: recurring_consignment
 #: code:addons/recurring_consignment/models/account_invoice.py:143
@@ -505,7 +505,7 @@ msgstr "Il n'y a pas de lignes à commissionner, pour ce dépôt vendeur et les 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
@@ -582,7 +582,7 @@ msgid "You can only sale consignment Commission to consignor. If you want to sal
 msgstr "Vous pouvez seulement vendre des produits de type commission à un dépôt vendeur. Si vous souhaitez réaliser une vente normale, veuillez créer un autre client."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:119
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:121
 #, python-format
 msgid "{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}"
 msgstr "{sequence} - TVA {amount:2.1f}% -{vat_subject}{name}"
