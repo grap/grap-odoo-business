@@ -172,7 +172,7 @@ msgstr "Produit de commission"
 #: model:ir.model.fields,field_description:recurring_consignment.field_product_product__consignor_partner_id
 #: model:ir.model.fields,field_description:recurring_consignment.field_product_template__consignor_partner_id
 msgid "Consignor"
-msgstr "dépôt vendeur"
+msgstr "Dépôt vendeur"
 
 #. module: recurring_consignment
 #: model:ir.model,name:recurring_consignment.model_consignor_create_wizard
