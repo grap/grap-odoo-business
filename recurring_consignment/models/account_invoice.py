@@ -67,26 +67,15 @@ class AccountInvoice(models.Model):
         return res
 
     @api.model
-    def get_commission_information_product_detail(self, invoice):
-        ProductProduct = self.env['product.product']
-
+    def get_commission_information_product_detail_grouped(
+            self, consignor_products, moves):
         AccountInvoice = self.env['account.invoice']
         AccountInvoiceLine = self.env['account.invoice.line']
 
         groups = {}
-        res = []
-
-        # Get Product ids
-        consignor_products = ProductProduct.with_context(
-            active_test=False).search([
-                ('consignor_partner_id', '=', invoice.partner_id.id)])
-
-        # Get Account Move
-        move_ids = list(
-            set([x.move_id.id for x in invoice.consignment_line_ids]))
 
         # Get related invoice
-        com_invoices = AccountInvoice.search([('move_id', 'in', move_ids)])
+        com_invoices = AccountInvoice.search([('move_id', 'in', moves.ids)])
 
         com_invoice_lines = AccountInvoiceLine.search([
             ('invoice_id', 'in', com_invoices.ids),
@@ -109,6 +98,24 @@ class AccountInvoice(models.Model):
                 'total_vat_excl': groups[key]['total_vat_excl'] +
                 com_invoice_line.price_subtotal,
             }
+        return groups
+
+    @api.model
+    def get_commission_information_product_detail(self, invoice):
+        ProductProduct = self.env['product.product']
+
+        res = []
+
+        # Get Product ids
+        consignor_products = ProductProduct.with_context(
+            active_test=False).search([
+                ('consignor_partner_id', '=', invoice.partner_id.id)])
+
+        # Get Account Move
+        moves = invoice.mapped('consignment_line_ids.move_id')
+
+        groups = self.get_commission_information_product_detail_grouped(
+            consignor_products, moves)
 
         # Compute sum of each product
         for key, value in groups.items():
