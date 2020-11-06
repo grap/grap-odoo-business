@@ -117,15 +117,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </td>
                                 </tr>
                             </t>
-                        </tbody>
-                        <tfoot>
                             <tr>
                                 <th colspan="4" style="text-align:right">Total</th>
                                 <td style="text-align:right"><span t-esc="total_vat_excl"
                                     t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                 </td>
                             </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
 
@@ -183,8 +181,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </td>
                                 </tr>
                             </t>
-                        </tbody>
-                        <tfoot>
                             <tr>
                                 <th colspan="4" style="text-align:right">Total</th>
                                 <td style="text-align:right"><span t-esc="total_debit"
@@ -194,12 +190,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                 </td>
                             </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
-
             </t>
-
         </xpath>
     </template>
 
