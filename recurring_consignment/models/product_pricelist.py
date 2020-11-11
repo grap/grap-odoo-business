@@ -41,18 +41,24 @@ class ProductPricelist(models.Model):
         pricelists = self.search([])
         items = pricelists.mapped('item_ids').filtered(
             lambda x: x.product_tmpl_id.id in template_ids)
-        items.unlink()
+        # We use sudo, to avoid error, if current user
+        # doesn't have correct access write / delete
+        # pricelist.item
+        items.sudo().unlink()
 
     @api.multi
     def _consignmment_update_multi(self, templates=False):
         ProductPricelistItem = self.env['product.pricelist.item']
         ProductTemplate = self.env['product.template']
+        # We use sudo, to avoid error, if current user
+        # doesn't have correct access write / delete
+        # pricelist.item
         for pricelist in self:
             if not templates:
                 # Drop all previous exceptions
                 items = pricelist.mapped('item_ids').filtered(
                     lambda x: x.product_tmpl_id.consignor_partner_id)
-                items.unlink()
+                items.sudo().unlink()
             if pricelist.consignment_pricelist_id:
                 if not templates:
                     # Create exceptions for all templates
@@ -60,7 +66,7 @@ class ProductPricelist(models.Model):
                         active_test=False).search(
                             [('consignor_partner_id', '!=', False)])
                 for template in templates:
-                    ProductPricelistItem.create(
+                    ProductPricelistItem.sudo().create(
                         ProductPricelistItem._prepare_consignment_exception(
                             pricelist, template,
                         ))
