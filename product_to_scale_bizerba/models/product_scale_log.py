@@ -5,6 +5,7 @@
 import base64
 import os
 import logging
+import socket
 from datetime import datetime
 
 from odoo import api, fields, models, tools
@@ -241,7 +242,7 @@ class ProductScaleLog(models.Model):
     @api.model
     def _generate_image_file_name(self, obj, field):
         if getattr(obj, field.name):
-            model_name = obj._model._name.replace('.', '_')
+            model_name = obj._name.replace('.', '_')
             extension = '.PNG'
             return "%s__%s__%d%s" % (model_name, field.name, obj.id, extension)
         else:
@@ -262,7 +263,7 @@ class ProductScaleLog(models.Model):
             else:
                 ftp.login()
             return ftp
-        except:
+        except socket.gaierror:
             raise Warning(
                 "Connection to ftp://%s@%s failed." % (
                     scale_system.ftp_login, scale_system.ftp_url))
@@ -271,7 +272,7 @@ class ProductScaleLog(models.Model):
     def ftp_connection_close(self, ftp):
         try:
             ftp.quit()
-        except:
+        except Exception:
             _logger.warning("Connection to ftp has not been properly closed")
 
     @api.model
@@ -283,16 +284,16 @@ class ProductScaleLog(models.Model):
             f_name = datetime.now().strftime(pattern)
             local_path = os.path.join(local_folder_path, f_name)
             distant_path = os.path.join(distant_folder_path, f_name)
-            f = open(local_path, 'w')
+            f = open(local_path, 'w', encoding=encoding)
             for line in lines:
-                f.write(line.encode(encoding))
+                f.write(line)
             f.close()
 
             # Send File by FTP
-            f = open(local_path, 'r')
+            f = open(local_path, 'rb')
             try:
                 ftp.storbinary('STOR ' + distant_path, f)
-            except:
+            except Exception:
                 raise Warning(
                     "Unable to push the file %s on the FTP server.\n"
                     "Possible reasons :\n"
@@ -326,7 +327,7 @@ class ProductScaleLog(models.Model):
         f.close()
 
         # Send File by FTP
-        f = open(local_path, 'r')
+        f = open(local_path, 'rb')
         ftp.storbinary('STOR ' + distant_path, f)
 
         # Delete temporary file
