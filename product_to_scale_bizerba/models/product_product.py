@@ -105,7 +105,7 @@ class ProductProduct(models.Model):
     @api.model
     def create(self, vals):
         send_to_scale = vals.get('scale_group_id', False)
-        product = super(ProductProduct, self).create(vals)
+        product = super().create(vals)
         if send_to_scale:
             product._send_to_scale_bizerba(
                 'create', product.scale_group_id,
@@ -144,7 +144,7 @@ class ProductProduct(models.Model):
                     # The product has just been added
                     defered[product.id] = 'create'
 
-        res = super(ProductProduct, self).write(vals)
+        res = super().write(vals)
 
         # Send Deferred Log
         for product_id, action in defered.items():
@@ -162,4 +162,4 @@ class ProductProduct(models.Model):
                 product._send_to_scale_bizerba(
                     'unlink', product.scale_group_id,
                     product.scale_group_id.scale_system_id)
-        return super(ProductProduct, self).unlink()
+        return super().unlink()

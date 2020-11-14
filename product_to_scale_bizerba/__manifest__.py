@@ -22,7 +22,7 @@
         'data/ir_cron.xml',
         'views/menu.xml',
         'views/view_product_product.xml',
-        # 'views/view_product_uom.xml',
+        'views/view_uom_uom.xml',
         'views/view_product_scale_system.xml',
         'views/view_product_scale_group.xml',
         'views/view_product_scale_log.xml',
