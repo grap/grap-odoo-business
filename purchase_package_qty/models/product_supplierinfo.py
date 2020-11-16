@@ -11,7 +11,7 @@ class ProductSupplierinfo(models.Model):
     _inherit = 'product.supplierinfo'
 
     package_qty = fields.Float(
-        string='Package Quantity', default=1,
+        string='Package Quantity', default=0,
         help="The quantity of products in the supplier package."
         " You will always have to buy a multiple of this quantity.")
 
@@ -23,27 +23,27 @@ class ProductSupplierinfo(models.Model):
         # from the unit of the supplierinfo.
         # this function should be improved using uom arg,
         # when Odoo purchase module will be improved. (>12.0)
-        if product_qty % self.package_qty:
+        if self.package_qty and product_qty % self.package_qty:
             return ceil(product_qty / self.package_qty) * self.package_qty
         else:
             return product_qty
 
     @api.onchange("package_qty")
     def onchange_package_qty(self):
-        if self.package_qty > self.min_qty:
-            self.min_qty = self.package_qty
-        elif self.package_qty:
-            # check if min_qty is a multiple of package_qty
-            if self.min_qty % self.package_qty:
+        if self.package_qty:
+            if self.package_qty > self.min_qty:
+                self.min_qty = self.package_qty
+            elif self.min_qty % self.package_qty:
+                # check if min_qty is a multiple of package_qty
                 self.min_qty =\
                     ceil(self.min_qty // self.package_qty) * self.package_qty
 
     @api.onchange("min_qty")
     def onchange_min_qty(self):
-        if self.package_qty > self.min_qty:
-            self.package_qty = self.min_qty
-        elif self.package_qty:
-            # check if min_qty is a multiple of package_qty
-            if self.min_qty % self.package_qty:
+        if self.package_qty:
+            if self.package_qty > self.min_qty:
+                self.package_qty = self.min_qty
+            elif self.min_qty % self.package_qty:
+                # check if min_qty is a multiple of package_qty
                 self.min_qty =\
                     ceil(self.min_qty / self.package_qty) * self.package_qty
