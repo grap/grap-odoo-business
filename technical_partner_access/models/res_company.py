@@ -12,6 +12,6 @@ class ResCompany(models.Model):
     # Overload Section
     @api.model
     def create(self, vals):
-        company = super().create(vals)
-        company.partner_id.is_odoo_company = True
-        return company
+        return super(
+            ResCompany, self.with_context(is_odoo_company=True)
+        ).create(vals)

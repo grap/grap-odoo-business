@@ -14,6 +14,9 @@
     'depends': [
         'base',
     ],
+    'data': [
+        'views/view_res_partner.xml',
+    ],
     'demo': [
         'demo/res_groups.xml',
     ],

@@ -55,7 +55,7 @@ class TestModule(TransactionCase):
         })
 
     def test_02_company_part(self):
-        self.ResCompany.create({
+        company = self.ResCompany.create({
             'name': self.company_name,
         })
         # Check access without context
@@ -70,3 +70,14 @@ class TestModule(TransactionCase):
         self.assertEqual(
             len(result), 1,
             "Search company partner should return result with context")
+
+        # Without Correct access right, should fail
+        with self.assertRaises(UserError):
+            company.partner_id.sudo(self.demo_user).write({
+                'name': 'Test',
+            })
+
+        # With Correct access right, should success
+        company.partner_id.write({
+            'name': 'Test',
+        })
