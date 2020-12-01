@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="type" position="before">
+                <field name="is_odoo_user" groups="base.group_erp_manager"/>
+                <field name="is_odoo_company" groups="base.group_erp_manager"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

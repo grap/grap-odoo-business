@@ -15,6 +15,12 @@ class ResPartner(models.Model):
     is_odoo_company = fields.Boolean(
         string="Is an Odoo Company", readonly=True, default=False)
 
+    @api.model
+    def create(self, vals):
+        if self.env.context.get("is_odoo_company"):
+            vals["is_odoo_company"] = True
+        return super().create(vals)
+
     # Overload Section
     @api.multi
     def write(self, vals):
@@ -28,19 +34,16 @@ class ResPartner(models.Model):
 
     # Custom section
     @api.multi
-    def _disable_users_partners(self):
-        self.write({
-            'company_id': False,
-        })
-
-    @api.multi
     def _check_technical_partner_access(self):
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases
         ResUsers = self.env['res.users'].sudo()
         users = ResUsers.with_context(active_test=False).search([
             ('partner_id', 'in', self.ids)])
-        if len(users) != 0:
+        ResCompany = self.env['res.company'].sudo()
+        companies = ResCompany.with_context(active_test=False).search([
+            ('partner_id', 'in', self.ids)])
+        if len(users) != 0 or len(companies) != 0:
             # Check if current user has correct access right
             if not self.env.user.has_group('base.group_erp_manager'):
                 raise UserError(_(
