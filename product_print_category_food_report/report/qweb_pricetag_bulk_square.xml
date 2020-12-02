@@ -102,7 +102,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                              --><t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><!-- 
                                                  --><span class="product_uom">/L</span><br/>
                                             </t>
-                                            <t t-else=""><span class="product_uom">/kg</span><br/></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.name == 'Weight'"><span class="product_uom">/kg</span><br/></t>
+                                            <t t-else=""></t>
                                         </div>
                                     </div>
                                 </t>
