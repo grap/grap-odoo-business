@@ -11,7 +11,7 @@
     'website': 'http://www.grap.coop',
     'license': 'AGPL-3',
     'depends': [
-        'recurring_consignment_test',
+        'recurring_consignment',
         'purchase',
     ],
     'installable': True,
