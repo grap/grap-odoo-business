@@ -14,5 +14,7 @@ class ResUsers(models.Model):
     def create(self, vals):
         vals.update({"is_odoo_user": True})
         user = super().create(vals)
-        user.partner_id._disable_users_partners()
+        user.partner_id.write({
+            'company_id': False,
+        })
         return user
