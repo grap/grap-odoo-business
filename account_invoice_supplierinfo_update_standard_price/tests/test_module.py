@@ -93,7 +93,7 @@ class TestModule(TransactionCase):
     def test_03_shared_cost(self):
         self.assertEqual(
             self.invoice_1.product_expense_total,
-            (1000 * 10 * 0.9 * 0.8 * 0.7) + 500 * 5,
+            7540,  # (1000 * 10 * 0.9 * 0.8 * 0.7) + 500 * 5,
             "Bad computation of the field 'Product Expenses Total'")
 
         self.assertEqual(
@@ -122,13 +122,13 @@ class TestModule(TransactionCase):
         # Check Correct Standard Price
         self.assertEqual(
             round(self.line_1_1.product_id.standard_price, 2),
-            1172.44,  # (5040 / 10) + 1000 * (5040 / 7540)
+            570.84,  # (5040 + 1000 * (5040 / 7540)) / 10
             "Landing cost should impact standard price of the purchased"
             " product")
 
         # Check Correct Standard Price
         self.assertEqual(
             round(self.line_1_2.product_id.standard_price, 2),
-            831.56,  # (500) + 1000 * (2500 / 7540)
+            566.31,  # (2500 + 1000 * (2500 / 7540)) / 5
             "Landing cost should impact standard price of the purchased"
             " product")
