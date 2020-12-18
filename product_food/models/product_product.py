@@ -94,14 +94,7 @@ class ProductProduct(models.Model):
     def _compute_price_per_unit(self):
         for product in self:
             if product.weight != 0 and product.volume != 0:
-                raise UserError(
-                    _(
-                        "Incorrect Setting. "
-                        "The product %s could not have"
-                        " volume AND weight at the same time."
-                    )
-                    % (product.name)
-                )
+                product.price_per_unit = 0
             elif product.weight not in [0, 1]:
                 product.price_per_unit = product.list_price / product.weight
             elif product.volume not in [0, 1]:
@@ -110,6 +103,20 @@ class ProductProduct(models.Model):
                 product.price_per_unit = 0
 
     # Constrains Section
+    @api.multi
+    @api.constrains("weight", "volume")
+    def _check_weight_volume(self):
+        for product in self:
+            if product.weight and product.volume:
+                raise UserError(
+                    _(
+                        "Incorrect Setting. "
+                        "The product %s could not have"
+                        " volume AND weight at the same time."
+                    )
+                    % (product.name)
+                )
+
     @api.multi
     @api.constrains("is_alcohol", "label_ids")
     def _check_alcohol_labels(self):
