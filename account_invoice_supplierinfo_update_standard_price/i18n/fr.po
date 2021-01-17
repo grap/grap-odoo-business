@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-18 11:11+0000\n"
-"PO-Revision-Date: 2020-09-18 11:11+0000\n"
+"POT-Creation-Date: 2020-12-17 16:32+0000\n"
+"PO-Revision-Date: 2020-12-17 16:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Ligne de facture"
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_wizard_update_invoice_supplierinfo_line__new_standard_price
 msgid "New Standard Price"
-msgstr "Nouveau Prix de revient"
+msgstr "Nouveau prix de revient"
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_account_invoice__product_expense_total
@@ -65,7 +65,7 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: account_invoice_supplierinfo_update_standard_price
-#: code:addons/account_invoice_supplierinfo_update_standard_price/models/account_invoice_line.py:25
+#: code:addons/account_invoice_supplierinfo_update_standard_price/models/account_invoice_line.py:26
 #, python-format
 msgid "We can't check prices for a invoice whose total is null"
 msgstr "On ne peut pas vérifier les prix pour une facture nulle."
@@ -73,7 +73,7 @@ msgstr "On ne peut pas vérifier les prix pour une facture nulle."
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo_line
 msgid "Wizard Line to update supplierinfo"
-msgstr "Line d'assistant de mise à jour des informations fournisseurs"
+msgstr "Line d'assistant pour mettre à jour les informations fournisseurs"
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo

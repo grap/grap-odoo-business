@@ -25,10 +25,14 @@ class AccountInvoiceLine(models.Model):
                 raise UserError(_(
                     "We can't check prices"
                     " for a invoice whose total is null"))
+            if self.quantity:
+                line_shared_cost_per_unit = line_shared_cost / self.quantity
+            else:
+                line_shared_cost_per_unit = 0
             uom = self.uom_id or self.product_id.uom_id
             return self.invoice_id.currency_id.round(
                 uom._compute_price(
-                    line_shared_cost + (
+                    line_shared_cost_per_unit + (
                         self.price_unit *
                         (1 - self.discount / 100) *
                         (1 - self.discount2 / 100) *
