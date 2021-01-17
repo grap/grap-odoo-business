@@ -35,3 +35,4 @@ class AccountMove(models.Model):
                     "\nAccount move renamed. Old name : %s."
                     " New name : %s. Rename date : %s. Author : %s.") % (
                     old_name, new_name, date, author_name)
+        return True
