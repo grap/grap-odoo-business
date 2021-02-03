@@ -52,30 +52,15 @@ class ResPartner(models.Model):
                     " users or companies.\n- %s") % (
                         '\n- '.join(users.mapped('name'))))
 
-    # Overload the private _search function:
-    # This function is used by the other ORM functions
-    # (name_search, search_read)
     @api.model
-    def _search(
-        self,
-        args,
-        offset=0,
-        limit=None,
-        order=None,
-        count=False,
-        access_rights_uid=None,
-    ):
-        args += [
+    def _where_calc(self, domain, active_test=True):
+        # Overload the private _where_calc function instead of _search
+        # because res.partner::_name_search function doesn't call super
+        # if name is defined
+        domain += [
             ("is_odoo_user", "=",
                 bool(self.env.context.get("show_odoo_user", False))),
             ("is_odoo_company", "=",
                 bool(self.env.context.get("show_odoo_company", False))),
         ]
-        return super()._search(
-            args=args,
-            offset=offset,
-            limit=limit,
-            order=order,
-            count=count,
-            access_rights_uid=access_rights_uid,
-        )
+        return super()._where_calc(domain, active_test=active_test)
