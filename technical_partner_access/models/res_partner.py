@@ -52,15 +52,48 @@ class ResPartner(models.Model):
                     " users or companies.\n- %s") % (
                         '\n- '.join(users.mapped('name'))))
 
+    # Overload the private _search function:
+    # This function is used by the other ORM functions
+    # (name_search, search_read)
     @api.model
-    def _where_calc(self, domain, active_test=True):
-        # Overload the private _where_calc function instead of _search
-        # because res.partner::_name_search function doesn't call super
-        # if name is defined
-        domain += [
+    def _search(
+        self,
+        args,
+        offset=0,
+        limit=None,
+        order=None,
+        count=False,
+        access_rights_uid=None,
+    ):
+        args += [
             ("is_odoo_user", "=",
                 bool(self.env.context.get("show_odoo_user", False))),
             ("is_odoo_company", "=",
                 bool(self.env.context.get("show_odoo_company", False))),
         ]
-        return super()._where_calc(domain, active_test=active_test)
+        return super()._search(
+            args=args,
+            offset=offset,
+            limit=limit,
+            order=order,
+            count=count,
+            access_rights_uid=access_rights_uid,
+        )
+
+    @api.model
+    def _name_search(
+            self, name, args=None, operator='ilike', limit=100,
+            name_get_uid=None):
+        # Overload also _name_search
+        # because res.partner._name_search doesn't call super in all
+        # cases. (so doesn't call _search)
+        if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
+            args += [
+                ("is_odoo_user", "=",
+                    bool(self.env.context.get("show_odoo_user", False))),
+                ("is_odoo_company", "=",
+                    bool(self.env.context.get("show_odoo_company", False))),
+            ]
+        return super()._name_search(
+            name, args, operator=operator, limit=limit,
+            name_get_uid=name_get_uid)
