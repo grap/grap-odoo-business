@@ -14,6 +14,7 @@
         'recurring_consignment',
         'purchase',
     ],
+    "data": ["views/view_purchase_order.xml"],
     'installable': True,
     'auto_install': True,
 }
