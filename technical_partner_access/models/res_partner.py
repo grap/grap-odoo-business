@@ -79,3 +79,21 @@ class ResPartner(models.Model):
             count=count,
             access_rights_uid=access_rights_uid,
         )
+
+    @api.model
+    def _name_search(
+            self, name, args=None, operator='ilike', limit=100,
+            name_get_uid=None):
+        # Overload also _name_search
+        # because res.partner._name_search doesn't call super in all
+        # cases. (so doesn't call _search)
+        if name and operator in ('=', 'ilike', '=ilike', 'like', '=like'):
+            args += [
+                ("is_odoo_user", "=",
+                    bool(self.env.context.get("show_odoo_user", False))),
+                ("is_odoo_company", "=",
+                    bool(self.env.context.get("show_odoo_company", False))),
+            ]
+        return super()._name_search(
+            name, args, operator=operator, limit=limit,
+            name_get_uid=name_get_uid)
