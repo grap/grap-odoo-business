@@ -14,5 +14,5 @@ class ProductTemplate(models.Model):
         comodel_name="product.label",
         related="product_variant_ids.label_ids",
         string="Labels",
-        readonly=False
+        readonly=False,
     )

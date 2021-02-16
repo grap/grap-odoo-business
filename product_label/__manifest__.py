@@ -28,7 +28,6 @@
         "demo/product_label.xml",
         "demo/product_product.xml",
     ],
-    "images": [
-    ],
+    "images": [],
     "installable": True,
 }
