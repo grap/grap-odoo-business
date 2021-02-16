@@ -7,9 +7,9 @@ from odoo.exceptions import UserError
 
 
 class PosOrder(models.Model):
-    _inherit = 'pos.order'
+    _inherit = "pos.order"
 
-    @api.constrains('partner_id')
+    @api.constrains("partner_id")
     def _check_partner_id_recurring_consignment(self):
         if self.partner_id.is_consignor:
             raise UserError(_("You can not make PoS Orders to consignors"))
