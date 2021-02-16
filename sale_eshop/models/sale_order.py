@@ -109,8 +109,7 @@ class SaleOrder(models.Model):
                 new_line.order_id = order.id
                 new_line.product_uom_qty = quantity
                 new_line.product_id_change()
-                new_line_vals = SaleOrderLine._convert_to_write(
-                    new_line._cache)
+                new_line_vals = SaleOrderLine._convert_to_write(new_line._cache)
                 current_line = SaleOrderLine.create(new_line_vals)
             else:
                 current_line.product_uom_qty = quantity
@@ -143,31 +142,25 @@ class SaleOrder(models.Model):
                 else:
                     # We unlink the line
                     current_line.unlink()
-                    res["messages"] = [
-                        _("The line has been successfully deleted")
-                    ]
+                    res["messages"] = [_("The line has been successfully deleted")]
 
         res.update(self._eshop_sale_order_info(order))
         return res
 
     @api.model
     def eshop_select_recovery_moment(self, partner_id, recovery_moment_id):
-        recovery_moment = self.env["sale.recovery.moment"].browse(
-            recovery_moment_id
-        )
+        recovery_moment = self.env["sale.recovery.moment"].browse(recovery_moment_id)
         # Check if the moment is complete
         if recovery_moment.is_complete:
             return "recovery_moment_complete"
         else:
             order = self.eshop_get_current_sale_order(partner_id)
-            order.write(
-                {"recovery_moment_id": recovery_moment_id}
-            )
+            order.write({"recovery_moment_id": recovery_moment_id})
             self.with_delay()._eshop_confirm_sale_order(order.id)
         return True
 
     @api.model
-    @job(default_channel='root.sale_eshop_confirm_order')
+    @job(default_channel="root.sale_eshop_confirm_order")
     def _eshop_confirm_sale_order(self, order_id):
         order = self.browse(order_id)
         order.with_context(send_email=True).action_confirm()

@@ -92,11 +92,7 @@ class ProductProduct(models.Model):
     )
     def _compute_eshop_state(self):
         for product in self:
-            if not (
-                product.eshop_category_id
-                and product.sale_ok
-                and product.active
-            ):
+            if not (product.eshop_category_id and product.sale_ok and product.active):
                 product.eshop_state = "unavailable"
             else:
                 dateNow = fields.date.today()
@@ -215,9 +211,7 @@ order by category_sequence, category_name, name;
     def _search_eshop_state(self, operator, value):
         dateNow = datetime.now().strftime("%Y-%m-%d")
         if operator not in ("=", "in"):
-            raise UserError(
-                _("The Operator %s is not implemented !" % (operator))
-            )
+            raise UserError(_("The Operator %s is not implemented !" % (operator)))
         if operator == "=":
             lst = [value]
         else:

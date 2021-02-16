@@ -15,9 +15,7 @@ class UomUom(models.Model):
     _eshop_fields = ["id", "name", "eshop_description"]
 
     # Fields Section
-    eshop_description = fields.Char(
-        string="Description for the eShop", default="/"
-    )
+    eshop_description = fields.Char(string="Description for the eShop", default="/")
 
     # Overwrite section
     @api.model
