@@ -114,8 +114,8 @@ class TestModule(TransactionCase):
             "Update wizard should only two lines, ignoring Impact standard price")
 
         self.assertEqual(
-            set([wizard.line_ids[0].product_id.id, wizard.line_ids[1].product_id.id]),
-            set([self.line_1_1.product_id.id, self.line_1_2.product_id.id]),
+            {wizard.line_ids[0].product_id.id, wizard.line_ids[1].product_id.id},
+            {self.line_1_1.product_id.id, self.line_1_2.product_id.id},
             "Update wizard should update all the expenses products.")
         wizard.update_supplierinfo()
 

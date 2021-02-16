@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, models
-from odoo.tools.float_utils import float_compare
 from odoo.exceptions import Warning as UserError
+from odoo.tools.float_utils import float_compare
 
 
 class AccountInvoiceLine(models.Model):
