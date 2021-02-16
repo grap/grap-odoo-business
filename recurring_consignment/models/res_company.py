@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
     @api.model
     def create(self, vals):
@@ -23,13 +23,16 @@ class ResCompany(models.Model):
         Irsequence = self.env["ir.sequence"]
         for company in self:
             _logger.info(
-                "Creating consignor sequence for company '%s'" % (
-                    company.name))
+                "Creating consignor sequence for company '%s'" % (company.name)
+            )
             current_consignor_qty = len(
-                ResPartner.with_context(active_test=False).search([
-                    ('company_id', '=', company.id),
-                    ('is_consignor', '=', True),
-                ]))
+                ResPartner.with_context(active_test=False).search(
+                    [
+                        ("company_id", "=", company.id),
+                        ("is_consignor", "=", True),
+                    ]
+                )
+            )
             Irsequence.create(
                 company._prepare_consignor_sequence(current_consignor_qty)
             )

@@ -12,8 +12,10 @@ class ProductPricetagType(models.Model):
 
     # Column Section
     company_id = fields.Many2one(
-        comodel_name='res.company', string='Company',
-        default=lambda s: s._default_company_id())
+        comodel_name="res.company",
+        string="Company",
+        default=lambda s: s._default_company_id(),
+    )
 
     name = fields.Char(string="Name", required=True)
 
@@ -32,9 +34,7 @@ class ProductPricetagType(models.Model):
     )
 
     product_qty = fields.Integer(
-        string="Products Quantity",
-        compute="_compute_product_qty",
-        store=True
+        string="Products Quantity", compute="_compute_product_qty", store=True
     )
 
     @api.depends("product_ids")

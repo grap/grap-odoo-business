@@ -6,81 +6,108 @@ from odoo import fields, models
 
 
 class ProductScaleSystemProductLine(models.Model):
-    _name = 'product.scale.system.product.line'
+    _name = "product.scale.system.product.line"
     _description = "Product Scale System Product Line"
-    _order = 'scale_system_id, sequence'
+    _order = "scale_system_id, sequence"
 
     _TYPE_SELECTION = [
-        ('id', 'Product ID'),
-        ('numeric', 'Numeric Field'),
-        ('text', 'Char / Text Field'),
-        ('external_text', 'External Text Field'),
-        ('constant', 'Constant Value'),
-        ('external_constant', 'External Constant Text Value'),
-        ('many2one', 'ManyOne Field'),
-        ('many2many', 'Many2Many Field'),
-        ('product_image', 'Product Image'),
+        ("id", "Product ID"),
+        ("numeric", "Numeric Field"),
+        ("text", "Char / Text Field"),
+        ("external_text", "External Text Field"),
+        ("constant", "Constant Value"),
+        ("external_constant", "External Constant Text Value"),
+        ("many2one", "ManyOne Field"),
+        ("many2many", "Many2Many Field"),
+        ("product_image", "Product Image"),
     ]
 
     # Column Section
     scale_system_id = fields.Many2one(
-        comodel_name='product.scale.system', string='Scale System',
-        required=True, ondelete='cascade', index=True)
+        comodel_name="product.scale.system",
+        string="Scale System",
+        required=True,
+        ondelete="cascade",
+        index=True,
+    )
 
     company_id = fields.Many2one(
-        related='scale_system_id.company_id', string='Company',
-        comodel_name='res.company', store=True, index=True)
+        related="scale_system_id.company_id",
+        string="Company",
+        comodel_name="res.company",
+        store=True,
+        index=True,
+    )
 
-    code = fields.Char(string='Bizerba Code', required=True)
+    code = fields.Char(string="Bizerba Code", required=True)
 
-    name = fields.Char(string='Name', required=True)
+    name = fields.Char(string="Name", required=True)
 
-    sequence = fields.Integer(string='Sequence', default=10)
+    sequence = fields.Integer(string="Sequence", default=10)
 
-    type = fields.Selection(selection=_TYPE_SELECTION, string='Type')
+    type = fields.Selection(selection=_TYPE_SELECTION, string="Type")
 
     field_id = fields.Many2one(
-        comodel_name='ir.model.fields', string='Product Field',
-        domain=[('model', 'in', ['product.product', 'product.template'])])
+        comodel_name="ir.model.fields",
+        string="Product Field",
+        domain=[("model", "in", ["product.product", "product.template"])],
+    )
 
     # TODO Improve. Set domain, depending on the other field
     related_field_id = fields.Many2one(
-        comodel_name='ir.model.fields',
-        string='M2M / M2O Field', help="Used only"
+        comodel_name="ir.model.fields",
+        string="M2M / M2O Field",
+        help="Used only"
         " for the x2x fields. Set here the field of the related model"
-        " that you want to send to the scale. Let empty to send the ID.")
+        " that you want to send to the scale. Let empty to send the ID.",
+    )
 
     x2many_range = fields.Integer(
-        string='range of the x2Many Fields', help="Used if type is"
+        string="range of the x2Many Fields",
+        help="Used if type is"
         " 'Many2Many Field', to mention the"
         " range of the field  to send. Begin by 0. (used for exemple"
-        " for product logos)")
+        " for product logos)",
+    )
 
     constant_value = fields.Char(
-        string='Constant Value', help="Used if type is 'constant',"
-        " to send allways the same value.")
+        string="Constant Value",
+        help="Used if type is 'constant'," " to send allways the same value.",
+    )
 
     multiline_length = fields.Integer(
-        string='Length for Multiline', default=0,
+        string="Length for Multiline",
+        default=0,
         help="Used if type is 'Text Field' or 'External Text Constant', to"
         " indicate the max length of a line. Set 0 to avoid to split the"
-        " value.")
+        " value.",
+    )
 
     multiline_separator = fields.Char(
-        string='Separator for Multiline', default='\n', help="Used if type is"
+        string="Separator for Multiline",
+        default="\n",
+        help="Used if type is"
         " 'Text Field' or 'External Text Constant', to indicate wich text"
-        " will be used to mention break lines.")
+        " will be used to mention break lines.",
+    )
 
     # TODO Improve. Set contrains.
     numeric_coefficient = fields.Float(
-        string='Numeric Coefficient', default=1, help="Used if type is"
+        string="Numeric Coefficient",
+        default=1,
+        help="Used if type is"
         " 'Numeric Field', to mention with coefficient numeric"
-        " field should be multiplyed.")
+        " field should be multiplyed.",
+    )
 
     numeric_round = fields.Float(
-        string='Rounding Method', default=1, help="Used if type is"
+        string="Rounding Method",
+        default=1,
+        help="Used if type is"
         " 'Numeric Field', to mention how the value should be rounded.\n"
-        " Do not Use 0, because it will truncate the value.")
+        " Do not Use 0, because it will truncate the value.",
+    )
 
     delimiter = fields.Char(
-        string='Delimiter Char', default='#', help="Used to finish the column")
+        string="Delimiter Char", default="#", help="Used to finish the column"
+    )

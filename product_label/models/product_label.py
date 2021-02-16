@@ -38,7 +38,8 @@ class ProductLabel(models.Model):
     )
 
     product_qty = fields.Integer(
-        string="Product Quantity", compute="_compute_product_qty")
+        string="Product Quantity", compute="_compute_product_qty"
+    )
 
     image = fields.Binary(string="Image", attachment=True)
 
@@ -55,10 +56,10 @@ class ProductLabel(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            tools.image_resize_images(vals, sizes={'image': (1024, None)})
+            tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().create(vals_list)
 
     @api.multi
     def write(self, vals):
-        tools.image_resize_images(vals, sizes={'image': (1024, None)})
+        tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().write(vals)

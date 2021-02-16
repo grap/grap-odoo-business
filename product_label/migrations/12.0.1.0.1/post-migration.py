@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 
 
 attachment_fields = {
-    'product.label': [
-        ('image', None),
-        ('image_medium', None),
-        ('image_small', None),
+    "product.label": [
+        ("image", None),
+        ("image_medium", None),
+        ("image_small", None),
     ],
 }
 

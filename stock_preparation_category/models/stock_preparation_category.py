@@ -16,8 +16,10 @@ class StockPreparationCategory(models.Model):
     sequence = fields.Integer(string="Sequence", required=True)
 
     code = fields.Char(
-        string="Code", required=True,
-        help="This field will be used on the picking reports")
+        string="Code",
+        required=True,
+        help="This field will be used on the picking reports",
+    )
 
     color = fields.Char(string="Color", required=True, default="#FFFFFF")
 
@@ -36,8 +38,7 @@ class StockPreparationCategory(models.Model):
     )
 
     product_qty = fields.Integer(
-        compute="_compute_product_qty",
-        string="Product Quantity"
+        compute="_compute_product_qty", string="Product Quantity"
     )
 
     # Default Section

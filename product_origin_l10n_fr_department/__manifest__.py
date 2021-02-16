@@ -17,7 +17,6 @@
     "demo": [
         "demo/product_product.xml",
     ],
-    "images": [
-    ],
+    "images": [],
     "installable": True,
 }

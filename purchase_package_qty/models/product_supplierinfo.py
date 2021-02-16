@@ -9,12 +9,14 @@ from odoo import api, fields, models
 
 
 class ProductSupplierinfo(models.Model):
-    _inherit = 'product.supplierinfo'
+    _inherit = "product.supplierinfo"
 
     package_qty = fields.Float(
-        string='Package Quantity', default=0,
+        string="Package Quantity",
+        default=0,
         help="The quantity of products in the supplier package."
-        " You will always have to buy a multiple of this quantity.")
+        " You will always have to buy a multiple of this quantity.",
+    )
 
     @api.multi
     def _get_quantity_according_package(self, product_qty, uom):
@@ -36,8 +38,7 @@ class ProductSupplierinfo(models.Model):
                 self.min_qty = self.package_qty
             elif self.min_qty % self.package_qty:
                 # check if min_qty is a multiple of package_qty
-                self.min_qty =\
-                    ceil(self.min_qty // self.package_qty) * self.package_qty
+                self.min_qty = ceil(self.min_qty // self.package_qty) * self.package_qty
 
     @api.onchange("min_qty")
     def onchange_min_qty(self):
@@ -46,5 +47,4 @@ class ProductSupplierinfo(models.Model):
                 self.package_qty = self.min_qty
             elif self.min_qty % self.package_qty:
                 # check if min_qty is a multiple of package_qty
-                self.min_qty =\
-                    ceil(self.min_qty / self.package_qty) * self.package_qty
+                self.min_qty = ceil(self.min_qty / self.package_qty) * self.package_qty

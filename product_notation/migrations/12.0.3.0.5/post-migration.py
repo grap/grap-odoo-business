@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 attachment_fields = {
-    'product.product': [
-        ('spider_chart_image', None),
+    "product.product": [
+        ("spider_chart_image", None),
     ],
 }
 

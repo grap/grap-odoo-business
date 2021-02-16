@@ -41,9 +41,7 @@ class ResCompany(models.Model):
 
     eshop_minimum_price = fields.Float(string="Minimum Price by eShop")
 
-    eshop_manage_recovery_moment = fields.Boolean(
-        string="Manage recovery Moment"
-    )
+    eshop_manage_recovery_moment = fields.Boolean(string="Manage recovery Moment")
 
     eshop_title = fields.Char(string="eShop Title")
 
@@ -88,16 +86,18 @@ class ResCompany(models.Model):
 
     # Compute Section
     def _compute_eshop_url(self):
-        IrConfigParameter = self.env['ir.config_parameter']
+        IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_url = IrConfigParameter.get_param(
-                'sale_eshop.eshop_url__%d' % company.id)
+                "sale_eshop.eshop_url__%d" % company.id
+            )
 
     def _compute_eshop_invalidation_key(self):
-        IrConfigParameter = self.env['ir.config_parameter']
+        IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_invalidation_key = IrConfigParameter.get_param(
-                'sale_eshop.eshop_invalidation_key__%d' % company.id)
+                "sale_eshop.eshop_invalidation_key__%d" % company.id
+            )
 
     # Overwrite section
     @api.model
@@ -118,19 +118,23 @@ class ResCompany(models.Model):
 
     @api.multi
     def _create_parameter_if_not_exists(self):
-        IrConfigParameter = self.env['ir.config_parameter']
+        IrConfigParameter = self.env["ir.config_parameter"]
         for company in self.filtered(lambda x: x.has_eshop):
-            key = 'sale_eshop.eshop_url__%d' % company.id
+            key = "sale_eshop.eshop_url__%d" % company.id
             param = IrConfigParameter.search([("key", "=", key)])
             if not param:
-                IrConfigParameter.create({
-                    "key": key,
-                    "value": "unset",
-                })
-            key = 'sale_eshop.eshop_invalidation_key__%d' % company.id
+                IrConfigParameter.create(
+                    {
+                        "key": key,
+                        "value": "unset",
+                    }
+                )
+            key = "sale_eshop.eshop_invalidation_key__%d" % company.id
             param = IrConfigParameter.search([("key", "=", key)])
             if not param:
-                IrConfigParameter.create({
-                    "key": key,
-                    "value": "unset",
-                })
+                IrConfigParameter.create(
+                    {
+                        "key": key,
+                        "value": "unset",
+                    }
+                )

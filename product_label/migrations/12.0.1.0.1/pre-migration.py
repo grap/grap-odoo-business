@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 
 
 column_renames = {
-    'product_label': [
-        ('image', None),
-        ('image_medium', None),
-        ('image_small', None),
+    "product_label": [
+        ("image", None),
+        ("image_medium", None),
+        ("image_small", None),
     ],
 }
 

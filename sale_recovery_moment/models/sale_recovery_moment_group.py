@@ -25,21 +25,15 @@ class SaleRecoveryMomentGroup(models.Model):
     ]
 
     # Column Section
-    code = fields.Char(
-        string="Code", readonly=True, required=True, default="/"
-    )
+    code = fields.Char(string="Code", readonly=True, required=True, default="/")
 
     short_name = fields.Char(string="Short Name", required=True)
 
     name = fields.Char(compute="_compute_name", string="Name", store=True)
 
-    min_sale_date = fields.Datetime(
-        string="Minimum date for the Sale", required=True
-    )
+    min_sale_date = fields.Datetime(string="Minimum date for the Sale", required=True)
 
-    max_sale_date = fields.Datetime(
-        string="Maximum date for the Sale", required=True
-    )
+    max_sale_date = fields.Datetime(string="Maximum date for the Sale", required=True)
 
     min_recovery_date = fields.Datetime(
         compute="_compute_recovery_date",
@@ -128,15 +122,14 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            vals['code'] = self.env['ir.sequence'].next_by_code(
-                'sale.recovery.moment.group')
+            vals["code"] = self.env["ir.sequence"].next_by_code(
+                "sale.recovery.moment.group"
+            )
         return super().create(vals_list)
 
     # Compute Section
     @api.multi
-    @api.depends(
-        "moment_ids.min_recovery_date", "moment_ids.max_recovery_date"
-    )
+    @api.depends("moment_ids.min_recovery_date", "moment_ids.max_recovery_date")
     def _compute_recovery_date(self):
         for moment_group in self:
             if len(moment_group.moment_ids) > 0:
@@ -152,9 +145,7 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.depends("moment_ids.order_qty", "moment_ids.valid_order_qty")
     def _compute_order_multi(self):
         for moment_group in self:
-            moment_group.order_qty = sum(
-                moment_group.mapped("moment_ids.order_qty")
-            )
+            moment_group.order_qty = sum(moment_group.mapped("moment_ids.order_qty"))
             moment_group.valid_order_qty = sum(
                 moment_group.mapped("moment_ids.valid_order_qty")
             )
@@ -210,9 +201,7 @@ class SaleRecoveryMomentGroup(models.Model):
     def _search_state(self, operator, operand):
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if operator not in ("=", "in"):
-            raise UserError(
-                _("The Operator %s is not implemented !") % (operator)
-            )
+            raise UserError(_("The Operator %s is not implemented !") % (operator))
         if operator == "=":
             lst = [operand]
         else:
@@ -222,20 +211,15 @@ class SaleRecoveryMomentGroup(models.Model):
             sql_lst.append("('%s' < min_sale_date)" % (now))
         if "pending_sale" in lst:
             sql_lst.append(
-                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)")
-                % (now, now)
+                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)") % (now, now)
             )
         if "finished_sale" in lst:
             sql_lst.append(
-                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)")
-                % (now, now)
+                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)") % (now, now)
             )
         if "pending_recovery" in lst:
             sql_lst.append(
-                (
-                    "(min_recovery_date < '%s'"
-                    + " AND '%s' < max_recovery_date)"
-                )
+                ("(min_recovery_date < '%s'" + " AND '%s' < max_recovery_date)")
                 % (now, now)
             )
         if "finished_recovery" in lst:

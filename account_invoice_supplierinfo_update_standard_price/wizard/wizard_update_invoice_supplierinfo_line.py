@@ -8,12 +8,14 @@ import odoo.addons.decimal_precision as dp
 
 
 class WizardUpdateInvoiceSupplierinfoLine(models.TransientModel):
-    _inherit = 'wizard.update.invoice.supplierinfo.line'
+    _inherit = "wizard.update.invoice.supplierinfo.line"
 
     current_standard_price = fields.Float(
-        string='Current Standard Price', readonly=True,
-        digits=dp.get_precision('Product Price'))
+        string="Current Standard Price",
+        readonly=True,
+        digits=dp.get_precision("Product Price"),
+    )
 
     new_standard_price = fields.Float(
-        string='New Standard Price',
-        digits=dp.get_precision('Product Price'))
+        string="New Standard Price", digits=dp.get_precision("Product Price")
+    )

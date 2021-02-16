@@ -48,7 +48,7 @@ class EshopMixin(models.AbstractModel):
 
     @api.model
     @job(
-        default_channel='root.sale_eshop_invalidate_eshop',
+        default_channel="root.sale_eshop_invalidate_eshop",
         retry_pattern={1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60},
     )
     def _invalidate_eshop(self, company, item_identifier):
@@ -64,8 +64,7 @@ class EshopMixin(models.AbstractModel):
 
         url = urljoin(
             base_url,
-            "invalidation_cache/%s/%s/%d/"
-            % (private_key, self._name, item_identifier),
+            "invalidation_cache/%s/%s/%d/" % (private_key, self._name, item_identifier),
         )
         requests.get(url, verify=False)
 
@@ -94,8 +93,6 @@ class EshopMixin(models.AbstractModel):
                     self.with_delay()._invalidate_eshop(item.company_id, item.id)
 
         elif self._eshop_invalidation_type == "multiple":
-            for company in ResCompany.sudo().search(
-                [("has_eshop", "=", True)]
-            ):
+            for company in ResCompany.sudo().search([("has_eshop", "=", True)]):
                 for _id in self.ids:
                     self.with_delay()._invalidate_eshop(company, _id)
