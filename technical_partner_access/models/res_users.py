@@ -7,14 +7,16 @@ from odoo import api, models
 
 
 class ResUsers(models.Model):
-    _inherit = 'res.users'
+    _inherit = "res.users"
 
     # Overload Section
     @api.model
     def create(self, vals):
         vals.update({"is_odoo_user": True})
         user = super().create(vals)
-        user.partner_id.write({
-            'company_id': False,
-        })
+        user.partner_id.write(
+            {
+                "company_id": False,
+            }
+        )
         return user
