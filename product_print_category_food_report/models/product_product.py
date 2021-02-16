@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
+
 import odoo.addons.decimal_precision as dp
 
 
@@ -95,7 +96,7 @@ class ProductProduct(models.Model):
         for product in self:
             localization_info = ""
             if product.department_id:
-                localization_info = "%s (%s)" % (
+                localization_info = "{} ({})".format(
                     product.department_id.name,
                     product.department_id.code,
                 )
@@ -106,7 +107,7 @@ class ProductProduct(models.Model):
 
             if product.origin_description:
                 if localization_info:
-                    product.pricetag_origin = "%s - %s" % (
+                    product.pricetag_origin = "{} - {}".format(
                         localization_info,
                         product.origin_description,
                     )
