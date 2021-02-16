@@ -5,7 +5,7 @@
 from datetime import datetime
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError, ValidationError
+from odoo.exceptions import ValidationError, Warning as UserError
 
 import odoo.addons.decimal_precision as dp
 
@@ -184,7 +184,7 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.depends("code", "short_name")
     def _compute_name(self):
         for moment_group in self:
-            moment_group.name = "%s - %s" % (
+            moment_group.name = "{} - {}".format(
                 moment_group.code,
                 moment_group.short_name,
             )

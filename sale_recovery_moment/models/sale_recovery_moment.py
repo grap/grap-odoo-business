@@ -5,8 +5,7 @@
 from datetime import datetime
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import ValidationError, Warning as UserError
 
 
 class SaleRecoveryMoment(models.Model):
@@ -263,14 +262,14 @@ class SaleRecoveryMoment(models.Model):
     )
     def _compute_name(self):
         for moment in self.filtered(lambda x: x.group_id):
-            moment.name = "%s - %s - %s - %s" % (
+            moment.name = "{} - {} - {} - {}".format(
                 moment.code,
                 moment.group_id.short_name,
                 moment.place_id.name,
                 moment.min_recovery_date,
             )
         for moment in self.filtered(lambda x: not x.group_id):
-            moment.name = "%s - %s - %s" % (
+            moment.name = "{} - {} - {}".format(
                 moment.code,
                 moment.place_id.name,
                 moment.min_recovery_date,

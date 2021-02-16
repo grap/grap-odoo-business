@@ -83,7 +83,7 @@ class SaleRecoveryPlace(models.Model):
                 and place.country_id.name
                 or "",
             }
-            place.complete_name = "%s - %s" % (
+            place.complete_name = "{} - {}".format(
                 place.name,
                 (address_format % args).replace("\n", " "),
             )
