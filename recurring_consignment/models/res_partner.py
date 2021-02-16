@@ -34,8 +34,8 @@ class ResPartner(models.Model):
                         "A Consignor must have a 'Consignment Account'"
                         " defined."))
             else:
-                if (partner.consignment_account_id or
-                        partner.consignment_commission != 0):
+                if (partner.consignment_account_id
+                        or partner.consignment_commission != 0):
                     raise UserError(_(
                         "A Non Consignor partner can not have 'Consignment"
                         " Commission' neither 'Consignment Account' defined."))
