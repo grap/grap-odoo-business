@@ -8,28 +8,35 @@ from odoo.exceptions import Warning as UserError
 
 
 class AccountTax(models.Model):
-    _inherit = 'account.tax'
+    _inherit = "account.tax"
 
     # Columns Section
     consignor_partner_id = fields.Many2one(
-        string='Consignor', comodel_name='res.partner',
-        domain="[('is_consignor', '=', True)]")
+        string="Consignor",
+        comodel_name="res.partner",
+        domain="[('is_consignor', '=', True)]",
+    )
 
     consignment_product_id = fields.Many2one(
-        string='Consignment Product', comodel_name='product.product',
+        string="Consignment Product",
+        comodel_name="product.product",
         domain="[('is_consignment_commission', '=', True)]",
         help="Set a 'Sales commission' product for consignment sales.\n"
         "If not set, transaction will not be commissioned. (this case is"
         " usefull to avoid to commission taxes transaction, because in"
-        " most cases, commissions are computed on without taxes amount).")
+        " most cases, commissions are computed on without taxes amount).",
+    )
 
-    @api.constrains('consignment_product_id')
+    @api.constrains("consignment_product_id")
     def _check_consignment_product_id(self):
         for tax_code in self.filtered(lambda x: x.consignment_product_id):
             if not tax_code.consignment_product_id.is_consignment_commission:
-                raise UserError(_(
-                    "Set only consignement commission product in the"
-                    " according field"))
+                raise UserError(
+                    _(
+                        "Set only consignement commission product in the"
+                        " according field"
+                    )
+                )
 
     # # Onchange Section
     # @api.onchange('consignor_partner_id')
