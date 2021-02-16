@@ -93,10 +93,10 @@ class AccountInvoice(models.Model):
                 'total_vat_excl': 0,
             })
             groups[key] = {
-                'quantity': groups[key]['quantity'] +
-                com_invoice_line.quantity,
-                'total_vat_excl': groups[key]['total_vat_excl'] +
-                com_invoice_line.price_subtotal,
+                'quantity': groups[key]['quantity']
+                + com_invoice_line.quantity,
+                'total_vat_excl': groups[key]['total_vat_excl']
+                + com_invoice_line.price_subtotal,
             }
         return groups
 

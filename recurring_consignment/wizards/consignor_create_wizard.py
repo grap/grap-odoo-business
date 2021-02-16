@@ -103,7 +103,7 @@ class ConsignorCreateWizard(models.TransientModel):
                 vat_subject=self.is_vat_subject and " "
                 or _(" NOT SUBJECT TO VAT - "),
                 name=self.name,
-                ),
+            ),
             'company_id': self.env.user.company_id.id,
             'description': self.is_vat_subject
             and "{amount:.1f}%".format(amount=amount) or '0%',
@@ -126,7 +126,7 @@ class ConsignorCreateWizard(models.TransientModel):
                 vat_subject=self.is_vat_subject and " "
                 or _(" NOT SUBJECT TO VAT - "),
                 name=self.name,
-                ),
+            ),
             'sale_tax_ids': [(4, tax.id)],
             'consignor_partner_id': partner.id,
         }

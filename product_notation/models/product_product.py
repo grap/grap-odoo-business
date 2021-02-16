@@ -59,10 +59,10 @@ class ProductProduct(models.Model):
         'packaging_notation')
     def _compute_spider_chart_image(self):
         for product in self:
-            if (product.social_notation and
-                    product.organic_notation and
-                    product.packaging_notation and
-                    product.local_notation):
+            if (product.social_notation
+                    and product.organic_notation
+                    and product.packaging_notation
+                    and product.local_notation):
                 codeSVG = radar_template.CodeSVG % {
                     'y_social': 105 - (15 * int(product.social_notation)),
                     'x_organic': 105 + (15 * int(product.organic_notation)),

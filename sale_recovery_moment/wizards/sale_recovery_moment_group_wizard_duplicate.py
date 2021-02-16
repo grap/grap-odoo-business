@@ -56,10 +56,10 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         for moment in self.group_id.moment_ids:
             moment_vals = {
                 "group_id": new_group.id,
-                "min_recovery_date": moment.min_recovery_date +
-                relativedelta(days=self.day_delay),
-                "max_recovery_date": moment.max_recovery_date +
-                relativedelta(days=self.day_delay),
+                "min_recovery_date": moment.min_recovery_date
+                + relativedelta(days=self.day_delay),
+                "max_recovery_date": moment.max_recovery_date
+                + relativedelta(days=self.day_delay),
                 "place_id": moment.place_id.id,
                 "max_order_qty": moment.max_order_qty,
                 "description": moment.description,

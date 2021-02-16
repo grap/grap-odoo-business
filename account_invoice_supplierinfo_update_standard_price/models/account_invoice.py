@@ -32,14 +32,14 @@ class AccountInvoice(models.Model):
                 'product_expense_total': sum(
                     invoice.invoice_line_ids.filtered(
                         lambda x:
-                            not x.product_id or
-                            not x.product_id.is_impact_standard_price
+                            not x.product_id
+                            or not x.product_id.is_impact_standard_price
                     ).mapped('price_subtotal')),
                 'distributed_expense_total': sum(
                     invoice.invoice_line_ids.filtered(
                         lambda x:
-                            x.product_id and
-                            x.product_id.is_impact_standard_price
+                            x.product_id
+                            and x.product_id.is_impact_standard_price
                     ).mapped('price_subtotal')),
             })
 

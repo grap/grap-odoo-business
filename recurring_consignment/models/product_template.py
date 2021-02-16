@@ -95,11 +95,11 @@ class ProductTemplate(models.Model):
         new_template_ids = []
         if 'consignor_partner_id' in vals:
             for template in self:
-                if (template.consignor_partner_id and
-                        not vals.get('consignor_partner_id')):
+                if (template.consignor_partner_id
+                        and not vals.get('consignor_partner_id')):
                     drop_template_ids.append(template.id)
-                if (not template.consignor_partner_id and
-                        vals.get('consignor_partner_id')):
+                if (not template.consignor_partner_id
+                        and vals.get('consignor_partner_id')):
                     new_template_ids.append(template.id)
         if drop_template_ids:
             ProductPricelist.consignmment_drop(drop_template_ids)

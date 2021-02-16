@@ -19,8 +19,8 @@ class AccountInvoiceLine(models.Model):
             if self.invoice_id.product_expense_total != 0:
                 line_shared_cost =\
                     self.invoice_id.distributed_expense_total * (
-                        self.price_subtotal /
-                        self.invoice_id.product_expense_total)
+                        self.price_subtotal
+                        / self.invoice_id.product_expense_total)
             else:
                 raise UserError(_(
                     "We can't check prices"
@@ -33,10 +33,10 @@ class AccountInvoiceLine(models.Model):
             return self.invoice_id.currency_id.round(
                 uom._compute_price(
                     line_shared_cost_per_unit + (
-                        self.price_unit *
-                        (1 - self.discount / 100) *
-                        (1 - self.discount2 / 100) *
-                        (1 - self.discount3 / 100)
+                        self.price_unit
+                        * (1 - self.discount / 100)
+                        * (1 - self.discount2 / 100)
+                        * (1 - self.discount3 / 100)
                     ),
                     self.product_id.uom_id
                 ))

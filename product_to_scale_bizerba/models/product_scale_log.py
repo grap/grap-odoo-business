@@ -8,8 +8,8 @@ import os
 import socket
 from datetime import datetime
 
-from odoo import api, fields, models, tools
-from odoo.exceptions import Warning
+from odoo import _, api, fields, models, tools
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -229,7 +229,7 @@ class ProductScaleLog(models.Model):
             ])))
             position += 1
         initial_position = position
-        for x in range(
+        for _x in range(
                 initial_position, scale_group.last_product_position + 1):
             lines.append(str(self._SCREEN_TEXT_DELIMITER.join([
                 str(position),                              # KEYNUM Code
@@ -264,8 +264,8 @@ class ProductScaleLog(models.Model):
                 ftp.login()
             return ftp
         except socket.gaierror:
-            raise Warning(
-                "Connection to ftp://{}@{} failed.".format(
+            raise UserError(_(
+                "Connection to ftp://{}@{} failed.").format(
                     scale_system.ftp_login, scale_system.ftp_url))
 
     @api.model
@@ -294,11 +294,11 @@ class ProductScaleLog(models.Model):
             try:
                 ftp.storbinary('STOR ' + distant_path, f)
             except Exception:
-                raise Warning(
+                raise UserError(_(
                     "Unable to push the file %s on the FTP server.\n"
                     "Possible reasons :\n"
                     " * Incorrect access right for the current FTP user\n"
-                    " * Distant folder '%s' doesn't exist" % (
+                    " * Distant folder '%s' doesn't exist") % (
                         f_name, distant_folder_path, ))
 
             # Delete temporary file
