@@ -4,8 +4,7 @@
 
 import logging
 
-from openupgradelib import openupgrade
-from openupgradelib import openupgrade_90
+from openupgradelib import openupgrade, openupgrade_90
 
 logger = logging.getLogger(__name__)
 

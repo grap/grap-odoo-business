@@ -6,7 +6,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-        <report 
+        <report
             id="report_account_invoice_consignment"
             string="Commission Invoice Receipt"
             model="account.invoice"

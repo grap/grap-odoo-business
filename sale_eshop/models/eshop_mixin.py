@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import logging
-import requests
 
+import requests
 from requests.compat import urljoin
 
 from odoo import api, models

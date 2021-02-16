@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import base64
-import os
 import logging
+import os
 import socket
 from datetime import datetime
 
@@ -252,7 +252,7 @@ class ProductScaleLog(models.Model):
     @api.model
     def ftp_connection_open(self, scale_system):
         """Return a new FTP connection with found parameters."""
-        _logger.info("Trying to connect to ftp://%s@%s" % (
+        _logger.info("Trying to connect to ftp://{}@{}".format(
             scale_system.ftp_login, scale_system.ftp_url))
         try:
             ftp = FTP(scale_system.ftp_url)
@@ -265,7 +265,7 @@ class ProductScaleLog(models.Model):
             return ftp
         except socket.gaierror:
             raise Warning(
-                "Connection to ftp://%s@%s failed." % (
+                "Connection to ftp://{}@{} failed.".format(
                     scale_system.ftp_login, scale_system.ftp_url))
 
     @api.model
