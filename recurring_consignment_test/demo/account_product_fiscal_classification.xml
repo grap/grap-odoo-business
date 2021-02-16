@@ -16,16 +16,4 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_tax_ids" eval="[(4, ref('vat_20_exclude'))]"/>
     </record>
 
-    <record id="fiscal_classification_5_consignor_1" model="account.product.fiscal.classification">
-        <field name="name">Tax Group 5% (Consignor 1)</field>
-        <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="sale_tax_ids" eval="[(4, ref('tax_5_consignor_1'))]"/>
-    </record>
-
-    <record id="fiscal_classification_20_consignor_1" model="account.product.fiscal.classification">
-        <field name="name">Tax Group 20% (Consignor 1)</field>
-        <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="sale_tax_ids" eval="[(4, ref('tax_20_consignor_1'))]"/>
-    </record>
-
 </odoo>

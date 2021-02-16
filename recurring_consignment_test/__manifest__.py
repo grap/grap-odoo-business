@@ -21,6 +21,8 @@
         'demo/account_product_fiscal_classification.xml',
         'demo/product_product.xml',
         'demo/account_tax_delayed.xml',
+        'demo/account_product_fiscal_classification_delayed.xml',
+        'demo/product_product_delayed.xml',
         'demo/account_invoice.xml',
         'demo/product_pricelist.xml',
     ],
