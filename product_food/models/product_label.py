@@ -10,8 +10,8 @@ class ProductLabel(models.Model):
     _inherit = "product.label"
 
     _ORGANIC_TYPE_SELECTION = [
-        ('01_organic', "Organic"),
-        ('02_agroecological', "Agroecological"),
+        ("01_organic", "Organic"),
+        ("02_agroecological", "Agroecological"),
     ]
 
     organic_type = fields.Selection(

@@ -30,7 +30,8 @@ class ProductAllergen(models.Model):
     )
 
     product_qty = fields.Integer(
-        string="Product Quantity", compute="_compute_product_qty")
+        string="Product Quantity", compute="_compute_product_qty"
+    )
 
     @api.multi
     @api.depends("product_ids")

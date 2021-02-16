@@ -12,22 +12,21 @@ class ProductProduct(models.Model):
 
     # Constant Section
     _ORIGIN_TYPE_SELECTION = [
-        ('eu', "EU"),
-        ('no_eu', "No EU"),
-        ('eu_no_eu', "EU / No EU"),
+        ("eu", "EU"),
+        ("no_eu", "No EU"),
+        ("eu_no_eu", "EU / No EU"),
     ]
 
     _ORGANIC_TYPE_SELECTION = [
-        ('01_organic', "Organic"),
-        ('02_agroecological', "Agroecological"),
-        ('03_uncertifiable', "Aliment Uncertifiable"),
-        ('04_uncertified', "Aliment Not Certified"),
-        ('05_not_alimentary', "Not Alimentary"),
+        ("01_organic", "Organic"),
+        ("02_agroecological", "Agroecological"),
+        ("03_uncertifiable", "Aliment Uncertifiable"),
+        ("04_uncertified", "Aliment Not Certified"),
+        ("05_not_alimentary", "Not Alimentary"),
     ]
 
     # Column Section
-    is_alimentary = fields.Boolean(
-        string="Is Alimentary")
+    is_alimentary = fields.Boolean(string="Is Alimentary")
 
     certifier_organization_id = fields.Many2one(
         comodel_name="certifier.organization",
@@ -38,13 +37,12 @@ class ProductProduct(models.Model):
         string="Not Certifiable",
         help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
-        " that comes from the sea")
+        " that comes from the sea",
+    )
 
     is_alcohol = fields.Boolean(string="Contain Alcohol")
 
-    best_before_date_day = fields.Integer(
-        string="Best Before Date Day"
-    )
+    best_before_date_day = fields.Integer(string="Best Before Date Day")
 
     ingredients = fields.Text(string="Ingredients")
 
@@ -59,8 +57,9 @@ class ProductProduct(models.Model):
     allergens = fields.Text(string="Allergens Complement")
 
     organic_type = fields.Selection(
-        selection=_ORGANIC_TYPE_SELECTION, string="Organic Category",
-        compute="_compute_organic_type"
+        selection=_ORGANIC_TYPE_SELECTION,
+        string="Organic Category",
+        compute="_compute_organic_type",
     )
 
     origin_type = fields.Selection(
@@ -69,16 +68,15 @@ class ProductProduct(models.Model):
     )
 
     price_per_unit = fields.Float(
-        compute='_compute_price_per_unit',
-        string='Unit Price')
+        compute="_compute_price_per_unit", string="Unit Price"
+    )
 
     # Compute Section
-    @api.depends(
-        "label_ids.organic_type", "is_alimentary", "is_uncertifiable")
+    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
         for product in self:
-            types = product.mapped('label_ids.organic_type')
-            if '01_organic' in types:
+            types = product.mapped("label_ids.organic_type")
+            if "01_organic" in types:
                 product.organic_type = "01_organic"
             elif "02_agroecological" in types:
                 product.organic_type = "02_agroecological"
@@ -124,14 +122,8 @@ class ProductProduct(models.Model):
         for product in self:
             if product.is_alcohol:
                 # Check that all the alcohol labels are set
-                alcohol_label_ids = ProductLabel.search(
-                    [("is_alcohol", "=", True)]
-                ).ids
-                if [
-                    x
-                    for x in alcohol_label_ids
-                    if x not in product.label_ids.ids
-                ]:
+                alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
+                if [x for x in alcohol_label_ids if x not in product.label_ids.ids]:
                     raise UserError(
                         _(
                             "Incorrect Setting. the product %s is checked as"
@@ -170,12 +162,8 @@ class ProductProduct(models.Model):
         ProductLabel = self.env["product.label"]
         if self.is_alcohol:
             self.is_alimentary = True
-            alcohol_label_ids = ProductLabel.search(
-                [("is_alcohol", "=", True)]
-            ).ids
+            alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
             for alcohol_label_id in alcohol_label_ids:
                 self.label_ids = [(4, alcohol_label_id)]
         else:
-            self.label_ids = self.label_ids.filtered(
-                lambda x: not x.is_alcohol
-            )
+            self.label_ids = self.label_ids.filtered(lambda x: not x.is_alcohol)
