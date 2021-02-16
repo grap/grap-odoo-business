@@ -6,16 +6,14 @@ from odoo.tests.common import TransactionCase
 
 
 class TestModule(TransactionCase):
-
     def setUp(self):
         super().setUp()
         self.SaleRecoveryMomentGroupWizardDuplicate = self.env[
-            'sale.recovery.moment.group.wizard.duplicate']
-        self.SaleRecoveryMomentGroup = self.env[
-            'sale.recovery.moment.group']
+            "sale.recovery.moment.group.wizard.duplicate"
+        ]
+        self.SaleRecoveryMomentGroup = self.env["sale.recovery.moment.group"]
         self.sale_order = self.env.ref("sale_recovery_moment.sale_order_1")
-        self.moment_group = self.env.ref(
-            "sale_recovery_moment.recovery_moment_group_1")
+        self.moment_group = self.env.ref("sale_recovery_moment.recovery_moment_group_1")
         self.recovery_moment_with = self.env.ref(
             "sale_recovery_moment.recovery_moment_1"
         )
@@ -46,15 +44,17 @@ class TestModule(TransactionCase):
 
     def test_03_wizard_duplicate(self):
         wizard = self.SaleRecoveryMomentGroupWizardDuplicate.with_context(
-            active_id=self.moment_group.id).create({
+            active_id=self.moment_group.id
+        ).create(
+            {
                 "day_delay": 280,
                 "short_name": "Test",
-            })
+            }
+        )
         wizard.onchange_day_delay()
         action_data = wizard.duplicate_group()
         new_group_id = action_data.get("res_id")
         group = self.SaleRecoveryMomentGroup.browse(new_group_id)
         self.assertEqual(
-            group.state, "futur",
-            "incorrect state of the group, when duplicating it"
+            group.state, "futur", "incorrect state of the group, when duplicating it"
         )

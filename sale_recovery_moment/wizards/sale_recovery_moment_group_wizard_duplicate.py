@@ -29,12 +29,11 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
 
     short_name = fields.Char(string="Short Name", required=True)
 
-    next_min_sale_date = fields.Datetime(
-        string="Next Minimum Sale Date", readonly=True
-    )
+    next_min_sale_date = fields.Datetime(string="Next Minimum Sale Date", readonly=True)
 
     next_max_sale_date = fields.Datetime(
-        string="Next Maximum Sale Date", readonly=True,
+        string="Next Maximum Sale Date",
+        readonly=True,
     )
 
     # Defaults Section
@@ -69,9 +68,7 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         action_data = self.env.ref(
             "sale_recovery_moment.action_sale_recovery_moment_group"
         ).read()[0]
-        view = self.env.ref(
-            "sale_recovery_moment.view_sale_recovery_moment_group_form"
-        )
+        view = self.env.ref("sale_recovery_moment.view_sale_recovery_moment_group_form")
         action_data["views"] = [(view.id, "form")]
         action_data["res_id"] = new_group.id
         return action_data
@@ -80,10 +77,12 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
     @api.onchange("group_id", "day_delay")
     def onchange_day_delay(self):
         if self.day_delay and self.group_id:
-            self.next_min_sale_date = self.group_id.min_sale_date +\
-                relativedelta(days=self.day_delay)
-            self.next_max_sale_date = self.group_id.max_sale_date +\
-                relativedelta(days=self.day_delay)
+            self.next_min_sale_date = self.group_id.min_sale_date + relativedelta(
+                days=self.day_delay
+            )
+            self.next_max_sale_date = self.group_id.max_sale_date + relativedelta(
+                days=self.day_delay
+            )
         else:
             self.next_min_sale_date = False
             self.next_max_sale_date = False
