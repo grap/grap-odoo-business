@@ -87,10 +87,10 @@ class ResPartner(models.Model):
                         'property_account_receivable_id': vals.get(
                             'consignment_account_id', False),
                     })
-            elif set([
+            elif {
                     'property_account_payable_id',
                     'property_account_receivable_id',
-                    'consignment_account_id']) & set(vals.keys()):
+                    'consignment_account_id'} & set(vals.keys()):
                 raise UserError(_(
                     "You can not change this settings ("
                     " Accounting Properties) for many partners if some"
