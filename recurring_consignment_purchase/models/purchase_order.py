@@ -8,18 +8,22 @@ from odoo.exceptions import UserError
 
 
 class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+    _inherit = "purchase.order"
 
     consignment_trade = fields.Boolean(
-        string='Consignment Trade', related='partner_id.is_consignor')
+        string="Consignment Trade", related="partner_id.is_consignor"
+    )
 
     @api.multi
     def action_view_invoice(self):
         orders = self.filtered(lambda x: x.consignment_trade)
         if orders:
-            raise UserError(_(
-                "You can not make invoices for purchase order(s) %s"
-                " because there are associated to consignor(s).") % (
-                ', '.join([x.name for x in orders])))
+            raise UserError(
+                _(
+                    "You can not make invoices for purchase order(s) %s"
+                    " because there are associated to consignor(s)."
+                )
+                % (", ".join([x.name for x in orders]))
+            )
         res = super().action_view_invoice()
         return res
