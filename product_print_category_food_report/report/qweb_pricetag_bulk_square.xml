@@ -35,7 +35,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <div class="label_ingredients label_left_div">
                                     <t t-if="not line.product_id.ingredients == '&lt;p>&lt;br>&lt;/p>'"><b>Ingredients</b><br/><t t-raw="line.product_id.ingredients"/><br/></t>
                                     <t t-else=""><span class="empty_field"><b>Ingredients</b></span><br/></t>
-                                </div> 
+                                </div>
                                 <div class="label_allergens label_left_div">
                                     <t t-if="not line.product_id.allergens == '&lt;p>&lt;br>&lt;/p>'"><b>Allergens</b><br/><t t-raw="line.product_id.allergens"/><br/></t>
                                 </div>
@@ -84,7 +84,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-if="line.product_id.pricetag_special_quantity_price">
                                     <div class="product_price_per_uom_price_big">
                                         <div class="product_price_big">
-                                            <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b><!-- 
+                                            <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b><!--
                                              --><div class="product_uom_special"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                         </div>
                                     </div>
@@ -98,8 +98,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-else="">
                                     <div class="product_price_per_uom_price_big">
                                         <div class="product_price_big">
-                                            <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!-- 
-                                             --><t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><!-- 
+                                            <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!--
+                                             --><t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><!--
                                                  --><span class="product_uom">/L</span><br/>
                                             </t>
                                             <t t-elif="line.product_id.uom_id.category_id.name == 'Weight'"><span class="product_uom">/kg</span><br/></t>
