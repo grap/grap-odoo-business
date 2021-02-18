@@ -13,6 +13,7 @@
     "depends": [
         "recurring_consignment",
         "purchase",
+        "stock",
     ],
     "data": ["views/view_purchase_order.xml"],
     "installable": True,
