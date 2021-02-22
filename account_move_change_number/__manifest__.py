@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Account - Move Change Number",
-    "version": "12.0.1.0.2",
+    "version": "12.0.1.1.0",
     "category": "Accounting",
     "summary": "Allow special user to rename account move",
     "author": "GRAP",
