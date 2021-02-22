@@ -7,7 +7,7 @@
     "summary": "In the supplier invoice, automatically update all products "
     "whose standard price on the line is different from "
     " the product standard price",
-    "version": "12.0.1.0.4",
+    "version": "12.0.1.1.0",
     "category": "Accounting & Finance",
     "author": "GRAP",
     "license": "AGPL-3",
