@@ -53,7 +53,7 @@ TODO :
 
 - Ajouter blocage dans product. Interdire le changement de consignor, si
   il y a un stock move associé au produit.
-  
+
 - Créer nouveau module:
     * recurring_consignment_sale_margin
     * recurring_consignment_invoice_margin
@@ -78,7 +78,7 @@ Known issues / Roadmap
 * Check if account_voucher.py is still required
 * Add test
 * To fix noupdate = 0/1.
-* 
+*
 
 * General Check
 
