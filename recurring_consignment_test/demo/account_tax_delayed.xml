@@ -7,11 +7,23 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="tax_5_consignor_1" model="account.tax">
+        <field name="name">CONS - Tax 5% (Price Excl.) (Consignor 1)</field>
+        <field name="amount">5.0</field>
+        <field name="amount_type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="account_id" ref="account_consignor_1"/>
+        <field name="refund_account_id" ref="account_consignor_1"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
         <field name="consignment_product_id" ref="commission_product_vat_5"/>
     </record>
 
     <record id="tax_20_consignor_1" model="account.tax">
+        <field name="name">CONS - Tax 20% (Price Excl.) (Consignor 1)</field>
+        <field name="amount">20.0</field>
+        <field name="amount_type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="account_id" ref="account_consignor_1"/>
+        <field name="refund_account_id" ref="account_consignor_1"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
         <field name="consignment_product_id" ref="commission_product_vat_20"/>
     </record>

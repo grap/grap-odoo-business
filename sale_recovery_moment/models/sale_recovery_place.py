@@ -41,9 +41,7 @@ class SaleRecoveryPlace(models.Model):
 
     city = fields.Char("City")
 
-    state_id = fields.Many2one(
-        comodel_name="res.country.state", string="State"
-    )
+    state_id = fields.Many2one(comodel_name="res.country.state", string="State")
 
     country_id = fields.Many2one(comodel_name="res.country", string="Country")
 
@@ -58,9 +56,7 @@ class SaleRecoveryPlace(models.Model):
 
     # Compute Section
     @api.multi
-    @api.depends(
-        "name", "street", "street2", "zip", "city", "state_id", "country_id"
-    )
+    @api.depends("name", "street", "street2", "zip", "city", "state_id", "country_id")
     def _compute_complete_name(self):
         for place in self:
             address_format = (
@@ -76,14 +72,10 @@ class SaleRecoveryPlace(models.Model):
                 "city": place.city or "",
                 "state_code": place.state_id and place.state_id.code or "",
                 "state_name": place.state_id and place.state_id.name or "",
-                "country_code": place.country_id
-                and place.country_id.code
-                or "",
-                "country_name": place.country_id
-                and place.country_id.name
-                or "",
+                "country_code": place.country_id and place.country_id.code or "",
+                "country_name": place.country_id and place.country_id.name or "",
             }
-            place.complete_name = "%s - %s" % (
+            place.complete_name = "{} - {}".format(
                 place.name,
                 (address_format % args).replace("\n", " "),
             )

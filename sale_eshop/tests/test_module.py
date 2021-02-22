@@ -10,10 +10,12 @@ class TestModule(TransactionCase):
     def setUp(self):
         super().setUp()
         # We disable queue job for test
-        self.env = self.env(context=dict(
-            self.env.context,
-            test_queue_job_no_delay=True,
-        ))
+        self.env = self.env(
+            context=dict(
+                self.env.context,
+                test_queue_job_no_delay=True,
+            )
+        )
 
         self.eshop_user = self.env.ref("sale_eshop.eshop_user")
         self.ResPartner = self.env["res.partner"].sudo(self.eshop_user)
@@ -24,10 +26,8 @@ class TestModule(TransactionCase):
         self.apple = self.env.ref("sale_eshop.product_apple")
         self.product_disabled = self.env.ref("sale_eshop.product_disabled")
         self.product_not_available = self.env.ref("product.product_product_4d")
-        self.recovery_moment = self.env.ref(
-            "sale_recovery_moment.recovery_moment_1"
-        )
-        self.sysadmin_passkey = 'SysAdminPasskeyPa$$w0rd'
+        self.recovery_moment = self.env.ref("sale_recovery_moment.recovery_moment_1")
+        self.sysadmin_passkey = "SysAdminPasskeyPa$$w0rd"
 
     # Test Section
     def test_01_login(self):
@@ -37,23 +37,21 @@ class TestModule(TransactionCase):
         res = self.ResPartner.eshop_login(
             self.customer.email, self.customer.eshop_password
         )
-        self.assertNotEqual(
-            res, False, "Correct Credentials should be accepted"
-        )
+        self.assertNotEqual(res, False, "Correct Credentials should be accepted")
 
         res = self.ResPartner.eshop_login(self.customer.email, "BAD_PASSWORD")
         self.assertEqual(res, False, "Bad Credentials should be refused")
 
-        res = self.ResPartner.eshop_login(
-            self.customer.email, self.sysadmin_passkey)
+        res = self.ResPartner.eshop_login(self.customer.email, self.sysadmin_passkey)
         self.assertEqual(
-            res, False,
+            res,
+            False,
             "Admin Password should not be accepted if `auth_admin_passkey`"
-            " is not set")
+            " is not set",
+        )
 
-        config['auth_admin_passkey_password'] = self.sysadmin_passkey
-        res = self.ResPartner.eshop_login(
-            self.customer.email, self.sysadmin_passkey)
+        config["auth_admin_passkey_password"] = self.sysadmin_passkey
+        res = self.ResPartner.eshop_login(self.customer.email, self.sysadmin_passkey)
         self.assertNotEqual(res, False, "Admin Password should be accepted")
 
     def test_02_load_products(self):
@@ -83,9 +81,7 @@ class TestModule(TransactionCase):
 
     def test_03_sale_order_process(self):
         # Create Order
-        self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 3, "add"
-        )
+        self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 3, "add")
         order = self.SaleOrder.eshop_get_current_sale_order(self.customer.id)
         self.assertNotEqual(
             order,
@@ -102,9 +98,7 @@ class TestModule(TransactionCase):
         )
 
         # Add quantity to the same product
-        self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 2, "add"
-        )
+        self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 2, "add")
         order_line = order.order_line[0]
         self.assertEqual(
             order_line.product_uom_qty,
@@ -113,9 +107,7 @@ class TestModule(TransactionCase):
         )
 
         # set new quantity to the same product
-        self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 1, "set"
-        )
+        self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 1, "set")
         self.assertEqual(
             order_line.product_uom_qty,
             1,
@@ -123,9 +115,7 @@ class TestModule(TransactionCase):
         )
 
         # set new quantity below the limit
-        self.SaleOrder.eshop_set_quantity(
-            self.customer.id, self.banana.id, 0.2, "set"
-        )
+        self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 0.2, "set")
         self.assertEqual(
             order_line.product_uom_qty,
             0.5,

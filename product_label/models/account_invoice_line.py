@@ -11,11 +11,14 @@ class AccountInvoiceLine(models.Model):
 
     product_label_description = fields.Char(
         string="Product Labels Description",
-        compute="_compute_product_label_description")
+        compute="_compute_product_label_description",
+    )
 
     @api.depends("product_id.label_ids.display_on_report")
     def _compute_product_label_description(self):
         for line in self.filtered(lambda x: x.product_id):
             line.product_label_description = ", ".join(
-                line.product_id.mapped('label_ids').filtered(
-                    lambda x: x.display_on_report).mapped('code'))
+                line.product_id.mapped("label_ids")
+                .filtered(lambda x: x.display_on_report)
+                .mapped("code")
+            )

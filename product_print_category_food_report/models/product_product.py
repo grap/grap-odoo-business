@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
+
 import odoo.addons.decimal_precision as dp
 
 
@@ -15,12 +16,11 @@ class ProductProduct(models.Model):
 
     pricetag_color = fields.Char(compute="_compute_pricetag_color")
 
-    pricetag_organic_text = fields.Char(
-        compute="_compute_pricetag_organic_text"
-    )
+    pricetag_organic_text = fields.Char(compute="_compute_pricetag_organic_text")
 
     pricetag_display_spider_chart = fields.Boolean(
-        compute='_compute_pricetag_display_spider_chart')
+        compute="_compute_pricetag_display_spider_chart"
+    )
 
     pricetag_origin = fields.Char(compute="_compute_pricetag_origin")
 
@@ -66,13 +66,14 @@ class ProductProduct(models.Model):
         for product in self:
             res = ""
             # We need organic text only in weighed product
-            if product.uom_id.category_id.measure_type == "weight" and\
-                    product.is_alimentary is True:
+            if (
+                product.uom_id.category_id.measure_type == "weight"
+                and product.is_alimentary is True
+            ):
                 if product.organic_type in ["01_organic"]:
                     if product.company_id.certifier_organization_id:
                         res = _("Organic Product, certified by %s") % (
-                            product.company_id.
-                            certifier_organization_id.code
+                            product.company_id.certifier_organization_id.code
                         )
                 else:
                     res = _("Not From Organic Farming")
@@ -88,14 +89,14 @@ class ProductProduct(models.Model):
                 product.local_notation,
             ]
             result = [x for x in notation if x != "0"]
-            product.pricetag_display_spider_chart = (len(result) >= 3)
+            product.pricetag_display_spider_chart = len(result) >= 3
 
     @api.multi
     def _compute_pricetag_origin(self):
         for product in self:
             localization_info = ""
             if product.department_id:
-                localization_info = "%s (%s)" % (
+                localization_info = "{} ({})".format(
                     product.department_id.name,
                     product.department_id.code,
                 )
@@ -106,7 +107,7 @@ class ProductProduct(models.Model):
 
             if product.origin_description:
                 if localization_info:
-                    product.pricetag_origin = "%s - %s" % (
+                    product.pricetag_origin = "{} - {}".format(
                         localization_info,
                         product.origin_description,
                     )
@@ -130,12 +131,8 @@ class ProductProduct(models.Model):
             elif product.volume:
                 product.pricetag_is_second_price = True
                 product.pricetag_second_price_uom_text = _("Price per Liter")
-                product.pricetag_second_price = (
-                    product.list_price / product.volume
-                )
+                product.pricetag_second_price = product.list_price / product.volume
             elif product.weight:
                 product.pricetag_is_second_price = True
                 product.pricetag_second_price_uom_text = _("Price per Kilo")
-                product.pricetag_second_price = (
-                    product.list_price / product.weight
-                )
+                product.pricetag_second_price = product.list_price / product.weight

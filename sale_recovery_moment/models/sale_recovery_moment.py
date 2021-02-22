@@ -5,8 +5,7 @@
 from datetime import datetime
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import ValidationError, Warning as UserError
 
 
 class SaleRecoveryMoment(models.Model):
@@ -153,7 +152,7 @@ class SaleRecoveryMoment(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            vals['code'] = self.env['ir.sequence'].next_by_code('sale.recovery.moment')
+            vals["code"] = self.env["ir.sequence"].next_by_code("sale.recovery.moment")
         return super().create(vals_list)
 
     @api.multi
@@ -226,8 +225,7 @@ class SaleRecoveryMoment(models.Model):
 
             if recovery_moment.max_order_qty:
                 recovery_moment.is_complete = (
-                    recovery_moment.valid_order_qty
-                    >= recovery_moment.max_order_qty
+                    recovery_moment.valid_order_qty >= recovery_moment.max_order_qty
                 )
 
             # Update Quota Description Field
@@ -244,9 +242,7 @@ class SaleRecoveryMoment(models.Model):
                 recovery_moment.quota_description = _("No Orders")
 
     @api.multi
-    @api.depends(
-        "picking_ids", "picking_ids.recovery_moment_id", "picking_ids.state"
-    )
+    @api.depends("picking_ids", "picking_ids.recovery_moment_id", "picking_ids.state")
     def _compute_picking_multi(self):
         for recovery_moment in self:
             recovery_moment.picking_qty = len(recovery_moment.picking_ids)
@@ -258,19 +254,17 @@ class SaleRecoveryMoment(models.Model):
             )
 
     @api.multi
-    @api.depends(
-        "code", "min_recovery_date", "place_id", "group_id.short_name"
-    )
+    @api.depends("code", "min_recovery_date", "place_id", "group_id.short_name")
     def _compute_name(self):
         for moment in self.filtered(lambda x: x.group_id):
-            moment.name = "%s - %s - %s - %s" % (
+            moment.name = "{} - {} - {} - {}".format(
                 moment.code,
                 moment.group_id.short_name,
                 moment.place_id.name,
                 moment.min_recovery_date,
             )
         for moment in self.filtered(lambda x: not x.group_id):
-            moment.name = "%s - %s - %s" % (
+            moment.name = "{} - {} - {}".format(
                 moment.code,
                 moment.place_id.name,
                 moment.min_recovery_date,
@@ -280,9 +274,7 @@ class SaleRecoveryMoment(models.Model):
     def _search_state(self, operator, operand):
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if operator not in ("=", "in"):
-            raise UserError(
-                _("The Operator %s is not implemented !") % (operator)
-            )
+            raise UserError(_("The Operator %s is not implemented !") % (operator))
         if operator == "=":
             lst = [operand]
         else:
@@ -292,20 +284,15 @@ class SaleRecoveryMoment(models.Model):
             sql_lst.append("('%s' < min_sale_date)" % (now))
         if "pending_sale" in lst:
             sql_lst.append(
-                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)")
-                % (now, now)
+                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)") % (now, now)
             )
         if "finished_sale" in lst:
             sql_lst.append(
-                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)")
-                % (now, now)
+                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)") % (now, now)
             )
         if "pending_recovery" in lst:
             sql_lst.append(
-                (
-                    "(min_recovery_date < '%s'"
-                    + " AND '%s' < max_recovery_date)"
-                )
+                ("(min_recovery_date < '%s'" + " AND '%s' < max_recovery_date)")
                 % (now, now)
             )
         if "finished_recovery" in lst:

@@ -31,7 +31,7 @@ class ProductProduct(models.Model):
     @api.constrains("country_id", "state_id")
     def _check_origin_state_country(self):
         for product in self.filtered(lambda x: x.state_id and x.country_id):
-            if (product.state_id.country_id != product.country_id):
+            if product.state_id.country_id != product.country_id:
                 raise UserError(_("State must belong to the country."))
 
     # Onchange section

@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 
 column_renames = {
-    'product_product': [
-        ('spider_chart_image', None),
+    "product_product": [
+        ("spider_chart_image", None),
     ],
 }
 

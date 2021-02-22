@@ -6,7 +6,7 @@ from odoo import api, models
 
 
 class WizardUpdateInvoiceSupplierinfo(models.TransientModel):
-    _inherit = 'wizard.update.invoice.supplierinfo'
+    _inherit = "wizard.update.invoice.supplierinfo"
 
     @api.multi
     def update_supplierinfo(self):

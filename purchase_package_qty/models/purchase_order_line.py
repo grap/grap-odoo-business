@@ -7,9 +7,9 @@ from odoo import api, models
 
 
 class PurchaseOrderLine(models.Model):
-    _inherit = 'purchase.order.line'
+    _inherit = "purchase.order.line"
 
-    @api.onchange('product_qty', 'product_uom')
+    @api.onchange("product_qty", "product_uom")
     def _onchange_quantity(self):
         if not self.product_id:
             return
@@ -18,9 +18,10 @@ class PurchaseOrderLine(models.Model):
             quantity=self.product_qty,
             date=self.order_id.date_order and self.order_id.date_order.date(),
             uom_id=self.product_uom,
-            params={'order_id': self.order_id})
+            params={"order_id": self.order_id},
+        )
         if seller:
             self.product_qty = seller._get_quantity_according_package(
-                self.product_qty,
-                self.product_uom)
+                self.product_qty, self.product_uom
+            )
         return super()._onchange_quantity()

@@ -47,7 +47,8 @@ class EshopCategory(models.Model):
     sequence = fields.Integer(string="Sequence", required=True, default=1)
 
     complete_name = fields.Char(
-        string="Complete Name", store=True,
+        string="Complete Name",
+        store=True,
         compute="_compute_complete_name",
     )
 
@@ -88,9 +89,7 @@ class EshopCategory(models.Model):
         readonly=True,
     )
 
-    child_qty = fields.Integer(
-        string="Childs Quantity", compute="_compute_multi_child"
-    )
+    child_qty = fields.Integer(string="Childs Quantity", compute="_compute_multi_child")
 
     product_qty = fields.Integer(
         string="Products Quantity", compute="_compute_multi_child"
@@ -118,9 +117,7 @@ class EshopCategory(models.Model):
     def _check_type(self):
         for category in self:
             if category.type == "view" and category.product_qty > 0:
-                raise UserError(
-                    _("A 'view' Category can not belongs products")
-                )
+                raise UserError(_("A 'view' Category can not belongs products"))
             elif category.type == "normal" and len(category.child_ids) > 0:
                 raise UserError(
                     _("A 'normal' Category can not belongs childs categories")
@@ -142,7 +139,8 @@ class EshopCategory(models.Model):
     def _compute_multi_child(self):
         for category in self:
             available_products = category.product_ids.filtered(
-                lambda x: x.eshop_state == "available")
+                lambda x: x.eshop_state == "available"
+            )
             category.product_qty = len(category.product_ids)
             category.available_product_ids = available_products
             category.available_product_qty = len(available_products)
@@ -152,19 +150,17 @@ class EshopCategory(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            tools.image_resize_images(vals, sizes={'image': (1024, None)})
+            tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().create(vals_list)
 
     def write(self, vals):
-        tools.image_resize_images(vals, sizes={'image': (1024, None)})
+        tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().write(vals)
 
     # Name Function
     @api.model
     def name_search(self, name, args=None, operator="ilike", limit=100):
-        recs = self.search(
-            [("complete_name", operator, name)] + args, limit=limit
-        )
+        recs = self.search([("complete_name", operator, name)] + args, limit=limit)
         return recs.name_get()
 
     @api.depends("complete_name")

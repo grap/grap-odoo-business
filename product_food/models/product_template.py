@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
+
 from .product_product import ProductProduct
 
 
@@ -30,7 +31,8 @@ class ProductTemplate(models.Model):
         readonly=False,
         help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
-        " that comes from the sea")
+        " that comes from the sea",
+    )
 
     is_alcohol = fields.Boolean(
         string="Contain Alcohol",
@@ -54,7 +56,7 @@ class ProductTemplate(models.Model):
         comodel_name="product.allergen",
         related="product_variant_ids.allergen_ids",
         string="Allergens",
-        readonly=False
+        readonly=False,
     )
 
     allergens = fields.Text(
@@ -64,15 +66,17 @@ class ProductTemplate(models.Model):
     )
 
     organic_type = fields.Selection(
-        selection=lambda self: self.env['product.product']._fields[
-            'organic_type'].selection,
+        selection=lambda self: self.env["product.product"]
+        ._fields["organic_type"]
+        .selection,
         string="Organic Category",
         compute="_compute_organic_type",
     )
 
     origin_type = fields.Selection(
-        selection=lambda self: self.env['product.product']._fields[
-            'origin_type'].selection,
+        selection=lambda self: self.env["product.product"]
+        ._fields["origin_type"]
+        .selection,
         string="Origin Type",
         related="product_variant_ids.origin_type",
         readonly=False,
@@ -80,12 +84,11 @@ class ProductTemplate(models.Model):
 
     price_per_unit = fields.Float(
         string="Unit Price",
-        compute='_compute_price_per_unit',
+        compute="_compute_price_per_unit",
     )
 
     # Compute Section
-    @api.depends(
-        "label_ids.organic_type", "is_alimentary", "is_uncertifiable")
+    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
         ProductProduct._compute_organic_type(self)
 

@@ -4,15 +4,14 @@
 
 import logging
 
-from openupgradelib import openupgrade
-from openupgradelib import openupgrade_90
+from openupgradelib import openupgrade, openupgrade_90
 
 logger = logging.getLogger(__name__)
 
 
 attachment_fields = {
-    'product.product': [
-        ('spider_chart_image', None),
+    "product.product": [
+        ("spider_chart_image", None),
     ],
 }
 

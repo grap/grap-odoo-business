@@ -5,6 +5,7 @@
 
 
 from odoo import api, fields, models
+
 from .product_product import ProductProduct
 
 

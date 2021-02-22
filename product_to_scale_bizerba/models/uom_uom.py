@@ -6,12 +6,14 @@ from odoo import fields, models
 
 
 class UomUom(models.Model):
-    _inherit = 'uom.uom'
+    _inherit = "uom.uom"
 
     scale_type = fields.Char(
-        string='Scale Type', help="Letter that indicates how the product"
+        string="Scale Type",
+        help="Letter that indicates how the product"
         " send to Bizerba will be handled:\n"
         " 'P': Weightable Product. the label edited by scales will mention"
         " the price, depending on the weight of the product\n"
         " 'Q': Quantity. The label edited by scales will mention the"
-        " price, depending on the quantity entered by the operator")
+        " price, depending on the quantity entered by the operator",
+    )

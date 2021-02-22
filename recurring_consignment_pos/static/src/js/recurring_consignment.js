@@ -13,7 +13,7 @@ odoo.define('recurring_consignment_pos.recurring_consignment', function (require
         load_server_data: function () {
             var self = this;
             _.each(self.models, function (item) {
-                if (item.model === 'res.partner'){
+                if (item.model === 'res.partner') {
                     item.domain.push(['is_consignor', '=', false]);
                 }
             });

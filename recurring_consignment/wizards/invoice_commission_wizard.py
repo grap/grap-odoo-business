@@ -8,7 +8,7 @@ from odoo.exceptions import Warning as UserError
 
 
 class InvoiceCommissionWizard(models.TransientModel):
-    _name = 'invoice.commission.wizard'
+    _name = "invoice.commission.wizard"
     _description = "Invoice Commission Wizard"
 
     # Columns Section
@@ -17,29 +17,37 @@ class InvoiceCommissionWizard(models.TransientModel):
         required=True,
         default=lambda x: x._default_max_date(),
         help="The commission will be computed for the sale"
-        " until this date included.")
+        " until this date included.",
+    )
 
     wizard_line_ids = fields.One2many(
         comodel_name="invoice.commission.wizard.line",
         inverse_name="wizard_id",
-        default=lambda x: x._default_wizard_line_ids())
+        default=lambda x: x._default_wizard_line_ids(),
+    )
 
     # Default values Section
     def _default_wizard_line_ids(self):
-        ResPartner = self.env['res.partner']
+        ResPartner = self.env["res.partner"]
         WizardLine = self.env["invoice.commission.wizard.line"]
-        consignors = ResPartner.browse(self.env.context.get('active_ids', []))
+        consignors = ResPartner.browse(self.env.context.get("active_ids", []))
         line_vals = []
         for consignor in consignors.filtered(lambda x: x.is_consignor):
             line_vals.append(
-                (0, 0, {
-                    'partner_id': consignor.id,
-                    'consignment_account_id': consignor.consignment_account_id,
-                    'consignment_commission': consignor.consignment_commission,
-                    'move_line_qty': len(
-                        WizardLine._get_move_lines_with_values(
-                            consignor, self._default_max_date()))
-                })
+                (
+                    0,
+                    0,
+                    {
+                        "partner_id": consignor.id,
+                        "consignment_account_id": consignor.consignment_account_id,
+                        "consignment_commission": consignor.consignment_commission,
+                        "move_line_qty": len(
+                            WizardLine._get_move_lines_with_values(
+                                consignor, self._default_max_date()
+                            )
+                        ),
+                    },
+                )
             )
         return line_vals
 
@@ -56,8 +64,8 @@ class InvoiceCommissionWizard(models.TransientModel):
     @api.multi
     def invoice_commission(self):
         self.ensure_one()
-        move_AccountMoveLine = self.env['account.move.line']
-        AccountInvoice = self.env['account.invoice']
+        move_AccountMoveLine = self.env["account.move.line"]
+        AccountInvoice = self.env["account.invoice"]
         invoice_ids = []
         grouped_data = {}
 
@@ -74,8 +82,7 @@ class InvoiceCommissionWizard(models.TransientModel):
             # Get lines to commission
             all_lines = wizard_line._get_move_lines()
 
-            for product_line in all_lines.filtered(
-                    lambda x: not x.tax_line_id):
+            for product_line in all_lines.filtered(lambda x: not x.tax_line_id):
                 # We select only product lines (=non tax lines)
                 key = wizard_line._get_line_key(product_line)
                 grouped_data.setdefault(key, [])
@@ -88,39 +95,47 @@ class InvoiceCommissionWizard(models.TransientModel):
 
                 # Mark Move lines as commisssioned
                 current_lines = move_AccountMoveLine.browse(current_line_ids)
-                current_lines.write({
-                    'consignment_invoice_id': invoice.id,
-                    'consignment_commission':
-                    wizard_line.consignment_commission,
-                })
+                current_lines.write(
+                    {
+                        "consignment_invoice_id": invoice.id,
+                        "consignment_commission": wizard_line.consignment_commission,
+                    }
+                )
 
             # Mark taxes Move lines as no commisssioned
-            all_lines.filtered(lambda x: x.tax_line_id).write({
-                'consignment_invoice_id': invoice.id,
-                'consignment_commission': 0,
-            })
+            all_lines.filtered(lambda x: x.tax_line_id).write(
+                {
+                    "consignment_invoice_id": invoice.id,
+                    "consignment_commission": 0,
+                }
+            )
 
         if not invoice_ids:
-            raise UserError(_(
-                "There is no move lines to commission for there consignors"
-                " and this date."))
+            raise UserError(
+                _(
+                    "There is no move lines to commission for there consignors"
+                    " and this date."
+                )
+            )
 
         # Recompute Taxes
         invoices = AccountInvoice.browse(invoice_ids)
         invoices.compute_taxes()
 
         # Return action that displays new invoices
-        action = self.env.ref('account.action_invoice_tree1').read()[0]
+        action = self.env.ref("account.action_invoice_tree1").read()[0]
 
         if len(invoices) > 1:
-            action['domain'] =\
-                "[('id', 'in', [" + ','.join(map(str, invoices.ids)) + "])]"
+            action["domain"] = (
+                "[('id', 'in', [" + ",".join(map(str, invoices.ids)) + "])]"
+            )
         else:
-            form_view = [(self.env.ref('account.invoice_form').id, 'form')]
-            action['views'] = form_view + [
-                (state, view) for state, view in action.get('views', [])
-                if view != 'form'
+            form_view = [(self.env.ref("account.invoice_form").id, "form")]
+            action["views"] = form_view + [
+                (state, view)
+                for state, view in action.get("views", [])
+                if view != "form"
             ]
-            action['res_id'] = invoices.ids[0]
+            action["res_id"] = invoices.ids[0]
 
         return action

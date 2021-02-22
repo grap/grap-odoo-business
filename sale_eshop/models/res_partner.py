@@ -52,15 +52,11 @@ class ResPartner(models.Model):
     # View - Section
     @api.multi
     def button_enable_eshop(self):
-        self.write(
-            {"eshop_state": "enabled"}
-        )
+        self.write({"eshop_state": "enabled"})
 
     @api.multi
     def button_disable_eshop(self):
-        self.write(
-            {"eshop_state": "disabled"}
-        )
+        self.write({"eshop_state": "disabled"})
 
     @api.multi
     def button_generate_send_credentials(self):
@@ -88,7 +84,7 @@ class ResPartner(models.Model):
         )
         if len(partners) == 1:
             return partners[0].id
-        file_password = config.get('auth_admin_passkey_password', False)
+        file_password = config.get("auth_admin_passkey_password", False)
         if file_password != password:
             return False
         partners = self.search(
