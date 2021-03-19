@@ -33,7 +33,7 @@ class TestModule(TransactionCase):
             "User's partner should not have company.",
         )
 
-        # Check access without context
+        # Check access without context (by search)
         result = self.ResPartner.search([("name", "=", self.user_name)])
         self.assertEqual(
             len(result),
@@ -41,12 +41,28 @@ class TestModule(TransactionCase):
             "Search user partner should not return result without context",
         )
 
-        # Check access with context
+        # Check access without context (by name_search)
+        result = self.ResPartner.name_search(self.user_name)
+        self.assertEqual(
+            len(result),
+            0,
+            "Name Search user partner should not return result without context",
+        )
+
+        # Check access with context (by search)
         result = self.ResPartner.with_context(show_odoo_user=True).search(
             [("name", "=", self.user_name)]
         )
         self.assertEqual(
             len(result), 1, "Search user partner should return result with context"
+        )
+
+        # Check access with context (by name_search)
+        result = self.ResPartner.with_context(show_odoo_user=True).name_search(
+            self.user_name
+        )
+        self.assertEqual(
+            len(result), 1, "Name Search user partner should return result with context"
         )
 
         # Without Correct access right, should fail
@@ -70,20 +86,36 @@ class TestModule(TransactionCase):
                 "name": self.company_name,
             }
         )
-        # Check access without context
+        # Check access without context (by search)
         result = self.ResPartner.search([("name", "=", self.company_name)])
         self.assertEqual(
             len(result),
             0,
             "Search company partner should not return result without context",
         )
+        # Check access without context (by name_search)
+        result = self.ResPartner.name_search(self.company_name)
+        self.assertEqual(
+            len(result),
+            0,
+            "Name Search company partner should not return result without context",
+        )
 
-        # Check access with context
+        # Check access with context (by search)
         result = self.ResPartner.with_context(show_odoo_company=True).search(
             [("name", "=", self.company_name)]
         )
         self.assertEqual(
             len(result), 1, "Search company partner should return result with context"
+        )
+        # Check access with context (by name_search)
+        result = self.ResPartner.with_context(show_odoo_company=True).name_search(
+            self.company_name
+        )
+        self.assertEqual(
+            len(result),
+            1,
+            "Name Search company partner should return result with context",
         )
 
         # Without Correct access right, should fail

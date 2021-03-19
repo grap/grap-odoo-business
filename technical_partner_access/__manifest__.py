@@ -13,6 +13,7 @@
     "license": "AGPL-3",
     "depends": [
         "base",
+        "name_search_reset_res_partner",
     ],
     "data": [
         "views/view_res_partner.xml",
