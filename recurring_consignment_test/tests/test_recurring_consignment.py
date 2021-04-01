@@ -5,9 +5,11 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo.exceptions import Warning as UserError
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, at_install, post_install
 
 
+@at_install(False)
+@post_install(True)
 class TestRecurringConsignment(TransactionCase):
     def setUp(self):
         super().setUp()
