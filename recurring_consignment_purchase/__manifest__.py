@@ -4,7 +4,7 @@
 
 {
     "name": "Recurring Consignment for Purchase",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "summary": "Glue module for Recurring Consignment and Purchase modules",
     "category": "Sale",
     "author": "GRAP",
