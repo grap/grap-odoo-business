@@ -42,7 +42,7 @@ addon | version | summary
 [sale_eshop](sale_eshop/) | 12.0.1.1.0 | Allow connection to Odoo eShop Project
 [sale_recovery_moment](sale_recovery_moment/) | 12.0.1.1.0 | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.1.0 | Manage Preparation Categories for stock moves
-[technical_partner_access](technical_partner_access/) | 12.0.1.1.0 | Limit the access of the partners created when creating companies and users.
+[technical_partner_access](technical_partner_access/) | 12.0.1.2.0 | Limit the access of the partners created when creating companies and users.
 
 [//]: # (end addons)
 
