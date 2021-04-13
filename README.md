@@ -36,9 +36,9 @@ addon | version | summary
 [recurring_consignment](recurring_consignment/) | 12.0.1.1.0 | Sale - Handle Recurring Consignment
 [recurring_consignment_fiscal_company](recurring_consignment_fiscal_company/) | 12.0.1.1.0 | Glue module for Recurring Consignment and fiscal company modules
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.0 | Glue module for Recurring Consignment and PoS modules
-[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.0 | Glue module for Recurring Consignment and Purchase modules
+[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.1 | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.0 | Glue module for Recurring Consignment and Sale modules
-[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.0 | Test module for Recurring_ Consignment Module
+[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.1 | Test module for Recurring_ Consignment Module
 [sale_eshop](sale_eshop/) | 12.0.1.1.0 | Allow connection to Odoo eShop Project
 [sale_recovery_moment](sale_recovery_moment/) | 12.0.1.1.0 | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.1.0 | Manage Preparation Categories for stock moves
