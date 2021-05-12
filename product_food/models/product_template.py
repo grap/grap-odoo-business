@@ -108,14 +108,3 @@ class ProductTemplate(models.Model):
     @api.onchange("is_alcohol")
     def onchange_is_alcohol(self):
         ProductProduct.onchange_is_alcohol(self)
-
-    @api.model
-    def create(self, vals):
-        if "categ_id" in vals:
-            # Guess values if not present, based on the category
-            categ = self.env["product.category"].browse(vals.get("categ_id"))
-            if "is_alimentary" not in vals:
-                vals["is_alimentary"] = categ.is_alimentary
-            if "is_alcohol" not in vals:
-                vals["is_alcohol"] = categ.is_alcohol
-        return super().create(vals)
