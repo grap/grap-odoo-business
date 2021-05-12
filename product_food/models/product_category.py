@@ -34,3 +34,13 @@ class ProductCategory(models.Model):
                         " categories set as 'Contain Alcohol'"
                     )
                 )
+
+    def button_apply_is_alimentary_settings(self):
+        ProductTemplate = self.env["product.template"]
+        for category in self:
+            templates = (
+                ProductTemplate.sudo()
+                .with_context(active_test=False)
+                .search([("categ_id", "=", category.id)])
+            )
+            templates.write({"is_alimentary": category.is_alimentary})
