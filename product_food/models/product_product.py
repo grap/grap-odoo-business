@@ -167,3 +167,14 @@ class ProductProduct(models.Model):
                 self.label_ids = [(4, alcohol_label_id)]
         else:
             self.label_ids = self.label_ids.filtered(lambda x: not x.is_alcohol)
+
+    @api.model
+    def create(self, vals):
+        if "categ_id" in vals:
+            # Guess values if not present, based on the category
+            categ = self.env["product.category"].browse(vals.get("categ_id"))
+            if "is_alimentary" not in vals:
+                vals["is_alimentary"] = categ.is_alimentary
+            if "is_alcohol" not in vals:
+                vals["is_alcohol"] = categ.is_alcohol
+        return super().create(vals)
