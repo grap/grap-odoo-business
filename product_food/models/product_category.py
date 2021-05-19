@@ -16,6 +16,13 @@ class ProductCategory(models.Model):
         "'Alimentary Product' by default",
     )
 
+    is_vegan = fields.Boolean(
+        string="Contain only vegan products",
+        help="If this box is checked, the"
+        " products that belong to that category will be set as "
+        "'Vegan product' by default",
+    )
+
     is_alcohol = fields.Boolean(
         string="Contain Alcohol Products",
         help="If this box is checked, the"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 14:04+0000\n"
-"PO-Revision-Date: 2020-10-21 14:04+0000\n"
+"POT-Creation-Date: 2021-06-21 09:55+0000\n"
+"PO-Revision-Date: 2021-06-21 09:55+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -158,13 +158,13 @@ msgstr "Créé par"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_date
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__create_date
 msgid "Created on"
-msgstr "Créé le"
+msgstr "Date"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__display_name
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__display_name
 msgid "Display Name"
-msgstr "Nom affiché"
+msgstr "Nom à afficher"
 
 #. module: product_food
 #: selection:product.product,origin_type:0
@@ -193,19 +193,19 @@ msgid "If this box is checked, the products that belong to that category will be
 msgstr "Si cette case est cochée, les articles associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:98
+#: code:addons/product_food/models/product_product.py:112
 #, python-format
 msgid "Incorrect Setting. The product %s could not have volume AND weight at the same time."
 msgstr "Paramétrage incorrect. L'article %s ne peut pas être paramétré avec volume ET un poids en même temps."
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:140
+#: code:addons/product_food/models/product_product.py:141
 #, python-format
 msgid "Incorrect Setting. the product %s has a label that mentions that the product contains  alcohol, but the 'Contain Alcohol' is not checked."
 msgstr "Paramétrage incorrect. L'article %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:129
+#: code:addons/product_food/models/product_product.py:130
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
@@ -240,7 +240,7 @@ msgstr "Est alimentaire"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization____last_update
 #: model:ir.model.fields,field_description:product_food.field_product_allergen____last_update
 msgid "Last Modified on"
-msgstr "Dernière Modification le"
+msgstr "Dernière modification le"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__write_uid
@@ -310,7 +310,7 @@ msgstr "Article"
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_category
 msgid "Product Category"
-msgstr "Catégorie d'articles"
+msgstr "Catégorie d'article"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_label
@@ -337,8 +337,14 @@ msgstr "Articles"
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
 #: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
-msgid "Price per Unit"
-msgstr "Prix à l'unité"
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_vegan
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_vegan
+msgid "Vegan product"
+msgstr "Produit végan"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__website

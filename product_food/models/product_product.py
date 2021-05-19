@@ -28,6 +28,8 @@ class ProductProduct(models.Model):
     # Column Section
     is_alimentary = fields.Boolean(string="Is Alimentary")
 
+    is_vegan = fields.Boolean(string="Vegan product")
+
     certifier_organization_id = fields.Many2one(
         comodel_name="certifier.organization",
         string="Certifier Organization",
@@ -145,6 +147,23 @@ class ProductProduct(models.Model):
                         % (product.name)
                     )
 
+    @api.multi
+    @api.constrains("is_vegan", "label_ids")
+    def _check_is_vegan_labels(self):
+        for product in self:
+            if product.label_ids.filtered(lambda x: x.is_vegan):
+                # Check that 'Vegan product' is checked
+                if not product.is_vegan:
+                    raise UserError(
+                        _(
+                            "Incorrect Setting. the product %s has a label"
+                            " that mentions that the product is vegan"
+                            " but the 'Vegan product' is not"
+                            " checked."
+                        )
+                        % (product.name)
+                    )
+
     # Onchange Section
     @api.onchange("categ_id")
     def onchange_categ_id_is_alimentary(self):
@@ -156,6 +175,14 @@ class ProductProduct(models.Model):
     def onchange_is_alimentary(self):
         if not self.is_alimentary:
             self.is_alcohol = False
+
+    @api.onchange("label_ids", "categ_id")
+    def onchange_label_ids(self):
+        labels_vegan = self.label_ids.filtered(lambda x: x.is_vegan)
+        if len(labels_vegan) > 0:
+            self.is_vegan = True
+        else:
+            self.is_vegan = self.categ_id.is_vegan
 
     @api.onchange("is_alcohol")
     def onchange_is_alcohol(self):
@@ -177,4 +204,6 @@ class ProductProduct(models.Model):
                 vals["is_alimentary"] = categ.is_alimentary
             if "is_alcohol" not in vals:
                 vals["is_alcohol"] = categ.is_alcohol
+            if "is_vegan" not in vals:
+                vals["is_vegan"] = categ.is_vegan
         return super().create(vals)

@@ -40,6 +40,12 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
+    is_vegan = fields.Boolean(
+        string="Vegan product",
+        related="product_variant_ids.is_vegan",
+        readonly=False,
+    )
+
     best_before_date_day = fields.Integer(
         string="Best Before Date Day",
         related="product_variant_ids.best_before_date_day",
