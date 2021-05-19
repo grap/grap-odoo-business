@@ -24,3 +24,10 @@ class ProductLabel(models.Model):
         " products contain alcohol. If checked, the products that"
         " contains alcohol will have this label set automatically.",
     )
+
+    is_vegan = fields.Boolean(
+        string="Vegan products",
+        help="If this box is checked, the"
+        " products that have this label will be set as "
+        "'Vegan product' by default",
+    )

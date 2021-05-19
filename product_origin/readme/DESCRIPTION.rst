@@ -1,6 +1,7 @@
 This module extends the functionality of Product module to support product origins.
 It adds on product and product variants models the following fields:
 
+* Production Group Country
 * Production Country
 * Production State
 * Production Complement (free text)
