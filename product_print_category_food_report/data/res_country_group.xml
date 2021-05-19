@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2021 - Today: GRAP (http://www.grap.coop)
+@author: Quentin DUPONT (quentin.dupont@grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- Create UE non UE group -->
+    <record id="countr_group_ue_nonue" model="res.country.group">
+        <field name="name">UE - non UE</field>
+        <field name="european_classification">no_UE</field>
+    </record>
+
+    <!-- Rename data -->
+    <function model="res.country.group" name="write">
+        <value eval="[ref('base.europe')]"/>
+        <value eval="{'european_classification': 'UE'}"/>
+    </function>
+
+    <function model="res.country.group" name="write">
+        <value eval="[ref('base.south_america')]"/>
+        <value eval="{'european_classification': 'no_UE'}"/>
+    </function>
+
+
+
+</odoo>

@@ -11,6 +11,12 @@ Specifications :
 
 - Thanks to product_label and product_origin, we also display labels and origin
 
+- Origin is constructed according to origin fields, organic labels and provenance. Origin is displayed in product form.
+
+.. figure:: ../static/img/origin_calculated_organic_description.gif
+
+- Origin is displayed in product form thanks to ``pricetag_origin`` so you don't have to print the pricetag to see it
+
 Here is what's look like the reports :
 
 - Normal pricetag "classic format" 76x31mm

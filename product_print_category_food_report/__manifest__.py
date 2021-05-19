@@ -28,10 +28,12 @@
         "report/qweb_pricetag_normal.xml",
         "report/qweb_pricetag_square.xml",
         "views/view_res_company.xml",
+        "views/view_res_country_group.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",
         "views/view_uom_uom.xml",
         "data/product_print_category.xml",
+        "data/res_country_group.xml",
     ],
     "demo": [
         "demo/res_groups.xml",
