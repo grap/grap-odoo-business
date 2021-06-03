@@ -16,7 +16,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <group string="Scale Communication">
                         <group>
                             <field name="scale_group_id" widget="selection"/>
-                            <field name="scale_tare_weight"/>
                         </group>
                         <group>
                             <button name="send_scale_create" type="object" string="Resend Creation To the Scale System" colspan="2"/>

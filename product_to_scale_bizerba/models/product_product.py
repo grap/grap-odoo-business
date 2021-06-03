@@ -7,8 +7,6 @@ from datetime import datetime
 from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
-import odoo.addons.decimal_precision as dp
-
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
@@ -25,15 +23,6 @@ class ProductProduct(models.Model):
         " product in Odoo, of another field, depending on a setting of"
         " the the scale system of the product.\n"
         "field : product_id_field_id",
-    )
-
-    scale_tare_weight = fields.Float(
-        digits=dp.get_precision("Stock Weight"),
-        string="Scale Tare Weight",
-        help="Set here Constant tare weight"
-        " for the given product. This tare will be substracted when"
-        " the product is weighted. Usefull only for weightable product.\n"
-        "The tare is defined with kg uom.",
     )
 
     # Compute Section
