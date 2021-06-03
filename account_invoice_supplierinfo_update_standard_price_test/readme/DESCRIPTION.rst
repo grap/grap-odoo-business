@@ -1,0 +1,1 @@
+Test module for the module ``account_invoice_supplierinfo_update_standard_price``.
