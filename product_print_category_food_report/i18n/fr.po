@@ -55,7 +55,7 @@ msgstr "<span class=\"empty_field\"><b>Producteur·rice</b></span><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<span class=\"empty_field\"><b>Origin</b></span><br/>"
-msgstr "span class=\"empty_field\"><b>Origine</b></span><br/>"
+msgstr "<span class=\"empty_field\"><b>Origine</b></span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
