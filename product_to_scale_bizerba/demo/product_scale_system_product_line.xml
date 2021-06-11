@@ -112,7 +112,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Tare Weight</field>
         <field name="sequence">11</field>
         <field name="type">numeric</field>
-        <field name="field_id" ref="product_to_scale_bizerba.field_product_product__scale_tare_weight"/>
+        <field name="field_id" ref="pos_tare.field_product_product__tare_weight"/>
         <field name="numeric_coefficient">1000</field>
         <field name="numeric_round">1</field>
         <field name="delimiter">#</field>
