@@ -6,7 +6,7 @@
     "name": "Account Invoice - Standard Price Update (Test Module)",
     "summary": "Test module for the module"
     " account_invoice_supplierinfo_update_standard_price",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.0.2",
     "category": "Accounting & Finance",
     "author": "GRAP",
     "license": "AGPL-3",
