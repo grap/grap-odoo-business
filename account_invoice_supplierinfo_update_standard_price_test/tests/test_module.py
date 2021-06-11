@@ -11,19 +11,19 @@ class TestModule(TransactionCase):
         self.WizardUpdate = self.env["wizard.update.invoice.supplierinfo"]
         self.ProductSupplierinfo = self.env["product.supplierinfo"]
         self.invoice_1 = self.env.ref(
-            "account_invoice_supplierinfo_update_standard_price.invoice_1"
+            "account_invoice_supplierinfo_update_standard_price_test.invoice_1"
         )
         self.line_1_1 = self.env.ref(
-            "account_invoice_supplierinfo_update_standard_price.line_1_1"
+            "account_invoice_supplierinfo_update_standard_price_test.line_1_1"
         )
         self.line_1_2 = self.env.ref(
-            "account_invoice_supplierinfo_update_standard_price.line_1_2"
+            "account_invoice_supplierinfo_update_standard_price_test.line_1_2"
         )
         self.invoice_2 = self.env.ref(
-            "account_invoice_supplierinfo_update_standard_price.invoice_2"
+            "account_invoice_supplierinfo_update_standard_price_test.invoice_2"
         )
         self.line_2_1 = self.env.ref(
-            "account_invoice_supplierinfo_update_standard_price.line_2_1"
+            "account_invoice_supplierinfo_update_standard_price_test.line_2_1"
         )
         self.dozen_unit = self.env.ref("uom.product_uom_dozen")
         self.uom_unit = self.env.ref("uom.product_uom_unit")
