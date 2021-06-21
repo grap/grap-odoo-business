@@ -6,7 +6,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="consigned_product_consignor_1_vat_5" model="product.product">
+    <record id="consigned_product_consignor_1_vat_5_A" model="product.product">
         <field name="name">My Consigned Product (with VAT 5% - Consignor 1)</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
@@ -16,7 +16,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="fiscal_classification_id" ref="fiscal_classification_5_consignor_1"/>
     </record>
 
-    <record id="consigned_product_consignor_1_vat_5_2" model="product.product">
+    <record id="consigned_product_consignor_1_vat_5_B" model="product.product">
         <field name="name">My Consigned Product #2 (with VAT 5% - Consignor 1)</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>

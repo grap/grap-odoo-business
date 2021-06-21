@@ -19,7 +19,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="customer_invoice_1_line_1" model="account.invoice.line">
         <field name="name">My Consigned Product (VAT 5%)</field>
-        <field name="product_id" ref="consigned_product_consignor_1_vat_5"/>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_5_A"/>
         <field name="invoice_id" ref="customer_invoice_1"/>
         <field name="account_id" ref="account_consignor_1" />
         <field name="price_unit">10000</field>
@@ -50,7 +50,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="customer_invoice_2_line_1" model="account.invoice.line">
         <field name="name">My Consigned Product (VAT 5%)</field>
-        <field name="product_id" ref="consigned_product_consignor_1_vat_5"/>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_5_A"/>
         <field name="invoice_id" ref="customer_invoice_2"/>
         <field name="account_id" ref="account_consignor_1" />
         <field name="price_unit">10</field>
