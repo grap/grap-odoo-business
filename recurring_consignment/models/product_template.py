@@ -30,6 +30,25 @@ class ProductTemplate(models.Model):
         "]"
     )
 
+    # Constrains section
+    @api.constrains("consignor_partner_id", "fiscal_classification_id")
+    def _check_consignor_fiscal_classification(self):
+        for product in self:
+            if (
+                product.consignor_partner_id
+                != product.fiscal_classification_id.consignor_partner_id
+            ):
+                raise UserError(
+                    _(
+                        "The product %s %s has inconsistent consignor and"
+                        " fiscal classification"
+                        % (
+                            product.consignor_partner_id.name,
+                            product.fiscal_classification_id.name,
+                        )
+                    )
+                )
+
     # Compute Section
     @api.depends("consignor_partner_id")
     def _compute_is_consignment(self):
