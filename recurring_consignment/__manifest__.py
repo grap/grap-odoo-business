@@ -5,7 +5,7 @@
 {
     "name": "Recurring Consignment",
     "version": "12.0.1.1.0",
-    "summary": "Sale - Handle Recurring Consignment",
+    "summary": "Sale - Handle Recurring Consignments",
     "category": "Sale",
     "author": "GRAP",
     "website": "http://www.grap.coop",
