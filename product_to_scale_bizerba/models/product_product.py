@@ -25,6 +25,18 @@ class ProductProduct(models.Model):
         "field : product_id_field_id",
     )
 
+    # Constrains Section
+    @api.constrains("barcode", "scale_group_id")
+    def _scale_group_barcode(self):
+        products = self.filtered(lambda x: x.scale_group_id and not x.barcode)
+        if products:
+            raise UserError(
+                _(
+                    "You can not set a Scale group for the following products"
+                    " because they do not have a barcode.\n\n - %s"
+                )
+                % ("\n - ".join([x.name for x in products])))
+
     # Compute Section
     @api.multi
     def _compute_external_id_bizerba(self):

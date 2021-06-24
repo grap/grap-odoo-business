@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-18 11:25+0000\n"
-"PO-Revision-Date: 2020-09-18 11:25+0000\n"
+"POT-Creation-Date: 2021-06-18 14:39+0000\n"
+"PO-Revision-Date: 2021-06-18 14:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_log__action
 msgid "Action"
-msgstr "Action"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_group__active
@@ -30,7 +30,7 @@ msgstr "Actif"
 #: model:product.product,name:product_to_scale_bizerba.apple
 #: model:product.template,name:product_to_scale_bizerba.apple_product_template
 msgid "Apple (Gala, small)"
-msgstr "Apple (Gala, small)"
+msgstr "Pomme (Gala, petite)"
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__code
@@ -71,6 +71,12 @@ msgid "Company"
 msgstr "Société"
 
 #. module: product_to_scale_bizerba
+#: code:addons/product_to_scale_bizerba/models/product_scale_log.py:301
+#, python-format
+msgid "Connection to ftp://{}@{} failed."
+msgstr "Echec de la connexion à ftp://{}@{}"
+
+#. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__constant_value
 #: selection:product.scale.system.product.line,type:0
 msgid "Constant Value"
@@ -101,7 +107,7 @@ msgstr "Création"
 #: model:product.product,name:product_to_scale_bizerba.cucumber
 #: model:product.template,name:product_to_scale_bizerba.cucumber_product_template
 msgid "Cucumber (Green)"
-msgstr "Cucumber (Green)"
+msgstr "Concombre (Vert)"
 
 #. module: product_to_scale_bizerba
 #: selection:product.scale.log,action:0
@@ -219,7 +225,7 @@ msgstr "Paramètres Généraux"
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system__id
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_log__sent
@@ -263,7 +269,7 @@ msgstr "Dernière mise à jour le"
 #. module: product_to_scale_bizerba
 #: selection:product.scale.system,encoding:0
 msgid "Latin 1 (iso-8859-1)"
-msgstr "Latin 1 (iso-8859-1)"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__multiline_length
@@ -293,7 +299,7 @@ msgstr "Date du log"
 #: model:ir.actions.act_window,name:product_to_scale_bizerba.action_product_scale_log
 #: model:ir.ui.menu,name:product_to_scale_bizerba.menu_product_scale_log
 msgid "Logs"
-msgstr "Logs"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__related_field_id
@@ -464,7 +470,7 @@ msgstr "Méthode d'arrondi"
 #: model:product.product,name:product_to_scale_bizerba.salad
 #: model:product.template,name:product_to_scale_bizerba.salad_product_template
 msgid "Salade (Lettuce, Mache)"
-msgstr "Salade (Lettuce, Mache)"
+msgstr "Salade (Laitue, Mache)"
 
 #. module: product_to_scale_bizerba
 #: model_terms:ir.ui.view,arch_db:product_to_scale_bizerba.view_product_product_form
@@ -510,11 +516,6 @@ msgstr "Système de balance"
 #: model_terms:ir.ui.view,arch_db:product_to_scale_bizerba.view_product_scale_system_tree
 msgid "Scale Systems"
 msgstr "Systèmes de balances"
-
-#. module: product_to_scale_bizerba
-#: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_product__scale_tare_weight
-msgid "Scale Tare Weight"
-msgstr "Tare sur la balance"
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_uom_uom__scale_type
@@ -574,13 +575,6 @@ msgid "Sequence"
 msgstr "Séquence"
 
 #. module: product_to_scale_bizerba
-#: model:ir.model.fields,help:product_to_scale_bizerba.field_product_product__scale_tare_weight
-msgid "Set here Constant tare weight for the given product. This tare will be substracted when the product is weighted. Usefull only for weightable product.\n"
-"The tare is defined with kg uom."
-msgstr "Mettre ici une tare constante pour le produit. Cette tare sera soustraite quand le produit sera pesé. Utile seulement pour les produits à peser.\n"
-"La tare s'entend au kilo."
-
-#. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system__product_id_field_id
 msgid "Set the field that will be used as the ID of the product in the extra CSV file in Bizerba and in the PLNR field.\n"
 " type of field = id"
@@ -602,7 +596,19 @@ msgstr "Cette case est cochée si l'affichage à l'écran des balances est obsol
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__type
 msgid "Type"
-msgstr "Type"
+msgstr ""
+
+#. module: product_to_scale_bizerba
+#: code:addons/product_to_scale_bizerba/models/product_scale_log.py:333
+#, python-format
+msgid "Unable to push the file %s on the FTP server.\n"
+"Possible reasons :\n"
+" * Incorrect access right for the current FTP user\n"
+" * Distant folder '%s' doesn't exist"
+msgstr "Impossible de pousser le fichier %s sur le serveur FTP.\n"
+"Raisons possibles : \n"
+" * Droit d'accès incorrect pour l'utilisateur FTP\n"
+" * Le dossier distant '%s' n'existe pas"
 
 #. module: product_to_scale_bizerba
 #: model:product.product,uom_name:product_to_scale_bizerba.salad
@@ -629,41 +635,50 @@ msgstr "Utiliser si le type est 'Many2Many', pour indiquer l'indec du champ à e
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__numeric_round
 msgid "Used if type is 'Numeric Field', to mention how the value should be rounded.\n"
 " Do not Use 0, because it will truncate the value."
-msgstr "Used if type is 'Numeric Field', to mention how the value should be rounded.\n"
-" Do not Use 0, because it will truncate the value."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__numeric_coefficient
 msgid "Used if type is 'Numeric Field', to mention with coefficient numeric field should be multiplyed."
-msgstr "Used if type is 'Numeric Field', to mention with coefficient numeric field should be multiplyed."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__multiline_length
 msgid "Used if type is 'Text Field' or 'External Text Constant', to indicate the max length of a line. Set 0 to avoid to split the value."
-msgstr "Used if type is 'Text Field' or 'External Text Constant', to indicate the max length of a line. Set 0 to avoid to split the value."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__multiline_separator
 msgid "Used if type is 'Text Field' or 'External Text Constant', to indicate wich text will be used to mention break lines."
-msgstr "Used if type is 'Text Field' or 'External Text Constant', to indicate wich text will be used to mention break lines."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__constant_value
 msgid "Used if type is 'constant', to send allways the same value."
-msgstr "Used if type is 'constant', to send allways the same value."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__related_field_id
 msgid "Used only for the x2x fields. Set here the field of the related model that you want to send to the scale. Let empty to send the ID."
-msgstr "Used only for the x2x fields. Set here the field of the related model that you want to send to the scale. Let empty to send the ID."
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_system_product_line__delimiter
 msgid "Used to finish the column"
-msgstr "Used to finish the column"
+msgstr ""
 
 #. module: product_to_scale_bizerba
-#: code:addons/product_to_scale_bizerba/models/product_product.py:79
+#: code:addons/product_to_scale_bizerba/models/product_product.py:34
+#, python-format
+msgid "You can not set a Scale group for the following products because they do not have a barcode.\n"
+"\n"
+" - %s"
+msgstr "Vous ne pouvez pas mettre une catégorie de balance aux produits suivants car ils n'ont pas de code barre.\n"
+"\n"
+" - %s"
+
+#. module: product_to_scale_bizerba
+#: code:addons/product_to_scale_bizerba/models/product_product.py:88
 #, python-format
 msgid "You have to set the field '%s' used as an ID for the Bizerba if you set scale category to this product %s"
 msgstr "Vous devez définir le champ '%s' utilisé comme identifiant par Bizerba, si vous voulez appliquer une catégorie balance au produit %s"
@@ -680,15 +695,15 @@ msgstr "Vous devez définir le champ '%s' utilisé comme identifiant par Bizerba
 #: model:product.template,weight_uom_name:product_to_scale_bizerba.cucumber_product_template
 #: model:product.template,weight_uom_name:product_to_scale_bizerba.salad_product_template
 msgid "kg"
-msgstr "kg"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,field_description:product_to_scale_bizerba.field_product_scale_system_product_line__x2many_range
 msgid "range of the x2Many Fields"
-msgstr "range of the x2Many Fields"
+msgstr ""
 
 #. module: product_to_scale_bizerba
 #: model:ir.model.fields,help:product_to_scale_bizerba.field_product_scale_group__external_family_id
 msgid "this value will be used in the KEY file, send to Scales, that specify production position on Customer Scale."
-msgstr "this value will be used in the KEY file, send to Scales, that specify production position on Customer Scale."
+msgstr ""
 
