@@ -18,14 +18,20 @@ class TestRecurringConsignment(TransactionCase):
         self.AccountInvoice = self.env["account.invoice"]
         self.CommissionWizard = self.env["invoice.commission.wizard"]
         # self.report_obj = self.env['report']
-        self.consigned_product_vat_5 = self.env.ref(
-            "recurring_consignment_test.consigned_product_consignor_1_vat_5"
+        self.consigned_product_vat_5_A = self.env.ref(
+            "recurring_consignment_test.consigned_product_consignor_1_vat_5_A"
         )
-        self.consigned_product_vat_5_2 = self.env.ref(
-            "recurring_consignment_test.consigned_product_consignor_1_vat_5_2"
+        self.consigned_product_vat_5_B = self.env.ref(
+            "recurring_consignment_test.consigned_product_consignor_1_vat_5_B"
         )
         self.consignor_1 = self.env.ref("recurring_consignment_test.consignor_1")
         self.consignor_2 = self.env.ref("recurring_consignment_test.consignor_2")
+        self.fiscal_classification_5_consignor_1 = self.env.ref(
+            "recurring_consignment_test.fiscal_classification_5_consignor_1"
+        )
+        self.fiscal_classification_0_consignor_2 = self.env.ref(
+            "recurring_consignment_test.fiscal_classification_0_consignor_2"
+        )
         self.sale_pricelist_10 = self.env.ref(
             "recurring_consignment_test.sale_pricelist_10"
         )
@@ -71,26 +77,34 @@ class TestRecurringConsignment(TransactionCase):
     def test_01_change_consignor_possible(self):
         """Test if it's possible to change a consignor for an unmoved
         Product."""
-        self.consigned_product_vat_5_2.consignor_partner_id = self.consignor_2.id
+        vals = {
+            "consignor_partner_id": self.consignor_2.id,
+            "fiscal_classification_id": self.fiscal_classification_0_consignor_2.id,
+        }
+        self.consigned_product_vat_5_B.write(vals)
 
     def test_02_change_consignor_impossible_invoiced(self):
         """Test if it's possible to change a consignor for an invoiced
         Product."""
+        vals = {
+            "consignor_partner_id": self.consignor_2.id,
+            "fiscal_classification_id": self.fiscal_classification_0_consignor_2.id,
+        }
         with self.assertRaises(UserError):
-            self.consigned_product_vat_5.consignor_partner_id = self.consignor_2.id
+            self.consigned_product_vat_5_A.write(vals)
 
     def test_03_pricelist_existing_product_alternative(self):
         """Test if alternative pricelist mechanism works fine for existing
         products"""
         self.sale_pricelist_50.consignment_pricelist_id = False
         self.sale_pricelist_50.consignment_pricelist_id = self.sale_pricelist_10
-        self._test_pricelist(self.consigned_product_vat_5, True)
+        self._test_pricelist(self.consigned_product_vat_5_A, True)
 
     def test_04_pricelist_existing_product_normal(self):
         """Test if normal pricelist mechanism works fine for existing
         products"""
         self.sale_pricelist_50.consignment_pricelist_id = False
-        self._test_pricelist(self.consigned_product_vat_5, False)
+        self._test_pricelist(self.consigned_product_vat_5_A, False)
 
     def test_05_pricelist_create_product_alternative(self):
         """Test if pricelist mechanism works fine for created products"""
@@ -101,6 +115,7 @@ class TestRecurringConsignment(TransactionCase):
                 "categ_id": self.product_category.id,
                 "list_price": 100,
                 "consignor_partner_id": self.consignor_1.id,
+                "fiscal_classification_id": self.fiscal_classification_5_consignor_1.id,
             }
         )
         self._test_pricelist(product, True)
@@ -114,6 +129,7 @@ class TestRecurringConsignment(TransactionCase):
                 "categ_id": self.product_category.id,
                 "list_price": 100,
                 "consignor_partner_id": self.consignor_1.id,
+                "fiscal_classification_id": self.fiscal_classification_5_consignor_1.id,
             }
         )
         self._test_pricelist(product, False)

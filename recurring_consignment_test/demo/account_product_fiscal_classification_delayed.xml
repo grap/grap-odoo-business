@@ -18,4 +18,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="sale_tax_ids" eval="[(4, ref('tax_20_consignor_1'))]"/>
     </record>
 
+    <record id="fiscal_classification_0_consignor_2" model="account.product.fiscal.classification">
+        <field name="name">Tax Group 00% (Consignor 2)</field>
+        <field name="consignor_partner_id" ref="consignor_2"/>
+    </record>
+
 </odoo>

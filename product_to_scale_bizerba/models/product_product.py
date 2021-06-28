@@ -35,7 +35,8 @@ class ProductProduct(models.Model):
                     "You can not set a Scale group for the following products"
                     " because they do not have a barcode.\n\n - %s"
                 )
-                % ("\n - ".join([x.name for x in products])))
+                % ("\n - ".join([x.name for x in products]))
+            )
 
     # Compute Section
     @api.multi
