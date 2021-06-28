@@ -4,7 +4,7 @@
 
 {
     "name": "Recurring Consignment",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "summary": "Sale - Handle Recurring Consignments",
     "category": "Sale",
     "author": "GRAP",
