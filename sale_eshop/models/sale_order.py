@@ -5,8 +5,6 @@
 
 from odoo import _, api, models
 
-from odoo.addons.queue_job.job import job
-
 
 class SaleOrder(models.Model):
     _name = "sale.order"
@@ -160,7 +158,6 @@ class SaleOrder(models.Model):
         return True
 
     @api.model
-    @job(default_channel="root.sale_eshop_confirm_order")
     def _eshop_confirm_sale_order(self, order_id):
         order = self.browse(order_id)
         order.with_context(send_email=True).action_confirm()

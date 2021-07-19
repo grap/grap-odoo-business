@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- Copyright 2021 - Today Sylvain LE GAL (https://twitter.com/legalsylvain)
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).-->
+
+<odoo>
+
+    <record id="channel_sale_eshop_invalidate_eshop" model="queue.job.channel">
+        <field name="name">sale_eshop_invalidate_eshop</field>
+        <field name="parent_id" ref="queue_job.channel_root" />
+    </record>
+
+    <record id="channel_sale_eshop_confirm_order" model="queue.job.channel">
+        <field name="name">sale_eshop_confirm_order</field>
+        <field name="parent_id" ref="queue_job.channel_root" />
+    </record>
+
+</odoo>

@@ -8,12 +8,12 @@
 <odoo>
 
     <record id="config_parameter_eshop_url_main_company" model="ir.config_parameter" >
-        <field name="key" eval="'eshop_url__' + str(ref('base.main_company'))"/>
+        <field name="key" eval="'sale_eshop.eshop_url__' + str(ref('base.main_company'))"/>
         <field name="value">http://127.0.0.1:8080/</field>
     </record>
 
     <record id="config_parameter_eshop_invalidation_key_main_company" model="ir.config_parameter" >
-        <field name="key" eval="'eshop_invalidation_key__' + str(ref('base.main_company'))"/>
+        <field name="key" eval="'sale_eshop.eshop_invalidation_key__' + str(ref('base.main_company'))"/>
         <field name="value">INVALIDATION_KEY</field>
     </record>
 

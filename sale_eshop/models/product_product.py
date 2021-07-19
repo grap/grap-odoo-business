@@ -30,6 +30,7 @@ class ProductProduct(models.Model):
         "maker_description",
         "eshop_description",
         "country_id",
+        "state_id",
         "department_id",
         "default_code",
         "eshop_taxes_description",

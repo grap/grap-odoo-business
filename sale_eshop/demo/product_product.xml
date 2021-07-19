@@ -27,6 +27,9 @@
     <record model="product.product" id="product_strawberry">
         <field name="name">Strawberry (250 gr)</field>
         <field name="categ_id" ref="product.product_category_all" />
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_ain"/>
         <field name="list_price">3.10</field>
         <field name="eshop_category_id" ref="category_fruit" />
         <field name="eshop_minimum_qty">0.5</field>
