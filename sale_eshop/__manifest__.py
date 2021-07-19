@@ -23,6 +23,8 @@
         "security/ir_module_category.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
+        "data/queue_job_channel.xml",
+        "data/queue_job_function.xml",
         "data/email_template.xml",
         "views/menu.xml",
         "views/view_eshop_category.xml",
@@ -33,6 +35,7 @@
         "views/view_wizard_res_company_eshop_setting.xml",
     ],
     "demo": [
+        "demo/ir_config_parameter.xml",
         "demo/res_company.xml",
         "demo/eshop_category.xml",
         "demo/account_tax.xml",
@@ -41,7 +44,6 @@
         "demo/res_users.xml",
         "demo/res_groups.xml",
         "demo/res_partner.xml",
-        "demo/ir_config_parameter.xml",
     ],
     "installable": True,
 }

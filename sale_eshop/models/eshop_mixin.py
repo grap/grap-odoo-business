@@ -9,8 +9,6 @@ from requests.compat import urljoin
 
 from odoo import api, models
 
-from odoo.addons.queue_job.job import job
-
 _logger = logging.getLogger(__name__)
 
 
@@ -47,10 +45,6 @@ class EshopMixin(models.AbstractModel):
         return []
 
     @api.model
-    @job(
-        default_channel="root.sale_eshop_invalidate_eshop",
-        retry_pattern={1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60},
-    )
     def _invalidate_eshop(self, company, item_identifier):
         base_url = company.eshop_url
         private_key = company.eshop_invalidation_key

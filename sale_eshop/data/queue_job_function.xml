@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!-- Copyright 2021 - Today Sylvain LE GAL (https://twitter.com/legalsylvain)
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).-->
+
+<odoo>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__account_tax" model="queue.job.function">
+        <field name="model_id" ref="account.model_account_tax" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__eshop_category" model="queue.job.function">
+        <field name="model_id" ref="sale_eshop.model_eshop_category" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__product_label" model="queue.job.function">
+        <field name="model_id" ref="product_label.model_product_label"/>
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__product_product" model="queue.job.function">
+        <field name="model_id" ref="product.model_product_product" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__res_company" model="queue.job.function">
+        <field name="model_id" ref="base.model_res_company" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__res_country" model="queue.job.function">
+        <field name="model_id" ref="base.model_res_country" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__res_country_department" model="queue.job.function">
+        <field name="model_id" ref="l10n_fr_department.model_res_country_department" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__res_country_state" model="queue.job.function">
+        <field name="model_id" ref="base.model_res_country_state" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__res_partner" model="queue.job.function">
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_invalidate_eshop__uom_uom" model="queue.job.function">
+        <field name="model_id" ref="uom.model_uom_uom" />
+        <field name="method">_invalidate_eshop</field>
+        <field name="channel_id" ref="channel_sale_eshop_invalidate_eshop"/>
+    </record>
+
+    <record id="job_function_sale_eshop_confirm_order" model="queue.job.function">
+        <field name="model_id" ref="sale.model_sale_order" />
+        <field name="method">_eshop_confirm_sale_order</field>
+        <field name="channel_id" ref="channel_sale_eshop_confirm_order"/>
+        <field name="retry_pattern" eval="{1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60}" />
+    </record>
+
+</odoo>
