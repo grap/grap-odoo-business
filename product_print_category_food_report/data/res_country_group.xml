@@ -9,7 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <!-- Create UE non UE group -->
     <record id="countr_group_ue_nonue" model="res.country.group">
         <field name="name">UE - non UE</field>
-        <field name="european_classification">no_UE</field>
+        <field name="european_classification">UE_noUE</field>
     </record>
 
     <!-- Rename data -->
