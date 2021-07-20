@@ -48,18 +48,10 @@ class ProductProduct(models.Model):
             if product.state_id.country_id != product.country_id:
                 raise UserError(_("State must belong to the country."))
 
-    @api.depends("country_id", "state_id")
+    @api.depends("country_id.country_group_ids")
     def _compute_country_group_id(self):
-        for product in self:
-            try:
-                product.country_group_id = product.country_id.country_group_ids[0]
-            except Exception:
-                _logger.warning(
-                    _(
-                        "No Country Group defined for the "
-                        'country "%s"' % (product.country_id.name)
-                    )
-                )
+        for product in self.filtered(lambda x: x.country_id.country_group_ids):
+            product.country_group_id = product.country_id.country_group_ids[0]
 
     def _inverse_country_group_id(self):
         if (
