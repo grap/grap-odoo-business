@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* stock_preparation_category
+#   * stock_preparation_category
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-06 21:55+0000\n"
-"PO-Revision-Date: 2020-01-06 21:55+0000\n"
+"POT-Creation-Date: 2021-07-28 15:01+0000\n"
+"PO-Revision-Date: 2021-07-28 15:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:stock_preparation_category.report_stock_picking_delivery_slip
 #: model_terms:ir.ui.view,arch_db:stock_preparation_category.report_stock_picking_picking_operations
 msgid "<strong>Category</strong>"
-msgstr ""<strong>Catégorie</strong>"
+msgstr "<strong>Catégorie</strong>"
 
 #. module: stock_preparation_category
 #: model:ir.model.fields,field_description:stock_preparation_category.field_stock_preparation_category__active
@@ -29,7 +29,7 @@ msgstr "Actif"
 #. module: stock_preparation_category
 #: model:ir.model.fields,field_description:stock_preparation_category.field_stock_preparation_category__code
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
 #. module: stock_preparation_category
 #: model:ir.model.fields,field_description:stock_preparation_category.field_stock_preparation_category__color
@@ -59,7 +59,7 @@ msgstr "Nom affiché"
 #. module: stock_preparation_category
 #: model:ir.model.fields,field_description:stock_preparation_category.field_stock_preparation_category__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: stock_preparation_category
 #: model:ir.model.fields,field_description:stock_preparation_category.field_stock_preparation_category____last_update
@@ -146,3 +146,4 @@ msgstr "Ce champs sera utilisé sur les rapports de livraison"
 #: model:res.groups,name:stock_preparation_category.preparation_user
 msgid "User"
 msgstr "Utilisateur"
+
