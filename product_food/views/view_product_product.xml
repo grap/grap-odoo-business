@@ -10,6 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_product_product_form" model="ir.ui.view">
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product_label.view_product_product_form" />
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <field name="label_ids" position="replace"/>
 
@@ -18,6 +19,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <group col="4">
                         <field name="is_alimentary"/>
                         <newline/>
+                        <field name="alcohol_by_volume" attrs="{'invisible': [('is_alcohol', '=', False)]}"/>
                         <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
                         <field name="is_vegan"/>
                         <field name="best_before_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
@@ -58,6 +60,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_product_product_form_variant" model="ir.ui.view">
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product_label.view_product_product_form_variant" />
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <field name="label_ids" position="replace"/>
 

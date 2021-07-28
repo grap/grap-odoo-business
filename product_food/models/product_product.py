@@ -44,6 +44,8 @@ class ProductProduct(models.Model):
 
     is_alcohol = fields.Boolean(string="Contain Alcohol")
 
+    alcohol_by_volume = fields.Float(string="Alcohol by Volume")
+
     best_before_date_day = fields.Integer(string="Best Before Date Day")
 
     ingredients = fields.Text(string="Ingredients")
@@ -116,6 +118,18 @@ class ProductProduct(models.Model):
                     )
                     % (product.name)
                 )
+
+    @api.constrains("alcohol_by_volume")
+    def _check_alcohol_by_volume(self):
+        if self.filtered(
+            lambda x: x.alcohol_by_volume < 0 or x.alcohol_by_volume > 100
+        ):
+            raise UserError(
+                _(
+                    "Incorrect Setting. Alcohol by volume should be"
+                    " between 0 and 100."
+                )
+            )
 
     @api.multi
     @api.constrains("is_alcohol", "label_ids")
