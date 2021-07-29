@@ -10,6 +10,7 @@ from . import res_partner
 from . import res_company
 from . import res_country
 from . import res_country_department
+from . import res_country_state
 from . import sale_order
 from . import sale_order_line
 from . import wizard_res_company_eshop_setting
