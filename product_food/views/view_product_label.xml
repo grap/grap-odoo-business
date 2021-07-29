@@ -14,6 +14,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="company_id" position="after">
                 <field name="organic_type"/>
                 <field name="is_alcohol"/>
+                <field name="is_vegan"/>
             </field>
         </field>
     </record>

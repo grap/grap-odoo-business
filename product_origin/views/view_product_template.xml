@@ -13,10 +13,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//group[@name='purchase']" position="after">
                 <group string="Origin" col="4" attrs="{'invisible': [('product_variant_count', '>', 1)]}">
-                    <field name="country_id"/>
-                    <field name="state_id"/>
-                    <field name="origin_description"/>
                     <field name="maker_description"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <field name="country_group_id"/>
+                    <field name="origin_description"/>
                 </group>
             </xpath>
         </field>

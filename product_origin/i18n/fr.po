@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 12:39+0000\n"
-"PO-Revision-Date: 2020-11-04 12:39+0000\n"
+"POT-Creation-Date: 2021-06-21 12:00+0000\n"
+"PO-Revision-Date: 2021-06-21 12:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,10 +16,27 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_origin
+#: model:ir.model,name:product_origin.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: product_origin
 #: model:ir.model.fields,field_description:product_origin.field_product_product__country_id
 #: model:ir.model.fields,field_description:product_origin.field_product_template__country_id
 msgid "Country"
 msgstr "Pays"
+
+#. module: product_origin
+#: model:ir.model.fields,field_description:product_origin.field_product_product__country_group_id
+#: model:ir.model.fields,field_description:product_origin.field_product_template__country_group_id
+msgid "Country Group"
+msgstr "Groupe de pays"
+
+#. module: product_origin
+#: model:ir.model.fields,help:product_origin.field_product_product__country_group_id
+#: model:ir.model.fields,help:product_origin.field_product_template__country_group_id
+msgid "Country group of production of the product"
+msgstr "Groupe de pays de production du produit"
 
 #. module: product_origin
 #: model:ir.model.fields,help:product_origin.field_product_product__country_id
@@ -28,10 +45,42 @@ msgid "Country of production of the product"
 msgstr "Pays de production du pays"
 
 #. module: product_origin
+#: model:ir.model.fields,field_description:product_origin.field_res_partner__distribution_channel_criterion
+#: model:ir.model.fields,field_description:product_origin.field_res_users__distribution_channel_criterion
+msgid "Distribution Channel"
+msgstr "Circuit de distribution"
+
+#. module: product_origin
+#: selection:res.partner,distribution_channel_criterion:0
+msgid "Local distribution channel"
+msgstr "Circuit court"
+
+#. module: product_origin
+#: model:ir.model.fields,field_description:product_origin.field_product_product__origin_description
+msgid "Location (Complement)"
+msgstr "Lieu de production (complément)"
+
+#. module: product_origin
+#: selection:res.partner,distribution_channel_criterion:0
+msgid "Long distribution channel"
+msgstr "Circuit long"
+
+#. module: product_origin
 #: model:ir.model.fields,field_description:product_origin.field_product_product__maker_description
 #: model:ir.model.fields,field_description:product_origin.field_product_template__maker_description
 msgid "Maker"
 msgstr "Producteur·rice"
+
+#. module: product_origin
+#: selection:res.partner,distribution_channel_criterion:0
+msgid "Middle distribution channel"
+msgstr "Circuit moyen"
+
+#. module: product_origin
+#: code:addons/product_origin/models/product_product.py:60
+#, python-format
+msgid "No Country Group defined for the country \"%s\""
+msgstr "Pas de groupe de pays défini pour le pays \"%s\""
 
 #. module: product_origin
 #: model_terms:ir.ui.view,arch_db:product_origin.view_product_product_form
@@ -39,11 +88,6 @@ msgstr "Producteur·rice"
 #: model_terms:ir.ui.view,arch_db:product_origin.view_product_template_form
 msgid "Origin"
 msgstr "Origine"
-
-#. module: product_origin
-#: model:ir.model.fields,field_description:product_origin.field_product_product__origin_description
-msgid "Origin (Complement)"
-msgstr "Origine complément"
 
 #. module: product_origin
 #: model:ir.model,name:product_origin.model_product_product
@@ -58,7 +102,7 @@ msgstr "Modèle d'article"
 #. module: product_origin
 #: model:ir.model.fields,field_description:product_origin.field_product_template__origin_description
 msgid "Production Origin Complement"
-msgstr "Origine complément"
+msgstr "Lieu de production (complément)"
 
 #. module: product_origin
 #: model:ir.model.fields,field_description:product_origin.field_product_product__state_id
@@ -67,7 +111,7 @@ msgid "State"
 msgstr "Région"
 
 #. module: product_origin
-#: code:addons/product_origin/models/product_product.py:35
+#: code:addons/product_origin/models/product_product.py:49
 #, python-format
 msgid "State must belong to the country."
 msgstr "La région doit appartenir au pays."
