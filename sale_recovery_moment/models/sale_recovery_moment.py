@@ -172,17 +172,17 @@ class SaleRecoveryMoment(models.Model):
     @api.multi
     def _compute_state(self):
         now = datetime.now()
-        for moment_group in self:
-            if now < moment_group.min_sale_date:
-                moment_group.state = "futur"
-            elif now < moment_group.max_sale_date:
-                moment_group.state = "pending_sale"
-            elif now < moment_group.min_recovery_date:
-                moment_group.state = "finished_sale"
-            elif now < moment_group.max_recovery_date:
-                moment_group.state = "pending_recovery"
+        for moment in self:
+            if now < moment.min_sale_date:
+                moment.state = "futur"
+            elif now < moment.max_sale_date:
+                moment.state = "pending_sale"
+            elif now < moment.min_recovery_date:
+                moment.state = "finished_sale"
+            elif now < moment.max_recovery_date:
+                moment.state = "pending_recovery"
             else:
-                moment_group.state = "finished_recovery"
+                moment.state = "finished_recovery"
 
     @api.multi
     @api.depends(
@@ -244,7 +244,15 @@ class SaleRecoveryMoment(models.Model):
     @api.multi
     @api.depends("picking_ids", "picking_ids.recovery_moment_id", "picking_ids.state")
     def _compute_picking_multi(self):
-        for recovery_moment in self:
+        # We use sudo for the following case:
+        # 1) user has been member of recovery moment User group. (like CDA)
+        # but doesn't belong any more to this group
+        # 2) confirming a picking will make recompute the state of OTHERS pickings
+        # (addons/stock/models/stock_move_line.py, line 534)
+        # as a result, confirming a picking that is not linked to a recovery moment
+        # will maybe raise the recompute of some picking associated to a recovery moment
+        # and will fail, without that sudo()
+        for recovery_moment in self.sudo():
             recovery_moment.picking_qty = len(recovery_moment.picking_ids)
 
             recovery_moment.valid_picking_qty = len(
