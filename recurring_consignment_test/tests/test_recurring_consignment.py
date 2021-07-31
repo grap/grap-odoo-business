@@ -2,8 +2,9 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from dateutil.relativedelta import relativedelta
+from datetime import timedelta
 
+from odoo import fields
 from odoo.exceptions import Warning as UserError
 from odoo.tests.common import TransactionCase, at_install, post_install
 
@@ -142,8 +143,12 @@ class TestRecurringConsignment(TransactionCase):
             active_ids=[self.consignor_1.id]
         ).create({})
 
-        # import pdb; pdb.set_trace()
-        wizard.max_date += relativedelta(months=1)
+        # Set max date to the last day of the current month
+        today = fields.date.today()
+        wizard.max_date = fields.date(today.year, today.month + 1, 1) - timedelta(
+            days=1
+        )
+
         wizard._onchange_max_date()
 
         wizard.invoice_commission()
