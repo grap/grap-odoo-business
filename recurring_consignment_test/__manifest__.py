@@ -4,7 +4,7 @@
 
 {
     "name": "Recurring Consignment - Test Module",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "summary": "Test module for Recurring_ Consignment Module",
     "category": "Sale",
     "author": "GRAP",
