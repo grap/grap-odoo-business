@@ -34,6 +34,12 @@ class ProductTemplate(models.Model):
         " that comes from the sea",
     )
 
+    alcohol_by_volume = fields.Float(
+        string="Alcohol by Volume",
+        related="product_variant_ids.alcohol_by_volume",
+        readonly=False,
+    )
+
     is_alcohol = fields.Boolean(
         string="Contain Alcohol",
         related="product_variant_ids.is_alcohol",
