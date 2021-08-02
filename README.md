@@ -21,28 +21,28 @@ You could be interesting too by the following repositories:
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.1 | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
-[account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.2 | Test module for the module account_invoice_supplierinfo_update_standard_price
-[account_move_change_number](account_move_change_number/) | 12.0.1.1.0 | Allow special user to rename account move
-[product_food](product_food/) | 12.0.1.1.3 | Products - Food Informations
-[product_label](product_label/) | 12.0.1.1.0 | Product Labels
-[product_notation](product_notation/) | 12.0.3.1.0 | Product Notation
-[product_origin](product_origin/) | 12.0.1.1.1 | Origin for Products
-[product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.1.0 | Origin Information for Products (French Departments)
-[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.2 | Food report like pricetags
-[product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.2.0.2 | Synchronize Odoo database with Retail Connect Bizerba System
-[recurring_consignment](recurring_consignment/) | 12.0.1.1.2 | Sale - Handle Recurring Consignments
-[recurring_consignment_fiscal_company](recurring_consignment_fiscal_company/) | 12.0.1.1.0 | Glue module for Recurring Consignment and fiscal company modules
-[recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.0 | Glue module for Recurring Consignment and PoS modules
-[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.2 | Glue module for Recurring Consignment and Purchase modules
-[recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.0 | Glue module for Recurring Consignment and Sale modules
-[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.3 | Test module for Recurring_ Consignment Module
-[sale_eshop](sale_eshop/) | 12.0.1.1.1 | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.1.1 | Manage Recovery Moments and Places for Sale Order
-[stock_preparation_category](stock_preparation_category/) | 12.0.1.1.1 | Manage Preparation Categories for stock moves
-[technical_partner_access](technical_partner_access/) | 12.0.1.2.0 | Limit the access of the partners created when creating companies and users.
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.1 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.2 |  | Test module for the module account_invoice_supplierinfo_update_standard_price
+[account_move_change_number](account_move_change_number/) | 12.0.1.1.0 |  | Allow special user to rename account move
+[product_food](product_food/) | 12.0.1.1.3 |  | Products - Food Informations
+[product_label](product_label/) | 12.0.1.1.0 |  | Product Labels
+[product_notation](product_notation/) | 12.0.3.1.0 |  | Product Notation
+[product_origin](product_origin/) | 12.0.1.1.1 |  | Origin for Products
+[product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.1.0 |  | Origin Information for Products (French Departments)
+[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.2 |  | Food report like pricetags
+[product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.2.0.2 |  | Synchronize Odoo database with Retail Connect Bizerba System
+[recurring_consignment](recurring_consignment/) | 12.0.1.1.2 |  | Sale - Handle Recurring Consignments
+[recurring_consignment_fiscal_company](recurring_consignment_fiscal_company/) | 12.0.1.1.0 |  | Glue module for Recurring Consignment and fiscal company modules
+[recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.0 |  | Glue module for Recurring Consignment and PoS modules
+[recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.2 |  | Glue module for Recurring Consignment and Purchase modules
+[recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.0 |  | Glue module for Recurring Consignment and Sale modules
+[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.3 |  | Test module for Recurring_ Consignment Module
+[sale_eshop](sale_eshop/) | 12.0.1.1.1 |  | Allow connection to Odoo eShop Project
+[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.1.1 |  | Manage Recovery Moments and Places for Sale Order
+[stock_preparation_category](stock_preparation_category/) | 12.0.1.1.1 |  | Manage Preparation Categories for stock moves
+[technical_partner_access](technical_partner_access/) | 12.0.1.2.0 |  | Limit the access of the partners created when creating companies and users.
 
 [//]: # (end addons)
 
