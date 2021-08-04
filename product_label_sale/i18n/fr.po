@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-04 10:05+0000\n"
-"PO-Revision-Date: 2021-08-04 10:05+0000\n"
+"POT-Creation-Date: 2020-04-11 08:54+0000\n"
+"PO-Revision-Date: 2020-04-11 08:54+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,13 +27,14 @@ msgstr "Actif"
 
 #. module: product_label
 #: model:ir.model.fields,help:product_label.field_product_label__display_on_report
-msgid "By checking this field, the label will be printed on all the official documents."
-msgstr "Si cette case est cochée, le label sera affichée sur tous les documents officiels."
+msgid "By checking this field, the label will be printed on all the invoices."
+msgstr "Si cette case est cochée, le label sera affichée sur toute les factures."
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__code
+#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__company_id
@@ -57,37 +58,53 @@ msgstr "Nom affiché"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__display_on_report
-msgid "Display on Reports"
-msgstr "Afficher sur les rapports"
+msgid "Display on Invoices"
+msgstr "Affichage sur les factures"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #. module: product_label
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #. module: product_label
 #: model:product.product,name:product_label.infusion_girl_power
 #: model:product.template,name:product_label.infusion_girl_power_product_template
 msgid "Infusion La Girl Power (vrac)"
-msgstr ""
+msgstr "Infusion La Girl Power (vrac)"
+
+#. module: product_label
+#: model:ir.model,name:product_label.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: product_label
+#: model:ir.model,name:product_label.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Ligne de facture"
 
 #. module: product_label
 #: model:ir.actions.act_window,name:product_label.action_product_label
+#: model:ir.model.fields,field_description:product_label.field_account_invoice__label_ids
 #: model:ir.model.fields,field_description:product_label.field_product_product__label_ids
 #: model:ir.model.fields,field_description:product_label.field_product_template__label_ids
 #: model:ir.ui.menu,name:product_label.menu_product_label
 msgid "Labels"
-msgstr ""
+msgstr "Labels"
+
+#. module: product_label
+#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
+msgid "Labels Detail"
+msgstr "Détails des labels"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label____last_update
@@ -110,7 +127,13 @@ msgid "Medium-sized image"
 msgstr "Image de taille moyenne"
 
 #. module: product_label
+#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
+msgid "More information"
+msgstr "Plus d'information"
+
+#. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__name
+#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
 msgid "Name"
 msgstr "Nom"
@@ -118,7 +141,7 @@ msgstr "Nom"
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__note
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #. module: product_label
 #: model:ir.model,name:product_label.model_product_product
@@ -134,6 +157,11 @@ msgstr "Labels d'articles"
 #: model:res.groups,name:product_label.group_label_manager
 msgid "Product Labels Creation"
 msgstr "Création de labels d'articles"
+
+#. module: product_label
+#: model:ir.model.fields,field_description:product_label.field_account_invoice_line__product_label_description
+msgid "Product Labels Description"
+msgstr "Descriptions des labels d'articles"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__product_qty
@@ -169,5 +197,5 @@ msgstr "Site Web"
 #: model:product.template,uom_name:product_label.infusion_girl_power_product_template
 #: model:product.template,weight_uom_name:product_label.infusion_girl_power_product_template
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
