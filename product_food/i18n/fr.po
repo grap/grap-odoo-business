@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 09:55+0000\n"
-"PO-Revision-Date: 2021-06-21 09:55+0000\n"
+"POT-Creation-Date: 2021-08-04 13:57+0000\n"
+"PO-Revision-Date: 2021-08-04 13:57+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_food
-#: code:addons/product_food/models/product_category.py:32
+#: code:addons/product_food/models/product_category.py:39
 #, python-format
 msgid "'Is Alimentary' should be checked for categories set as 'Contain Alcohol'"
 msgstr "'Est alimentaire' doit être coché pour les categories 'contient de l'alcool'"
@@ -34,6 +34,12 @@ msgid "Agroecological"
 msgstr "Agro-écologique"
 
 #. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__alcohol_by_volume
+#: model:ir.model.fields,field_description:product_food.field_product_template__alcohol_by_volume
+msgid "Alcohol by Volume"
+msgstr "Degré d'alcool"
+
+#. module: product_food
 #: selection:product.product,organic_type:0
 msgid "Aliment Not Certified"
 msgstr "Aliment non certifié"
@@ -42,6 +48,11 @@ msgstr "Aliment non certifié"
 #: selection:product.product,organic_type:0
 msgid "Aliment Uncertifiable"
 msgstr "Aliment non certifiable"
+
+#. module: product_food
+#: model:product.category,name:product_food.alimentary_category
+msgid "Alimentary"
+msgstr "Alimentaire"
 
 #. module: product_food
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
@@ -81,10 +92,22 @@ msgid "Allergens Creation"
 msgstr "Création d'allergènes"
 
 #. module: product_food
+#: model:product.product,name:product_food.product_arachide_toaste
+#: model:product.template,name:product_food.product_arachide_toaste_product_template
+msgid "Arachide Bio Toasté - Jean Hervé"
+msgstr ""
+
+#. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__best_before_date_day
 #: model:ir.model.fields,field_description:product_food.field_product_template__best_before_date_day
 msgid "Best Before Date Day"
-msgstr "DLC (en Jour)"
+msgstr "DLUO (j)"
+
+#. module: product_food
+#: model:product.product,name:product_food.product_biere_sans_gluten
+#: model:product.template,name:product_food.product_biere_sans_gluten_product_template
+msgid "Bière Lammsbrau sans gluten 33cl"
+msgstr ""
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_certifier_organization
@@ -149,6 +172,16 @@ msgid "Contain Alimentary Products"
 msgstr "Contient des articles alimentaires"
 
 #. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__is_vegan
+msgid "Contain only vegan products"
+msgstr "Contient seulement des articles végan"
+
+#. module: product_food
+#: selection:product.product,storage_method:0
+msgid "Cool (< 4°)"
+msgstr "Frais (< 4°)"
+
+#. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_uid
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__create_uid
 msgid "Created by"
@@ -158,13 +191,13 @@ msgstr "Créé par"
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_date
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__create_date
 msgid "Created on"
-msgstr "Date"
+msgstr "Créé le"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__display_name
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__display_name
 msgid "Display Name"
-msgstr "Nom à afficher"
+msgstr "Nom affiché"
 
 #. module: product_food
 #: selection:product.product,origin_type:0
@@ -175,6 +208,11 @@ msgstr "UE"
 #: selection:product.product,origin_type:0
 msgid "EU / No EU"
 msgstr "UE / Non UE"
+
+#. module: product_food
+#: selection:product.product,storage_method:0
+msgid "Frozen (< -18°)"
+msgstr "Congelé (<-18°)"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__id
@@ -193,19 +231,41 @@ msgid "If this box is checked, the products that belong to that category will be
 msgstr "Si cette case est cochée, les articles associés à cette catégorie seront cochés comme 'contient de l'alcool' par default"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:112
+#: model:ir.model.fields,help:product_food.field_product_category__is_vegan
+msgid "If this box is checked, the products that belong to that category will be set as 'Vegan product' by default"
+msgstr "Si la case est cochée, les articles qui ont cette catégorie seront marqués comme 'végan' par défaut"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_label__is_vegan
+msgid "If this box is checked, the products that have this label will be set as 'Vegan product' by default"
+msgstr "Si la case est cochée, les articles qui ont ce label seront marqués comme 'végan' par défaut"
+
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:140
+#, python-format
+msgid "Incorrect Setting. Alcohol by volume should be between 0 and 100."
+msgstr "Paramétrage incorrect. Le degré d'alcool doit être compris entre 0 et 100."
+
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:126
 #, python-format
 msgid "Incorrect Setting. The product %s could not have volume AND weight at the same time."
 msgstr "Paramétrage incorrect. L'article %s ne peut pas être paramétré avec volume ET un poids en même temps."
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:141
+#: code:addons/product_food/models/product_product.py:167
 #, python-format
 msgid "Incorrect Setting. the product %s has a label that mentions that the product contains  alcohol, but the 'Contain Alcohol' is not checked."
 msgstr "Paramétrage incorrect. L'article %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:130
+#: code:addons/product_food/models/product_product.py:184
+#, python-format
+msgid "Incorrect Setting. the product %s has a label that mentions that the product is vegan but the 'Vegan product' is not checked."
+msgstr "Paramétrage incorrect. Le produit %s a un label qui mentionne que le produit est végan, mais case 'Est végan' n'est pas cochée"
+
+#. module: product_food
+#: code:addons/product_food/models/product_product.py:156
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
@@ -235,6 +295,12 @@ msgstr "Contient de l'alcool"
 #: model:ir.model.fields,field_description:product_food.field_product_template__is_alimentary
 msgid "Is Alimentary"
 msgstr "Est alimentaire"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_vegan
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_vegan
+msgid "Is Vegan"
+msgstr "Végan"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization____last_update
@@ -335,19 +401,47 @@ msgid "Products"
 msgstr "Articles"
 
 #. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__storage_method
+#: model:ir.model.fields,field_description:product_food.field_product_template__storage_method
+msgid "Storage Method"
+msgstr "Méthode de conservation"
+
+#. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
 #: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
 msgid "Unit Price"
 msgstr "Prix unitaire"
 
 #. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__is_vegan
-#: model:ir.model.fields,field_description:product_food.field_product_template__is_vegan
-msgid "Vegan product"
-msgstr "Produit végan"
+#: model:product.product,uom_name:product_food.product_arachide_toaste
+#: model:product.product,uom_name:product_food.product_biere_sans_gluten
+#: model:product.template,uom_name:product_food.product_arachide_toaste_product_template
+#: model:product.template,uom_name:product_food.product_biere_sans_gluten_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__use_by_date_day
+#: model:ir.model.fields,field_description:product_food.field_product_template__use_by_date_day
+msgid "Use-by Date Day"
+msgstr "DLC (j)"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_label__is_vegan
+msgid "Vegan products"
+msgstr "Article végan"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__website
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__website
 msgid "Website"
 msgstr "Site Web"
+
+#. module: product_food
+#: model:product.product,weight_uom_name:product_food.product_arachide_toaste
+#: model:product.product,weight_uom_name:product_food.product_biere_sans_gluten
+#: model:product.template,weight_uom_name:product_food.product_arachide_toaste_product_template
+#: model:product.template,weight_uom_name:product_food.product_biere_sans_gluten_product_template
+msgid "kg"
+msgstr ""
+
