@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="label_agriculture_biologique" model="product.label">
-        <field name="name">Agriculture Biologique</field>
+        <field name="name">Organic Food</field>
         <field name="code">AB</field>
         <field name="website">http://agriculture.gouv.fr/lagriculture-biologique-ab</field>
         <field name="display_on_report" eval="True" />

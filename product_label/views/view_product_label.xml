@@ -107,7 +107,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <menuitem id="menu_product_label"
-        parent="sale.prod_config_main" sequence="20"
+        parent="base.menu_ir_property" sequence="20"
         action="action_product_label"/>
 
 </odoo>
