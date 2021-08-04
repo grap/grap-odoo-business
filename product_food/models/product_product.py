@@ -11,6 +11,11 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     # Constant Section
+    _STORAGE_METHOD_SELECTION = [
+        ("cool", "Cool (< 4°)"),
+        ("frozen", "Frozen (< -18°)"),
+    ]
+
     _ORIGIN_TYPE_SELECTION = [
         ("eu", "EU"),
         ("no_eu", "No EU"),
@@ -28,7 +33,7 @@ class ProductProduct(models.Model):
     # Column Section
     is_alimentary = fields.Boolean(string="Is Alimentary")
 
-    is_vegan = fields.Boolean(string="Vegan product")
+    is_vegan = fields.Boolean(string="Is Vegan")
 
     certifier_organization_id = fields.Many2one(
         comodel_name="certifier.organization",
@@ -46,7 +51,14 @@ class ProductProduct(models.Model):
 
     alcohol_by_volume = fields.Float(string="Alcohol by Volume")
 
+    use_by_date_day = fields.Integer(string="Use-by Date Day")
+
     best_before_date_day = fields.Integer(string="Best Before Date Day")
+
+    storage_method = fields.Selection(
+        string="Storage Method",
+        selection=_STORAGE_METHOD_SELECTION,
+    )
 
     ingredients = fields.Text(string="Ingredients")
 

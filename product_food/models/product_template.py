@@ -47,8 +47,14 @@ class ProductTemplate(models.Model):
     )
 
     is_vegan = fields.Boolean(
-        string="Vegan product",
+        string="Is Vegan",
         related="product_variant_ids.is_vegan",
+        readonly=False,
+    )
+
+    use_by_date_day = fields.Integer(
+        string="Use-by Date Day",
+        related="product_variant_ids.use_by_date_day",
         readonly=False,
     )
 
@@ -56,6 +62,14 @@ class ProductTemplate(models.Model):
         string="Best Before Date Day",
         related="product_variant_ids.best_before_date_day",
         readonly=False,
+    )
+
+    storage_method = fields.Selection(
+        string="Storage Method",
+        related="product_variant_ids.storage_method",
+        selection=lambda self: self.env["product.product"]
+        ._fields["storage_method"]
+        .selection,
     )
 
     ingredients = fields.Text(
