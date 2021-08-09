@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * product_label_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-04 10:32+0000\n"
+"PO-Revision-Date: 2021-08-04 10:32+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_label_account
+#: model_terms:ir.ui.view,arch_db:product_label_account.report_account_invoice
+msgid "Code"
+msgstr ""
+
+#. module: product_label_account
+#: model:ir.model,name:product_label_account.model_account_invoice
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: product_label_account
+#: model:ir.model,name:product_label_account.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Ligne de facture"
+
+#. module: product_label_account
+#: model:ir.model.fields,field_description:product_label_account.field_account_invoice__label_ids
+msgid "Labels"
+msgstr ""
+
+#. module: product_label_account
+#: model_terms:ir.ui.view,arch_db:product_label_account.report_account_invoice
+msgid "Labels Detail"
+msgstr "Détail des labels"
+
+#. module: product_label_account
+#: model_terms:ir.ui.view,arch_db:product_label_account.report_account_invoice
+msgid "More information"
+msgstr "Plus d'information"
+
+#. module: product_label_account
+#: model_terms:ir.ui.view,arch_db:product_label_account.report_account_invoice
+msgid "Name"
+msgstr "Nom"
+
+#. module: product_label_account
+#: model:ir.model.fields,field_description:product_label_account.field_account_invoice_line__product_label_description
+msgid "Product Labels Description"
+msgstr "Description des labels de produit"
+

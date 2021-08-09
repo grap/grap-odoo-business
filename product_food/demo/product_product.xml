@@ -38,4 +38,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ]"/>
     </record>
 
+    <record id="product_origin.biere_pilat_75cl" model="product.product">
+        <field name="is_alimentary" eval="True" />
+        <field name="is_alcohol" eval="True" />
+        <field name="alcohol_by_volume">5.0</field>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('label_alcool_grossesse')),
+            ]"/>
+    </record>
+
+
 </odoo>

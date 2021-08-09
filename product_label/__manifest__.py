@@ -5,13 +5,14 @@
 {
     "name": "Product Labels",
     "version": "12.0.1.1.0",
-    "category": "Sales",
+    "category": "Product",
     "author": "GRAP",
+    "maintainers": ["legalsylvain"],
+    "developpment_status": "Production/Stable",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
     "depends": [
         "product",
-        "sale",
     ],
     "data": [
         "security/res_groups.xml",
@@ -20,14 +21,16 @@
         "views/view_product_product.xml",
         "views/view_product_template.xml",
         "views/view_product_label.xml",
-        "report/report_account_invoice.xml",
-        "report/report_sale_order.xml",
     ],
     "demo": [
         "demo/res_groups.xml",
         "demo/product_label.xml",
         "demo/product_product.xml",
     ],
-    "images": [],
+    "images": [
+        "./static/description/product_label_kanban.png"
+        "./static/description/product_label_form.png"
+        "./static/description/product_template_form.png"
+    ],
     "installable": True,
 }

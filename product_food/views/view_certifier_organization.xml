@@ -58,7 +58,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <menuitem id="menu_certifier_organization"
-        parent="sale.prod_config_main" sequence="25"
+        parent="base.menu_ir_property" sequence="25"
         action="action_certifier_organization"/>
 
 </odoo>
