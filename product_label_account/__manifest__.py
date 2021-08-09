@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Product Labels (Invoice Glue Module)",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Account",
     "author": "GRAP",
     "maintainers": ["legalsylvain"],
