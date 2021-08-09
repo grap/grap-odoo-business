@@ -22,18 +22,29 @@ Product Labels
 This module extends the functionality of Product module to support labels
 on products.
 
-The field is defined on ``product.product`` model and can be set also
-on ``product.template`` models, in a mono variant context.
-
-If the checkbox ``display_on_report`` is checked on the label,
-it will be displayed on the official document. (quotation, invoices...)
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/report_account_invoice.png
-
 **Table of contents**
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+* Go to "Setting > Technical > Parameters > Labels"
+
+..figure :: ../static/description/product_label_kanban.png
+
+* Edit or create a Label
+
+..figure :: ../static/description/product_label_form.png
+
+If "Display on Reports" is checked, label will be displayed on reports
+by other glue modules, available in the same repository: ``product_label_account``, ``product_label_sale``, ...
+
+Usage
+=====
+
+* Go to your product form
 
 Bug Tracker
 ===========
@@ -61,6 +72,14 @@ Contributors
 
 Maintainers
 ~~~~~~~~~~~
+
+.. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
+    :target: https://github.com/legalsylvain
+    :alt: legalsylvain
+
+Current maintainer:
+
+|maintainer-legalsylvain| 
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/12.0/product_label>`_ project on GitHub.
 
