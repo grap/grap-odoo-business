@@ -46,7 +46,7 @@ Usage
 
 * Go to your product form
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/product_template_form.form
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/product_template_form.png
 
 * Set one or many labels and save.
 
