@@ -32,11 +32,11 @@ Configuration
 
 * Go to "Setting > Technical > Parameters > Labels"
 
-..figure :: ../static/description/product_label_kanban.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/product_label_kanban.png
 
 * Edit or create a Label
 
-..figure :: ../static/description/product_label_form.png
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/product_label_form.png
 
 If "Display on Reports" is checked, label will be displayed on reports
 by other glue modules, available in the same repository: ``product_label_account``, ``product_label_sale``, ...
@@ -45,6 +45,10 @@ Usage
 =====
 
 * Go to your product form
+
+.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/12.0/product_label/static/description/product_template_form.form
+
+* Set one or many labels and save.
 
 Bug Tracker
 ===========
