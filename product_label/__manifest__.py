@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Product Labels",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.1.3",
     "category": "Product",
     "author": "GRAP",
     "maintainers": ["legalsylvain", "quentinDupont"],
