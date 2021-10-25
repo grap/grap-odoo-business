@@ -4,7 +4,7 @@
 
 {
     "name": "Stock - Preparation Categories",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.1.2",
     "summary": "Manage Preparation Categories for stock moves",
     "category": "Stock",
     "author": "GRAP",
