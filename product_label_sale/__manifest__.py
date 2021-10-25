@@ -7,7 +7,7 @@
     "version": "12.0.1.1.1",
     "category": "Sales",
     "author": "GRAP",
-    "maintainers": ["legalsylvain"],
+    "maintainers": ["legalsylvain", "quentinDupont"],
     "developpment_status": "Production/Stable",
     "website": "http://www.grap.coop",
     "license": "AGPL-3",
