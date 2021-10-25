@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Product Notation",
-    "version": "12.0.3.1.0",
+    "version": "12.0.3.1.1",
     "category": "Product",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
