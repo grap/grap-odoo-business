@@ -7,7 +7,7 @@
     "category": "Accounting",
     "summary": "Allow special user to rename account move",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "account_cancel",

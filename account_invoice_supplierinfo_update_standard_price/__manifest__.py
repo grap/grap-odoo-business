@@ -10,6 +10,7 @@
     "version": "12.0.1.1.1",
     "category": "Accounting & Finance",
     "author": "GRAP",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "account_invoice_supplierinfo_update_triple_discount",

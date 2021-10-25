@@ -8,7 +8,7 @@
     "summary": "Manage Preparation Categories for stock moves",
     "category": "Stock",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": ["stock"],
     "data": [

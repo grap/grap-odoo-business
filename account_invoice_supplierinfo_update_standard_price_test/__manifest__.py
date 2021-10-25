@@ -9,6 +9,7 @@
     "version": "12.0.1.0.2",
     "category": "Accounting & Finance",
     "author": "GRAP",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "l10n_generic_coa",
