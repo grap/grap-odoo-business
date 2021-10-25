@@ -9,7 +9,7 @@
     "author": "GRAP",
     "maintainers": ["legalsylvain"],
     "developpment_status": "Production/Stable",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "product",

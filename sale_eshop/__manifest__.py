@@ -8,6 +8,7 @@
     "summary": "Allow connection to Odoo eShop Project",
     "category": "Sale",
     "author": "GRAP",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "sale",

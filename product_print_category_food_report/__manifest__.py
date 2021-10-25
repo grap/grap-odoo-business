@@ -9,7 +9,7 @@
     "summary": "Food report like pricetags",
     "category": "Product",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "product_print_category",

@@ -8,7 +8,7 @@
     "version": "12.0.2.0.2",
     "category": "Product",
     "author": "GRAP, La Louve",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "product",
