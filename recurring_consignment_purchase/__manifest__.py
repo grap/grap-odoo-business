@@ -8,7 +8,7 @@
     "summary": "Glue module for Recurring Consignment and Purchase modules",
     "category": "Sale",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
         "recurring_consignment",
