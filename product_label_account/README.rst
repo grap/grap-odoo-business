@@ -67,10 +67,13 @@ Maintainers
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain
     :alt: legalsylvain
+.. |maintainer-quentinDupont| image:: https://github.com/quentinDupont.png?size=40px
+    :target: https://github.com/quentinDupont
+    :alt: quentinDupont
 
-Current maintainer:
+Current maintainers:
 
-|maintainer-legalsylvain| 
+|maintainer-legalsylvain| |maintainer-quentinDupont| 
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/12.0/product_label_account>`_ project on GitHub.
 
