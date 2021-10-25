@@ -7,7 +7,7 @@
     "version": "12.0.1.1.4",
     "category": "Sales",
     "author": "GRAP",
-    "website": "http://www.grap.coop",
+    "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": ["product_label", "product_origin"],
     "data": [
