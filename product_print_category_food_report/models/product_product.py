@@ -147,7 +147,7 @@ class ProductProduct(models.Model):
                 product.pricetag_is_second_price = True
                 product.pricetag_second_price_uom_text = _("Price per Liter")
                 product.pricetag_second_price = product.list_price / product.volume
-            elif product.weight:
+            elif product.net_weight:
                 product.pricetag_is_second_price = True
                 product.pricetag_second_price_uom_text = _("Price per Kilo")
-                product.pricetag_second_price = product.list_price / product.weight
+                product.pricetag_second_price = product.list_price / product.net_weight
