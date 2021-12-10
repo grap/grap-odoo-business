@@ -68,7 +68,10 @@ class InvoiceCommissionWizardLine(models.TransientModel):
         AccountInvoiceLine = self.env["account.invoice.line"]
 
         rate = self.partner_id.consignment_commission
-        product = lines[0].tax_ids[0].consignment_product_id
+        product = lines[0].tax_ids[0] and lines[0].tax_ids[0].consignment_product_id
+        if not product:
+            return
+
         total_credit = 0
         for line in lines:
             total_credit += line.credit - line.debit
