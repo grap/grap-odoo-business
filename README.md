@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.2 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.3 |  | Test module for the module account_invoice_supplierinfo_update_standard_price
-[account_move_change_number](account_move_change_number/) | 12.0.1.1.1 |  | Allow special user to rename account move
+[account_move_change_number](account_move_change_number/) | 12.0.1.1.2 |  | Allow special user to rename account move
 [product_food](product_food/) | 12.0.1.1.5 |  | Products - Food Informations
 [product_label](product_label/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
 [product_label_account](product_label_account/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels (Invoice Glue Module)
@@ -40,7 +40,7 @@ addon | version | maintainers | summary
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and PoS modules
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.3 |  | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and Sale modules
-[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.4 |  | Test module for Recurring_ Consignment Module
+[recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.5 |  | Test module for Recurring_ Consignment Module
 [sale_eshop](sale_eshop/) | 12.0.1.1.3 |  | Allow connection to Odoo eShop Project
 [sale_recovery_moment](sale_recovery_moment/) | 12.0.1.1.2 |  | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.1.2 |  | Manage Preparation Categories for stock moves
