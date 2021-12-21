@@ -3,6 +3,7 @@ account-fiscal-rule
 l10n-france
 margin-analysis
 pos
+product-attribute
 queue
 web
 

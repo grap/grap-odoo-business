@@ -104,13 +104,13 @@ class ProductProduct(models.Model):
             else:
                 product.organic_type = "05_not_alimentary"
 
-    @api.depends("weight", "volume", "list_price")
+    @api.depends("net_weight", "volume", "list_price")
     def _compute_price_per_unit(self):
         for product in self:
-            if product.weight != 0 and product.volume != 0:
+            if product.net_weight != 0 and product.volume != 0:
                 product.price_per_unit = 0
-            elif product.weight not in [0, 1]:
-                product.price_per_unit = product.list_price / product.weight
+            elif product.net_weight not in [0, 1]:
+                product.price_per_unit = product.list_price / product.net_weight
             elif product.volume not in [0, 1]:
                 product.price_per_unit = product.list_price / product.volume
             else:
@@ -118,15 +118,15 @@ class ProductProduct(models.Model):
 
     # Constrains Section
     @api.multi
-    @api.constrains("weight", "volume")
-    def _check_weight_volume(self):
+    @api.constrains("net_weight", "volume")
+    def _check_net_weight_volume(self):
         for product in self:
-            if product.weight and product.volume:
+            if product.net_weight and product.volume:
                 raise UserError(
                     _(
                         "Incorrect Setting. "
                         "The product %s could not have"
-                        " volume AND weight at the same time."
+                        " volume AND net weight at the same time."
                     )
                     % (product.name)
                 )
