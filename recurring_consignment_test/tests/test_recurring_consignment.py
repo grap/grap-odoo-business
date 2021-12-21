@@ -145,9 +145,12 @@ class TestRecurringConsignment(TransactionCase):
 
         # Set max date to the last day of the current month
         today = fields.date.today()
-        wizard.max_date = fields.date(today.year, today.month + 1, 1) - timedelta(
-            days=1
-        )
+        if today.month < 12:
+            wizard.max_date = fields.date(today.year, today.month + 1, 1) - timedelta(
+                days=1
+            )
+        else:
+            wizard.max_date = fields.date(today.year + 1, 1, 1) - timedelta(days=1)
 
         wizard._onchange_max_date()
 

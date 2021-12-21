@@ -22,8 +22,16 @@ class AccountMove(models.Model):
             # set name to "/"
             move.name = "/"
 
+            # Get related invoice
+            invoices = self.env["account.invoice"].search([("move_id", "=", move.id)])
+            if invoices:
+                invoice = invoices[0]
+                invoice.move_name = "/"
+            else:
+                invoice = False
+
             # post account move
-            move.post()
+            move.post(invoice=invoice)
             new_name = move.name
 
             # Add description of the change
