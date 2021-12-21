@@ -23,9 +23,7 @@ class AccountMove(models.Model):
             move.name = "/"
 
             # Get related invoice
-            invoices = self.env["account.invoice"].search(
-                [('move_id', "=", move.id)]
-            )
+            invoices = self.env["account.invoice"].search([("move_id", "=", move.id)])
             if invoices:
                 invoice = invoices[0]
                 invoice.move_name = "/"
