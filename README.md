@@ -26,14 +26,14 @@ addon | version | maintainers | summary
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.2 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.3 |  | Test module for the module account_invoice_supplierinfo_update_standard_price
 [account_move_change_number](account_move_change_number/) | 12.0.1.1.2 |  | Allow special user to rename account move
-[product_food](product_food/) | 12.0.1.1.5 |  | Products - Food Informations
+[product_food](product_food/) | 12.0.1.1.6 |  | Products - Food Informations
 [product_label](product_label/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
 [product_label_account](product_label_account/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels (Invoice Glue Module)
 [product_label_sale](product_label_sale/) | 12.0.1.1.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels (Sale Glue Module)
 [product_notation](product_notation/) | 12.0.3.1.1 |  | Product Notation
 [product_origin](product_origin/) | 12.0.1.1.2 |  | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.1.1 |  | Origin Information for Products (French Departments)
-[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.3 |  | Food report like pricetags
+[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.4 |  | Food report like pricetags
 [product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.2.0.3 |  | Synchronize Odoo database with Retail Connect Bizerba System
 [recurring_consignment](recurring_consignment/) | 12.0.1.1.4 |  | Sale - Handle Recurring Consignments
 [recurring_consignment_fiscal_company](recurring_consignment_fiscal_company/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and fiscal company modules
