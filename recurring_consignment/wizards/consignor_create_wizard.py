@@ -93,7 +93,9 @@ class ConsignorCreateWizard(models.TransientModel):
     @api.multi
     def _prepare_tax(self, sequence, account, partner, commission_product):
         self.ensure_one()
-        amount = commission_product.taxes_id[0].amount
+        amount = (
+            commission_product.taxes_id and commission_product.taxes_id[0].amount or 0.0
+        )
         return {
             "name": "{sequence} - {amount:.1f} -{vat_subject}{name}".format(
                 sequence=sequence,
@@ -115,10 +117,15 @@ class ConsignorCreateWizard(models.TransientModel):
         }
 
     def _prepare_fiscal_classification(self, sequence, partner, tax):
+        amount = (
+            tax.consignment_product_id.taxes_id
+            and tax.consignment_product_id.taxes_id[0].amount
+            or 0.0
+        )
         return {
             "name": _("{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}").format(
                 sequence=sequence,
-                amount=tax.consignment_product_id.taxes_id[0].amount,
+                amount=amount,
                 vat_subject=self.is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
                 name=self.name,
             ),

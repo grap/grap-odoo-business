@@ -96,29 +96,32 @@ class InvoiceCommissionWizardLine(models.TransientModel):
 
         # Compute price, depending on the tax settings
         taxes = move_line.invoice_line_tax_ids
-        if len(taxes) != 1:
-            raise UserError(
-                _(
-                    "Incorrect fiscal settings block the possibility"
-                    " to generate commission invoices : Too many taxes %s"
+        if taxes:
+            if len(taxes) != 1:
+                raise UserError(
+                    _(
+                        "Incorrect fiscal settings block the possibility"
+                        " to generate commission invoices : Too many taxes %s"
+                    )
+                    % (", ".join(taxes.mapped("name")))
                 )
-                % (", ".join(taxes.mapped("name")))
-            )
 
-        tax = taxes[0]
-        if tax.amount_type != "percent":
-            raise UserError(
-                _(
-                    "Incorrect fiscal settings block the possibility"
-                    " to generate commission invoices : Incorrect tax type"
-                    " on the tax %s"
+            tax = taxes[0]
+            if tax.amount_type != "percent":
+                raise UserError(
+                    _(
+                        "Incorrect fiscal settings block the possibility"
+                        " to generate commission invoices : Incorrect tax type"
+                        " on the tax %s"
+                    )
+                    % (tax.name)
                 )
-                % (tax.name)
-            )
 
-        # Rewrite name and price_unit, because on change erased correct values
-        if tax.price_include:
-            move_line.price_unit = price_unit * (100 + tax.amount) / 100
+            # Rewrite name and price_unit, because on change erased correct values
+            if tax.price_include:
+                move_line.price_unit = price_unit * (100 + tax.amount) / 100
+            else:
+                move_line.price_unit = price_unit
         else:
             move_line.price_unit = price_unit
 
