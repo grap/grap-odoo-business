@@ -79,6 +79,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                             <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!--
                                              --><t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><!--
                                                  --><span class="product_uom">/L</span><br/>
+                                            </t><t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><!--
+                                                 --><span class="product_uom">/unit</span><br/>
                                             </t>
                                             <t t-else=""><span class="product_uom">/kg</span><br/></t>
                                         </div>
