@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-20 14:15+0000\n"
-"PO-Revision-Date: 2021-05-20 14:15+0000\n"
+"POT-Creation-Date: 2022-01-10 09:47+0000\n"
+"PO-Revision-Date: 2022-01-10 09:47+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,19 +16,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:129
+#: code:addons/product_print_category_food_report/models/product_product.py:131
 #, python-format
 msgid "(UE / no UE) "
 msgstr "(UE / non UE) "
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:125
+#: code:addons/product_print_category_food_report/models/product_product.py:127
 #, python-format
 msgid "(UE) "
 msgstr ""
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:127
+#: code:addons/product_print_category_food_report/models/product_product.py:129
 #, python-format
 msgid "(no UE) "
 msgstr "(non UE) "
@@ -90,6 +90,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<span class=\"product_uom\">/kg</span><br/>"
 msgstr ""
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
+msgid "<span class=\"product_uom\">/unit</span><br/>"
+msgstr "<span class=\"product_uom\">/pièce</span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
@@ -232,7 +237,7 @@ msgid "European classification"
 msgstr "Classification Union Européene"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:139
+#: code:addons/product_print_category_food_report/models/product_product.py:141
 #, python-format
 msgid "For %s"
 msgstr "Pour %s"
@@ -305,13 +310,13 @@ msgid "Origin:"
 msgstr "Origine :"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:150
+#: code:addons/product_print_category_food_report/models/product_product.py:152
 #, python-format
 msgid "Price per Kilo"
 msgstr "Prix au kilo"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:146
+#: code:addons/product_print_category_food_report/models/product_product.py:148
 #, python-format
 msgid "Price per Liter"
 msgstr "Prix au litre"
