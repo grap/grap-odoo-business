@@ -7,7 +7,8 @@ from odoo.exceptions import Warning as UserError
 
 
 class AccountInvoiceLine(models.Model):
-    _inherit = "account.invoice.line"
+    _inherit = ["account.invoice.line", "recurring.consignment.line.mixin"]
+    _name = "account.invoice.line"
 
     @api.constrains("product_id")
     def _check_invoice_line_recurring_consignment(self):

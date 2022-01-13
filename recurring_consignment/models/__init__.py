@@ -1,3 +1,5 @@
+from . import recurring_consignment_line_mixin
+
 from . import account_invoice
 from . import account_invoice_line
 from . import account_product_fiscal_classification
