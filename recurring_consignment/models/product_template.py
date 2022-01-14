@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import ValidationError
 
 
 class ProductTemplate(models.Model):
@@ -38,7 +38,7 @@ class ProductTemplate(models.Model):
                 product.consignor_partner_id
                 != product.fiscal_classification_id.consignor_partner_id
             ):
-                raise UserError(
+                raise ValidationError(
                     _(
                         "The product %s %s has inconsistent consignor and"
                         " fiscal classification"
@@ -88,16 +88,21 @@ class ProductTemplate(models.Model):
 
     # Constrains Section
     @api.constrains("standard_price", "consignor_partner_id", "seller_ids")
+    def _check_consignor_partner_id_fields_template(self):
+        self._check_consignor_partner_id_fields()
+
     def _check_consignor_partner_id_fields(self):
         for template in self.filtered(lambda x: x.consignor_partner_id):
             if template.standard_price:
-                raise UserError(_("A consigned product must have null Cost Price"))
+                raise ValidationError(
+                    _("A consigned product must have null Cost Price")
+                )
             if len(
                 template.seller_ids.filtered(
                     lambda x: x.name != template.consignor_partner_id
                 )
             ):
-                raise UserError(
+                raise ValidationError(
                     _(
                         "A consigned product can only have the consignor"
                         " in the field 'Suppliers'."
@@ -139,7 +144,7 @@ class ProductTemplate(models.Model):
                 if template.recurring_consignment != vals.get(
                     "recurring_consignment", False
                 ):
-                    raise UserError(
+                    raise ValidationError(
                         _(
                             "You can not change the value of the field"
                             " 'Is Consignment Commission'. You can disable"
@@ -161,7 +166,7 @@ class ProductTemplate(models.Model):
                         [("product_id", "in", product_ids)]
                     )
                     if len(invoice_lines):
-                        raise UserError(
+                        raise ValidationError(
                             _(
                                 "You can not change the value of the field"
                                 " 'Consignor' because the product is associated"
