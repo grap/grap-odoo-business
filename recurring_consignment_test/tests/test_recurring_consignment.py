@@ -5,7 +5,7 @@
 from datetime import timedelta
 
 from odoo import fields
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, at_install, post_install
 
 
@@ -91,23 +91,31 @@ class TestRecurringConsignment(TransactionCase):
             "consignor_partner_id": self.consignor_2.id,
             "fiscal_classification_id": self.fiscal_classification_0_consignor_2.id,
         }
-        with self.assertRaises(UserError):
+        with self.assertRaises(ValidationError):
             self.consigned_product_vat_5_A.write(vals)
 
-    def test_03_pricelist_existing_product_alternative(self):
+    def test_03_change_standard_price(self):
+        """Test the prevention to set a not null standard price
+        Product."""
+        self.consigned_product_vat_5_B.write({"standard_price": 0.0})
+
+        with self.assertRaises(ValidationError):
+            self.consigned_product_vat_5_B.write({"standard_price": 5.0})
+
+    def test_10_pricelist_existing_product_alternative(self):
         """Test if alternative pricelist mechanism works fine for existing
         products"""
         self.sale_pricelist_50.consignment_pricelist_id = False
         self.sale_pricelist_50.consignment_pricelist_id = self.sale_pricelist_10
         self._test_pricelist(self.consigned_product_vat_5_A, True)
 
-    def test_04_pricelist_existing_product_normal(self):
+    def test_11_pricelist_existing_product_normal(self):
         """Test if normal pricelist mechanism works fine for existing
         products"""
         self.sale_pricelist_50.consignment_pricelist_id = False
         self._test_pricelist(self.consigned_product_vat_5_A, False)
 
-    def test_05_pricelist_create_product_alternative(self):
+    def test_12_pricelist_create_product_alternative(self):
         """Test if pricelist mechanism works fine for created products"""
         self.sale_pricelist_50.consignment_pricelist_id = self.sale_pricelist_10
         product = self.ProductProduct.create(
@@ -121,7 +129,7 @@ class TestRecurringConsignment(TransactionCase):
         )
         self._test_pricelist(product, True)
 
-    def test_06_pricelist_create_product_normal(self):
+    def test_13_pricelist_create_product_normal(self):
         """Test if pricelist mechanism works fine for created products"""
         self.sale_pricelist_50.consignment_pricelist_id = False
         product = self.ProductProduct.create(
@@ -135,7 +143,7 @@ class TestRecurringConsignment(TransactionCase):
         )
         self._test_pricelist(product, False)
 
-    def test_07_commission(self):
+    def test_20_commission_workflow(self):
         self.customer_invoice_1.action_invoice_open()
         self.customer_invoice_2.action_invoice_open()
 

@@ -13,3 +13,8 @@ class ProductProduct(models.Model):
     def onchange_consignor_partner_id_variant(self):
         ProductTemplate = self.env["product.template"]
         ProductTemplate._onchange_consignor_partner_id(self)
+
+    # Constrains Section
+    @api.constrains("standard_price", "consignor_partner_id", "seller_ids")
+    def _check_consignor_partner_id_fields_variant(self):
+        self.mapped("product_tmpl_id")._check_consignor_partner_id_fields()
