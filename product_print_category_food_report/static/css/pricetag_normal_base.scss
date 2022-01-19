@@ -9,6 +9,7 @@
     }
     .product_informations {
         text-align:left;
+        white-space: nowrap;
         overflow : hidden;
     }
     .product_name{
@@ -67,7 +68,10 @@
     }
     .product_labels{
         padding-left : 2px; overflow: hidden;
-        font-size:9px; max-width: 2.9cm;
+        font-size:9px; max-width: 4.8cm; height: 0.9cm;
+    }
+    .organic_text{
+        white-space: nowrap;
     }
     .wrap_barcode_image{
         overflow: hidden;
