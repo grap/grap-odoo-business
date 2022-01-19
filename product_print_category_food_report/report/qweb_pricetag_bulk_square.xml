@@ -99,13 +99,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <div class="product_price_per_uom_price_big">
                                         <div class="product_price_big">
                                             <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!--
-                                             --><t t-if="line.product_id.uom_id.category_id.name == 'Volume'"><!--
+                                             --><t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><!--
                                                  --><span class="product_uom">/L</span><br/>
                                             </t>
-                                            <t t-elif="line.product_id.uom_id.category_id.name == 'Weight'"><span class="product_uom">/kg</span><br/></t>
-                                            <t t-else=""></t>
+                                            <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span class="product_uom">/kg</span><br/></t>
                                         </div>
                                     </div>
+                                    <!-- Prix au kilo ou au L -->
+                                    <t t-if="line.product_id.pricetag_is_second_price">
+                                        <div class="product_price_per_uom_price">
+                                            <t t-if="line.product_id.pricetag_is_second_price">
+                                                <span><t t-esc="line.product_id.pricetag_second_price_uom_text"/> :
+                                                <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/>&#160;€</b></span>
+                                            </t>
+                                        </div>
+                                    </t>
                                 </t>
                                 <div class="write_date">
                                     <t t-if="line.product_id.write_date">
