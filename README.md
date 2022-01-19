@@ -36,7 +36,6 @@ addon | version | maintainers | summary
 [product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.4 |  | Food report like pricetags
 [product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.2.0.3 |  | Synchronize Odoo database with Retail Connect Bizerba System
 [recurring_consignment](recurring_consignment/) | 12.0.1.1.6 |  | Sale - Handle Recurring Consignments
-[recurring_consignment_fiscal_company](recurring_consignment_fiscal_company/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and fiscal company modules
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and PoS modules
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 12.0.1.1.3 |  | Glue module for Recurring Consignment and Purchase modules
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.1 |  | Glue module for Recurring Consignment and Sale modules
