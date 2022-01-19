@@ -9,7 +9,7 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
-    "depends": ["product_label", "product_origin", "product_net_weight"],
+    "depends": ["product_label", "product_net_weight", "product_origin"],
     "data": [
         "security/res_groups.xml",
         "security/ir_rule.xml",
