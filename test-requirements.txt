@@ -1,1 +1,2 @@
 odoo12-addon-product_print_category @ git+https://github.com/grap/grap-odoo-incubator#subdirectory=setup/product_print_category
+odoo12-addon-name_search_reset_res_partner @ git+https://github.com/grap/grap-odoo-incubator#subdirectory=setup/name_search_reset_res_partner
