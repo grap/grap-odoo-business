@@ -9,10 +9,14 @@
         display : inline-block;
         vertical-align: top;
     }
+    .write_date{
+        font-size: 7px;
+        padding: 5px;
+    }
     .product_name{
         font-size:40px; font-weight:bold; line-height: 1.1em;
         text-align: center;
-        margin-top: 1.2cm;
+        margin-top: 0.8cm;
         max-height: 2.15em; overflow: hidden;
     }
     .price_area {
