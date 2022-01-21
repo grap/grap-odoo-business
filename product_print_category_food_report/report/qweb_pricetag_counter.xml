@@ -20,14 +20,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <t t-foreach="category_data['lines']" t-as="line">
                 <t t-foreach="line.quantity" t-as="q">
                     <div class="counter_pricetag floating_box">
-                            <!-- Write date -->
-                            <div class="write_date">
-                                <t t-if="line.product_id.write_date">
-                                    Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
-                                </t>
-                            </div>
-                            <!-- Product name -->
-                            <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
+                        <!-- TOP PART : Write date -->
+                        <div class="write_date">
+                            <t t-if="line.product_id.write_date">
+                                Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
+                            </t>
+                        </div>
+                        <!-- LEFT PART : Product labels -->
+                        <div class="product_labels floating_box">
+                            <t t-foreach="line.product_id.label_ids" t-as="label">
+                                    <img class="product_label" t-attf-src="data:image/*;base64,{{label.image}}" t-att-alt="label.name"/>
+                             </t>
+                        </div>
+                        <!-- RIGHT PART : Product name -->
+                        <div class="top_right floating_box">
+                            <div class="product_name " t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
                                 <t t-esc="line.product_id.name"/>
                             </div>
                             <!-- Price -->
@@ -40,7 +47,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </div>
                                 </t>
                                 <t t-else="">
-                                    <div class="product_price">
+                                    <div class="product_price floating_box">
                                         <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                         <!-- /KG OU /PCE -->
                                         <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><span class="product_sell_by_weight">/KG</span></t>
@@ -48,15 +55,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     </div>
                                 </t>
                             </div>
-                            <div class="label_bottom">
-                                <!-- Product labels -->
-                                <span class="product_labels">
-                                    <t t-foreach="line.product_id.label_ids" t-as="label">
-                                            <img class="product_label" t-attf-src="data:image/*;base64,{{label.image}}" t-att-alt="label.name"/>
-                                     </t>
-                                </span>
-                                <!-- Price per uom -->
-                                <span class="product_price_per_uom_price_area">
+                            <!-- Price per uom and origin-->
+                            <div class="label_bottom floating_box">
+                                <div class="price_per_unit_and_origin">
                                     <t t-if="not line.product_id.pricetag_special_quantity_price">
                                         <!-- Prix au Kg ou au L -->
                                         <t t-if="line.product_id.pricetag_is_second_price">
@@ -76,8 +77,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                             <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                         </span>
                                     </t>
-                                </span>
+                                    <span class="pricetag_origin">
+                                        <t t-if="line.product_id.pricetag_origin"><br/>Origin: <b><t t-esc="line.product_id.pricetag_origin"/></b><br/></t>
+                                    </span>
+                                </div>
                             </div>
+                        </div>
                     </div>
                 </t>
             </t>
