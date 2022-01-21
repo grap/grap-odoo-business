@@ -29,6 +29,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
                                 </t>
                             </div>
+                            <!-- Product name -->
                             <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
                                 <t t-esc="line.product_id.name"/>
                             </div>
