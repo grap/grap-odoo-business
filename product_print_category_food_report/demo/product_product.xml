@@ -21,7 +21,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="uom_id" ref="uom.product_uom_unit" />
         <field name="barcode">4012359111104</field>
         <field name="list_price">2.6</field>
-        <field name="weight">0.2</field>
+        <field name="net_weight">0.2</field>
         <field name="country_id" ref="base.fr"/>
         <field name="maker_description">Taifun</field>
         <field name="label_ids" eval="[

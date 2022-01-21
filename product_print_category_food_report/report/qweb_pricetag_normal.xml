@@ -23,6 +23,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <!-- NORMAL PRICETAG NORMAL -->
                     <div class="normal_pricetag normal_pricetag_normal floating_box">
                         <div class="pricetag_left floating_box">
+                            <!-- Write date -->
+                            <div class="write_date">
+                                <t t-if="line.product_id.write_date">
+                                    Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
+                                </t>
+                            </div>
                             <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
                                 <t t-esc="line.product_id.name"/>
                             </div>
@@ -70,7 +76,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-if="line.product_id.pricetag_is_second_price">
                                         <div class="product_price_per_uom_qty floating_box">
                                             <t t-if="line.product_id.volume">Volume<br/><b><t t-esc="line.product_id.volume"/> L</b><br/></t>
-                                            <t t-elif="line.product_id.weight">Weight<br/><b><t t-esc="line.product_id.weight"/> kg</b><br/></t>
+                                            <t t-elif="line.product_id.net_weight">Weight<br/><b><t t-esc="line.product_id.net_weight"/> kg</b><br/></t>
                                         </div>
                                         <!-- Prix au Kg ou au L -->
                                         <div class="product_price_per_uom_price floating_box">
@@ -96,12 +102,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <div class="floating_box">
                                     <img class="spider_chart_image" t-att-src="'data:image/png;base64,%s' % to_text(line.product_id.spider_chart_image)"/>
                                 </div>
-                                <!-- Write date -->
-                                <div class="write_date">
-                                    <t t-if="line.product_id.write_date">
-                                        Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
-                                    </t>
-                                </div>
                             </div>
                         </t>
                         <t t-if="not line.product_id.pricetag_display_spider_chart">
@@ -117,7 +117,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-if="line.product_id.pricetag_is_second_price">
                                         <div class="product_price_per_uom_qty floating_box">
                                             <t t-if="line.product_id.volume">Volume<br/><b><t t-esc="line.product_id.volume"/> L</b><br/></t>
-                                            <t t-elif="line.product_id.weight">Weight<br/><b><t t-esc="line.product_id.weight"/> kg</b><br/></t>
+                                            <t t-elif="line.product_id.net_weight">Weight<br/><b><t t-esc="line.product_id.net_weight"/> kg</b><br/></t>
                                         </div>
                                         <!-- Prix au Kg ou au L -->
                                         <div class="product_price_per_uom_price floating_box">
@@ -140,12 +140,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                     </div>
                                 </t>
-                                <!-- Write date -->
-                                <div class="write_date">
-                                    <t t-if="line.product_id.write_date">
-                                        Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
-                                    </t>
-                                </div>
                             </div>
                         </t>
                     </div>
