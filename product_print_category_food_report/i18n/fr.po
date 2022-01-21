@@ -430,7 +430,7 @@ msgstr ""
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
 msgid "Weight<br/>"
-msgstr "Poids<br/>"
+msgstr "Poids net<br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
