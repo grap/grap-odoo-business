@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+     <record id="view_sale_recovery_moment_wizard_duplicate_form" model="ir.ui.view">
+        <field name="model">sale.recovery.moment.wizard.duplicate</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="4">
+                    <field name="moment_ids" colspan="4">
+                        <tree create="false">
+                            <field name="name"/>
+                            <field name="specific_min_sale_date"/>
+                            <field name="specific_max_sale_date"/>
+                        </tree>
+                    </field>
+                </group>
+                <group>
+                    <field name="day_delay"/>
+                </group>
+                <footer>
+                    <button name="duplicate_moments" string="Duplicate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_recovery_moment_wizard_duplicate" model="ir.actions.act_window">
+      <field name="name">Duplicate Recovery Moment Moments</field>
+      <field name="res_model">sale.recovery.moment.wizard.duplicate</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+      <field name="binding_model_id" ref="sale_recovery_moment.model_sale_recovery_moment"/>
+    </record>
+
+</odoo>

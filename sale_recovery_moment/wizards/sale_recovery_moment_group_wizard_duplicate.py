@@ -81,6 +81,7 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
                     "place_id": moment.place_id.id,
                     "max_order_qty": moment.max_order_qty,
                     "description": moment.description,
+                    "company_id": moment.company_id.id,
                 }
                 SaleRecoveryMoment.create(moment_vals)
             new_groups.append(new_group)
@@ -88,6 +89,7 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         action_data = self.env.ref(
             "sale_recovery_moment.action_sale_recovery_moment_group"
         ).read()[0]
+        action_data["display_name"] = _("Duplicated Recovery Moment Groups")
         if len(self.group_ids) == 1:
             view = self.env.ref(
                 "sale_recovery_moment.view_sale_recovery_moment_group_form"
@@ -96,6 +98,7 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
             action_data["res_id"] = new_groups[0].id
         else:
             action_data["domain"] = [("id", "in", [x.id for x in new_groups])]
+            action_data["context"] = False
         return action_data
 
     # View Section
