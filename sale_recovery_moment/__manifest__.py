@@ -12,6 +12,7 @@
     "license": "AGPL-3",
     "depends": [
         "sale_stock",
+        "stock_picking_report_summary",
     ],
     "data": [
         "security/ir_rule.xml",
