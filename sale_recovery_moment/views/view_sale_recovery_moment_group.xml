@@ -48,7 +48,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="%(action_sale_recovery_moment_group_wizard_duplicate)d" string="Duplicate" type="action"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>

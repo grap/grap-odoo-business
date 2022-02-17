@@ -11,27 +11,35 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <group col="4">
-                    <field name="group_id" colspan="4"/>
-                    <field name="short_name"/>
+                    <field name="group_ids" colspan="4">
+                        <tree create="false">
+                            <field name="code"/>
+                            <field name="short_name"/>
+                            <field name="min_sale_date"/>
+                            <field name="max_sale_date"/>
+                        </tree>
+                    </field>
                     <field name="day_delay"/>
-                    <field name="next_min_sale_date" force_save="1"/>
-                    <field name="next_max_sale_date" force_save="1"/>
+                    <field name="group_qty"/>
+                    <newline/>
+                    <field name="next_min_sale_date" attrs="{'invisible': [('group_qty', '!=', 1)]}"/>
+                    <field name="next_max_sale_date" attrs="{'invisible': [('group_qty', '!=', 1)]}"/>
                 </group>
                 <footer>
-                    <button name="duplicate_group" string="Duplicate" type="object" class="btn-primary"/>
+                    <button name="duplicate_groups" string="Duplicate" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>
         </field>
     </record>
 
-    <record id="action_sale_recovery_moment_group_wizard_duplicate" model="ir.actions.act_window">
-        <field name="name">Duplicate Group</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">sale.recovery.moment.group.wizard.duplicate</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
+    <record id="action_recovery_moment_group_wizard_duplicate" model="ir.actions.act_window">
+      <field name="name">Duplicate Recovery Moment Groups</field>
+      <field name="res_model">sale.recovery.moment.group.wizard.duplicate</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+      <field name="binding_model_id" ref="sale_recovery_moment.model_sale_recovery_moment_group"/>
     </record>
 
 </odoo>
