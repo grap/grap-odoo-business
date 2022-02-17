@@ -4,7 +4,8 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
@@ -12,75 +13,99 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
     _description = "Recovery Group Duplication Wizard"
 
     # Columns Section
-    group_id = fields.Many2one(
-        "sale.recovery.moment.group",
-        "Group to Duplicate",
+    group_ids = fields.Many2many(
+        string="Group to Duplicate",
+        comodel_name="sale.recovery.moment.group",
+        relation="sale_recovery_moment_group_wizard_duplicate_group_rel",
         required=True,
-        default=lambda x: x._default_group_id(),
+        default=lambda x: x._default_group_ids(),
     )
+
+    group_qty = fields.Integer(string="Groups Quantity", compute="_compute_group_qty")
 
     day_delay = fields.Integer(
         string="Delay (Day)",
         required=True,
         help="Please set a positive number here.\n"
-        "The wizard will duplicate the current group moving forward"
+        "The wizard will duplicate the selected groups moving forward"
         " all the dates by the delay.",
     )
 
-    short_name = fields.Char(string="Short Name", required=True)
-
-    next_min_sale_date = fields.Datetime(string="Next Minimum Sale Date", readonly=True)
+    next_min_sale_date = fields.Datetime(
+        string="Next Minimum Sale Date",
+        readonly=True,
+    )
 
     next_max_sale_date = fields.Datetime(
         string="Next Maximum Sale Date",
         readonly=True,
     )
 
+    @api.constrains("day_delay")
+    def _check_day_delay(self):
+        if self.day_delay <= 0:
+            raise ValidationError(_("Delay should be strictly positive."))
+
+    @api.depends("group_ids")
+    def _compute_group_qty(self):
+        for wizard in self:
+            wizard.group_qty = len(wizard.group_ids)
+
     # Defaults Section
     @api.model
-    def _default_group_id(self):
-        return self.env.context.get("active_id", False)
+    def _default_group_ids(self):
+        return self.env.context.get("active_ids", [])
 
     # View Sections
     @api.multi
-    def duplicate_group(self):
+    def duplicate_groups(self):
         self.ensure_one()
         SaleRecoveryMoment = self.env["sale.recovery.moment"]
         SaleRecoveryMomentGroup = self.env["sale.recovery.moment.group"]
 
-        # Create new group
-        new_group = SaleRecoveryMomentGroup.create(self._prepare_group_vals())
+        # Create New Groups
+        new_groups = []
+        for old_group in self.group_ids:
+            new_group = SaleRecoveryMomentGroup.create(
+                self._prepare_group_vals(old_group)
+            )
 
-        # Create New Moment
-        for moment in self.group_id.moment_ids:
-            moment_vals = {
-                "group_id": new_group.id,
-                "min_recovery_date": moment.min_recovery_date
-                + relativedelta(days=self.day_delay),
-                "max_recovery_date": moment.max_recovery_date
-                + relativedelta(days=self.day_delay),
-                "place_id": moment.place_id.id,
-                "max_order_qty": moment.max_order_qty,
-                "description": moment.description,
-            }
-            SaleRecoveryMoment.create(moment_vals)
+            # Create New Moments
+            for moment in old_group.moment_ids:
+                moment_vals = {
+                    "group_id": new_group.id,
+                    "min_recovery_date": moment.min_recovery_date
+                    + relativedelta(days=self.day_delay),
+                    "max_recovery_date": moment.max_recovery_date
+                    + relativedelta(days=self.day_delay),
+                    "place_id": moment.place_id.id,
+                    "max_order_qty": moment.max_order_qty,
+                    "description": moment.description,
+                }
+                SaleRecoveryMoment.create(moment_vals)
+            new_groups.append(new_group)
 
         action_data = self.env.ref(
             "sale_recovery_moment.action_sale_recovery_moment_group"
         ).read()[0]
-        view = self.env.ref("sale_recovery_moment.view_sale_recovery_moment_group_form")
-        action_data["views"] = [(view.id, "form")]
-        action_data["res_id"] = new_group.id
+        if len(self.group_ids) == 1:
+            view = self.env.ref(
+                "sale_recovery_moment.view_sale_recovery_moment_group_form"
+            )
+            action_data["views"] = [(view.id, "form")]
+            action_data["res_id"] = new_groups[0].id
+        else:
+            action_data["domain"] = [("id", "in", [x.id for x in new_groups])]
         return action_data
 
     # View Section
-    @api.onchange("group_id", "day_delay")
+    @api.onchange("group_ids", "day_delay")
     def onchange_day_delay(self):
-        if self.day_delay and self.group_id:
-            self.next_min_sale_date = self.group_id.min_sale_date + relativedelta(
+        if self.day_delay and len(self.group_ids) == 1:
+            self.next_min_sale_date = self.group_ids[0].min_sale_date + relativedelta(
                 days=self.day_delay
             )
-            self.next_max_sale_date = self.group_id.max_sale_date + relativedelta(
+            self.next_max_sale_date = self.group_ids[0].max_sale_date + relativedelta(
                 days=self.day_delay
             )
         else:
@@ -88,10 +113,12 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
             self.next_max_sale_date = False
 
     @api.multi
-    def _prepare_group_vals(self):
+    def _prepare_group_vals(self, old_group):
         return {
-            "short_name": self.short_name,
-            "min_sale_date": self.next_min_sale_date,
-            "max_sale_date": self.next_max_sale_date,
-            "company_id": self.group_id.company_id.id,
+            "short_name": _("%s (Copy)") % (old_group.short_name),
+            "min_sale_date": old_group.min_sale_date
+            + relativedelta(days=self.day_delay),
+            "max_sale_date": old_group.max_sale_date
+            + relativedelta(days=self.day_delay),
+            "company_id": old_group.company_id.id,
         }

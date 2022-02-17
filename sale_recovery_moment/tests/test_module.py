@@ -42,19 +42,29 @@ class TestModule(TransactionCase):
             " shipping cost should add an extra order line.",
         )
 
-    def test_03_wizard_duplicate(self):
+    def test_03_wizard_duplicate_group(self):
+        # Duplicate 1 group
         wizard = self.SaleRecoveryMomentGroupWizardDuplicate.with_context(
-            active_id=self.moment_group.id
+            active_ids=[self.moment_group.id]
         ).create(
             {
-                "day_delay": 280,
-                "short_name": "Test",
+                "day_delay": 240,
             }
         )
         wizard.onchange_day_delay()
-        action_data = wizard.duplicate_group()
+        action_data = wizard.duplicate_groups()
         new_group_id = action_data.get("res_id")
         group = self.SaleRecoveryMomentGroup.browse(new_group_id)
         self.assertEqual(
             group.state, "futur", "incorrect state of the group, when duplicating it"
         )
+
+        # duplicate many groups
+        wizard = self.SaleRecoveryMomentGroupWizardDuplicate.with_context(
+            active_ids=[self.moment_group.id, new_group_id]
+        ).create(
+            {
+                "day_delay": 700,
+            }
+        )
+        action_data = wizard.duplicate_groups()
