@@ -21,6 +21,7 @@
         "data/ir_sequence.xml",
         "views/view_sale_order.xml",
         "views/view_stock_picking.xml",
+        "wizards/view_sale_recovery_moment_wizard_duplicate.xml",
         "wizards/view_sale_recovery_moment_group_wizard_duplicate.xml",
         "views/view_sale_recovery_moment.xml",
         "views/view_sale_recovery_moment_group.xml",

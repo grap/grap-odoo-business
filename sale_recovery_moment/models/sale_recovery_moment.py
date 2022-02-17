@@ -39,6 +39,7 @@ class SaleRecoveryMoment(models.Model):
     group_id = fields.Many2one(
         string="Recovery Group",
         comodel_name="sale.recovery.moment.group",
+        ondelete="cascade",
     )
 
     company_id = fields.Many2one(

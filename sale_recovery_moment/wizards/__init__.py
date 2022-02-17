@@ -1,1 +1,2 @@
+from . import sale_recovery_moment_wizard_duplicate
 from . import sale_recovery_moment_group_wizard_duplicate
