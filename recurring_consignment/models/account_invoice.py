@@ -107,10 +107,15 @@ class AccountInvoice(models.Model):
                     "total_vat_excl": 0,
                 },
             )
+            if com_invoice_line.invoice_id.type == "out_invoice":
+                quantity = com_invoice_line.quantity
+            else:
+                quantity = -com_invoice_line.quantity
+
             groups[key] = {
-                "quantity": groups[key]["quantity"] + com_invoice_line.quantity,
+                "quantity": groups[key]["quantity"] + quantity,
                 "total_vat_excl": groups[key]["total_vat_excl"]
-                + com_invoice_line.price_subtotal,
+                + com_invoice_line.price_subtotal_signed,
             }
         return groups
 
