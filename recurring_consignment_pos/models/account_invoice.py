@@ -12,7 +12,6 @@ class AccountInvoice(models.Model):
     def get_commission_information_product_detail_grouped(
         self, consignor_products, moves
     ):
-
         groups = super().get_commission_information_product_detail_grouped(
             consignor_products, moves
         )
@@ -23,9 +22,14 @@ class AccountInvoice(models.Model):
         # Get related pos order
         com_orders = PosOrder.search([("account_move", "in", moves.ids)])
 
+        # We add pos.order.line sales, that are not invoiced
+        # because the lines are still include in the module
+        # recurring_consignement, in the original function
+        # get_commission_information_product_detail_grouped.
         com_order_lines = PosOrderLine.search(
             [
                 ("order_id", "in", com_orders.ids),
+                ("order_id.state", "!=", "invoiced"),
                 ("product_id", "in", consignor_products.ids),
             ]
         )
