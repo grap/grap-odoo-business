@@ -12,6 +12,7 @@
     "license": "AGPL-3",
     "depends": [
         "recurring_consignment",
+        "point_of_sale",
         "l10n_generic_coa",
     ],
     "demo": [
