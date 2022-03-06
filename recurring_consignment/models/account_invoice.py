@@ -24,7 +24,7 @@ class AccountInvoice(models.Model):
     def _check_partner_id_recurring_consignment(self):
         self.mapped("invoice_line_ids")._check_invoice_line_recurring_consignment()
 
-    # Public Function
+    # Report Function
     @api.model
     def get_commission_information_summary(self, invoice):
         AccountMoveLine = self.env["account.move.line"]
@@ -76,6 +76,43 @@ class AccountInvoice(models.Model):
         return res
 
     @api.model
+    def get_commission_information_product_detail(self, invoice):
+        ProductProduct = self.env["product.product"]
+
+        res = []
+
+        # Get Product ids
+        consignor_products = ProductProduct.with_context(active_test=False).search(
+            [("consignor_partner_id", "=", invoice.partner_id.id)]
+        )
+
+        # Get Account Move
+        moves = invoice.mapped("consignment_line_ids.move_id")
+
+        groups = self.get_commission_information_product_detail_grouped(
+            consignor_products, moves
+        )
+
+        # Compute sum of each product
+        for key, value in groups.items():
+            (product_id, price_unit, discount) = key
+            product = ProductProduct.browse(product_id)
+            res.append(
+                {
+                    "product_code": product.default_code,
+                    "product_name": product.name,
+                    "price_unit": price_unit,
+                    "discount": discount,
+                    "quantity": value["quantity"],
+                    "total_vat_excl": value["total_vat_excl"],
+                }
+            )
+        return sorted(
+            res, key=lambda k: (k["product_name"], -k["price_unit"], k["discount"])
+        )
+
+    # Private Function
+    @api.model
     def get_commission_information_product_detail_grouped(
         self, consignor_products, moves
     ):
@@ -118,42 +155,6 @@ class AccountInvoice(models.Model):
                 + com_invoice_line.price_subtotal_signed,
             }
         return groups
-
-    @api.model
-    def get_commission_information_product_detail(self, invoice):
-        ProductProduct = self.env["product.product"]
-
-        res = []
-
-        # Get Product ids
-        consignor_products = ProductProduct.with_context(active_test=False).search(
-            [("consignor_partner_id", "=", invoice.partner_id.id)]
-        )
-
-        # Get Account Move
-        moves = invoice.mapped("consignment_line_ids.move_id")
-
-        groups = self.get_commission_information_product_detail_grouped(
-            consignor_products, moves
-        )
-
-        # Compute sum of each product
-        for key, value in groups.items():
-            (product_id, price_unit, discount) = key
-            product = ProductProduct.browse(product_id)
-            res.append(
-                {
-                    "product_code": product.default_code,
-                    "product_name": product.name,
-                    "price_unit": price_unit,
-                    "discount": discount,
-                    "quantity": value["quantity"],
-                    "total_vat_excl": value["total_vat_excl"],
-                }
-            )
-        return sorted(
-            res, key=lambda k: (k["product_name"], -k["price_unit"], k["discount"])
-        )
 
     @api.model
     def _get_commission_key(self, move_line):
