@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * recurring_consignment_test
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-06 22:47+0000\n"
+"PO-Revision-Date: 2022-03-06 22:47+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.commission_product_vat_20
+#: model:product.template,name:recurring_consignment_test.commission_product_vat_20_product_template
+msgid "Commission (20% Price Excl., For Products VAT 20%)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.commission_product_vat_5
+#: model:product.template,name:recurring_consignment_test.commission_product_vat_5_product_template
+msgid "Commission (5% Price Incl.) (For Products VAT 5%)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2
+#: model:product.template,name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2_product_template
+msgid "My Consigned Product #2 (with VAT 20% - Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B
+#: model:product.template,name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B_product_template
+msgid "My Consigned Product #2 (with VAT 5% - Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.consigned_product_consignor_1_vat_20
+#: model:product.template,name:recurring_consignment_test.consigned_product_consignor_1_vat_20_product_template
+msgid "My Consigned Product (with VAT 20% - Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A
+#: model:product.template,name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A_product_template
+msgid "My Consigned Product (with VAT 5% - Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.pricelist,name:recurring_consignment_test.sale_pricelist_10
+msgid "My Pricelist (-10%)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.pricelist,name:recurring_consignment_test.sale_pricelist_50
+msgid "My Pricelist (-50%)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:account.product.fiscal.classification,name:recurring_consignment_test.fiscal_classification_0_consignor_2
+msgid "Tax Group 00% (Consignor 2)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:account.product.fiscal.classification,name:recurring_consignment_test.fiscal_classification_20_vat_exclude
+msgid "Tax Group 20% (20% VAT Excl.)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:account.product.fiscal.classification,name:recurring_consignment_test.fiscal_classification_20_consignor_1
+msgid "Tax Group 20% (Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:account.product.fiscal.classification,name:recurring_consignment_test.fiscal_classification_5_vat_include
+msgid "Tax Group 5% (5% VAT Incl.)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:account.product.fiscal.classification,name:recurring_consignment_test.fiscal_classification_5_consignor_1
+msgid "Tax Group 5% (Consignor 1)"
+msgstr ""
+
+#. module: recurring_consignment_test
+#: model:product.product,uom_name:recurring_consignment_test.commission_product_vat_20
+#: model:product.product,uom_name:recurring_consignment_test.commission_product_vat_5
+#: model:product.product,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20
+#: model:product.product,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2
+#: model:product.product,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A
+#: model:product.product,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B
+#: model:product.template,uom_name:recurring_consignment_test.commission_product_vat_20_product_template
+#: model:product.template,uom_name:recurring_consignment_test.commission_product_vat_5_product_template
+#: model:product.template,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2_product_template
+#: model:product.template,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_product_template
+#: model:product.template,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A_product_template
+#: model:product.template,uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
+
+#. module: recurring_consignment_test
+#: model:product.product,weight_uom_name:recurring_consignment_test.commission_product_vat_20
+#: model:product.product,weight_uom_name:recurring_consignment_test.commission_product_vat_5
+#: model:product.product,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20
+#: model:product.product,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2
+#: model:product.product,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A
+#: model:product.product,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B
+#: model:product.template,weight_uom_name:recurring_consignment_test.commission_product_vat_20_product_template
+#: model:product.template,weight_uom_name:recurring_consignment_test.commission_product_vat_5_product_template
+#: model:product.template,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_2_product_template
+#: model:product.template,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_20_product_template
+#: model:product.template,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_A_product_template
+#: model:product.template,weight_uom_name:recurring_consignment_test.consigned_product_consignor_1_vat_5_B_product_template
+msgid "kg"
+msgstr ""
