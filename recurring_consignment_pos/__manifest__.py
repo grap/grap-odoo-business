@@ -15,6 +15,7 @@
         "point_of_sale",
     ],
     "data": [
+        "views/view_account_invoice.xml",
         "views/templates.xml",
     ],
     "installable": True,
