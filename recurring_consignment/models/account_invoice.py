@@ -81,17 +81,7 @@ class AccountInvoice(models.Model):
 
         res = []
 
-        # Get Product ids
-        consignor_products = ProductProduct.with_context(active_test=False).search(
-            [("consignor_partner_id", "=", invoice.partner_id.id)]
-        )
-
-        # Get Account Move
-        moves = invoice.mapped("consignment_line_ids.move_id")
-
-        groups = self.get_commission_information_product_detail_grouped(
-            consignor_products, moves
-        )
+        groups = invoice._get_commission_information_product_detail_grouped()
 
         # Compute sum of each product
         for key, value in groups.items():
@@ -112,24 +102,12 @@ class AccountInvoice(models.Model):
         )
 
     # Private Function
-    @api.model
-    def get_commission_information_product_detail_grouped(
-        self, consignor_products, moves
-    ):
-        AccountInvoice = self.env["account.invoice"]
-        AccountInvoiceLine = self.env["account.invoice.line"]
-
+    @api.multi
+    def get_commission_information_product_detail_grouped(self):
         groups = {}
 
-        # Get related invoice
-        com_invoices = AccountInvoice.search([("move_id", "in", moves.ids)])
-
-        com_invoice_lines = AccountInvoiceLine.search(
-            [
-                ("invoice_id", "in", com_invoices.ids),
-                ("product_id", "in", consignor_products.ids),
-            ]
-        )
+        # Get related invoice lines
+        com_invoice_lines = self._get_commission_related_invoice_lines()
 
         for com_invoice_line in com_invoice_lines:
             key = (
@@ -155,6 +133,28 @@ class AccountInvoice(models.Model):
                 + com_invoice_line.price_subtotal_signed,
             }
         return groups
+
+    def _get_commission_related_invoice_lines(self):
+        AccountInvoice = self.env["account.invoice"]
+        AccountInvoiceLine = self.env["account.invoice.line"]
+        ProductProduct = self.env["product.product"]
+
+        # Get Account Move
+        moves = self.mapped("consignment_line_ids.move_id")
+
+        com_invoices = AccountInvoice.search([("move_id", "in", moves.ids)])
+
+        # Get Product ids
+        consignor_products = ProductProduct.with_context(active_test=False).search(
+            [("consignor_partner_id", "in", self.mapped("partner_id").ids)]
+        )
+
+        return AccountInvoiceLine.search(
+            [
+                ("invoice_id", "in", com_invoices.ids),
+                ("product_id", "in", consignor_products.ids),
+            ]
+        )
 
     @api.model
     def _get_commission_key(self, move_line):

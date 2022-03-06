@@ -8,31 +8,41 @@ from odoo import api, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
-    @api.model
-    def get_commission_information_product_detail_grouped(
-        self, consignor_products, moves
-    ):
-        groups = super().get_commission_information_product_detail_grouped(
-            consignor_products, moves
-        )
-
+    @api.multi
+    def _get_commission_related_pos_order_lines(self):
         PosOrder = self.env["pos.order"]
         PosOrderLine = self.env["pos.order.line"]
+        ProductProduct = self.env["product.product"]
 
-        # Get related pos order
+        # Get Account Move
+        moves = self.mapped("consignment_line_ids.move_id")
+
+        # Get Product ids
+        consignor_products = ProductProduct.with_context(active_test=False).search(
+            [("consignor_partner_id", "in", self.mapped("partner_id").ids)]
+        )
+
+        # Get related pos orders
         com_orders = PosOrder.search([("account_move", "in", moves.ids)])
 
         # We add pos.order.line sales, that are not invoiced
         # because the lines are still include in the module
         # recurring_consignement, in the original function
         # get_commission_information_product_detail_grouped.
-        com_order_lines = PosOrderLine.search(
+        return PosOrderLine.search(
             [
                 ("order_id", "in", com_orders.ids),
                 ("order_id.state", "!=", "invoiced"),
                 ("product_id", "in", consignor_products.ids),
             ]
         )
+
+    @api.multi
+    def _get_commission_information_product_detail_grouped(self):
+        groups = super().get_commission_information_product_detail_grouped()
+
+        # Get related pos order lines
+        com_order_lines = self._get_commission_related_pos_order_lines()
 
         for com_order_line in com_order_lines:
             key = (
