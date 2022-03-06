@@ -8,6 +8,16 @@ from odoo import api, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
+    # View Section
+    @api.multi
+    def button_commission_view_pos_order_lines(self):
+        pos_order_lines = self._get_commission_related_pos_order_lines()
+        action = self.env.ref("point_of_sale.action_pos_all_sales_lines")
+        action_data = action.read()[0]
+        action_data["domain"] = [("id", "in", pos_order_lines.ids)]
+        return action_data
+
+    # Private Section
     @api.multi
     def _get_commission_related_pos_order_lines(self):
         PosOrder = self.env["pos.order"]
