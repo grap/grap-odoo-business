@@ -21,6 +21,7 @@
         "wizards/view_invoice_commission_wizard.xml",
         "wizards/view_consignor_create_wizard.xml",
         "views/view_account_invoice.xml",
+        "views/view_account_invoice_line.xml",
         "views/view_account_tax.xml",
         "views/view_account_product_fiscal_classification.xml",
         "views/view_product_template.xml",

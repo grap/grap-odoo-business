@@ -24,6 +24,15 @@ class AccountInvoice(models.Model):
     def _check_partner_id_recurring_consignment(self):
         self.mapped("invoice_line_ids")._check_invoice_line_recurring_consignment()
 
+    # View Section
+    @api.multi
+    def button_commission_view_invoice_lines(self):
+        invoice_lines = self._get_commission_related_invoice_lines()
+        action = self.env.ref("recurring_consignment.action_account_invoice_line")
+        action_data = action.read()[0]
+        action_data["domain"] = [("id", "in", invoice_lines.ids)]
+        return action_data
+
     # Report Function
     @api.model
     def get_commission_information_summary(self, invoice):

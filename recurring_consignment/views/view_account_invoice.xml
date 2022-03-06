@@ -15,7 +15,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             </field>
             <notebook position="inside">
                 <page string="Commissionned Lines" groups="recurring_consignment.group_consignment_user" attrs="{'invisible': [('is_consignment_invoice', '=', False)]}">
-                    <group>
+                    <group name="group_button_commission" col="4">
+                        <button name="button_commission_view_invoice_lines"
+                        string="View Related Invoice Lines" type="object"
+                        colspan="2"/>
+                    </group>
+                    <group string="Commissioned Account Move Lines">
                         <field name="consignment_line_ids" nolabel="1">
                             <tree string="Lines" editable="bottom">
                                 <field name="date" />
