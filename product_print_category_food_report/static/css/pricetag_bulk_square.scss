@@ -76,6 +76,11 @@
         position: relative;
         text-align: center;
     }
+    .product_price_per_uom_price {
+        font-size: 8px;
+        text-align: center;
+        position: relative; bottom: 20px;
+    }
     .product_price_per_uom_price_only {
         font-size: 12px;
         width: 100%; text-align: center;
@@ -111,7 +116,7 @@
         height:1.5cm; width: 100%;
     }
     img.product_label{
-        width:1.5cm; height:1.5cm;
+        width:1.2cm; height:1.2cm;
     }
     .organic_text{
         font-size: 9px;
@@ -131,7 +136,7 @@
     .write_date{
         font-size: 5px;
         white-space: nowrap;
-        position: relative; top: 1em;
+        position: relative; bottom: 10px;
         text-align: center;
     }
 }
