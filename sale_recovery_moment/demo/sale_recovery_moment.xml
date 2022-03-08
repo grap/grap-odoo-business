@@ -28,4 +28,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="max_recovery_date" eval="(DateTime.today() + relativedelta(days=3) + relativedelta(hours=15)).strftime('%Y-%m-%d %H:%M')"/>
     </record>
 
+    <record id="recovery_moment_without_group" model="sale.recovery.moment">
+        <field name="place_id" ref="recovery_place_white_house"/>
+        <field name="specific_min_sale_date" eval="(DateTime.today() + relativedelta(days=-50) + relativedelta(hours=20)).strftime('%Y-%m-%d %H:%M')"/>
+        <field name="specific_max_sale_date" eval="(DateTime.today() + relativedelta(days=-48) + relativedelta(hours=23)).strftime('%Y-%m-%d %H:%M')"/>
+        <field name="min_recovery_date" eval="(DateTime.today() + relativedelta(days=-46) + relativedelta(hours=10)).strftime('%Y-%m-%d %H:%M')"/>
+        <field name="max_recovery_date" eval="(DateTime.today() + relativedelta(days=-46) + relativedelta(hours=12)).strftime('%Y-%m-%d %H:%M')"/>
+    </record>
+
 </odoo>
