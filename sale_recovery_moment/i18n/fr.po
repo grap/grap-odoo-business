@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-18 11:16+0000\n"
-"PO-Revision-Date: 2020-09-18 11:16+0000\n"
+"POT-Creation-Date: 2022-02-17 11:34+0000\n"
+"PO-Revision-Date: 2022-02-17 11:34+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:235
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:233
 #, python-format
 msgid "%d / %d Orders"
 msgstr "%d / %d Bons de commande"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:240
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:238
 #, python-format
 msgid "%d Order(s)"
 msgstr "%d Bon(s) de commande"
@@ -47,7 +47,7 @@ msgstr "Ville"
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__code
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__code
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__company_id
@@ -84,6 +84,7 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "D.O. Qty"
@@ -110,7 +111,7 @@ msgstr "Nombre de bons de livraison"
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__description
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__display_name
@@ -155,7 +156,7 @@ msgstr "Vente Terminée"
 #: selection:sale.recovery.moment,state:0
 #: selection:sale.recovery.moment.group,state:0
 msgid "Futur"
-msgstr "Futur"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__group_id
@@ -168,7 +169,7 @@ msgstr "Groupe à dupliquer"
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__id
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_place__shipping_product_id
@@ -207,12 +208,13 @@ msgstr "Dernière mise à jour le"
 #. module: sale_recovery_moment
 #: model:res.groups,name:sale_recovery_moment.recovery_manager
 msgid "Manager"
-msgstr "Responsable"
+msgstr "Gestionnaire"
 
 #. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "Max"
-msgstr "Max"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__max_order_qty
@@ -266,7 +268,7 @@ msgid "Next Minimum Sale Date"
 msgstr "Prochaine date de début de vente"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:244
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:242
 #, python-format
 msgid "No Orders"
 msgstr "Pas de commande"
@@ -281,7 +283,7 @@ msgstr "Non terminé"
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
 msgid "Pending"
-msgstr "En cours"
+msgstr "En attente"
 
 #. module: sale_recovery_moment
 #: selection:sale.recovery.moment,state:0
@@ -371,6 +373,13 @@ msgid "Recovery Sales"
 msgstr "Ventes avec Récupération"
 
 #. module: sale_recovery_moment
+#: code:addons/sale_recovery_moment/models/stock_picking.py:35
+#, python-format
+msgid "Recovery: %s (%s)"
+msgstr "Récupération : %s (%s)"
+
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "S.O. Qty"
@@ -396,6 +405,7 @@ msgstr "Nombre de ventes"
 
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "See"
@@ -462,20 +472,20 @@ msgid "Street2"
 msgstr "Rue 2"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:284
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:211
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:285
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:204
 #, python-format
 msgid "The Operator %s is not implemented !"
 msgstr "L'opérateur %s n'est pas implémenté' !"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:331
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:326
 #, python-format
 msgid "The minimum Date of Recovery must be before the maximum Date of Recovery."
 msgstr "La date de début de récupération doit précéder la date de fin de récupération."
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:259
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment_group.py:246
 #, python-format
 msgid "The minimum Date of Sale must be before the maximum Date of Sale."
 msgstr "La date de début de vente doit précéder la date de fin de vente."
@@ -483,7 +493,7 @@ msgstr "La date de début de vente doit précéder la date de fin de vente."
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__excl_total
@@ -501,6 +511,11 @@ msgid "Transfer"
 msgstr "Transfert"
 
 #. module: sale_recovery_moment
+#: selection:sale.recovery.moment.group,state:0
+msgid "Undefined"
+msgstr "Indéfini"
+
+#. module: sale_recovery_moment
 #: model:product.product,uom_name:sale_recovery_moment.product_shipping_cost
 #: model:product.template,uom_name:sale_recovery_moment.product_shipping_cost_product_template
 msgid "Unit(s)"
@@ -512,12 +527,14 @@ msgid "User"
 msgstr "Utilisateur"
 
 #. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "V.D.O. Qty"
 msgstr "# BL OK"
 
 #. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_tree
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 msgid "V.S.O. Qty"
@@ -548,7 +565,7 @@ msgid "Valid Sale Orders Quantity"
 msgstr "Nombre de bons de commande valides"
 
 #. module: sale_recovery_moment
-#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:163
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:162
 #, python-format
 msgid "You can not delete this Recovery Moment because there is Valid Sale Orders associated.\n"
 "Please move Sale orders on an other Recovery Moment and contact your customers."
@@ -565,5 +582,4 @@ msgstr "Code postal"
 #: model:product.product,weight_uom_name:sale_recovery_moment.product_shipping_cost
 #: model:product.template,weight_uom_name:sale_recovery_moment.product_shipping_cost_product_template
 msgid "kg"
-msgstr "kg"
-
+msgstr ""
