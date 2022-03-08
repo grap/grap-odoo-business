@@ -4,7 +4,7 @@
 
 {
     "name": "Sale - Recovery Moments",
-    "version": "12.0.1.1.2",
+    "version": "12.0.1.2.0",
     "summary": "Manage Recovery Moments and Places for Sale Order",
     "category": "Sale",
     "author": "GRAP",
