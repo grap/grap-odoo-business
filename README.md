@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [product_notation](product_notation/) | 12.0.3.1.1 |  | Product Notation
 [product_origin](product_origin/) | 12.0.1.1.2 |  | Origin for Products
 [product_origin_l10n_fr_department](product_origin_l10n_fr_department/) | 12.0.1.1.1 |  | Origin Information for Products (French Departments)
-[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.4 |  | Food report like pricetags
+[product_print_category_food_report](product_print_category_food_report/) | 12.0.1.1.5 |  | Food report like pricetags
 [product_to_scale_bizerba](product_to_scale_bizerba/) | 12.0.2.0.3 |  | Synchronize Odoo database with Retail Connect Bizerba System
 [recurring_consignment](recurring_consignment/) | 12.0.1.1.7 |  | Sale - Handle Recurring Consignments
 [recurring_consignment_pos](recurring_consignment_pos/) | 12.0.1.1.2 |  | Glue module for Recurring Consignment and PoS modules
