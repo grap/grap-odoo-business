@@ -74,6 +74,31 @@ class TestRecurringConsignment(TransactionCase):
                 " if no alternative pricelist is set.",
             )
 
+    def _make_commission(self, consignors):
+        wizard = self.CommissionWizard.with_context(active_ids=consignors.ids).create(
+            {}
+        )
+
+        # Set max date to the last day of the current month
+        today = fields.date.today()
+        if today.month < 12:
+            wizard.max_date = fields.date(today.year, today.month + 1, 1) - timedelta(
+                days=1
+            )
+        else:
+            wizard.max_date = fields.date(today.year + 1, 1, 1) - timedelta(days=1)
+
+        wizard._onchange_max_date()
+
+        wizard.invoice_commission()
+
+        return self.AccountInvoice.search(
+            [
+                ("partner_id", "=", self.consignor_1.id),
+                ("is_consignment_invoice", "=", True),
+            ]
+        )
+
     # Test Section
     def test_01_change_consignor_possible(self):
         """Test if it's possible to change a consignor for an unmoved
@@ -147,28 +172,8 @@ class TestRecurringConsignment(TransactionCase):
         self.customer_invoice_1.action_invoice_open()
         self.customer_invoice_2.action_invoice_open()
 
-        wizard = self.CommissionWizard.with_context(
-            active_ids=[self.consignor_1.id]
-        ).create({})
+        commission_invoices = self._make_commission(self.consignor_1)
 
-        # Set max date to the last day of the current month
-        today = fields.date.today()
-        if today.month < 12:
-            wizard.max_date = fields.date(today.year, today.month + 1, 1) - timedelta(
-                days=1
-            )
-        else:
-            wizard.max_date = fields.date(today.year + 1, 1, 1) - timedelta(days=1)
-
-        wizard._onchange_max_date()
-
-        wizard.invoice_commission()
-        commission_invoices = self.AccountInvoice.search(
-            [
-                ("partner_id", "=", self.consignor_1.id),
-                ("is_consignment_invoice", "=", True),
-            ]
-        )
         self.assertEqual(
             len(commission_invoices), 1, "It should generate one invoice commission"
         )
@@ -220,3 +225,35 @@ class TestRecurringConsignment(TransactionCase):
         )
 
         self.invoice_report.render_qweb_html(commission_invoices.ids)
+
+    def test_21_commission_refund(self):
+        # confirm sale of (+50) unit
+        self.customer_invoice_2.action_invoice_open()
+
+        # Copy, change quantity (+90) and confirm
+        copy_invoice = self.customer_invoice_2.copy()
+        copy_invoice.invoice_line_ids[0].quantity = 90
+        copy_invoice.action_invoice_open()
+
+        # Make a refund change quantity (-20) and confirm.
+        refund_invoice = self.customer_invoice_2.refund()
+        refund_invoice.invoice_line_ids[0].quantity = 20
+        refund_invoice.action_invoice_open()
+
+        commission_invoices = self._make_commission(self.consignor_1)
+
+        res = self.AccountInvoice.get_commission_information_product_detail(
+            commission_invoices
+        )[0]
+
+        self.assertEqual(
+            res["quantity"],
+            50 + 90 - 20,
+            "Error with refunded sale invoices : Bad quantity of product.",
+        )
+
+        self.assertEqual(
+            res["total_vat_excl"],
+            10 * (50 + 90 - 20),
+            "Error with refunded sale invoices : Bad price subtotal vat excl.",
+        )

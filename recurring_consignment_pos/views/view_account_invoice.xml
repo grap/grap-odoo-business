@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_account_invoice_form" model="ir.ui.view">
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="recurring_consignment.view_account_invoice_form" />
+        <field name="arch" type="xml">
+            <group name="group_button_commission" position="inside">
+                <button name="button_commission_view_pos_order_lines"
+                string="View Related Pos Order Lines" type="object"
+                colspan="2"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>
