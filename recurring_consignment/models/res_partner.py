@@ -76,7 +76,7 @@ class ResPartner(models.Model):
 
     @api.multi
     def _prevent_uncheck_is_consignor(self, vals):
-        """ prevent possibility to uncheck is_consignor for partners"""
+        """prevent possibility to uncheck is_consignor for partners"""
         if not vals.get("is_consignor", True) and any(self.mapped("is_consignor")):
             raise UserError(
                 _(
@@ -87,7 +87,7 @@ class ResPartner(models.Model):
 
     @api.multi
     def _prevent_change_is_consignor(self, vals):
-        """ prevent to write incorrect values for consignors"""
+        """prevent to write incorrect values for consignors"""
         if any(self.mapped("is_consignor")):
             if len(self) == 1:
                 vals.pop("property_account_payable_id", False)
