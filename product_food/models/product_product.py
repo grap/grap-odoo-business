@@ -192,23 +192,24 @@ class ProductProduct(models.Model):
 
     # Onchange Section
     @api.onchange("categ_id")
-    def onchange_categ_id_is_alimentary(self):
+    def onchange_categ_id_product_food(self):
         if self.categ_id:
             self.is_alimentary = self.categ_id.is_alimentary
             self.is_alcohol = self.categ_id.is_alcohol
+            self.is_vegan = self.categ_id.is_vegan
+
+    @api.onchange("label_ids")
+    def onchange_label_ids_product_food(self):
+        if self.label_ids.filtered(lambda x: x.is_vegan):
+            self.is_vegan = True
+        if self.label_ids.filtered(lambda x: x.is_alcohol):
+            self.is_alcohol = True
+            self.is_alimentary = True
 
     @api.onchange("is_alimentary")
     def onchange_is_alimentary(self):
         if not self.is_alimentary:
             self.is_alcohol = False
-
-    @api.onchange("label_ids", "categ_id")
-    def onchange_label_ids(self):
-        labels_vegan = self.label_ids.filtered(lambda x: x.is_vegan)
-        if len(labels_vegan) > 0:
-            self.is_vegan = True
-        else:
-            self.is_vegan = self.categ_id.is_vegan
 
     @api.onchange("is_alcohol")
     def onchange_is_alcohol(self):
@@ -216,13 +217,13 @@ class ProductProduct(models.Model):
         if self.is_alcohol:
             self.is_alimentary = True
             alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
-            for alcohol_label_id in alcohol_label_ids:
-                self.label_ids = [(4, alcohol_label_id)]
+            self.label_ids = [(4, x) for x in alcohol_label_ids]
         else:
             self.label_ids = self.label_ids.filtered(lambda x: not x.is_alcohol)
 
     @api.model
     def create(self, vals):
+        ProductLabel = self.env["product.label"]
         if "categ_id" in vals:
             # Guess values if not present, based on the category
             categ = self.env["product.category"].browse(vals.get("categ_id"))
@@ -232,4 +233,8 @@ class ProductProduct(models.Model):
                 vals["is_alcohol"] = categ.is_alcohol
             if "is_vegan" not in vals:
                 vals["is_vegan"] = categ.is_vegan
+        vals["label_ids"] = vals.get("label_ids", [])
+        if vals.get("is_alcohol", False):
+            alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
+            vals["label_ids"] = [(4, x) for x in alcohol_label_ids]
         return super().create(vals)

@@ -124,8 +124,12 @@ class ProductTemplate(models.Model):
 
     # Onchange Section
     @api.onchange("categ_id")
-    def onchange_categ_id_is_alimentary(self):
-        ProductProduct.onchange_categ_id_is_alimentary(self)
+    def onchange_categ_id_product_food(self):
+        ProductProduct.onchange_categ_id_product_food(self)
+
+    @api.onchange("label_ids")
+    def onchange_label_ids_product_food(self):
+        ProductProduct.onchange_label_ids_product_food(self)
 
     @api.onchange("is_alimentary")
     def onchange_is_alimentary(self):
