@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * product_label
+#   * product_label_sale
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-11 08:54+0000\n"
-"PO-Revision-Date: 2020-04-11 08:54+0000\n"
+"POT-Creation-Date: 2022-05-20 10:59+0000\n"
+"PO-Revision-Date: 2022-05-20 10:59+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,187 +15,43 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: product_label
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_kanban
-msgid "<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Products\" title=\"Products\"/>"
-msgstr "<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Articles\" title=\"Articles\"/>"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__active
-msgid "Active"
-msgstr "Actif"
-
-#. module: product_label
-#: model:ir.model.fields,help:product_label.field_product_label__display_on_report
-msgid "By checking this field, the label will be printed on all the invoices."
-msgstr "Si cette case est cochée, le label sera affichée sur toute les factures."
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__code
-#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
+#. module: product_label_sale
+#: model_terms:ir.ui.view,arch_db:product_label_sale.report_sale_order
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__company_id
-msgid "Company"
-msgstr "Société"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__create_uid
-msgid "Created by"
-msgstr "Créé par"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__create_date
-msgid "Created on"
-msgstr "Créé le"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__display_name
-msgid "Display Name"
-msgstr "Nom affiché"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__display_on_report
-msgid "Display on Invoices"
-msgstr "Affichage sur les factures"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__id
-msgid "ID"
-msgstr "ID"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image
-msgid "Image"
-msgstr "Image"
-
-#. module: product_label
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
-msgid "Information"
-msgstr "Information"
-
-#. module: product_label
-#: model:product.product,name:product_label.infusion_girl_power
-#: model:product.template,name:product_label.infusion_girl_power_product_template
-msgid "Infusion La Girl Power (vrac)"
-msgstr "Infusion La Girl Power (vrac)"
-
-#. module: product_label
-#: model:ir.model,name:product_label.model_account_invoice
-msgid "Invoice"
-msgstr "Facture"
-
-#. module: product_label
-#: model:ir.model,name:product_label.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Ligne de facture"
-
-#. module: product_label
-#: model:ir.actions.act_window,name:product_label.action_product_label
-#: model:ir.model.fields,field_description:product_label.field_account_invoice__label_ids
-#: model:ir.model.fields,field_description:product_label.field_product_product__label_ids
-#: model:ir.model.fields,field_description:product_label.field_product_template__label_ids
-#: model:ir.ui.menu,name:product_label.menu_product_label
+#. module: product_label_sale
+#: model:ir.model.fields,field_description:product_label_sale.field_sale_order__label_ids
 msgid "Labels"
-msgstr "Labels"
+msgstr ""
 
-#. module: product_label
-#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
+#. module: product_label_sale
+#: model_terms:ir.ui.view,arch_db:product_label_sale.report_sale_order
 msgid "Labels Detail"
-msgstr "Détails des labels"
+msgstr "Détail des labels"
 
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label____last_update
-msgid "Last Modified on"
-msgstr "Dernière modification le"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__write_uid
-msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__write_date
-msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_medium
-msgid "Medium-sized image"
-msgstr "Image de taille moyenne"
-
-#. module: product_label
-#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
+#. module: product_label_sale
+#: model_terms:ir.ui.view,arch_db:product_label_sale.report_sale_order
 msgid "More information"
 msgstr "Plus d'information"
 
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__name
-#: model_terms:ir.ui.view,arch_db:product_label.report_account_invoice
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
+#. module: product_label_sale
+#: model_terms:ir.ui.view,arch_db:product_label_sale.report_sale_order
 msgid "Name"
 msgstr "Nom"
 
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__note
-msgid "Note"
-msgstr "Note"
-
-#. module: product_label
-#: model:ir.model,name:product_label.model_product_product
-msgid "Product"
-msgstr "Article"
-
-#. module: product_label
-#: model:ir.model,name:product_label.model_product_label
-msgid "Product Labels"
-msgstr "Labels d'articles"
-
-#. module: product_label
-#: model:res.groups,name:product_label.group_label_manager
-msgid "Product Labels Creation"
-msgstr "Création de labels d'articles"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_account_invoice_line__product_label_description
+#. module: product_label_sale
+#: model:ir.model.fields,field_description:product_label_sale.field_sale_order_line__product_label_description
 msgid "Product Labels Description"
-msgstr "Descriptions des labels d'articles"
+msgstr "Description des labels de produit"
 
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__product_qty
-msgid "Product Quantity"
-msgstr "Quantité d'articles"
+#. module: product_label_sale
+#: model:ir.model,name:product_label_sale.model_sale_order
+msgid "Sale Order"
+msgstr "Bon de commande"
 
-#. module: product_label
-#: model:ir.model,name:product_label.model_product_template
-msgid "Product Template"
-msgstr "Modèle d'article"
-
-#. module: product_label
-#: model:ir.actions.act_window,name:product_label.action_product_label_2_product_product
-#: model:ir.model.fields,field_description:product_label.field_product_label__product_ids
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_kanban
-msgid "Products"
-msgstr "Articles"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_small
-msgid "Small-sized image"
-msgstr "Image de petite taille"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__website
-msgid "Website"
-msgstr "Site Web"
-
-#. module: product_label
-#: model:product.product,uom_name:product_label.infusion_girl_power
-#: model:product.product,weight_uom_name:product_label.infusion_girl_power
-#: model:product.template,uom_name:product_label.infusion_girl_power_product_template
-#: model:product.template,weight_uom_name:product_label.infusion_girl_power_product_template
-msgid "kg"
-msgstr "kg"
+#. module: product_label_sale
+#: model:ir.model,name:product_label_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
 
