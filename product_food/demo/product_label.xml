@@ -27,4 +27,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="image" type="base64" file="product_food/static/img/label_demeter-image.png"/>
     </record>
 
+    <record id="label_vegan" model="product.label">
+        <field name="name">Vegan</field>
+        <field name="code">VEG</field>
+        <field name="website">https://www.vegan.org/</field>
+        <field name="is_vegan" eval="1"/>
+        <field name="image" type="base64" file="product_food/static/img/label_vegan-image.png"/>
+    </record>
+
 </odoo>

@@ -12,4 +12,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="parent_id" ref="product.product_category_1"/>
     </record>
 
+    <record id="beer_category" model="product.category">
+        <field name="name">Beers</field>
+        <field name="is_alimentary" eval="True"/>
+        <field name="is_alcohol" eval="True"/>
+        <field name="parent_id" ref="product_food.alimentary_category"/>
+    </record>
+
 </odoo>
