@@ -29,6 +29,7 @@
         "data/email_template.xml",
         "views/menu.xml",
         "views/view_eshop_category.xml",
+        "views/view_eshop_fake_account.xml",
         "views/view_product_product.xml",
         "views/view_uom_uom.xml",
         "views/view_res_company.xml",
