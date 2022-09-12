@@ -84,19 +84,23 @@ class ResCompany(models.Model):
         compute="_compute_eshop_invalidation_key",
     )
 
+    def _get_eshop_config_name(self, param_name):
+        db_prefix = self._cr.dbname.split("_")[0]
+        return f"sale_eshop.{param_name}__{db_prefix}__{self.id}"
+
     # Compute Section
     def _compute_eshop_url(self):
         IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_url = IrConfigParameter.get_param(
-                "sale_eshop.eshop_url__%d" % company.id
+                self._get_eshop_config_name("eshop_url")
             )
 
     def _compute_eshop_invalidation_key(self):
         IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_invalidation_key = IrConfigParameter.get_param(
-                "sale_eshop.eshop_invalidation_key__%d" % company.id
+                self._get_eshop_config_name("eshop_invalidation_key")
             )
 
     # Overwrite section
@@ -120,21 +124,13 @@ class ResCompany(models.Model):
     def _create_parameter_if_not_exists(self):
         IrConfigParameter = self.env["ir.config_parameter"]
         for company in self.filtered(lambda x: x.has_eshop):
-            key = "sale_eshop.eshop_url__%d" % company.id
-            param = IrConfigParameter.search([("key", "=", key)])
-            if not param:
-                IrConfigParameter.create(
-                    {
-                        "key": key,
-                        "value": "unset",
-                    }
-                )
-            key = "sale_eshop.eshop_invalidation_key__%d" % company.id
-            param = IrConfigParameter.search([("key", "=", key)])
-            if not param:
-                IrConfigParameter.create(
-                    {
-                        "key": key,
-                        "value": "unset",
-                    }
-                )
+            for config_name in ["eshop_url", "eshop_invalidation_key"]:
+                key = company._get_eshop_config_name(config_name)
+                param = IrConfigParameter.search([("key", "=", key)])
+                if not param:
+                    IrConfigParameter.create(
+                        {
+                            "key": key,
+                            "value": "unset",
+                        }
+                    )
