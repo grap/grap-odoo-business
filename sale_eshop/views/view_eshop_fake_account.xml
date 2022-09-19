@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+    @author: Mouna Sebti (https://twitter.com/m0unasb)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="action_eshop_fake_account" model="ir.actions.act_window">
+        <field name="name">eShop Fake Accounts</field>
+        <field name="res_model">eshop.fake.account</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_eshop_fake_account_tree" model="ir.ui.view">
+        <field name="model">eshop.fake.account</field>
+        <field name="arch" type="xml">
+            <tree string="eShop Fake Accounts">
+              <field name="create_date"/>
+              <field name="form_data"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="menu_eshop_fake_account"
+        parent="menu_eshop" sequence="70"
+        action="action_eshop_fake_account"/>
+
+</odoo>
