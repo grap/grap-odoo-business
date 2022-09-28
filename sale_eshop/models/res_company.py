@@ -85,6 +85,7 @@ class ResCompany(models.Model):
     )
 
     def _get_eshop_config_name(self, param_name):
+        self.ensure_one()
         db_prefix = self._cr.dbname.split("_")[0]
         return f"sale_eshop.{param_name}__{db_prefix}__{self.id}"
 
@@ -93,14 +94,14 @@ class ResCompany(models.Model):
         IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_url = IrConfigParameter.get_param(
-                self._get_eshop_config_name("eshop_url")
+                company._get_eshop_config_name("eshop_url")
             )
 
     def _compute_eshop_invalidation_key(self):
         IrConfigParameter = self.env["ir.config_parameter"]
         for company in self:
             company.eshop_invalidation_key = IrConfigParameter.get_param(
-                self._get_eshop_config_name("eshop_invalidation_key")
+                company._get_eshop_config_name("eshop_invalidation_key")
             )
 
     # Overwrite section
