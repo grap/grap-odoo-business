@@ -55,12 +55,12 @@ msgstr "<b>Producteur·rice</b><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<b>Origin</b><br/>"
-msgstr "<b>Origine</b><br/>"
+msgstr "<b>Lieu de prod.</b><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
 msgid "<br/>Origin:"
-msgstr "<br/>Origine : "
+msgstr "<br/>Lieu de prod. : "
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
@@ -78,7 +78,7 @@ msgstr "<span class=\"empty_field\"><b>Producteur·rice</b></span><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<span class=\"empty_field\"><b>Origin</b></span><br/>"
-msgstr "<span class=\"empty_field\"><b>Origine</b></span><br/>"
+msgstr "<span class=\"empty_field\"><b>Lieu de prod.</b></span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
@@ -141,7 +141,7 @@ msgstr "<span>Prix au kilo : </span>"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
 msgid "<span>Price per liter: </span>"
-msgstr "<span>Prix au litre: </span>"
+msgstr "<span>Prix au litre : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
@@ -307,12 +307,12 @@ msgstr "Produit biologique, certifié par %s"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
 msgid "Origin on pricetag"
-msgstr "Origine sur l'étiquette"
+msgstr "Lieu de prod. sur l'étiquette"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
 msgid "Origin:"
-msgstr "Origine :"
+msgstr "Lieu de prod. :"
 
 #. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:152
