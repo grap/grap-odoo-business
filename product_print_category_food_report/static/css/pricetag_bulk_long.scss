@@ -22,7 +22,7 @@
         text-align: center;
     }
     .font_middle {
-        font-size: 14px;
+        font-size: 12px;
     }
     .font_small {
         font-size: 10px;
@@ -97,13 +97,12 @@
     }
     .wrap_barcode_image > img{
         width: 5.5cm;
-        position: relative;
-        top: 1cm;
+        height:0.3cm;
+        // position: relative;
+        // top: 1cm;
     }
     .wrap_product_code {
         text-align: center;
-        position: relative;
-        top: 28px;
         font-style: italic;
     }
     .write_date{
