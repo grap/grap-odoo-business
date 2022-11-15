@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * product_print_category_food_report
+#	* product_print_category_food_report
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 15:36+0000\n"
-"PO-Revision-Date: 2022-01-21 15:36+0000\n"
+"POT-Creation-Date: 2022-10-11 21:16+0000\n"
+"PO-Revision-Date: 2022-10-11 21:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,11 @@ msgid "(no UE) "
 msgstr "(non UE) "
 
 #. module: product_print_category_food_report
+#: model:uom.uom,name:product_print_category_food_report.uom_100_gr
+msgid "100 gr"
+msgstr ""
+
+#. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<b>Allergens</b><br/>"
@@ -55,12 +60,12 @@ msgstr "<b>Producteur·rice</b><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<b>Origin</b><br/>"
-msgstr "<b>Origine</b><br/>"
+msgstr "<b>Lieu de prod.</b><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
 msgid "<br/>Origin:"
-msgstr "<br/>Origine : "
+msgstr "<br/>Lieu de prod. : "
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
@@ -78,7 +83,7 @@ msgstr "<span class=\"empty_field\"><b>Producteur·rice</b></span><br/>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
 msgid "<span class=\"empty_field\"><b>Origin</b></span><br/>"
-msgstr "<span class=\"empty_field\"><b>Origine</b></span><br/>"
+msgstr "<span class=\"empty_field\"><b>Lieu de prod.</b></span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
@@ -103,9 +108,15 @@ msgstr "<span class=\"product_uom\">/pièce</span><br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
-msgid "<span>Lot n°:</span><br/>\n"
+msgid "<span>Batch n°:</span><br/>\n"
 "                                    <span>BBD:</span><br/>"
-msgstr ""
+msgstr "<span>Lot n°:</span><br/>\n"
+"                                    <span>DLC :</span><br/>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_square
+msgid "<span>Internal code:</span>"
+msgstr "<span>Code :</span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
@@ -141,7 +152,7 @@ msgstr "<span>Prix au kilo : </span>"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
 msgid "<span>Price per liter: </span>"
-msgstr "<span>Prix au litre: </span>"
+msgstr "<span>Prix au litre : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_counter
@@ -179,6 +190,12 @@ msgstr "Vrac format carré - 93x93mm"
 #: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_available
 msgid "Check this box if you want to use this Unit of Mesure to display price per this unit on pricetags."
 msgstr "cochez cette case si vous souhaitez utiliser cette unité de mesure pour afficher le prix à l'unité, sur l'étiquette."
+
+#. module: product_print_category_food_report
+#: model:product.product,name:product_print_category_food_report.chick_pea
+#: model:product.template,name:product_print_category_food_report.chick_pea_product_template
+msgid "Chick peas (bulk)"
+msgstr "Pois chiches (vrac)"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__color
@@ -248,14 +265,21 @@ msgid "For %s"
 msgstr "Pour %s"
 
 #. module: product_print_category_food_report
+#: model:product.product,name:product_print_category_food_report.green_lens
+#: model:product.template,name:product_print_category_food_report.green_lens_product_template
+msgid "Green lens (bulk)"
+msgstr "Lentilles vertes (vrac)"
+
+#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__id
 msgid "ID"
 msgstr ""
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_bulk_long
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
 msgid "Internal code:"
-msgstr "Référence interne"
+msgstr "Code :"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type____last_update
@@ -265,12 +289,12 @@ msgstr "Dernière modification le"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_uid
 msgid "Last Updated by"
-msgstr "Mis à jour par"
+msgstr "Dernière mise à jour par"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_date
 msgid "Last Updated on"
-msgstr "Mis à jour le"
+msgstr "Dernière mise à jour le"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
@@ -307,12 +331,12 @@ msgstr "Produit biologique, certifié par %s"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
 msgid "Origin on pricetag"
-msgstr "Origine sur l'étiquette"
+msgstr "Lieu de prod. sur l'étiquette"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
 msgid "Origin:"
-msgstr "Origine :"
+msgstr "Lieu de prod. :"
 
 #. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:152
@@ -420,9 +444,26 @@ msgid "Set an alternative Unit of Mesure if you want to display the price on you
 msgstr "Définir une unité de mesure alternative si vous voulez afficher un prix relatif à cette unité sur votre étiquette"
 
 #. module: product_print_category_food_report
+#: model:product.product,name:product_print_category_food_report.organic_smoked_tofu
+#: model:product.template,name:product_print_category_food_report.organic_smoked_tofu_product_template
+msgid "Smoked organic tofu 200g"
+msgstr "Tofu fumé bio 200g"
+
+#. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.category_pricetag_middle_square
 msgid "Square pricetag - 40x36mm"
 msgstr "Carré moyen - 40x36mm"
+
+#. module: product_print_category_food_report
+#: model:res.country.group,name:product_print_category_food_report.countr_group_ue_nonue
+msgid "UE - non UE"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: model:product.product,uom_name:product_print_category_food_report.organic_smoked_tofu
+#: model:product.template,uom_name:product_print_category_food_report.organic_smoked_tofu_product_template
+msgid "Unit(s)"
+msgstr "Unité(s)"
 
 #. module: product_print_category_food_report
 #: selection:res.country.group,european_classification:0
@@ -441,6 +482,16 @@ msgstr "Poids net<br/>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal
+#: model:product.product,uom_name:product_print_category_food_report.chick_pea
+#: model:product.product,uom_name:product_print_category_food_report.green_lens
+#: model:product.product,weight_uom_name:product_print_category_food_report.chick_pea
+#: model:product.product,weight_uom_name:product_print_category_food_report.green_lens
+#: model:product.product,weight_uom_name:product_print_category_food_report.organic_smoked_tofu
+#: model:product.template,uom_name:product_print_category_food_report.chick_pea_product_template
+#: model:product.template,uom_name:product_print_category_food_report.green_lens_product_template
+#: model:product.template,weight_uom_name:product_print_category_food_report.chick_pea_product_template
+#: model:product.template,weight_uom_name:product_print_category_food_report.green_lens_product_template
+#: model:product.template,weight_uom_name:product_print_category_food_report.organic_smoked_tofu_product_template
 msgid "kg"
 msgstr ""
 
