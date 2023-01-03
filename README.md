@@ -41,7 +41,7 @@ addon | version | maintainers | summary
 [recurring_consignment_sale](recurring_consignment_sale/) | 12.0.1.1.2 |  | Glue module for Recurring Consignment and Sale modules
 [recurring_consignment_test](recurring_consignment_test/) | 12.0.1.1.7 |  | Test module for Recurring_ Consignment Module
 [sale_eshop](sale_eshop/) | 12.0.1.1.6 |  | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.2.1 |  | Manage Recovery Moments and Places for Sale Order
+[sale_recovery_moment](sale_recovery_moment/) | 12.0.1.2.2 |  | Manage Recovery Moments and Places for Sale Order
 [stock_preparation_category](stock_preparation_category/) | 12.0.1.1.2 |  | Manage Preparation Categories for stock moves
 [technical_partner_access](technical_partner_access/) | 12.0.1.2.1 |  | Limit the access of the partners created when creating companies and users.
 
