@@ -97,6 +97,9 @@ class ResPartner(models.Model):
 
     @api.model
     def create_from_eshop(self, vals):
+        existing_partners = self.search([("email", "=", vals.get("email"))])
+        if existing_partners:
+            return "email_duplicate"
         vals.update(
             {
                 "name": vals["first_name"] + " " + vals["last_name"],
@@ -108,7 +111,8 @@ class ResPartner(models.Model):
         # Create partner
         partner = self.create(vals)
         # Send an email
-        return partner.send_credentials()
+        partner.send_credentials()
+        return "customer_created"
 
     @api.model
     def update_from_eshop(self, partner_id, vals):

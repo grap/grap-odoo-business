@@ -60,7 +60,10 @@ class EshopMixin(models.AbstractModel):
             base_url,
             "invalidation_cache/%s/%s/%d/" % (private_key, self._name, item_identifier),
         )
-        requests.get(url, verify=False)
+        # Do not send invalidation request
+        # in a test context of this module.
+        if not self.env.context.get("test_sale_eshop", False):
+            requests.get(url, verify=False)
 
     @api.multi
     def write(self, vals):

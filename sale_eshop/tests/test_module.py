@@ -13,6 +13,7 @@ class TestModule(TransactionCase):
         self.env = self.env(
             context=dict(
                 self.env.context,
+                test_sale_eshop=True,
                 test_queue_job_no_delay=True,
             )
         )
@@ -79,7 +80,7 @@ class TestModule(TransactionCase):
             "Bad state for disabled product",
         )
 
-    def test_03_sale_order_process(self):
+    def test_04_sale_order_process(self):
         # Create Order
         self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 3, "add")
         order = self.SaleOrder.eshop_get_current_sale_order(self.customer.id)
@@ -141,3 +142,40 @@ class TestModule(TransactionCase):
             "sale",
             "Finishing an order in the eshop should set the order as 'sale'",
         )
+
+    def test_10_partner_manage_from_eshop(self):
+        test_email = "testemail_sale_eshop@testemail_sale_eshop.com"
+        test_phone = "+33123456789"
+
+        # Check customer doesn't exist before creation
+        new_partners = self.ResPartner.search([("email", "=", test_email)])
+        self.assertEqual(len(new_partners), 0)
+
+        vals = {
+            "first_name": "My First Name",
+            "last_name": "My Last Name",
+            "email": test_email,
+        }
+        # Create new customer should success
+        res = self.ResPartner.create_from_eshop(vals)
+        self.assertEqual(res, "customer_created")
+
+        # Check customer exists after creation
+        new_partners = self.ResPartner.search([("email", "=", test_email)])
+        self.assertEqual(len(new_partners), 1)
+
+        # Update customer values
+        self.ResPartner.update_from_eshop(new_partners[0].id, {"phone": test_phone})
+
+        # Check customer is updated after modification
+        new_partners = self.ResPartner.search([("email", "=", test_email)])
+        self.assertEqual(new_partners[0].phone, test_phone)
+
+        # Create customer with same email should fail
+        vals = {
+            "first_name": "My First Name 2",
+            "last_name": "My Last Name 2",
+            "email": test_email,
+        }
+        res = self.ResPartner.create_from_eshop(vals)
+        self.assertEqual(res, "email_duplicate")
