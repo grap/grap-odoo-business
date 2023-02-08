@@ -26,6 +26,7 @@
         "demo/product_product_delayed.xml",
         "demo/account_invoice.xml",
         "demo/product_pricelist.xml",
+        "demo/res_company.xml",
     ],
     "installable": True,
 }

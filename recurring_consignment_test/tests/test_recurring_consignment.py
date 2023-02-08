@@ -16,8 +16,13 @@ class TestRecurringConsignment(TransactionCase):
         super().setUp()
 
         self.ProductProduct = self.env["product.product"]
+        self.ResPartner = self.env["res.partner"]
+        self.AccountProductFiscalClassification = self.env[
+            "account.product.fiscal.classification"
+        ]
         self.AccountInvoice = self.env["account.invoice"]
         self.CommissionWizard = self.env["invoice.commission.wizard"]
+        self.ConsignorCreateWizard = self.env["consignor.create.wizard"]
         # self.report_obj = self.env['report']
         self.consigned_product_vat_5_A = self.env.ref(
             "recurring_consignment_test.consigned_product_consignor_1_vat_5_A"
@@ -44,9 +49,6 @@ class TestRecurringConsignment(TransactionCase):
         )
         self.customer_invoice_2 = self.env.ref(
             "recurring_consignment_test.customer_invoice_2"
-        )
-        self.commission_product_vat_5 = self.env.ref(
-            "recurring_consignment_test.commission_product_vat_5"
         )
         self.commission_product_vat_20 = self.env.ref(
             "recurring_consignment_test.commission_product_vat_20"
@@ -168,7 +170,62 @@ class TestRecurringConsignment(TransactionCase):
         )
         self._test_pricelist(product, False)
 
-    def test_20_commission_workflow(self):
+    def test_20_consingor_creation_wizard(self):
+        vals = {
+            "name": "My Consignor",
+            "account_suffix": "MYC1",
+            "rate": 20.0,
+            "is_vat_subject": True,
+            "has_vat_000": False,
+            "has_vat_021": False,
+            "has_vat_055": True,
+            "has_vat_100": False,
+            "has_vat_200": True,
+        }
+        # Create consignor VAT Subject
+        wizard = self.ConsignorCreateWizard = self.env[
+            "consignor.create.wizard"
+        ].create(vals)
+        partner_id = wizard.create_consignor()["res_id"]
+        partner = self.ResPartner.browse(partner_id)
+        self.assertTrue(partner.is_consignor)
+        self.assertEqual(partner.consignment_commission, 20)
+        classifications = self.AccountProductFiscalClassification.search(
+            [("consignor_partner_id", "=", partner.id)]
+        )
+        self.assertEqual(len(classifications), 2)
+
+        # Create consignor not VAT Subject with bad configuration
+        vals.update(
+            {
+                "account_suffix": "MYC2",
+                "is_vat_subject": False,
+            }
+        )
+        with self.assertRaises(ValidationError):
+            self.ConsignorCreateWizard = self.env["consignor.create.wizard"].create(
+                vals
+            )
+
+        # Create consignor not VAT Subject with correct configuration
+        vals.update(
+            {
+                "has_vat_000": True,
+                "has_vat_055": False,
+                "has_vat_200": False,
+            }
+        )
+        wizard = self.ConsignorCreateWizard = self.env[
+            "consignor.create.wizard"
+        ].create(vals)
+        partner_id = wizard.create_consignor()["res_id"]
+        partner = self.ResPartner.browse(partner_id)
+        classifications = self.AccountProductFiscalClassification.search(
+            [("consignor_partner_id", "=", partner.id)]
+        )
+        self.assertEqual(classifications[0].sale_tax_ids[0].amount, 0.0)
+
+    def test_30_commission_workflow(self):
         self.customer_invoice_1.action_invoice_open()
         self.customer_invoice_2.action_invoice_open()
 
@@ -179,35 +236,17 @@ class TestRecurringConsignment(TransactionCase):
         )
 
         commission_invoice = commission_invoices[0]
-        lines_5 = commission_invoice.invoice_line_ids.filtered(
-            lambda x: x.product_id.id == self.commission_product_vat_5.id
-        )
         lines_20 = commission_invoice.invoice_line_ids.filtered(
             lambda x: x.product_id.id == self.commission_product_vat_20.id
         )
         # check invoice lines generated
         self.assertEqual(
             len(commission_invoice.invoice_line_ids),
-            2,
+            1,
             "Two commission lines should be generated",
         )
-        self.assertEqual(len(lines_5), 1, "One 5% commission line should be generated")
         self.assertEqual(
             len(lines_20), 1, "One 20% commission line should be generated"
-        )
-
-        # Check line #1 details (Tax Incl)
-        line_5 = lines_5[0]
-        self.assertEqual(line_5.quantity, 1, "Incorrect Commission Quantity.")
-        self.assertEqual(
-            line_5.price_unit,
-            2100 * 1.05,
-            "Incorrect Commission Price Unit, awaiing " "(10,000 + 500) * 0.2 * 1.05",
-        )
-        self.assertEqual(
-            line_5.invoice_line_tax_ids.ids,
-            [self.vat_5_include.id],
-            "Incorrect Commission Tax.",
         )
 
         # Check line #2 details (Tax Excl)
@@ -215,8 +254,10 @@ class TestRecurringConsignment(TransactionCase):
         self.assertEqual(line_20.quantity, 1, "Incorrect Commission Quantity.")
         self.assertEqual(
             line_20.price_unit,
-            20,
-            "Incorrect Commission Price Unit, awaiting 100 * 0.2",
+            2100 + 20,
+            "Incorrect Commission Price Unit, awaiting"
+            " (10,000 + 500) * 0.2"
+            " + 100 * 0.2",
         )
         self.assertEqual(
             line_20.invoice_line_tax_ids.ids,
@@ -226,7 +267,7 @@ class TestRecurringConsignment(TransactionCase):
 
         self.invoice_report.render_qweb_html(commission_invoices.ids)
 
-    def test_21_commission_refund(self):
+    def test_31_commission_refund(self):
         # confirm sale of (+50) unit
         self.customer_invoice_2.action_invoice_open()
 
@@ -245,7 +286,6 @@ class TestRecurringConsignment(TransactionCase):
         res = self.AccountInvoice.get_commission_information_product_detail(
             commission_invoices
         )[0]
-
         self.assertEqual(
             res["quantity"],
             50 + 90 - 20,

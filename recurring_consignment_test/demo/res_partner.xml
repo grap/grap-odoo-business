@@ -6,12 +6,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-<!--     <record id="customer_1" model="res.partner">
-        <field name="name">CONS - My Customer</field>
-        <field name="customer" eval="True" />
-        <field name="property_account_receivable_id" ref="account_receivable"/>
-    </record> -->
-
     <record id="consignor_1" model="res.partner">
         <field name="name">Consignor 1 (with VAT)</field>
         <field name="customer" eval="True" />

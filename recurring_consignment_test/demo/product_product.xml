@@ -6,23 +6,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="commission_product_vat_5" model="product.product">
-        <field name="name">Commission (5% Price Incl.) (For Products VAT 5%)</field>
-        <field name="uom_id" ref="uom.product_uom_unit"/>
-        <field name="uom_po_id" ref="uom.product_uom_unit"/>
-        <field name="sale_ok" eval="True"/>
-        <field name="is_consignment_commission" eval="True"/>
-        <field name="purchase_ok" eval="False"/>
-        <field name="fiscal_classification_id" ref="fiscal_classification_5_vat_include"/>
-        <field name="property_account_income_id" ref="account_income_commission"/>
-    </record>
-
     <record id="commission_product_vat_20" model="product.product">
-        <field name="name">Commission (20% Price Excl., For Products VAT 20%)</field>
+        <field name="name">Commission (20% Price Excl)</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="sale_ok" eval="True"/>
-        <field name="is_consignment_commission" eval="True"/>
         <field name="purchase_ok" eval="False"/>
         <field name="fiscal_classification_id" ref="fiscal_classification_20_vat_exclude"/>
         <field name="property_account_income_id" ref="account_income_commission"/>
