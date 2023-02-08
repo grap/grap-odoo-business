@@ -106,7 +106,7 @@ repos:
           - --settings=.
         exclude: /__init__\.py$
   - repo: https://github.com/acsone/setuptools-odoo
-    rev: 2.6.0
+    rev: 3.0.6
     hooks:
       - id: setuptools-odoo-make-default
       - id: setuptools-odoo-get-requirements
@@ -121,8 +121,8 @@ repos:
       - id: flake8
         name: flake8
         additional_dependencies: ["flake8-bugbear==20.1.4"]
-  - repo: https://github.com/PyCQA/pylint
-    rev: pylint-2.5.3
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.5.3
     hooks:
       - id: pylint
         name: pylint with optional checks
@@ -131,7 +131,7 @@ repos:
           - --exit-zero
         verbose: true
         additional_dependencies: &pylint_deps
-          - pylint-odoo==5.0.5
+          - pylint-odoo==3.5.0
       - id: pylint
         name: pylint with mandatory checks
         args:
