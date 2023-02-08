@@ -3,13 +3,20 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import logging
 
-from odoo import api, models
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
 
 class ResCompany(models.Model):
     _inherit = "res.company"
+
+    commission_product_id = fields.Many2one(
+        comodel_name="product.product",
+        help="Used for the Recurring Consignment features."
+        " Define the product that will be used to generate"
+        " consignment invoices to consignors.",
+    )
 
     @api.model
     def create(self, vals):

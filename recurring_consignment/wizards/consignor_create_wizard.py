@@ -4,6 +4,7 @@
 
 
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ConsignorCreateWizard(models.TransientModel):
@@ -25,26 +26,69 @@ class ConsignorCreateWizard(models.TransientModel):
         return True
 
     # Columns Section
-    name = fields.Char(string="Consignor Name")
+    name = fields.Char(string="Consignor Name", required=True)
 
-    account_suffix = fields.Char(string="Account Suffix")
+    account_suffix = fields.Char(string="Account Suffix", required=True)
 
     rate = fields.Float(string="Commission Rate")
 
     is_vat_subject = fields.Boolean(string="Subject to VAT", default=True)
 
-    product_ids = fields.Many2many(
-        comodel_name="product.product",
-        string="Available Taxes",
-        domain="[('is_consignment_commission', '=', True)]",
-        default=lambda x: x._default_product_ids(),
-    )
+    has_vat_000 = fields.Boolean(string="No VAT")
 
-    # Default values Section
-    def _default_product_ids(self):
-        ProductProduct = self.env["product.product"]
-        products = ProductProduct.search([("is_consignment_commission", "=", True)])
-        return products.ids
+    has_vat_021 = fields.Boolean(string="VAT 02,1%")
+
+    has_vat_055 = fields.Boolean(string="VAT 05,5%")
+
+    has_vat_100 = fields.Boolean(string="VAT 10,0%")
+
+    has_vat_200 = fields.Boolean(string="VAT 20,0%")
+
+    @api.onchange("is_vat_subject")
+    def onchange_is_vat_subject(self):
+        if not self.is_vat_subject:
+            self.has_vat_000 = True
+            self.has_vat_021 = False
+            self.has_vat_055 = False
+            self.has_vat_100 = False
+            self.has_vat_200 = False
+
+    @api.constrains(
+        "is_vat_subject",
+        "has_vat_000",
+        "has_vat_021",
+        "has_vat_055",
+        "has_vat_100",
+        "has_vat_200",
+    )
+    def check_vat_configuration(self):
+        if self.is_vat_subject:
+            if not any(
+                [self.has_vat_021, self.has_vat_055, self.has_vat_100, self.has_vat_200]
+            ):
+                raise ValidationError(
+                    _(
+                        "If the consignor is VAT subject,"
+                        " you should select at least a not null VAT."
+                    )
+                )
+        else:
+            if any(
+                [self.has_vat_021, self.has_vat_055, self.has_vat_100, self.has_vat_200]
+            ):
+                raise ValidationError(
+                    _(
+                        "If the consignor is not VAT subject,"
+                        " you should not select not null VAT."
+                    )
+                )
+            if not self.has_vat_000:
+                raise ValidationError(
+                    _(
+                        "If the consignor is not VAT subject,"
+                        " you should select the null VAT."
+                    )
+                )
 
     # Action Section
     @api.multi
@@ -59,9 +103,21 @@ class ConsignorCreateWizard(models.TransientModel):
         sequence = self.env["ir.sequence"].next_by_code("consignor.create.wizard")
         account = AccountAccount.create(self._prepare_account())
         partner = ResPartner.create(self._prepare_partner(sequence, account))
-        for product in self.product_ids:
+
+        vat_amounts = []
+        if self.has_vat_000:
+            vat_amounts.append(0.0)
+        if self.has_vat_021:
+            vat_amounts.append(2.1)
+        if self.has_vat_055:
+            vat_amounts.append(5.5)
+        if self.has_vat_100:
+            vat_amounts.append(10.0)
+        if self.has_vat_200:
+            vat_amounts.append(20.0)
+        for vat_amount in vat_amounts:
             tax = AccountTax.create(
-                self._prepare_tax(sequence, account, partner, product)
+                self._prepare_tax(sequence, account, partner, vat_amount)
             )
             FiscalClassification.create(
                 self._prepare_fiscal_classification(sequence, partner, tax)
@@ -91,11 +147,8 @@ class ConsignorCreateWizard(models.TransientModel):
         }
 
     @api.multi
-    def _prepare_tax(self, sequence, account, partner, commission_product):
+    def _prepare_tax(self, sequence, account, partner, amount):
         self.ensure_one()
-        amount = (
-            commission_product.taxes_id and commission_product.taxes_id[0].amount or 0.0
-        )
         return {
             "name": "{sequence} - {amount:.1f} -{vat_subject}{name}".format(
                 sequence=sequence,
@@ -113,19 +166,13 @@ class ConsignorCreateWizard(models.TransientModel):
             "account_id": account.id,
             "refund_account_id": account.id,
             "consignor_partner_id": partner.id,
-            "consignment_product_id": commission_product.id,
         }
 
     def _prepare_fiscal_classification(self, sequence, partner, tax):
-        amount = (
-            tax.consignment_product_id.taxes_id
-            and tax.consignment_product_id.taxes_id[0].amount
-            or 0.0
-        )
         return {
             "name": _("{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}").format(
                 sequence=sequence,
-                amount=amount,
+                amount=tax.amount,
                 vat_subject=self.is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
                 name=self.name,
             ),

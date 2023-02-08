@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-06 22:42+0000\n"
-"PO-Revision-Date: 2022-03-06 22:42+0000\n"
+"POT-Creation-Date: 2023-02-08 22:22+0000\n"
+"PO-Revision-Date: 2023-02-08 22:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:103
-#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:129
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:156
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:176
 #, python-format
 msgid " NOT SUBJECT TO VAT - "
 msgstr "NON ASSUJETTI A TVA - "
@@ -50,13 +50,13 @@ msgid "A Non Consignor partner can not have 'Consignment Commission' neither 'Co
 msgstr "Un non dépôt vendeur ne peut pas avoir de taux de commission, ni de compte comptable de dépôt vente."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/product_template.py:106
+#: code:addons/recurring_consignment/models/product_template.py:104
 #, python-format
 msgid "A consigned product can only have the consignor in the field 'Suppliers'."
 msgstr "Un produit en dépôt vente peut seulement avoir le dépôt vendeur dans le champs 'Fournisseurs'."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/product_template.py:98
+#: code:addons/recurring_consignment/models/product_template.py:96
 #, python-format
 msgid "A consigned product must have null Cost Price"
 msgstr "Un produit en dépôt-vente doit avoir un coût de revient nul"
@@ -82,11 +82,6 @@ msgid "Amount"
 msgstr "Montant"
 
 #. module: recurring_consignment
-#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__product_ids
-msgid "Available Taxes"
-msgstr "Taxes disponibles"
-
-#. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
 msgid "Cancel"
@@ -103,6 +98,11 @@ msgid "Commission"
 msgstr ""
 
 #. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_company__commission_product_id
+msgid "Commission Product"
+msgstr ""
+
+#. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__rate
 #: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__consignment_commission
 #: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__consignment_commission
@@ -116,7 +116,7 @@ msgid "Commission Summary"
 msgstr "Résumé de la commission"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:87
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:94
 #, python-format
 msgid "Commission on Sale or Refunds\n"
 "(Rate : %.2f %%; Base : %.2f € ; Period %s-%s)"
@@ -165,11 +165,6 @@ msgstr "Facture de commission"
 #: model:ir.model.fields,field_description:recurring_consignment.field_account_move_line__consignment_commission
 msgid "Consignment Commission Rate"
 msgstr "Taux de commission"
-
-#. module: recurring_consignment
-#: model:ir.model.fields,field_description:recurring_consignment.field_account_tax__consignment_product_id
-msgid "Consignment Product"
-msgstr "Produit de commission"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_account_product_fiscal_classification__consignor_partner_id
@@ -276,19 +271,37 @@ msgid "ID"
 msgstr ""
 
 #. module: recurring_consignment
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:70
+#, python-format
+msgid "If the consignor is VAT subject, you should select at least a not null VAT."
+msgstr "Si le dépôt vendeur est assujetti à TVA, vous devez sélectionner au moins une TVA non nulle."
+
+#. module: recurring_consignment
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:80
+#, python-format
+msgid "If the consignor is not VAT subject, you should not select not null VAT."
+msgstr "Si le dépôt vendeur n'est pas assujetti à TVA, vous ne devez pas cocher des TVA non nulles."
+
+#. module: recurring_consignment
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:87
+#, python-format
+msgid "If the consignor is not VAT subject, you should select the null VAT."
+msgstr "Si le dépôt vendeur n'est pas assujetti à TVA, vous devez cocher 'Sans TVA'."
+
+#. module: recurring_consignment
 #: code:addons/recurring_consignment/models/account_invoice.py:177
 #, python-format
 msgid "Income Collected. Taxes: %s"
 msgstr "Chiffre d'affaire collecté. Taxes: %s"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:112
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:119
 #, python-format
 msgid "Incorrect fiscal settings block the possibility to generate commission invoices : Incorrect tax type on the tax %s"
 msgstr "Le paramétrage fiscal incorrect empêche la génération de facture de commission : Type de taxe incorrect sur la taxe %s"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:102
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:109
 #, python-format
 msgid "Incorrect fiscal settings block the possibility to generate commission invoices : Too many taxes %s"
 msgstr "Le paramétrage fiscal incorrect empêche la génération de facture de commission : Trop de taxes %s"
@@ -322,12 +335,6 @@ msgstr "Lignes de factures"
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_product_template_search
 msgid "Is Consignment"
 msgstr "En dépôt vente"
-
-#. module: recurring_consignment
-#: model:ir.model.fields,field_description:recurring_consignment.field_product_product__is_consignment_commission
-#: model:ir.model.fields,field_description:recurring_consignment.field_product_template__is_consignment_commission
-msgid "Is Consignment Commission"
-msgstr "Est une commision de dépôt vente"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_account_invoice__is_consignment_invoice
@@ -407,6 +414,11 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_000
+msgid "No VAT"
+msgstr "Sans TVA"
+
+#. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
 msgid "Note:<br/>\n"
 "                        the debit values may correspond to: <br/>\n"
@@ -466,19 +478,6 @@ msgid "Sale Recurring Consignment"
 msgstr "Vente - Dépôt Vente"
 
 #. module: recurring_consignment
-#: model:ir.model.fields,help:recurring_consignment.field_account_tax__consignment_product_id
-msgid "Set a 'Sales commission' product for consignment sales.\n"
-"If not set, transaction will not be commissioned. (this case is usefull to avoid to commission taxes transaction, because in most cases, commissions are computed on without taxes amount)."
-msgstr "Indiquer un produit de type 'commission sur vente' pour les commissions sur dépôts ventes.\n"
-"Si non renseigné, la transaction ne sera pas commissionnée. (Ce cas est utile pour éviter de commissionner les transactions de taxes, car dans la plus part des cas, les commissions sont calculées sur le montant hors taxe)."
-
-#. module: recurring_consignment
-#: code:addons/recurring_consignment/models/account_tax.py:35
-#, python-format
-msgid "Set only consignement commission product in the according field"
-msgstr "Veuillez mettre seulement un produit de commission sur dépôt vente dans le champ correspondant"
-
-#. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
 msgid "Settings"
@@ -501,7 +500,7 @@ msgid "Tax"
 msgstr "Taxe"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/account_invoice.py:173
+#: code:addons/recurring_consignment/models/account_invoice.py:172
 #, python-format
 msgid "Tax Collected %s"
 msgstr "Taxe collectée %s"
@@ -513,7 +512,7 @@ msgid "The commission will be computed for the sale until this date included."
 msgstr "La commission sera calculée pour les ventes, jusqu'à cette date inclue."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/product_template.py:45
+#: code:addons/recurring_consignment/models/product_template.py:43
 #, python-format
 msgid "The product %s %s has inconsistent consignor and fiscal classification"
 msgstr "Le produit %s-%s a un dépôt vendeur et une catégorie fiscale qui ne correspondent pas."
@@ -540,9 +539,34 @@ msgid "Unit Price"
 msgstr "Prix unitaire"
 
 #. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_res_company__commission_product_id
+msgid "Used for the Recurring Consignment features. Define the product that will be used to generate consignment invoices to consignors."
+msgstr "Utilisé pour a fonctionnalité de dépôt vente. définir l'article qui sera utilisé pour générer des factures de commission aux dépôt-vendeurs."
+
+#. module: recurring_consignment
 #: model:res.groups,name:recurring_consignment.group_consignment_user
 msgid "User"
 msgstr "Utilisateur"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_021
+msgid "VAT 02,1%"
+msgstr "TVA 02,1%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_055
+msgid "VAT 05,5%"
+msgstr "TVA 05,5%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_100
+msgid "VAT 10,0%"
+msgstr "TVA 10,0%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_200
+msgid "VAT 20,0%"
+msgstr "TVA 20,0%"
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_account_invoice_form
@@ -565,13 +589,13 @@ msgid "Yes"
 msgstr "Oui"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/product_template.py:170
+#: code:addons/recurring_consignment/models/product_template.py:168
 #, python-format
 msgid "You can not change the value of the field 'Consignor' because the product is associated to one or more Account Invoice Lines. You should disable the product and create a new one."
 msgstr "Vous ne pouvez pas changer la valeur du champ 'Dépôt vendeur' car ce produit est associé à une ou plusieurs lignes compables. Vous devez désactiver ce produit, et en créer un nouveau"
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/product_template.py:148
+#: code:addons/recurring_consignment/models/product_template.py:146
 #, python-format
 msgid "You can not change the value of the field 'Is Consignment Commission'. You can disable this product and create a new one properly."
 msgstr "Vous ne pouvez pas changer la valeur du champ 'Est une commision de dépôt vente. Vous pouvez simplement désactiver le produit et en créer un nouveau."
@@ -581,12 +605,6 @@ msgstr "Vous ne pouvez pas changer la valeur du champ 'Est une commision de dép
 #, python-format
 msgid "You can not change this settings ( Accounting Properties) for many partners if some of them are consignors."
 msgstr "Vous ne pouvez pas changer ce paramétrage (propriétés comptables) pour plusieurs contacts si certains d'entre eux sont des dépôt-vendeurs."
-
-#. module: recurring_consignment
-#: code:addons/recurring_consignment/models/account_invoice_line.py:31
-#, python-format
-msgid "You can not sale consignment commission to a customer that are not flagged as consignor"
-msgstr "Vous ne pouvez pas vendre de produit de type commission à un client qui n'est pas un dépôt vendeur."
 
 #. module: recurring_consignment
 #: code:addons/recurring_consignment/models/account_product_fiscal_classification.py:27
@@ -603,13 +621,20 @@ msgstr "Vous ne pouvez pas retirer le fait que ce partenaire soit un dépôt ven
 " Veuillez créer un nouveau partenaire."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/models/account_invoice_line.py:20
+#: code:addons/recurring_consignment/models/account_invoice_line.py:24
 #, python-format
 msgid "You can only sale consignment Commission to consignor. If you want to sale regular products, please create another customer"
 msgstr "Vous pouvez seulement vendre des produits de type commission à un dépôt vendeur. Si vous souhaitez réaliser une vente normale, veuillez créer un autre client."
 
 #. module: recurring_consignment
-#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:126
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:74
+#, python-format
+msgid "you can not create a consignment invoice because you didn't defined a Consignment product at the company level. (%s)"
+msgstr "Vous ne pouvez pas créer une facture de commission car aucun produit de commission n'est défini au niveau de la société. (%s)"
+
+#. module: recurring_consignment
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:173
 #, python-format
 msgid "{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}"
 msgstr "{sequence} - TVA {amount:2.1f}% -{vat_subject}{name}"
+
