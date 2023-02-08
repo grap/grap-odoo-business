@@ -17,10 +17,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="is_consignment"/>
                     <label for="is_consignment"/>
                 </div>
-                <div groups="recurring_consignment.group_consignment_manager">
-                    <field name="is_consignment_commission"/>
-                    <label for="is_consignment_commission"/>
-                </div>
             </xpath>
             <field name="supplier_taxes_id" position="before">
                 <field name="consignor_partner_id" groups="recurring_consignment.group_consignment_user"/>

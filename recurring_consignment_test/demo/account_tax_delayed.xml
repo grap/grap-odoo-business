@@ -14,7 +14,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="account_id" ref="account_consignor_1"/>
         <field name="refund_account_id" ref="account_consignor_1"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="consignment_product_id" ref="commission_product_vat_5"/>
     </record>
 
     <record id="tax_20_consignor_1" model="account.tax">
@@ -25,7 +24,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="account_id" ref="account_consignor_1"/>
         <field name="refund_account_id" ref="account_consignor_1"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
-        <field name="consignment_product_id" ref="commission_product_vat_20"/>
     </record>
 
 </odoo>
