@@ -16,8 +16,9 @@ odoo_version: 16.0
 org_name: GRAP
 org_slug: grap
 rebel_module_groups: []
-repo_description: This repository contains Odoo modules developped by the company GRAP that meet the business needs of GRAP.
-repo_name:  Set of Odoo modules that meet the business needs of GRAP 
+repo_description: This repository contains Odoo modules developped by the company
+    GRAP that meet the business needs of GRAP.
+repo_name: Set of Odoo modules that meet the business needs of GRAP
 repo_slug: grap-odoo-business
 repo_website: https://github.com/grap/grap-odoo-business
 travis_apt_packages: []
