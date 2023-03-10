@@ -91,14 +91,14 @@ class ResCompany(models.Model):
 
     # Compute Section
     def _compute_eshop_url(self):
-        IrConfigParameter = self.env["ir.config_parameter"]
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
         for company in self:
             company.eshop_url = IrConfigParameter.get_param(
                 company._get_eshop_config_name("eshop_url")
             )
 
     def _compute_eshop_invalidation_key(self):
-        IrConfigParameter = self.env["ir.config_parameter"]
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
         for company in self:
             company.eshop_invalidation_key = IrConfigParameter.get_param(
                 company._get_eshop_config_name("eshop_invalidation_key")
@@ -123,7 +123,7 @@ class ResCompany(models.Model):
 
     @api.multi
     def _create_parameter_if_not_exists(self):
-        IrConfigParameter = self.env["ir.config_parameter"]
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
         for company in self.filtered(lambda x: x.has_eshop):
             for config_name in ["eshop_url", "eshop_invalidation_key"]:
                 key = company._get_eshop_config_name(config_name)
