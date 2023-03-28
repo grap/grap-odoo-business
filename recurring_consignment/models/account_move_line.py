@@ -10,7 +10,9 @@ class AccountMoveLine(models.Model):
 
     # Columns Section
     consignment_invoice_id = fields.Many2one(
-        string="Consignment Commission Invoice", comodel_name="account.invoice"
+        string="Consignment Commission Invoice",
+        comodel_name="account.invoice",
+        index=True,
     )
 
     consignment_commission = fields.Float(string="Consignment Commission Rate")
