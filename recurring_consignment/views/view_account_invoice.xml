@@ -25,8 +25,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <tree string="Lines" editable="bottom">
                                 <field name="date" />
                                 <field name="move_id" />
-                                <field name="debit" />
-                                <field name="credit" />
+                                <field name="name" />
+                                <field name="tax_line_id" />
+                                <field name="tax_ids" widget="many2many_tags"/>
+                                <field name="debit" sum="Debit"/>
+                                <field name="credit" sum="Credit"/>
                                 <field name="consignment_commission" />
                             </tree>
                         </field>
