@@ -67,10 +67,9 @@ class InvoiceCommissionWizard(models.TransientModel):
         move_AccountMoveLine = self.env["account.move.line"]
         AccountInvoice = self.env["account.invoice"]
         invoice_ids = []
-        grouped_data = {}
 
         for wizard_line in self.wizard_line_ids:
-
+            grouped_data = {}
             if not wizard_line.move_line_qty:
                 continue
 
