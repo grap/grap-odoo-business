@@ -18,4 +18,9 @@ class ResPartner(models.Model):
     distribution_channel_criterion = fields.Selection(
         string="Distribution Channel",
         selection=_DISTRIBUTION_CHANNEL_CRITERION,
+        help="* Short: artisanal producer or transformer\n"
+        "* Medium: cooperative processor, producers' cooperative"
+        " or importers whose only activity is to work directly"
+        " with producers from other countries.\n"
+        "* Long: the rest",
     )
