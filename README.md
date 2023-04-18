@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.2 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.3 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.3 |  | Test module for the module account_invoice_supplierinfo_update_standard_price
 [account_move_change_number](account_move_change_number/) | 12.0.1.1.2 |  | Allow special user to rename account move
 [product_food](product_food/) | 12.0.1.1.8 |  | Products - Food Informations
