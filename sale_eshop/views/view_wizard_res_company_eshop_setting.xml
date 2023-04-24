@@ -11,9 +11,9 @@
         <field name="arch" type="xml">
             <form>
                 <group string="Social Network">
-                    <field name="eshop_instagram_url"/>
-                    <field name="eshop_twitter_url"/>
-                    <field name="eshop_facebook_url"/>
+                    <field name="social_facebook"/>
+                    <field name="social_linkedin"/>
+                    <field name="social_instagram"/>
                 </group>
                 <group string="Texts">
                     <field name="eshop_home_text" nolabel="1"/>

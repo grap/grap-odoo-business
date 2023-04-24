@@ -22,13 +22,13 @@ msgid "%s / %s"
 msgstr "%s / %s"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order_line.py:51
+#: code:addons/sale_eshop/models/sale_order_line.py:52
 #, python-format
 msgid "'%.3f' is not a valid quantity for %s, the  minimum quantity is '%.3f'. The quantity has been automatically increased in your shopping cart."
 msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimale est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order_line.py:67
+#: code:addons/sale_eshop/models/sale_order_line.py:72
 #, python-format
 msgid "'%.3f' is not a valid quantity for %s, the quantity has been rounded to '%.3f'."
 msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité a été arrondi à '%.3f'."
@@ -86,13 +86,13 @@ msgid "<span class=\"o_stat_text\">Products</span>"
 msgstr "<span class=\"o_stat_text\">Articles</span>"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/eshop_category.py:126
+#: code:addons/sale_eshop/models/eshop_category.py:123
 #, python-format
 msgid "A 'normal' Category can not belongs childs categories"
 msgstr "Une catégorie 'normal' ne peut pas contenir de catégories enfant"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/eshop_category.py:122
+#: code:addons/sale_eshop/models/eshop_category.py:120
 #, python-format
 msgid "A 'view' Category can not belongs products"
 msgstr "Une catégorie 'vue' ne peut pas contenir d'articles"
@@ -122,7 +122,7 @@ msgstr "Autoriser à utiliser la eBoutique"
 #: model:product.product,name:sale_eshop.product_apple
 #: model:product.template,name:sale_eshop.product_apple_product_template
 msgid "Apple"
-msgstr "Apple"
+msgstr ""
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
@@ -153,7 +153,7 @@ msgstr "Disponible en eBoutique"
 #: model:product.product,name:sale_eshop.product_banana
 #: model:product.template,name:sale_eshop.product_banana_product_template
 msgid "Banana"
-msgstr "Banana"
+msgstr ""
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
@@ -168,7 +168,7 @@ msgstr "Type de catégorie"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__child_ids
 msgid "Child Categories"
-msgstr "Catégories Enfants"
+msgstr "Catégories enfants"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__child_qty
@@ -182,6 +182,7 @@ msgstr "Sociétés"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__company_id
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__company_id
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__company_id
 msgid "Company"
 msgstr "Société"
@@ -194,7 +195,7 @@ msgstr "Nom Complet"
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_partner
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_country
@@ -202,23 +203,23 @@ msgid "Country"
 msgstr "Pays"
 
 #. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_res_country_state
+msgid "Country state"
+msgstr "État"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__create_uid
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__create_uid
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__create_uid
 msgid "Created by"
 msgstr "Créé par"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__create_date
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__create_date
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__create_date
 msgid "Created on"
 msgstr "Créé le"
-
-#. module: sale_eshop
-#: model:ir.actions.act_window,name:sale_eshop.action_res_partner
-#: model:ir.ui.menu,name:sale_eshop.menu_res_partner
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_tree
-msgid "Customers (eShop)"
-msgstr "Clients (eBoutique)"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_country_department
@@ -234,49 +235,49 @@ msgstr "Description pour la eBoutique"
 #: model:product.product,description_sale:sale_eshop.product_apple
 #: model:product.template,description_sale:sale_eshop.product_apple_product_template
 msgid "Description of Apple"
-msgstr "Description of Apple"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_banana
 #: model:product.template,description_sale:sale_eshop.product_banana_product_template
 msgid "Description of Banana"
-msgstr "Description of Banana"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_garlic
 #: model:product.template,description_sale:sale_eshop.product_garlic_product_template
 msgid "Description of Garlic"
-msgstr "Description of Garlic"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_leek
 #: model:product.template,description_sale:sale_eshop.product_leek_product_template
 msgid "Description of Leek"
-msgstr "Description of Leek"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_onion
 #: model:product.template,description_sale:sale_eshop.product_onion_product_template
 msgid "Description of Onions"
-msgstr "Description of Onions"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_pepper
 #: model:product.template,description_sale:sale_eshop.product_pepper_product_template
 msgid "Description of Pepper"
-msgstr "Description of Pepper"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_potato
 #: model:product.template,description_sale:sale_eshop.product_potato_product_template
 msgid "Description of Potato"
-msgstr "Description of Potato"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,description_sale:sale_eshop.product_strawberry
 #: model:product.template,description_sale:sale_eshop.product_strawberry_product_template
 msgid "Description of Strawberry. 250 gram container"
-msgstr "Description of Strawberry. 250 gram container"
+msgstr ""
 
 #. module: sale_eshop
 #: selection:res.partner,eshop_state:0
@@ -285,6 +286,7 @@ msgstr "Désactivé"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__display_name
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__display_name
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin__display_name
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin__display_name
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__display_name
@@ -322,6 +324,11 @@ msgid "Eshop Description"
 msgstr "Description eBoutique"
 
 #. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_eshop_fake_account
+msgid "Eshop Fake Account"
+msgstr "Faux compte eBoutique"
+
+#. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_mixin
 msgid "Eshop Mixin"
 msgstr "Mixin eBoutique"
@@ -332,16 +339,20 @@ msgid "Eshop Taxes Description"
 msgstr "Description des taxes sur la eBoutique"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_facebook_url
-#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_facebook_url
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_facebook
 msgid "Facebook URL"
 msgstr "URL Facebook"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__form_data
+msgid "Form Data"
+msgstr "données du formulaire"
 
 #. module: sale_eshop
 #: model:product.product,name:sale_eshop.product_garlic
 #: model:product.template,name:sale_eshop.product_garlic_product_template
 msgid "Garlic"
-msgstr "Garlic"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__has_eshop
@@ -350,16 +361,17 @@ msgstr "A une eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__id
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__id
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin__id
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin__id
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image
 msgid "Image"
-msgstr "Image"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_write_date
@@ -368,7 +380,7 @@ msgstr "Image"
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__image_write_date
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__image_write_date
 msgid "Image Write Date"
-msgstr "Image Write Date"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_write_date_hash
@@ -377,7 +389,7 @@ msgstr "Image Write Date"
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__image_write_date_hash
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__image_write_date_hash
 msgid "Image Write Date Hash"
-msgstr "Image Write Date Hash"
+msgstr ""
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
@@ -385,8 +397,7 @@ msgid "Images and Texts"
 msgstr "Images et textes"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_instagram_url
-#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_instagram_url
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_instagram
 msgid "Instagram URL"
 msgstr "URL Instagram"
 
@@ -402,6 +413,7 @@ msgstr "Est eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category____last_update
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account____last_update
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin____last_update
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin____last_update
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting____last_update
@@ -410,12 +422,14 @@ msgstr "Dernière modification le"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__write_uid
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__write_uid
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__write_date
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__write_date
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
@@ -424,7 +438,12 @@ msgstr "Dernière mise à jour le"
 #: model:product.product,name:sale_eshop.product_leek
 #: model:product.template,name:sale_eshop.product_leek_product_template
 msgid "Leek"
-msgstr "Leek"
+msgstr ""
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_linkedin
+msgid "LinkedIn URL"
+msgstr "URL LinkedIn"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_manage_recovery_moment
@@ -434,7 +453,7 @@ msgstr "Gérer les points de retraits"
 #. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_eshop_manager
 msgid "Manager"
-msgstr "Responsable"
+msgstr "Gestionnaire"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_medium
@@ -459,13 +478,13 @@ msgstr "Nom"
 #. module: sale_eshop
 #: selection:eshop.category,type:0
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,name:sale_eshop.product_onion
 #: model:product.template,name:sale_eshop.product_onion_product_template
 msgid "Onion"
-msgstr "Onion"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__parent_id
@@ -590,7 +609,6 @@ msgid "Small-sized image"
 msgstr "Image de petite taille"
 
 #. module: sale_eshop
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Social Network"
 msgstr "Réseau social"
@@ -610,7 +628,7 @@ msgstr "Etat dans la eBoutique"
 #: model:product.product,name:sale_eshop.product_strawberry
 #: model:product.template,name:sale_eshop.product_strawberry_product_template
 msgid "Strawberry (250 gr)"
-msgstr "Strawberry (250 gr)"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_account_tax
@@ -634,34 +652,28 @@ msgid "Texts"
 msgstr "Textes"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/product_product.py:219
+#: code:addons/sale_eshop/models/product_product.py:215
 #, python-format
 msgid "The Operator %s is not implemented !"
 msgstr "L'opérateur %s n'est pas implémenté !"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order.py:141
+#: code:addons/sale_eshop/models/sale_order.py:138
 #, python-format
 msgid "The Shopping Cart has been successfully deleted."
 msgstr "Le panier a été supprimé avec succès."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order.py:147
+#: code:addons/sale_eshop/models/sale_order.py:143
 #, python-format
 msgid "The line has been successfully deleted"
 msgstr "La ligne a été supprimée avec succès"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/product_product.py:276
+#: code:addons/sale_eshop/models/product_product.py:271
 #, python-format
 msgid "This arg %s is not implemented !"
 msgstr "L'argument %s n'est pas implémenté !"
-
-#. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_twitter_url
-#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_twitter_url
-msgid "Twitter URL"
-msgstr "URL Twitter"
 
 #. module: sale_eshop
 #: selection:product.product,eshop_state:0
@@ -735,6 +747,19 @@ msgid "eShop Category"
 msgstr "Catégorie eBoutique"
 
 #. module: sale_eshop
+#: model:ir.actions.act_window,name:sale_eshop.action_res_partner
+#: model:ir.ui.menu,name:sale_eshop.menu_res_partner
+msgid "eShop Customers"
+msgstr "Clients eBoutique"
+
+#. module: sale_eshop
+#: model:ir.actions.act_window,name:sale_eshop.action_eshop_fake_account
+#: model:ir.ui.menu,name:sale_eshop.menu_eshop_fake_account
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_fake_account_tree
+msgid "eShop Fake Accounts"
+msgstr "Faux comptes eBoutique"
+
+#. module: sale_eshop
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
 msgid "eShop Sale"
@@ -769,12 +794,12 @@ msgstr "URL eBoutique"
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_category
 msgid "eshop.category"
-msgstr "eshop.category"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_with_image_mixin
 msgid "eshop.with.image.mixin"
-msgstr "eshop.with.image.mixin"
+msgstr ""
 
 #. module: sale_eshop
 #: model:product.product,uom_name:sale_eshop.product_apple
@@ -812,5 +837,5 @@ msgstr "eshop.with.image.mixin"
 #: model:product.template,weight_uom_name:sale_eshop.product_strawberry_product_template
 #: model:product.template,weight_uom_name:sale_eshop.product_without_image_product_template
 msgid "kg"
-msgstr "kg"
+msgstr ""
 

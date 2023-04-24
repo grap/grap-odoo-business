@@ -16,19 +16,18 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         readonly=True,
         default=lambda s: s._default_company_id(),
     )
-
-    eshop_facebook_url = fields.Char(
+    social_facebook = fields.Char(
         string="Facebook URL",
-        default=lambda s: s._default_eshop_facebook_url(),
+        default=lambda s: s._default_social_facebook(),
     )
 
-    eshop_twitter_url = fields.Char(
-        string="Twitter URL", default=lambda s: s._default_eshop_twitter_url()
+    social_linkedin = fields.Char(
+        string="LinkedIn URL", default=lambda s: s._default_social_linkedin()
     )
 
-    eshop_instagram_url = fields.Char(
+    social_instagram = fields.Char(
         string="Instagram URL",
-        default=lambda s: s._default_eshop_instagram_url(),
+        default=lambda s: s._default_social_instagram(),
     )
 
     eshop_home_text = fields.Html(
@@ -42,16 +41,16 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         return self.env.user.company_id.id
 
     @api.model
-    def _default_eshop_facebook_url(self):
-        return self.env.user.company_id.eshop_facebook_url
+    def _default_social_facebook(self):
+        return self.env.user.company_id.social_facebook
 
     @api.model
-    def _default_eshop_twitter_url(self):
-        return self.env.user.company_id.eshop_twitter_url
+    def _default_social_linkedin(self):
+        return self.env.user.company_id.social_linkedin
 
     @api.model
-    def _default_eshop_instagram_url(self):
-        return self.env.user.company_id.eshop_instagram_url
+    def _default_social_instagram(self):
+        return self.env.user.company_id.social_instagram
 
     @api.model
     def _default_eshop_home_text(self):
@@ -63,9 +62,9 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         self.ensure_one()
         self.company_id.sudo().write(
             {
-                "eshop_facebook_url": self.eshop_facebook_url,
-                "eshop_twitter_url": self.eshop_twitter_url,
-                "eshop_instagram_url": self.eshop_instagram_url,
+                "social_facebook": self.social_facebook,
+                "social_linkedin": self.social_linkedin,
+                "social_instagram": self.social_instagram,
                 "eshop_home_text": self.eshop_home_text,
             }
         )

@@ -26,11 +26,6 @@
                         <newline/>
                         <field name="eshop_invalidation_key" colspan="4" />
                     </group>
-                    <group string="Social Network" col="4">
-                        <field name="eshop_instagram_url"/>
-                        <field name="eshop_twitter_url"/>
-                        <field name="eshop_facebook_url"/>
-                    </group>
                     <group string="Images and Texts" col="4">
                         <field name="eshop_image_small" widget="image" img_height="50" img_width="50"/>
                         <field name="eshop_home_text" colspan="4" nolabel="1"/>
