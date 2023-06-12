@@ -4,7 +4,7 @@
 
 {
     "name": "Sale - eShop",
-    "version": "12.0.1.1.7",
+    "version": "12.0.2.0.0",
     "summary": "Allow connection to Odoo eShop Project",
     "category": "Sale",
     "author": "GRAP",
@@ -12,12 +12,15 @@
     "license": "AGPL-3",
     "depends": [
         "sale",
-        "product_label",
+        "social_media",
+        # OCA
         "l10n_fr_department",
-        "sale_recovery_moment",
-        "product_origin_l10n_fr_department",
         "product_standard_margin",
         "queue_job",
+        # GRAP
+        "product_label",
+        "sale_recovery_moment",
+        "product_origin_l10n_fr_department",
     ],
     "data": [
         "security/ir_rule.xml",

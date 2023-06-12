@@ -10,9 +10,9 @@
     <record id="base.main_company" model="res.company" >
         <field name="has_eshop" eval="True"/>
         <field name="eshop_title">My Odoo eShop</field>
-        <field name="eshop_instagram_url">https://www.instagram.com/odoo_eshop/</field>
-        <field name="eshop_twitter_url">https://twitter.com/odoo_eshop/</field>
-        <field name="eshop_facebook_url">https://www.facebook.com/odoo_eshop</field>
+        <field name="social_instagram">https://www.instagram.com/odoo_eshop/</field>
+        <field name="social_linkedin">https://www.linkedin.com/odoo_eshop/</field>
+        <field name="social_facebook">https://www.facebook.com/odoo_eshop</field>
         <field name="eshop_home_text">Home page Text</field>
         <field name="eshop_manage_recovery_moment" eval="True"/>
         <field name="eshop_list_view_enabled" eval="True"/>

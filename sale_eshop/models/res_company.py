@@ -21,9 +21,9 @@ class ResCompany(models.Model):
         "website",
         "eshop_list_view_enabled",
         "eshop_tree_view_enabled",
-        "eshop_facebook_url",
-        "eshop_twitter_url",
-        "eshop_instagram_url",
+        "social_facebook",
+        "social_linkedin",
+        "social_instagram",
         "eshop_image_small",
         "eshop_vat_included",
         "eshop_register_allowed",
@@ -44,12 +44,6 @@ class ResCompany(models.Model):
     eshop_manage_recovery_moment = fields.Boolean(string="Manage recovery Moment")
 
     eshop_title = fields.Char(string="eShop Title")
-
-    eshop_facebook_url = fields.Char(string="Facebook URL")
-
-    eshop_twitter_url = fields.Char(string="Twitter URL")
-
-    eshop_instagram_url = fields.Char(string="Instagram URL")
 
     eshop_home_text = fields.Html(string="Text for the eShop Home Page")
 
