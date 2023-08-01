@@ -18,13 +18,6 @@ class ConsignorCreateWizard(models.TransientModel):
         # For the time being, we have no other cases
         return "467"
 
-    @api.multi
-    def _get_tax_included(self):
-        self.ensure_one()
-        # for the time being, we have no B2B company
-        # with consignors
-        return True
-
     # Columns Section
     name = fields.Char(string="Consignor Name", required=True)
 
@@ -149,35 +142,63 @@ class ConsignorCreateWizard(models.TransientModel):
     @api.multi
     def _prepare_tax(self, sequence, account, partner, amount):
         self.ensure_one()
+        return self._prepare_tax_model(
+            sequence,
+            account,
+            partner,
+            amount,
+            self.is_vat_subject,
+            self.name,
+            self.env.user.company_id,
+        )
+
+    @api.model
+    def _prepare_tax_model(
+        self, sequence, account, partner, amount, is_vat_subject, partner_name, company
+    ):
         return {
             "name": "{sequence} - {amount:.1f} -{vat_subject}{name}".format(
                 sequence=sequence,
                 amount=amount,
-                vat_subject=self.is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
-                name=self.name,
+                vat_subject=is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
+                name=partner_name,
             ),
-            "company_id": self.env.user.company_id.id,
-            "description": self.is_vat_subject
+            "company_id": company.id,
+            "description": is_vat_subject
             and "{amount:.1f}%".format(amount=amount)
             or "0%",
-            "amount": self.is_vat_subject and amount or 0.0,
+            "amount": is_vat_subject and amount or 0.0,
             "amount_type": "percent",
-            "price_include": self._get_tax_included(),
+            "price_include": True,  # for the time being, we have no B2B company with consignors
             "account_id": account.id,
             "refund_account_id": account.id,
             "consignor_partner_id": partner.id,
         }
 
     def _prepare_fiscal_classification(self, sequence, partner, tax):
+        self.ensure_one()
+        return self._prepare_fiscal_classification_model(
+            sequence,
+            partner,
+            tax,
+            self.is_vat_subject,
+            self.name,
+            self.env.user.company_id,
+        )
+
+    def _prepare_fiscal_classification_model(
+        self, sequence, partner, tax, is_vat_subject, partner_name, company
+    ):
         return {
             "name": _("{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}").format(
                 sequence=sequence,
                 amount=tax.amount,
-                vat_subject=self.is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
-                name=self.name,
+                vat_subject=is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
+                name=partner_name,
             ),
             "sale_tax_ids": [(4, tax.id)],
             "consignor_partner_id": partner.id,
+            "company_id": company.id,
         }
 
     @api.multi
