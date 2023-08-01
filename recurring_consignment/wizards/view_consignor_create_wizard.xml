@@ -15,12 +15,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="name"/>
                     <field name="account_suffix"/>
                     <field name="rate"/>
-                    <field name="is_vat_subject"/>
-                    <field name="has_vat_000"/>
-                    <field name="has_vat_021"/>
-                    <field name="has_vat_055"/>
-                    <field name="has_vat_100"/>
-                    <field name="has_vat_200"/>
+                    <group string="Products Taxation" col="4">
+                        <field name="is_vat_subject"/>
+                        <field name="has_vat_000"/>
+                        <field name="has_vat_021" attrs="{'invisible': [('is_vat_subject', '=', False)]}"/>
+                        <field name="has_vat_055" attrs="{'invisible': [('is_vat_subject', '=', False)]}"/>
+                        <field name="has_vat_100" attrs="{'invisible': [('is_vat_subject', '=', False)]}"/>
+                        <field name="has_vat_200" attrs="{'invisible': [('is_vat_subject', '=', False)]}"/>
+                    </group>
                 </group>
                 <footer>
                     <button name="create_consignor" type="object" string="Create Consignor" class="oe_highlight"/>
