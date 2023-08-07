@@ -60,9 +60,45 @@ def migrate_product_template_to_company(env, company):
             )
 
     if not commission_template:
-        raise NotImplementedError(
-            "We should write migration script to create commision product with vat 20%"
+        vals = {
+            "name": "Commission sur dépôt Vente (TVA 20,0%)",
+            "company_id": company.id,
+            "cae_administrative_ok": True,
+            "available_in_pos": False,
+            "sale_ok": True,
+            "purchase_ok": False,
+            "categ_id": env["product.category"]
+            .search(
+                [
+                    ("complete_name", "=", "Spécial / divers / divers"),
+                ]
+            )
+            .id,
+            "fiscal_classification_id": env["account.product.fiscal.classification"]
+            .search(
+                [
+                    ("company_id", "=", company.id),
+                    ("consignor_partner_id", "=", False),
+                    ("name", "ilike", "20"),
+                ]
+            )
+            .id,
+            "property_account_income_id": env["account.account"]
+            .search(
+                [
+                    ("company_id", "=", company.id),
+                    ("code", "=", "7063"),
+                ]
+            )
+            .id,
+        }
+
+        logger.info(f"creating commission product for company {company.code}.")
+
+        commission_template = (
+            env["product.template"].with_context(force_company=company.id).create(vals)
         )
+
     return commission_template
 
 
@@ -100,9 +136,15 @@ def migrate_non_taxable_consignor(env, company, partner):
         return
 
     # Get sequence. (Prodxxx)
-    pattern = re.compile(r"(Prod\d\d\d) - (.*)")
+    pattern = re.compile(r"(Prod\d\d\d) ?- ?(.*)")
 
-    groups = pattern.match(partner.name).groups()
+    matches = pattern.match(partner.name)
+    if not matches:
+        raise NotImplementedError(
+            f"Unable to find the name for {partner.id} - {partner.name}."
+        )
+
+    groups = matches.groups()
     if len(groups) != 2:
         raise NotImplementedError("Sequence / partner name not found.")
     sequence = groups[0]
