@@ -27,7 +27,7 @@ class ConsignorCreateWizard(models.TransientModel):
 
     is_vat_subject = fields.Boolean(string="Subject to VAT", default=True)
 
-    has_vat_000 = fields.Boolean(string="No VAT")
+    has_vat_000 = fields.Boolean(string="VAT 00,0%")
 
     has_vat_021 = fields.Boolean(string="VAT 02,1%")
 
