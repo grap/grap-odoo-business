@@ -109,7 +109,6 @@ def migrate_non_taxable_consignor(env, company, partner):
     - If mixted, raise an error
     """
     Wizard = env["consignor.create.wizard"]
-    AccountAccount = env["account.account"].with_context(force_company=company.id)
     AccountTax = env["account.tax"].with_context(force_company=company.id)
     AccountClassification = env["account.product.fiscal.classification"].with_context(
         force_company=company.id
@@ -150,16 +149,15 @@ def migrate_non_taxable_consignor(env, company, partner):
     sequence = groups[0]
     partner_name = groups[1]
 
-    account = AccountAccount.search(
-        [("code", "=", "467"), ("company_id", "=", company.id)]
-    )
-
-    if len(account) != 1:
-        raise NotImplementedError("Account not found.")
-
     # Create a new fiscal classification
     tax_vals = Wizard._prepare_tax_model(
-        sequence, account, partner, 0.0, False, partner_name, company
+        sequence,
+        partner.consignment_account_id,
+        partner,
+        0.0,
+        False,
+        partner_name,
+        company,
     )
     tax_vals.update({"company_id": company.fiscal_company_id.id})
     new_tax = AccountTax.create(tax_vals)
