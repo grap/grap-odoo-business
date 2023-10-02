@@ -167,13 +167,13 @@ class AccountInvoice(models.Model):
 
     @api.model
     def _get_commission_key(self, move_line):
-        if move_line.tax_line_id.consignment_product_id:
-            tax = move_line.tax_line_id
-            # That is Tax line
-            return ("tax", _("Tax Collected %s") % (tax.amount))
-        else:
-            return (
-                "revenue",
-                _("Income Collected. Taxes: %s")
-                % (", ".join([str(x.amount) for x in move_line.tax_ids])),
-            )
+        if move_line.tax_line_id:
+            # That is a Tax line
+            return ("tax", _("Tax Collected %s") % (move_line.tax_line_id.amount))
+
+        # That is a Revenue line
+        return (
+            "revenue",
+            _("Income Collected. Taxes: %s")
+            % (", ".join([str(x.amount) for x in move_line.tax_ids])),
+        )

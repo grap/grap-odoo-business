@@ -4,7 +4,7 @@
 
 {
     "name": "Recurring Consignment",
-    "version": "12.0.1.1.9",
+    "version": "12.0.2.0.1",
     "summary": "Sale - Handle Recurring Consignments",
     "category": "Sale",
     "author": "GRAP",
@@ -25,6 +25,7 @@
         "views/view_account_tax.xml",
         "views/view_account_product_fiscal_classification.xml",
         "views/view_product_template.xml",
+        "views/view_res_company.xml",
         "views/view_res_partner.xml",
         "views/view_product_pricelist.xml",
         "report/report_account_invoice.xml",

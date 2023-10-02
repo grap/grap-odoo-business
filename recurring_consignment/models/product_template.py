@@ -21,8 +21,6 @@ class ProductTemplate(models.Model):
         string="Is Consignment Product", store=True, compute="_compute_is_consignment"
     )
 
-    is_consignment_commission = fields.Boolean(string="Is Consignment Commission")
-
     # Overload to update domain
     fiscal_classification_id = fields.Many2one(
         domain="[('company_id', '=', company_id),"

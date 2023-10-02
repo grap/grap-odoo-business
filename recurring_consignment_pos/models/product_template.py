@@ -10,11 +10,6 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     # Constrains Section
-    @api.constrains("is_consignment_commission", "available_in_pos")
-    def _check_is_consignment_commission_pos(self):
-        if self.filtered(lambda x: x.is_consignment_commission and x.available_in_pos):
-            raise UserError(_("A Consignment Commission can not be available in PoS"))
-
     @api.multi
     def _check_consignor_changes(self, vals):
         super()._check_consignor_changes(vals)

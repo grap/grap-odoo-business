@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import ValidationError
 
 
 class InvoiceCommissionWizardLine(models.TransientModel):
@@ -68,9 +68,16 @@ class InvoiceCommissionWizardLine(models.TransientModel):
         AccountInvoiceLine = self.env["account.invoice.line"]
 
         rate = self.partner_id.consignment_commission
-        product = lines[0].tax_ids[0] and lines[0].tax_ids[0].consignment_product_id
+        product = self.partner_id.company_id.commission_product_id
         if not product:
-            return
+            raise ValidationError(
+                _(
+                    "you can not create a consignment invoice because you"
+                    " didn't defined a Consignment product at the company"
+                    " level. (%s)"
+                )
+                % self.partner_id.company_id.name
+            )
 
         total_credit = 0
         for line in lines:
@@ -91,14 +98,14 @@ class InvoiceCommissionWizardLine(models.TransientModel):
             % (rate, total_credit, key[0], key[1]),
         }
 
-        move_line = AccountInvoiceLine.create(vals)
-        move_line._onchange_product_id()
+        invoice_line = AccountInvoiceLine.create(vals)
+        invoice_line._onchange_product_id()
 
         # Compute price, depending on the tax settings
-        taxes = move_line.invoice_line_tax_ids
+        taxes = invoice_line.invoice_line_tax_ids
         if taxes:
             if len(taxes) != 1:
-                raise UserError(
+                raise ValidationError(
                     _(
                         "Incorrect fiscal settings block the possibility"
                         " to generate commission invoices : Too many taxes %s"
@@ -108,7 +115,7 @@ class InvoiceCommissionWizardLine(models.TransientModel):
 
             tax = taxes[0]
             if tax.amount_type != "percent":
-                raise UserError(
+                raise ValidationError(
                     _(
                         "Incorrect fiscal settings block the possibility"
                         " to generate commission invoices : Incorrect tax type"
@@ -119,20 +126,22 @@ class InvoiceCommissionWizardLine(models.TransientModel):
 
             # Rewrite name and price_unit, because on change erased correct values
             if tax.price_include:
-                move_line.price_unit = price_unit * (100 + tax.amount) / 100
+                invoice_line.price_unit = price_unit * (100 + tax.amount) / 100
             else:
-                move_line.price_unit = price_unit
+                invoice_line.price_unit = price_unit
         else:
-            move_line.price_unit = price_unit
+            invoice_line.price_unit = price_unit
 
-        move_line.name = vals["name"]
-        return move_line
+        invoice_line.name = vals["name"]
+        return invoice_line
 
     # Private Section
     @api.model
     def _get_line_key(self, move_line):
-        date = move_line.move_id.date
-        return (date.year, date.month, str(set(move_line.tax_ids.ids)))
+        return (
+            move_line.move_id.date.year,
+            move_line.move_id.date.month,
+        )
 
     @api.model
     def _get_move_lines_with_values(self, partner, max_date):
