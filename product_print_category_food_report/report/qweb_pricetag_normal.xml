@@ -13,6 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <link href="/product_print_category_food_report/static/css/pricetag_base.scss" rel="stylesheet" type="text/scss"/>
             <link href="/product_print_category_food_report/static/css/pricetag_normal_base.scss" rel="stylesheet" type="text/scss"/>
             <link href="/product_print_category_food_report/static/css/pricetag_normal_normal.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/product_print_category_food_report/static/css/font.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
 
@@ -21,7 +22,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <t t-foreach="category_data['lines']" t-as="line">
                 <t t-foreach="line.quantity" t-as="q">
                     <!-- NORMAL PRICETAG NORMAL -->
-                    <div class="normal_pricetag normal_pricetag_normal floating_box">
+                    <div class="normal_pricetag normal_pricetag_normal floating_box pricetag-font">
                         <div class="pricetag_left floating_box">
                             <!-- Write date -->
                             <div class="write_date">
@@ -34,10 +35,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-esc="line.product_id.name"/>
                             </div>
                             <div class="product_informations" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
-                                <t t-if="line.product_id.default_code and option_print_code">Internal code: <t t-esc="line.product_id.default_code"/><br/></t>
-                                <t t-if="line.product_id.pricetag_origin">Origin: <b><t t-esc="line.product_id.pricetag_origin"/></b><br/></t>
+                                <t t-if="line.product_id.default_code and option_print_code">Internal code: [<t t-esc="line.product_id.default_code"/>]</t>
+                                <t t-if="line.product_id.barcode and option_print_barcode_digits"> <t t-esc="line.product_id.barcode"/></t>
+                                <t t-if="line.product_id.pricetag_origin"><br/>Origin: <t t-esc="line.product_id.pricetag_origin"/><br/></t>
                                 <t t-else=""><br/></t>
-                                <t t-if="line.product_id.maker_description">Maker: <b><t t-esc="line.product_id.maker_description"/></b><br/></t>
+                                <t t-if="line.product_id.maker_description">Maker: <t t-esc="line.product_id.maker_description"/><br/></t>
                                 <t t-else=""><br/></t>
                             </div>
                             <div class="product_labels">
@@ -74,28 +76,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <!-- Poids (Kg) ou Volume (L) du produit -->
                                     <t t-if="line.product_id.pricetag_is_second_price">
                                         <div class="product_price_per_uom_qty floating_box">
-                                            <t t-if="line.product_id.volume">Volume<br/><b><t t-esc="line.product_id.volume"/> L</b><br/></t>
-                                            <t t-elif="line.product_id.net_weight">Weight<br/><b><t t-esc="line.product_id.net_weight"/> kg</b><br/></t>
+                                            <t t-if="line.product_id.volume">Volume<br/><t t-esc="line.product_id.volume"/> L<br/></t>
+                                            <t t-elif="line.product_id.net_weight">Weight<br/><t t-esc="line.product_id.net_weight"/> kg<br/></t>
                                         </div>
                                         <!-- Prix au Kg ou au L -->
                                         <div class="product_price_per_uom_price floating_box">
                                             <t t-if="line.product_id.pricetag_is_second_price">
                                                 <t t-esc="line.product_id.pricetag_second_price_uom_text"/><br/>
-                                                <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b>
+                                                <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
                                             </t>
                                         </div>
                                     </t>
                                 </t>
                                 <t t-if="line.product_id.pricetag_special_quantity_price">
                                     <div class="second_product_price">
-                                        <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</div>
+                                        <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/>€</div>
                                         <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                     </div>
                                     <div class="product_price_per_uom_price_only floating_box">
                                         <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Per L: </span></t>
                                         <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Per kg: </span></t>
                                         <t t-else=""><span>Unit : </span></t>
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/>€
                                     </div>
                                 </t>
                                 <div class="floating_box">
@@ -115,14 +117,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <!-- Poids (Kg) ou Volume (L) du produit -->
                                     <t t-if="line.product_id.pricetag_is_second_price">
                                         <div class="product_price_per_uom_qty floating_box">
-                                            <t t-if="line.product_id.volume">Volume<br/><b><t t-esc="line.product_id.volume"/> L</b><br/></t>
-                                            <t t-elif="line.product_id.net_weight">Weight<br/><b><t t-esc="line.product_id.net_weight"/> kg</b><br/></t>
+                                            <t t-if="line.product_id.volume">Volume<br/><t t-esc="line.product_id.volume"/> L<br/></t>
+                                            <t t-elif="line.product_id.net_weight">Weight<br/><t t-esc="line.product_id.net_weight"/> kg<br/></t>
                                         </div>
                                         <!-- Prix au Kg ou au L -->
                                         <div class="product_price_per_uom_price floating_box">
                                             <t t-if="line.product_id.pricetag_is_second_price">
                                                 <t t-esc="line.product_id.pricetag_second_price_uom_text"/><br/>
-                                                <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b>
+                                                <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
                                             </t>
                                         </div>
                                     </t>
