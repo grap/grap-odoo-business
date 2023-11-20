@@ -12,6 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <xpath expr="." position="inside">
             <link href="/product_print_category_food_report/static/css/pricetag_base.scss" rel="stylesheet" type="text/scss"/>
             <link href="/product_print_category_food_report/static/css/pricetag_square.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/product_print_category_food_report/static/css/font.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
 
@@ -19,7 +20,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <t t-call="web.basic_layout">
         <t t-foreach="category_data['lines']" t-as="line">
             <t t-foreach="line.quantity" t-as="q">
-                <div class="square_pricetag floating_box">
+                <div class="square_pricetag floating_box pricetag-font">
                         <!-- Write date -->
                         <div class="write_date">
                             <t t-if="line.product_id.write_date">
@@ -41,7 +42,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             </t>
                         </div>
                         <!-- Price -->
-                        <div class="price_area">
+                        <div class="price_area pricetag-font">
                             <t t-if="line.product_id.pricetag_special_quantity_price">
                                 <div class="second_product_price">
                                     <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</div>
@@ -66,7 +67,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <div class="product_price_per_uom_price">
                                         <t t-if="line.product_id.pricetag_is_second_price">
                                             <t t-esc="line.product_id.pricetag_second_price_uom_text"/>:
-                                            <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b>
+                                            <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
                                         </t>
                                     </div>
                                 </t>
@@ -75,9 +76,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 </t>
                             </t>
                         </div>
-                        <!-- BARCODE Image -->
+                        <!-- BARCODE Image and DIGITS and PRODUCT CODE -->
                         <div>
-                            <div class="option_print_code" t-if="option_print_code"><t t-esc="line.product_id.default_code"/></div>
+                            <div class="option_print_code">
+                              <t t-if="option_print_code">
+                                <t t-esc="line.product_id.default_code"/>
+                              </t>
+                              <t t-if="option_print_code and line.product_id.barcode and option_print_barcode_digits">
+                                <span> - </span>
+                              </t>
+                              <t t-if="line.product_id.barcode and option_print_barcode_digits">
+                                <t t-esc="line.product_id.barcode"/>
+                              </t>
+                            </div>
                             <div class="wrap_barcode_image floating_box">
                                 <t t-if="line.product_id.barcode and option_print_barcode">
                                     <img t-if="len(line.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN13', line.product_id.barcode)"/>

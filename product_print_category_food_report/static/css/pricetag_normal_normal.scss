@@ -2,10 +2,10 @@
     width:9.3cm; height:3.8cm;
 
     .pricetag_left {
-        width : 5.8cm;
+        width : 5.5cm;
     }
     .pricetag_right {
-        width : 3.05cm;
+        width : 3.3cm;
         height: 3.6cm;
     }
     .pricetag_right_no_spider_chart {
@@ -21,8 +21,9 @@
         font-size: 11px;
     }
     .product_price {
-        font-size: 32px;
+        font-size: 31px;
         height: 1.1cm; line-height: 1cm;
+        white-space: nowrap;
     }
     .product_sell_by_weight {
         bottom: 1.4em;
