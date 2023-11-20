@@ -2,7 +2,7 @@
 <!--
 Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
-@author: Quentin DUPONT (https://twitter.com/pondupont)
+@author: Quentin DUPONT
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
@@ -12,6 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <xpath expr="." position="inside">
             <link href="/product_print_category_food_report/static/css/pricetag_base.scss" rel="stylesheet" type="text/scss"/>
             <link href="/product_print_category_food_report/static/css/pricetag_bulk_long.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/product_print_category_food_report/static/css/font.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
 
@@ -19,7 +20,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <t t-call="web.basic_layout">
             <t t-foreach="category_data['lines']" t-as="line">
                 <t t-foreach="line.quantity" t-as="q">
-                    <div class="bulk_pricetag_long floating_box">
+                    <div class="bulk_pricetag_long floating_box pricetag-font">
                         <!-- Nom -->
                         <div class="label_top" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }} !important;">
                             <div class="product_name">
@@ -28,21 +29,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </div>
                         <div class="label_middle">
                             <!-- Partie Info produits (origine, label) -->
-                            <div class="label_origin font_middle">
-                                <t t-if="line.product_id.pricetag_origin"><b>Origin</b><br/><t t-esc="line.product_id.pricetag_origin"/><br/></t>
-                                <t t-else=""><span class="empty_field"><b>Origin</b></span><br/></t>
+                            <div class="label_origin font_small">
+                                <t t-if="line.product_id.pricetag_origin"><span class="info_underline">Origin</span><br/><t t-esc="line.product_id.pricetag_origin"/><br/></t>
+                                <t t-else=""><span class="empty_field">Origin</span><br/></t>
                             </div>
                             <div class="label_maker font_small">
-                                <t t-if="line.product_id.maker_description"><b>Maker</b><br/><t t-esc="line.product_id.maker_description"/><br/></t>
-                                <t t-else=""><span class="empty_field"><b>Maker</b></span><br/></t>
+                                <t t-if="line.product_id.maker_description"><span class="info_underline">Maker</span><br/><t t-esc="line.product_id.maker_description"/><br/></t>
+                                <t t-else=""><span class="empty_field">Maker</span><br/></t>
                             </div>
                             <!-- Partie Info produits (ingrédient, allergenes) -->
                             <div class="label_ingredients font_small">
-                                <t t-if="not line.product_id.ingredients == '&lt;p>&lt;br>&lt;/p>'"><b>Ingredients</b><br/><t t-raw="line.product_id.ingredients"/></t>
-                                <t t-else=""><span class="empty_field"><b>Ingredients</b></span><br/></t>
+                                <t t-if="not line.product_id.ingredients == '&lt;p>&lt;br>&lt;/p>'"><span class="info_underline">Ingredients</span><br/><t t-raw="line.product_id.ingredients"/></t>
+                                <t t-else=""><span class="empty_field">Ingredients</span><br/></t>
                             </div>
                             <div class="label_allergens font_small">
-                                <t t-if="not line.product_id.allergens == '&lt;p>&lt;br>&lt;/p>'"><b>Allergens</b><br/><t t-raw="line.product_id.allergens"/><br/></t>
+                                <t t-if="not line.product_id.allergens == '&lt;p>&lt;br>&lt;/p>'"><span class="info_underline">Allergens</span><br/><t t-raw="line.product_id.allergens"/><br/></t>
                              </div>
                             <!-- Logos -->
                             <div class="product_labels font_middle">
@@ -62,7 +63,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-if="line.product_id.pricetag_special_quantity_price">
                                     <div class="product_price_per_uom_price_big">
                                         <div class="product_price_big">
-                                            <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</b><!--
+                                            <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €<!--
                                              --><div class="product_uom_special"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-if="not line.product_id.pricetag_special_quantity_price">
                                     <div class="product_price_per_uom_price_big">
                                         <div class="product_price_big">
-                                            <b><t t-esc="'%0.2f' % (line.product_id.list_price)"/> €</b><!--
+                                            <t t-esc="'%0.2f' % (line.product_id.list_price)"/>€<!--
                                              --><t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><!--
                                                  --><span class="product_uom">/L</span><br/>
                                             </t><t t-elif="line.product_id.uom_id.category_id.measure_type == 'unit'"><!--
@@ -90,7 +91,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <div class="product_price_per_uom_price">
                                             <t t-if="line.product_id.pricetag_is_second_price">
                                                 <span><t t-esc="line.product_id.pricetag_second_price_uom_text"/> :
-                                                <b><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/>&#160;€</b></span>
+                                                <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/>&#160;€</span>
                                             </t>
                                         </div>
                                     </t>
@@ -105,11 +106,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <img t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('Code128', line.product_id.barcode)"/>
                                     </div>
                                 </t>
-                                <t t-if="line.product_id.default_code and option_print_code">
-                                    <div class="wrap_product_code font_small">
-                                        Internal code: <b><t t-esc="line.product_id.default_code"/></b><br/>
-                                    </div>
-                                </t>
+                                <div class="wrap_product_codes font_small">
+                                  <t t-if="line.product_id.default_code and option_print_code">
+                                          [<t t-esc="line.product_id.default_code"/>]
+                                  </t>
+                                  <t t-if="line.product_id.barcode and option_print_barcode_digits">
+                                      <span> <t t-esc="line.product_id.barcode"/></span>
+                                  </t>
+                                  <br/>
+                                </div>
                                 <div class="write_date">
                                     <t t-if="line.product_id.write_date">
                                         Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>

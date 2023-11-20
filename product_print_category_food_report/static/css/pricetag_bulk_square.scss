@@ -62,19 +62,22 @@
         font-size: 12px;
         height: 2cm;
     }
+    .info_underline {
+      text-decoration: underline;
+    }
+    .label_small_title {
+      font-size: 9px;
+    }
     .label_bulk_infos {
         font-size: 12px;
         line-height: 1.3em;
         height: 1.5cm;
+        border-top: 3px solid grey;
     }
     .label_maker, .label_origin {
         height : 1.7cm;
         margin-bottom: 5px;
         overflow: hidden;
-    }
-    .product_price {
-        position: relative;
-        text-align: center;
     }
     .product_price_per_uom_price {
         font-size: 8px;
@@ -97,6 +100,7 @@
     .product_price_big {
         position: relative; top: 27px;
         font-size: 33px; text-align: center;
+        font-weight: bold;
     }
     span.product_uom {
         font-size:22px;
