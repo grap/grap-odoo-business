@@ -342,7 +342,7 @@ msgstr "Produit biologique, certifié par %s"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
 msgid "Origin on pricetag"
-msgstr "Origine MP sur l'étiquette"
+msgstr "Origine - rendu final sur l'étiquette"
 
 #. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:152
