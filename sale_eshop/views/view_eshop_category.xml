@@ -26,9 +26,8 @@
     <record id="view_eshop_category_tree" model="ir.ui.view">
         <field name="model">eshop.category</field>
         <field name="arch" type="xml">
-            <tree string="eShop Categories"
-                    decoration-info="type == 'view'"
-                    decoration-muted="available_product_qty == 0">
+            <tree decoration-info="type == 'view'"
+                decoration-muted="available_product_qty == 0">
                 <field name="sequence" widget="handle"/>
                 <field name="complete_name"/>
                 <field name="child_qty"/>
