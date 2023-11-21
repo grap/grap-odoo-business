@@ -10,7 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_product_scale_log_tree" model="ir.ui.view">
         <field name="model">product.scale.log</field>
         <field name="arch" type="xml">
-            <tree string="Scale Log" colors="gray:sent == True;">
+            <tree decoration-muted="sent == True">
                 <field name="log_date"/>
                 <field name="sent"/>
                 <field name="last_send_date"/>

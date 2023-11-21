@@ -9,7 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_stock_preparation_category_tree" model="ir.ui.view">
         <field name="model">stock.preparation.category</field>
         <field name="arch" type="xml">
-            <tree colors="gray:active == False;">
+            <tree decoration-muted="active == False">
                 <field name="sequence" widget="handle"/>
                 <field name="color" widget="color"/>
                 <field name="code"/>
