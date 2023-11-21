@@ -10,7 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_product_scale_group_tree" model="ir.ui.view">
         <field name="model">product.scale.group</field>
         <field name="arch" type="xml">
-            <tree string="Scale Groups" colors="red:screen_obsolete == True;">
+            <tree decoration-danger="screen_obsolete == True">
                 <field name="name"/>
                 <field name="product_qty"/>
                 <field name="screen_offset" attrs="{'invisible': [('screen_display', '=', False)]}"/>
