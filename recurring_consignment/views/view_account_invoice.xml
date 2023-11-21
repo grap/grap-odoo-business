@@ -22,7 +22,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </group>
                     <group string="Commissioned Account Move Lines">
                         <field name="consignment_line_ids" nolabel="1">
-                            <tree string="Lines" editable="bottom">
+                            <tree editable="bottom">
                                 <field name="date" />
                                 <field name="move_id" />
                                 <field name="name" />

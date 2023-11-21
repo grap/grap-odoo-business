@@ -32,7 +32,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_res_partner_tree" model="ir.ui.view">
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <tree colors="gray:is_consignor==False; brown:consignment_commission == 0">
+            <tree decoration-muted="is_consignor==False" decoration-danger="consignment_commission == 0">
                 <field name="name" readonly="1"/>
                 <field name="is_consignor" groups="recurring_consignment.group_consignment_manager"/>
                 <field name="consignment_commission" groups="recurring_consignment.group_consignment_user"/>
