@@ -98,6 +98,11 @@ msgid "Arachide Bio Toasté - Jean Hervé"
 msgstr ""
 
 #. module: product_food
+#: model:product.category,name:product_food.beer_category
+msgid "Beers"
+msgstr "Bières"
+
+#. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__best_before_date_day
 #: model:ir.model.fields,field_description:product_food.field_product_template__best_before_date_day
 msgid "Best Before Date Day"
@@ -179,7 +184,7 @@ msgstr "Contient seulement des articles végan"
 #. module: product_food
 #: selection:product.product,storage_method:0
 msgid "Cool (< 4°)"
-msgstr "Frais (< 4°)"
+msgstr "Froid (< 4°)"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_certifier_organization__create_uid
@@ -208,6 +213,11 @@ msgstr "UE"
 #: selection:product.product,origin_type:0
 msgid "EU / No EU"
 msgstr "UE / Non UE"
+
+#. module: product_food
+#: selection:product.product,storage_method:0
+msgid "Fresh (< 10°)"
+msgstr "Frais (< 10°)"
 
 #. module: product_food
 #: selection:product.product,storage_method:0
@@ -241,31 +251,31 @@ msgid "If this box is checked, the products that have this label will be set as 
 msgstr "Si la case est cochée, les articles qui ont ce label seront marqués comme 'végan' par défaut"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:140
+#: code:addons/product_food/models/product_product.py:141
 #, python-format
 msgid "Incorrect Setting. Alcohol by volume should be between 0 and 100."
 msgstr "Paramétrage incorrect. Le degré d'alcool doit être compris entre 0 et 100."
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:126
+#: code:addons/product_food/models/product_product.py:127
 #, python-format
-msgid "Incorrect Setting. The product %s could not have volume AND weight at the same time."
-msgstr "Paramétrage incorrect. L'article %s ne peut pas être paramétré avec volume ET un poids en même temps."
+msgid "Incorrect Setting. The product %s could not have volume AND net weight at the same time."
+msgstr "Paramétrage incorrect. L'article %s ne peut pas être paramétré avec volume ET un poids net en même temps."
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:167
+#: code:addons/product_food/models/product_product.py:168
 #, python-format
 msgid "Incorrect Setting. the product %s has a label that mentions that the product contains  alcohol, but the 'Contain Alcohol' is not checked."
 msgstr "Paramétrage incorrect. L'article %s a un label qui mentionne que le produit contient de l'alcool, mais la case 'Contient de l'alcool' n'est pas cochée"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:184
+#: code:addons/product_food/models/product_product.py:185
 #, python-format
 msgid "Incorrect Setting. the product %s has a label that mentions that the product is vegan but the 'Vegan product' is not checked."
 msgstr "Paramétrage incorrect. Le produit %s a un label qui mentionne que le produit est végan, mais case 'Est végan' n'est pas cochée"
 
 #. module: product_food
-#: code:addons/product_food/models/product_product.py:156
+#: code:addons/product_food/models/product_product.py:157
 #, python-format
 msgid "Incorrect Setting. the product %s is checked as 'Contain Alcohol' but some related labels are not set."
 msgstr "Paramétrage incorrect. Le produit %s est coché comme 'Contient de l'alcool', mais certains labels associés ne sont pas mis."
