@@ -12,6 +12,7 @@ class ProductProduct(models.Model):
 
     # Constant Section
     _STORAGE_METHOD_SELECTION = [
+        ("fresh", "Fresh (< 10°)"),
         ("cool", "Cool (< 4°)"),
         ("frozen", "Frozen (< -18°)"),
     ]
