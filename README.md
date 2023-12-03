@@ -24,7 +24,7 @@ addon | version | maintainers | summary
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 12.0.1.1.3 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_invoice_supplierinfo_update_standard_price_test](account_invoice_supplierinfo_update_standard_price_test/) | 12.0.1.0.3 |  | Test module for the module account_invoice_supplierinfo_update_standard_price
 [account_move_change_number](account_move_change_number/) | 12.0.1.1.2 |  | Allow special user to rename account move
-[product_food](product_food/) | 12.0.1.1.9 |  | Products - Food Informations
+[product_food](product_food/) | 12.0.1.1.10 |  | Products - Food Informations
 [product_label](product_label/) | 12.0.1.1.5 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
 [product_label_account](product_label_account/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels (Invoice Glue Module)
 [product_label_sale](product_label_sale/) | 12.0.1.1.4 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels (Sale Glue Module)
