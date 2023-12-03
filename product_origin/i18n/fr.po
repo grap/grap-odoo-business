@@ -75,7 +75,7 @@ msgstr "Circuit court"
 #: model:ir.model.fields,field_description:product_origin.field_product_product__origin_description
 #: model:ir.model.fields,field_description:product_origin.field_product_template__origin_description
 msgid "Location (Complement)"
-msgstr "Lieu de production (complément)"
+msgstr "Complément d'origine des ingrédients"
 
 #. module: product_origin
 #: selection:res.partner,distribution_channel_criterion:0
@@ -139,4 +139,3 @@ msgstr "Unité(s)"
 #: model:product.template,weight_uom_name:product_origin.biere_pilat_75cl_product_template
 msgid "kg"
 msgstr ""
-

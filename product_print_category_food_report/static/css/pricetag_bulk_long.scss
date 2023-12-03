@@ -32,6 +32,13 @@
         margin-bottom: 5px;
         overflow: hidden;
     }
+    .info_underline {
+      text-decoration: underline;
+      font-size: 7px;
+    }
+    .empty_field {
+      font-size: 7px;
+    }
     .label_ingredients {
         height: 2.4cm;
         margin-bottom: 0.1cm;
@@ -59,10 +66,6 @@
     .label_price {
         height: 2.55cm;
     }
-    .product_price {
-        position: relative;
-        text-align: center;
-    }
     .product_price_per_uom_price {
         font-size: 8px;
         text-align: center;
@@ -81,7 +84,6 @@
     }
     .product_price_big {
         font-size: 30px; text-align: center;
-        position: relative; bottom: 0.1cm;
     }
     span.product_uom {
         font-size:22px;
@@ -98,11 +100,10 @@
     .wrap_barcode_image > img{
         width: 5.5cm;
         height:0.3cm;
-        // position: relative;
-        // top: 1cm;
     }
-    .wrap_product_code {
-        text-align: center;
+    .wrap_product_codes {
+        margin-top: 0.2cm;
+        text-align: center; font-size: 7px;
         font-style: italic;
     }
     .write_date{

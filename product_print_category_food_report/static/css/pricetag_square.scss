@@ -19,28 +19,28 @@
     .price_area {
         display: initial;
         position: relative;
-        bottom: 0.2cm;
+        bottom: 0.05cm;
     }
     .product_name{
-        font-size:12px; font-weight:bold;
+        font-size:12px;
         padding-bottom : 6px; padding-top : 5px;
         margin-top: 0.25cm;
         overflow: hidden; height: 1.1cm;
         text-align: center;
     }
     .pricetag_second_product_price {
-        font-size: 25px; font-weight: bold;
+        font-size: 25px;
         text-align: center;
         overflow: hidden;
     }
     .pricetag_second_price_uom_text {
-        font-size: 13px; font-weight: bold;
+        font-size: 13px;
         text-align: center; line-height: 0.5em;
     }
     .product_price {
-        font-size: 25px; font-weight: bold;
+        font-size: 25px;
         line-height: 1cm;
-        position: relative; right: 0.2cm;
+        position: relative; right: 0.2cm; top:0.1cm;
         text-align: center;
         overflow: hidden;
     }

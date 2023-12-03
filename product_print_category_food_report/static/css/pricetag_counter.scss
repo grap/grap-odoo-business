@@ -9,7 +9,7 @@
         display : inline-block;
         vertical-align: top;
     }
-    .write_date{
+    .write_date_and_codes{
         font-size: 7px;
         padding: 5px;
     }
@@ -22,7 +22,7 @@
         width: 9.5cm;
     }
     .product_name{
-        font-size:40px; font-weight:bold; line-height: 1.1em;
+        font-size:40px; line-height: 1.1em;
         text-align: center;
         margin-top: 0.8cm;
         margin-bottom: 0.2cm;
@@ -35,22 +35,27 @@
         width:1.2cm; height:1.2cm;
     }
     .pricetag_second_product_price {
-        font-size: 40px; font-weight: bold;
-        overflow: hidden; display: inline;
+      font-size: 40px;
+      overflow: hidden; display: inline;
     }
     .pricetag_second_price_uom_text {
-        font-size: 20px; font-weight: bold;
-        line-height: 0.5em; display: inline
+      font-size: 20px;
+      line-height: 0.5em; display: inline
     }
     .product_price, .second_product_price {
-        font-size: 40px; font-weight: bold; display: inline;
+      font-size: 40px; display: inline;
+    }
+    span.product_sell_by_weight {
+      font-size: 40px;
+    }
+    // label_bottom
+    .label_bottom{
+      line-height: 0.8em;
     }
     span.product_price_per_uom_price,
     span.pricetag_origin,
+    span.pricetag_maker,
     span.product_price_per_uom_price_only {
         font-size: 10px;
-    }
-    span.product_sell_by_weight {
-        font-size: 40px;
     }
 }
