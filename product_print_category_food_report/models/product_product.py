@@ -93,9 +93,7 @@ class ProductProduct(models.Model):
             result = [x for x in notation if x != "0"]
             product.pricetag_display_spider_chart = len(result) >= 3
 
-    @api.depends(
-        "origin_description", "state_id", "country_id", "country_group_id", "label_ids"
-    )
+    @api.depends("origin_description", "state_id", "country_id", "label_ids")
     @api.multi
     def _compute_pricetag_origin(self):
         for product in self:
@@ -120,16 +118,6 @@ class ProductProduct(models.Model):
                     product.pricetag_origin = product.origin_description
             else:
                 product.pricetag_origin = localization_info
-            eu_add = ""
-            if product.organic_type in ["01_organic"]:
-                eu_classification = product.country_group_id.european_classification
-                if eu_classification == "UE":
-                    eu_add = _("(UE) ")
-                elif eu_classification == "no_UE":
-                    eu_add = _("(no UE) ")
-                elif eu_classification == "UE_noUE":
-                    eu_add = _("(UE / no UE) ")
-            product.pricetag_origin = eu_add + product.pricetag_origin
 
     @api.multi
     def _compute_pricetag_second_price(self):
