@@ -8,10 +8,12 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
-    "depends": ["product"],
+    "depends": ["product_food"],
     "data": [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
+        "views/view_product_product.xml",
+        "views/view_product_template.xml",
     ],
     "demo": [],
     "images": [],

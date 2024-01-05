@@ -17,12 +17,6 @@ class ProductProduct(models.Model):
         ("frozen", "Frozen (< -18°)"),
     ]
 
-    _ORIGIN_TYPE_SELECTION = [
-        ("eu", "EU"),
-        ("no_eu", "No EU"),
-        ("eu_no_eu", "EU / No EU"),
-    ]
-
     _ORGANIC_TYPE_SELECTION = [
         ("01_organic", "Organic"),
         ("02_agroecological", "Agroecological"),
@@ -77,11 +71,6 @@ class ProductProduct(models.Model):
         selection=_ORGANIC_TYPE_SELECTION,
         string="Organic Category",
         compute="_compute_organic_type",
-    )
-
-    origin_type = fields.Selection(
-        selection=_ORIGIN_TYPE_SELECTION,
-        string="Origin Type",
     )
 
     price_per_unit = fields.Float(

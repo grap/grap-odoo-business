@@ -205,16 +205,6 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: product_food
-#: selection:product.product,origin_type:0
-msgid "EU"
-msgstr "UE"
-
-#. module: product_food
-#: selection:product.product,origin_type:0
-msgid "EU / No EU"
-msgstr "UE / Non UE"
-
-#. module: product_food
 #: selection:product.product,storage_method:0
 msgid "Fresh (< 10°)"
 msgstr "Frais (< 10°)"
@@ -338,11 +328,6 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: product_food
-#: selection:product.product,origin_type:0
-msgid "No EU"
-msgstr "Non UE"
-
-#. module: product_food
 #: selection:product.product,organic_type:0
 msgid "Not Alimentary"
 msgstr "Non alimentaire"
@@ -371,12 +356,6 @@ msgstr "Biologique"
 #: model:ir.model.fields,field_description:product_food.field_product_template__organic_type
 msgid "Organic Category"
 msgstr "Catégorie biologique"
-
-#. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__origin_type
-#: model:ir.model.fields,field_description:product_food.field_product_template__origin_type
-msgid "Origin Type"
-msgstr "Catégorie d'Origine"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_product
