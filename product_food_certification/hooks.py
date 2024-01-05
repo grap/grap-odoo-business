@@ -106,6 +106,126 @@ def _migrate_openupgrade_legacy_12_0_country_group_id(env):
         eu_no_eu_country_group.unlink()
 
 
+def _migrate_label_ids(env):
+    eu_no_eu_label = env["product.label"].search([("code", "=", "AB-UE UE/NON-UE")])
+    if eu_no_eu_label:
+        _logger.info(
+            "Initialize 'ingredient_origin_type', set 'eu_no_eu',"
+            "based on previous label_ids configuration."
+            " (AB-UE UE/NON-UE)"
+        )
+        env.cr.execute(
+            """
+            UPDATE product_product
+            SET ingredient_origin_type = 'eu_no_eu'
+            WHERE id in (
+                SELECT product_id
+                FROM product_label_product_rel
+                WHERE label_id = %s);""",
+            (eu_no_eu_label.id,),
+        )
+
+    eu_label = env["product.label"].search([("code", "=", "AB-UE UE")])
+    if eu_label:
+        _logger.info(
+            "Initialize 'ingredient_origin_type', set 'eu',"
+            "based on previous label_ids configuration."
+            " (AB-UE UE)"
+        )
+        env.cr.execute(
+            """
+            UPDATE product_product
+            SET ingredient_origin_type = 'eu'
+            WHERE id in (
+                SELECT product_id
+                FROM product_label_product_rel
+                WHERE label_id = %s);""",
+            (eu_label.id,),
+        )
+
+    fr_label = env["product.label"].search([("code", "=", "AB-UE FR")])
+    if fr_label:
+        _logger.info(
+            "Initialize 'ingredient_origin_type', set 'fr',"
+            "based on previous label_ids configuration."
+            " (AB-UE FR)"
+        )
+        env.cr.execute(
+            """
+            UPDATE product_product
+            SET ingredient_origin_type = 'fr'
+            WHERE id in (
+                SELECT product_id
+                FROM product_label_product_rel
+                WHERE label_id = %s);""",
+            (fr_label.id,),
+        )
+
+    # Remove 'AB-UE FR' Label
+    _logger.info("Set 'AB Europe' to products that has 'AB-UE FR' label.")
+    env.cr.execute(
+        """
+        INSERT INTO product_label_product_rel
+            SELECT
+                product_id,
+                (SELECT id FROM product_label WHERE code = 'AB Europe') as label_id
+            FROM product_label_product_rel
+            WHERE label_id = (
+                SELECT id FROM product_label WHERE code = 'AB-UE FR'
+            )
+            AND product_id not in (
+                SELECT product_id FROM product_label_product_rel WHERE label_id = (
+                    SELECT id FROM product_label WHERE code = 'AB Europe')
+            );
+        """
+    )
+    _logger.info("Drop 'AB-UE FR' label.")
+    env.cr.execute("DELETE FROM product_label WHERE code = 'AB-UE FR';")
+
+    # Remove 'AB-UE UE' Label
+    _logger.info("Set 'AB Europe' to products that has 'AB-UE UE' label.")
+    env.cr.execute(
+        """
+        INSERT INTO product_label_product_rel
+            SELECT
+                product_id,
+                (SELECT id FROM product_label WHERE code = 'AB Europe') as label_id
+            FROM product_label_product_rel
+            WHERE label_id = (
+                SELECT id FROM product_label WHERE code = 'AB-UE UE'
+            )
+            AND product_id not in (
+                SELECT product_id FROM product_label_product_rel WHERE label_id = (
+                    SELECT id FROM product_label WHERE code = 'AB Europe')
+            );
+        """
+    )
+    _logger.info("Drop 'AB-UE UE' label.")
+    env.cr.execute("DELETE FROM product_label WHERE code = 'AB-UE UE';")
+
+    # Remove 'AB-UE UE/NON-UE' Label
+    _logger.info("Set 'AB Europe' to products that has 'AB-UE UE/NON-UE' label.")
+    env.cr.execute(
+        """
+        INSERT INTO product_label_product_rel
+            SELECT
+                product_id,
+                (SELECT id FROM product_label WHERE code = 'AB Europe') as label_id
+            FROM product_label_product_rel
+            WHERE label_id = (
+                SELECT id FROM product_label WHERE code = 'AB-UE UE/NON-UE'
+            )
+            AND product_id not in (
+                SELECT product_id FROM product_label_product_rel WHERE label_id = (
+                    SELECT id FROM product_label WHERE code = 'AB Europe')
+            );
+        """
+    )
+    _logger.info("Drop 'AB-UE UE/NON-UE' label.")
+    env.cr.execute("DELETE FROM product_label WHERE code = 'AB-UE UE/NON-UE';")
+
+
 def post_init_hook(cr, pool):
     env = Environment(cr, SUPERUSER_ID, {})
     _migrate_openupgrade_legacy_12_0_country_group_id(env)
+    _migrate_label_ids(env)
