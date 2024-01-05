@@ -43,17 +43,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         </field>
     </record>
 
-    <record id="view_product_product_form_origin" model="ir.ui.view">
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product_origin.view_product_product_form" />
-        <field name="arch" type="xml">
-
-            <field name="country_id" position="before">
-                <field name="origin_type" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-            </field>
-        </field>
-    </record>
-
     <record id="view_product_product_form_variant" model="ir.ui.view">
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_variant_easy_edit_view" />
@@ -85,16 +74,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
             </xpath>
 
-        </field>
-    </record>
-
-    <record id="view_product_product_form_variant_origin" model="ir.ui.view">
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product_origin.view_product_product_form_variant" />
-        <field name="arch" type="xml">
-            <field name="country_id" position="before">
-                <field name="origin_type" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-            </field>
         </field>
     </record>
 

@@ -99,15 +99,6 @@ class ProductTemplate(models.Model):
         compute="_compute_organic_type",
     )
 
-    origin_type = fields.Selection(
-        selection=lambda self: self.env["product.product"]
-        ._fields["origin_type"]
-        .selection,
-        string="Origin Type",
-        related="product_variant_ids.origin_type",
-        readonly=False,
-    )
-
     price_per_unit = fields.Float(
         string="Unit Price",
         compute="_compute_price_per_unit",
