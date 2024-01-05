@@ -27,6 +27,11 @@ msgstr "UE / Non UE"
 
 #. module: product_food_certification
 #: selection:product.product,ingredient_origin_type:0
+msgid "France"
+msgstr ""
+
+#. module: product_food_certification
+#: selection:product.product,ingredient_origin_type:0
 msgid "No EU"
 msgstr "Non UE"
 
@@ -55,3 +60,4 @@ msgid "The place of production of the agricultural raw materials making up the p
 msgstr "Le lieu de production des matières premières agricoles composant l'article. Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
 "\n"
 " Plus d'information  : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
+

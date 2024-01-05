@@ -9,6 +9,7 @@ class ProductProduct(models.Model):
     _inherit = "product.product"
 
     _INGREDIENT_ORIGIN_TYPE_SELECTION = [
+        ("fr", "France"),
         ("eu", "EU"),
         ("no_eu", "No EU"),
         ("eu_no_eu", "EU / No EU"),
