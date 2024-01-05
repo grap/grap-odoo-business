@@ -262,21 +262,6 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: product_print_category_food_report
-#: selection:res.country.group,european_classification:0
-msgid "European"
-msgstr "UE"
-
-#. module: product_print_category_food_report
-#: selection:res.country.group,european_classification:0
-msgid "European / Not European"
-msgstr "UE / non UE"
-
-#. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_res_country_group__european_classification
-msgid "European classification"
-msgstr "Classification Union Européene"
-
-#. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:141
 #, python-format
 msgid "For %s"
@@ -321,11 +306,6 @@ msgstr "Nom"
 #: model:product.print.category,name:product_print_category_food_report.category_pricetag_normal
 msgid "Normal pricetag normal - 76x31mm"
 msgstr "Normal (normal) - 76x31mm"
-
-#. module: product_print_category_food_report
-#: selection:res.country.group,european_classification:0
-msgid "Not European"
-msgstr "Non UE"
 
 #. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:81
@@ -453,11 +433,6 @@ msgstr "Définir une unité de mesure alternative si vous voulez afficher un pri
 #: model:product.print.category,name:product_print_category_food_report.category_pricetag_middle_square
 msgid "Square pricetag - 40x36mm"
 msgstr "Carré moyen - 40x36mm"
-
-#. module: product_print_category_food_report
-#: selection:res.country.group,european_classification:0
-msgid "Unknown"
-msgstr "Inconnu"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_normal

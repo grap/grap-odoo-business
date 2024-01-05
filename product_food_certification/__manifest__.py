@@ -15,7 +15,9 @@
         "views/view_product_product.xml",
         "views/view_product_template.xml",
     ],
+    "external_dependencies": {"python": ["openupgradelib"]},
     "demo": [],
     "images": [],
     "installable": True,
+    "post_init_hook": "post_init_hook",
 }
