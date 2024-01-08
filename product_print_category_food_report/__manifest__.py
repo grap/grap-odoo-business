@@ -5,7 +5,7 @@
 
 {
     "name": "Product print category food report",
-    "version": "12.0.1.1.7",
+    "version": "12.0.2.0.0",
     "summary": "Food report like pricetags",
     "category": "Product",
     "author": "GRAP",
@@ -26,7 +26,11 @@
         "report/qweb_pricetag_bulk_square.xml",
         "report/qweb_pricetag_counter.xml",
         "report/qweb_pricetag_normal.xml",
+        "report/qweb_pricetag_normal_small.xml",
+        "report/qweb_pricetag_normal_large.xml",
         "report/qweb_pricetag_square.xml",
+        "report/qweb_pricetag_square_small.xml",
+        "report/qweb_pricetag_square_large.xml",
         "views/view_res_company.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",
