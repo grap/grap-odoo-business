@@ -343,11 +343,6 @@ msgid "Pricetag Color"
 msgstr "Couleur de l'étiquette"
 
 #. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_display_spider_chart
-msgid "Pricetag Display Spider Chart"
-msgstr ""
-
-#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_is_second_price
 msgid "Pricetag Is Second Price"
 msgstr "Second prix sur l'étiquette"
