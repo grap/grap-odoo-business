@@ -77,7 +77,9 @@ class ProductProduct(models.Model):
                     res = _("Not From Organic Farming")
             product.pricetag_organic_text = res
 
-    @api.depends("origin_description", "state_id", "country_id", "label_ids")
+    @api.depends(
+        "origin_description", "state_id", "country_id", "label_ids", "department_id"
+    )
     @api.multi
     def _compute_pricetag_origin(self):
         for product in self:
