@@ -390,12 +390,6 @@ msgid "Storage Method"
 msgstr "Méthode de conservation"
 
 #. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
-#: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
-msgid "Unit Price"
-msgstr "Prix unitaire"
-
-#. module: product_food
 #: model:product.product,uom_name:product_food.product_arachide_toaste
 #: model:product.product,uom_name:product_food.product_biere_sans_gluten
 #: model:product.template,uom_name:product_food.product_arachide_toaste_product_template
