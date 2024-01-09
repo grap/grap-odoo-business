@@ -79,10 +79,6 @@ class ProductProduct(models.Model):
         compute="_compute_organic_type",
     )
 
-    price_per_unit = fields.Float(
-        compute="_compute_price_per_unit", string="Unit Price"
-    )
-
     # Compute Section
     @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
@@ -99,18 +95,6 @@ class ProductProduct(models.Model):
                     product.organic_type = "04_uncertified"
             else:
                 product.organic_type = "05_not_alimentary"
-
-    @api.depends("net_weight", "volume", "list_price")
-    def _compute_price_per_unit(self):
-        for product in self:
-            if product.net_weight != 0 and product.volume != 0:
-                product.price_per_unit = 0
-            elif product.net_weight not in [0, 1]:
-                product.price_per_unit = product.list_price / product.net_weight
-            elif product.volume not in [0, 1]:
-                product.price_per_unit = product.list_price / product.volume
-            else:
-                product.price_per_unit = 0
 
     # Constrains Section
     @api.multi

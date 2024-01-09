@@ -11,10 +11,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view" />
         <field name="arch" type="xml">
-            <field name="list_price" position="after">
-                <field name="price_per_unit" widget="monetary"/>
-            </field>
-
             <notebook position="inside">
                 <page name="alimentary_information" string="Alimentary Informations"
                     attrs="{'invisible': [('product_variant_count', '>', 1)]}">
