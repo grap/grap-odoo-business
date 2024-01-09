@@ -109,10 +109,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-else=""><span class="empty_field">Ingrédients</span><br/></t>
                             </div>
                             <div class="label_allergens">
-                                <t t-if="line.product_id.allergens"><t t-raw="line.product_id.allergens"/></t>
+                                <t t-if="line.product_id.allergen_text">
+                                    <span>Allergen</span>:
+                                    <t t-raw="line.product_id.allergen_text"/>
+                                </t>
+                                <t t-if="line.product_id.trace_allergen_text">
+                                    <span>May contain traces of</span>:
+                                    <t t-raw="line.product_id.trace_allergen_text"/>
+                                </t>
                              </div>
                         </div>
-                    </div><!-- /product -->
+                    </div>
                 </t>
             </t>
         </t>
