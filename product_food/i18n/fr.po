@@ -81,12 +81,6 @@ msgid "Allergens"
 msgstr "Allergènes"
 
 #. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__allergens
-#: model:ir.model.fields,field_description:product_food.field_product_template__allergens
-msgid "Allergens Complement"
-msgstr "Allergènes (complément)"
-
-#. module: product_food
 #: model:res.groups,name:product_food.group_allergen_manager
 msgid "Allergens Creation"
 msgstr "Création d'allergènes"
