@@ -50,11 +50,29 @@ class ProductProduct(models.Model):
         " the price on your pricetags relative to this Unit.",
     )
 
+    price_per_unit = fields.Float(
+        compute="_compute_price_per_unit",
+        help="Technical field, used to display on pricetags"
+        " price per weight or price per volume.",
+    )
+
     allergen_text = fields.Char(compute="_compute_allergen_text")
 
     trace_allergen_text = fields.Char(compute="_compute_trace_allergen_text")
 
     # Compute Section
+    @api.depends("net_weight", "volume", "list_price")
+    def _compute_price_per_unit(self):
+        for product in self:
+            if product.net_weight != 0 and product.volume != 0:
+                product.price_per_unit = 0
+            elif product.net_weight not in [0, 1]:
+                product.price_per_unit = product.list_price / product.net_weight
+            elif product.volume not in [0, 1]:
+                product.price_per_unit = product.list_price / product.volume
+            else:
+                product.price_per_unit = 0
+
     @api.depends("allergen_ids")
     def _compute_allergen_text(self):
         for product in self:
