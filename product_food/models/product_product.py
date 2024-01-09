@@ -65,7 +65,13 @@ class ProductProduct(models.Model):
         string="Allergens",
     )
 
-    allergens = fields.Text(string="Allergens Complement")
+    trace_allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        relation="product_allergen_trace_product_rel",
+        column1="product_id",
+        column2="allergen_id",
+        string="Allergens (Trace)",
+    )
 
     organic_type = fields.Selection(
         selection=_ORGANIC_TYPE_SELECTION,

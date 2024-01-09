@@ -15,7 +15,7 @@ It also adds many fiels on product models. (templates and variants)
   be eaten, after having packed. (for cheese, meats, etc.)
 * ``is_alcohol``, boolean to mention if the product contains alcohol.
 * ``allergen_ids`` to mention the list of allergens.
-* ``ingredients`` and ``allergens``. (free texts).
+* ``ingredients``. (free text).
 
 Alls the fields are defined on ``product.product`` model and can be set also
 on ``product.template`` models, in a mono variant context.

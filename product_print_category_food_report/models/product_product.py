@@ -50,7 +50,23 @@ class ProductProduct(models.Model):
         " the price on your pricetags relative to this Unit.",
     )
 
+    allergen_text = fields.Char(compute="_compute_allergen_text")
+
+    trace_allergen_text = fields.Char(compute="_compute_trace_allergen_text")
+
     # Compute Section
+    @api.depends("allergen_ids")
+    def _compute_allergen_text(self):
+        for product in self:
+            product.allergen_text = ", ".join(product.mapped("allergen_ids.name"))
+
+    @api.depends("trace_allergen_ids")
+    def _compute_trace_allergen_text(self):
+        for product in self:
+            product.trace_allergen_text = ", ".join(
+                product.mapped("trace_allergen_ids.name")
+            )
+
     @api.multi
     def _compute_pricetag_color(self):
         for product in self:
