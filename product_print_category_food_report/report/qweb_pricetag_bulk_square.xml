@@ -38,7 +38,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-else=""><span class="empty_field label_small_title">Ingredients</span><br/></t>
                                 </div>
                                 <div class="label_allergens label_left_div">
-                                    <t t-if="not line.product_id.allergens == '&lt;p>&lt;br>&lt;/p>'"><span class="info_underline label_small_title">Allergens</span><br/><t t-raw="line.product_id.allergens"/><br/></t>
+                                    <t t-if="line.product_id.allergen_text">
+                                        <span class="info_underline label_small_title">Allergen</span>:
+                                        <t t-raw="line.product_id.allergen_text"/>
+                                    </t>
+                                    <t t-if="line.product_id.trace_allergen_text">
+                                        <span class="info_underline label_small_title">May contain traces of</span>:
+                                        <t t-raw="line.product_id.trace_allergen_text"/>
+                                    </t>
                                 </div>
                                 <div class="label_bulk_infos label_left_div">
                                     <span>Batch n°:</span><br/>
