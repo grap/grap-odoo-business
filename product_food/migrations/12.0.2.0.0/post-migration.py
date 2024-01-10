@@ -14,6 +14,7 @@ from unidecode import unidecode
 _logger = logging.getLogger(__name__)
 
 
+@openupgrade.logging()
 def _populate_allergen_ids(env, company, all_allergens):
     residual_words = {}
     env.cr.execute(
