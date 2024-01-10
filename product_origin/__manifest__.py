@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Origin for Products",
-    "version": "12.0.2.0.0",
+    "version": "12.0.3.0.0",
     "category": "Sales",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",

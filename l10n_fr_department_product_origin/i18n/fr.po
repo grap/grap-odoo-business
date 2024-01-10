@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* product_origin_l10n_fr_department
+#	* l10n_fr_department_product_origin
 #
 msgid ""
 msgstr ""
@@ -15,23 +15,23 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: product_origin_l10n_fr_department
-#: model:ir.model.fields,field_description:product_origin_l10n_fr_department.field_product_product__department_id
+#. module: l10n_fr_department_product_origin
+#: model:ir.model.fields,field_description:l10n_fr_department_product_origin.field_product_product__department_id
 msgid "Department"
 msgstr "Département"
 
-#. module: product_origin_l10n_fr_department
-#: code:addons/product_origin_l10n_fr_department/models/product_product.py:29
+#. module: l10n_fr_department_product_origin
+#: code:addons/l10n_fr_department_product_origin/models/product_product.py:29
 #, python-format
 msgid "Department must belong to the state."
 msgstr "Le département doit appartenir à la région."
 
-#. module: product_origin_l10n_fr_department
-#: model:ir.model.fields,help:product_origin_l10n_fr_department.field_product_product__department_id
+#. module: l10n_fr_department_product_origin
+#: model:ir.model.fields,help:l10n_fr_department_product_origin.field_product_product__department_id
 msgid "Department of production of the product"
 msgstr "Département de production de l'article"
 
-#. module: product_origin_l10n_fr_department
-#: model:ir.model,name:product_origin_l10n_fr_department.model_product_product
+#. module: l10n_fr_department_product_origin
+#: model:ir.model,name:l10n_fr_department_product_origin.model_product_product
 msgid "Product"
 msgstr "Article"
