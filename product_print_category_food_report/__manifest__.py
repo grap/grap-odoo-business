@@ -16,7 +16,7 @@
         "product_food",
         "product_label",
         "product_origin",
-        "product_origin_l10n_fr_department",
+        "l10n_fr_department_product_origin",
     ],
     "data": [
         "security/ir_rule.xml",
