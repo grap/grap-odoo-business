@@ -17,12 +17,6 @@ class ProductProduct(models.Model):
         ("frozen", "Frozen (< -18°)"),
     ]
 
-    _ORIGIN_TYPE_SELECTION = [
-        ("eu", "EU"),
-        ("no_eu", "No EU"),
-        ("eu_no_eu", "EU / No EU"),
-    ]
-
     _ORGANIC_TYPE_SELECTION = [
         ("01_organic", "Organic"),
         ("02_agroecological", "Agroecological"),
@@ -71,21 +65,18 @@ class ProductProduct(models.Model):
         string="Allergens",
     )
 
-    allergens = fields.Text(string="Allergens Complement")
+    trace_allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        relation="product_allergen_trace_product_rel",
+        column1="product_id",
+        column2="allergen_id",
+        string="Allergens (Trace)",
+    )
 
     organic_type = fields.Selection(
         selection=_ORGANIC_TYPE_SELECTION,
         string="Organic Category",
         compute="_compute_organic_type",
-    )
-
-    origin_type = fields.Selection(
-        selection=_ORIGIN_TYPE_SELECTION,
-        string="Origin Type",
-    )
-
-    price_per_unit = fields.Float(
-        compute="_compute_price_per_unit", string="Unit Price"
     )
 
     # Compute Section
@@ -104,18 +95,6 @@ class ProductProduct(models.Model):
                     product.organic_type = "04_uncertified"
             else:
                 product.organic_type = "05_not_alimentary"
-
-    @api.depends("net_weight", "volume", "list_price")
-    def _compute_price_per_unit(self):
-        for product in self:
-            if product.net_weight != 0 and product.volume != 0:
-                product.price_per_unit = 0
-            elif product.net_weight not in [0, 1]:
-                product.price_per_unit = product.list_price / product.net_weight
-            elif product.volume not in [0, 1]:
-                product.price_per_unit = product.list_price / product.volume
-            else:
-                product.price_per_unit = 0
 
     # Constrains Section
     @api.multi

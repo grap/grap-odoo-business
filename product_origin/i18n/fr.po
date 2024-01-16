@@ -43,18 +43,6 @@ msgid "Country"
 msgstr "Pays"
 
 #. module: product_origin
-#: model:ir.model.fields,field_description:product_origin.field_product_product__country_group_id
-#: model:ir.model.fields,field_description:product_origin.field_product_template__country_group_id
-msgid "Country Group"
-msgstr "Groupe de pays"
-
-#. module: product_origin
-#: model:ir.model.fields,help:product_origin.field_product_product__country_group_id
-#: model:ir.model.fields,help:product_origin.field_product_template__country_group_id
-msgid "Country group of production of the product"
-msgstr "Groupe de pays de production du produit"
-
-#. module: product_origin
 #: model:ir.model.fields,help:product_origin.field_product_product__country_id
 #: model:ir.model.fields,help:product_origin.field_product_template__country_id
 msgid "Country of production of the product"

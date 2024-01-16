@@ -18,10 +18,6 @@ class ProductProduct(models.Model):
 
     pricetag_organic_text = fields.Char(compute="_compute_pricetag_organic_text")
 
-    pricetag_display_spider_chart = fields.Boolean(
-        compute="_compute_pricetag_display_spider_chart"
-    )
-
     pricetag_origin = fields.Char(
         string="Origin on pricetag", compute="_compute_pricetag_origin"
     )
@@ -54,7 +50,41 @@ class ProductProduct(models.Model):
         " the price on your pricetags relative to this Unit.",
     )
 
+    price_per_unit = fields.Float(
+        compute="_compute_price_per_unit",
+        help="Technical field, used to display on pricetags"
+        " price per weight or price per volume.",
+    )
+
+    allergen_text = fields.Char(compute="_compute_allergen_text")
+
+    trace_allergen_text = fields.Char(compute="_compute_trace_allergen_text")
+
     # Compute Section
+    @api.depends("net_weight", "volume", "list_price")
+    def _compute_price_per_unit(self):
+        for product in self:
+            if product.net_weight != 0 and product.volume != 0:
+                product.price_per_unit = 0
+            elif product.net_weight not in [0, 1]:
+                product.price_per_unit = product.list_price / product.net_weight
+            elif product.volume not in [0, 1]:
+                product.price_per_unit = product.list_price / product.volume
+            else:
+                product.price_per_unit = 0
+
+    @api.depends("allergen_ids")
+    def _compute_allergen_text(self):
+        for product in self:
+            product.allergen_text = ", ".join(product.mapped("allergen_ids.name"))
+
+    @api.depends("trace_allergen_ids")
+    def _compute_trace_allergen_text(self):
+        for product in self:
+            product.trace_allergen_text = ", ".join(
+                product.mapped("trace_allergen_ids.name")
+            )
+
     @api.multi
     def _compute_pricetag_color(self):
         for product in self:
@@ -81,20 +111,8 @@ class ProductProduct(models.Model):
                     res = _("Not From Organic Farming")
             product.pricetag_organic_text = res
 
-    @api.multi
-    def _compute_pricetag_display_spider_chart(self):
-        for product in self:
-            notation = [
-                product.social_notation,
-                product.organic_notation,
-                product.packaging_notation,
-                product.local_notation,
-            ]
-            result = [x for x in notation if x != "0"]
-            product.pricetag_display_spider_chart = len(result) >= 3
-
     @api.depends(
-        "origin_description", "state_id", "country_id", "country_group_id", "label_ids"
+        "origin_description", "state_id", "country_id", "label_ids", "department_id"
     )
     @api.multi
     def _compute_pricetag_origin(self):
@@ -120,16 +138,6 @@ class ProductProduct(models.Model):
                     product.pricetag_origin = product.origin_description
             else:
                 product.pricetag_origin = localization_info
-            eu_add = ""
-            if product.organic_type in ["01_organic"]:
-                eu_classification = product.country_group_id.european_classification
-                if eu_classification == "UE":
-                    eu_add = _("(UE) ")
-                elif eu_classification == "no_UE":
-                    eu_add = _("(no UE) ")
-                elif eu_classification == "UE_noUE":
-                    eu_add = _("(UE / no UE) ")
-            product.pricetag_origin = eu_add + product.pricetag_origin
 
     @api.multi
     def _compute_pricetag_second_price(self):

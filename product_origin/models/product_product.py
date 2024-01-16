@@ -15,15 +15,6 @@ _logger = logging.getLogger(__name__)
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
-    country_group_id = fields.Many2one(
-        comodel_name="res.country.group",
-        string="Country Group",
-        help="Country group of production of the product",
-        compute="_compute_country_group_id",
-        inverse="_inverse_country_group_id",
-        store=True,
-    )
-
     country_id = fields.Many2one(
         comodel_name="res.country",
         string="Country",
@@ -47,20 +38,6 @@ class ProductProduct(models.Model):
         for product in self.filtered(lambda x: x.state_id and x.country_id):
             if product.state_id.country_id != product.country_id:
                 raise UserError(_("State must belong to the country."))
-
-    @api.depends("country_id.country_group_ids")
-    def _compute_country_group_id(self):
-        for product in self.filtered(lambda x: x.country_id.country_group_ids):
-            product.country_group_id = product.country_id.country_group_ids[0]
-
-    def _inverse_country_group_id(self):
-        if (
-            self.country_group_id
-            and len(self.country_group_id.country_ids) > 0
-            and self.country_id.id not in self.country_group_id.country_ids.ids
-        ):
-            self.country_id = False
-            self.state_id = False
 
     # Onchange section
     @api.onchange("state_id")

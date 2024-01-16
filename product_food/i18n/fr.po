@@ -81,12 +81,6 @@ msgid "Allergens"
 msgstr "Allergènes"
 
 #. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__allergens
-#: model:ir.model.fields,field_description:product_food.field_product_template__allergens
-msgid "Allergens Complement"
-msgstr "Allergènes (complément)"
-
-#. module: product_food
 #: model:res.groups,name:product_food.group_allergen_manager
 msgid "Allergens Creation"
 msgstr "Création d'allergènes"
@@ -203,16 +197,6 @@ msgstr "Créé le"
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
-
-#. module: product_food
-#: selection:product.product,origin_type:0
-msgid "EU"
-msgstr "UE"
-
-#. module: product_food
-#: selection:product.product,origin_type:0
-msgid "EU / No EU"
-msgstr "UE / Non UE"
 
 #. module: product_food
 #: selection:product.product,storage_method:0
@@ -338,11 +322,6 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: product_food
-#: selection:product.product,origin_type:0
-msgid "No EU"
-msgstr "Non UE"
-
-#. module: product_food
 #: selection:product.product,organic_type:0
 msgid "Not Alimentary"
 msgstr "Non alimentaire"
@@ -371,12 +350,6 @@ msgstr "Biologique"
 #: model:ir.model.fields,field_description:product_food.field_product_template__organic_type
 msgid "Organic Category"
 msgstr "Catégorie biologique"
-
-#. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__origin_type
-#: model:ir.model.fields,field_description:product_food.field_product_template__origin_type
-msgid "Origin Type"
-msgstr "Catégorie d'Origine"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_product
@@ -415,12 +388,6 @@ msgstr "Articles"
 #: model:ir.model.fields,field_description:product_food.field_product_template__storage_method
 msgid "Storage Method"
 msgstr "Méthode de conservation"
-
-#. module: product_food
-#: model:ir.model.fields,field_description:product_food.field_product_product__price_per_unit
-#: model:ir.model.fields,field_description:product_food.field_product_template__price_per_unit
-msgid "Unit Price"
-msgstr "Prix unitaire"
 
 #. module: product_food
 #: model:product.product,uom_name:product_food.product_arachide_toaste

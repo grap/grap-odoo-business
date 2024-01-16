@@ -20,7 +20,7 @@
         # GRAP
         "product_label",
         "sale_recovery_moment",
-        "product_origin_l10n_fr_department",
+        "l10n_fr_department_product_origin",
     ],
     "data": [
         "security/ir_rule.xml",

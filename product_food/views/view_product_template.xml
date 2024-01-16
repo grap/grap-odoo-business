@@ -11,51 +11,31 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view" />
         <field name="arch" type="xml">
-            <field name="list_price" position="after">
-                <field name="price_per_unit" widget="monetary"/>
-            </field>
-
             <notebook position="inside">
                 <page name="alimentary_information" string="Alimentary Informations"
-                     attrs="{'invisible': [('product_variant_count', '>', 1)]}">
-                    <group col="4">
+                    attrs="{'invisible': [('product_variant_count', '>', 1)]}">
+                    <group colspan="4" col="4">
                         <field name="is_alimentary"/>
                         <newline/>
-                        <field name="alcohol_by_volume" attrs="{'invisible': [('is_alcohol', '=', False)]}"/>
+                        <field name="allergen_ids" widget="many2many_tags" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="trace_allergen_ids" widget="many2many_tags" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+
                         <field name="is_alcohol" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                        <field name="alcohol_by_volume" attrs="{'invisible': [('is_alcohol', '=', False)]}"/>
                         <field name="is_vegan"/>
-                        <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-                        <field name="organic_type"/>
+                        <field name="storage_method" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+
                         <field name="use_by_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
                         <field name="best_before_date_day" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
-                        <field name="storage_method"/>
+                        <field name="organic_type"/>
+                        <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                    </group>
+                    <group string="Ingredients" attrs="{'invisible': [('is_alimentary', '=', False)]}" colspan="4">
+                        <field name="ingredients" widget="html" nolabel="1"/>
                     </group>
                 </page>
-
-                <page name="alimentary_composition" string="Alimentary Composition"
-                    attrs="{'invisible': [('is_alimentary', '=', False)]}">
-                    <group>
-                        <group string="Ingredients">
-                            <field name="ingredients" widget="html" nolabel="1"/>
-                        </group>
-                        <group string="Allergens">
-                            <field name="allergens" widget="html" nolabel="1" colspan="2"/>
-                        </group>
-                    </group>
-                </page>
-
             </notebook>
 
-        </field>
-    </record>
-
-    <record id="view_product_template_form_origin" model="ir.ui.view">
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product_origin.view_product_template_form" />
-        <field name="arch" type="xml">
-            <field name="country_id" position="before">
-                <field name="origin_type" attrs="{'invisible': ['|', ('is_alimentary', '=', False), ('product_variant_count', '>', 1)]}"/>
-            </field>
         </field>
     </record>
 

@@ -64,85 +64,42 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 </div>
                             </div>
                         </div>
-                        <t t-if="line.product_id.pricetag_display_spider_chart">
-                            <div class="pricetag_right floating_box">
-                                <t t-if="not line.product_id.pricetag_special_quantity_price">
-                                    <div class="product_price">
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
-                                    </div>
-                                    <!-- Le kilo // La pièce -->
-                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">per kilo</div></t>
-                                    <t t-else=""><div class="product_sell_by_weight">per unit</div></t>
-                                    <!-- Poids (Kg) ou Volume (L) du produit -->
-                                    <t t-if="line.product_id.pricetag_is_second_price">
-                                        <div class="product_price_per_uom_qty floating_box">
-                                            <t t-if="line.product_id.volume">Volume<br/><t t-esc="line.product_id.volume"/> L<br/></t>
-                                            <t t-elif="line.product_id.net_weight">Weight<br/><t t-esc="line.product_id.net_weight"/> kg<br/></t>
-                                        </div>
-                                        <!-- Prix au Kg ou au L -->
-                                        <div class="product_price_per_uom_price floating_box">
-                                            <t t-if="line.product_id.pricetag_is_second_price">
-                                                <t t-esc="line.product_id.pricetag_second_price_uom_text"/><br/>
-                                                <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
-                                            </t>
-                                        </div>
-                                    </t>
-                                </t>
-                                <t t-if="line.product_id.pricetag_special_quantity_price">
-                                    <div class="second_product_price">
-                                        <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/>€</div>
-                                        <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
-                                    </div>
-                                    <div class="product_price_per_uom_price_only floating_box">
-                                        <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Per L: </span></t>
-                                        <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Per kg: </span></t>
-                                        <t t-else=""><span>Unit : </span></t>
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/>€
-                                    </div>
-                                </t>
-                                <div class="floating_box">
-                                    <img class="spider_chart_image" t-att-src="'data:image/png;base64,%s' % to_text(line.product_id.spider_chart_image)"/>
+                        <div class="pricetag_right floating_box">
+                            <t t-if="not line.product_id.pricetag_special_quantity_price">
+                                <div class="product_price">
+                                    <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
                                 </div>
-                            </div>
-                        </t>
-                        <t t-if="not line.product_id.pricetag_display_spider_chart">
-                            <div class="pricetag_right pricetag_right_no_spider_chart floating_box">
-                                <t t-if="not line.product_id.pricetag_special_quantity_price">
-                                    <div class="product_price">
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                <!-- Le kilo // La pièce -->
+                                <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">per kilo</div></t>
+                                <t t-else=""><div class="product_sell_by_weight">per unit</div></t>
+                                <!-- Poids (Kg) ou Volume (L) du produit -->
+                                <t t-if="line.product_id.pricetag_is_second_price">
+                                    <div class="product_price_per_uom_qty floating_box">
+                                        <t t-if="line.product_id.volume">Volume<br/><t t-esc="line.product_id.volume"/> L<br/></t>
+                                        <t t-elif="line.product_id.net_weight">Weight<br/><t t-esc="line.product_id.net_weight"/> kg<br/></t>
                                     </div>
-                                    <!-- Le kilo // La pièce -->
-                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'weight'"><div class="product_sell_by_weight">per kilo</div></t>
-                                    <t t-else=""><div class="product_sell_by_weight">per unit</div></t>
-                                    <!-- Poids (Kg) ou Volume (L) du produit -->
-                                    <t t-if="line.product_id.pricetag_is_second_price">
-                                        <div class="product_price_per_uom_qty floating_box">
-                                            <t t-if="line.product_id.volume">Volume<br/><t t-esc="line.product_id.volume"/> L<br/></t>
-                                            <t t-elif="line.product_id.net_weight">Weight<br/><t t-esc="line.product_id.net_weight"/> kg<br/></t>
-                                        </div>
-                                        <!-- Prix au Kg ou au L -->
-                                        <div class="product_price_per_uom_price floating_box">
-                                            <t t-if="line.product_id.pricetag_is_second_price">
-                                                <t t-esc="line.product_id.pricetag_second_price_uom_text"/><br/>
-                                                <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
-                                            </t>
-                                        </div>
-                                    </t>
-                                </t>
-                                <t t-if="line.product_id.pricetag_special_quantity_price">
-                                    <div class="second_product_price">
-                                        <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</div>
-                                        <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
-                                    </div>
-                                    <div class="product_price_per_uom_price_only floating_box">
-                                        <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Per L : </span></t>
-                                        <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Per kg : </span></t>
-                                        <t t-else=""><span>Unit : </span></t>
-                                        <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                    <!-- Prix au Kg ou au L -->
+                                    <div class="product_price_per_uom_price floating_box">
+                                        <t t-if="line.product_id.pricetag_is_second_price">
+                                            <t t-esc="line.product_id.pricetag_second_price_uom_text"/><br/>
+                                            <t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €
+                                        </t>
                                     </div>
                                 </t>
-                            </div>
-                        </t>
+                            </t>
+                            <t t-if="line.product_id.pricetag_special_quantity_price">
+                                <div class="second_product_price">
+                                    <div class="pricetag_second_product_price"><t t-esc="'%0.2f' % (line.product_id.pricetag_second_price)"/> €</div>
+                                    <div class="pricetag_second_price_uom_text"><t t-esc="line.product_id.pricetag_second_price_uom_text"/></div>
+                                </div>
+                                <div class="product_price_per_uom_price_only floating_box">
+                                    <t t-if="line.product_id.uom_id.category_id.measure_type == 'volume'"><span>Per L : </span></t>
+                                    <t t-elif="line.product_id.uom_id.category_id.measure_type == 'weight'"><span>Per kg : </span></t>
+                                    <t t-else=""><span>Unit : </span></t>
+                                    <t t-esc="'%0.2f' % (line.product_id.list_price)"/> €
+                                </div>
+                            </t>
+                        </div>
                     </div>
                 </t>
             </t>

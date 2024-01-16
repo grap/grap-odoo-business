@@ -85,9 +85,10 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
-    allergens = fields.Text(
-        string="Allergens Complement",
-        related="product_variant_ids.allergens",
+    trace_allergen_ids = fields.Many2many(
+        comodel_name="product.allergen",
+        related="product_variant_ids.trace_allergen_ids",
+        string="Allergens (Traces)",
         readonly=False,
     )
 
@@ -99,28 +100,10 @@ class ProductTemplate(models.Model):
         compute="_compute_organic_type",
     )
 
-    origin_type = fields.Selection(
-        selection=lambda self: self.env["product.product"]
-        ._fields["origin_type"]
-        .selection,
-        string="Origin Type",
-        related="product_variant_ids.origin_type",
-        readonly=False,
-    )
-
-    price_per_unit = fields.Float(
-        string="Unit Price",
-        compute="_compute_price_per_unit",
-    )
-
     # Compute Section
     @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
         ProductProduct._compute_organic_type(self)
-
-    @api.depends("weight", "volume", "list_price")
-    def _compute_price_per_unit(self):
-        ProductProduct._compute_price_per_unit(self)
 
     # Onchange Section
     @api.onchange("categ_id")

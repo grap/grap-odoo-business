@@ -14,9 +14,8 @@ It also adds many fiels on product models. (templates and variants)
 * ``best_before_date_day`` that mentions for how many days a product can
   be eaten, after having packed. (for cheese, meats, etc.)
 * ``is_alcohol``, boolean to mention if the product contains alcohol.
-* ``origin_type`` to mention if ingredients come from EU or not.
 * ``allergen_ids`` to mention the list of allergens.
-* ``ingredients`` and ``allergens``. (free texts).
+* ``ingredients``. (free text).
 
 Alls the fields are defined on ``product.product`` model and can be set also
 on ``product.template`` models, in a mono variant context.
