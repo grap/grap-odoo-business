@@ -19,6 +19,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
         ]"/>
+        <field name="ingredients">Arachides de Chine issues de l'agriculture biologique</field>
+        <field name="best_before_date_day">365</field>
     </record>
 
 

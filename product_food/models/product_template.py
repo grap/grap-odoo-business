@@ -18,22 +18,6 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
-    certifier_organization_id = fields.Many2one(
-        comodel_name="certifier.organization",
-        string="Certifier Organization",
-        related="product_variant_ids.certifier_organization_id",
-        readonly=False,
-    )
-
-    is_uncertifiable = fields.Boolean(
-        string="Not Certifiable",
-        related="product_variant_ids.is_uncertifiable",
-        readonly=False,
-        help="Check this box for alimentary products that are"
-        " uncertifiable by definition. For exemple: Products"
-        " that comes from the sea",
-    )
-
     alcohol_by_volume = fields.Float(
         string="Alcohol by Volume",
         related="product_variant_ids.alcohol_by_volume",
@@ -91,19 +75,6 @@ class ProductTemplate(models.Model):
         string="Allergens (Traces)",
         readonly=False,
     )
-
-    organic_type = fields.Selection(
-        selection=lambda self: self.env["product.product"]
-        ._fields["organic_type"]
-        .selection,
-        string="Organic Category",
-        compute="_compute_organic_type",
-    )
-
-    # Compute Section
-    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
-    def _compute_organic_type(self):
-        ProductProduct._compute_organic_type(self)
 
     # Onchange Section
     @api.onchange("categ_id")

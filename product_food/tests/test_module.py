@@ -30,12 +30,6 @@ class TestModule(TransactionCase):
         product.onchange_categ_id_product_food()
         self.assertEqual(product.is_alimentary, False)
 
-        # Set non-alimentary category as a alimentary category and propagate settings
-        # to all the child product
-        self.main_category.is_alimentary = True
-        self.main_category.button_apply_is_alimentary_settings()
-        self.assertEqual(product.is_alimentary, True)
-
     def test_product_alcohol(self):
         product = self.ProductProduct.create(
             {

@@ -17,7 +17,7 @@ class ProductCategory(models.Model):
     )
 
     is_vegan = fields.Boolean(
-        string="Contain only vegan products",
+        string="Contain Vegan Products",
         help="If this box is checked, the"
         " products that belong to that category will be set as "
         "'Vegan product' by default",
@@ -41,13 +41,3 @@ class ProductCategory(models.Model):
                         " categories set as 'Contain Alcohol'"
                     )
                 )
-
-    def button_apply_is_alimentary_settings(self):
-        ProductTemplate = self.env["product.template"]
-        for category in self:
-            templates = (
-                ProductTemplate.sudo()
-                .with_context(active_test=False)
-                .search([("categ_id", "=", category.id)])
-            )
-            templates.write({"is_alimentary": category.is_alimentary})

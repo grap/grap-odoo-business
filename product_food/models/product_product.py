@@ -17,30 +17,10 @@ class ProductProduct(models.Model):
         ("frozen", "Frozen (< -18°)"),
     ]
 
-    _ORGANIC_TYPE_SELECTION = [
-        ("01_organic", "Organic"),
-        ("02_agroecological", "Agroecological"),
-        ("03_uncertifiable", "Aliment Uncertifiable"),
-        ("04_uncertified", "Aliment Not Certified"),
-        ("05_not_alimentary", "Not Alimentary"),
-    ]
-
     # Column Section
     is_alimentary = fields.Boolean(string="Is Alimentary")
 
     is_vegan = fields.Boolean(string="Is Vegan")
-
-    certifier_organization_id = fields.Many2one(
-        comodel_name="certifier.organization",
-        string="Certifier Organization",
-    )
-
-    is_uncertifiable = fields.Boolean(
-        string="Not Certifiable",
-        help="Check this box for alimentary products that are"
-        " uncertifiable by definition. For exemple: Products"
-        " that comes from the sea",
-    )
 
     is_alcohol = fields.Boolean(string="Contain Alcohol")
 
@@ -70,47 +50,10 @@ class ProductProduct(models.Model):
         relation="product_allergen_trace_product_rel",
         column1="product_id",
         column2="allergen_id",
-        string="Allergens (Trace)",
+        string="Allergens (Traces)",
     )
-
-    organic_type = fields.Selection(
-        selection=_ORGANIC_TYPE_SELECTION,
-        string="Organic Category",
-        compute="_compute_organic_type",
-    )
-
-    # Compute Section
-    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
-    def _compute_organic_type(self):
-        for product in self:
-            types = product.mapped("label_ids.organic_type")
-            if "01_organic" in types:
-                product.organic_type = "01_organic"
-            elif "02_agroecological" in types:
-                product.organic_type = "02_agroecological"
-            elif product.is_alimentary:
-                if product.is_uncertifiable:
-                    product.organic_type = "03_uncertifiable"
-                else:
-                    product.organic_type = "04_uncertified"
-            else:
-                product.organic_type = "05_not_alimentary"
 
     # Constrains Section
-    @api.multi
-    @api.constrains("net_weight", "volume")
-    def _check_net_weight_volume(self):
-        for product in self:
-            if product.net_weight and product.volume:
-                raise UserError(
-                    _(
-                        "Incorrect Setting. "
-                        "The product %s could not have"
-                        " volume AND net weight at the same time."
-                    )
-                    % (product.name)
-                )
-
     @api.constrains("alcohol_by_volume")
     def _check_alcohol_by_volume(self):
         if self.filtered(

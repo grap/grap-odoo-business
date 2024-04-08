@@ -1,16 +1,10 @@
 This module extends the functionality of sale module to support food features.
 
-It provides the new models:
-* ``certifier.organization``
+It provides a new model ``product.allergen``
 
-* ``product.allergen``
-
-It also adds many fiels on product models. (templates and variants)
+It also adds many fields on product models. (templates and variants)
 
 * ``is_alimentary``, boolean for analysis purpose.
-* ``certifier_organization_id``
-* ``is_uncertifiable`` for alimentary products that can not be certifiable.
-  (like products that come from the sea)
 * ``best_before_date_day`` that mentions for how many days a product can
   be eaten, after having packed. (for cheese, meats, etc.)
 * ``is_alcohol``, boolean to mention if the product contains alcohol.
