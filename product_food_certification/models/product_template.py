@@ -2,11 +2,20 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
+
+from .product_product import ProductProduct
 
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
+
+    certifier_organization_id = fields.Many2one(
+        comodel_name="certifier.organization",
+        string="Certifier Organization",
+        related="product_variant_ids.certifier_organization_id",
+        readonly=False,
+    )
 
     ingredient_origin_type = fields.Selection(
         string="Origin of Ingredients",
@@ -21,3 +30,25 @@ class ProductTemplate(models.Model):
         " More information :"
         " https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab",  # noqa: B950
     )
+
+    is_uncertifiable = fields.Boolean(
+        string="Not Certifiable",
+        related="product_variant_ids.is_uncertifiable",
+        readonly=False,
+        help="Check this box for alimentary products that are"
+        " uncertifiable by definition. For exemple: Products"
+        " that comes from the sea",
+    )
+
+    organic_type = fields.Selection(
+        selection=lambda self: self.env["product.product"]
+        ._fields["organic_type"]
+        .selection,
+        string="Organic Category",
+        compute="_compute_organic_type",
+    )
+
+    # Compute Section
+    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
+    def _compute_organic_type(self):
+        ProductProduct._compute_organic_type(self)

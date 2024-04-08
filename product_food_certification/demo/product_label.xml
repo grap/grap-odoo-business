@@ -7,12 +7,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="group_certifier_manager" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    <record id="product_label.label_agriculture_biologique" model="product.label">
+        <field name="organic_type">01_organic</field>
     </record>
 
-    <record id="group_allergen_manager" model="res.groups">
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    <record id="product_food.label_demeter" model="product.label">
+        <field name="organic_type">02_agroecological</field>
     </record>
 
 </odoo>

@@ -15,6 +15,13 @@ column_renames = {
     ],
 }
 
+xmlid_renames = [
+    (
+        "product_food.group_certifier_manager",
+        "product_food_certification.group_certifier_manager",
+    ),
+]
+
 
 @openupgrade.migrate(use_env=True)
 def migrate(env, version):
@@ -41,22 +48,4 @@ def migrate(env, version):
     )
 
     openupgrade.rename_columns(env.cr, column_renames)
-
-
-# delete
-# from ir_ui_view where inherit_id in (
-#     select res_id
-#     from ir_model_data where module='product_food'
-#     and name='view_product_product_form'
-# );
-# delete
-# from ir_ui_view where id in (
-#     select res_id
-#     from ir_model_data where module='product_food'
-#     and name in (
-#         'view_product_product_form',
-#         'view_product_product_form_origin',
-#         'view_product_product_form_variant_origin',
-#         'view_product_template_form_origin'
-#     )
-# );
+    openupgrade.rename_xmlids(env.cr, xmlid_renames)

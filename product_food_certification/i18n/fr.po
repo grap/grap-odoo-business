@@ -6,14 +6,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 13:40+0000\n"
-"PO-Revision-Date: 2024-01-05 13:40+0000\n"
+"POT-Creation-Date: 2024-04-08 14:08+0000\n"
+"PO-Revision-Date: 2024-04-08 14:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__active
+msgid "Active"
+msgstr "Actif"
+
+#. module: product_food_certification
+#: selection:product.label,organic_type:0
+#: selection:product.product,organic_type:0
+msgid "Agroecological"
+msgstr "Agro-écologique"
+
+#. module: product_food_certification
+#: selection:product.product,organic_type:0
+msgid "Aliment Not Certified"
+msgstr "Aliment non certifié"
+
+#. module: product_food_certification
+#: selection:product.product,organic_type:0
+msgid "Aliment Uncertifiable"
+msgstr "Aliment non certifiable"
+
+#. module: product_food_certification
+#: model:ir.model,name:product_food_certification.model_certifier_organization
+#: model:ir.model.fields,field_description:product_food_certification.field_product_product__certifier_organization_id
+#: model:ir.model.fields,field_description:product_food_certification.field_product_template__certifier_organization_id
+#: model:ir.model.fields,field_description:product_food_certification.field_res_company__certifier_organization_id
+msgid "Certifier Organization"
+msgstr "Organisation certificatrice"
+
+#. module: product_food_certification
+#: model:ir.actions.act_window,name:product_food_certification.action_certifier_organization
+#: model:ir.ui.menu,name:product_food_certification.menu_certifier_organization
+msgid "Certifier Organizations"
+msgstr "Organisations certificatrices"
+
+#. module: product_food_certification
+#: model:res.groups,name:product_food_certification.group_certifier_manager
+msgid "Certifier Organizations Creation"
+msgstr "Création d'organisations certificatrices"
+
+#. module: product_food_certification
+#: model:ir.model.fields,help:product_food_certification.field_product_product__is_uncertifiable
+#: model:ir.model.fields,help:product_food_certification.field_product_template__is_uncertifiable
+msgid "Check this box for alimentary products that are uncertifiable by definition. For exemple: Products that comes from the sea"
+msgstr "cocher cette case pour les articles alimentaires qui sont non certifiable par définition. par exemple, les produits issues de la mer."
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__code
+msgid "Code"
+msgstr ""
+
+#. module: product_food_certification
+#: model:ir.model,name:product_food_certification.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
 
 #. module: product_food_certification
 #: selection:product.product,ingredient_origin_type:0
@@ -31,9 +102,68 @@ msgid "France"
 msgstr ""
 
 #. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__id
+msgid "ID"
+msgstr ""
+
+#. module: product_food_certification
+#: model_terms:ir.ui.view,arch_db:product_food_certification.view_certifier_organization_form
+msgid "Information"
+msgstr ""
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: product_food_certification
 #: selection:product.product,ingredient_origin_type:0
 msgid "No EU"
 msgstr "Non UE"
+
+#. module: product_food_certification
+#: selection:product.product,organic_type:0
+msgid "Not Alimentary"
+msgstr "Non alimentaire"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_product_product__is_uncertifiable
+#: model:ir.model.fields,field_description:product_food_certification.field_product_template__is_uncertifiable
+msgid "Not Certifiable"
+msgstr "Non certifiable"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__note
+msgid "Note"
+msgstr ""
+
+#. module: product_food_certification
+#: selection:product.label,organic_type:0
+#: selection:product.product,organic_type:0
+msgid "Organic"
+msgstr "Biologique"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_product_label__organic_type
+#: model:ir.model.fields,field_description:product_food_certification.field_product_product__organic_type
+#: model:ir.model.fields,field_description:product_food_certification.field_product_template__organic_type
+msgid "Organic Category"
+msgstr "Catégorie biologique"
 
 #. module: product_food_certification
 #: model:ir.model.fields,field_description:product_food_certification.field_product_product__ingredient_origin_type
@@ -45,6 +175,11 @@ msgstr "Origine des ingrédients"
 #: model:ir.model,name:product_food_certification.model_product_product
 msgid "Product"
 msgstr "Article"
+
+#. module: product_food_certification
+#: model:ir.model,name:product_food_certification.model_product_label
+msgid "Product Labels"
+msgstr "Labels d'articles"
 
 #. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_product_template
@@ -60,4 +195,9 @@ msgid "The place of production of the agricultural raw materials making up the p
 msgstr "Le lieu de production des matières premières agricoles composant l'article. Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
 "\n"
 " Plus d'information  : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__website
+msgid "Website"
+msgstr "Site Web"
 
