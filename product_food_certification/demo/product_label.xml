@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="product_label.label_agriculture_biologique" model="product.label">
+        <field name="organic_type">01_organic</field>
+    </record>
+
+    <record id="product_food.label_demeter" model="product.label">
+        <field name="organic_type">02_agroecological</field>
+    </record>
+
+</odoo>

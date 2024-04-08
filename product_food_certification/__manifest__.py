@@ -12,11 +12,17 @@
     "data": [
         "security/res_groups.xml",
         "security/ir.model.access.csv",
+        "views/view_certifier_organization.xml",
         "views/view_product_product.xml",
         "views/view_product_template.xml",
+        "views/view_res_company.xml",
+        "views/view_product_label.xml",
     ],
     "external_dependencies": {"python": ["openupgradelib"]},
-    "demo": [],
+    "demo": [
+        "demo/certifier_organization.xml",
+        "demo/product_label.xml",
+    ],
     "images": [],
     "installable": True,
     "post_init_hook": "post_init_hook",

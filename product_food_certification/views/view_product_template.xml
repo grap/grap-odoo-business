@@ -11,7 +11,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product_food.view_product_template_form" />
         <field name="arch" type="xml">
             <field name="is_alimentary" position="after">
-                <field name="ingredient_origin_type" attrs="{'invisible': [('product_variant_count', '>', 1)]}"/>
+                    <field name="organic_type"/>
+                    <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                <field name="ingredient_origin_type" attrs="{'invisible': ['|', ('product_variant_count', '>', 1), ('is_alimentary', '=', False)]}"/>
             </field>
         </field>
     </record>

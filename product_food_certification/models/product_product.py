@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProductProduct(models.Model):
@@ -15,6 +15,19 @@ class ProductProduct(models.Model):
         ("eu_no_eu", "EU / No EU"),
     ]
 
+    _ORGANIC_TYPE_SELECTION = [
+        ("01_organic", "Organic"),
+        ("02_agroecological", "Agroecological"),
+        ("03_uncertifiable", "Aliment Uncertifiable"),
+        ("04_uncertified", "Aliment Not Certified"),
+        ("05_not_alimentary", "Not Alimentary"),
+    ]
+
+    certifier_organization_id = fields.Many2one(
+        comodel_name="certifier.organization",
+        string="Certifier Organization",
+    )
+
     ingredient_origin_type = fields.Selection(
         string="Origin of Ingredients",
         selection=_INGREDIENT_ORIGIN_TYPE_SELECTION,
@@ -24,3 +37,33 @@ class ProductProduct(models.Model):
         " More information :"
         " https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab",  # noqa: B950
     )
+
+    is_uncertifiable = fields.Boolean(
+        string="Not Certifiable",
+        help="Check this box for alimentary products that are"
+        " uncertifiable by definition. For exemple: Products"
+        " that comes from the sea",
+    )
+
+    organic_type = fields.Selection(
+        selection=_ORGANIC_TYPE_SELECTION,
+        string="Organic Category",
+        compute="_compute_organic_type",
+    )
+
+    # Compute Section
+    @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
+    def _compute_organic_type(self):
+        for product in self:
+            types = product.mapped("label_ids.organic_type")
+            if "01_organic" in types:
+                product.organic_type = "01_organic"
+            elif "02_agroecological" in types:
+                product.organic_type = "02_agroecological"
+            elif product.is_alimentary:
+                if product.is_uncertifiable:
+                    product.organic_type = "03_uncertifiable"
+                else:
+                    product.organic_type = "04_uncertified"
+            else:
+                product.organic_type = "05_not_alimentary"
