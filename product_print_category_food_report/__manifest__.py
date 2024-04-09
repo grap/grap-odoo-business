@@ -12,7 +12,10 @@
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
+        # OCA
         "product_print_category",
+        "product_net_weight",
+        # GRAP
         "product_food",
         "product_label",
         "product_origin",
