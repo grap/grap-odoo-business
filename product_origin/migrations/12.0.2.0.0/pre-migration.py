@@ -8,14 +8,13 @@ from openupgradelib import openupgrade
 
 logger = logging.getLogger(__name__)
 
-column_renames = {
-    "product_product": [
-        ("country_group_id", None),
-    ],
-}
-
 
 @openupgrade.migrate()
 def migrate(env, version):
-    logger.info("[product_origin] Preserve country Group field on product.product ...")
-    openupgrade.rename_columns(env.cr, column_renames)
+    if openupgrade.column_exists(env.cr, "product_product", "country_group_id"):
+        logger.info(
+            "[product_origin] Preserve country Group field on product.product ..."
+        )
+        openupgrade.rename_columns(
+            env.cr, {"product_product": [("country_group_id", None)]}
+        )
