@@ -14,7 +14,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="is_alimentary" eval="True" />
         <field name="list_price">2.70</field>
         <field name="allergen_ids" eval="[
-            (4, ref('allergen_peanut')),
+            (4, ref('allergen_ARA')),
         ]"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
