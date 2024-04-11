@@ -24,6 +24,7 @@
     "data": [
         "security/ir_rule.xml",
         "security/ir.model.access.csv",
+        "report/qweb_components.xml",
         "report/qweb_pricetag_bulk_long.xml",
         "report/qweb_pricetag_bulk_square.xml",
         "report/qweb_pricetag_counter.xml",
