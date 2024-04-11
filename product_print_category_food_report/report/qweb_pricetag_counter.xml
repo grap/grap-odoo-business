@@ -29,9 +29,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <t t-if="line.product_id.default_code and option_print_code">
                                 <span class="default_code"> - <t t-esc="line.product_id.default_code"/></span>
                             </t>
-                            <t t-if="line.product_id.barcode and option_print_barcode_digits">
-                                <span class="barcode_digits"> - <t t-esc="line.product_id.barcode"/></span>
-                            </t>
                         </div>
                         <!-- LEFT PART : Product labels -->
                         <div class="product_labels floating_box">

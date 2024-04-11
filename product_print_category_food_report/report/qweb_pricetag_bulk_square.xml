@@ -49,24 +49,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 </div>
                                 <div class="label_bulk_infos label_left_div">
                                     <span>Batch n°:</span><br/>
-                                    <span>BBD:</span><br/>
-                                    <t t-if="line.product_id.default_code and option_print_code">
-                                            [<t t-esc="line.product_id.default_code"/>]
-                                    </t>
-                                    <t t-if="line.product_id.barcode and option_print_barcode_digits">
-                                        <span> <t t-esc="line.product_id.barcode"/></span>
-                                    </t>
+                                    <span>BBD1:</span><br/>
+                                    <t t-set="barcode_width" t-value="400"/>
+                                    <t t-set="barcode_height" t-value="100"/>
+                                    <t t-call="product_print_category_food_report.qweb_component_barcode" />
                                 </div>
-                                <div class="label_left_div floating_box">
-                                    <!-- BARCODE Image -->
-                                    <t t-if="line.product_id.barcode and option_print_barcode">
-                                        <div class="wrap_barcode_image floating_box">
-                                            <img t-if="len(line.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN13', line.product_id.barcode)"/>
-                                            <img t-elif="len(line.product_id.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN8', line.product_id.barcode)"/>
-                                            <img t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('Code128', line.product_id.barcode)"/>
-                                        </div>
-                                    </t>
-                                </div>
+
                             </div>
                             <div class="label_right">
                                 <div class="label_right_infos">
@@ -128,10 +116,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-if="line.product_id.write_date">
                                         Printed <span t-esc="line.product_id.write_date.strftime('%d/%m/%Y - %H:%M')"/>
                                     </t>
+                                    <t t-if="line.product_id.default_code and option_print_code">
+                                        [<t t-esc="line.product_id.default_code"/>]
+                                    </t>
                                 </div>
                             </div>
-                        </div> <!-- /label_bottom -->
-                    </div><!-- /product -->
+                        </div>
+                    </div>
                 </t>
             </t>
         </t>

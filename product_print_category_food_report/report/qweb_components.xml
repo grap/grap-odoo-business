@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="qweb_component_barcode">
+        <div class="wrap_barcode_image floating_box">
+            <t t-if="line.product_id.barcode">
+                <img t-if="len(line.product_id.barcode) == 13"
+                    t-att-src="'/report/barcode/?humanreadable=1&amp;type=EAN13&amp;value=%s&amp;width=%s&amp;height=%s' % (line.product_id.barcode, barcode_width, barcode_height)"/>
+                <img t-elif="len(line.product_id.barcode) == 8"
+                    t-att-src="'/report/barcode/?humanreadable=1&amp;type=EAN8&amp;value=%s' % (line.product_id.barcode)"/>
+                <img t-else=""
+                    t-att-src="'/report/barcode/?humanreadable=1&amp;?type=Code128&amp;value=%s' % (line.product_id.barcode)"/>
+            </t>
+        </div>
+    </template>
+
+</odoo>
