@@ -83,7 +83,7 @@
         border-top: 3px solid;
     }
     .product_price_big {
-        font-size: 30px; text-align: center;
+        font-size: 24px; text-align: center;
     }
     span.product_uom {
         font-size:22px;
@@ -96,10 +96,13 @@
         overflow: hidden;
         position: relative;
         top: 0.1cm; left: 20px;
+        width: 5.0cm;
+        height:1.0cm;
+
     }
     .wrap_barcode_image > img{
-        width: 5.5cm;
-        height:0.3cm;
+        width: 5.0cm;
+        height:1.0cm;
     }
     .wrap_product_codes {
         margin-top: 0.2cm;

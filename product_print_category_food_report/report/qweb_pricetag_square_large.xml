@@ -44,18 +44,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-if="line.product_id.default_code and option_print_code">
                                   <span class="span_code">- Code: <t t-esc="line.product_id.default_code"/></span>
                                 </t>
-                                <t t-if="line.product_id.barcode and option_print_barcode_digits">
-                                  <br/>
-                                  <span class="barcode_digits">Barcode: <t t-esc="line.product_id.barcode"/></span>
-                                </t>
                             </div>
-                            <div class="wrap_barcode_image floating_box">
-                                <t t-if="line.product_id.barcode and option_print_barcode">
-                                    <img t-if="len(line.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN13', line.product_id.barcode)"/>
-                                    <img t-elif="len(line.product_id.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('EAN8', line.product_id.barcode)"/>
-                                    <img t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;' % ('Code128', line.product_id.barcode)"/>
-                                </t>
-                            </div>
+                            <t t-set="barcode_width" t-value="400"/>
+                            <t t-set="barcode_height" t-value="100"/>
+                            <t t-call="product_print_category_food_report.qweb_component_barcode" />
                         </div>
                         <div class="label_right pricetag-font">
                             <div class="product_name" t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">

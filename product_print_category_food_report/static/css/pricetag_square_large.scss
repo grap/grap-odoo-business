@@ -97,10 +97,12 @@
     .wrap_barcode_image{
         overflow: hidden;
         position: relative;
-        height: 0.5cm;
+        width: 4cm;
+        height: 1cm;
     }
     .wrap_barcode_image > img{
         width: 4cm;
+        height: 1cm;
     }
     .wrap_product_code {
         font-size: 10px;

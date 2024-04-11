@@ -71,7 +71,7 @@
     .label_bulk_infos {
         font-size: 12px;
         line-height: 1.3em;
-        height: 1.5cm;
+        height: 2.2cm;
         border-top: 3px solid grey;
     }
     .label_maker, .label_origin {
@@ -126,16 +126,12 @@
         font-size: 9px;
     }
     .wrap_barcode_image{
-        overflow: hidden;
-        position: relative;
-        height: 1.1cm;
-        bottom: 21px;
-        right: 5px;
+        width: 4.0cm;
+        height: 1.0cm;
     }
     .wrap_barcode_image > img{
-        width: 5.5cm;
-        position: relative;
-        top: 0.3cm;
+        width: 4.0cm;
+        height: 1.0cm;
     }
     .write_date{
         font-size: 5px;
