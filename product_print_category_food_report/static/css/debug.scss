@@ -1,0 +1,28 @@
+.pricetag_product {
+    border-style: dotted;
+    border-color: black;
+
+    .product_name {
+        background-color: #AFF;
+    }
+
+    .main_price {
+        background-color: #FAF;
+    }
+
+    .secondary_price {
+        background-color: #FFA;
+    }
+
+    .per_unit_quantity {
+        background-color: #0FF;
+    }
+
+    .zone_barcode {
+        background-color: #F0F;
+    }
+
+    .shop_information {
+        background-color: #FF0;
+    }
+}

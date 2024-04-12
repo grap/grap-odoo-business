@@ -1,0 +1,48 @@
+.pricetag_01 {
+    border: 1px solid grey;
+    width:4.91cm; height:4.42cm;
+
+    .product_name{
+        font-size:17px;
+        height: 1.42cm;
+    }
+
+    .main_price {
+        height: 0.7cm;
+
+        .main_price_text {
+            font-size: 16px;
+        }
+        .main_uom_text {
+            font-size: 12px;
+        }
+    }
+
+    .secondary_price {
+        height: 0.4cm;
+        font-size: 8px;
+    }
+
+    .per_unit_quantity {
+        height: 0.4cm;
+        font-size: 8px;
+    }
+
+    .zone_barcode {
+        height: 1.3cm;
+
+        .wrap_barcode_image{
+            height: 1.2cm;
+            width: 3.6cm;
+        }
+        .wrap_barcode_image > img{
+            height: 1.2cm;
+            width: 3.6cm;
+        }
+    }
+
+    .shop_information {
+        height: 0.2cm;
+    }
+
+}
