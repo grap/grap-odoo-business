@@ -1,0 +1,38 @@
+.pricetag_product {
+    font-family: Luciole;
+    margin : 0.0cm;
+    padding : 0.0cm;
+    overflow: hidden;
+
+    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information {
+        margin : 0.0cm;
+        padding : 0.05cm;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .product_name {}
+
+    .main_price {}
+
+    .secondary_price {
+        font-style: italic;
+    }
+
+    .per_unit_quantity {}
+
+    .zone_barcode {
+        .wrap_barcode_image{
+            overflow: hidden;
+        }
+        .wrap_barcode_image > img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .shop_information {
+        font-size: 5px;
+        color: #777;
+    }
+}

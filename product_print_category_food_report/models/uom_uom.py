@@ -14,3 +14,8 @@ class ProductUom(models.Model):
         " to use this Unit of Mesure to display price per this unit"
         " on pricetags.",
     )
+
+    pricetag_name = fields.Char(
+        help="Used alternatively to the name field"
+        ", on labels for displaying secondary unit prices"
+    )

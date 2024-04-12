@@ -26,12 +26,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         ]" />
     </record>
 
-    <record id="category_pricetag_middle_square" model="product.print.category">
-        <field name="product_ids" eval="[
-            (4, ref('product_label.infusion_girl_power')),
-        ]" />
-    </record>
-
     <record id="category_pricetag_counter" model="product.print.category">
         <field name="product_ids" eval="[
             (4, ref('organic_smoked_tofu')),

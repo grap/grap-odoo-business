@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="qweb_template_pricetag_02">
+        <t t-call="web.basic_layout">
+        <t t-foreach="category_data['lines']" t-as="line">
+            <t t-foreach="line.quantity" t-as="q">
+                <div class="pricetag_product pricetag_02 floating_box">
+
+                        <!-- Product name -->
+                        <div class="product_name"
+                            t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
+                                <t t-esc="line.product_id.name"/>
+                        </div>
+
+                        <!-- Main Price -->
+                        <div class="main_price">
+                            <span class="main_price_text">
+                                <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
+                            </span>
+                            <span class="main_uom_text">
+                                <t t-esc="line.product_id.pricetag_main_uom_text"/>
+                            </span>
+                        </div>
+
+                        <!-- Secondary Price -->
+                        <div class="secondary_price">
+                            <span class="secondary_price_text" t-if="line.product_id.pricetag_secondary_price_value">
+                                <t t-esc="'%0.2f' % (line.product_id.pricetag_secondary_price_value)"/> €
+                            </span>
+                            <span class="secondary_uom_text" t-if="line.product_id.pricetag_secondary_price_value">
+                                <t t-esc="line.product_id.pricetag_secondary_uom_text"/>
+                            </span>
+                        </div>
+
+                        <!-- Per Unit Quantity -->
+                        <div class="per_unit_quantity">
+                            <t t-esc="line.product_id.pricetag_per_unit_quantity_text" t-if="line.product_id.pricetag_per_unit_quantity_text"/>
+                        </div>
+
+                        <!-- Barcode -->
+                        <div class="zone_barcode">
+                            <t t-set="barcode_width" t-value="400"/>
+                            <t t-set="barcode_height" t-value="100"/>
+                            <t t-call="product_print_category_food_report.qweb_component_barcode" />
+                        </div>
+
+                        <!-- Default Code + Write date -->
+                        <div class="shop_information">
+                            <t t-esc="line.product_id.default_code" /> -
+                            <t t-esc="line.product_id.pricetag_print_date_text" />
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
