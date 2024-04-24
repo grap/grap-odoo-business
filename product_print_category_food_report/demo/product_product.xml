@@ -7,13 +7,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="product_with_pricetag_01" model="product.product">
-        <field name="name">Abricot de Turquie moelleux 250gr (Pricetag 01 - Shelf Square Middle - 40x36mm)</field>
+        <field name="name">Pricetag 01 - Abricot de Turquie moelleux 250gr</field>
         <field name="uom_id" ref="uom.product_uom_unit" />
         <field name="barcode">3760159011292</field>
         <field name="default_code">BSG-000803</field>
         <field name="list_price">6.27</field>
         <field name="net_weight">0.250</field>
         <field name="print_category_id" ref="print_category_pricetag_01"/>
+        <field name="is_alimentary" eval="True"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
@@ -21,16 +22,39 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
     <record id="product_with_pricetag_02" model="product.product">
-        <field name="name">Acérola - 30comprimés 84gr (Pricetag 02 - Shelf Square Small - 30x30mm)</field>
+        <field name="name">Pricetag 02 - Acérola - 30comprimés 84gr</field>
         <field name="uom_id" ref="uom.product_uom_unit" />
         <field name="barcode">3700216223596</field>
         <field name="default_code">EPV-002793</field>
         <field name="list_price">6.45</field>
         <field name="net_weight">0.0840</field>
         <field name="print_category_id" ref="print_category_pricetag_02"/>
+        <field name="is_alimentary" eval="True"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
+    </record>
+
+    <record id="product_with_pricetag_10" model="product.product">
+        <field name="name">Pricetag 10 - Acha Peu Gingembre 33cl</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3760337020207</field>
+        <field name="default_code">1GG-000205</field>
+        <field name="list_price">3.20</field>
+        <field name="volume">0.33</field>
+        <field name="print_category_id" ref="print_category_pricetag_10"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="is_alcohol" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('product_food.label_alcool_grossesse')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_loire"/>
+        <field name="origin_description">Saint-Etienne</field>
+        <field name="maker_description">Brasserie Stéphanoise</field>
     </record>
 
 

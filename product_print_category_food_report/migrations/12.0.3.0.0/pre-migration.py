@@ -18,6 +18,10 @@ _xmlid_renames = [
         "product_print_category_food_report.category_pricetag_square_small",
         "product_print_category_food_report.print_category_pricetag_02",
     ),
+    (
+        "product_print_category_food_report.category_pricetag_normal",
+        "product_print_category_food_report.print_category_pricetag_10",
+    ),
 ]
 
 
