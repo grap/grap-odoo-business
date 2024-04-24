@@ -4,16 +4,26 @@
     padding : 0.0cm;
     overflow: hidden;
 
-    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information {
+
+    .pricetag_left, .pricetag_right, {
+        margin : 0.0cm;
+        padding : 0.00cm;
+        overflow: hidden;
+        float: left;
+    }
+
+    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information,
+    .product_origin, .maker_description, .product_labels, .organic_text {
         margin : 0.0cm;
         padding : 0.05cm;
         overflow: hidden;
+    }
+    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information {
         text-align: center;
     }
-
-    .product_name {}
-
-    .main_price {}
+    .product_origin, .maker_description, .product_labels, .organic_text {
+        text-align: left;
+    }
 
     .secondary_price {
         font-style: italic;
@@ -35,4 +45,9 @@
         font-size: 5px;
         color: #777;
     }
+
+    .empty_field {
+        color: #a6a6a6;
+    }
+
 }

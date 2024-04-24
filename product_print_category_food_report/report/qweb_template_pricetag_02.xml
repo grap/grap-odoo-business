@@ -9,9 +9,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <template id="qweb_template_pricetag_02">
         <t t-call="web.basic_layout">
-        <t t-foreach="category_data['lines']" t-as="line">
-            <t t-foreach="line.quantity" t-as="q">
-                <div class="pricetag_product pricetag_02 floating_box">
+            <t t-foreach="category_data['lines']" t-as="line">
+                <t t-foreach="line.quantity" t-as="q">
+                    <div class="pricetag_product pricetag_02">
 
                         <!-- Product name -->
                         <div class="product_name"
@@ -41,7 +41,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                         <!-- Per Unit Quantity -->
                         <div class="per_unit_quantity">
-                            <t t-esc="line.product_id.pricetag_per_unit_quantity_text" t-if="line.product_id.pricetag_per_unit_quantity_text"/>
+                            <t  t-if="line.product_id.pricetag_per_unit_quantity_text">
+                                <t t-esc="line.product_id.pricetag_per_unit_quantity_text"/> : <t t-esc="line.product_id.pricetag_per_unit_quantity_value"/>
+                            </t>
                         </div>
 
                         <!-- Barcode -->

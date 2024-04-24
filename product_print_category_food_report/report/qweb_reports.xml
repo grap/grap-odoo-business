@@ -8,24 +8,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <template id="report_assets_common" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/scss"
-                href="/product_print_category_food_report/static/css/common.scss" />
-            <link rel="stylesheet" type="text/less"
-                href="/product_print_category_food_report/static/css/font.less"/>
-            <link rel="stylesheet" type="text/scss"
-                href="/product_print_category_food_report/static/css/pricetag_base.scss" />
-            <link rel="stylesheet" type="text/scss"
-                href="/product_print_category_food_report/static/css/pricetag_01.scss" />
-            <link rel="stylesheet" type="text/scss"
-                href="/product_print_category_food_report/static/css/pricetag_02.scss" />
 
-<!-- Uncomment the following line to debug -->
+            <!-- Common styles for all pricetags -->
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/common.scss" />
+            <link rel="stylesheet" type="text/less" href="/product_print_category_food_report/static/css/font.less"/>
 
-            <link rel="stylesheet" type="text/scss"
-                href="/product_print_category_food_report/static/css/debug.scss" />
+            <!-- Specific styles for each pricetag -->
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_01.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_02.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_10.scss" />
+
+            <!-- Uncomment the following line to debug -->
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/debug.scss" />
 
         </xpath>
     </template>
-
 
 </odoo>

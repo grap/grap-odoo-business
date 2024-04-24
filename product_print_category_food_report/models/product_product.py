@@ -71,18 +71,34 @@ class ProductProduct(models.Model):
     def _compute_pricetag_organic_text(self):
         for product in self:
             res = ""
+            if not product.is_alimentary:
+                continue
+
+            if product.ingredient_origin_type:
+                if product.ingredient_origin_type == "fr":
+                    origin = _("France")
+                elif product.ingredient_origin_type == "eu":
+                    origin = _("EU")
+                elif product.ingredient_origin_type == "no_eu":
+                    origin = _("No EU")
+                else:
+                    origin = _("EU / No EU")
+                res += _("Origin of Ingredients: %s. " % (origin))
+
             # We need organic text only in weighed product
+            # for companies that are certified
             if (
                 product.uom_id.category_id.measure_type == "weight"
-                and product.is_alimentary is True
+                and product.company_id.certifier_organization_id
             ):
+
                 if product.organic_type in ["01_organic"]:
-                    if product.company_id.certifier_organization_id:
-                        res = _("Organic Product, certified by %s") % (
-                            product.company_id.certifier_organization_id.code
-                        )
+                    res += _("Organic Product, certified by %s. ") % (
+                        product.company_id.certifier_organization_id.code
+                    )
                 else:
-                    res = _("Not From Organic Farming")
+                    res += _("Not From Organic Farming. ")
+
             product.pricetag_organic_text = res
 
     pricetag_origin = fields.Char(
@@ -101,6 +117,7 @@ class ProductProduct(models.Model):
                 )
             elif product.state_id:
                 localization_info = product.state_id.name
+
             elif product.country_id:
                 localization_info = product.country_id.name
 
@@ -190,6 +207,10 @@ class ProductProduct(models.Model):
             product.pricetag_secondary_price_value = price
             product.pricetag_secondary_uom_text = uom_text
 
+    pricetag_per_unit_quantity_value = fields.Char(
+        compute="_compute_pricetag_per_unit_quantity_text"
+    )
+
     pricetag_per_unit_quantity_text = fields.Char(
         compute="_compute_pricetag_per_unit_quantity_text"
     )
@@ -197,22 +218,26 @@ class ProductProduct(models.Model):
     @api.depends("net_weight", "volume")
     def _compute_pricetag_per_unit_quantity_text(self):
         for product in self:
-            if product.net_weight > 1:
-                product.pricetag_per_unit_quantity_text = (
-                    _("Net Weight: %.3f kg") % product.net_weight
-                )
-            elif product.net_weight > 0:
-                product.pricetag_per_unit_quantity_text = _("Net Weight: %.0f gr") % (
-                    product.net_weight * 1000
-                )
-            elif product.volume > 1:
-                product.pricetag_per_unit_quantity_text = (
-                    _("Net Volume: %.3f L") % product.volume
-                )
+            if product.net_weight > 0:
+                product.pricetag_per_unit_quantity_text = _("Net Weight")
+                if product.net_weight > 1:
+                    product.pricetag_per_unit_quantity_value = (
+                        _("%.3f kg") % product.net_weight
+                    )
+                else:
+                    product.pricetag_per_unit_quantity_value = _("%.0f gr") % (
+                        product.net_weight * 1000
+                    )
             elif product.volume > 0:
-                product.pricetag_per_unit_quantity_text = _("Net Volume: %.0f mL") % (
-                    product.volume * 1000
-                )
+                product.pricetag_per_unit_quantity_text = _("Net Volume")
+                if product.volume > 1:
+                    product.pricetag_per_unit_quantity_value = (
+                        _("%.3f L") % product.volume
+                    )
+                else:
+                    product.pricetag_per_unit_quantity_value = _("%.0f mL") % (
+                        product.volume * 1000
+                    )
             else:
                 product.pricetag_per_unit_quantity_text = ""
 
