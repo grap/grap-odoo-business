@@ -22,6 +22,7 @@
     "demo": [
         "demo/certifier_organization.xml",
         "demo/product_label.xml",
+        "demo/res_company.xml",
     ],
     "images": [],
     "installable": True,
