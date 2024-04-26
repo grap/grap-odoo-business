@@ -11,7 +11,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <t t-call="web.basic_layout">
             <t t-foreach="category_data['lines']" t-as="line">
                 <t t-foreach="line.quantity" t-as="q">
-                    <div class="pricetag_product pricetag_10">
+                    <div t-att-class="'pricetag_product %s' % pricetag_name">
+                        <div class="margin_top" />
                         <div class="pricetag_left">
 
                             <!-- Product Name -->
@@ -94,6 +95,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <t t-call="product_print_category_food_report.qweb_component_barcode" />
                             </div>
                         </div>
+                        <div class="margin_bottom" />
                     </div>
                 </t>
             </t>

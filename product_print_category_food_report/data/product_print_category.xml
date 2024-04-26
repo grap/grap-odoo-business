@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="print_category_pricetag_01" model="product.print.category">
-        <field name="name">01 - Shelf Square Middle - 40x36mm</field>
+        <field name="name">01 - Shelf Square Middle - 42x38mm</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_01" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="print_category_pricetag_02" model="product.print.category">
-        <field name="name">02 - Shelf Square Small - 30x30mm</field>
+        <field name="name">02 - Shelf Square Small - 32x32mm</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_02" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
@@ -42,28 +42,46 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="print_category_pricetag_10" model="product.print.category">
-        <field name="name">10 - Shelf Rectangular - 76x31mm</field>
+        <field name="name">10 - Shelf Rectangular - 79x32mm</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_10" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
+            (4, ref('product.field_product_product__list_price')),
+            (4, ref('product.field_product_product__uom_id')),
+            (4, ref('product_net_weight.field_product_product__net_weight')),
+            (4, ref('product.field_product_product__volume')),
+            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
+
+            (4, ref('product.field_product_product__default_code')),
             (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
+            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
+
             (4, ref('product_origin.field_product_product__country_id')),
             (4, ref('product_origin.field_product_product__state_id')),
             (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
             (4, ref('product_origin.field_product_product__origin_description')),
             (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
+
+            (4, ref('product_label.field_product_product__label_ids')),
+            (4, ref('product_food.field_product_product__is_alimentary')),
+            (4, ref('product_food_certification.field_product_product__ingredient_origin_type')),
+            (4, ref('product_food_certification.field_product_product__is_uncertifiable')),
+
             ]"/>
     </record>
 
 
+    <record id="print_category_pricetag_11" model="product.print.category">
+        <field name="name">11 - Shelf Rectangular Litle Margin - 79x37mm</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_11" />
 
+    </record>
 
+    <record id="print_category_pricetag_12" model="product.print.category">
+        <field name="name">12 - Shelf Rectangular Middle Margin - 79x44mm</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_12" />
+
+    </record>
 
 
 

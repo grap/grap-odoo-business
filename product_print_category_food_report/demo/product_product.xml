@@ -71,10 +71,30 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ]"/>
         <field name="ingredient_origin_type" >eu_no_eu</field>
         <field name="country_id" ref="base.fr"/>
-        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_bourgogne"/>
         <field name="department_id" ref="l10n_fr_department.res_country_department_saoneetloire"/>
         <field name="maker_description">Le jardinier Glacier</field>
     </record>
 
+    <record id="product_with_pricetag_12" model="product.product">
+        <field name="name">Pricetag 12 - Antisèche blonde (75cl)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3770022113008</field>
+        <field name="default_code">VEV-000044</field>
+        <field name="list_price">6.30</field>
+        <field name="volume">0.75</field>
+        <field name="print_category_id" ref="print_category_pricetag_12"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="is_alcohol" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('product_food.label_alcool_grossesse')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
+        <field name="maker_description">L'écume du Guiers</field>
+    </record>
 
 </odoo>

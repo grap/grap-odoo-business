@@ -1,11 +1,15 @@
 .pricetag_10 {
     border: 1px solid black;
-    width:9.3cm;
-    height:3.8cm;
+    width: 9.3cm;
+    height: 3.8cm;
+
+    .margin_top, .margin_bottom {
+        display: none;
+    }
 
     .pricetag_left {
-        width : 5.50cm;
-        height:3.8cm;
+        width: 5.50cm;
+        height: 3.8cm;
 
         .product_name{
             height: 1.2cm;
