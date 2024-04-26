@@ -23,11 +23,6 @@ class ProductProduct(models.Model):
         ("05_not_alimentary", "Not Alimentary"),
     ]
 
-    certifier_organization_id = fields.Many2one(
-        comodel_name="certifier.organization",
-        string="Certifier Organization",
-    )
-
     ingredient_origin_type = fields.Selection(
         string="Origin of Ingredients",
         selection=_INGREDIENT_ORIGIN_TYPE_SELECTION,
