@@ -10,18 +10,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <xpath expr="." position="inside">
 
             <!-- Common styles for all pricetags -->
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/common.scss" />
-            <link rel="stylesheet" type="text/less" href="/product_print_category_food_report/static/css/font.less"/>
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/common.scss" />
+            <link rel="stylesheet" type="text/less" href="/product_print_category_food_report/static/src/scss/font.less"/>
 
             <!-- Specific styles for each pricetag -->
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_01.scss" />
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_02.scss" />
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_10.scss" />
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_11.scss" />
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/pricetag_12.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_01.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_02.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_10.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_11.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_12.scss" />
 
             <!-- Uncomment the following line to debug -->
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/css/debug.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/debug.scss" />
 
         </xpath>
     </template>

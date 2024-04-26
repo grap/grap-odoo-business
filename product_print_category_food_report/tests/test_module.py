@@ -11,10 +11,13 @@ class TestModule(TransactionCase):
         self.ProductPrintWizard = self.env["product.print.wizard"]
         self.categories = self.env["product.print.category"].search([])
         self.report = self.env.ref("product_print_category.pricetag")
+        self.products = self.env["product.product"].search(
+            [("name", "ilike", "%Pricetag%")]
+        )
 
     def test_render_qweb_pricetag(self):
         for category in self.categories:
-            self.product.print_category_id = category
+            self.products.write({"print_category_id": category.id})
 
             wizard = self.ProductPrintWizard.with_context(
                 active_model="product.print.category",
