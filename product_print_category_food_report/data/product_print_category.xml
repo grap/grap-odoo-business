@@ -10,64 +10,16 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="print_category_pricetag_01" model="product.print.category">
         <field name="name">Shelf Square Middle - 42x38mm (N°01)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_01" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product.field_product_product__uom_id')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-
-            (4, ref('product.field_product_product__default_code')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-        ]" />
     </record>
 
     <record id="print_category_pricetag_02" model="product.print.category">
         <field name="name">Shelf Square Small - 32x32mm (N°02)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_02" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product.field_product_product__uom_id')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-
-            (4, ref('product.field_product_product__default_code')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-        ]" />
     </record>
 
     <record id="print_category_pricetag_10" model="product.print.category">
         <field name="name">Shelf Rectangular - 79x32mm  (N°10)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_10" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product.field_product_product__uom_id')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-
-            (4, ref('product.field_product_product__default_code')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_food.field_product_product__is_alimentary')),
-            (4, ref('product_food_certification.field_product_product__ingredient_origin_type')),
-            (4, ref('product_food_certification.field_product_product__is_uncertifiable')),
-
-            ]"/>
     </record>
 
 
@@ -88,6 +40,54 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
 
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_01'),
+            ref('product_print_category_food_report.print_category_pricetag_02'),
+            ref('product_print_category_food_report.print_category_pricetag_10'),
+            ref('product_print_category_food_report.print_category_pricetag_11'),
+            ref('product_print_category_food_report.print_category_pricetag_12'),
+            ref('product_print_category_food_report.print_category_pricetag_20'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (5),
+                (4, ref('product.field_product_product__name')),
+                (4, ref('product.field_product_product__list_price')),
+                (4, ref('product.field_product_product__uom_id')),
+                (4, ref('product_net_weight.field_product_product__net_weight')),
+                (4, ref('product.field_product_product__volume')),
+                (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
+                (4, ref('product.field_product_product__default_code')),
+                (4, ref('product.field_product_product__barcode')),
+                (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
+            ]
+        }"/>
+    </function>
+
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_10'),
+            ref('product_print_category_food_report.print_category_pricetag_11'),
+            ref('product_print_category_food_report.print_category_pricetag_12'),
+            ref('product_print_category_food_report.print_category_pricetag_20'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (4, ref('product_origin.field_product_product__country_id')),
+                (4, ref('product_origin.field_product_product__state_id')),
+                (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
+                (4, ref('product_origin.field_product_product__origin_description')),
+                (4, ref('product_origin.field_product_product__maker_description')),
+                (4, ref('product_label.field_product_product__label_ids')),
+                (4, ref('product_food.field_product_product__is_alimentary')),
+                (4, ref('product_food_certification.field_product_product__ingredient_origin_type')),
+                (4, ref('product_food_certification.field_product_product__is_uncertifiable')),
+            ]
+        }"/>
+    </function>
 
 
 
