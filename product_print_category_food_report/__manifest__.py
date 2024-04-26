@@ -33,6 +33,7 @@
         "report/qweb_template_pricetag_02.xml",
         "report/qweb_template_pricetag_10.xml",
         "report/qweb_template_pricetag_11.xml",
+        "report/qweb_template_pricetag_12.xml",
         # "report/qweb_pricetag_bulk_long.xml",
         # "report/qweb_pricetag_bulk_square.xml",
         # "report/qweb_pricetag_counter.xml",
