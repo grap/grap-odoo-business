@@ -97,4 +97,23 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="maker_description">L'écume du Guiers</field>
     </record>
 
+    <record id="product_with_pricetag_20" model="product.product">
+        <field name="name">Pricetag 20 - Nem végétarien vrac (unité)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">2000000000008</field>
+        <field name="default_code">CDA-004395</field>
+        <field name="list_price">1.25</field>
+        <field name="net_weight">0.110</field>
+        <field name="print_category_id" ref="print_category_pricetag_20"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
+        <field name="maker_description">Belledonne</field>
+    </record>
+
 </odoo>
