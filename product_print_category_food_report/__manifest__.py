@@ -27,6 +27,7 @@
         "security/ir.model.access.csv",
         "report/qweb_reports.xml",
         "report/qweb_components.xml",
+        "report/qweb_template_pricetag_template_A.xml",
         "report/qweb_template_pricetag_01.xml",
         "report/qweb_template_pricetag_02.xml",
         "report/qweb_template_pricetag_10.xml",
