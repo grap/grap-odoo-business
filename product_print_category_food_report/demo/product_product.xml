@@ -57,5 +57,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="maker_description">Brasserie Stéphanoise</field>
     </record>
 
+    <record id="product_with_pricetag_11" model="product.product">
+        <field name="name">Pricetag 11 - Abricot Le jardinier glacier (550mL)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3760123952019</field>
+        <field name="default_code">DTB-002718</field>
+        <field name="list_price">8.20</field>
+        <field name="volume">0.55</field>
+        <field name="print_category_id" ref="print_category_pricetag_11"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_saoneetloire"/>
+        <field name="maker_description">Le jardinier Glacier</field>
+    </record>
+
 
 </odoo>
