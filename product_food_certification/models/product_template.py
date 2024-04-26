@@ -10,13 +10,6 @@ from .product_product import ProductProduct
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    certifier_organization_id = fields.Many2one(
-        comodel_name="certifier.organization",
-        string="Certifier Organization",
-        related="product_variant_ids.certifier_organization_id",
-        readonly=False,
-    )
-
     ingredient_origin_type = fields.Selection(
         string="Origin of Ingredients",
         selection=lambda self: self.env["product.product"]
