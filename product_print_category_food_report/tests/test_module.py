@@ -11,9 +11,6 @@ class TestModule(TransactionCase):
         self.ProductPrintWizard = self.env["product.print.wizard"]
         self.categories = self.env["product.print.category"].search([])
         self.report = self.env.ref("product_print_category.pricetag")
-        self.product = self.env.ref(
-            "product_print_category_food_report.organic_smoked_tofu"
-        )
 
     def test_render_qweb_pricetag(self):
         for category in self.categories:
