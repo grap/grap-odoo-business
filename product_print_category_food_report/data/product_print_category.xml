@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="print_category_pricetag_01" model="product.print.category">
-        <field name="name">01 - Shelf Square Middle - 42x38mm</field>
+        <field name="name">Shelf Square Middle - 42x38mm (N°01)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_01" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="print_category_pricetag_02" model="product.print.category">
-        <field name="name">02 - Shelf Square Small - 32x32mm</field>
+        <field name="name">Shelf Square Small - 32x32mm (N°02)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_02" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
@@ -42,7 +42,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="print_category_pricetag_10" model="product.print.category">
-        <field name="name">10 - Shelf Rectangular - 79x32mm</field>
+        <field name="name">Shelf Rectangular - 79x32mm  (N°10)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_10" />
         <field name="field_ids" eval="[
             (4, ref('product.field_product_product__name')),
@@ -72,15 +72,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
     <record id="print_category_pricetag_11" model="product.print.category">
-        <field name="name">11 - Shelf Rectangular Litle Margin - 79x37mm</field>
+        <field name="name">Shelf Rectangular Litle Margin - 79x37mm  (N°11)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_11" />
 
     </record>
 
     <record id="print_category_pricetag_12" model="product.print.category">
-        <field name="name">12 - Shelf Rectangular Middle Margin - 79x44mm</field>
+        <field name="name">Shelf Rectangular Middle Margin - 79x44mm  (N°12)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_12" />
+    </record>
 
+    <record id="print_category_pricetag_20" model="product.print.category">
+        <field name="name">Counter - 97x58mm  (N°20)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_20" />
     </record>
 
 
@@ -193,24 +197,5 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         ]" />
     </record>
 
-    <record id="category_pricetag_counter" model="product.print.category">
-        <field name="name">Counter pricetag - 55*94mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_counter" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-        ]" />
-    </record>
  -->
 </odoo>
