@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="qweb_template_pricetag_template_C">
+        <t t-call="web.basic_layout">
+            <t t-foreach="category_data['lines']" t-as="line">
+                <t t-foreach="line.quantity" t-as="q">
+                    <div t-att-class="'pricetag_product %s' % pricetag_name">
+                        <div class="margin_top" />
+                        <div class="margin_bottom" />
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
