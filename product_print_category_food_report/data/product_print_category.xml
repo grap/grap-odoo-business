@@ -39,6 +39,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="qweb_view_id" ref="qweb_template_pricetag_20" />
     </record>
 
+    <record id="print_category_pricetag_30" model="product.print.category">
+        <field name="name">Bulk - 54x105mm Applymage  (N°30)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_30" />
+    </record>
+
+    <record id="print_category_pricetag_31" model="product.print.category">
+        <field name="name">Bulk - 96x88mm (N°31)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_31" />
+    </record>
+
+    <record id="print_category_pricetag_32" model="product.print.category">
+        <field name="name">Bulk - 96x96mm (N°32)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_32" />
+    </record>
 
     <function model="product.print.category" name="write">
         <value model="product.print.category" eval="[
@@ -48,6 +62,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_11'),
             ref('product_print_category_food_report.print_category_pricetag_12'),
             ref('product_print_category_food_report.print_category_pricetag_20'),
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
             ]"
         />
         <value eval="{
@@ -72,6 +89,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_11'),
             ref('product_print_category_food_report.print_category_pricetag_12'),
             ref('product_print_category_food_report.print_category_pricetag_20'),
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
             ]"
         />
         <value eval="{
@@ -89,69 +109,20 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         }"/>
     </function>
 
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (4, ref('product_food.field_product_product__ingredients')),
+                (4, ref('product_food.field_product_product__allergen_ids')),
+                (4, ref('product_food.field_product_product__trace_allergen_ids')),
+            ]
+        }"/>
+    </function>
 
-
-<!--
-
-    <record id="category_pricetag_bulk_selling_applimage" model="product.print.category">
-        <field name="name">Bulk pricetag long Applimage - 52x101mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_bulk_long" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-        ]" />
-    </record>>
-
-    <record id="category_pricetag_bulk_selling" model="product.print.category">
-        <field name="name">Bulk pricetag square - 93x93mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_bulk_square" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-        ]" />
-    </record>
-
-    <record id="category_pricetag_square_large" model="product.print.category">
-        <field name="name">Carré large - 92x85mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_square_large" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_net_weight.field_product_product__net_weight')),
-            (4, ref('product.field_product_product__volume')),
-        ]" />
-    </record>
-
- -->
 </odoo>

@@ -11,12 +11,24 @@
         );
     }
 
-    .pricetag_left {
+    .pricetag_left, .pricetag_bottom_left {
         background-color: #ACF;
     }
 
-    .pricetag_right {
+    .pricetag_right, .pricetag_bottom_right {
+        background-color: #AFC;
+    }
+
+    .pricetag_top {
+        background-color: #FAC;
+    }
+
+    .pricetag_center {
         background-color: #FCA;
+    }
+
+    .pricetag_bottom {
+        background-color: #CAF;
     }
 
     .product_name {
