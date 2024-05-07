@@ -12,9 +12,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <group string="Settings">
-                    <field name="name"/>
+                    <field name="consignor_name"/>
                     <field name="account_suffix"/>
-                    <field name="rate"/>
+                    <field name="account_code"/>
+                    <field name="commission_rate"/>
                 </group>
                 <group string="Products Taxation" col="4">
                     <field name="is_vat_subject"/>

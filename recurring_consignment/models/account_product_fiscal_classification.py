@@ -17,7 +17,7 @@ class AccountProductFiscalClassification(models.Model):
     )
 
     # Constrains Section
-    @api.constrains("purchase_tax_ids", "sale_tax_ids", "consignor_partner_id")
+    @api.constrains("purchase_tax_ids", "consignor_partner_id")
     def _check_consignor_tax_ids(self):
         for fiscal_classification in self:
             if fiscal_classification.consignor_partner_id and len(

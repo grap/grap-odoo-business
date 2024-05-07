@@ -13,16 +13,28 @@ class ResCompany(models.Model):
 
     commission_product_id = fields.Many2one(
         comodel_name="product.product",
+        domain="[('detailed_type', '=', 'service')]",
         help="Used for the Recurring Consignment features."
         " Define the product that will be used to generate"
         " consignment invoices to consignors.",
     )
 
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
-        res._create_consignor_sequence()
-        return res
+    commission_deduction_journal_id = fields.Many2one(
+        comodel_name="account.journal",
+        domain="[('type', '=', 'general')]",
+        help="Miscellaneous Journal, used to generate an entry"
+        " that deducts the commission from the amount to be paid out.",
+    )
+
+    recurring_consignment_account_prefix = fields.Char(
+        help="Code used as prefix to generate account code of the consignors."
+    )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        companies = super().create(vals_list)
+        companies._create_consignor_sequence()
+        return companies
 
     def _create_consignor_sequence(self):
         ResPartner = self.env["res.partner"]

@@ -15,7 +15,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="max_date"/>
                 </group>
                 <group string="Consignors">
-                    <field name="wizard_line_ids" nolabel="1">
+                    <field name="wizard_line_ids" nolabel="1" colspan="2"  >
                         <tree editable="bottom" decoration-muted="move_line_qty == 0">
                             <field name="partner_id"/>
                             <field name="consignment_commission"/>

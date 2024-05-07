@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- INVOICE 1-->
+    <record id="customer_invoice_1" model="account.move">
+        <field name="company_id" ref="company"/>
+        <field name="partner_id" ref="partner_customer"/>
+        <field name="journal_id" ref="account_journal_sale"/>
+        <field name="move_type">out_invoice</field>
+        <field name="name">My Invoice #1</field>
+    </record>
+
+    <record id="customer_invoice_1_line_1" model="account.move.line">
+        <field name="move_id" ref="customer_invoice_1"/>
+        <field name="account_id" ref="account_consignor_1"/>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_5_A"/>
+        <field name="quantity">1</field>
+        <field name="price_unit">10000</field>
+    </record>
+
+    <record id="customer_invoice_1_line_2" model="account.move.line">
+        <field name="move_id" ref="customer_invoice_1"/>
+        <field name="account_id" ref="account_consignor_1"/>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_20_C"/>
+        <field name="quantity">1</field>
+        <field name="price_unit">100</field>
+    </record>
+
+    <!-- INVOICE 2-->
+    <record id="customer_invoice_2" model="account.move">
+        <field name="company_id" ref="company"/>
+        <field name="partner_id" ref="partner_customer"/>
+        <field name="journal_id" ref="account_journal_sale"/>
+        <field name="move_type">out_invoice</field>
+        <field name="name">My Invoice #2</field>
+
+    </record>
+
+    <record id="customer_invoice_2_line_1" model="account.move.line">
+        <field name="move_id" ref="customer_invoice_2"/>
+        <field name="product_id" ref="consigned_product_consignor_1_vat_5_A"/>
+        <field name="price_unit">10</field>
+        <field name="quantity">50</field>
+    </record>
+
+</odoo>

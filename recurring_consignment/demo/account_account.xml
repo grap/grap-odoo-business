@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="account_receivable" model="account.account">
+        <field name="name">Demo Account Receivable</field>
+        <field name="code">411</field>
+        <field name="reconcile" eval="True"/>
+        <field name="account_type">asset_receivable</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_payable" model="account.account">
+        <field name="name">Demo Account Payable</field>
+        <field name="code">401</field>
+        <field name="reconcile" eval="True"/>
+        <field name="account_type">liability_payable</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_consignor_1" model="account.account">
+        <field name="name">Demo Account For Consignor #1</field>
+        <field name="code">467CNS1</field>
+        <field name="reconcile" eval="True"/>
+        <field name="account_type">income_other</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_consignor_2" model="account.account">
+        <field name="name">Demo Account For Consignor #2</field>
+        <field name="code">467CNS2</field>
+        <field name="reconcile" eval="True"/>
+        <field name="account_type">income_other</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_income_commission" model="account.account">
+        <field name="name">Commission Account</field>
+        <field name="code">706</field>
+        <field name="account_type">income</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_vat_received" model="account.account">
+        <field name="name">VAT Received</field>
+        <field name="code">44571</field>
+        <field name="account_type">income</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+</odoo>

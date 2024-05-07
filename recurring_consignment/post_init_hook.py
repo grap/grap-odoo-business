@@ -6,7 +6,6 @@ from odoo import SUPERUSER_ID, api
 
 
 def create_consignor_sequence(cr, registry):
-    with api.Environment.manage():
-        env = api.Environment(cr, SUPERUSER_ID, {})
-        companies = env["res.company"].search([])
-        companies._create_consignor_sequence()
+    env = api.Environment(cr, SUPERUSER_ID, {})
+    companies = env["res.company"].search([])
+    companies._create_consignor_sequence()

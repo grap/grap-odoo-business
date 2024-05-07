@@ -14,12 +14,13 @@ class ProductPricelist(models.Model):
     )
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        pricelist = super().create(vals)
-        if pricelist.consignment_pricelist_id:
-            pricelist._consignmment_update_multi()
-        return pricelist
+    @api.model_create_multi
+    def create(self, vals_list):
+        pricelists = super().create(vals_list)
+        pricelists.filtered(
+            lambda x: x.consignment_pricelist_id
+        )._consignmment_update_multi()
+        return pricelists
 
     def write(self, vals):
         res = super().write(vals)

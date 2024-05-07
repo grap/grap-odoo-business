@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<!-- oca-hooks: disable=xml-duplicate-record-id -->
+
+<odoo>
+
+    <record id="vat_5_include" model="account.tax">
+        <field name="name">Tax 05% (Price Incl.)</field>
+        <field name="amount_type">percent</field>
+        <field name="amount">5.0</field>
+        <field name="price_include" eval="True" />
+        <field name="company_id" ref="company" />
+        <field name="country_id" ref="base.fr"/>
+    </record>
+
+    <!-- Tax 20% -->
+    <record id="vat_20_exclude_repartition_invoice_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="vat_20_exclude_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="vat_20_exclude_repartition_refund_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="vat_20_exclude_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="vat_20_exclude" model="account.tax">
+        <field name="name">Tax 20% (Price Excl.)</field>
+        <field name="amount_type">percent</field>
+        <field name="amount">20.0</field>
+        <field name="price_include" eval="False" />
+        <field name="company_id" ref="company" />
+        <field name="country_id" ref="base.fr"/>
+        <field name="invoice_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.vat_20_exclude_repartition_invoice_base')),
+            Command.link(ref('recurring_consignment.vat_20_exclude_repartition_invoice_tax')),
+        ]"/>
+        <field name="refund_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.vat_20_exclude_repartition_refund_base')),
+            Command.link(ref('recurring_consignment.vat_20_exclude_repartition_refund_tax')),
+        ]"/>
+    </record>
+
+    <record id="vat_20_exclude_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_vat_received"/>
+    </record>
+
+    <record id="vat_20_exclude_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_vat_received"/>
+    </record>
+
+
+    <!-- Consignor 1: Tax 05% -->
+    <record id="tax_5_consignor_1_repartition_invoice_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="tax_5_consignor_1_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="tax_5_consignor_1_repartition_refund_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="tax_5_consignor_1_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="tax_5_consignor_1" model="account.tax">
+        <field name="name">Tax 05% (Price Excl.) (Consignor 1)</field>
+        <field name="amount">5.0</field>
+        <field name="amount_type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="company_id" ref="company" />
+        <field name="country_id" ref="base.fr"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="invoice_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.tax_5_consignor_1_repartition_invoice_base')),
+            Command.link(ref('recurring_consignment.tax_5_consignor_1_repartition_invoice_tax')),
+        ]"/>
+        <field name="refund_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.tax_5_consignor_1_repartition_refund_base')),
+            Command.link(ref('recurring_consignment.tax_5_consignor_1_repartition_refund_tax')),
+        ]"/>
+    </record>
+
+    <record id="tax_5_consignor_1_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_consignor_1"/>
+    </record>
+
+    <record id="tax_5_consignor_1_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_consignor_1"/>
+    </record>
+
+    <!-- Consignor 1: Tax 20% -->
+    <record id="tax_20_consignor_1_repartition_invoice_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="tax_20_consignor_1_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="tax_20_consignor_1_repartition_refund_base" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">base</field>
+    </record>
+
+    <record id="tax_20_consignor_1_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="factor_percent">100</field>
+        <field name="repartition_type">tax</field>
+    </record>
+
+    <record id="tax_20_consignor_1" model="account.tax">
+        <field name="name">Tax 20% (Price Excl.) (Consignor 1)</field>
+        <field name="amount">20.0</field>
+        <field name="amount_type">percent</field>
+        <field name="price_include" eval="False" />
+        <field name="company_id" ref="company" />
+        <field name="country_id" ref="base.fr"/>
+        <field name="consignor_partner_id" ref="consignor_1"/>
+        <field name="invoice_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.tax_20_consignor_1_repartition_invoice_base')),
+            Command.link(ref('recurring_consignment.tax_20_consignor_1_repartition_invoice_tax')),
+        ]"/>
+        <field name="refund_repartition_line_ids" eval="[
+            Command.link(ref('recurring_consignment.tax_20_consignor_1_repartition_refund_base')),
+            Command.link(ref('recurring_consignment.tax_20_consignor_1_repartition_refund_tax')),
+        ]"/>
+    </record>
+
+    <record id="tax_20_consignor_1_repartition_invoice_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_consignor_1"/>
+    </record>
+
+    <record id="tax_20_consignor_1_repartition_refund_tax" model="account.tax.repartition.line">
+        <field name="account_id" ref="account_consignor_1"/>
+    </record>
+
+</odoo>

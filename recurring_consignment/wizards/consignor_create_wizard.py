@@ -12,17 +12,21 @@ class ConsignorCreateWizard(models.TransientModel):
     _description = "Consignor Creation Wizard"
 
     # Setting Section
-    def _get_account_prefix(self):
-        self.ensure_one()
-        # For the time being, we have no other cases
-        return "467"
+    def _default_account_prefix(self):
+        return self.env.company.recurring_consignment_account_prefix
 
     # Columns Section
-    name = fields.Char(string="Consignor Name", required=True)
+    consignor_name = fields.Char(required=True)
 
-    account_suffix = fields.Char(string="Account Suffix", required=True)
+    account_prefix = fields.Char(
+        readonly=True, required=True, default=lambda x: x._default_account_prefix()
+    )
 
-    rate = fields.Float(string="Commission Rate")
+    account_suffix = fields.Char(required=True)
+
+    account_code = fields.Char(compute="_compute_account_code")
+
+    commission_rate = fields.Float()
 
     is_vat_subject = fields.Boolean(string="Subject to VAT", default=True)
 
@@ -35,6 +39,13 @@ class ConsignorCreateWizard(models.TransientModel):
     has_vat_100 = fields.Boolean(string="VAT 10,0%")
 
     has_vat_200 = fields.Boolean(string="VAT 20,0%")
+
+    @api.depends("account_prefix", "account_suffix")
+    def _compute_account_code(self):
+        for wizard in self:
+            wizard.account_code = (
+                f"{wizard.account_prefix or ''}{wizard.account_suffix or ''}"
+            )
 
     @api.onchange("is_vat_subject")
     def onchange_is_vat_subject(self):
@@ -127,11 +138,11 @@ class ConsignorCreateWizard(models.TransientModel):
     def _prepare_account(self):
         self.ensure_one()
         return {
-            "name": self.name,
-            "company_id": self.env.user.company_id.id,
-            "code": f"{self._get_account_prefix()}{self.account_suffix}",
-            "reconcile": False,
-            "user_type_id": self.env.ref("account.data_account_type_other_income").id,
+            "name": self.consignor_name,
+            "company_id": self.env.company.id,
+            "code": self.account_code,
+            "reconcile": True,
+            "account_type": "income_other",
         }
 
     def _prepare_tax(self, sequence, account, partner, amount):
@@ -142,8 +153,8 @@ class ConsignorCreateWizard(models.TransientModel):
             partner,
             amount,
             self.is_vat_subject,
-            self.name,
-            self.env.user.company_id,
+            self.consignor_name,
+            self.env.company,
         )
 
     @api.model
@@ -161,9 +172,16 @@ class ConsignorCreateWizard(models.TransientModel):
             "description": is_vat_subject and f"{amount:.1f}%" or "0%",
             "amount": is_vat_subject and amount or 0.0,
             "amount_type": "percent",
-            "price_include": True,  # for the time being, we have no B2B company with consignors
-            "account_id": account.id,
-            "refund_account_id": account.id,
+            # for the time being, we have no B2B company with consignors
+            "price_include": True,
+            "invoice_repartition_line_ids": [
+                (0, 0, {"repartition_type": "base"}),
+                (0, 0, {"repartition_type": "tax", "account_id": account.id}),
+            ],
+            "refund_repartition_line_ids": [
+                (0, 0, {"repartition_type": "base"}),
+                (0, 0, {"repartition_type": "tax", "account_id": account.id}),
+            ],
             "consignor_partner_id": partner.id,
         }
 
@@ -174,8 +192,8 @@ class ConsignorCreateWizard(models.TransientModel):
             partner,
             tax,
             self.is_vat_subject,
-            self.name,
-            self.env.user.company_id,
+            self.consignor_name,
+            self.env.company,
         )
 
     def _prepare_fiscal_classification_model(
@@ -196,12 +214,9 @@ class ConsignorCreateWizard(models.TransientModel):
     def _prepare_partner(self, sequence, account):
         self.ensure_one()
         return {
-            "name": f"{sequence} - {self.name}",
+            "name": f"{sequence} - {self.consignor_name}",
+            "is_company": True,
             "consignment_account_id": account.id,
-            "property_account_receivable_id": account.id,
-            "property_account_payable_id": account.id,
-            "consignment_commission": self.rate,
+            "consignment_commission": self.commission_rate,
             "is_consignor": True,
-            "customer": False,
-            "supplier": True,
         }

@@ -19,10 +19,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 </div>
             </xpath>
             <field name="supplier_taxes_id" position="before">
-                <field name="consignor_partner_id" groups="recurring_consignment.group_consignment_user"/>
+                <field name="consignor_partner_id" />
             </field>
         </field>
     </record>
+
+<!--     groups="recurring_consignment.group_consignment_user" -->
 
     <record id="view_product_template_search" model="ir.ui.view">
         <field name="model">product.template</field>

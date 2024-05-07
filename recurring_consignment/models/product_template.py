@@ -13,7 +13,6 @@ class ProductTemplate(models.Model):
     consignor_partner_id = fields.Many2one(
         string="Consignor",
         comodel_name="res.partner",
-        old_name="consignor_id",
         domain="[('is_consignor', '=', True)]",
     )
 
@@ -31,6 +30,13 @@ class ProductTemplate(models.Model):
     # Constrains section
     @api.constrains("consignor_partner_id", "fiscal_classification_id")
     def _check_consignor_fiscal_classification(self):
+        # Note: when writting correct (new_consignor, new_fiscal_classification)
+        # on a product.product, it will realize 2 write on product.template
+        # a field then the other field. As a result, the constrains will
+        # be raised.
+        # Looks like a new weird behaviour of the ORM in V16.
+        # Let's wait if it's a blocking point, and if it requires to
+        # write alternative check.
         for product in self:
             if (
                 product.consignor_partner_id
@@ -38,12 +44,13 @@ class ProductTemplate(models.Model):
             ):
                 raise ValidationError(
                     _(
-                        "The product %s %s has inconsistent consignor and"
-                        " fiscal classification"
-                        % (
-                            product.consignor_partner_id.name,
-                            product.fiscal_classification_id.name,
-                        )
+                        "The product '{product_name} has inconsistent"
+                        " consignor ({consignor_name}) and"
+                        " fiscal classification ({classification_name})."
+                    ).format(
+                        product_name=product.name,
+                        consignor_name=product.consignor_partner_id.name,
+                        classification_name=product.fiscal_classification_id.name,
                     )
                 )
 
@@ -67,8 +74,8 @@ class ProductTemplate(models.Model):
             item.standard_price = 0
             item.seller_ids = False
             vals = {
-                "pricelist_ids": [],
-                "name": item.consignor_partner_id.id,
+                # "pricelist_ids": [],
+                "partner_id": item.consignor_partner_id.id,
                 "sequence": 1,
                 "company_id": item.company_id.id,
                 "delay": 1,
@@ -97,7 +104,7 @@ class ProductTemplate(models.Model):
                 )
             if len(
                 template.seller_ids.filtered(
-                    lambda x: x.name != template.consignor_partner_id
+                    lambda x, template=template: x.name != template.consignor_partner_id
                 )
             ):
                 raise ValidationError(
@@ -108,18 +115,21 @@ class ProductTemplate(models.Model):
                 )
 
     # Overload Section
-    @api.model
-    def create(self, vals):
-        vals = self._update_vals_consignor(vals)
-        res = super().create(vals)
-        if vals.get("consignor_partner_id", False):
-            self.env["product.pricelist"].consignmment_create([res.id])
-        return res
+    @api.model_create_multi
+    def create(self, vals_list):
+        templates = super().create(vals_list)
+
+        # Handle pricelist exceptions
+        self.env["product.pricelist"].consignmment_create(
+            templates.filtered(lambda x: x.consignor_partner_id).ids
+        )
+        return templates
 
     def write(self, vals):
-        ProductPricelist = self.env["product.pricelist"]
         self._check_consignor_changes(vals)
-        vals = self._update_vals_consignor(vals)
+
+        # Handle pricelist exceptions
+        ProductPricelist = self.env["product.pricelist"]
         drop_template_ids = []
         new_template_ids = []
         if "consignor_partner_id" in vals:
@@ -136,29 +146,22 @@ class ProductTemplate(models.Model):
             ProductPricelist.consignmment_drop(drop_template_ids)
         if new_template_ids:
             ProductPricelist.consignmment_create(new_template_ids)
-        if vals.get("recurring_consignment", False):
-            for template in self:
-                if template.recurring_consignment != vals.get(
-                    "recurring_consignment", False
-                ):
-                    raise ValidationError(
-                        _(
-                            "You can not change the value of the field"
-                            " 'Is Consignment Commission'. You can disable"
-                            " this product and create a new one properly."
-                        )
-                    )
+
         return super().write(vals)
 
     def _check_consignor_changes(self, vals):
-        AccountInvoiceLine = self.env["account.invoice.line"]
+        """Prevent to change the consignor of the product if the product has
+        been sold, via invoices.
+        Overload this function in extra modules. (purchase, sale, point_of_sale, etc...)
+        """
+        AccountMoveLine = self.env["account.move.line"]
         if vals.get("consignor_partner_id", False):
             for template in self:
                 product_ids = template.product_variant_ids.ids
                 if template.consignor_partner_id.id != vals.get(
                     "consignor_partner_id", False
                 ):
-                    invoice_lines = AccountInvoiceLine.search(
+                    invoice_lines = AccountMoveLine.search(
                         [("product_id", "in", product_ids)]
                     )
                     if len(invoice_lines):
@@ -171,12 +174,10 @@ class ProductTemplate(models.Model):
                             )
                         )
 
-    @api.model
-    def _update_vals_consignor(self, vals):
-        ResPartner = self.env["res.partner"]
-        if vals.get("consignor_partner_id", False):
-            partner = ResPartner.browse(vals.get("consignor_partner_id"))
-            vals["purchase_ok"] = True
-            vals["property_account_income_id"] = partner.consignment_account_id.id
-            vals["property_account_expense_id"] = partner.consignment_account_id.id
-        return vals
+    def _get_product_accounts(self):
+        if self.consignor_partner_id:
+            return {
+                "income": self.consignor_partner_id.consignment_account_id,
+                "expense": self.consignor_partner_id.consignment_account_id,
+            }
+        return super()._get_product_accounts()

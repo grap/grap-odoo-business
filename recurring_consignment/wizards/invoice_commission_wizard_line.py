@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import Command, _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -47,27 +47,36 @@ class InvoiceCommissionWizardLine(models.TransientModel):
             wizard_line.move_line_qty = len(wizard_line._get_move_lines())
 
     # Prepare Section
-    def _prepare_invoice(self):
+    def _prepare_invoice_vals(self):
         self.ensure_one()
-        partner = self.partner_id
-        return {
-            "partner_id": partner.id,
-            "date_invoice": self.max_date,
+        AccountMoveLine = self.env["account.move.line"]
+
+        invoice_vals = {
+            "partner_id": self.partner_id.id,
+            "invoice_date": self.max_date,
             "is_consignment_invoice": True,
-            "type": "out_invoice",
-            "account_id": self.consignment_account_id.id,
-            "fiscal_position_id": partner.property_account_position_id.id,
+            "move_type": "out_invoice",
+            "invoice_line_ids": [],
         }
 
-    def _create_invoice_line(self, key, lines, invoice):
-        # [MIGRATION] Odoo >13
-        # remove call of _onchange_product_id() and refactor this function
-        self.ensure_one()
-        AccountInvoiceLine = self.env["account.invoice.line"]
+        # Categorize Move Lines to be commissioned
+        all_lines = self._get_move_lines()
+        grouped_lines = {}
+        for line in all_lines:
+            key = self._get_line_key(line)
+            grouped_lines.setdefault(key, AccountMoveLine)
+            grouped_lines[key] |= line
 
-        rate = self.partner_id.consignment_commission
-        product = self.partner_id.company_id.commission_product_id
-        if not product:
+        # Add Commission lines vals
+        for key, lines in grouped_lines.items():
+            line_vals = self._prepare_invoice_line_vals(key, lines)
+            invoice_vals["invoice_line_ids"].append(Command.create(line_vals))
+
+        return invoice_vals
+
+    def _prepare_invoice_line_vals(self, key, lines):
+        commission_product = self.partner_id.company_id.commission_product_id
+        if not commission_product:
             raise ValidationError(
                 _(
                     "you can not create a consignment invoice because you"
@@ -77,61 +86,53 @@ class InvoiceCommissionWizardLine(models.TransientModel):
                 % self.partner_id.company_id.name
             )
 
+        # compute Unit price, based on product line to commission
         total_credit = 0
-        for line in lines:
+        for line in lines.filtered(lambda x: not x.tax_line_id):
             total_credit += line.credit - line.debit
 
-        price_unit = total_credit * rate / 100
+        price_unit = total_credit * self.consignment_commission / 100
 
-        vals = {
-            "invoice_id": invoice.id,
-            "product_id": product.id,
-            "account_id": product.property_account_income_id.id,
-            "quantity": 1,
-            "price_unit": price_unit,
-            "name": _(
-                "Commission on Sale or Refunds\n"
-                "(Rate : %.2f %%; Base : %.2f € ; Period %s-%s)"
-            )
-            % (rate, total_credit, key[0], key[1]),
-        }
-
-        invoice_line = AccountInvoiceLine.create(vals)
-        invoice_line._onchange_product_id()
-
-        # Compute price, depending on the tax settings
-        taxes = invoice_line.invoice_line_tax_ids
+        # Handle correct computaton of Price Unit, depending on
+        # if the product is vat excl or vat Incl.
+        taxes = commission_product.taxes_id
         if taxes:
             if len(taxes) != 1:
                 raise ValidationError(
                     _(
                         "Incorrect fiscal settings block the possibility"
-                        " to generate commission invoices : Too many taxes %s"
+                        " to generate commission invoices:"
+                        " Too many taxes %(tax_names)s",
+                        tax_names=", ".join(taxes.mapped("name")),
                     )
-                    % (", ".join(taxes.mapped("name")))
                 )
-
-            tax = taxes[0]
-            if tax.amount_type != "percent":
+            if taxes[0].amount_type != "percent":
                 raise ValidationError(
                     _(
                         "Incorrect fiscal settings block the possibility"
                         " to generate commission invoices : Incorrect tax type"
-                        " on the tax %s"
+                        " on the tax %(tax_name)s",
+                        tax_name=taxes[0].name,
                     )
-                    % (tax.name)
                 )
+            if taxes[0].price_include:
+                price_unit = price_unit * (100 + taxes[0].amount) / 100
 
-            # Rewrite name and price_unit, because on change erased correct values
-            if tax.price_include:
-                invoice_line.price_unit = price_unit * (100 + tax.amount) / 100
-            else:
-                invoice_line.price_unit = price_unit
-        else:
-            invoice_line.price_unit = price_unit
-
-        invoice_line.name = vals["name"]
-        return invoice_line
+        return {
+            "product_id": commission_product.id,
+            "quantity": 1,
+            "price_unit": price_unit,
+            "name": _(
+                "Commission on Sale or Refunds\n"
+                "(Rate : %(rate).2f %%; Base : %(total_credit).2f € ;"
+                " Period %(month)s-%(year)s)",
+                rate=self.partner_id.consignment_commission,
+                total_credit=total_credit,
+                month=key[0],
+                year=key[1],
+            ),
+            "consignment_invoice_line_ids": [Command.link(line.id) for line in lines],
+        }
 
     # Private Section
     @api.model
@@ -146,22 +147,8 @@ class InvoiceCommissionWizardLine(models.TransientModel):
         if not (partner and max_date):
             return []
 
-        AccountInvoice = self.env["account.invoice"]
         AccountJournal = self.env["account.journal"]
         AccountMoveLine = self.env["account.move.line"]
-
-        # Get Lines to ignore
-        ignore_move_line_ids = (
-            AccountInvoice.search(
-                [
-                    ("is_consignment_invoice", "=", True),
-                    ("partner_id", "=", partner.id),
-                ]
-            )
-            .mapped("move_id.line_ids")
-            .ids
-        )
-
         journals = AccountJournal.search([("type", "in", ["sale", "sale_refund"])])
 
         # Get lines to commission
@@ -169,12 +156,10 @@ class InvoiceCommissionWizardLine(models.TransientModel):
             ("date", "<=", max_date),
             ("account_id", "=", partner.consignment_account_id.id),
             ("journal_id", "in", journals.ids),
-            ("consignment_invoice_id", "=", False),
-            ("id", "not in", ignore_move_line_ids),
+            ("consignment_invoice_line_id", "=", False),
+            ("parent_state", "=", "posted"),
         ]
-        res = AccountMoveLine.search(
-            domain, order="date, move_id, tax_ids, tax_line_id"
-        )
+        res = AccountMoveLine.search(domain, order="date, move_id, tax_line_id")
         return res
 
     def _get_move_lines(self):

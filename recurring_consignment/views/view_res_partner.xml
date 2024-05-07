@@ -11,36 +11,32 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="account.view_partner_property_form"/>
         <field name="arch" type="xml">
-            <field name="parent_id" position="before">
-                <field name="is_consignor" groups="recurring_consignment.group_consignment_manager"/>
-                <label for="is_consignor" groups="recurring_consignment.group_consignment_manager"/>
+            <field name="property_account_payable_id" position="after">
+                <field name="consignment_account_id" groups="recurring_consignment.group_consignment_manager"
+                    attrs="{'invisible': [('is_consignor', '=', False)]}" />
             </field>
-            <xpath expr="//notebook/page[@name='accounting']/group" position="before">
-                <group string="Consignment" attrs="{'invisible': [('is_consignor','=', False)]}" colspan="4" col="4">
-                    <field name="consignment_account_id" groups="recurring_consignment.group_consignment_manager" colspan="4"/>
-                    <field name="consignment_commission" groups="recurring_consignment.group_consignment_user"/>
-                    <button name="%(action_invoice_commission_wizard)d"
-                        string="Make Commissions Invoice" type="action"
-                        groups="recurring_consignment.group_consignment_user"
-                        icon="fa-euro"
-                        colspan="2"/>
-                </group>
-            </xpath>
+            <group name="purchase" position="inside">
+                <field name="is_consignor" invisible="1"/>
+                <field name="consignment_commission" attrs="{'invisible': [('is_consignor', '=', False)]}"
+                    groups="recurring_consignment.group_consignment_user"/>
+            </group>
         </field>
     </record>
 
     <record id="view_res_partner_tree" model="ir.ui.view">
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <tree decoration-muted="is_consignor==False" decoration-danger="consignment_commission == 0">
+            <tree editable="bottom" create="false"
+                decoration-muted="is_consignor==False" decoration-danger="consignment_commission == 0">
                 <field name="name" readonly="1"/>
-                <field name="is_consignor" groups="recurring_consignment.group_consignment_manager"/>
-                <field name="consignment_commission" groups="recurring_consignment.group_consignment_user"/>
-                <field name="consignment_account_id" groups="recurring_consignment.group_consignment_manager"/>
+                <field name="is_consignor" invisible="1"/>
+                <field name="consignment_commission"/>
+                <field name="consignment_account_id" readonly="1"/>
                 <button name="%(action_invoice_commission_wizard)d"
                     string="Make Commissions Invoice" type="action"
-                    icon="fa-euro"
-                    groups="recurring_consignment.group_consignment_user" attrs="{'invisible': [('is_consignor','=', False)]}"/>
+                    class="float-end btn-secondary"
+                    groups="recurring_consignment.group_consignment_user"
+                    attrs="{'invisible': [('is_consignor','=', False)]}"/>
             </tree>
         </field>
     </record>
@@ -70,12 +66,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="action_partner_mass_commission" model="ir.actions.act_window">
         <field name="name">Create Commission Invoices</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">invoice.commission.wizard</field>
-        <field name="binding_model">res.partner</field>
         <field name="view_mode">form</field>
-        <field name="multi">True</field>
         <field name="target">new</field>
-        <field name="key2">client_action_multi</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">list</field>
     </record>
 
 </odoo>

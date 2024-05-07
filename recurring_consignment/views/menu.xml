@@ -9,7 +9,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <menuitem id="menu_consignment"
         name="Consignment"
-        parent="account.menu_finance" sequence="3"
+        parent="account.menu_finance_payables" sequence="300"
         groups="recurring_consignment.group_consignment_user"/>
 
 </odoo>

@@ -10,16 +10,19 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     # Columns Section
-    is_consignor = fields.Boolean(string="Is Consignor")
+    is_consignor = fields.Boolean(readonly=True)
 
-    consignment_commission = fields.Float(string="Commission Rate")
+    consignment_commission = fields.Float(string="Commission Rate", tracking=True)
 
     consignment_account_id = fields.Many2one(
-        string="Consignment Account", comodel_name="account.account", readonly=True
+        string="Consignment Account",
+        comodel_name="account.account",
+        readonly=True,
+        tracking=True,
     )
 
     consignor_fiscal_classification_ids = fields.One2many(
-        string="Fiscal Classifications",
+        string="Consignor Fiscal Classifications",
         comodel_name="account.product.fiscal.classification",
         inverse_name="consignor_partner_id",
         readonly=True,
@@ -46,70 +49,14 @@ class ResPartner(models.Model):
                         )
                     )
 
-    # Overload Section
-    @api.model
-    def create(self, vals):
-        vals = self._prepare_vals_consignor(vals)
-        return super().create(vals)
-
-    def write(self, vals):
-        self._prevent_uncheck_is_consignor(vals)
-        vals = self._prevent_change_is_consignor(vals)
-        return super().write(vals)
-
-    # Custom Section
-    @api.model
-    def _prepare_vals_consignor(self, vals):
-        if vals.get("is_consignor", False):
-            vals.update(
-                {
-                    "property_account_payable_id": vals.get(
-                        "consignment_account_id", False
-                    ),
-                    "property_account_receivable_id": vals.get(
-                        "consignment_account_id", False
-                    ),
-                }
-            )
-        return vals
-
-    def _prevent_uncheck_is_consignor(self, vals):
-        """prevent possibility to uncheck is_consignor for partners"""
-        if not vals.get("is_consignor", True) and any(self.mapped("is_consignor")):
-            raise UserError(
-                _(
-                    "You can not unset consignor setting on partner.\n"
-                    " Please create a new one if you want to do so."
-                )
-            )
-
-    def _prevent_change_is_consignor(self, vals):
-        """prevent to write incorrect values for consignors"""
-        if any(self.mapped("is_consignor")):
-            if len(self) == 1:
-                vals.pop("property_account_payable_id", False)
-                vals.pop("property_account_receivable_id", False)
-                if "consignment_account_id" in vals:
-                    vals.update(
-                        {
-                            "property_account_payable_id": vals.get(
-                                "consignment_account_id", False
-                            ),
-                            "property_account_receivable_id": vals.get(
-                                "consignment_account_id", False
-                            ),
-                        }
-                    )
-            elif {
-                "property_account_payable_id",
-                "property_account_receivable_id",
-                "consignment_account_id",
-            } & set(vals.keys()):
-                raise UserError(
-                    _(
-                        "You can not change this settings ("
-                        " Accounting Properties) for many partners if some"
-                        " of them are consignors."
-                    )
-                )
-        return vals
+    # TODO prevent check and uncheck. (only via wizard is possible)
+    # # Overload Section
+    # def write(self, vals):
+    #     if not vals.get("is_consignor", True) and any(self.mapped("is_consignor")):
+    #         raise UserError(
+    #             _(
+    #                 "You can not unset consignor setting on partner.\n"
+    #                 " Please create a new one if you want to do so."
+    #             )
+    #         )
+    #     return super().write(vals)
