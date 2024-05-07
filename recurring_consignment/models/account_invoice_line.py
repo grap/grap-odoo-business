@@ -11,7 +11,6 @@ class AccountInvoiceLine(models.Model):
 
     @api.constrains("product_id", "company_id")
     def _check_invoice_line_recurring_consignment(self):
-
         for line in self:
             commission_product_id = line.company_id.commission_product_id
             if not commission_product_id:

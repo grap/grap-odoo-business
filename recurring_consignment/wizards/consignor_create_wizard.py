@@ -132,9 +132,7 @@ class ConsignorCreateWizard(models.TransientModel):
         return {
             "name": self.name,
             "company_id": self.env.user.company_id.id,
-            "code": "{prefix}{suffix}".format(
-                prefix=self._get_account_prefix(), suffix=self.account_suffix
-            ),
+            "code": f"{self._get_account_prefix()}{self.account_suffix}",
             "reconcile": False,
             "user_type_id": self.env.ref("account.data_account_type_other_income").id,
         }
@@ -164,9 +162,7 @@ class ConsignorCreateWizard(models.TransientModel):
                 name=partner_name,
             ),
             "company_id": company.id,
-            "description": is_vat_subject
-            and "{amount:.1f}%".format(amount=amount)
-            or "0%",
+            "description": is_vat_subject and f"{amount:.1f}%" or "0%",
             "amount": is_vat_subject and amount or 0.0,
             "amount_type": "percent",
             "price_include": True,  # for the time being, we have no B2B company with consignors
@@ -205,10 +201,7 @@ class ConsignorCreateWizard(models.TransientModel):
     def _prepare_partner(self, sequence, account):
         self.ensure_one()
         return {
-            "name": "{sequence} - {name}".format(
-                sequence=sequence,
-                name=self.name,
-            ),
+            "name": f"{sequence} - {self.name}",
             "consignment_account_id": account.id,
             "property_account_receivable_id": account.id,
             "property_account_payable_id": account.id,
