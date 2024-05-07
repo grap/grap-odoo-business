@@ -12,7 +12,6 @@ class ConsignorCreateWizard(models.TransientModel):
     _description = "Consignor Creation Wizard"
 
     # Setting Section
-    @api.multi
     def _get_account_prefix(self):
         self.ensure_one()
         # For the time being, we have no other cases
@@ -84,7 +83,6 @@ class ConsignorCreateWizard(models.TransientModel):
                 )
 
     # Action Section
-    @api.multi
     def create_consignor(self):
         self.ensure_one()
         ResPartner = self.env["res.partner"]
@@ -126,7 +124,6 @@ class ConsignorCreateWizard(models.TransientModel):
 
         return action
 
-    @api.multi
     def _prepare_account(self):
         self.ensure_one()
         return {
@@ -137,7 +134,6 @@ class ConsignorCreateWizard(models.TransientModel):
             "user_type_id": self.env.ref("account.data_account_type_other_income").id,
         }
 
-    @api.multi
     def _prepare_tax(self, sequence, account, partner, amount):
         self.ensure_one()
         return self._prepare_tax_model(
@@ -197,7 +193,6 @@ class ConsignorCreateWizard(models.TransientModel):
             "company_id": company.id,
         }
 
-    @api.multi
     def _prepare_partner(self, sequence, account):
         self.ensure_one()
         return {

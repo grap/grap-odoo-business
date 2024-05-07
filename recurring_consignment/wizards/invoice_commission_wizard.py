@@ -61,7 +61,6 @@ class InvoiceCommissionWizard(models.TransientModel):
             wizard_line.move_line_qty = len(wizard_line._get_move_lines())
 
     # Action Section
-    @api.multi
     def invoice_commission(self):
         self.ensure_one()
         move_AccountMoveLine = self.env["account.move.line"]

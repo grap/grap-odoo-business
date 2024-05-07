@@ -21,7 +21,6 @@ class ProductPricelist(models.Model):
             pricelist._consignmment_update_multi()
         return pricelist
 
-    @api.multi
     def write(self, vals):
         res = super().write(vals)
         if "consignment_pricelist_id" in vals:
@@ -46,7 +45,6 @@ class ProductPricelist(models.Model):
         # pricelist.item
         items.sudo().unlink()
 
-    @api.multi
     def _consignmment_update_multi(self, templates=False):
         ProductPricelistItem = self.env["product.pricelist.item"]
         ProductTemplate = self.env["product.template"]

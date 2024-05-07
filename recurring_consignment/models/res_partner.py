@@ -52,7 +52,6 @@ class ResPartner(models.Model):
         vals = self._prepare_vals_consignor(vals)
         return super().create(vals)
 
-    @api.multi
     def write(self, vals):
         self._prevent_uncheck_is_consignor(vals)
         vals = self._prevent_change_is_consignor(vals)
@@ -74,7 +73,6 @@ class ResPartner(models.Model):
             )
         return vals
 
-    @api.multi
     def _prevent_uncheck_is_consignor(self, vals):
         """prevent possibility to uncheck is_consignor for partners"""
         if not vals.get("is_consignor", True) and any(self.mapped("is_consignor")):
@@ -85,7 +83,6 @@ class ResPartner(models.Model):
                 )
             )
 
-    @api.multi
     def _prevent_change_is_consignor(self, vals):
         """prevent to write incorrect values for consignors"""
         if any(self.mapped("is_consignor")):

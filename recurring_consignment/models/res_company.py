@@ -24,7 +24,6 @@ class ResCompany(models.Model):
         res._create_consignor_sequence()
         return res
 
-    @api.multi
     def _create_consignor_sequence(self):
         ResPartner = self.env["res.partner"]
         Irsequence = self.env["ir.sequence"]
@@ -44,7 +43,6 @@ class ResCompany(models.Model):
                 company._prepare_consignor_sequence(current_consignor_qty)
             )
 
-    @api.multi
     def _prepare_consignor_sequence(self, current_consignor_qty):
         self.ensure_one()
         return {

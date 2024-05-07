@@ -116,7 +116,6 @@ class ProductTemplate(models.Model):
             self.env["product.pricelist"].consignmment_create([res.id])
         return res
 
-    @api.multi
     def write(self, vals):
         ProductPricelist = self.env["product.pricelist"]
         self._check_consignor_changes(vals)
@@ -151,7 +150,6 @@ class ProductTemplate(models.Model):
                     )
         return super().write(vals)
 
-    @api.multi
     def _check_consignor_changes(self, vals):
         AccountInvoiceLine = self.env["account.invoice.line"]
         if vals.get("consignor_partner_id", False):

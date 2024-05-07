@@ -47,7 +47,6 @@ class InvoiceCommissionWizardLine(models.TransientModel):
             wizard_line.move_line_qty = len(wizard_line._get_move_lines())
 
     # Prepare Section
-    @api.multi
     def _prepare_invoice(self):
         self.ensure_one()
         partner = self.partner_id
@@ -60,7 +59,6 @@ class InvoiceCommissionWizardLine(models.TransientModel):
             "fiscal_position_id": partner.property_account_position_id.id,
         }
 
-    @api.multi
     def _create_invoice_line(self, key, lines, invoice):
         # [MIGRATION] Odoo >13
         # remove call of _onchange_product_id() and refactor this function
@@ -179,7 +177,6 @@ class InvoiceCommissionWizardLine(models.TransientModel):
         )
         return res
 
-    @api.multi
     def _get_move_lines(self):
         self.ensure_one()
         return self._get_move_lines_with_values(self.partner_id, self.max_date)

@@ -25,7 +25,6 @@ class AccountInvoice(models.Model):
         self.mapped("invoice_line_ids")._check_invoice_line_recurring_consignment()
 
     # View Section
-    @api.multi
     def button_commission_view_invoice_lines(self):
         invoice_lines = self._get_commission_related_invoice_lines()
         action = self.env.ref("recurring_consignment.action_account_invoice_line")
@@ -111,7 +110,6 @@ class AccountInvoice(models.Model):
         )
 
     # Private Function
-    @api.multi
     def get_commission_information_product_detail_grouped(self):
         groups = {}
 
