@@ -116,4 +116,33 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="maker_description">Belledonne</field>
     </record>
 
+    <record id="product_with_pricetag_30" model="product.product">
+        <field name="name">Pricetag 30 - Amande au Caramel et Chocolat</field>
+        <field name="uom_id" ref="uom.product_uom_kgm" />
+        <field name="uom_po_id" ref="uom.product_uom_kgm" />
+        <field name="barcode">2000000000019</field>
+        <field name="default_code">EPV-000346</field>
+        <field name="list_price">34.53</field>
+        <field name="net_weight">0.0</field>
+        <field name="pricetag_uom_id" ref="product_print_category_food_report.uom_100_gr" />
+        <field name="print_category_id" ref="print_category_pricetag_30"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_drome"/>
+        <field name="maker_description">Happy Hours</field>
+        <field name="ingredients">Amandes pralinées au miel, enrobées de chocolat noir bio et saupoudrées de cacao bio.</field>
+        <field name="allergen_ids" eval="[
+            (4, ref('product_food.allergen_FAC')),
+            ]"/>
+            <field name="trace_allergen_ids" eval="[
+            (4, ref('product_food.allergen_LAIT')),
+            (4, ref('product_food.allergen_GLU')),
+            ]"/>
+    </record>
+
 </odoo>
