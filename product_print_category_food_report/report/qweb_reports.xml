@@ -16,7 +16,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <!-- Specific styles for each pricetag -->
             <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_01.scss" />
             <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_02.scss" />
-            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_1x.scss" />
+            <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_1.scss" />
             <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_10.scss" />
             <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_11.scss" />
             <link rel="stylesheet" type="text/scss" href="/product_print_category_food_report/static/src/scss/pricetag_12.scss" />
