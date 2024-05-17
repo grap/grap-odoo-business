@@ -24,14 +24,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <!-- Manufacturing Location -->
                             <div class="product_origin">
                                 <t t-if="line.product_id.pricetag_origin">
-                                    Manufacturing: <t t-esc="line.product_id.pricetag_origin"/>
+                                    <span class="info_title">Manufacturing: </span><t t-esc="line.product_id.pricetag_origin"/>
                                 </t>
                             </div>
 
                             <!-- Producer -->
                             <div class="maker_description">
                                 <t t-if="line.product_id.maker_description">
-                                    Producer: <t t-esc="line.product_id.maker_description"/>
+                                    <span class="info_title">Producer: </span><t t-esc="line.product_id.maker_description"/>
                                 </t>
                             </div>
 
@@ -45,7 +45,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <!-- Organic Text -->
                             <div class="organic_text">
                                 <t t-if="line.product_id.pricetag_organic_text">
-                                    <t t-esc="line.product_id.pricetag_organic_text"/><br/>
+                                    <t t-esc="line.product_id.pricetag_organic_text"/>
                                 </t>
                             </div>
 
@@ -61,7 +61,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <span class="main_price_text">
                                     <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
                                 </span>
-                                <br/>
                                 <span class="main_uom_text">
                                     <t t-esc="line.product_id.pricetag_main_uom_text"/>
                                 </span>
