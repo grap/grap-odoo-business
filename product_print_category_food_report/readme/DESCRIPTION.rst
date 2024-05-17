@@ -7,34 +7,57 @@ Specifications :
 
 - We can choose a second unity of measure in order to display the price with a more appropriate unity (for example for very expensive products)
 
-- Thanks to product_food module, ingredients, allergens are displayed in bulk reports
+- Thanks to ``product_food`` module, ingredients, allergens are displayed in bulk reports
 
-- Thanks to product_label and product_origin, we also display labels and origin
+- Thanks to ``product_label`` and ``product_origin`` modules, we also display labels and production origin
 
-- Origin is constructed according to origin fields, organic labels and provenance. Origin is displayed in product form.
-
-.. figure:: ../static/img/origin_calculated_organic_description.gif
-
-- Origin is displayed in product form thanks to ``pricetag_origin`` so you don't have to print the pricetag to see it
+- Thanks to ``product_food_certification`` extra text can be displayed, depending if the company is certified, if an organic label is selected, if the
+  product is sold by kilogram, etc...
 
 Here is what's look like the reports :
 
-- Normal pricetag "classic format" 76x31mm
+Pricetag n°01
+~~~~~~~~~~~~~
 
-.. figure:: ../static/img/pricetag_normal.png
+.. figure:: ../static/description/pricetag_01.png
 
-- Bulk pricetag long designed for Applimage bulk equipment 52x101mm
+Pricetag n°02
+~~~~~~~~~~~~~
 
-.. figure:: ../static/img/pricetag_bulk_long.png
+.. figure:: ../static/description/pricetag_02.png
 
-- Bulk pricetag square 93x93mm
+Pricetag n°10
+~~~~~~~~~~~~~
 
-.. figure:: ../static/img/pricetag_bulk_square.png
+.. figure:: ../static/description/pricetag_10.png
 
-- Square pricetag 40x36mm
+Pricetag n°11
+~~~~~~~~~~~~~
 
-.. figure:: ../static/img/pricetag_square.png
+.. figure:: ../static/description/pricetag_11.png
 
-- Counter pricetag - 72*123mm
 
-.. figure:: ../static/img/pricetag_counter.png
+Pricetag n°12
+~~~~~~~~~~~~~
+
+.. figure:: ../static/description/pricetag_12.png
+
+Pricetag n°20
+~~~~~~~~~~~~~
+
+.. figure:: ../static/description/pricetag_20.png
+
+Pricetag n°30
+~~~~~~~~~~~~~
+
+.. figure:: ../static/description/pricetag_30.png
+
+Pricetag n°31
+~~~~~~~~~~~~~
+
+.. figure:: ../static/description/pricetag_31.png
+
+Pricetag n°32
+~~~~~~~~~~~~~
+
+.. figure:: ../static/description/pricetag_32.png
