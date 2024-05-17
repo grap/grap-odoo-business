@@ -90,7 +90,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <span class="main_price_text">
                                         <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
                                     </span>
-                                    <br/>
                                     <span class="main_uom_text">
                                         <t t-esc="line.product_id.pricetag_main_uom_text"/>
                                     </span>

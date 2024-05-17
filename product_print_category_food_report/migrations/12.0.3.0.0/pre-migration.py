@@ -1,6 +1,7 @@
 # Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# flake8: noqa
 
 import logging
 
@@ -12,7 +13,7 @@ _logger = logging.getLogger(__name__)
 _xmlid_renames = [
     (
         "product_print_category_food_report.category_pricetag_square_large",  # A) Carré large - 92x85mm
-        "product_print_category_food_report.",  # TODO
+        "product_print_category_food_report.print_category_pricetag_31",  # TODO
     ),
     (
         "product_print_category_food_report.category_pricetag_middle_square",  # B) Square pricetag - 40x36mm
@@ -44,7 +45,7 @@ _xmlid_renames = [
     ),
     (
         "product_print_category_food_report.category_pricetag_bulk_selling",  # I) Bulk pricetag square - 93x93mm
-        "product_print_category_food_report.",  # TODO
+        "product_print_category_food_report.print_category_pricetag_32",  # TODO
     ),
 ]
 
