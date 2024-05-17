@@ -1,22 +1,10 @@
 .pricetag_02 {
-    border: 1px solid grey;
     width: 3.8cm;
     height: 3.8cm;
 
     .product_name{
         font-size:13px;
         height: 1.0cm;
-    }
-
-    .main_price {
-        height: 0.7cm;
-
-        .main_price_text {
-            font-size: 16px;
-        }
-        .main_uom_text {
-            font-size: 12px;
-        }
     }
 
     .secondary_price {
@@ -27,23 +15,6 @@
     .per_unit_quantity {
         height: 0.3cm;
         font-size: 6px;
-    }
-
-    .zone_barcode {
-        height: 1.3cm;
-
-        .wrap_barcode_image{
-            height: 1.2cm;
-            width: 3.6cm;
-        }
-        .wrap_barcode_image > img{
-            height: 1.2cm;
-            width: 3.6cm;
-        }
-    }
-
-    .shop_information {
-        height: 0.2cm;
     }
 
 }
