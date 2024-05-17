@@ -8,7 +8,7 @@ import logging
 from openupgradelib import openupgrade
 from psycopg2.extensions import AsIs
 
-from ...models.tools import get_allergen_data
+from odoo.addons.product_food.models.tools import get_allergen_data
 
 _logger = logging.getLogger(__name__)
 
