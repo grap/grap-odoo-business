@@ -1,0 +1,104 @@
+.pricetag_30, .pricetag_31, .pricetag_32 {
+
+    border: 2px solid black;
+
+    .pricetag_top {
+        width: 100%;
+        border-bottom: 2px solid;
+
+        .product_name {
+            height: 100%;
+            font-size: 19px;
+            font-weight: bold;
+        }
+    }
+
+    .pricetag_center {
+        width: 100%;
+        border-bottom: 2px solid;
+
+        .product_origin {
+            font-size: 13px;
+        }
+
+        .maker_description {
+            font-size: 13px;
+        }
+
+        .feed_composition {
+            font-size: 13px;
+        }
+
+        .product_labels {
+            height: 1.2cm;
+
+            img.product_label {
+                width: 1.0cm;
+                height: 1.0cm;
+                margin: 0.1cm;
+            }
+        }
+    }
+
+    .pricetag_bottom {
+        width: 100%;
+
+        .pricetag_bottom_left, .pricetag_bottom_right {
+            height: 100%;
+        }
+
+        .pricetag_bottom_left {
+            border-right: 2px solid;
+
+            .organic_text {
+                height: 0.8cm;
+                font-size: 7px;
+            }
+
+            .zone_barcode {
+                height: 1.5cm;
+
+                .wrap_barcode_image{
+                    height: 1.4cm;
+                    width: 3.0cm;
+                }
+                .wrap_barcode_image > img{
+                    height: 1.4cm;
+                    width: 3.0cm;
+                }
+            }
+
+            .shop_information {
+                font-size: 7px;
+            }
+        }
+
+        .pricetag_bottom_right {
+
+            .main_price {
+
+                .main_price_text {
+                    font-weight: bold;
+                }
+                .main_uom_text {
+                    font-size: 10px;
+                }
+            }
+
+            .per_unit_quantity {
+                height: 0.6cm;
+                font-size: 11px;
+                float: left;
+
+            }
+
+            .secondary_price {
+                height: 0.6cm;
+                font-size: 11px;
+            }
+
+        }
+
+    }
+
+}
