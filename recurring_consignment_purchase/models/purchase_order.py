@@ -14,7 +14,6 @@ class PurchaseOrder(models.Model):
         string="Consignment Trade", related="partner_id.is_consignor"
     )
 
-    @api.multi
     def action_view_invoice(self):
         orders = self.filtered(lambda x: x.consignment_trade)
         if orders:
