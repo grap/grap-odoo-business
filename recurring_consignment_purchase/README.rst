@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==================================
 Recurring Consignment for Purchase
 ==================================
@@ -13,11 +17,11 @@ Recurring Consignment for Purchase
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
-    :target: https://github.com/grap/grap-odoo-business/tree/12.0/recurring_consignment_purchase
+    :target: https://github.com/grap/grap-odoo-business/tree/16.0/recurring_consignment_purchase
     :alt: grap/grap-odoo-business
 
 |badge1| |badge2| |badge3|
@@ -25,9 +29,10 @@ Recurring Consignment for Purchase
 This module is a glue module between ``recurring_consignment`` and
 ``purchase`` module.
 
-* it will block the creation of invoices, from purchase order done for consignors.
-
-* It will prevent to change consignor on a product, once the product has been purchased.
+- it will block the creation of invoices, from purchase order done for
+  consignors.
+- It will prevent to change consignor on a product, once the product has
+  been purchased.
 
 **Table of contents**
 
@@ -40,7 +45,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/grap/grap-odoo-business/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20recurring_consignment_purchase%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/grap/grap-odoo-business/issues/new?body=module:%20recurring_consignment_purchase%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -48,19 +53,19 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Julien WESTE
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Julien WESTE
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
-This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/12.0/recurring_consignment_purchase>`_ project on GitHub.
+This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/recurring_consignment_purchase>`_ project on GitHub.
 
 You are welcome to contribute.

@@ -161,19 +161,18 @@ class ProductTemplate(models.Model):
         Overload this function in extra modules. (purchase, sale, point_of_sale, etc...)
         """
         AccountMoveLine = self.env["account.move.line"]
-        for template in self:
-            invoice_lines = AccountMoveLine.search(
-                [("product_id", "in", template.product_variant_ids.ids)]
-            )
-            if len(invoice_lines):
-                raise ValidationError(
-                    _(
-                        "You can not change the value of the field"
-                        " 'Consignor' because the product is associated"
-                        " to one or more Account Invoice Lines. You should"
-                        " disable the product and create a new one."
-                    )
+        invoice_lines = AccountMoveLine.search(
+            [("product_id", "in", self.mapped("product_variant_ids").ids)]
+        )
+        if len(invoice_lines):
+            raise ValidationError(
+                _(
+                    "You can not change the value of the field"
+                    " 'Consignor' because the product is associated"
+                    " to one or more Account Invoice Lines. You should"
+                    " disable the product and create a new one."
                 )
+            )
 
     def _get_product_accounts(self):
         if self.consignor_partner_id:

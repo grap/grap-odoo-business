@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 
 
 class PurchaseOrderLine(models.Model):
-    _inherit = "purchase.order"
+    _inherit = "purchase.order.line"
 
     @api.constrains("product_id")
     def _check_order_line_recurring_consignment(self):

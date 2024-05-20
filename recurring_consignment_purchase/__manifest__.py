@@ -4,7 +4,7 @@
 
 {
     "name": "Recurring Consignment for Purchase",
-    "version": "12.0.1.1.4",
+    "version": "16.0.1.0.0",
     "summary": "Glue module for Recurring Consignment and Purchase modules",
     "category": "Sale",
     "author": "GRAP",
@@ -15,7 +15,7 @@
         "purchase",
         "stock",
     ],
-    "data": ["views/view_purchase_order.xml"],
+    # "data": ["views/view_purchase_order.xml"],
     "installable": True,
     "auto_install": True,
 }

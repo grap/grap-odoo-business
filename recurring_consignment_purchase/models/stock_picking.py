@@ -2,13 +2,12 @@
 # @author: Quentin DUPONT <quentin.dupont@grap.coop>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import models
 
 
 class Picking(models.Model):
     _inherit = "stock.picking"
 
-    @api.multi
     def button_validate(self):
         res = super().button_validate()
         for picking in self:
