@@ -10,7 +10,6 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     # Constrains Section
-    @api.multi
     def _check_consignor_changes(self, vals):
         super()._check_consignor_changes(vals)
         PosOrderLine = self.env["pos.order.line"]

@@ -9,7 +9,6 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     # View Section
-    @api.multi
     def button_commission_view_pos_order_lines(self):
         pos_order_lines = self._get_commission_related_pos_order_lines()
         action = self.env.ref("point_of_sale.action_pos_all_sales_lines")
@@ -18,7 +17,6 @@ class AccountInvoice(models.Model):
         return action_data
 
     # Private Section
-    @api.multi
     def _get_commission_related_pos_order_lines(self):
         PosOrder = self.env["pos.order"]
         PosOrderLine = self.env["pos.order.line"]
@@ -47,7 +45,6 @@ class AccountInvoice(models.Model):
             ]
         )
 
-    @api.multi
     def _get_commission_information_product_detail_grouped(self):
         groups = super().get_commission_information_product_detail_grouped()
 
