@@ -9,7 +9,6 @@ from odoo.exceptions import UserError
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    @api.multi
     def _check_consignor_changes(self, vals):
         super()._check_consignor_changes(vals)
         SaleOrderLine = self.env["sale.order.line"]
