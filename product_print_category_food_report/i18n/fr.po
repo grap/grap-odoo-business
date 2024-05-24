@@ -460,7 +460,7 @@ msgstr "Utilisé de façon alternative au champ nom, sur les étiquettes, pour a
 #: code:addons/product_print_category_food_report/models/product_product.py:160
 #, python-format
 msgid "for %s"
-msgstr ""
+msgstr "Pour %s"
 
 #. module: product_print_category_food_report
 #: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_30
