@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-17 12:34+0000\n"
-"PO-Revision-Date: 2024-05-17 12:34+0000\n"
+"POT-Creation-Date: 2024-05-24 09:20+0000\n"
+"PO-Revision-Date: 2024-05-24 09:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "<span class=\"info_title\">Fabricant: </span>"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Traces: </span>"
-msgstr "<span class=\"info_title\">Traces: </span>"
+msgstr ""
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__allergen_text
@@ -175,12 +175,6 @@ msgid "EU / No EU"
 msgstr "UE / Non UE"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:301
-#, python-format
-msgid "For %s"
-msgstr "Pour %s"
-
-#. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:79
 #, python-format
 msgid "France"
@@ -205,6 +199,12 @@ msgstr "Dernière mise à jour par"
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:57
+#, python-format
+msgid "Modified on %s"
+msgstr "Modifié le %s"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__name
@@ -251,30 +251,6 @@ msgstr "Origine des ingrédients: %s. "
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
 msgid "Origin on pricetag"
 msgstr "Origine - rendu final sur l'étiquette"
-
-#. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:312
-#, python-format
-msgid "Price per Kilo"
-msgstr "Prix au kilo"
-
-#. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:308
-#, python-format
-msgid "Price per Liter"
-msgstr "Prix au litre"
-
-#. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:284
-#, python-format
-msgid "Price per kilo"
-msgstr "Prix au kilo"
-
-#. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:289
-#, python-format
-msgid "Price per liter"
-msgstr "Prix au litre"
 
 #. module: product_print_category_food_report
 #: model:product.product,name:product_print_category_food_report.product_with_pricetag_01
@@ -337,11 +313,6 @@ msgid "Pricetag Color"
 msgstr "Couleur de l'étiquette"
 
 #. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_is_second_price
-msgid "Pricetag Is Second Price"
-msgstr "Second prix sur l'étiquette"
-
-#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_main_price_value
 msgid "Pricetag Main Price Value"
 msgstr "Valeur du prix principal de l'étiquette"
@@ -372,29 +343,9 @@ msgid "Pricetag Per Unit Quantity Value"
 msgstr "Valeur de la quantité par unité de l'étiquette"
 
 #. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_price_per_unit_text
-msgid "Pricetag Price Per Unit Text"
-msgstr "Texte du prix unitaire de l'étiquette"
-
-#. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_price_per_unit_value
-msgid "Pricetag Price Per Unit Value"
-msgstr "Valeur de prix unitaire de l'étiquette"
-
-#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_print_date_text
 msgid "Pricetag Print Date Text"
 msgstr "Texte de la date d'impression"
-
-#. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_second_price
-msgid "Pricetag Second Price"
-msgstr "Second prix sur l'étiquette"
-
-#. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_second_price_uom_text
-msgid "Pricetag Second Price Uom Text"
-msgstr "Texte de l'étiquette pour la seconde unité de mesure"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_secondary_price_value
@@ -405,11 +356,6 @@ msgstr "Valeur du prix secondaire de l'étiquette"
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_secondary_uom_text
 msgid "Pricetag Secondary Uom Text"
 msgstr "Texte de l'unité secondaire de l'étiquette"
-
-#. module: product_print_category_food_report
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_special_quantity_price
-msgid "Pricetag Special Quantity Price"
-msgstr "Prix pour une certaine quantité"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_type_id
