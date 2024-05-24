@@ -54,7 +54,7 @@ class ProductProduct(models.Model):
     @api.multi
     def _compute_pricetag_print_date_text(self):
         for product in self:
-            product.pricetag_print_date_text = ("Modified on %s") % (
+            product.pricetag_print_date_text = _("Modified on %s") % (
                 product.write_date.strftime("%d/%m/%y - %H:%M")
             )
 
