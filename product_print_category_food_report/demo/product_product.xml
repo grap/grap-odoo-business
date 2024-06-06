@@ -135,7 +135,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
         <field name="department_id" ref="l10n_fr_department.res_country_department_drome"/>
         <field name="maker_description">Happy Hours</field>
-        <field name="ingredients">Amandes pralinées au miel, enrobées de chocolat noir bio et saupoudrées de cacao bio.</field>
+        <field name="ingredients"><![CDATA[
+            <b>Amandes</b> pralinées <u>au miel</u>, enrobées de chocolat noir bio et saupoudrées de cacao bio.
+            ]]></field>
         <field name="allergen_ids" eval="[
             (4, ref('product_food.allergen_FAC')),
             ]"/>
@@ -164,7 +166,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
         <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
         <field name="maker_description">Les mains dans la pâte</field>
-        <field name="ingredients">Avec leur saveur extrème et voluptueuse, ces cookies aux noisettes et au chocolat deviendront bientôt votre meilleur ami pour le goûter.</field>
+        <field name="ingredients"><![CDATA[Avec <u>leur saveur extrème et voluptueuse</u>, ces cookies aux <b>noisettes et au chocolat</b> deviendront bientôt votre meilleur ami pour le goûter.]]></field>
         <field name="allergen_ids" eval="[
             (4, ref('product_food.allergen_FAC')),
             ]"/>
@@ -193,7 +195,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="state_id" ref="l10n_fr_state.res_country_state_bretagne"/>
         <field name="department_id" ref="l10n_fr_department.res_country_department_morbihan"/>
         <field name="maker_description">Les mains dans la pâte</field>
-        <field name="ingredients">Avec leur saveur extrème et voluptueuse, ces cookies aux noisettes et au chocolat deviendront bientôt votre meilleur ami pour le goûter.</field>
+        <field name="ingredients">
+            <![CDATA[La crème <b>caramel</b> au <u>beurre salé</u>, pour moi c'est le goût de la Bretagne à l'état pur ! Une recette sans oeuf et facile à faire pour agrémenter les crêpes bien sûr et des tas d'autres douceurs.]]>
+        </field>
         <field name="allergen_ids" eval="[
             (4, ref('product_food.allergen_LAIT')),
             ]"/>
