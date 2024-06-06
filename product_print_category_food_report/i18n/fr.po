@@ -428,7 +428,7 @@ msgstr "Etagère - 42x38mm carré moyenne (N°01)"
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_02
 msgid "Shelf Square Small - 32x32mm (N°02)"
-msgstr "Etagère - 42x38mm carré petite (N°01)"
+msgstr "Etagère - 32x32mm carré petite (N°02)"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__trace_allergen_text
