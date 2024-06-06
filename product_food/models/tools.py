@@ -58,6 +58,11 @@ _REPLACE = [
     r"\,",
     r"\/",
     # ###############
+    # Corner cases
+    # ###############
+    # beurre de cacao doesn't contain lactose
+    r"\sbeurre de cacao\s",
+    # ###############
     # ARACHIDE
     # ###############
     (r"arachides?", "-ARA-"),
