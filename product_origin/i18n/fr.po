@@ -21,8 +21,8 @@ msgstr ""
 msgid "* Short: artisanal producer or transformer\n"
 "* Medium: cooperative processor, producers' cooperative or importers whose only activity is to work directly with producers from other countries.\n"
 "* Long: the rest"
-msgstr "* Court : producteur·ice ou transformateur·ice artisanal·e\n"
-"* Moyen : transformateur·ice de la coopérative, coopérative de producteur·ices ou importateur·ice dont la seule activité est de travailler directement avec des producteur·ices d'autres pays\n"
+msgstr "* Court : fabricant·e ou transformateur·ice artisanal·e\n"
+"* Moyen : transformateur·ice de la coopérative, coopérative de producteur·ices ou importateur·ice dont la seule activité est de travailler directement avec des fabricant·e·s d'autres pays\n"
 "* Circuit long : le reste"
 
 #. module: product_origin
@@ -74,7 +74,7 @@ msgstr "Circuit long"
 #: model:ir.model.fields,field_description:product_origin.field_product_product__maker_description
 #: model:ir.model.fields,field_description:product_origin.field_product_template__maker_description
 msgid "Maker"
-msgstr "Producteur·rice"
+msgstr "Fabricant·e"
 
 #. module: product_origin
 #: selection:res.partner,distribution_channel_criterion:0
