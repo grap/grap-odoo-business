@@ -84,7 +84,7 @@ msgstr "<span class=\"info_title\">Fabrication : </span>"
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Producer: </span>"
-msgstr "<span class=\"info_title\">Fabricant : </span>"
+msgstr "<span class=\"info_title\">Fabricant·e : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
