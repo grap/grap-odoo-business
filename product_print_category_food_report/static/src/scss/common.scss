@@ -3,7 +3,8 @@
     margin : 0.0cm;
     padding : 0.0cm;
     overflow: hidden;
-
+    float: left;
+    page-break-inside: avoid;
 
     .margin_top, .margin_bottom {
         margin : 0.0cm;
