@@ -220,7 +220,7 @@ class ProductProduct(models.Model):
         for product in self:
             if product.net_weight > 0:
                 product.pricetag_per_unit_quantity_text = _("Net Weight")
-                if product.net_weight > 1:
+                if product.net_weight >= 1:
                     product.pricetag_per_unit_quantity_value = (
                         _("%.3f kg") % product.net_weight
                     )
