@@ -83,7 +83,7 @@ class ProductProduct(models.Model):
                     origin = _("No EU")
                 else:
                     origin = _("EU / No EU")
-                res += _("Origin of Ingredients: %s. " % (origin))
+                res += _("Origin of Ingredients: %s. ") % (origin)
 
             # We need organic text only in weighed product
             # for companies that are certified
