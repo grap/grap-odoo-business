@@ -67,29 +67,29 @@ msgstr ""
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Allergens: </span>"
-msgstr "<span class=\"info_title\">Allergènes: </span>"
+msgstr "<span class=\"info_title\">Allergènes : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Ingredients: </span>"
-msgstr "<span class=\"info_title\">Ingrédients: </span>"
+msgstr "<span class=\"info_title\">Ingrédients : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Manufacturing: </span>"
-msgstr "<span class=\"info_title\">Production: </span>"
+msgstr "<span class=\"info_title\">Fabrication : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Producer: </span>"
-msgstr "<span class=\"info_title\">Fabricant: </span>"
+msgstr "<span class=\"info_title\">Fabricant : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Traces: </span>"
-msgstr ""
+msgstr "<span class=\"info_title\">Traces : </span>"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__allergen_text
