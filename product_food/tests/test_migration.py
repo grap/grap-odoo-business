@@ -27,6 +27,8 @@ class TestMigration(TransactionCase):
             ["FAC", "ARA", "GLU", "SES", "SOJA"],
         )
 
+        self._assert_result("beurre de cacao", [])
+
     def _assert_result(self, text, code_list, trace_code_list=False):
         (
             allergen_text,
