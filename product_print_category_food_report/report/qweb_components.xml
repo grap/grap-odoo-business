@@ -7,7 +7,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <template id="qweb_component_barcode">
-        <div class="wrap_barcode_image floating_box">
+        <div class="wrap_barcode_image">
             <t t-if="line.product_id.barcode">
                 <img t-if="len(line.product_id.barcode) == 13"
                     t-att-src="'/report/barcode/?humanreadable=1&amp;type=EAN13&amp;value=%s&amp;width=%s&amp;height=%s' % (line.product_id.barcode, barcode_width, barcode_height)"/>
