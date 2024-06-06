@@ -47,7 +47,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-if="line.product_id.trace_allergen_text">
                                         <span class="info_title">Traces: </span><t t-esc="line.product_id.trace_allergen_text"/><br/>
                                     </t>
-                                        <span class="info_title">Ingredients: </span><t t-esc="line.product_id.ingredients"/>
+                                        <span class="info_title">Ingredients: </span><t t-raw="line.product_id.ingredients"/>
                                 </div>
 
                                 <!-- Product Label -->
