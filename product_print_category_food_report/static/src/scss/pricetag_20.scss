@@ -56,12 +56,16 @@
             height: 2.0cm;
 
             .main_price_text {
+                display: inline-block;
+                width: 100%;
                 font-size: 32px;
                 font-weight: bold;
             }
             .main_uom_text {
                 display: inline-block;
+                width: 100%;
                 font-size: 18px;
+
             }
         }
 
