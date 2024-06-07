@@ -99,7 +99,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 (4, ref('product_origin.field_product_product__country_id')),
                 (4, ref('product_origin.field_product_product__state_id')),
                 (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
-                (4, ref('product_origin.field_product_product__origin_description')),
                 (4, ref('product_origin.field_product_product__maker_description')),
                 (4, ref('product_label.field_product_product__label_ids')),
                 (4, ref('product_food.field_product_product__is_alimentary')),
