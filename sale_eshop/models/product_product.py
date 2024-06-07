@@ -26,7 +26,6 @@ class ProductProduct(models.Model):
         "label_ids",
         "eshop_minimum_qty",
         "eshop_rounded_qty",
-        "origin_description",
         "maker_description",
         "eshop_description",
         "country_id",
