@@ -27,8 +27,6 @@ class ProductProduct(models.Model):
         help="State of production of the product",
     )
 
-    origin_description = fields.Char(string="Location (Complement)")
-
     maker_description = fields.Char(string="Maker")
 
     # Constrains section

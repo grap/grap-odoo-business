@@ -28,12 +28,6 @@ class ProductTemplate(models.Model):
         readonly=False,
     )
 
-    origin_description = fields.Char(
-        related="product_variant_ids.origin_description",
-        string="Location (Complement)",
-        readonly=False,
-    )
-
     maker_description = fields.Char(
         related="product_variant_ids.maker_description",
         string="Maker",

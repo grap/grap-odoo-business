@@ -105,32 +105,21 @@ class ProductProduct(models.Model):
         string="Origin on pricetag", compute="_compute_pricetag_origin"
     )
 
-    @api.depends("state_id", "country_id", "department_id", "origin_description")
+    @api.depends("state_id", "country_id", "department_id")
     @api.multi
     def _compute_pricetag_origin(self):
         for product in self:
-            localization_info = ""
             if product.department_id:
-                localization_info = "{} ({})".format(
-                    product.department_id.name,
-                    product.department_id.code,
+                product.pricetag_origin = (
+                    f"{product.department_id.name} ({product.department_id.code})"
                 )
             elif product.state_id:
-                localization_info = product.state_id.name
+                product.pricetag_origin = product.state_id.name
 
             elif product.country_id:
-                localization_info = product.country_id.name
-
-            if product.origin_description:
-                if localization_info:
-                    product.pricetag_origin = "{} - {}".format(
-                        localization_info,
-                        product.origin_description,
-                    )
-                else:
-                    product.pricetag_origin = product.origin_description
+                product.pricetag_origin = product.country_id.name
             else:
-                product.pricetag_origin = localization_info
+                product.pricetag_origin = False
 
     pricetag_main_price_value = fields.Float(
         compute="_compute_pricetag_main_price_info",
