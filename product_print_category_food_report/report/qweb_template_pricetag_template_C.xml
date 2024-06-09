@@ -26,17 +26,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <div class="pricetag_center">
 
                                 <!-- Manufacturing Location -->
-                                <div class="product_origin">
-                                    <t t-if="line.product_id.pricetag_origin">
-                                        <span class="info_title">Manufacturing: </span><t t-esc="line.product_id.pricetag_origin"/>
-                                    </t>
+                                <div class="product_origin" t-if="line.product_id.pricetag_origin">
+                                    <span class="info_title">Manufacturing: </span><t t-esc="line.product_id.pricetag_origin"/>
                                 </div>
 
                                 <!-- Producer -->
-                                <div class="maker_description">
-                                    <t t-if="line.product_id.maker_description">
-                                        <span class="info_title">Producer: </span><t t-esc="line.product_id.maker_description"/>
-                                    </t>
+                                <div class="maker_description"  t-if="line.product_id.maker_description">
+                                    <span class="info_title">Producer: </span><t t-esc="line.product_id.maker_description"/>
                                 </div>
 
                                 <!-- Feed Composition (allergens, ingredients, etc...) -->
@@ -47,7 +43,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <t t-if="line.product_id.trace_allergen_text">
                                         <span class="info_title">Traces: </span><t t-esc="line.product_id.trace_allergen_text"/><br/>
                                     </t>
-                                        <span class="info_title">Ingredients: </span><t t-raw="line.product_id.ingredients"/>
+                                    <t t-if="line.product_id.ingredients">
+                                        <span class="info_title">Ingredients: </span><span t-raw="line.product_id.ingredients"/>
+                                    </t>
                                 </div>
 
                                 <!-- Product Label -->
