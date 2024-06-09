@@ -10,15 +10,17 @@
         height: 7.18cm;
 
         .product_origin {
-            height: 1.0cm;
+            max-height: 1.0cm;
         }
 
         .maker_description {
-            height: 1.0cm;
+            max-height: 1.0cm;
         }
 
         .feed_composition {
-            height: 3.98cm;
+            max-height: 3.98cm;
+        }
+        .product_labels {
         }
 
     }
