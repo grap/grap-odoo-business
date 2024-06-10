@@ -1,0 +1,80 @@
+.pricetag_product {
+    border-style: dotted;
+    border-color: black;
+
+
+    .margin_top, .margin_bottom {
+        background-image: repeating-linear-gradient(
+            -45deg,
+            transparent 0 20px,
+            black 20px 40px
+        );
+    }
+
+    .pricetag_left, .pricetag_bottom_left {
+        background-color: #ACF;
+    }
+
+    .pricetag_right, .pricetag_bottom_right {
+        background-color: #AFC;
+    }
+
+    .pricetag_top {
+        background-color: #FAC;
+    }
+
+    .pricetag_center {
+        background-color: #FCA;
+    }
+
+    .pricetag_bottom {
+        background-color: #CAF;
+    }
+
+    .product_name {
+        background-color: #AFF;
+    }
+
+    .product_origin {
+        background-color: #FAF;
+
+    }
+    .maker_description {
+        background-color: #FFA;
+
+    }
+    .product_labels {
+        background-color: #AAF;
+    }
+
+    .organic_text {
+        background-color: #AFA;
+    }
+
+    .main_price {
+        background-color: #88F;
+        .main_price_text {
+            background-color: #64F;
+
+        }
+        .main_uom_text {
+            background-color: #46F;
+        }
+    }
+
+    .secondary_price {
+        background-color: #8F8;
+    }
+
+    .per_unit_quantity {
+        background-color: #F88;
+    }
+
+    .zone_barcode {
+        background-color: #0FF;
+    }
+
+    .shop_information {
+        background-color: #F0F;
+    }
+}

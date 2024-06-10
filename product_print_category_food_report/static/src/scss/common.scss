@@ -1,0 +1,57 @@
+.pricetag_product {
+    font-family: Luciole;
+    margin : 0.0cm;
+    padding : 0.0cm;
+    overflow: hidden;
+    float: left;
+    page-break-inside: avoid;
+
+    .margin_top, .margin_bottom {
+        margin : 0.0cm;
+        padding : 0.00cm;
+        overflow: hidden;
+    }
+
+    .pricetag_left, .pricetag_right, .pricetag_top, .pricetag_center, .pricetag_bottom, .pricetag_bottom_left, .pricetag_bottom_right {
+        margin : 0.0cm;
+        padding : 0.00cm;
+        overflow: hidden;
+        float: left;
+    }
+
+    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information,
+    .product_origin, .maker_description, .product_labels, .organic_text {
+        margin : 0.0cm;
+        padding : 0.05cm;
+        overflow: hidden;
+    }
+    .product_name, .main_price, .secondary_price, .per_unit_quantity, .zone_barcode, .shop_information {
+        text-align: center;
+    }
+    .product_origin, .maker_description, .product_labels, .organic_text {
+        text-align: left;
+    }
+
+    .info_title {
+        font-weight: bold;
+    }
+
+    .zone_barcode {
+        .wrap_barcode_image{
+            overflow: hidden;
+        }
+        .wrap_barcode_image > img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .shop_information {
+        color: #777;
+    }
+
+    .empty_field {
+        color: #a6a6a6;
+    }
+
+}

@@ -1,46 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
-@author: Quentin DUPONT (https://twitter.com/pondupont)
 License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="product.product_product_5" model="product.product">
-        <field name="pricetag_uom_id" ref="uom_100_gr"/>
-        <field name="pricetag_type_id" ref="type_local_product" />
-    </record>
-
-    <record id="product.product_product_6" model="product.product">
-        <field name="pricetag_type_id" ref="type_local_product" />
-    </record>
-
-    <record id="organic_smoked_tofu" model="product.product">
-        <field name="name">Smoked organic tofu 200g</field>
+    <record id="product_with_pricetag_01" model="product.product">
+        <field name="name">Pricetag 01 - Abricot de Turquie moelleux 250gr</field>
         <field name="uom_id" ref="uom.product_uom_unit" />
-        <field name="barcode">4012359111104</field>
-        <field name="list_price">2.6</field>
-        <field name="net_weight">0.2</field>
-        <field name="country_id" ref="base.fr"/>
-        <field name="maker_description">Taifun</field>
+        <field name="barcode">3760159011292</field>
+        <field name="default_code">BSG-000803</field>
+        <field name="list_price">6.27</field>
+        <field name="net_weight">0.250</field>
+        <field name="print_category_id" ref="print_category_pricetag_01"/>
+        <field name="is_alimentary" eval="True"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
     </record>
 
-    <record id="chick_pea" model="product.product">
-        <field name="name">Chick peas (bulk)</field>
-        <field name="uom_id" ref="uom.product_uom_kgm" />
-        <field name="uom_po_id" ref="uom.product_uom_kgm" />
-        <field name="list_price">5.45</field>
+
+    <record id="product_with_pricetag_02" model="product.product">
+        <field name="name">Pricetag 02 - Acérola - 30comprimés 84gr</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3700216223596</field>
+        <field name="default_code">EPV-002793</field>
+        <field name="list_price">6.45</field>
+        <field name="net_weight">0.0840</field>
+        <field name="print_category_id" ref="print_category_pricetag_02"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
     </record>
 
-    <record id="green_lens" model="product.product">
-        <field name="name">Green lens (bulk)</field>
+    <record id="product_with_pricetag_10" model="product.product">
+        <field name="name">Pricetag 10 - Acha Peu Gingembre 33cl</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3760337020207</field>
+        <field name="default_code">1GG-000205</field>
+        <field name="list_price">3.20</field>
+        <field name="volume">0.33</field>
+        <field name="print_category_id" ref="print_category_pricetag_10"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="is_alcohol" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('product_food.label_alcool_grossesse')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_loire"/>
+        <field name="maker_description">Brasserie Stéphanoise</field>
+    </record>
+
+    <record id="product_with_pricetag_11" model="product.product">
+        <field name="name">Pricetag 11 - Abricot Le jardinier glacier (550mL)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3760123952019</field>
+        <field name="default_code">DTB-002718</field>
+        <field name="list_price">8.20</field>
+        <field name="volume">0.55</field>
+        <field name="print_category_id" ref="print_category_pricetag_11"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_bourgogne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_saoneetloire"/>
+        <field name="maker_description">Le jardinier Glacier</field>
+    </record>
+
+    <record id="product_with_pricetag_12" model="product.product">
+        <field name="name">Pricetag 12 - Antisèche blonde (75cl)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">3770022113008</field>
+        <field name="default_code">VEV-000044</field>
+        <field name="list_price">6.30</field>
+        <field name="volume">0.75</field>
+        <field name="print_category_id" ref="print_category_pricetag_12"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="is_alcohol" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('product_food.label_alcool_grossesse')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
+        <field name="maker_description">L'écume du Guiers</field>
+    </record>
+
+    <record id="product_with_pricetag_20" model="product.product">
+        <field name="name">Pricetag 20 - Nem végétarien vrac (unité)</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="barcode">2000000000008</field>
+        <field name="default_code">CDA-004395</field>
+        <field name="list_price">1.25</field>
+        <field name="net_weight">0.110</field>
+        <field name="print_category_id" ref="print_category_pricetag_20"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
+        <field name="maker_description">Belledonne</field>
+    </record>
+
+    <record id="product_with_pricetag_30" model="product.product">
+        <field name="name">Pricetag 30 - Amande au Caramel et Chocolat</field>
         <field name="uom_id" ref="uom.product_uom_kgm" />
-        <field name="uom_po_id" ref="uom.product_uom_gram" />
-        <field name="list_price">5.25</field>
+        <field name="uom_po_id" ref="uom.product_uom_kgm" />
+        <field name="barcode">2000000000019</field>
+        <field name="default_code">EPV-000346</field>
+        <field name="list_price">34.53</field>
+        <field name="net_weight">0.0</field>
+        <field name="pricetag_uom_id" ref="product_print_category_food_report.uom_100_gr" />
+        <field name="print_category_id" ref="print_category_pricetag_30"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_drome"/>
+        <field name="maker_description">Happy Hours</field>
+        <field name="ingredients"><![CDATA[
+            <b>Amandes</b> pralinées <u>au miel</u>, enrobées de chocolat noir bio et saupoudrées de cacao bio.
+            ]]></field>
+        <field name="allergen_ids" eval="[
+            (4, ref('product_food.allergen_FAC')),
+            ]"/>
+            <field name="trace_allergen_ids" eval="[
+            (4, ref('product_food.allergen_LAIT')),
+            (4, ref('product_food.allergen_GLU')),
+            ]"/>
+    </record>
+
+    <record id="product_with_pricetag_31" model="product.product">
+        <field name="name">Pricetag 31 - Biscuits Cookies noisettes chocolat</field>
+        <field name="uom_id" ref="uom.product_uom_kgm" />
+        <field name="uom_po_id" ref="uom.product_uom_kgm" />
+        <field name="barcode">2000000000027</field>
+        <field name="default_code">PAP-004135</field>
+        <field name="list_price">30.10</field>
+        <field name="net_weight">0.0</field>
+        <field name="pricetag_uom_id" ref="product_print_category_food_report.uom_100_gr" />
+        <field name="print_category_id" ref="print_category_pricetag_31"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_auvergne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_savoie"/>
+        <field name="maker_description">Les mains dans la pâte</field>
+        <field name="ingredients"><![CDATA[Avec <u>leur saveur extrème et voluptueuse</u>, ces cookies aux <b>noisettes et au chocolat</b> deviendront bientôt votre meilleur ami pour le goûter.]]></field>
+        <field name="allergen_ids" eval="[
+            (4, ref('product_food.allergen_FAC')),
+            ]"/>
+            <field name="trace_allergen_ids" eval="[
+            (4, ref('product_food.allergen_LAIT')),
+            (4, ref('product_food.allergen_GLU')),
+            ]"/>
+    </record>
+
+    <record id="product_with_pricetag_32" model="product.product">
+        <field name="name">Pricetag 32 - Caramel au beurre salé en VRAC</field>
+        <field name="uom_id" ref="uom.product_uom_kgm" />
+        <field name="uom_po_id" ref="uom.product_uom_kgm" />
+        <field name="barcode">2000000000036</field>
+        <field name="default_code">VEV-000224</field>
+        <field name="list_price">16.70</field>
+        <field name="net_weight">0.0</field>
+        <field name="pricetag_uom_id" ref="product_print_category_food_report.uom_100_gr" />
+        <field name="print_category_id" ref="print_category_pricetag_32"/>
+        <field name="is_alimentary" eval="True"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            ]"/>
+        <field name="ingredient_origin_type" >eu_no_eu</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="state_id" ref="l10n_fr_state.res_country_state_bretagne"/>
+        <field name="department_id" ref="l10n_fr_department.res_country_department_morbihan"/>
+        <field name="maker_description">Les mains dans la pâte</field>
+        <field name="ingredients">
+            <![CDATA[La crème <b>caramel</b> au <u>beurre salé</u>, pour moi c'est le goût de la Bretagne à l'état pur ! Une recette sans oeuf et facile à faire pour agrémenter les crêpes bien sûr et des tas d'autres douceurs.]]>
+        </field>
+        <field name="allergen_ids" eval="[
+            (4, ref('product_food.allergen_LAIT')),
+            ]"/>
+            <field name="trace_allergen_ids" eval="[
+            (4, ref('product_food.allergen_FAC')),
+            ]"/>
     </record>
 
 </odoo>

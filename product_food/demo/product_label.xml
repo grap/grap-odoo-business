@@ -7,10 +7,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="product_label.label_agriculture_biologique" model="product.label">
-        <field name="organic_type">01_organic</field>
-    </record>
-
     <record id="label_alcool_grossesse" model="product.label">
         <field name="name">Alcool and Pregnancy</field>
         <field name="code">ALC</field>
@@ -23,7 +19,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Demeter</field>
         <field name="code">DEM</field>
         <field name="website">https://www.demeter.fr/</field>
-        <field name="organic_type">02_agroecological</field>
         <field name="image" type="base64" file="product_food/static/img/label_demeter-image.png"/>
     </record>
 

@@ -7,89 +7,121 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="category_pricetag_normal" model="product.print.category">
-        <field name="name">Normal pricetag normal - 76x31mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_normal" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('product_origin_l10n_fr_department.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_food.field_product_product__price_per_unit'))]" />
+    <record id="print_category_pricetag_01" model="product.print.category">
+        <field name="name">Shelf Square Middle - 42x38mm (N°01)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_01" />
     </record>
 
-    <record id="category_pricetag_bulk_selling_applimage" model="product.print.category">
-        <field name="name">Bulk pricetag long Applimage - 52x101mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_bulk_long" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('product_origin_l10n_fr_department.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_food.field_product_product__price_per_unit'))]" />
-    </record>>
-
-    <record id="category_pricetag_bulk_selling" model="product.print.category">
-        <field name="name">Bulk pricetag square - 93x93mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_bulk_square" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('product_origin_l10n_fr_department.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_food.field_product_product__price_per_unit'))]" />
+    <record id="print_category_pricetag_02" model="product.print.category">
+        <field name="name">Shelf Square Small - 32x32mm (N°02)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_02" />
     </record>
 
-    <record id="category_pricetag_middle_square" model="product.print.category">
-        <field name="name">Square pricetag - 40x36mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_square" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_food.field_product_product__price_per_unit'))]" />
+    <record id="print_category_pricetag_10" model="product.print.category">
+        <field name="name">Shelf Rectangular - 79x32mm  (N°10)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_10" />
     </record>
 
-    <record id="category_pricetag_counter" model="product.print.category">
-        <field name="name">Counter pricetag - 55*94mm</field>
-        <field name="qweb_view_id" ref="qweb_template_pricetag_counter" />
-        <field name="field_ids" eval="[
-            (4, ref('product.field_product_product__name')),
-            (4, ref('product.field_product_product__barcode')),
-            (4, ref('product_label.field_product_product__label_ids')),
-            (4, ref('product_origin.field_product_product__country_id')),
-            (4, ref('product_origin.field_product_product__state_id')),
-            (4, ref('product_origin_l10n_fr_department.field_product_product__department_id')),
-            (4, ref('product_origin.field_product_product__origin_description')),
-            (4, ref('product_origin.field_product_product__maker_description')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
-            (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
-            (4, ref('product.field_product_product__list_price')),
-            (4, ref('product_food.field_product_product__price_per_unit'))]" />
+
+    <record id="print_category_pricetag_11" model="product.print.category">
+        <field name="name">Shelf Rectangular Litle Margin - 79x37mm  (N°11)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_11" />
+
     </record>
+
+    <record id="print_category_pricetag_12" model="product.print.category">
+        <field name="name">Shelf Rectangular Middle Margin - 79x44mm  (N°12)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_12" />
+    </record>
+
+    <record id="print_category_pricetag_20" model="product.print.category">
+        <field name="name">Counter - 97x58mm  (N°20)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_20" />
+    </record>
+
+    <record id="print_category_pricetag_30" model="product.print.category">
+        <field name="name">Bulk - 54x105mm Applymage  (N°30)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_30" />
+    </record>
+
+    <record id="print_category_pricetag_31" model="product.print.category">
+        <field name="name">Bulk - 96x88mm (N°31)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_31" />
+    </record>
+
+    <record id="print_category_pricetag_32" model="product.print.category">
+        <field name="name">Bulk - 96x96mm (N°32)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_32" />
+    </record>
+
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_01'),
+            ref('product_print_category_food_report.print_category_pricetag_02'),
+            ref('product_print_category_food_report.print_category_pricetag_10'),
+            ref('product_print_category_food_report.print_category_pricetag_11'),
+            ref('product_print_category_food_report.print_category_pricetag_12'),
+            ref('product_print_category_food_report.print_category_pricetag_20'),
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (5),
+                (4, ref('product.field_product_product__name')),
+                (4, ref('product.field_product_product__list_price')),
+                (4, ref('product.field_product_product__uom_id')),
+                (4, ref('product_net_weight.field_product_product__net_weight')),
+                (4, ref('product.field_product_product__volume')),
+                (4, ref('product_print_category_food_report.field_product_product__pricetag_uom_id')),
+                (4, ref('product.field_product_product__default_code')),
+                (4, ref('product.field_product_product__barcode')),
+                (4, ref('product_print_category_food_report.field_product_product__pricetag_type_id')),
+            ]
+        }"/>
+    </function>
+
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_10'),
+            ref('product_print_category_food_report.print_category_pricetag_11'),
+            ref('product_print_category_food_report.print_category_pricetag_12'),
+            ref('product_print_category_food_report.print_category_pricetag_20'),
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (4, ref('product_origin.field_product_product__country_id')),
+                (4, ref('product_origin.field_product_product__state_id')),
+                (4, ref('l10n_fr_department_product_origin.field_product_product__department_id')),
+                (4, ref('product_origin.field_product_product__maker_description')),
+                (4, ref('product_label.field_product_product__label_ids')),
+                (4, ref('product_food.field_product_product__is_alimentary')),
+                (4, ref('product_food_certification.field_product_product__ingredient_origin_type')),
+                (4, ref('product_food_certification.field_product_product__is_uncertifiable')),
+            ]
+        }"/>
+    </function>
+
+    <function model="product.print.category" name="write">
+        <value model="product.print.category" eval="[
+            ref('product_print_category_food_report.print_category_pricetag_30'),
+            ref('product_print_category_food_report.print_category_pricetag_31'),
+            ref('product_print_category_food_report.print_category_pricetag_32'),
+            ]"
+        />
+        <value eval="{
+            'field_ids': [
+                (4, ref('product_food.field_product_product__ingredients')),
+                (4, ref('product_food.field_product_product__allergen_ids')),
+                (4, ref('product_food.field_product_product__trace_allergen_ids')),
+            ]
+        }"/>
+    </function>
 
 </odoo>

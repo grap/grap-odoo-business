@@ -13,6 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="display_name" position="after">
                 <field name="is_alimentary"/>
                 <field name="is_vegan"/>
+                <field name="is_alcohol"/>
             </field>
         </field>
     </record>
@@ -24,6 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="parent_id" position="after">
                 <field name="is_alimentary"/>
                 <field name="is_vegan"/>
+                <field name="is_alcohol"/>
             </field>
         </field>
     </record>

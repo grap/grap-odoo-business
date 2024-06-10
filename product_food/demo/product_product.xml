@@ -14,11 +14,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="is_alimentary" eval="True" />
         <field name="list_price">2.70</field>
         <field name="allergen_ids" eval="[
-            (4, ref('allergen_peanut')),
+            (4, ref('allergen_ARA')),
         ]"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
         ]"/>
+        <field name="ingredients">Arachides de Chine issues de l'agriculture biologique</field>
+        <field name="best_before_date_day">365</field>
     </record>
 
 
@@ -37,16 +39,5 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             (4, ref('label_alcool_grossesse')),
             ]"/>
     </record>
-
-    <record id="product_origin.biere_pilat_75cl" model="product.product">
-        <field name="is_alimentary" eval="True" />
-        <field name="is_alcohol" eval="True" />
-        <field name="alcohol_by_volume">5.0</field>
-        <field name="label_ids" eval="[
-            (4, ref('product_label.label_agriculture_biologique')),
-            (4, ref('label_alcool_grossesse')),
-            ]"/>
-    </record>
-
 
 </odoo>

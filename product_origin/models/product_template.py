@@ -12,14 +12,6 @@ from .product_product import ProductProduct
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    country_group_id = fields.Many2one(
-        comodel_name="res.country.group",
-        related="product_variant_ids.country_group_id",
-        string="Country Group",
-        help="Country group of production of the product",
-        readonly=False,
-    )
-
     country_id = fields.Many2one(
         comodel_name="res.country",
         related="product_variant_ids.country_id",
@@ -33,12 +25,6 @@ class ProductTemplate(models.Model):
         related="product_variant_ids.state_id",
         string="State",
         help="State of production of the product",
-        readonly=False,
-    )
-
-    origin_description = fields.Char(
-        related="product_variant_ids.origin_description",
-        string="Location (Complement)",
         readonly=False,
     )
 

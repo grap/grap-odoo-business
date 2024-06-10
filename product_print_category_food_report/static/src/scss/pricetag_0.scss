@@ -1,0 +1,31 @@
+.pricetag_01, .pricetag_02 {
+    border: 1px solid grey;
+
+    .main_price {
+        height: 0.7cm;
+
+        .main_price_text {
+            font-size: 16px;
+        }
+        .main_uom_text {
+            font-size: 12px;
+        }
+    }
+
+    .zone_barcode {
+        height: 1.3cm;
+
+        .wrap_barcode_image{
+            height: 1.2cm;
+        }
+        .wrap_barcode_image > img{
+            height: 1.2cm;
+        }
+    }
+
+    .shop_information {
+        font-size: 5px;
+        height: 0.2cm;
+    }
+
+}
