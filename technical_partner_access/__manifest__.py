@@ -6,7 +6,7 @@
     "name": "Technical Partners Access",
     "summary": "Limit the access of the partners created when creating"
     " companies and users.",
-    "version": "12.0.1.2.1",
+    "version": "16.0.1.0.0",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",

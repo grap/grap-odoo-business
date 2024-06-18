@@ -30,18 +30,15 @@ class ResPartner(models.Model):
         return super().create(vals)
 
     # Overload Section
-    @api.multi
     def write(self, vals):
         self._check_technical_partner_access()
         return super().write(vals)
 
-    @api.multi
     def unlink(self):
         self._check_technical_partner_access()
         return super().unlink()
 
     # Custom section
-    @api.multi
     def _check_technical_partner_access(self):
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases

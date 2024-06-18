@@ -67,7 +67,7 @@ class TestModule(TransactionCase):
 
         # Without Correct access right, should fail
         with self.assertRaises(UserError):
-            self.demo_partner.sudo(self.demo_user).write(
+            self.demo_partner.with_user(self.demo_user).write(
                 {
                     "name": "Test",
                 }
@@ -120,7 +120,7 @@ class TestModule(TransactionCase):
 
         # Without Correct access right, should fail
         with self.assertRaises(UserError):
-            company.partner_id.sudo(self.demo_user).write(
+            company.partner_id.with_user(self.demo_user).write(
                 {
                     "name": "Test",
                 }
