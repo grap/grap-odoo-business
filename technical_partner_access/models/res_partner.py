@@ -4,7 +4,8 @@
 
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
+from odoo.osv import expression
 
 
 class ResPartner(models.Model):
@@ -23,13 +24,14 @@ class ResPartner(models.Model):
         index=True,
     )
 
-    @api.model
-    def create(self, vals):
-        if self.env.context.get("is_odoo_company"):
-            vals["is_odoo_company"] = True
-        return super().create(vals)
-
     # Overload Section
+    @api.model_create_multi
+    def create(self, vals_list):
+        if self.env.context.get("is_odoo_company"):
+            for vals in vals_list:
+                vals["is_odoo_company"] = True
+        return super().create(vals_list)
+
     def write(self, vals):
         self._check_technical_partner_access()
         return super().write(vals)
@@ -68,23 +70,20 @@ class ResPartner(models.Model):
     @api.model
     def _search(
         self,
-        args,
+        domain,
         offset=0,
         limit=None,
         order=None,
         count=False,
         access_rights_uid=None,
     ):
-        args += [
-            ("is_odoo_user", "=", bool(self.env.context.get("show_odoo_user", False))),
-            (
-                "is_odoo_company",
-                "=",
-                bool(self.env.context.get("show_odoo_company", False)),
-            ),
-        ]
+        if not self.env.context.get("show_odoo_user", False):
+            domain = expression.AND([domain, [("is_odoo_user", "=", False)]])
+
+        if not self.env.context.get("show_odoo_company", False):
+            domain = expression.AND([domain, [("is_odoo_company", "=", False)]])
         return super()._search(
-            args=args,
+            domain,
             offset=offset,
             limit=limit,
             order=order,

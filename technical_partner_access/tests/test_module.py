@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
 
 
@@ -67,25 +67,13 @@ class TestModule(TransactionCase):
 
         # Without Correct access right, should fail
         with self.assertRaises(UserError):
-            self.demo_partner.with_user(self.demo_user).write(
-                {
-                    "name": "Test",
-                }
-            )
+            self.demo_partner.with_user(self.demo_user).write({"name": "Test"})
 
         # With Correct access right, should success
-        self.demo_partner.write(
-            {
-                "name": "Test",
-            }
-        )
+        self.demo_partner.write({"name": "Test"})
 
     def test_02_company_part(self):
-        company = self.ResCompany.create(
-            {
-                "name": self.company_name,
-            }
-        )
+        company = self.ResCompany.create({"name": self.company_name})
         # Check access without context (by search)
         result = self.ResPartner.search([("name", "=", self.company_name)])
         self.assertEqual(
@@ -120,15 +108,7 @@ class TestModule(TransactionCase):
 
         # Without Correct access right, should fail
         with self.assertRaises(UserError):
-            company.partner_id.with_user(self.demo_user).write(
-                {
-                    "name": "Test",
-                }
-            )
+            company.partner_id.with_user(self.demo_user).write({"name": "Test"})
 
         # With Correct access right, should success
-        company.partner_id.write(
-            {
-                "name": "Test",
-            }
-        )
+        company.partner_id.write({"name": "Test"})

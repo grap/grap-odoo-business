@@ -11,16 +11,7 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
-    "depends": [
-        "base",
-        "name_search_reset_res_partner",
-    ],
-    "data": [
-        "views/view_res_partner.xml",
-    ],
-    "demo": [
-        "demo/res_groups.xml",
-    ],
+    "depends": ["base"],
     "post_init_hook": "post_init_hook",
     "installable": True,
 }

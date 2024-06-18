@@ -9,14 +9,8 @@ from odoo import api, models
 class ResUsers(models.Model):
     _inherit = "res.users"
 
-    # Overload Section
-    @api.model
-    def create(self, vals):
-        vals.update({"is_odoo_user": True})
-        user = super().create(vals)
-        user.partner_id.write(
-            {
-                "company_id": False,
-            }
-        )
-        return user
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            vals.update({"is_odoo_user": True})
+        return super().create(vals_list)
