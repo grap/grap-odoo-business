@@ -11,12 +11,6 @@ from odoo.osv import expression
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    is_odoo_user = fields.Boolean(
-        string="Is an Odoo User",
-        readonly=True,
-        default=False,
-        index=True,
-    )
     is_odoo_company = fields.Boolean(
         string="Is an Odoo Company",
         readonly=True,
@@ -33,35 +27,31 @@ class ResPartner(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        self._check_technical_partner_access()
+        self._check_technical_partner_access_company()
         return super().write(vals)
 
     def unlink(self):
-        self._check_technical_partner_access()
+        self._check_technical_partner_access_company()
         return super().unlink()
 
     # Custom section
-    def _check_technical_partner_access(self):
+    def _check_technical_partner_access_company(self):
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases
-        ResUsers = self.env["res.users"].sudo()
-        users = ResUsers.with_context(active_test=False).search(
-            [("partner_id", "in", self.ids)]
-        )
         ResCompany = self.env["res.company"].sudo()
         companies = ResCompany.with_context(active_test=False).search(
             [("partner_id", "in", self.ids)]
         )
-        if len(users) != 0 or len(companies) != 0:
+        if len(companies):
             # Check if current user has correct access right
             if not self.env.user.has_group("base.group_erp_manager"):
                 raise UserError(
                     _(
                         "You must be part of the group Administration / Access"
                         " Rights to update partners associated to"
-                        " users or companies.\n- %s"
+                        " companies.\n- %s"
                     )
-                    % ("\n- ".join(users.mapped("name")))
+                    % ("\n- ".join(companies.mapped("name")))
                 )
 
     # Overload the private _search function:
@@ -77,9 +67,6 @@ class ResPartner(models.Model):
         count=False,
         access_rights_uid=None,
     ):
-        if not self.env.context.get("show_odoo_user", False):
-            domain = expression.AND([domain, [("is_odoo_user", "=", False)]])
-
         if not self.env.context.get("show_odoo_company", False):
             domain = expression.AND([domain, [("is_odoo_company", "=", False)]])
         return super()._search(

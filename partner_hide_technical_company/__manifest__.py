@@ -3,9 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Technical Partners Access",
-    "summary": "Limit the access of the partners created when creating"
-    " companies and users.",
+    "name": "Partner - Hide Companies Partners",
+    "summary": "Hide partners created when creating companies.",
     "version": "16.0.1.0.0",
     "category": "base",
     "author": "GRAP",

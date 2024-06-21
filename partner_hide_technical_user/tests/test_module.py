@@ -7,16 +7,15 @@ from odoo.tests.common import TransactionCase
 
 
 class TestModule(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.ResPartner = self.env["res.partner"]
-        self.ResUsers = self.env["res.users"]
-        self.ResCompany = self.env["res.company"]
-        self.demo_user = self.env.ref("base.user_demo")
-        self.demo_partner = self.env.ref("base.partner_demo")
-        self.main_company = self.env.ref("base.main_company")
-        self.user_name = "technical_partner_access - res.users"
-        self.company_name = "Users technical_partner_access - res.company"
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.ResPartner = cls.env["res.partner"]
+        cls.ResUsers = cls.env["res.users"]
+        cls.demo_user = cls.env.ref("base.user_demo")
+        cls.demo_partner = cls.env.ref("base.partner_demo")
+        cls.main_company = cls.env.ref("base.main_company")
+        cls.user_name = "technical_partner_access - res.users"
 
     def test_01_user_part(self):
         user = self.ResUsers.create(
@@ -71,44 +70,3 @@ class TestModule(TransactionCase):
 
         # With Correct access right, should success
         self.demo_partner.write({"name": "Test"})
-
-    def test_02_company_part(self):
-        company = self.ResCompany.create({"name": self.company_name})
-        # Check access without context (by search)
-        result = self.ResPartner.search([("name", "=", self.company_name)])
-        self.assertEqual(
-            len(result),
-            0,
-            "Search company partner should not return result without context",
-        )
-        # Check access without context (by name_search)
-        result = self.ResPartner.name_search(self.company_name)
-        self.assertEqual(
-            len(result),
-            0,
-            "Name Search company partner should not return result without context",
-        )
-
-        # Check access with context (by search)
-        result = self.ResPartner.with_context(show_odoo_company=True).search(
-            [("name", "=", self.company_name)]
-        )
-        self.assertEqual(
-            len(result), 1, "Search company partner should return result with context"
-        )
-        # Check access with context (by name_search)
-        result = self.ResPartner.with_context(show_odoo_company=True).name_search(
-            self.company_name
-        )
-        self.assertEqual(
-            len(result),
-            1,
-            "Name Search company partner should return result with context",
-        )
-
-        # Without Correct access right, should fail
-        with self.assertRaises(UserError):
-            company.partner_id.with_user(self.demo_user).write({"name": "Test"})
-
-        # With Correct access right, should success
-        company.partner_id.write({"name": "Test"})
