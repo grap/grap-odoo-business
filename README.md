@@ -17,7 +17,11 @@ This repository contains Odoo modules developped by the company GRAP that meet t
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[recurring_consignment](recurring_consignment/) | 16.0.1.0.0 |  | Sale - Handle Recurring Consignments
 
 [//]: # (end addons)
 
