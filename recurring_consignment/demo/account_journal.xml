@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+    <!-- oca-hooks: disable=xml-duplicate-record-id -->
+
+    <record id="account_journal_sale" model="account.journal">
+        <field name="name">Demo Sale Journal For Consignor</field>
+        <field name="type">sale</field>
+        <field name="code">SJ-CONS</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_journal_misc" model="account.journal">
+        <field name="name">Demo Misc Journal For Consignor</field>
+        <field name="type">general</field>
+        <field name="code">MC-CONS</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="company" model="res.company">
+        <field name="commission_deduction_journal_id" ref="account_journal_misc"/>
+    </record>
+
+</odoo>

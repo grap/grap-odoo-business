@@ -1,0 +1,775 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * recurring_consignment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-23 15:55+0000\n"
+"PO-Revision-Date: 2024-06-23 15:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#, python-format
+msgid " NOT SUBJECT TO VAT - "
+msgstr "NON ASSUJETTI A TVA - "
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Values set here "
+"are company-specific.\"/>"
+msgstr ""
+"<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Les valeurs définies ici sont"
+" propres à l'entreprise.\"/>"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/res_partner.py:0
+#, python-format
+msgid "A Consignor must have a 'Consignment Account' defined."
+msgstr ""
+"Un dépôt vendeur doit avoir un compte comptable de dépôt vente défini."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/res_partner.py:0
+#, python-format
+msgid ""
+"A Non Consignor partner can not have 'Consignment Commission' neither "
+"'Consignment Account' defined."
+msgstr ""
+"Un non dépôt vendeur ne peut pas avoir de taux de commission, ni de compte "
+"comptable de dépôt vente."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/product_template.py:0
+#, python-format
+msgid ""
+"A consigned product can only have the consignor in the field 'Suppliers'."
+msgstr ""
+"Un produit en dépôt vente peut seulement avoir le dépôt vendeur dans le "
+"champs 'Fournisseurs'."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/product_template.py:0
+#, python-format
+msgid "A consigned product must have null Cost Price"
+msgstr "Un produit en dépôt-vente doit avoir un coût de revient nul"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__consignment_account_id
+msgid "Account"
+msgstr "Compte"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__account_code
+msgid "Account Code"
+msgstr "Code comptable"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Account Moves Details"
+msgstr "Détails des écritures comptables"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__account_prefix
+msgid "Account Prefix"
+msgstr "Préfixe comptable"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__account_suffix
+msgid "Account Suffix"
+msgstr "Suffixe comptable"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_account_move_line__consignment_invoice_line_id
+msgid ""
+"Account move Line that commissions the current line, if the related product "
+"is a product related to consignor."
+msgstr "Ligne comptable qui commissionne la ligne en cours, si le produit est un produit lié à un dépôt vendeur."
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Amount"
+msgstr "Montant"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Cashed"
+msgstr "Encaissé"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_res_company__recurring_consignment_account_prefix
+#: model:ir.model.fields,help:recurring_consignment.field_res_config_settings__recurring_consignment_account_prefix
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
+msgid "Code used as prefix to generate account code of the consignors."
+msgstr "Code utilisé comme préfixe, pour générer le code comptable du dépôt vendeur."
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Comm."
+msgstr ""
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Commission"
+msgstr ""
+
+#. module: recurring_consignment
+#: model:product.template,name:recurring_consignment.commission_product_vat_20_product_template
+msgid "Commission (20% Price Excl)"
+msgstr "Commission (20% HT)"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_company__commission_deduction_journal_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_config_settings__commission_deduction_journal_id
+msgid "Commission Deduction Journal"
+msgstr "Journal de déduction de la commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_company__commission_product_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_config_settings__commission_product_id
+msgid "Commission Product"
+msgstr "Produit de commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__commission_rate
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__consignment_commission
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__consignment_commission
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_users__consignment_commission
+msgid "Commission Rate"
+msgstr "Taux de commission"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Commission Summary"
+msgstr "Résumé de la commission"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:0
+#, python-format
+msgid ""
+"Commission on Sale or Refunds\n"
+"(Rate : %(rate).2f %%; Base : %(total_credit).2f € ; Period %(month)s-%(year)s)"
+msgstr ""
+"Commission sur ventes et avoirs\n"
+"(Taux : %(rate).2f %%; Base : %(total_credit).2f € ; Période %(month)s-%(year)s)"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de configuration"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: recurring_consignment
+#: model:ir.ui.menu,name:recurring_consignment.menu_consignment
+msgid "Consignment"
+msgstr "Dépôt Vente"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__consignment_account_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_users__consignment_account_id
+msgid "Consignment Account"
+msgstr "Compte de dépôt vente"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_move_line__consignment_invoice_line_id
+msgid "Consignment Commission Invoice Line"
+msgstr "Ligne de facture de commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_move_line__consignment_invoice_line_ids
+msgid "Consignment Invoice Line"
+msgstr "Ligne de commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_product_fiscal_classification__consignor_partner_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_tax__consignor_partner_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__partner_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_product__consignor_partner_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_template__consignor_partner_id
+msgid "Consignor"
+msgstr "Dépôt vendeur"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_consignor_create_wizard
+msgid "Consignor Creation Wizard"
+msgstr "Assistant de création de dépôt vendeur"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__consignor_fiscal_classification_ids
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_users__consignor_fiscal_classification_ids
+msgid "Consignor Fiscal Classifications"
+msgstr "Catégorie fiscale"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__consignor_name
+msgid "Consignor Name"
+msgstr "Nom du dépôt vendeur"
+
+#. module: recurring_consignment
+#: model:ir.actions.act_window,name:recurring_consignment.action_res_partner
+#: model:ir.ui.menu,name:recurring_consignment.menu_res_partner
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
+msgid "Consignors"
+msgstr "Dépôt vendeurs"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: recurring_consignment
+#: model:ir.actions.act_window,name:recurring_consignment.action_partner_mass_commission
+msgid "Create Commission Invoices"
+msgstr "Créer factures de commission"
+
+#. module: recurring_consignment
+#: model:ir.actions.act_window,name:recurring_consignment.action_consignor_create_wizard
+#: model:ir.ui.menu,name:recurring_consignment.menu_consignment_consignor_create_wizard
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
+msgid "Create Consignor"
+msgstr "Créer un dépôt vendeur"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__create_uid
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__create_uid
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__create_date
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__create_date
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Credit"
+msgstr "Crédit"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Date"
+msgstr ""
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Debit"
+msgstr "Débit"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Discount"
+msgstr "Remise"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__display_name
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__display_name
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_account_product_fiscal_classification
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_product__fiscal_classification_id
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_template__fiscal_classification_id
+msgid "Fiscal Classification"
+msgstr "Catégorie fiscale"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__id
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__id
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__id
+msgid "ID"
+msgstr ""
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#, python-format
+msgid ""
+"If the consignor is VAT subject, you should select at least a not null VAT."
+msgstr ""
+"Si le dépôt vendeur est assujetti à TVA, vous devez sélectionner au moins "
+"une TVA non nulle."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#, python-format
+msgid ""
+"If the consignor is not VAT subject, you should not select not null VAT."
+msgstr ""
+"Si le dépôt vendeur n'est pas assujetti à TVA, vous ne devez pas cocher des "
+"TVA non nulles."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#, python-format
+msgid "If the consignor is not VAT subject, you should select the null VAT."
+msgstr ""
+"Si le dépôt vendeur n'est pas assujetti à TVA, vous devez cocher 'Sans TVA'."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/account_move.py:0
+#, python-format
+msgid "Income Collected. Taxes: %s"
+msgstr "Chiffre d'affaire collecté. Taxes: %s"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:0
+#, python-format
+msgid ""
+"Incorrect fiscal settings block the possibility to generate commission "
+"invoices : Incorrect tax type on the tax %(tax_name)s"
+msgstr ""
+"Paramétrage fiscal incorrect qui empêche de générer les factures de commission: "
+"Type de taxe incorrecte sur la taxe %(tax_name)s"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:0
+#, python-format
+msgid ""
+"Incorrect fiscal settings block the possibility to generate commission "
+"invoices: Too many taxes %(tax_names)s"
+"Paramétrage fiscal incorrect qui empêche de générer les factures de commission: "
+"Trop de taxe %(tax_names)s"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_invoice_commission_wizard
+msgid "Invoice Commission Wizard"
+msgstr "Assistant de facture de commission"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_invoice_commission_wizard_line
+msgid "Invoice Line Commission Wizard"
+msgstr "Assistant de ligne de facture de commission"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_product_template_search
+msgid "Is Consignment"
+msgstr "En dépôt vente"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_bank_statement_line__is_consignment_invoice
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_move__is_consignment_invoice
+#: model:ir.model.fields,field_description:recurring_consignment.field_account_payment__is_consignment_invoice
+msgid "Is Consignment Invoice"
+msgstr "Est une facture de commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_product__is_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_template__is_consignment
+msgid "Is Consignment Product"
+msgstr "Est un produit commission"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__is_consignor
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_users__is_consignor
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_res_partner_search
+msgid "Is Consignor"
+msgstr "Est un dépôt vendeur"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard____last_update
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard____last_update
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__write_uid
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__write_uid
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__write_date
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__write_date
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: recurring_consignment
+#: model:ir.actions.act_window,name:recurring_consignment.action_invoice_commission_wizard
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_res_partner_tree
+msgid "Make Commissions Invoice"
+msgstr "Faire la facture de commissions"
+
+#. module: recurring_consignment
+#: model:res.groups,name:recurring_consignment.group_consignment_manager
+msgid "Manager"
+msgstr "Gestionnaire"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__max_date
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__max_date
+msgid "Max Date"
+msgstr "Date maximum"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_res_company__commission_deduction_journal_id
+#: model:ir.model.fields,help:recurring_consignment.field_res_config_settings__commission_deduction_journal_id
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
+msgid ""
+"Miscellaneous Journal, used to generate an entry that deducts the commission"
+" from the amount to be paid out."
+msgstr "Journal d'opérations diverses, utilisé pour générer les pièces comptables qui déduisent la commission"
+" du montant à reverser."
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__move_line_qty
+msgid "Move Lines Quantity"
+msgstr "Nombre de lignes comptables"
+
+#. module: recurring_consignment
+#: model:product.template,name:recurring_consignment.consigned_product_consignor_1_vat_5_A_product_template
+msgid "My Consigned Product A (VAT 5% - Consignor 1)"
+msgstr "Mon produit de dépôt vente A (TVA 5% - dépôt vente 1)"
+
+#. module: recurring_consignment
+#: model:product.template,name:recurring_consignment.consigned_product_consignor_1_vat_5_B_product_template
+msgid "My Consigned Product B (VAT 5% - Consignor 1)"
+msgstr "Mon produit de dépôt vente B (TVA 5% - dépôt vente 1)"
+
+#. module: recurring_consignment
+#: model:product.template,name:recurring_consignment.consigned_product_consignor_1_vat_20_C_product_template
+msgid "My Consigned Product C (VAT 20% - Consignor 1)"
+msgstr "Mon produit de dépôt vente C (TVA 20% - dépôt vente 1)"
+
+#. module: recurring_consignment
+#: model:product.template,name:recurring_consignment.consigned_product_consignor_1_vat_20_D_product_template
+msgid "My Consigned Product D (VAT 20% - Consignor 1)"
+msgstr "Mon produit de dépôt vente D (TVA 20% - dépôt vente 1)"
+
+#. module: recurring_consignment
+#: model:product.pricelist,name:recurring_consignment.sale_pricelist_10
+msgid "My Pricelist (-10%)"
+msgstr "Ma tarification (-10%)"
+
+#. module: recurring_consignment
+#: model:product.pricelist,name:recurring_consignment.sale_pricelist_50
+msgid "My Pricelist (-50%)"
+msgstr "Ma tarification (-50%)"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Name"
+msgstr "Nom"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid ""
+"Note:<br/>\n"
+"                        the debit values may correspond to: <br/>\n"
+"                        * a return of products on the part of the customer,<br/>\n"
+"                        * a return of deposit in the case of returnable product,<br/>\n"
+"                        * a cancellation of all or part of a sale following an input error<br/>"
+msgstr ""
+"Note:<br/>\n"
+"                    les valeurs au débit peuvent correspondre à : <br/>\n"
+"                    * un retour de produit de la part du client,<br/>\n"
+"                    * un retour de consigne, dans le cas d'article retournable, <br/>\n"
+"                    * une annulation de tout ou partie d'une vente, dû à une erreur de saisie<br/>"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Origin"
+msgstr "Origine"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_product_pricelist
+msgid "Pricelist"
+msgstr "Liste de prix"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Élément de la liste de prix"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_product_pricelist__consignment_pricelist_id
+msgid "Pricelist for Consigned Products"
+msgstr "Liste de prix pour les articles consignés"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_product_template
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Product"
+msgstr "Produit"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Product Details"
+msgstr "Détails des produits"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_res_config_settings__commission_product_id
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
+msgid ""
+"Product that will be used to generate consignment invoices to consignors."
+msgstr ""
+"Produit qui sera utilisé pour générer des factures de dépôt vente aux dépôt vendeurs."
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
+msgid "Products Taxation"
+msgstr "Fiscalité des articles"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Qty"
+msgstr "Qté"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
+msgid "Recurring Consigment"
+msgstr "Dépôt vente"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_company__recurring_consignment_account_prefix
+#: model:ir.model.fields,field_description:recurring_consignment.field_res_config_settings__recurring_consignment_account_prefix
+msgid "Recurring Consignment Account Prefix"
+msgstr "Préfixe comptable de dépôt vente"
+
+#. module: recurring_consignment
+#: model:ir.module.category,name:recurring_consignment.module_category_consignment
+msgid "Sale Recurring Consignment"
+msgstr "Vente - Dépôt Vente"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
+msgid "Settings"
+msgstr "Configuration"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_product_product__fiscal_classification_id
+#: model:ir.model.fields,help:recurring_consignment.field_product_template__fiscal_classification_id
+msgid ""
+"Specify the combination of taxes for this product. This field is required. "
+"If you dont find the correct Fiscal Classification, Please create a new one "
+"or ask to your account manager if you don't have the access right."
+msgstr ""
+"Indiquer la combinaison de taxes pour ce produit. Ce champ est requis. Si "
+"vous ne trouvez pas la catégorie fiscale que vous cherchez, vous pouvez en "
+"créer une autre, ou demander à votre responsable comptable, si vous n'avez "
+"pas les droits d'accès."
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__is_vat_subject
+msgid "Subject to VAT"
+msgstr "Assujetti à TVA"
+
+#. module: recurring_consignment
+#: model:ir.model,name:recurring_consignment.model_account_tax
+msgid "Tax"
+msgstr "Taxe"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/account_move.py:0
+#, python-format
+msgid "Tax Collected %s"
+msgstr "Taxe collectée %s"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_invoice_commission_wizard__max_date
+#: model:ir.model.fields,help:recurring_consignment.field_invoice_commission_wizard_line__max_date
+msgid "The commission will be computed for the sale until this date included."
+msgstr ""
+"La commission sera calculée pour les ventes, jusqu'à cette date inclue."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/product_template.py:0
+#, python-format
+msgid ""
+"The product '{product_name} has inconsistent consignor ({consignor_name}) "
+"and fiscal classification ({classification_name})."
+msgstr ""
+"Le produit '{product_name}' a un dépôt vente inconsistent ({consignor_name}) "
+"avec la catégorie fiscale ({classification_name})."
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard.py:0
+#, python-format
+msgid ""
+"There is no move lines to commission for there consignors and this date."
+msgstr ""
+"Il n'y a pas de lignes à commissionner, pour ce dépôt vendeur et les dates "
+"sélectionnés."
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "To reverse"
+msgstr "A reverser"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Total"
+msgstr ""
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Total (Vat Excl)"
+msgstr "Total (HT)"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,help:recurring_consignment.field_res_company__commission_product_id
+msgid ""
+"Used for the Recurring Consignment features. Define the product that will be"
+" used to generate consignment invoices to consignors."
+msgstr ""
+"Utilisé pour a fonctionnalité de dépôt vente. définir l'article qui sera "
+"utilisé pour générer des factures de commission aux dépôt-vendeurs."
+
+#. module: recurring_consignment
+#: model:res.groups,name:recurring_consignment.group_consignment_user
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_000
+msgid "VAT 00,0%"
+msgstr "TVA 00,0%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_021
+msgid "VAT 02,1%"
+msgstr "TVA 02,1%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_055
+msgid "VAT 05,5%"
+msgstr "TVA 05,5%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_100
+msgid "VAT 10,0%"
+msgstr "TVA 10,0%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_200
+msgid "VAT 20,0%"
+msgstr "TVA 20,0%"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__wizard_id
+msgid "Wizard"
+msgstr "Assistant"
+
+#. module: recurring_consignment
+#: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard__wizard_line_ids
+msgid "Wizard Line"
+msgstr "Ligne d'assistant"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
+msgid "Yes"
+msgstr "Oui"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/product_template.py:0
+#, python-format
+msgid ""
+"You can not change the value of the field 'Consignor' because the product is"
+" associated to one or more Account Invoice Lines. You should disable the "
+"product and create a new one."
+msgstr ""
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt vendeur' car ce produit"
+" est associé à une ou plusieurs lignes compables. Vous devez désactiver ce "
+"produit, et en créer un nouveau"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/account_product_fiscal_classification.py:0
+#, python-format
+msgid ""
+"You can not set Supplier Taxes for Fiscal Classificationused for consignment"
+msgstr ""
+"vous ne pouvez pas appliquer de taxe fournisseur pour une catégorie fiscale "
+"utilisée pour le dépôt vente"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/models/account_move.py:0
+#, python-format
+msgid "deduction of %(move_name)s on the amount to be repaid"
+msgstr "Déduction de %(move_name)s du montant à reverser"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/invoice_commission_wizard_line.py:0
+#, python-format
+msgid ""
+"you can not create a consignment invoice because you didn't defined a "
+"Consignment product at the company level. (%s)"
+msgstr ""
+"Vous ne pouvez pas créer une facture de commission car aucun produit de "
+"commission n'est défini au niveau de la société. (%s)"
+
+#. module: recurring_consignment
+#. odoo-python
+#: code:addons/recurring_consignment/wizards/consignor_create_wizard.py:0
+#, python-format
+msgid "{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}"
+msgstr "{sequence} - TVA {amount:2.1f}% -{vat_subject}{name}"
