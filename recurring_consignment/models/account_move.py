@@ -62,10 +62,12 @@ class AccountMove(models.Model):
     # View Section
     def button_commission_view_invoice_lines(self):
         invoice_lines = self.mapped("invoice_line_ids.consignment_invoice_line_ids")
-        action = self.env.ref("recurring_consignment.action_account_invoice_line")
-        action_data = action.read()[0]
-        action_data["domain"] = [("id", "in", invoice_lines.ids)]
-        return action_data
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "account.action_move_line_select"
+        )
+        action["domain"] = [("id", "in", invoice_lines.ids)]
+        action["context"] = {}
+        return action
 
     # Report Function
     def get_commission_information_summary(self):

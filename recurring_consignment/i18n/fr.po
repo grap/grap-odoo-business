@@ -390,7 +390,7 @@ msgstr "En dépôt vente"
 #: model:ir.model.fields,field_description:recurring_consignment.field_account_move__is_consignment_invoice
 #: model:ir.model.fields,field_description:recurring_consignment.field_account_payment__is_consignment_invoice
 msgid "Is Consignment Invoice"
-msgstr "Est une facture de commission"
+msgstr "Facture de commission"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_product_product__is_consignment
