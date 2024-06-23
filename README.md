@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[recurring_consignment](recurring_consignment/) | 16.0.1.0.0 |  | Sale - Handle Recurring Consignments
+[recurring_consignment](recurring_consignment/) | 16.0.1.0.1 |  | Sale - Handle Recurring Consignments
 
 [//]: # (end addons)
 
