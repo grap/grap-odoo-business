@@ -126,7 +126,11 @@ class ProductTemplate(models.Model):
         return templates
 
     def write(self, vals):
-        self._check_consignor_changes(vals)
+        if "consignor_partner_id" in vals.keys():
+            templates = self.filtered(
+                lambda x: x.consignor_partner_id.id != vals.get("consignor_partner_id")
+            )
+            templates._check_consignor_changes()
 
         # Handle pricelist exceptions
         ProductPricelist = self.env["product.pricelist"]
@@ -149,30 +153,25 @@ class ProductTemplate(models.Model):
 
         return super().write(vals)
 
-    def _check_consignor_changes(self, vals):
+    def _check_consignor_changes(self):
         """Prevent to change the consignor of the product if the product has
         been sold, via invoices.
         Overload this function in extra modules. (purchase, sale, point_of_sale, etc...)
         """
         AccountMoveLine = self.env["account.move.line"]
-        if vals.get("consignor_partner_id", False):
-            for template in self:
-                product_ids = template.product_variant_ids.ids
-                if template.consignor_partner_id.id != vals.get(
-                    "consignor_partner_id", False
-                ):
-                    invoice_lines = AccountMoveLine.search(
-                        [("product_id", "in", product_ids)]
+        for template in self:
+            invoice_lines = AccountMoveLine.search(
+                [("product_id", "in", template.product_variant_ids.ids)]
+            )
+            if len(invoice_lines):
+                raise ValidationError(
+                    _(
+                        "You can not change the value of the field"
+                        " 'Consignor' because the product is associated"
+                        " to one or more Account Invoice Lines. You should"
+                        " disable the product and create a new one."
                     )
-                    if len(invoice_lines):
-                        raise ValidationError(
-                            _(
-                                "You can not change the value of the field"
-                                " 'Consignor' because the product is associated"
-                                " to one or more Account Invoice Lines. You should"
-                                " disable the product and create a new one."
-                            )
-                        )
+                )
 
     def _get_product_accounts(self):
         if self.consignor_partner_id:
