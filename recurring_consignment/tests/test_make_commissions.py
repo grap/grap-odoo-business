@@ -9,7 +9,7 @@ from odoo.tests.common import TransactionCase, tagged
 
 
 @tagged("post_install", "-at_install")
-class TestCreateConsignors(TransactionCase):
+class TestMakeCommissions(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -73,13 +73,13 @@ class TestCreateConsignors(TransactionCase):
         self.assertEqual(
             len(commission_invoice.invoice_line_ids),
             1,
-            "Two commission lines should be generated",
+            "One commission line should be generated",
         )
         self.assertEqual(
             len(lines_20), 1, "One 20% commission line should be generated"
         )
 
-        # Check line #2 details (Tax Excl)
+        # Check line details (Tax Excl)
         line_20 = lines_20[0]
         self.assertEqual(line_20.quantity, 1, "Incorrect Commission Quantity.")
         self.assertEqual(

@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <xpath expr="//div[@id='print_vendor_checks_setting_container']" position="after">
 
-                <h2 groups="recurring_consignment.group_consignment_manager">Recurring Consigment</h2>
+                <h2 groups="recurring_consignment.group_consignment_manager">Recurring Consignment</h2>
                 <div class="row mt16 o_settings_container" id="recurring_consignment"
                     groups="recurring_consignment.group_consignment_manager">
 

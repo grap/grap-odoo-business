@@ -11,12 +11,16 @@
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
-        "recurring_consignment",
+        # Odoo
         "point_of_sale",
+        # GRAP
+        "recurring_consignment",
     ],
-    "data": [
-        "views/view_account_invoice.xml",
-        "views/templates.xml",
+    "data": ["views/view_account_move.xml"],
+    "demo": [
+        "demo/pos_payment_method.xml",
+        "demo/pos_config.xml",
+        "demo/product_product.xml",
     ],
     "installable": True,
     "auto_install": True,

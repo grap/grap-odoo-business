@@ -2,11 +2,11 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import models
 
 
-class AccountInvoice(models.Model):
-    _inherit = "account.invoice"
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
     # View Section
     def button_commission_view_pos_order_lines(self):
@@ -17,13 +17,32 @@ class AccountInvoice(models.Model):
         return action_data
 
     # Private Section
+    def _get_commission_information_product_detail_grouped(self):
+        groups = super()._get_commission_information_product_detail_grouped()
+
+        # Get related pos order lines
+        com_order_lines = self._get_commission_related_pos_order_lines()
+        for com_order_line in com_order_lines:
+            key = (
+                com_order_line.product_id,
+                com_order_line.price_unit,
+                com_order_line.discount,
+            )
+            groups.setdefault(key, {"quantity": 0, "total_vat_excl": 0})
+            groups[key] = {
+                "quantity": groups[key]["quantity"] + com_order_line.qty,
+                "total_vat_excl": groups[key]["total_vat_excl"]
+                + com_order_line.price_subtotal,
+            }
+        return groups
+
     def _get_commission_related_pos_order_lines(self):
         PosOrder = self.env["pos.order"]
         PosOrderLine = self.env["pos.order.line"]
         ProductProduct = self.env["product.product"]
 
         # Get Account Move
-        moves = self.mapped("consignment_line_ids.move_id")
+        moves = self.mapped("invoice_line_ids.consignment_invoice_line_ids.move_id")
 
         # Get Product ids
         consignor_products = ProductProduct.with_context(active_test=False).search(
@@ -31,7 +50,7 @@ class AccountInvoice(models.Model):
         )
 
         # Get related pos orders
-        com_orders = PosOrder.search([("account_move", "in", moves.ids)])
+        com_orders = PosOrder.search([("session_move_id", "in", moves.ids)])
 
         # We add pos.order.line sales, that are not invoiced
         # because the lines are still include in the module
@@ -44,29 +63,3 @@ class AccountInvoice(models.Model):
                 ("product_id", "in", consignor_products.ids),
             ]
         )
-
-    def _get_commission_information_product_detail_grouped(self):
-        groups = super().get_commission_information_product_detail_grouped()
-
-        # Get related pos order lines
-        com_order_lines = self._get_commission_related_pos_order_lines()
-
-        for com_order_line in com_order_lines:
-            key = (
-                com_order_line.product_id.id,
-                com_order_line.price_unit,
-                com_order_line.discount,
-            )
-            groups.setdefault(
-                key,
-                {
-                    "quantity": 0,
-                    "total_vat_excl": 0,
-                },
-            )
-            groups[key] = {
-                "quantity": groups[key]["quantity"] + com_order_line.qty,
-                "total_vat_excl": groups[key]["total_vat_excl"]
-                + com_order_line.price_subtotal,
-            }
-        return groups

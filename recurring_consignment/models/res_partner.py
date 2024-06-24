@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 
 
 class ResPartner(models.Model):
@@ -35,7 +35,7 @@ class ResPartner(models.Model):
             if partner.is_consignor:
                 if not partner.consignment_account_id:
                     raise UserError(
-                        _("A Consignor must have a 'Consignment Account'" " defined.")
+                        _("A Consignor must have a 'Consignment Account' defined.")
                     )
             else:
                 if (
@@ -48,15 +48,3 @@ class ResPartner(models.Model):
                             " Commission' neither 'Consignment Account' defined."
                         )
                     )
-
-    # TODO prevent check and uncheck. (only via wizard is possible)
-    # # Overload Section
-    # def write(self, vals):
-    #     if not vals.get("is_consignor", True) and any(self.mapped("is_consignor")):
-    #         raise UserError(
-    #             _(
-    #                 "You can not unset consignor setting on partner.\n"
-    #                 " Please create a new one if you want to do so."
-    #             )
-    #         )
-    #     return super().write(vals)

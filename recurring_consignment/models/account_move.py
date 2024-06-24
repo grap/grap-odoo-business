@@ -155,7 +155,7 @@ class AccountMove(models.Model):
         # Get related invoice lines
         com_invoice_lines = self.mapped(
             "invoice_line_ids.consignment_invoice_line_ids"
-        ).filtered(lambda x: x.display_type == "product")
+        ).filtered(lambda x: x.display_type == "product" and x.product_id)
 
         for com_invoice_line in com_invoice_lines:
             key = (
