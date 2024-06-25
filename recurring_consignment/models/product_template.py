@@ -104,7 +104,8 @@ class ProductTemplate(models.Model):
                 )
             if len(
                 template.seller_ids.filtered(
-                    lambda x, template=template: x.name != template.consignor_partner_id
+                    lambda x, template=template: x.partner_id
+                    != template.consignor_partner_id
                 )
             ):
                 raise ValidationError(
