@@ -126,13 +126,11 @@ class ConsignorCreateWizard(models.TransientModel):
             )
 
         # Return view with the new consignor
-        action = self.env.ref("base.action_partner_form").read()[0]
-        form_view = [(self.env.ref("base.view_partner_form").id, "form")]
-        action["views"] = form_view + [
-            (state, view) for state, view in action.get("views", []) if view != "form"
-        ]
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "base.action_partner_form"
+        )
+        action["views"] = [(self.env.ref("base.view_partner_form").id, "form")]
         action["res_id"] = partner.id
-
         return action
 
     def _prepare_account(self):
