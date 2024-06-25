@@ -17,6 +17,7 @@ class TestProductSettings(TransactionCase):
         cls.consigned_product_vat_5_B = cls.env.ref(
             "recurring_consignment.consigned_product_consignor_1_vat_5_B"
         )
+        cls.consignor_1 = cls.env.ref("recurring_consignment.consignor_1")
         cls.consignor_2 = cls.env.ref("recurring_consignment.consignor_2")
         cls.fiscal_classification_0_consignor_2 = cls.env.ref(
             "recurring_consignment.fiscal_classification_0_consignor_2"
@@ -38,7 +39,15 @@ class TestProductSettings(TransactionCase):
             }
         )
 
-    def test_03_change_consignor_impossible_invoiced(self):
+    def test_03_change_consignor_possible_invoiced(self):
+        """Test if it's possible to set the same consignor for an invoiced product."""
+        self.consigned_product_vat_5_A.product_tmpl_id.write(
+            {
+                "consignor_partner_id": self.consignor_1.id,
+            }
+        )
+
+    def test_04_change_consignor_impossible_invoiced(self):
         """Test if it's impossible to change a consignor for an invoiced product."""
         with self.assertRaises(ValidationError):
             new_vals = {

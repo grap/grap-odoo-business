@@ -12,19 +12,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="account.product_template_form_view" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='purchase_ok']/.." position="after">
-                <div groups="recurring_consignment.group_consignment_user"
+                <span groups="recurring_consignment.group_consignment_user"
                     attrs="{'invisible': [('is_consignment', '=', False)]}">
                     <field name="is_consignment"/>
                     <label for="is_consignment"/>
-                </div>
+                </span>
             </xpath>
-            <field name="supplier_taxes_id" position="before">
-                <field name="consignor_partner_id" />
+            <!-- Add 'consignor_partner_id' field in Purchase section
+            To be displayed if user is member of according group-->
+            <group name="purchase" position="before">
+                <group groups="recurring_consignment.group_consignment_user" >
+                    <field name="consignor_partner_id" />
+                </group>
+            </group>
+            <!-- Add 'consignor_partner_id' field in general section
+            to be hidden for all user. That allow to use consignor_partner_id
+            in domain, specially the fiscal_classification_id domain -->
+            <field name="uom_po_id" position="after">
+                    <field name="consignor_partner_id" invisible="1" />
             </field>
         </field>
     </record>
-
-<!--     groups="recurring_consignment.group_consignment_user" -->
 
     <record id="view_product_template_search" model="ir.ui.view">
         <field name="model">product.template</field>
