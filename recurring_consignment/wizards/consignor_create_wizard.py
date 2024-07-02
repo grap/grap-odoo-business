@@ -118,9 +118,12 @@ class ConsignorCreateWizard(models.TransientModel):
         if self.has_vat_200:
             vat_amounts.append(20.0)
         for vat_amount in vat_amounts:
-            tax = AccountTax.create(
-                self._prepare_tax(sequence, account, partner, vat_amount)
-            )
+            if vat_amount:
+                tax = AccountTax.create(
+                    self._prepare_tax(sequence, account, partner, vat_amount)
+                )
+            else:
+                tax = False
             FiscalClassification.create(
                 self._prepare_fiscal_classification(sequence, partner, tax)
             )
@@ -200,11 +203,11 @@ class ConsignorCreateWizard(models.TransientModel):
         return {
             "name": _("{sequence} - VAT {amount:2.1f}% -{vat_subject}{name}").format(
                 sequence=sequence,
-                amount=tax.amount,
+                amount=tax and tax.amount or 0.0,
                 vat_subject=is_vat_subject and " " or _(" NOT SUBJECT TO VAT - "),
                 name=partner_name,
             ),
-            "sale_tax_ids": [(4, tax.id)],
+            "sale_tax_ids": tax and [(4, tax.id)] or [],
             "consignor_partner_id": partner.id,
             "company_id": company.id,
         }
