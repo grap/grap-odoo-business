@@ -27,24 +27,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                                 <!-- Manufacturing Location -->
                                 <div class="product_origin" t-if="line.product_id.pricetag_origin">
-                                    <span class="info_title">Manufacturing: </span><t t-esc="line.product_id.pricetag_origin"/>
+                                    <span class="info_title">Manufacturing:</span>&#160;<t t-esc="line.product_id.pricetag_origin"/>
                                 </div>
 
                                 <!-- Producer -->
                                 <div class="maker_description"  t-if="line.product_id.maker_description">
-                                    <span class="info_title">Producer: </span><t t-esc="line.product_id.maker_description"/>
+                                    <span class="info_title">Producer:</span>&#160;<t t-esc="line.product_id.maker_description"/>
                                 </div>
 
                                 <!-- Feed Composition (allergens, ingredients, etc...) -->
                                 <div class="feed_composition">
                                     <t t-if="line.product_id.allergen_text">
-                                        <span class="info_title">Allergens: </span><t t-esc="line.product_id.allergen_text"/><br/>
+                                        <span class="info_title">Allergens:</span>&#160;<t t-esc="line.product_id.allergen_text"/><br/>
                                     </t>
                                     <t t-if="line.product_id.trace_allergen_text">
-                                        <span class="info_title">Traces: </span><t t-esc="line.product_id.trace_allergen_text"/><br/>
+                                        <span class="info_title">Traces:</span>&#160;<t t-esc="line.product_id.trace_allergen_text"/><br/>
                                     </t>
                                     <t t-if="line.product_id.ingredients">
-                                        <span class="info_title">Ingredients: </span><span t-raw="line.product_id.ingredients"/>
+                                        <span class="info_title">Ingredients:</span>&#160;<span t-raw="line.product_id.ingredients"/>
                                     </t>
                                 </div>
 
