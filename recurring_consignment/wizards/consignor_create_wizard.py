@@ -217,4 +217,5 @@ class ConsignorCreateWizard(models.TransientModel):
             "consignment_account_id": account.id,
             "consignment_commission": self.commission_rate,
             "is_consignor": True,
+            "company_id": self.env.company.id,
         }
