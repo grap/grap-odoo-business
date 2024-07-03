@@ -52,6 +52,8 @@ class TestCreateConsignors(TransactionCase):
             [("consignor_partner_id", "=", partner.id)]
         )
         self.assertEqual(len(classifications), 2)
+        self.assertEqual(len(classifications[0].sale_tax_ids), 1)
+        self.assertEqual(len(classifications[1].sale_tax_ids), 1)
 
     def test_21_consignor_without_vat_creation_wizard_bad(self):
         # Create consignor not VAT Subject with bad configuration
@@ -66,4 +68,4 @@ class TestCreateConsignors(TransactionCase):
         classifications = self.AccountProductFiscalClassification.search(
             [("consignor_partner_id", "=", partner.id)]
         )
-        self.assertEqual(classifications[0].sale_tax_ids[0].amount, 0.0)
+        self.assertEqual(len(classifications[0].sale_tax_ids), 0)
