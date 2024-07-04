@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * product_print_category_food_report
+#	* product_print_category_food_report
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-24 09:20+0000\n"
-"PO-Revision-Date: 2024-05-24 09:20+0000\n"
+"POT-Creation-Date: 2024-07-04 07:19+0000\n"
+"PO-Revision-Date: 2024-07-04 07:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,79 +16,82 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:166
-#: code:addons/product_print_category_food_report/models/product_product.py:195
-#: code:addons/product_print_category_food_report/models/product_product.py:201
+#: code:addons/product_print_category_food_report/models/product_product.py:155
+#: code:addons/product_print_category_food_report/models/product_product.py:184
+#: code:addons/product_print_category_food_report/models/product_product.py:190
 #, python-format
 msgid " per kilo"
 msgstr "le kilo"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:205
+#: code:addons/product_print_category_food_report/models/product_product.py:194
 #, python-format
 msgid " per liter"
 msgstr "le litre"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:193
+#: code:addons/product_print_category_food_report/models/product_product.py:182
 #, python-format
 msgid " per piece"
 msgstr "la pièce"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:228
+#: code:addons/product_print_category_food_report/models/product_product.py:217
 #, python-format
 msgid "%.0f gr"
 msgstr ""
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:238
+#: code:addons/product_print_category_food_report/models/product_product.py:227
 #, python-format
 msgid "%.0f mL"
 msgstr ""
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:235
+#: code:addons/product_print_category_food_report/models/product_product.py:224
 #, python-format
 msgid "%.3f L"
 msgstr ""
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:225
+#: code:addons/product_print_category_food_report/models/product_product.py:214
 #, python-format
 msgid "%.3f kg"
 msgstr ""
 
 #. module: product_print_category_food_report
-#: model:uom.uom,name:product_print_category_food_report.uom_100_gr
-msgid "100 gr"
-msgstr ""
-
-#. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
-msgid "<span class=\"info_title\">Allergens: </span>"
+msgid "<span class=\"info_title\">Allergens:</span>"
 msgstr "<span class=\"info_title\">Allergènes : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
-msgid "<span class=\"info_title\">Ingredients: </span>"
+msgid "<span class=\"info_title\">Ingredients:</span>"
 msgstr "<span class=\"info_title\">Ingrédients : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
-#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
 msgid "<span class=\"info_title\">Manufacturing: </span>"
 msgstr "<span class=\"info_title\">Fabrication : </span>"
 
 #. module: product_print_category_food_report
-#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Manufacturing:</span>"
+msgstr "<span class=\"info_title\">Fabrication : </span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 msgid "<span class=\"info_title\">Producer: </span>"
 msgstr "<span class=\"info_title\">Fabricant·e : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
-msgid "<span class=\"info_title\">Traces: </span>"
+msgid "<span class=\"info_title\">Producer:</span>"
+msgstr "<span class=\"info_title\">Fabricant·e : </span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Traces:</span>"
 msgstr "<span class=\"info_title\">Traces : </span>"
 
 #. module: product_print_category_food_report
@@ -148,6 +151,11 @@ msgid "Counter - 97x58mm  (N°20)"
 msgstr "Comptoir - 97x58mm  (N°20)"
 
 #. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_res_country_group
+msgid "Country Group"
+msgstr "Groupe de pays"
+
+#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__create_uid
 msgid "Created by"
 msgstr "Créé par"
@@ -193,12 +201,12 @@ msgstr "Dernière modification le"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr "Mis à jour par"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr "Mis à jour le"
 
 #. module: product_print_category_food_report
 #: code:addons/product_print_category_food_report/models/product_product.py:57
@@ -212,13 +220,13 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:232
+#: code:addons/product_print_category_food_report/models/product_product.py:221
 #, python-format
 msgid "Net Volume"
 msgstr "Volume Net"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:222
+#: code:addons/product_print_category_food_report/models/product_product.py:211
 #, python-format
 msgid "Net Weight"
 msgstr "Poids Net"
@@ -251,60 +259,6 @@ msgstr "Origine des ingrédients: %s. "
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
 msgid "Origin on pricetag"
 msgstr "Origine - rendu final sur l'étiquette"
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_01
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_01_product_template
-msgid "Pricetag 01 - Abricot de Turquie moelleux 250gr"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_02
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_02_product_template
-msgid "Pricetag 02 - Acérola - 30comprimés 84gr"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_10
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_10_product_template
-msgid "Pricetag 10 - Acha Peu Gingembre 33cl"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_11
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_11_product_template
-msgid "Pricetag 11 - Abricot Le jardinier glacier (550mL)"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_12
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_12_product_template
-msgid "Pricetag 12 - Antisèche blonde (75cl)"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_20
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_20_product_template
-msgid "Pricetag 20 - Nem végétarien vrac (unité)"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_30
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_30_product_template
-msgid "Pricetag 30 - Amande au Caramel et Chocolat"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_31
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_31_product_template
-msgid "Pricetag 31 - Biscuits Cookies noisettes chocolat"
-msgstr ""
-
-#. module: product_print_category_food_report
-#: model:product.product,name:product_print_category_food_report.product_with_pricetag_32
-#: model:product.template,name:product_print_category_food_report.product_with_pricetag_32_product_template
-msgid "Pricetag 32 - Caramel au beurre salé en VRAC"
-msgstr ""
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_color
@@ -398,7 +352,7 @@ msgstr "Articles"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_qty
 msgid "Products Quantity"
-msgstr "Nombre d'articles"
+msgstr ""
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_product_product__pricetag_uom_id
@@ -436,57 +390,12 @@ msgid "Trace Allergen Text"
 msgstr "Texte de traces d'allergènes"
 
 #. module: product_print_category_food_report
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_01
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_02
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_10
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_11
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_12
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_20
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_01_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_02_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_10_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_11_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_12_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_20_product_template
-msgid "Unit(s)"
-msgstr "Unité(s)"
-
-#. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_name
 msgid "Used alternatively to the name field, on labels for displaying secondary unit prices"
 msgstr "Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher les prix aux unités secondaires"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:160
+#: code:addons/product_print_category_food_report/models/product_product.py:149
 #, python-format
 msgid "for %s"
 msgstr "Pour %s"
-
-#. module: product_print_category_food_report
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_30
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_31
-#: model:product.product,uom_name:product_print_category_food_report.product_with_pricetag_32
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_01
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_02
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_10
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_11
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_12
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_20
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_30
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_31
-#: model:product.product,weight_uom_name:product_print_category_food_report.product_with_pricetag_32
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_30_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_31_product_template
-#: model:product.template,uom_name:product_print_category_food_report.product_with_pricetag_32_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_01_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_02_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_10_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_11_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_12_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_20_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_30_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_31_product_template
-#: model:product.template,weight_uom_name:product_print_category_food_report.product_with_pricetag_32_product_template
-msgid "kg"
-msgstr ""
-
