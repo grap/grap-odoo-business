@@ -62,24 +62,23 @@ class SaleOrderLine(models.Model):
                     )
                 )
                 self.product_uom_qty = self.product_id.eshop_minimum_qty
-            else:
-                rounded_qty = self._eshop_round_value(
-                    self.product_id, self.product_uom_qty
-                )
-                if self.product_uom_qty != rounded_qty:
-                    # The quantity will be rounded
-                    messages.append(
-                        _(
-                            "'%.3f' is not a valid quantity for %s, the"
-                            " quantity has been rounded to '%.3f'."
-                        )
-                        % (
-                            self.product_uom_qty,
-                            self.product_id.name,
-                            rounded_qty,
-                        )
+
+        if self.product_id.eshop_rounded_qty:
+            rounded_qty = self._eshop_round_value(self.product_id, self.product_uom_qty)
+            if self.product_uom_qty != rounded_qty:
+                # The quantity will be rounded
+                messages.append(
+                    _(
+                        "'%.3f' is not a valid quantity for %s, the"
+                        " quantity has been rounded to '%.3f'."
                     )
-                    self.product_uom_qty = rounded_qty
+                    % (
+                        self.product_uom_qty,
+                        self.product_id.name,
+                        rounded_qty,
+                    )
+                )
+                self.product_uom_qty = rounded_qty
 
         return messages
 
