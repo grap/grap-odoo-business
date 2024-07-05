@@ -54,6 +54,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="qweb_view_id" ref="qweb_template_pricetag_32" />
     </record>
 
+    <record id="print_category_pricetag_33" model="product.print.category">
+        <field name="name">Bulk - 68x68mm (N°33)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_33" />
+    </record>
+
     <function model="product.print.category" name="write">
         <value model="product.print.category" eval="[
             ref('product_print_category_food_report.print_category_pricetag_01'),
@@ -65,6 +70,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_30'),
             ref('product_print_category_food_report.print_category_pricetag_31'),
             ref('product_print_category_food_report.print_category_pricetag_32'),
+            ref('product_print_category_food_report.print_category_pricetag_33'),
             ]"
         />
         <value eval="{
@@ -92,6 +98,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_30'),
             ref('product_print_category_food_report.print_category_pricetag_31'),
             ref('product_print_category_food_report.print_category_pricetag_32'),
+            ref('product_print_category_food_report.print_category_pricetag_33'),
             ]"
         />
         <value eval="{
@@ -113,6 +120,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_30'),
             ref('product_print_category_food_report.print_category_pricetag_31'),
             ref('product_print_category_food_report.print_category_pricetag_32'),
+            ref('product_print_category_food_report.print_category_pricetag_33'),
             ]"
         />
         <value eval="{
