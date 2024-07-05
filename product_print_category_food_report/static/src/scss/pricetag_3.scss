@@ -1,4 +1,4 @@
-.pricetag_30, .pricetag_31, .pricetag_32 {
+.pricetag_30, .pricetag_31, .pricetag_32, .pricetag_33 {
 
     border: 2px solid black;
 
@@ -26,16 +26,7 @@
               text-decoration: underline;
         }
 
-        .product_origin {
-            font-size: 13px;
-        }
-
-        .maker_description {
-            font-size: 13px;
-        }
-
         .feed_composition {
-            font-size: 13px;
             overflow: hidden;
         }
 
@@ -68,16 +59,23 @@
                 font-size: 7px;
             }
 
+            /* Image height is bigger than
+                zone height : permits to crop barcode
+                to make it smaller
+                Position relative permits to
+                go up barcode and display code number */
             .zone_barcode {
-                height: 1.5cm;
+                height: 1.2cm;
 
                 .wrap_barcode_image{
-                    height: 1.4cm;
+                    height: 1.5cm;
                     width: 3.0cm;
                 }
                 .wrap_barcode_image > img{
-                    height: 1.4cm;
+                    height: 1.5cm;
                     width: 3.0cm;
+                    position: relative;
+                    bottom: 15px
                 }
             }
 

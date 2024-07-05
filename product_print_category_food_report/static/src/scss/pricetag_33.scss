@@ -1,28 +1,25 @@
-.pricetag_31 {
-    width: 11.28cm;
-    height: 10.42cm;
+.pricetag_33 {
+    width: 8cm;
+    height: 8cm;
 
     .pricetag_top {
-        height: 1.7cm;
+        height: 1.6cm;
     }
 
     .pricetag_center {
-        height: 5.92cm;
-        font-size: 13px;
+        height: 4.1cm;
+        font-size: 9px;
 
         .product_origin {
             height: 0.5cm;
-            max-height: 1.0cm;
         }
 
         .maker_description {
             height: 0.5cm;
-            max-height: 1.0cm;
         }
 
         .feed_composition {
-            height: 3.72cm;
-            max-height: 3.98cm;
+            height: 3.5cm;
         }
 
     }
@@ -39,16 +36,17 @@
 
             .shop_information {
                 height: 0.5cm;
+                font-size: 6px;
             }
         }
         .pricetag_bottom_right {
             width: 60%;
 
             .main_price {
-                height: 1.6cm;
+                height: 1.5cm;
 
                 .main_price_text {
-                    font-size: 36px;
+                    font-size: 26px;
                 }
             }
 
