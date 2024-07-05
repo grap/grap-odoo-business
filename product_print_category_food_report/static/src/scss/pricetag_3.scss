@@ -8,7 +8,9 @@
 
         .product_name {
             height: 100%;
-            font-size: 19px;
+            padding-top: 6px;
+            font-size: 25px;
+            line-height: 1;
             font-weight: bold;
         }
     }
@@ -21,7 +23,7 @@
         /* position relative permits to have labels at the bottom with absolute position */
 
         .info_title {
-            font-variant: small-caps;
+              text-decoration: underline;
         }
 
         .product_origin {

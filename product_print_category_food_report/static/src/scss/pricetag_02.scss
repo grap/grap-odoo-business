@@ -3,17 +3,22 @@
     height: 3.8cm;
 
     .main_price {
-        height: 0.8cm;
+        height: 0.9cm;
+
+        .main_price_text {
+            font-size: 26px;
+        }
     }
 
     .product_name{
-        font-size:13px;
-        height: 1.5cm;
+        font-size: 17px;
+        line-height: 0.6cm;
+        height: 1.2cm;
     }
 
     .secondary_price {
-        height: 0.4cm;
-        font-size: 8px;
+        height: 0.6cm;
+        font-size: 10px;
     }
 
     .per_unit_quantity {
