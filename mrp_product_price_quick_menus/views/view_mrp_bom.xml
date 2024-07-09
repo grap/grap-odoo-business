@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
+@author: Quentin DUPONT (quentin.dupont@grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- ************************************************************ -->
+    <!-- MRP Bill of Materials - Tree -->
+    <!-- ************************************************************ -->
+
+    <record id="view_mrp_bom_intermediate" model="ir.ui.view">
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp_bom_product_price_margin.view_mrp_bom_tree" />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_sale_price']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_margin_rate_percentage']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute
+                    name="decoration-danger"
+                ></attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ************************************************************ -->
+    <!-- Menu "Handle prices" - Step 2 : BoMs -->
+    <!-- ************************************************************ -->
+
+    <record id="action_mrp_bom_intermediate_products_price" model="ir.actions.act_window">
+      <field name="name">BoM for intermediates products</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">mrp.bom</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_mrp_bom_intermediate"/>
+      <field name="context">{"search_default_filter_product_intermediate":1}</field>
+    </record>
+
+    <record id="action_mrp_bom_finished_products_price" model="ir.actions.act_window">
+      <field name="name">BoM for finished products</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">mrp.bom</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_mrp_bom_intermediate"/>
+      <field name="context">{"search_default_filter_product_finished":1}</field>
+    </record>
+
+</odoo>
