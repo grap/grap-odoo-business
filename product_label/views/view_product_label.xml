@@ -10,7 +10,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_product_label_2_product_product" model="ir.actions.act_window">
         <field name="name">Products</field>
         <field name="res_model">product.product</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('label_ids', '=', active_id)]</field>
     </record>
@@ -36,11 +35,15 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             name="%(product_label.action_product_label_2_product_product)d">
                         <field string="Products" name="product_qty" widget="statinfo"/>
                     </button>
-                        <button name="toggle_active"
-                                type="object" class="oe_stat_button" icon="fa-archive">
-                            <field name="active"
-                                widget="boolean_button" options="{'terminology': 'archive'}"/>
-                        </button>
+                        
+            <field name="active" invisible="1" />
+            <widget
+                name="web_ribbon"
+                title="Archived"
+                bg_color="bg-danger"
+                attrs="{'invisible': [('active', '=', True)]}"
+            />
+            
                     </div>
                     <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image_medium', 'size': [90, 90]}"/>
                     <div class="oe_title">
@@ -102,7 +105,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Labels</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">product.label</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
 

@@ -47,7 +47,6 @@ class ProductLabel(models.Model):
 
     image_small = fields.Binary(string="Small-sized image", attachment=True)
 
-    @api.multi
     @api.depends("product_ids")
     def _compute_product_qty(self):
         for label in self:
@@ -59,7 +58,6 @@ class ProductLabel(models.Model):
             tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().create(vals_list)
 
-    @api.multi
     def write(self, vals):
         tools.image_resize_images(vals, sizes={"image": (1024, None)})
         return super().write(vals)
