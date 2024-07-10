@@ -3,7 +3,7 @@
 # @author Julien WESTE
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models, tools
+from odoo import api, fields, models
 
 
 class ProductLabel(models.Model):
@@ -11,17 +11,17 @@ class ProductLabel(models.Model):
     _description = "Product Labels"
 
     # Columns Section
-    code = fields.Char(string="Code", required=True)
+    code = fields.Char(required=True)
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(required=True)
 
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(default=True)
 
     company_id = fields.Many2one(comodel_name="res.company", string="Company")
 
-    website = fields.Char(string="Website")
+    website = fields.Char()
 
-    note = fields.Text(string="Note")
+    note = fields.Text()
 
     display_on_report = fields.Boolean(
         string="Display on Reports",
@@ -41,23 +41,15 @@ class ProductLabel(models.Model):
         string="Product Quantity", compute="_compute_product_qty"
     )
 
-    image = fields.Binary(string="Image", attachment=True)
-
-    image_medium = fields.Binary(string="Medium-sized image", attachment=True)
-
-    image_small = fields.Binary(string="Small-sized image", attachment=True)
+    image = fields.Image(max_width=1920, max_height=1920)
+    image_medium = fields.Image(
+        related="image", max_width=512, max_height=512, store=True
+    )
+    image_small = fields.Image(
+        related="image", max_width=128, max_height=128, store=True
+    )
 
     @api.depends("product_ids")
     def _compute_product_qty(self):
         for label in self:
             label.product_qty = len(label.product_ids)
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            tools.image_resize_images(vals, sizes={"image": (1024, None)})
-        return super().create(vals_list)
-
-    def write(self, vals):
-        tools.image_resize_images(vals, sizes={"image": (1024, None)})
-        return super().write(vals)
