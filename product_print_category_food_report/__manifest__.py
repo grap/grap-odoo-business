@@ -35,6 +35,7 @@
         "report/qweb_template_pricetag_10.xml",
         "report/qweb_template_pricetag_11.xml",
         "report/qweb_template_pricetag_12.xml",
+        "report/qweb_template_pricetag_13.xml",
         "report/qweb_template_pricetag_20.xml",
         "report/qweb_template_pricetag_30.xml",
         "report/qweb_template_pricetag_31.xml",

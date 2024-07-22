@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-05 13:55+0000\n"
-"PO-Revision-Date: 2024-07-05 13:55+0000\n"
+"POT-Creation-Date: 2024-07-12 15:16+0000\n"
+"PO-Revision-Date: 2024-07-12 15:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -378,6 +378,11 @@ msgstr "Etagère - 79x37mm Rectangulaire marge petite (N°11)"
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_12
 msgid "Shelf Rectangular Middle Margin - 79x44mm  (N°12)"
 msgstr "Etagère - 79x43mm Rectangulaire marge moyenne (N°12)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_13
+msgid "Shelf Rectangular Small Size (no label, no barcode) - 61x24 (N°13)"
+msgstr "Etagère - 61x24mm Rectangulaire (pas de label ni code-barre) (N°13)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_01

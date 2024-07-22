@@ -34,6 +34,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="qweb_view_id" ref="qweb_template_pricetag_12" />
     </record>
 
+    <record id="print_category_pricetag_13" model="product.print.category">
+        <field name="name">Shelf Rectangular Small Size (no label, no barcode) - 61x24 (N°13)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_13" />
+    </record>
+
     <record id="print_category_pricetag_20" model="product.print.category">
         <field name="name">Counter - 97x58mm  (N°20)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_20" />
