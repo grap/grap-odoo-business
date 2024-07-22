@@ -12,6 +12,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <t t-foreach="category_data['lines']" t-as="line">
                 <t t-foreach="line.quantity" t-as="q">
                     <div t-att-class="'pricetag_product %s' % pricetag_name">
+                        <div class="margin_top" />
 
                         <!-- Product name -->
                         <div class="product_name"
@@ -59,6 +60,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <t t-esc="line.product_id.pricetag_print_date_text" />
                         </div>
 
+                        <!-- Margin -->
+                        <div class="margin_bottom" />
                     </div>
                 </t>
             </t>

@@ -18,29 +18,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="print_category_pricetag_10" model="product.print.category">
-        <field name="name">Shelf Rectangular - 79x32mm  (N°10)</field>
+        <field name="name">Shelf Rectangular - 79x32mm (N°10)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_10" />
     </record>
 
 
     <record id="print_category_pricetag_11" model="product.print.category">
-        <field name="name">Shelf Rectangular Litle Margin - 79x37mm  (N°11)</field>
+        <field name="name">Shelf Rectangular Litle Margin - 79x37mm (N°11)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_11" />
-
     </record>
 
     <record id="print_category_pricetag_12" model="product.print.category">
-        <field name="name">Shelf Rectangular Middle Margin - 79x44mm  (N°12)</field>
+        <field name="name">Shelf Rectangular Middle Margin - 79x44mm (N°12)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_12" />
     </record>
 
     <record id="print_category_pricetag_20" model="product.print.category">
-        <field name="name">Counter - 97x58mm  (N°20)</field>
+        <field name="name">Counter - 97x58mm (N°20)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_20" />
     </record>
 
     <record id="print_category_pricetag_30" model="product.print.category">
-        <field name="name">Bulk - 54x105mm Applymage  (N°30)</field>
+        <field name="name">Bulk - 54x105mm Applymage (N°30)</field>
         <field name="qweb_view_id" ref="qweb_template_pricetag_30" />
     </record>
 

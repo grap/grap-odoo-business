@@ -2,23 +2,28 @@
     width: 4.91cm;
     height: 4.42cm;
 
+    .margin_top, .margin_bottom {
+        width: 4.91cm;
+        height: 0.2cm;
+    }
+
+    .product_name{
+        font-size: 17px;
+        line-height: 0.7cm;
+        height: 1.3cm;
+    }
+
     .main_price {
-        height: 1.2cm;
+        height: 1.1cm;
 
         .main_price_text {
-            font-size: 30px;
+            font-size: 28px;
         }
 
     }
 
-    .product_name{
-        font-size: 20px;
-        line-height: 0.8cm;
-        height: 1.5cm;
-    }
-
     .secondary_price {
-        height: 0.6cm;
+        height: 0.5cm;
         font-size: 11px;
     }
 

@@ -106,8 +106,8 @@ msgstr "Disponible pour les étiquettes"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_30
-msgid "Bulk - 54x105mm Applymage  (N°30)"
-msgstr "Vrac - 54x105mm Applymage  (N°30)"
+msgid "Bulk - 54x105mm Applymage (N°30)"
+msgstr "Vrac - 54x105mm Applymage (N°30)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_33
@@ -152,8 +152,8 @@ msgstr "Société"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_20
-msgid "Counter - 97x58mm  (N°20)"
-msgstr "Comptoir - 97x58mm  (N°20)"
+msgid "Counter - 97x58mm (N°20)"
+msgstr "Comptoir - 97x58mm (N°20)"
 
 #. module: product_print_category_food_report
 #: model:ir.model,name:product_print_category_food_report.model_res_country_group
@@ -366,17 +366,17 @@ msgstr "Définir une unité de mesure alternative si vous voulez afficher un pri
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_10
-msgid "Shelf Rectangular - 79x32mm  (N°10)"
+msgid "Shelf Rectangular - 79x32mm (N°10)"
 msgstr "Etagère - 79x32mm Rectangulaire (N°10)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_11
-msgid "Shelf Rectangular Litle Margin - 79x37mm  (N°11)"
+msgid "Shelf Rectangular Litle Margin - 79x37mm (N°11)"
 msgstr "Etagère - 79x37mm Rectangulaire marge petite (N°11)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_12
-msgid "Shelf Rectangular Middle Margin - 79x44mm  (N°12)"
+msgid "Shelf Rectangular Middle Margin - 79x44mm (N°12)"
 msgstr "Etagère - 79x43mm Rectangulaire marge moyenne (N°12)"
 
 #. module: product_print_category_food_report
