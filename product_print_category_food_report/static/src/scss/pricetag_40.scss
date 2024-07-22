@@ -1,0 +1,80 @@
+.pricetag_40 {
+    border: 1px solid black;
+    width: 7.2cm;
+    height: 2.9cm;
+
+    .margin_top, .margin_bottom {
+        width: 7.2cm;
+        height: 0.2cm;
+    }
+
+    .product_labels{
+        display: none;
+    }
+
+    .pricetag_left {
+        width: 4.1cm;
+        height: 2.9cm;
+        padding-left: 0.2cm;
+
+        .product_name{
+            height: 1.8cm;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .product_origin {
+            height: 0.38cm;
+            font-size: 8px;
+        }
+
+        .maker_description {
+            height: 0.38cm;
+            font-size: 8px;
+        }
+
+        .product_labels, .organic_text, .shop_information {
+            display: none;
+        }
+
+    }
+    .pricetag_right {
+        width: 2.9cm;
+        height: 2.9cm;
+
+        .main_price {
+            height: 1.4cm;
+
+            .main_price_text {
+                font-size: 25px;
+                font-weight: bold;
+            }
+            .main_uom_text {
+                display: inline-block;
+                font-size: 12px;
+            }
+        }
+
+        .per_unit_quantity {
+            height: 1.5cm;
+            width: 50%;
+            font-size: 10px;
+            float: left;
+
+        }
+
+        .secondary_price {
+            height: 1.5cm;
+            width: 50%;
+            font-size: 10px;
+            float: left;
+        }
+
+        .zone_barcode {
+            display: none;
+        }
+
+    }
+
+
+}

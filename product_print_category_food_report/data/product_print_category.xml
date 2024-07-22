@@ -58,6 +58,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="qweb_view_id" ref="qweb_template_pricetag_33" />
     </record>
 
+    <record id="print_category_pricetag_40" model="product.print.category">
+        <field name="name">Shelf Small Size - Packaged Products (no label, no barcode) - 61x24 (N°40)</field>
+        <field name="qweb_view_id" ref="qweb_template_pricetag_40" />
+    </record>
+
     <function model="product.print.category" name="write">
         <value model="product.print.category" eval="[
             ref('product_print_category_food_report.print_category_pricetag_01'),
@@ -70,6 +75,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_31'),
             ref('product_print_category_food_report.print_category_pricetag_32'),
             ref('product_print_category_food_report.print_category_pricetag_33'),
+            ref('product_print_category_food_report.print_category_pricetag_40'),
             ]"
         />
         <value eval="{
@@ -98,6 +104,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             ref('product_print_category_food_report.print_category_pricetag_31'),
             ref('product_print_category_food_report.print_category_pricetag_32'),
             ref('product_print_category_food_report.print_category_pricetag_33'),
+            ref('product_print_category_food_report.print_category_pricetag_40'),
             ]"
         />
         <value eval="{
