@@ -10,7 +10,7 @@
             height: 100%;
             padding-top: 6px;
             font-size: 25px;
-            line-height: 1;
+            line-height: 1.1;
             font-weight: bold;
         }
     }
@@ -22,16 +22,15 @@
         position: relative;
         /* position relative permits to have labels at the bottom with absolute position */
 
-        .info_title {
-              text-decoration: underline;
-        }
-
         .feed_composition {
             overflow: hidden;
         }
 
+        /* no label = no height,
+            one or more label = white div hiding feed composition */
         .product_labels {
-            height: 1.4cm;
+            width: 100%;
+            background-color: white;
             position: absolute;
             bottom: 0;
 
