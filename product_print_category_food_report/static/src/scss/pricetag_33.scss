@@ -19,7 +19,7 @@
         }
 
         .feed_composition {
-            height: 3.5cm;
+            max-height: 3.5cm;
         }
 
     }
@@ -43,7 +43,7 @@
             width: 60%;
 
             .main_price {
-                height: 1.5cm;
+                height: 1cm;
 
                 .main_price_text {
                     font-size: 26px;
