@@ -6,7 +6,7 @@ from odoo import fields
 from odoo.tests.common import TransactionCase
 
 
-class TestMrpProductPriceQuickMenus(TransactionCase):
+class TestProductStandardPriceChangeDate(TransactionCase):
     def setUp(self):
         super().setUp()
         self.random_product = self.env["product.product"].create(
@@ -15,11 +15,11 @@ class TestMrpProductPriceQuickMenus(TransactionCase):
                 "type": "product",
             }
         )
-        self.assertFalse(self.random_product.date_last_statement_price)
+        self.assertFalse(self.random_product.standard_price_change_date)
 
-    def test_01_product_date_last_statement_price(self):
+    def test_01_product_standard_price_change_date(self):
         self.random_product.standard_price = 10
-        self.random_product._onchange_date_last_statement_price()
+        self.random_product._onchange_standard_price_change_date()
         self.assertEqual(
-            self.random_product.date_last_statement_price, fields.Date.today()
+            self.random_product.standard_price_change_date, fields.Date.today()
         )

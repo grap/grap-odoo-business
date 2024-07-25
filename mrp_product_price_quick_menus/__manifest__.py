@@ -15,6 +15,8 @@
         "mrp_product_characterisation",
         "mrp_bom_product_price_margin",
         "product_margin_classification",
+        # GRAP
+        "product_standard_price_change_date",
     ],
     "data": [
         "views/view_mrp_bom.xml",

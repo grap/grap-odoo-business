@@ -1,1 +1,0 @@
-from . import test_mrp_product_price_quick_menus

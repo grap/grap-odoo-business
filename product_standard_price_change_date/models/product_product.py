@@ -8,12 +8,12 @@ from odoo import api, fields, models
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
-    date_last_statement_price = fields.Date(
+    standard_price_change_date = fields.Date(
         help="Date of last standard price change. "
         "Automatically sets to the date of the day you changed the standard price",
     )
 
     @api.onchange("standard_price")
-    def _onchange_date_last_statement_price(self):
+    def _onchange_standard_price_change_date(self):
         for product in self:
-            product.date_last_statement_price = fields.Date.today()
+            product.standard_price_change_date = fields.Date.today()
