@@ -1,2 +1,1 @@
-This module extends the functionality of Product module to support labels
-on products.
+Adds related products labels on MRP BoMs and BoMs lines.
