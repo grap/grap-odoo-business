@@ -72,7 +72,7 @@ msgstr "<span class=\"info_title\">Ingrédients :</span>"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 msgid "<span class=\"info_title\">Manufacturing: </span>"
-msgstr "<span class=\"info_title\">Fabrication :</span>"
+msgstr "<span class=\"info_title\">Fabrication : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
@@ -82,7 +82,7 @@ msgstr "<span class=\"info_title\">Fabrication :</span>"
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
 msgid "<span class=\"info_title\">Producer: </span>"
-msgstr "<span class=\"info_title\">Fabricant·e :</span>"
+msgstr "<span class=\"info_title\">Fabricant·e : </span>"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
@@ -383,7 +383,7 @@ msgstr "Etagère - 79x43mm Rectangulaire marge moyenne (N°12)"
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_13
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_40
 msgid "Shelf Small Size - Packaged Products (no label, no barcode) - 61x24 (N°40)"
-msgstr "Etagère Petite taille - Produits emballés (pas de label, pas de code-barre) - 61x24 (N°40)"
+msgstr "Etagère - 61x24mm Produits emballés (pas de label, pas de code-barre) (N°40)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_01
