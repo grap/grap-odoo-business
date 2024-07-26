@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * product_label
+# 	* product_label
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 10:58+0000\n"
-"PO-Revision-Date: 2022-05-20 10:58+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2024-07-26 11:59+0000\n"
+"PO-Revision-Date: 2024-07-26 11:59+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,8 +17,17 @@ msgstr ""
 
 #. module: product_label
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_kanban
-msgid "<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Products\" title=\"Products\"/>"
-msgstr "<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Articles\" title=\"Articles\"/>"
+msgid ""
+"<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Products\" "
+"title=\"Products\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-list\" role=\"img\" aria-label=\"Produits\" "
+"title=\"Produits\"/>"
+
+#. module: product_label
+#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
+msgid "<span class=\"o_stat_text\">Products</span>"
+msgstr "<span class=\"o_stat_text\">Produits</span>"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__active
@@ -26,9 +35,18 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: product_label
+#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: product_label
 #: model:ir.model.fields,help:product_label.field_product_label__display_on_report
-msgid "By checking this field, the label will be printed on all the official documents."
-msgstr "Si cette case est cochée, le label sera affichée sur tous les documents officiels."
+msgid ""
+"By checking this field, the label will be printed on all the official "
+"documents."
+msgstr ""
+"Si cette case est cochée, le label sera affichée sur tous les documents "
+"officiels."
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__code
@@ -67,19 +85,20 @@ msgstr ""
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_medium
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_small
 msgid "Image"
+msgstr "Image de taille moyenne"
+
+#. module: product_label
+#: model:product.template,name:product_label.infusion_girl_power_product_template
+msgid "Infusion La Girl Power (vrac)"
 msgstr ""
 
 #. module: product_label
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
-msgid "Information"
-msgstr ""
-
-#. module: product_label
-#: model:product.product,name:product_label.infusion_girl_power
-#: model:product.template,name:product_label.infusion_girl_power_product_template
-msgid "Infusion La Girl Power (vrac)"
-msgstr ""
+msgid "Label Name"
+msgstr "Nom du label"
 
 #. module: product_label
 #: model:ir.actions.act_window,name:product_label.action_product_label
@@ -105,13 +124,7 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_medium
-msgid "Medium-sized image"
-msgstr "Image de taille moyenne"
-
-#. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__name
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
 msgid "Name"
 msgstr "Nom"
 
@@ -121,42 +134,36 @@ msgid "Note"
 msgstr ""
 
 #. module: product_label
-#: model:ir.model,name:product_label.model_product_product
+#: model:ir.model,name:product_label.model_product_template
 msgid "Product"
-msgstr "Article"
+msgstr "Produit"
 
 #. module: product_label
 #: model:ir.model,name:product_label.model_product_label
 msgid "Product Labels"
-msgstr "Labels d'articles"
+msgstr "Labels de produits"
 
 #. module: product_label
 #: model:res.groups,name:product_label.group_label_manager
 msgid "Product Labels Creation"
-msgstr "Création de labels d'articles"
+msgstr "Création de labels de produits"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__product_qty
 msgid "Product Quantity"
-msgstr "Quantité d'articles"
+msgstr "Quantité de produits"
 
 #. module: product_label
-#: model:ir.model,name:product_label.model_product_template
-msgid "Product Template"
-msgstr "Modèle d'article"
+#: model:ir.model,name:product_label.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
 
 #. module: product_label
 #: model:ir.actions.act_window,name:product_label.action_product_label_2_product_product
 #: model:ir.model.fields,field_description:product_label.field_product_label__product_ids
-#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_kanban
 msgid "Products"
-msgstr "Articles"
-
-#. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_small
-msgid "Small-sized image"
-msgstr "Image de petite taille"
+msgstr "Produits"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__website
@@ -164,10 +171,6 @@ msgid "Website"
 msgstr "Site Web"
 
 #. module: product_label
-#: model:product.product,uom_name:product_label.infusion_girl_power
-#: model:product.product,weight_uom_name:product_label.infusion_girl_power
-#: model:product.template,uom_name:product_label.infusion_girl_power_product_template
-#: model:product.template,weight_uom_name:product_label.infusion_girl_power_product_template
-msgid "kg"
-msgstr ""
-
+#: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
+msgid "e.g. Organic label"
+msgstr "ex : Agriculture biologique"
