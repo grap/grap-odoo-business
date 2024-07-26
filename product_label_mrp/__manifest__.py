@@ -13,8 +13,7 @@
     "license": "AGPL-3",
     "depends": [
         "mrp",
-        "product",
-        # OCA
+        # GRAP
         "product_label",
     ],
     "data": [
