@@ -17,3 +17,16 @@ class ProductProduct(models.Model):
     def _onchange_standard_price_change_date(self):
         for product in self:
             product.standard_price_change_date = fields.Date.today()
+
+    # Overload Section
+    @api.model_create_multi
+    def create(self, vals_list):
+        products = super().create(vals_list)
+        for product in products.filtered(lambda x: x.standard_price):
+            product.standard_price_change_date = fields.Date.today()
+        return products
+
+    def write(self, vals):
+        if "standard_price" in vals:
+            vals["standard_price_change_date"] = fields.Date.today()
+        return super().write(vals)

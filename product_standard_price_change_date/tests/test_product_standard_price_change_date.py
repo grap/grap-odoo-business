@@ -12,7 +12,6 @@ class TestProductStandardPriceChangeDate(TransactionCase):
         self.random_product = self.env["product.product"].create(
             {
                 "name": "Product 1",
-                "type": "product",
             }
         )
         self.assertFalse(self.random_product.standard_price_change_date)
