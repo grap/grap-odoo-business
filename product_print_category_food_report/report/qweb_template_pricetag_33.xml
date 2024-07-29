@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Quentin DUPONT (https://twitter.com/pondupont)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="qweb_template_pricetag_33">
+        <t t-set="pricetag_name" t-value="'pricetag_33'"/>
+        <t t-call="product_print_category_food_report.qweb_template_pricetag_template_C" />
+    </template>
+
+</odoo>

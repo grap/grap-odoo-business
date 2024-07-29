@@ -10,20 +10,21 @@
     .pricetag_left {
         width: 7.5cm;
         height: 6.8cm;
+        padding-left: 0.1cm;
 
         .product_name{
-            height: 2.2cm;
-            font-size: 30px;
+            height: 3.3cm;
+            font-size: 40px;
             font-weight: bold;
         }
 
         .product_origin {
-            height: 1.2cm;
+            height: 0.5cm;
             font-size: 14px;
         }
 
         .maker_description {
-            height: 0.8cm;
+            height: 0.5cm;
             font-size: 14px;
         }
 

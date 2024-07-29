@@ -2,24 +2,27 @@
     border: 1px solid grey;
 
     .main_price {
-        height: 0.7cm;
 
         .main_price_text {
-            font-size: 16px;
+            font-weight: bold;
         }
+
         .main_uom_text {
             font-size: 12px;
         }
     }
 
+    /* Image height is bigger than
+        zone height : permits to crop barcode
+        to make it smaller */
     .zone_barcode {
-        height: 1.3cm;
+        height: 0.5cm;
 
         .wrap_barcode_image{
-            height: 1.2cm;
+            height: 1.5cm;
         }
         .wrap_barcode_image > img{
-            height: 1.2cm;
+            height: 1.5cm;
         }
     }
 

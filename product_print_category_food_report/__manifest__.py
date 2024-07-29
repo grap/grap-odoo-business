@@ -39,6 +39,8 @@
         "report/qweb_template_pricetag_30.xml",
         "report/qweb_template_pricetag_31.xml",
         "report/qweb_template_pricetag_32.xml",
+        "report/qweb_template_pricetag_33.xml",
+        "report/qweb_template_pricetag_40.xml",
         "views/view_res_company.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",

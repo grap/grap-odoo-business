@@ -1,4 +1,4 @@
-.pricetag_30, .pricetag_31, .pricetag_32 {
+.pricetag_30, .pricetag_31, .pricetag_32, .pricetag_33 {
 
     border: 2px solid black;
 
@@ -8,7 +8,9 @@
 
         .product_name {
             height: 100%;
-            font-size: 19px;
+            padding-top: 6px;
+            font-size: 25px;
+            line-height: 1.1;
             font-weight: bold;
         }
     }
@@ -16,25 +18,25 @@
     .pricetag_center {
         width: 100%;
         border-bottom: 2px solid;
-
-        .product_origin {
-            font-size: 13px;
-        }
-
-        .maker_description {
-            font-size: 13px;
-        }
+        padding-left: 0.1cm;
+        position: relative;
+        /* position relative permits to have labels at the bottom with absolute position */
 
         .feed_composition {
-            font-size: 13px;
+            overflow: hidden;
         }
 
+        /* no label = no height,
+            one or more label = white div hiding feed composition */
         .product_labels {
-            height: 1.2cm;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            bottom: 0;
 
             img.product_label {
-                width: 1.0cm;
-                height: 1.0cm;
+                width: 1.2cm;
+                height: 1.2cm;
                 margin: 0.1cm;
             }
         }
@@ -51,20 +53,28 @@
             border-right: 2px solid;
 
             .organic_text {
-                height: 0.8cm;
+                margin : 0.05cm 0.05cm;
+                height: 0.75cm;
                 font-size: 7px;
             }
 
+            /* Image height is bigger than
+                zone height : permits to crop barcode
+                to make it smaller
+                Position relative permits to
+                go up barcode and display code number */
             .zone_barcode {
-                height: 1.5cm;
+                height: 1.2cm;
 
                 .wrap_barcode_image{
-                    height: 1.4cm;
+                    height: 1.5cm;
                     width: 3.0cm;
                 }
                 .wrap_barcode_image > img{
-                    height: 1.4cm;
+                    height: 1.5cm;
                     width: 3.0cm;
+                    position: relative;
+                    bottom: 15px
                 }
             }
 

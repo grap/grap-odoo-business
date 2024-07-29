@@ -14,7 +14,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <img t-elif="len(line.product_id.barcode) == 8"
                     t-att-src="'/report/barcode/?humanreadable=1&amp;type=EAN8&amp;value=%s' % (line.product_id.barcode)"/>
                 <img t-else=""
-                    t-att-src="'/report/barcode/?humanreadable=1&amp;?type=Code128&amp;value=%s' % (line.product_id.barcode)"/>
+                    t-att-src="'/report/barcode/?humanreadable=1&amp;type=Code128&amp;value=%s' % (line.product_id.barcode)"/>
             </t>
         </div>
     </template>
