@@ -35,17 +35,29 @@ class ResPartner(models.Model):
         users = ResUsers.with_context(active_test=False).search(
             [("partner_id", "in", self.ids)]
         )
-        if len(users):
-            # Check if current user has correct access right
-            if not self.env.user.has_group("base.group_erp_manager"):
-                raise UserError(
-                    _(
-                        "You must be part of the group Administration / Access"
-                        " Rights to update partners associated to"
-                        " users.\n- %s"
-                    )
-                    % ("\n- ".join(users.mapped("name")))
+        if not users:
+            return
+
+        if users.ids == self.env.user.ids and self.env.context.get(
+            "write_user_mode", False
+        ):
+            # The unique partner changed is the partner related
+            # to the current user
+            # AND the write is done via the write of the res.users.
+            # so it's a allowed write, done to change some personal fields
+            # like 'email', 'tz', etc.
+            return
+
+        # Check if current user has correct access right
+        if not self.env.user.has_group("base.group_erp_manager"):
+            raise UserError(
+                _(
+                    "You must be part of the group Administration / Access"
+                    " Rights to update partners associated to"
+                    " users.\n- %s"
                 )
+                % ("\n- ".join(users.mapped("name")))
+            )
 
     # Overload the private _search function:
     # This function is used by the other ORM functions
