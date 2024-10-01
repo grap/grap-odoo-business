@@ -221,7 +221,7 @@ class ProductProduct(models.Model):
                 product.pricetag_per_unit_quantity_text = _("Net Volume")
                 if product.volume > 1:
                     product.pricetag_per_unit_quantity_value = (
-                        _("%.3f L") % product.volume
+                        _("%.2f L") % product.volume
                     )
                 else:
                     product.pricetag_per_unit_quantity_value = _("%.0f mL") % (

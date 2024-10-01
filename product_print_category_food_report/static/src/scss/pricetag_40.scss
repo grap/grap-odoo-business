@@ -21,6 +21,7 @@
             height: 1.8cm;
             font-size: 15px;
             font-weight: bold;
+            text-align: start;
         }
 
         .product_origin {
@@ -57,15 +58,15 @@
 
         .per_unit_quantity {
             height: 1.3cm;
-            width: 50%;
+            width: 55%;
             font-size: 10px;
             float: left;
-
+            white-space: nowrap;
         }
 
         .secondary_price {
             height: 1.3cm;
-            width: 50%;
+            width: 45%;
             font-size: 10px;
             float: left;
         }
