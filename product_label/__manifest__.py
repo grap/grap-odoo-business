@@ -12,7 +12,8 @@
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
-        "product",
+        # OCA
+        "product_usability",
     ],
     "data": [
         "security/res_groups.xml",
