@@ -7,18 +7,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <!-- ************************************************************ -->
-    <!-- Product.product Search View -->
     <!-- ************************************************************ -->
+    <!-- Product.template Search View -->
 
     <record id="view_mrp_product_price_quick_menus_product_search" model="ir.ui.view">
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="mrp.mrp_product_product_search_view" />
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="mrp.mrp_product_template_search_view" />
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='manufactured_products']" position="attributes">
               <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//filter[@name='filter_is_intermediate']" position="before">
-                <filter string="Finished products" name="filter_is_finished" domain="[('variant_bom_ids', '!=', False), ('bom_line_ids', '=', False)]"/>
+                <filter string="Finished products" name="filter_is_finished" domain="[('bom_ids', '!=', False), ('bom_line_ids', '=', False)]"/>
             </xpath>
         </field>
     </record>
@@ -58,7 +58,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <!-- MRP Handling Prices Menu Step 3 : Products Update Margin and Sale Price -->
     <record id="view_handle_sale_price_tree" model="ir.ui.view">
-        <field name="model">product.product</field>
+        <field name="model">product.template</field>
         <field name="arch" type="xml">
             <tree editable="bottom" decoration-warning="margin_state == 'too_expensive'" decoration-danger="margin_state == 'too_cheap'" create="false">
               <field name="default_code" readonly="1" string="Ref."/>
@@ -81,7 +81,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_product_product_tree_finished_products" model="ir.actions.act_window">
         <field name="name">Products - Update Margin and Sale Price</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">product.product</field>
+        <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_handle_sale_price_tree"/>
         <field name="context">{"search_default_filter_is_finished":1, "search_default_filter_to_sell":1}</field>
