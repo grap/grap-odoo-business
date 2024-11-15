@@ -14,3 +14,6 @@ class ResUsers(models.Model):
         for vals in vals_list:
             vals.update({"is_odoo_user": True})
         return super().create(vals_list)
+
+    def write(self, vals):
+        return super(ResUsers, self.with_context(write_user_mode=True)).write(vals)
