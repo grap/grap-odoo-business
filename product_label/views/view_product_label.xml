@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author: Quentin DUPONT
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="action_product_label_2_product_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('label_ids', '=', active_id)]</field>
+    </record>
+
+    <record id="view_product_label_tree" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_label_form" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            type="action"
+                            icon="fa-list"
+                            name="%(action_product_label_2_product_product)d"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                              <span class="o_stat_value"><field
+                                        name="product_qty"
+                                        widget="statinfo"
+                                        nolabel="1"
+                                    /></span>
+                              <span class="o_stat_text">Products</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <field name="active" invisible="1" />
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+
+                    <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image_medium'}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Label Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" placeholder="e.g. Organic label"/>
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="display_on_report"/>
+                            <field name="website" widget="url"/>
+                            <field name="note" widget="html"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_label_kanban" model="ir.ui.view">
+        <field name="model">product.label</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="id"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="image_small"/>
+                <field name="product_qty"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <img class="o_kanban_image" t-att-src="kanban_image('product.label', 'image_small', record.id.raw_value)" t-att-alt="record.name"/>
+
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_partner_heading">
+                                    <t t-if="record.code.raw_value">
+                                        <field name="code"/> - </t>
+                                    <field name="name"/>
+                                </strong>
+                                <div class="oe_kanban_partner_links">
+                                    <span t-if="record.product_qty.value" class="badge badge-pill"><i class="fa fa-fw fa-list" role="img" aria-label="Products" title="Products"/>
+                                        <t t-esc="record.product_qty.value"/> Products
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_product_label" model="ir.actions.act_window">
+        <field name="name">Labels</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.label</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="menu_product_label"
+        parent="product_usability.menu_configuration" sequence="25"
+        action="action_product_label"/>
+
+</odoo>
