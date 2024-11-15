@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [partner_hide_technical_company](partner_hide_technical_company/) | 16.0.1.0.0 |  | Hide partners created when creating companies.
-[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.0 |  | Hide partners created when creating users.
+[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.1 |  | Hide partners created when creating users.
 [recurring_consignment](recurring_consignment/) | 16.0.2.0.0 |  | Sale - Handle Recurring Consignments
 
 [//]: # (end addons)
