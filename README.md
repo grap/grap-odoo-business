@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.0.0 |  | Adds menus to help manage price between BoMs and Products.
 [partner_hide_technical_company](partner_hide_technical_company/) | 16.0.1.0.0 |  | Hide partners created when creating companies.
 [partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.1 |  | Hide partners created when creating users.
+[partner_hide_technical_user_calendar](partner_hide_technical_user_calendar/) | 16.0.1.0.0 |  | Glue module with calendar, to Hide partners created when creating users.
 [product_label](product_label/) | 16.0.2.0.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
 [product_label_mrp](product_label_mrp/) | 16.0.1.0.0 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Adds labels in MRP BoMs
 [product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.0 |  | Adds Date field every time Product Standard Price change.
