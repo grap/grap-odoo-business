@@ -8,6 +8,7 @@ from odoo import api, fields, models
 
 class ProductLabel(models.Model):
     _name = "product.label"
+    _inherit = ["image.mixin"]
     _description = "Product Labels"
 
     # Columns Section
@@ -39,14 +40,6 @@ class ProductLabel(models.Model):
 
     product_qty = fields.Integer(
         string="Product Quantity", compute="_compute_product_qty"
-    )
-
-    image = fields.Image(max_width=1920, max_height=1920)
-    image_medium = fields.Image(
-        related="image", max_width=512, max_height=512, store=True
-    )
-    image_small = fields.Image(
-        related="image", max_width=128, max_height=128, store=True
     )
 
     @api.depends("product_ids")
