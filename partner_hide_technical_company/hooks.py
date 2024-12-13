@@ -10,4 +10,6 @@ def post_init_hook(cr, pool):
     env = Environment(cr, SUPERUSER_ID, {})
     ResCompany = env["res.company"]
     companies = ResCompany.with_context(active_test=False).search([])
-    companies.mapped("partner_id").write({"is_odoo_company": True})
+    companies.mapped("partner_id").with_context(action_from_res_company=True).write(
+        {"is_odoo_company": True}
+    )
