@@ -5,7 +5,7 @@
 {
     "name": "Partner - Hide Companies Partners",
     "summary": "Hide partners created when creating companies.",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
