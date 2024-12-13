@@ -36,7 +36,7 @@ msgstr "Est une société dans Odoo"
 #: code:addons/partner_hide_technical_company/models/res_partner.py:0
 #, python-format
 msgid ""
-"You must be part of the group Administration / Access Rights to update partners associated to companies.\n"
+"You can only update company partners via company form. Companies: \n"
 "- %s"
-msgstr "Vous devez être membre du groupe 'Administration / Groupe d'accès' pour mettre à jour les partenaires associés aux sociétés.\n"
+msgstr "Vous pouvez seulement mettre à jour les partenaires de société via le formulaire de société. Sociétés: \n"
 "- %s"

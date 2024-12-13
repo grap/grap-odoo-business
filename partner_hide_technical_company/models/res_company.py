@@ -11,6 +11,17 @@ class ResCompany(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        return super(ResCompany, self.with_context(is_odoo_company=True)).create(
+        res = super(ResCompany, self.with_context(action_from_res_company=True)).create(
             vals_list
         )
+        return res.with_context(action_from_res_company=False)
+
+    def write(self, vals):
+        return super(ResCompany, self.with_context(action_from_res_company=True)).write(
+            vals
+        )
+
+    def unlink(self):
+        return super(
+            ResCompany, self.with_context(action_from_res_company=True)
+        ).unlink()

@@ -21,7 +21,7 @@ class ResPartner(models.Model):
     # Overload Section
     @api.model_create_multi
     def create(self, vals_list):
-        if self.env.context.get("is_odoo_company"):
+        if self.env.context.get("action_from_res_company"):
             for vals in vals_list:
                 vals["is_odoo_company"] = True
         return super().create(vals_list)
@@ -36,6 +36,9 @@ class ResPartner(models.Model):
 
     # Custom section
     def _check_technical_partner_access_company(self):
+        if self.env.context.get("action_from_res_company"):
+            return
+
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases
         ResCompany = self.env["res.company"].sudo()
@@ -43,16 +46,13 @@ class ResPartner(models.Model):
             [("partner_id", "in", self.ids)]
         )
         if len(companies):
-            # Check if current user has correct access right
-            if not self.env.user.has_group("base.group_erp_manager"):
-                raise UserError(
-                    _(
-                        "You must be part of the group Administration / Access"
-                        " Rights to update partners associated to"
-                        " companies.\n- %s"
-                    )
-                    % ("\n- ".join(companies.mapped("name")))
+            raise UserError(
+                _(
+                    "You can only update company partners via company form."
+                    " Companies: \n- %s"
                 )
+                % ("\n- ".join(companies.mapped("name")))
+            )
 
     # Overload the private _search function:
     # This function is used by the other ORM functions
