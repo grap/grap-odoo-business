@@ -20,20 +20,22 @@ class ResPartner(models.Model):
 
     # Overload Section
     def write(self, vals):
-        self._check_technical_partner_access_user()
+        self._check_technical_partner_access_user("write")
         return super().write(vals)
 
     def unlink(self):
-        self._check_technical_partner_access_user()
+        self._check_technical_partner_access_user("unlink")
         return super().unlink()
 
     # Custom section
-    def _check_technical_partner_access_user(self):
+    def _check_technical_partner_access_user(self, operation):
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases
-        ResUsers = self.env["res.users"].sudo()
-        users = ResUsers.with_context(active_test=False).search(
-            [("partner_id", "in", self.ids)]
+        ResUsers = self.env["res.users"]
+        users = (
+            ResUsers.sudo()
+            .with_context(active_test=False)
+            .search([("partner_id", "in", self.ids)])
         )
         if not users:
             return
@@ -49,13 +51,9 @@ class ResPartner(models.Model):
             return
 
         # Check if current user has correct access right
-        if not self.env.user.has_group("base.group_erp_manager"):
+        if not ResUsers.check_access_rights(operation, raise_exception=False):
             raise UserError(
-                _(
-                    "You must be part of the group Administration / Access"
-                    " Rights to update partners associated to"
-                    " users.\n- %s"
-                )
+                _("You have no right to update partners associated to" " users.\n- %s")
                 % ("\n- ".join(users.mapped("name")))
             )
 
