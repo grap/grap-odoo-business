@@ -5,7 +5,7 @@
 {
     "name": "MRP Product Price Quick Menus",
     "summary": "Adds menus to help manage price between BoMs and Products.",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "GRAP - Business",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
