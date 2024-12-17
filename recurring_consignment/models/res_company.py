@@ -38,7 +38,7 @@ class ResCompany(models.Model):
 
     def _create_consignor_sequence(self):
         ResPartner = self.env["res.partner"]
-        Irsequence = self.env["ir.sequence"]
+        Irsequence = self.env["ir.sequence"].sudo()
         for company in self:
             _logger.info(
                 "Creating consignor sequence for company '%s'" % (company.name)

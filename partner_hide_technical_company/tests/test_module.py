@@ -11,6 +11,8 @@ class TestModule(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.ResPartner = cls.env["res.partner"]
+        cls.ResCompany = cls.env["res.company"]
+        cls.demo_user = cls.env.ref("base.user_demo")
         cls.company_name = "Users technical_partner_access - res.company"
         cls.company = cls.env["res.company"].create({"name": cls.company_name})
 
@@ -48,14 +50,9 @@ class TestModule(TransactionCase):
         )
 
     def test_02_write_partner(self):
-        # With incorrect way, should fail
+        # Without Correct access right, should fail
         with self.assertRaises(UserError):
-            self.company.partner_id.write({"name": "RENAMED"})
+            self.company.partner_id.with_user(self.demo_user).write({"name": "Test"})
 
         # With Correct access right, should success
-        self.company.write({"name": "RENAMED"})
-
-    def test_03_unlink_partner(self):
-        # With incorrect way, should fail
-        with self.assertRaises(UserError):
-            self.company.partner_id.unlink()
+        self.company.partner_id.write({"name": "Test"})

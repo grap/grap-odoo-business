@@ -21,38 +21,39 @@ class ResPartner(models.Model):
     # Overload Section
     @api.model_create_multi
     def create(self, vals_list):
-        if self.env.context.get("action_from_res_company"):
+        if self.env.context.get("is_odoo_company"):
             for vals in vals_list:
                 vals["is_odoo_company"] = True
         return super().create(vals_list)
 
     def write(self, vals):
-        self._check_technical_partner_access_company()
+        self._check_technical_partner_access_company("write")
         return super().write(vals)
 
     def unlink(self):
-        self._check_technical_partner_access_company()
+        self._check_technical_partner_access_company("unlink")
         return super().unlink()
 
     # Custom section
-    def _check_technical_partner_access_company(self):
-        if self.env.context.get("action_from_res_company"):
-            return
-
+    def _check_technical_partner_access_company(self, operation):
         # We use SUPERUSER_ID to be sure to not skip some users, due to
         # some custom access rules deployed on databases
-        ResCompany = self.env["res.company"].sudo()
-        companies = ResCompany.with_context(active_test=False).search(
-            [("partner_id", "in", self.ids)]
+        ResCompany = self.env["res.company"]
+        companies = (
+            ResCompany.sudo()
+            .with_context(active_test=False)
+            .search([("partner_id", "in", self.ids)])
         )
         if len(companies):
-            raise UserError(
-                _(
-                    "You can only update company partners via company form."
-                    " Companies: \n- %s"
+            # Check if current user has correct access right
+            if not ResCompany.check_access_rights(operation, raise_exception=False):
+                raise UserError(
+                    _(
+                        "You have no right to update partners associated to"
+                        " companies.\n- %s"
+                    )
+                    % ("\n- ".join(companies.mapped("name")))
                 )
-                % ("\n- ".join(companies.mapped("name")))
-            )
 
     # Overload the private _search function:
     # This function is used by the other ORM functions
