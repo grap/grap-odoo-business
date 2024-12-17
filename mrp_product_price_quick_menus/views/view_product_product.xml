@@ -29,6 +29,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="view_mrp_product_price_quick_menus_product" model="ir.ui.view">
         <field name="model">product.product</field>
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <tree editable="bottom" create="false" decoration-danger="standard_price == 0">
                 <field name="default_code" string="Ref."/>
@@ -59,6 +60,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <!-- MRP Handling Prices Menu Step 3 : Products Update Margin and Sale Price -->
     <record id="view_handle_sale_price_tree" model="ir.ui.view">
         <field name="model">product.template</field>
+        <field name="priority">100</field>
         <field name="arch" type="xml">
             <tree editable="bottom" decoration-warning="margin_state == 'too_expensive'" decoration-danger="margin_state == 'too_cheap'" create="false">
               <field name="default_code" readonly="1" string="Ref."/>
