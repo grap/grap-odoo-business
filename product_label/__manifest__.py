@@ -14,6 +14,7 @@
     "depends": [
         # OCA
         "product_usability",
+        "product_compute_template_field_from_variant_helper",
     ],
     "data": [
         "security/res_groups.xml",

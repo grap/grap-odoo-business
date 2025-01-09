@@ -4,15 +4,20 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Products - Food Informations",
-    "version": "12.0.2.0.0",
+    "version": "16.0.1.0.0",
     "category": "Sales",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
-    "depends": ["product_label"],
+    "depends": [
+        # OCA
+        "product_usability",
+        "product_compute_template_field_from_variant_helper",
+        # GRAP
+        "product_label",
+    ],
     "data": [
         "security/res_groups.xml",
-        "security/ir_rule.xml",
         "security/ir.model.access.csv",
         "views/view_product_label.xml",
         "views/view_product_allergen.xml",
@@ -26,6 +31,5 @@
         "demo/product_category.xml",
         "demo/product_product.xml",
     ],
-    "external_dependencies": {"python": ["unidecode", "bs4"]},
     "installable": True,
 }

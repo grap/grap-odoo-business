@@ -31,11 +31,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_variant_easy_edit_view" />
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='tags']" position="after">
-                <group name="Labels" string="Labels">
-                    <field name="label_ids" widget="many2many_tags"/>
-                </group>
-            </xpath>
+            <field name="additional_product_tag_ids" position="after">
+                <field name="label_ids" widget="many2many_tags"/>
+            </field>
         </field>
     </record>
 

@@ -9,15 +9,7 @@ from odoo import fields, models
 class ProductLabel(models.Model):
     _inherit = "product.label"
 
-    is_alcohol = fields.Boolean(
-        string="Has Alcohol",
-        help="Check this box if this label is a label that mentions that"
-        " products contain alcohol. If checked, the products that"
-        " contains alcohol will have this label set automatically.",
-    )
-
     is_vegan = fields.Boolean(
-        string="Is Vegan",
         help="If this box is checked, the"
         " products that have this label will be set as "
         "'Vegan product' by default",

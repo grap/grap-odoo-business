@@ -9,31 +9,27 @@ class ProductAllergen(models.Model):
     _name = "product.allergen"
     _description = "Allergens"
 
-    code = fields.Char(string="Code")
+    code = fields.Char()
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(required=True)
 
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(default=True)
 
-    company_id = fields.Many2one(comodel_name="res.company", string="Company")
+    website = fields.Char()
 
-    website = fields.Char(string="Website")
-
-    note = fields.Text(string="Note")
+    note = fields.Text()
 
     product_ids = fields.Many2many(
         comodel_name="product.product",
         relation="product_allergen_product_rel",
         column1="allergen_id",
         column2="product_id",
-        string="Products",
     )
 
     product_qty = fields.Integer(
-        string="Product Quantity", compute="_compute_product_qty"
+        string="Products Quantity", compute="_compute_product_qty"
     )
 
-    @api.multi
     @api.depends("product_ids")
     def _compute_product_qty(self):
         for allergen in self:

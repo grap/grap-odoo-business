@@ -11,70 +11,96 @@ from .product_product import ProductProduct
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    # Column Section
     is_alimentary = fields.Boolean(
-        string="Is Alimentary",
-        related="product_variant_ids.is_alimentary",
+        compute=lambda x: x._compute_template_field_from_variant_field("is_alimentary"),
+        inverse=lambda x: x._set_product_variant_field("is_alimentary"),
         readonly=False,
     )
 
     alcohol_by_volume = fields.Float(
-        string="Alcohol by Volume",
-        related="product_variant_ids.alcohol_by_volume",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "alcohol_by_volume"
+        ),
+        inverse=lambda x: x._set_product_variant_field("alcohol_by_volume"),
         readonly=False,
     )
 
-    is_alcohol = fields.Boolean(
-        string="Contain Alcohol",
-        related="product_variant_ids.is_alcohol",
+    has_alcohol = fields.Boolean(
+        compute=lambda x: x._compute_template_field_from_variant_field("has_alcohol"),
+        inverse=lambda x: x._set_product_variant_field("has_alcohol"),
         readonly=False,
     )
 
     is_vegan = fields.Boolean(
-        string="Is Vegan",
-        related="product_variant_ids.is_vegan",
+        compute=lambda x: x._compute_template_field_from_variant_field("is_vegan"),
+        inverse=lambda x: x._set_product_variant_field("is_vegan"),
         readonly=False,
     )
 
     use_by_date_day = fields.Integer(
-        string="Use-by Date Day",
-        related="product_variant_ids.use_by_date_day",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "use_by_date_day"
+        ),
+        inverse=lambda x: x._set_product_variant_field("use_by_date_day"),
         readonly=False,
     )
 
     best_before_date_day = fields.Integer(
-        string="Best Before Date Day",
-        related="product_variant_ids.best_before_date_day",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "best_before_date_day"
+        ),
+        inverse=lambda x: x._set_product_variant_field("best_before_date_day"),
         readonly=False,
     )
 
     storage_method = fields.Selection(
-        string="Storage Method",
-        related="product_variant_ids.storage_method",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "storage_method"
+        ),
+        inverse=lambda x: x._set_product_variant_field("storage_method"),
+        readonly=False,
         selection=lambda self: self.env["product.product"]
         ._fields["storage_method"]
         .selection,
     )
 
     ingredients = fields.Text(
-        string="Ingredients",
-        related="product_variant_ids.ingredients",
+        compute=lambda x: x._compute_template_field_from_variant_field("ingredients"),
+        inverse=lambda x: x._set_product_variant_field("ingredients"),
         readonly=False,
     )
 
     allergen_ids = fields.Many2many(
         comodel_name="product.allergen",
-        related="product_variant_ids.allergen_ids",
-        string="Allergens",
+        compute=lambda x: x._compute_template_field_from_variant_field("allergen_ids"),
+        inverse=lambda x: x._set_product_variant_field("allergen_ids"),
         readonly=False,
     )
 
     trace_allergen_ids = fields.Many2many(
-        comodel_name="product.allergen",
-        related="product_variant_ids.trace_allergen_ids",
         string="Allergens (Traces)",
+        comodel_name="product.allergen",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "trace_allergen_ids"
+        ),
+        inverse=lambda x: x._set_product_variant_field("trace_allergen_ids"),
         readonly=False,
     )
+
+    def _get_related_fields_variant_template(self):
+        res = super()._get_related_fields_variant_template()
+        res += [
+            "is_alimentary",
+            "alcohol_by_volume",
+            "has_alcohol",
+            "use_by_date_day",
+            "best_before_date_day",
+            "storage_method",
+            "ingredients",
+            "allergen_ids",
+            "trace_allergen_ids",
+        ]
+        return res
 
     # Onchange Section
     @api.onchange("categ_id")
@@ -84,11 +110,3 @@ class ProductTemplate(models.Model):
     @api.onchange("label_ids")
     def onchange_label_ids_product_food(self):
         ProductProduct.onchange_label_ids_product_food(self)
-
-    @api.onchange("is_alimentary")
-    def onchange_is_alimentary(self):
-        ProductProduct.onchange_is_alimentary(self)
-
-    @api.onchange("is_alcohol")
-    def onchange_is_alcohol(self):
-        ProductProduct.onchange_is_alcohol(self)

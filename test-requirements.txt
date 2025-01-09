@@ -1,4 +1,5 @@
 # Unmerged OCA modules
+git+https://github.com/OCA/product-attributes@refs/pull/1840/head#subdirectory=setup/product_compute_template_field_from_variant_helper
 git+https://github.com/OCA/manufacture@refs/pull/1227/head#subdirectory=setup/mrp_bom_product_price_margin
 git+https://github.com/OCA/manufacture@refs/pull/1255/head#subdirectory=setup/mrp_product_characterisation
 

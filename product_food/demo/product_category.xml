@@ -15,7 +15,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="beer_category" model="product.category">
         <field name="name">Beers</field>
         <field name="is_alimentary" eval="True"/>
-        <field name="is_alcohol" eval="True"/>
+        <field name="has_alcohol" eval="True"/>
         <field name="parent_id" ref="product_food.alimentary_category"/>
     </record>
 

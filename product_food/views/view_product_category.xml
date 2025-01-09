@@ -11,9 +11,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="product.product_category_list_view"/>
         <field name="arch" type="xml">
             <field name="display_name" position="after">
-                <field name="is_alimentary"/>
-                <field name="is_vegan"/>
-                <field name="is_alcohol"/>
+                <field name="is_alimentary" optional="hide"/>
+                <field name="is_vegan" optional="hide"/>
+                <field name="has_alcohol" optional="hide"/>
             </field>
         </field>
     </record>
@@ -25,7 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="parent_id" position="after">
                 <field name="is_alimentary"/>
                 <field name="is_vegan"/>
-                <field name="is_alcohol"/>
+                <field name="has_alcohol"/>
             </field>
         </field>
     </record>

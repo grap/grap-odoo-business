@@ -2,6 +2,8 @@
 
 .. figure:: ../static/description/product_allergen_form.png
 
+Note: Module lands with "official" allergens.
+
 * Go to 'Inventory > Configuration > Product Categories' and check new fields:
     * ``Contain Alimentary Products``
     * ``Contain Vegan Products``
@@ -10,6 +12,6 @@
 .. figure:: ../static/description/product_category_form.png
 
 * Go to 'Sale > Configuration > Product Labels' and update your labels,
-  setting two new fields ``Has Alcohol`` and ``Is Vegan``.
+  setting new field ``Is Vegan``.
 
 .. figure:: ../static/description/product_label_form.png

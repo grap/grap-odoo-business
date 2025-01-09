@@ -40,4 +40,4 @@ class TestModule(TransactionCase):
             }
         )
         self.assertEqual(product.is_alimentary, True)
-        self.assertEqual(product.is_alcohol, True)
+        self.assertEqual(product.has_alcohol, True)

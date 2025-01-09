@@ -10,47 +10,41 @@ from odoo.exceptions import Warning as UserError
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
-    # Constant Section
     _STORAGE_METHOD_SELECTION = [
         ("fresh", "Fresh (< 10°)"),
         ("cool", "Cool (< 4°)"),
         ("frozen", "Frozen (< -18°)"),
     ]
 
-    # Column Section
-    is_alimentary = fields.Boolean(string="Is Alimentary")
+    is_alimentary = fields.Boolean()
 
-    is_vegan = fields.Boolean(string="Is Vegan")
+    is_vegan = fields.Boolean()
 
-    is_alcohol = fields.Boolean(string="Contain Alcohol")
+    has_alcohol = fields.Boolean()
 
-    alcohol_by_volume = fields.Float(string="Alcohol by Volume")
+    alcohol_by_volume = fields.Float()
 
-    use_by_date_day = fields.Integer(string="Use-by Date Day")
+    use_by_date_day = fields.Integer()
 
-    best_before_date_day = fields.Integer(string="Best Before Date Day")
+    best_before_date_day = fields.Integer()
 
-    storage_method = fields.Selection(
-        string="Storage Method",
-        selection=_STORAGE_METHOD_SELECTION,
-    )
+    storage_method = fields.Selection(selection=_STORAGE_METHOD_SELECTION)
 
-    ingredients = fields.Text(string="Ingredients")
+    ingredients = fields.Text()
 
     allergen_ids = fields.Many2many(
         comodel_name="product.allergen",
         relation="product_allergen_product_rel",
         column1="product_id",
         column2="allergen_id",
-        string="Allergens",
     )
 
     trace_allergen_ids = fields.Many2many(
+        string="Allergens (Traces)",
         comodel_name="product.allergen",
         relation="product_allergen_trace_product_rel",
         column1="product_id",
         column2="allergen_id",
-        string="Allergens (Traces)",
     )
 
     # Constrains Section
@@ -66,98 +60,29 @@ class ProductProduct(models.Model):
                 )
             )
 
-    @api.multi
-    @api.constrains("is_alcohol", "label_ids")
-    def _check_alcohol_labels(self):
-        ProductLabel = self.env["product.label"]
-        for product in self:
-            if product.is_alcohol:
-                # Check that all the alcohol labels are set
-                alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
-                if [x for x in alcohol_label_ids if x not in product.label_ids.ids]:
-                    raise UserError(
-                        _(
-                            "Incorrect Setting. the product %s is checked as"
-                            " 'Contain Alcohol' but some related labels are"
-                            " not set."
-                        )
-                        % (product.name)
-                    )
-            if product.label_ids.filtered(lambda x: x.is_alcohol):
-                # Check that 'contain Alcohol' is checked
-                if not product.is_alcohol:
-                    raise UserError(
-                        _(
-                            "Incorrect Setting. the product %s has a label"
-                            " that mentions that the product contains "
-                            " alcohol, but the 'Contain Alcohol' is not"
-                            " checked."
-                        )
-                        % (product.name)
-                    )
-
-    @api.multi
-    @api.constrains("is_vegan", "label_ids")
-    def _check_is_vegan_labels(self):
-        for product in self:
-            if product.label_ids.filtered(lambda x: x.is_vegan):
-                # Check that 'Vegan product' is checked
-                if not product.is_vegan:
-                    raise UserError(
-                        _(
-                            "Incorrect Setting. the product %s has a label"
-                            " that mentions that the product is vegan"
-                            " but the 'Vegan product' is not"
-                            " checked."
-                        )
-                        % (product.name)
-                    )
-
     # Onchange Section
     @api.onchange("categ_id")
     def onchange_categ_id_product_food(self):
         if self.categ_id:
             self.is_alimentary = self.categ_id.is_alimentary
-            self.is_alcohol = self.categ_id.is_alcohol
+            self.has_alcohol = self.categ_id.has_alcohol
             self.is_vegan = self.categ_id.is_vegan
 
     @api.onchange("label_ids")
     def onchange_label_ids_product_food(self):
         if self.label_ids.filtered(lambda x: x.is_vegan):
             self.is_vegan = True
-        if self.label_ids.filtered(lambda x: x.is_alcohol):
-            self.is_alcohol = True
-            self.is_alimentary = True
 
-    @api.onchange("is_alimentary")
-    def onchange_is_alimentary(self):
-        if not self.is_alimentary:
-            self.is_alcohol = False
-
-    @api.onchange("is_alcohol")
-    def onchange_is_alcohol(self):
-        ProductLabel = self.env["product.label"]
-        if self.is_alcohol:
-            self.is_alimentary = True
-            alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
-            self.label_ids = [(4, x) for x in alcohol_label_ids]
-        else:
-            self.label_ids = self.label_ids.filtered(lambda x: not x.is_alcohol)
-
-    @api.model
-    def create(self, vals):
-        ProductLabel = self.env["product.label"]
-        if "categ_id" in vals:
-            # Guess values if not present, based on the category
-            categ = self.env["product.category"].browse(vals.get("categ_id"))
-            if "is_alimentary" not in vals:
-                vals["is_alimentary"] = categ.is_alimentary
-            if "is_alcohol" not in vals:
-                vals["is_alcohol"] = categ.is_alcohol
-            if "is_vegan" not in vals:
-                vals["is_vegan"] = categ.is_vegan
-        vals["label_ids"] = vals.get("label_ids", [])
-        if vals.get("is_alcohol", False):
-            alcohol_label_ids = ProductLabel.search([("is_alcohol", "=", True)]).ids
-            vals["label_ids"] = [(4, x) for x in alcohol_label_ids]
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if "categ_id" in vals:
+                # Guess values if not present, based on the category
+                categ = self.env["product.category"].browse(vals.get("categ_id"))
+                if "is_alimentary" not in vals:
+                    vals["is_alimentary"] = categ.is_alimentary
+                if "has_alcohol" not in vals:
+                    vals["has_alcohol"] = categ.has_alcohol
+                if "is_vegan" not in vals:
+                    vals["is_vegan"] = categ.is_vegan
+        return super().create(vals_list)

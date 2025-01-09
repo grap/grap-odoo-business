@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* product_label
+#   * product_label
 #
 msgid ""
 msgstr ""
@@ -84,11 +84,29 @@ msgid "ID"
 msgstr ""
 
 #. module: product_label
-#: model:ir.model.fields,field_description:product_label.field_product_label__image
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_medium
-#: model:ir.model.fields,field_description:product_label.field_product_label__image_small
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_1920
 msgid "Image"
-msgstr "Image de taille moyenne"
+msgstr ""
+
+#. module: product_label
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: product_label
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: product_label
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: product_label
+#: model:ir.model.fields,field_description:product_label.field_product_label__image_512
+msgid "Image 512"
+msgstr ""
 
 #. module: product_label
 #: model:product.template,name:product_label.infusion_girl_power_product_template
@@ -101,10 +119,8 @@ msgid "Label Name"
 msgstr "Nom du label"
 
 #. module: product_label
-#: model:ir.actions.act_window,name:product_label.action_product_label
 #: model:ir.model.fields,field_description:product_label.field_product_product__label_ids
 #: model:ir.model.fields,field_description:product_label.field_product_template__label_ids
-#: model:ir.ui.menu,name:product_label.menu_product_label
 msgid "Labels"
 msgstr ""
 
@@ -139,7 +155,9 @@ msgid "Product"
 msgstr "Produit"
 
 #. module: product_label
+#: model:ir.actions.act_window,name:product_label.action_product_label
 #: model:ir.model,name:product_label.model_product_label
+#: model:ir.ui.menu,name:product_label.menu_product_label
 msgid "Product Labels"
 msgstr "Labels de produits"
 

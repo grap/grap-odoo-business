@@ -7,19 +7,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="label_alcool_grossesse" model="product.label">
-        <field name="name">Alcool and Pregnancy</field>
-        <field name="code">ALC</field>
-        <field name="website">http://inpes.santepubliquefrance.fr/70000/cp/15/cp152908-alcool-grossesse-risque.asp</field>
-        <field name="is_alcohol" eval="True" />
-        <field name="image" type="base64" file="product_food/static/img/label_alcool_grossesse-image.png"/>
-    </record>
-
     <record id="label_demeter" model="product.label">
         <field name="name">Demeter</field>
         <field name="code">DEM</field>
         <field name="website">https://www.demeter.fr/</field>
-        <field name="image" type="base64" file="product_food/static/img/label_demeter-image.png"/>
+        <field name="image_1920" type="base64" file="product_food/static/img/label_demeter-image.png"/>
     </record>
 
     <record id="label_vegan" model="product.label">
@@ -27,7 +19,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="code">VEG</field>
         <field name="website">https://www.vegan.org/</field>
         <field name="is_vegan" eval="1"/>
-        <field name="image" type="base64" file="product_food/static/img/label_vegan-image.png"/>
+        <field name="image_1920" type="base64" file="product_food/static/img/label_vegan-image.png"/>
     </record>
 
 </odoo>
