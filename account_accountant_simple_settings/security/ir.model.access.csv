@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_config_settings,access_account_config_settings,account_accountant_simple_settings.model_account_config_settings,account.group_account_manager,1,1,1,1
+access_res_company,access_res_company,base.model_res_company,account.group_account_manager,0,1,0,0
+access_ir_module_module,access_ir_module_module,base.model_ir_module_module,account.group_account_manager,1,0,0,0
