@@ -34,7 +34,7 @@ def _populate_allergen_ids(env, company, all_allergens):
 
     results = env.cr.fetchall()
     _logger.info(f"Found {len(results)} products...")
-    for (product_id, allergen_html) in results:
+    for product_id, allergen_html in results:
         (
             allergen_text,
             allergens,
