@@ -9,12 +9,12 @@ class CertifierOrganization(models.Model):
     _name = "certifier.organization"
     _description = "Certifier Organization"
 
-    code = fields.Char(string="Code", required=True)
+    code = fields.Char(required=True)
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(required=True)
 
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(default=True)
 
-    website = fields.Char(string="Website")
+    website = fields.Char()
 
-    note = fields.Text(string="Note")
+    note = fields.Text()

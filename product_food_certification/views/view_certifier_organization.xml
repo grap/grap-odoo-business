@@ -13,7 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <tree>
                 <field name="code"/>
                 <field name="name"/>
-                <field name="website"/>
+                <field name="website" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -24,11 +24,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active"
-                                type="object" class="oe_stat_button" icon="fa-archive">
-                            <field name="active"
-                                widget="boolean_button" options="{'terminology': 'archive'}"/>
-                        </button>
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
                     </div>
                     <div class="oe_title">
                         <div class="oe_edit_only"><label for="name"/></div>
@@ -38,9 +40,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </div>
                     <notebook>
                         <page string="Information">
-                            <group col="4">
-                                <field name="website" colspan="4" widget="url"/>
-                                <field name="note" widget="html" colspan="4"/>
+                            <group>
+                                <group>
+                                    <field name="website" widget="url"/>
+                                </group>
+                            </group>
+                            <group string="Note">
+                                <field name="note" widget="html" colspan="2" nolabel="1"/>
                             </group>
                         </page>
                     </notebook>
@@ -53,12 +59,11 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Certifier Organizations</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">certifier.organization</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_certifier_organization"
-        parent="base.menu_ir_property" sequence="25"
+        parent="product_usability.menu_configuration" sequence="500"
         action="action_certifier_organization"/>
 
 </odoo>

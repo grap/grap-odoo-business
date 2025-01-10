@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.label</field>
         <field name="inherit_id" ref="product_food.view_product_label_form" />
         <field name="arch" type="xml">
-            <field name="is_alcohol" position="before">
+            <field name="is_vegan" position="before">
                 <field name="organic_type"/>
             </field>
         </field>

@@ -12,11 +12,14 @@ class ProductTemplate(models.Model):
 
     ingredient_origin_type = fields.Selection(
         string="Origin of Ingredients",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "ingredient_origin_type"
+        ),
+        inverse=lambda x: x._set_product_variant_field("ingredient_origin_type"),
+        readonly=False,
         selection=lambda self: self.env["product.product"]
         ._fields["ingredient_origin_type"]
         .selection,
-        related="product_variant_ids.ingredient_origin_type",
-        readonly=False,
         help="The place of production of the agricultural"
         " raw materials making up the product."
         " This information is mandatory if the 'Euro leaf' logo is used.\n\n"
@@ -26,7 +29,10 @@ class ProductTemplate(models.Model):
 
     is_uncertifiable = fields.Boolean(
         string="Not Certifiable",
-        related="product_variant_ids.is_uncertifiable",
+        compute=lambda x: x._compute_template_field_from_variant_field(
+            "is_uncertifiable"
+        ),
+        inverse=lambda x: x._set_product_variant_field("is_uncertifiable"),
         readonly=False,
         help="Check this box for alimentary products that are"
         " uncertifiable by definition. For exemple: Products"
@@ -34,14 +40,18 @@ class ProductTemplate(models.Model):
     )
 
     organic_type = fields.Selection(
+        string="Organic Category",
+        compute="_compute_organic_type",
         selection=lambda self: self.env["product.product"]
         ._fields["organic_type"]
         .selection,
-        string="Organic Category",
-        compute="_compute_organic_type",
     )
 
-    # Compute Section
     @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
         ProductProduct._compute_organic_type(self)
+
+    def _get_related_fields_variant_template(self):
+        res = super()._get_related_fields_variant_template()
+        res += ["ingredient_origin_type", "is_uncertifiable"]
+        return res
