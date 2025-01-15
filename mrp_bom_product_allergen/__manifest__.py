@@ -12,8 +12,6 @@
     "license": "AGPL-3",
     "depends": [
         "mrp",
-        # OCA modules,
-        "mrp_bom_tag",
         # GRAP Business modules,
         "product_food",
     ],
