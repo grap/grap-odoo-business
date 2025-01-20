@@ -4,11 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 14:08+0000\n"
-"PO-Revision-Date: 2024-04-08 14:08+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2025-01-20 11:26+0000\n"
+"PO-Revision-Date: 2025-01-20 11:26+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,25 +21,28 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: product_food_certification
-#: selection:product.label,organic_type:0
-#: selection:product.product,organic_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_label__organic_type__02_agroecological
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__organic_type__02_agroecological
 msgid "Agroecological"
 msgstr "Agro-écologique"
 
 #. module: product_food_certification
-#: selection:product.product,organic_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__organic_type__04_uncertified
 msgid "Aliment Not Certified"
 msgstr "Aliment non certifié"
 
 #. module: product_food_certification
-#: selection:product.product,organic_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__organic_type__03_uncertifiable
 msgid "Aliment Uncertifiable"
 msgstr "Aliment non certifiable"
 
 #. module: product_food_certification
+#: model_terms:ir.ui.view,arch_db:product_food_certification.view_certifier_organization_form
+msgid "Archived"
+msgstr "Archivée"
+
+#. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_certifier_organization
-#: model:ir.model.fields,field_description:product_food_certification.field_product_product__certifier_organization_id
-#: model:ir.model.fields,field_description:product_food_certification.field_product_template__certifier_organization_id
 #: model:ir.model.fields,field_description:product_food_certification.field_res_company__certifier_organization_id
 msgid "Certifier Organization"
 msgstr "Organisation certificatrice"
@@ -58,8 +61,12 @@ msgstr "Création d'organisations certificatrices"
 #. module: product_food_certification
 #: model:ir.model.fields,help:product_food_certification.field_product_product__is_uncertifiable
 #: model:ir.model.fields,help:product_food_certification.field_product_template__is_uncertifiable
-msgid "Check this box for alimentary products that are uncertifiable by definition. For exemple: Products that comes from the sea"
-msgstr "cocher cette case pour les articles alimentaires qui sont non certifiable par définition. par exemple, les produits issues de la mer."
+msgid ""
+"Check this box for alimentary products that are uncertifiable by definition."
+" For exemple: Products that comes from the sea"
+msgstr ""
+"cocher cette case pour les articles alimentaires qui sont non certifiable "
+"par définition. par exemple, les produits issues de la mer."
 
 #. module: product_food_certification
 #: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__code
@@ -87,17 +94,17 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: product_food_certification
-#: selection:product.product,ingredient_origin_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__ingredient_origin_type__eu
 msgid "EU"
 msgstr "UE"
 
 #. module: product_food_certification
-#: selection:product.product,ingredient_origin_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__ingredient_origin_type__eu_no_eu
 msgid "EU / No EU"
 msgstr "UE / Non UE"
 
 #. module: product_food_certification
-#: selection:product.product,ingredient_origin_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__ingredient_origin_type__fr
 msgid "France"
 msgstr ""
 
@@ -132,12 +139,12 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: product_food_certification
-#: selection:product.product,ingredient_origin_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__ingredient_origin_type__no_eu
 msgid "No EU"
 msgstr "Non UE"
 
 #. module: product_food_certification
-#: selection:product.product,organic_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__organic_type__05_not_alimentary
 msgid "Not Alimentary"
 msgstr "Non alimentaire"
 
@@ -149,12 +156,13 @@ msgstr "Non certifiable"
 
 #. module: product_food_certification
 #: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__note
+#: model_terms:ir.ui.view,arch_db:product_food_certification.view_certifier_organization_form
 msgid "Note"
 msgstr ""
 
 #. module: product_food_certification
-#: selection:product.label,organic_type:0
-#: selection:product.product,organic_type:0
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_label__organic_type__01_organic
+#: model:ir.model.fields.selection,name:product_food_certification.selection__product_product__organic_type__01_organic
 msgid "Organic"
 msgstr "Biologique"
 
@@ -172,27 +180,41 @@ msgid "Origin of Ingredients"
 msgstr "Origine des ingrédients"
 
 #. module: product_food_certification
-#: model:ir.model,name:product_food_certification.model_product_product
+#: model:ir.model,name:product_food_certification.model_product_template
 msgid "Product"
-msgstr "Article"
+msgstr "Produit"
 
 #. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_product_label
 msgid "Product Labels"
-msgstr "Labels d'articles"
+msgstr "Labels de produits"
 
 #. module: product_food_certification
-#: model:ir.model,name:product_food_certification.model_product_template
-msgid "Product Template"
-msgstr "Modèle d'article"
+#: model:ir.model,name:product_food_certification.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: product_food_certification
+#. odoo-python
+#: code:addons/product_food_certification/models/res_company.py:0
+#, python-format
+msgid "Products marked as 'ORG' are certified by %(certifier_code)s."
+msgstr "Les produits marqués comme 'BIO' sont certifiés par %(certifier_code)s."
+
+#. module: product_food_certification
+#: model:ir.model.fields,field_description:product_food_certification.field_res_company__report_certifier_text
+msgid "Report Certifier Text"
+msgstr "Texte concernant la certification pour les rapports"
 
 #. module: product_food_certification
 #: model:ir.model.fields,help:product_food_certification.field_product_product__ingredient_origin_type
 #: model:ir.model.fields,help:product_food_certification.field_product_template__ingredient_origin_type
-msgid "The place of production of the agricultural raw materials making up the product. This information is mandatory if the 'Euro leaf' logo is used.\n"
+msgid ""
+"The place of production of the agricultural raw materials making up the product. This information is mandatory if the 'Euro leaf' logo is used.\n"
 "\n"
 " More information : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
-msgstr "Le lieu de production des matières premières agricoles composant l'article. Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
+msgstr ""
+"Le lieu de production des matières premières agricoles composant l'article. Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
 "\n"
 " Plus d'information  : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
 

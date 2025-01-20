@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2025 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="report_stock_picking" inherit_id="stock.report_delivery_document">
+        <!-- Header A (o.state!='done) -->
+        <xpath expr="//th[@name='th_sm_ordered']" position="before">
+            <th t-if="o.display_organic_column" class="text-center"><span >ORG</span></th>
+        </xpath>
+
+        <!-- Header B (o.state=='done) -->
+        <xpath expr="//th[@name='th_sml_qty_ordered']" position="before">
+            <th t-if="o.display_organic_column" class="text-center"><span >ORG</span></th>
+        </xpath>
+
+        <!-- Column A (o.state!='done) -->
+        <xpath expr="//span[@t-field='move.product_uom_qty']/.." position="before">
+            <td t-if="o.display_organic_column" class="text-center">
+                <span t-if="move.product_id.organic_type == '01_organic'">ORG</span>
+            </td>
+        </xpath>
+
+        <xpath expr="//t[@t-set='backorders']" position="before">
+            <div t-if="o.display_organic_column" t-field="o.company_id.report_certifier_text"/>
+        </xpath>
+
+    </template>
+
+        <!-- Column B-1 (o.state=='done) with lots -->
+    <template id="report_stock_picking_line_has_serial" inherit_id="stock.stock_report_delivery_has_serial_move_line">
+        <xpath expr="//td[@name='move_line_lot_qty_done']" position="before">
+            <td t-if="move_line.picking_id.display_organic_column" class="text-center">
+                <span t-if="move_line.product_id.organic_type == '01_organic'">ORG</span>
+            </td>
+        </xpath>
+    </template>
+
+    <!-- Column B-2 (o.state=='done) aggregated -->
+    <template id="report_stock_picking_line_aggregated" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+        <xpath expr="//td[@name='move_line_aggregated_qty_ordered']" position="before">
+            <td t-if="aggregated_lines[line]['display_organic_column']" class="text-center">
+                <span t-if="aggregated_lines[line]['organic_type'] == '01_organic'">ORG</span>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>
