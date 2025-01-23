@@ -49,10 +49,6 @@ class ProductProduct(models.Model):
     # Compute Section
     @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
-        self._get_organic_type(self)
-
-    @api.model
-    def _get_organic_type(self, items):
         self._get_organic_type()
 
     @api.model
