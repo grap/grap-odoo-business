@@ -4,6 +4,8 @@
 
 from odoo import api, fields, models
 
+from .product_product import ProductProduct
+
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
@@ -39,7 +41,6 @@ class ProductTemplate(models.Model):
 
     organic_type = fields.Selection(
         string="Organic Category",
-        # compute="_compute_organic_type",
         compute=lambda x: x._compute_template_field_from_variant_field("organic_type"),
         selection=lambda self: self.env["product.product"]
         ._fields["organic_type"]
@@ -48,7 +49,7 @@ class ProductTemplate(models.Model):
 
     @api.onchange("label_ids", "is_alimentary", "is_uncertifiable")
     def _onchange_to_compute_organic_type(self):
-        self.env["product.product"]._get_organic_type(self)
+        ProductProduct._get_organic_type(self)
 
     def _get_related_fields_variant_template(self):
         res = super()._get_related_fields_variant_template()

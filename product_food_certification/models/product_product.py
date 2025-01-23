@@ -53,11 +53,15 @@ class ProductProduct(models.Model):
 
     @api.model
     def _get_organic_type(self, items):
+        self._get_organic_type()
+
+    @api.model
+    def _get_organic_type(self):
         """
         - called by product.product in compute function
         - called by product.template in onchange function
         """
-        for item in items:
+        for item in self:
             types = item.mapped("label_ids.organic_type")
             if "01_organic" in types:
                 item.organic_type = "01_organic"
