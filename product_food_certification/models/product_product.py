@@ -49,16 +49,24 @@ class ProductProduct(models.Model):
     # Compute Section
     @api.depends("label_ids.organic_type", "is_alimentary", "is_uncertifiable")
     def _compute_organic_type(self):
-        for product in self:
-            types = product.mapped("label_ids.organic_type")
+        self._get_organic_type(self)
+
+    @api.model
+    def _get_organic_type(self, items):
+        """
+        - called by product.product in compute function
+        - called by product.template in onchange function
+        """
+        for item in items:
+            types = item.mapped("label_ids.organic_type")
             if "01_organic" in types:
-                product.organic_type = "01_organic"
+                item.organic_type = "01_organic"
             elif "02_agroecological" in types:
-                product.organic_type = "02_agroecological"
-            elif product.is_alimentary:
-                if product.is_uncertifiable:
-                    product.organic_type = "03_uncertifiable"
+                item.organic_type = "02_agroecological"
+            elif item.is_alimentary:
+                if item.is_uncertifiable:
+                    item.organic_type = "03_uncertifiable"
                 else:
-                    product.organic_type = "04_uncertified"
+                    item.organic_type = "04_uncertified"
             else:
-                product.organic_type = "05_not_alimentary"
+                item.organic_type = "05_not_alimentary"
