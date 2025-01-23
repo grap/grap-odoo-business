@@ -51,7 +51,6 @@ class ProductProduct(models.Model):
     def _compute_organic_type(self):
         self._get_organic_type()
 
-    @api.model
     def _get_organic_type(self):
         """
         - called by product.product in compute function
