@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="product_arachide_toaste" model="product.product">
+        <field name="name">Arachide Bio Toasté - Jean Hervé</field>
+        <field name="categ_id" ref="alimentary_category" />
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="is_alimentary" eval="True" />
+        <field name="list_price">2.70</field>
+        <field name="allergen_ids" eval="[
+            (4, ref('allergen_ARA')),
+        ]"/>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+        ]"/>
+        <field name="ingredients">Arachides de Chine issues de l'agriculture biologique</field>
+        <field name="best_before_date_day">365</field>
+    </record>
+
+
+    <record id="product_biere_sans_gluten" model="product.product">
+        <field name="name">Bière Lammsbrau sans gluten 33cl</field>
+        <field name="categ_id" ref="alimentary_category" />
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="is_alimentary" eval="True" />
+        <field name="has_alcohol" eval="True" />
+        <field name="barcode">4012852001698</field>
+        <field name="list_price">2.30</field>
+        <field name="volume">0.33</field>
+        <field name="label_ids" eval="[
+            (4, ref('product_label.label_agriculture_biologique')),
+            (4, ref('product_label.label_gluten_free')),
+            ]"/>
+    </record>
+
+</odoo>

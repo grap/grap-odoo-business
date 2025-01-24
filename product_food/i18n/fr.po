@@ -1,0 +1,304 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * product_food
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-10 13:04+0000\n"
+"PO-Revision-Date: 2025-01-10 13:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__active
+msgid "Active"
+msgstr "Actif"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__alcohol_by_volume
+#: model:ir.model.fields,field_description:product_food.field_product_template__alcohol_by_volume
+msgid "Alcohol By Volume"
+msgstr "Degré d'alcool"
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Alimentary Informations"
+msgstr "Informations alimentaires"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__allergen_ids
+#: model:ir.model.fields,field_description:product_food.field_product_template__allergen_ids
+msgid "Allergen"
+msgstr "Allergènes"
+
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_allergen
+msgid "Allergens"
+msgstr "Allergènes"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__trace_allergen_ids
+#: model:ir.model.fields,field_description:product_food.field_product_template__trace_allergen_ids
+msgid "Allergens (Traces)"
+msgstr "Allergènes (Traces)"
+
+#. module: product_food
+#: model:res.groups,name:product_food.group_allergen_manager
+msgid "Allergens Creation"
+msgstr "Création d'allergènes"
+
+#. module: product_food
+#: model:product.template,name:product_food.product_arachide_toaste_product_template
+msgid "Arachide Bio Toasté - Jean Hervé"
+msgstr ""
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__best_before_date_day
+#: model:ir.model.fields,field_description:product_food.field_product_template__best_before_date_day
+msgid "Best Before Date Day"
+msgstr "DLUO (j)"
+
+#. module: product_food
+#: model:product.template,name:product_food.product_biere_sans_gluten_product_template
+msgid "Bière Lammsbrau sans gluten 33cl"
+msgstr ""
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__code
+msgid "Code"
+msgstr ""
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__has_alcohol
+msgid "Contain Alcohol Products"
+msgstr "Contient des articles avec alcool"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__is_alimentary
+msgid "Contain Alimentary Products"
+msgstr "Contient des articles alimentaires"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_category__is_vegan
+msgid "Contain Vegan Products"
+msgstr "Contient seulement des articles végan"
+
+#. module: product_food
+#: model:ir.model.fields.selection,name:product_food.selection__product_product__storage_method__cool
+msgid "Cool (< 4°)"
+msgstr "Froid (< 4°)"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Detailed Content"
+msgstr "Contenu détaillé"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Food"
+msgstr "Alimentaire"
+
+#. module: product_food
+#: model:ir.model.fields.selection,name:product_food.selection__product_product__storage_method__fresh
+msgid "Fresh (< 10°)"
+msgstr "Frais (< 10°)"
+
+#. module: product_food
+#: model:ir.model.fields.selection,name:product_food.selection__product_product__storage_method__frozen
+msgid "Frozen (< -18°)"
+msgstr "Congelé (<-18°)"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__has_alcohol
+#: model:ir.model.fields,field_description:product_food.field_product_template__has_alcohol
+msgid "Has Alcohol"
+msgstr "Contient de l'alcool"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__id
+msgid "ID"
+msgstr ""
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_category__is_alimentary
+msgid ""
+"If this box is checked, the products that belong to that category will be "
+"set as 'Alimentary Product' by default"
+msgstr ""
+"Si cette case est cochée, les articles qui sont associés à cette categorie "
+"seront marqué comme 'Articles alimentaire' par défaut"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_category__has_alcohol
+msgid ""
+"If this box is checked, the products that belong to that category will be "
+"set as 'Contain alcohol' by default"
+msgstr ""
+"Si cette case est cochée, les articles associés à cette catégorie seront "
+"cochés comme 'contient de l'alcool' par default"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_category__is_vegan
+msgid ""
+"If this box is checked, the products that belong to that category will be "
+"set as 'Vegan product' by default"
+msgstr ""
+"Si la case est cochée, les articles qui ont cette catégorie seront marqués "
+"comme 'végan' par défaut"
+
+#. module: product_food
+#: model:ir.model.fields,help:product_food.field_product_label__is_vegan
+msgid ""
+"If this box is checked, the products that have this label will be set as "
+"'Vegan product' by default"
+msgstr ""
+"Si la case est cochée, les articles qui ont ce label seront marqués comme "
+"'végan' par défaut"
+
+#. module: product_food
+#. odoo-python
+#: code:addons/product_food/models/product_product.py:0
+#, python-format
+msgid "Incorrect Setting. Alcohol by volume should be between 0 and 100."
+msgstr ""
+"Paramétrage incorrect. Le degré d'alcool doit être compris entre 0 et 100."
+
+#. module: product_food
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Information"
+msgstr ""
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__ingredients
+#: model:ir.model.fields,field_description:product_food.field_product_template__ingredients
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
+msgid "Ingredients"
+msgstr "Ingrédients"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_alimentary
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_alimentary
+msgid "Is Alimentary"
+msgstr "Est alimentaire"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_label__is_vegan
+#: model:ir.model.fields,field_description:product_food.field_product_product__is_vegan
+#: model:ir.model.fields,field_description:product_food.field_product_template__is_vegan
+msgid "Is Vegan"
+msgstr "Est Végan"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__name
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Name"
+msgstr "Nom"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__note
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Note"
+msgstr ""
+
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_template
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__product_ids
+msgid "Product"
+msgstr "Produit"
+
+#. module: product_food
+#: model:ir.actions.act_window,name:product_food.action_product_allergen
+#: model:ir.ui.menu,name:product_food.menu_product_allergen
+msgid "Product Allergens"
+msgstr "Allergènes de produit"
+
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_category
+msgid "Product Category"
+msgstr "Catégorie de produit"
+
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_label
+msgid "Product Labels"
+msgstr "Labels de produits"
+
+#. module: product_food
+#: model:ir.model,name:product_food.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: product_food
+#: model:ir.actions.act_window,name:product_food.action_product_allergen_2_product_product
+#: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
+msgid "Products"
+msgstr "Articles"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__product_qty
+msgid "Products Quantity"
+msgstr "Quantité d'articles"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__storage_method
+#: model:ir.model.fields,field_description:product_food.field_product_template__storage_method
+msgid "Storage Method"
+msgstr "Méthode de conservation"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_product__use_by_date_day
+#: model:ir.model.fields,field_description:product_food.field_product_template__use_by_date_day
+msgid "Use By Date Day"
+msgstr "DLC (j)"
+
+#. module: product_food
+#: model:ir.model.fields,field_description:product_food.field_product_allergen__website
+msgid "Website"
+msgstr "Site Web"

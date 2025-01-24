@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+@author Julien WESTE
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="label_demeter" model="product.label">
+        <field name="name">Demeter</field>
+        <field name="code">DEM</field>
+        <field name="website">https://www.demeter.fr/</field>
+        <field name="image_1920" type="base64" file="product_food/static/img/label_demeter-image.png"/>
+    </record>
+
+    <record id="label_vegan" model="product.label">
+        <field name="name">Vegan</field>
+        <field name="code">VEG</field>
+        <field name="website">https://www.vegan.org/</field>
+        <field name="is_vegan" eval="1"/>
+        <field name="image_1920" type="base64" file="product_food/static/img/label_vegan-image.png"/>
+    </record>
+
+</odoo>

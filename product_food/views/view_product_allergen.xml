@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="action_product_allergen_2_product_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('allergen_ids', '=', active_id)]</field>
+    </record>
+
+    <record id="view_product_allergen_tree" model="ir.ui.view">
+        <field name="model">product.allergen</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="product_qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_allergen_form" model="ir.ui.view">
+        <field name="model">product.allergen</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="action" icon="fa-list"
+                            name="%(product_food.action_product_allergen_2_product_product)d">
+                            <field string="Products" name="product_qty" widget="statinfo"/>
+                        </button>
+
+            <field name="active" invisible="1" />
+            <widget
+                name="web_ribbon"
+                title="Archived"
+                bg_color="bg-danger"
+                attrs="{'invisible': [('active', '=', True)]}"
+            />
+
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Information">
+                            <group>
+                                <group>
+                                    <field name="code"/>
+                                    <field name="website" widget="url"/>
+                                </group>
+                            </group>
+                            <group string="Note">
+                                <field name="note" widget="html" nolabel="1" colspan="2"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_allergen" model="ir.actions.act_window">
+        <field name="name">Product Allergens</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.allergen</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_product_allergen"
+        parent="product_usability.menu_configuration" sequence="22"
+        action="action_product_allergen"/>
+
+</odoo>

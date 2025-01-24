@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2012 - Today: GRAP (http://www.grap.coop)
+@author Julien Weste
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_template_tree" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_label.view_product_template_tree" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="before">
+                <field name="is_alimentary" optional="hide"/>
+            </field>
+            <field name="label_ids" position="after">
+                <field name="storage_method" optional="hide" />
+                <field name="use_by_date_day" optional="hide" />
+                <field name="best_before_date_day" optional="hide"/>
+                <field name="allergen_ids" widget="many2many_tags" optional="hide" />
+                <field name="trace_allergen_ids" widget="many2many_tags" optional="hide" />
+                <field name="has_alcohol" optional="hide" />
+                <field name="alcohol_by_volume" optional="hide" />
+                <field name="is_vegan" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_template_form" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_label.view_product_template_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="alimentary_information" string="Alimentary Informations"
+                    attrs="{'invisible': [('product_variant_count', '>', 1)]}">
+                    <group>
+                        <group name="group_food_general" string="Food">
+                            <field name="is_alimentary"/>
+                            <field name="storage_method" />
+                            <field name="use_by_date_day" />
+                            <field name="best_before_date_day" />
+                        </group>
+                        <group name="group_food_content" string="Detailed Content">
+                            <field name="allergen_ids" widget="many2many_tags" />
+                            <field name="trace_allergen_ids" widget="many2many_tags" />
+
+                            <field name="has_alcohol" />
+                            <field name="alcohol_by_volume"/>
+                            <field name="is_vegan"/>
+                        </group>
+                    </group>
+                    <group string="Ingredients">
+                        <field name="ingredients" widget="html" nolabel="1" colspan="2"/>
+                    </group>
+                </page>
+            </notebook>
+            <field name="is_alimentary" position="after">
+                <field name="label_ids" widget="many2many_tags" position="move"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

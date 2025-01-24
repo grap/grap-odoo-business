@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="allergen_ARA" model="product.allergen">
+        <field name="code">ARA</field>
+        <field name="name">Arachide</field>
+    </record>
+
+    <record id="allergen_CEL" model="product.allergen">
+        <field name="code">CEL</field>
+        <field name="name">Céleri</field>
+    </record>
+
+    <record id="allergen_CRU" model="product.allergen">
+        <field name="code">CRU</field>
+        <field name="name">Crustacés</field>
+    </record>
+
+    <record id="allergen_FAC" model="product.allergen">
+        <field name="code">FAC</field>
+        <field name="name">Fruits à coques (oléagineux)</field>
+    </record>
+
+    <record id="allergen_GLU" model="product.allergen">
+        <field name="code">GLU</field>
+        <field name="name">Gluten</field>
+    </record>
+
+    <record id="allergen_LAIT" model="product.allergen">
+        <field name="code">LAIT</field>
+        <field name="name">Lait</field>
+    </record>
+
+    <record id="allergen_LUP" model="product.allergen">
+        <field name="code">LUP</field>
+        <field name="name">Lupin</field>
+    </record>
+
+    <record id="allergen_MOL" model="product.allergen">
+        <field name="code">MOL</field>
+        <field name="name">Mollusques</field>
+    </record>
+
+    <record id="allergen_MOU" model="product.allergen">
+        <field name="code">MOU</field>
+        <field name="name">Moutarde</field>
+    </record>
+
+    <record id="allergen_POI" model="product.allergen">
+        <field name="code">POI</field>
+        <field name="name">Poissons</field>
+    </record>
+
+    <record id="allergen_SES" model="product.allergen">
+        <field name="code">SES</field>
+        <field name="name">Sésame</field>
+    </record>
+
+    <record id="allergen_SOJA" model="product.allergen">
+        <field name="code">SOJA</field>
+        <field name="name">Soja</field>
+    </record>
+
+    <record id="allergen_SUL" model="product.allergen">
+        <field name="code">SUL</field>
+        <field name="name">Sulfites</field>
+    </record>
+
+    <record id="allergen_OEUF" model="product.allergen">
+        <field name="code">ŒUF</field>
+        <field name="name">OEUF</field>
+    </record>
+
+</odoo>
