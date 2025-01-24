@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.1 |  | Handle Product allergens on MRP BoM and BoM Lines.
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.0.1 |  | Adds menus to help manage price between BoMs and Products.
 [partner_hide_technical_company](partner_hide_technical_company/) | 16.0.1.1.0 |  | Hide partners created when creating companies.
 [partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.2 |  | Hide partners created when creating users.
