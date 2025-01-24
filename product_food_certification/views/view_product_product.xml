@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2024 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_product_tree" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_food.view_product_product_tree" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="after">
+                <field name="organic_type" optional="hide" />
+                <field name="is_uncertifiable" optional="hide" />
+                <field name="ingredient_origin_type" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_food.view_product_product_form" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="after">
+                <field name="organic_type"/>
+                <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                <field name="ingredient_origin_type"  attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_product_product_form_variant" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_food.view_product_product_form_variant" />
+        <field name="arch" type="xml">
+            <field name="label_ids" position="after">
+                <field name="organic_type"/>
+                <field name="is_uncertifiable" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+                <field name="ingredient_origin_type" attrs="{'invisible': [('is_alimentary', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
