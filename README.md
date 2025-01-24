@@ -28,6 +28,10 @@ addon | version | maintainers | summary
 [partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.2 |  | Hide partners created when creating users.
 [partner_hide_technical_user_calendar](partner_hide_technical_user_calendar/) | 16.0.1.0.0 |  | Glue module with calendar, to Hide partners created when creating users.
 [product_food](product_food/) | 16.0.1.0.1 |  | Products - Food Informations
+[product_food_certification](product_food_certification/) | 16.0.1.0.0 |  | Products - Food Certification Informations
+[product_food_certification_account](product_food_certification_account/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Account
+[product_food_certification_sale](product_food_certification_sale/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Sale
+[product_food_certification_stock](product_food_certification_stock/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Stock
 [product_label](product_label/) | 16.0.2.0.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
 [product_label_mrp](product_label_mrp/) | 16.0.1.0.1 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Adds labels in MRP BoMs
 [product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.0 |  | Adds Date field every time Product Standard Price change.
