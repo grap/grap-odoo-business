@@ -1,0 +1,63 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mrp_bom_product_allergen
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-13 12:58+0000\n"
+"PO-Revision-Date: 2025-01-13 12:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model,name:mrp_bom_product_allergen.model_product_allergen
+#: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_mrp_bom__bom_allergen_ids
+msgid "Allergens"
+msgstr "Allergènes"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_mrp_bom_line__allergen_ids
+msgid "Allergens on product"
+msgstr "Allergènes du produit"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model,name:mrp_bom_product_allergen.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Fiche technique"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model,name:mrp_bom_product_allergen.model_mrp_bom_line
+msgid "Bill of Material Line"
+msgstr "Ligne de fiche technique"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.actions.act_window,name:mrp_bom_product_allergen.action_product_allergens_2_mrp_bom
+#: model_terms:ir.ui.view,arch_db:mrp_bom_product_allergen.view_product_allergen_form
+msgid "Bills of Materials"
+msgstr "Fiches techniques"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_product_allergen__bom_qty
+msgid "BoM Quantity"
+msgstr "Qté de Fiche Techniques"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_product_allergen__bom_ids
+msgid "Bom"
+msgstr "FT"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.model.fields,help:mrp_bom_product_allergen.field_mrp_bom__bom_allergen_ids
+msgid "Includes allergens of the product and its components"
+msgstr "Inclus les allergènes du produit et de ses composants"
+
+#. module: mrp_bom_product_allergen
+#: model:ir.ui.menu,name:mrp_bom_product_allergen.menu_mrp_product_allergen
+msgid "Product Allergens"
+msgstr "Allergènes"
