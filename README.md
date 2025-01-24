@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_accountant_simple_settings](account_accountant_simple_settings/) | 16.0.1.0.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow accountants to make some simple accounting configuration without having administration rights.
 [mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.1 |  | Handle Product allergens on MRP BoM and BoM Lines.
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.0.1 |  | Adds menus to help manage price between BoMs and Products.
 [partner_hide_technical_company](partner_hide_technical_company/) | 16.0.1.1.0 |  | Hide partners created when creating companies.
