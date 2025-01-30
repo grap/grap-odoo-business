@@ -7,7 +7,7 @@
     "summary": "In the supplier invoice, automatically update all products "
     "whose standard price on the line is different from "
     " the product standard price",
-    "version": "12.0.1.1.3",
+    "version": "16.0.1.0.0",
     "category": "Accounting & Finance",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
@@ -17,11 +17,11 @@
     ],
     "data": [
         "wizard/wizard_update_invoice_supplierinfo.xml",
-        "views/view_account_invoice.xml",
+        "views/view_account_move.xml",
         "views/view_product_template.xml",
     ],
-    "images": [
-        "static/description/wizard_form.png",
+    "demo": [
+        "demo/product_product.xml",
     ],
     "installable": True,
 }

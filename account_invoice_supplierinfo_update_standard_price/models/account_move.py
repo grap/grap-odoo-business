@@ -4,35 +4,30 @@
 
 from odoo import api, fields, models
 
-import odoo.addons.decimal_precision as dp
 
-
-class AccountInvoice(models.Model):
-    _inherit = "account.invoice"
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
     product_expense_total = fields.Float(
         string="Product Expenses Total",
         compute="_compute_expense_total",
-        digits=dp.get_precision("Product Price"),
-        multi="expense_total",
+        digits="Product Price",
         store=True,
     )
 
     distributed_expense_total = fields.Float(
         string="Distributed Expenses Total",
         compute="_compute_expense_total",
-        digits=dp.get_precision("Product Price"),
-        multi="expense_total",
+        digits="Product Price",
         store=True,
     )
 
-    @api.multi
     @api.depends(
         "invoice_line_ids.product_id.is_impact_standard_price",
         "invoice_line_ids.price_subtotal",
     )
     def _compute_expense_total(self):
-        for invoice in self.filtered(lambda x: x.type == "in_invoice"):
+        for invoice in self.filtered(lambda x: x.move_type == "in_invoice"):
             invoice.update(
                 {
                     "product_expense_total": sum(
@@ -50,7 +45,6 @@ class AccountInvoice(models.Model):
                 }
             )
 
-    @api.multi
     def _get_update_supplierinfo_lines(self):
         ProductProduct = self.env["product.product"]
         res = super()._get_update_supplierinfo_lines()
