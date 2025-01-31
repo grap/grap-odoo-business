@@ -14,8 +14,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <field name="moment_ids" colspan="4">
                         <tree create="false">
                             <field name="name"/>
-                            <field name="specific_min_sale_date"/>
-                            <field name="specific_max_sale_date"/>
+                            <field name="min_sale_date"/>
+                            <field name="max_sale_date"/>
                         </tree>
                     </field>
                 </group>
@@ -33,7 +33,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_recovery_moment_wizard_duplicate" model="ir.actions.act_window">
       <field name="name">Duplicate Recovery Moment Moments</field>
       <field name="res_model">sale.recovery.moment.wizard.duplicate</field>
-      <field name="view_type">form</field>
       <field name="view_mode">form</field>
       <field name="target">new</field>
       <field name="binding_model_id" ref="sale_recovery_moment.model_sale_recovery_moment"/>

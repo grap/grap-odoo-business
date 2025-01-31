@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2021 - Today: Sylvain LE GAL (http://www.grap.coop)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <template id="picking_summary" inherit_id="stock_picking_report_summary.picking_summary">
+        <xpath expr="//span[@t-field='picking_line.picking_id.name']" position="after">
+            <t t-if="picking_line.picking_id.recovery_moment_id">
+                <br />
+                Recovery: <span t-field="picking_line.picking_id.recovery_moment_id.place_id.name"/> (<span t-field="picking_line.picking_id.recovery_moment_id.min_sale_date"/>)
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

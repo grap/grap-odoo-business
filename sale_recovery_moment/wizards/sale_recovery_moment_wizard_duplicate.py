@@ -40,7 +40,6 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
         return self.env.context.get("active_ids", [])
 
     # View Sections
-    @api.multi
     def duplicate_moments(self):
         self.ensure_one()
         SaleRecoveryMoment = self.env["sale.recovery.moment"]
@@ -78,12 +77,11 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
             action_data["context"] = False
         return action_data
 
-    @api.multi
     def _prepare_moment_vals(self, old_moment):
         return {
-            "specific_min_sale_date": old_moment.specific_min_sale_date
+            "min_sale_date": old_moment.min_sale_date
             + relativedelta(days=self.day_delay),
-            "specific_max_sale_date": old_moment.specific_max_sale_date
+            "max_sale_date": old_moment.max_sale_date
             + relativedelta(days=self.day_delay),
             "min_recovery_date": old_moment.min_recovery_date
             + relativedelta(days=self.day_delay),

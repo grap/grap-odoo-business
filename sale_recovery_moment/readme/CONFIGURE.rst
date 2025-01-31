@@ -19,8 +19,3 @@ the sale order, when confirming it.
   start date and a end date of sale.
 
 .. figure:: ../static/description/sale_recovery_moment_group_form.png
-
-
-* A ``product.prepare.category``  is a new category of product
-
-.. figure:: ../static/description/sale_prepare_category_tree.png

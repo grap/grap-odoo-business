@@ -7,8 +7,8 @@ from datetime import datetime
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning as UserError
-
-import odoo.addons.decimal_precision as dp
+from odoo.fields import Datetime
+from odoo.osv import expression
 
 
 class SaleRecoveryMomentGroup(models.Model):
@@ -17,7 +17,6 @@ class SaleRecoveryMomentGroup(models.Model):
     _order = "min_sale_date desc, name"
 
     _STATE_SELECTION = [
-        ("undefined", "Undefined"),
         ("futur", "Futur"),
         ("pending_sale", "Pending Sale"),
         ("finished_sale", "Finished Sale"),
@@ -25,99 +24,81 @@ class SaleRecoveryMomentGroup(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    # Column Section
-    code = fields.Char(string="Code", readonly=True, required=True, default="/")
+    code = fields.Char(readonly=True, required=True, default="/")
 
-    short_name = fields.Char(string="Short Name", required=True)
+    short_name = fields.Char(required=True)
 
-    name = fields.Char(compute="_compute_name", string="Name", store=True)
+    name = fields.Char(compute="_compute_name", store=True)
 
     min_sale_date = fields.Datetime(string="Minimum date for the Sale", required=True)
 
     max_sale_date = fields.Datetime(string="Maximum date for the Sale", required=True)
 
     min_recovery_date = fields.Datetime(
-        compute="_compute_recovery_date",
-        multi="recovery_date",
         string="Minimum date for the Recovery",
+        compute="_compute_recovery_date",
         store=True,
     )
 
     max_recovery_date = fields.Datetime(
-        compute="_compute_recovery_date",
-        multi="recovery_date",
         string="Maximum date for the Recovery",
+        compute="_compute_recovery_date",
         store=True,
     )
 
     moment_ids = fields.One2many(
+        string="Recovery Moments",
         comodel_name="sale.recovery.moment",
         inverse_name="group_id",
-        string="Recovery Moments",
     )
 
     company_id = fields.Many2one(
-        comodel_name="res.company",
         string="Company",
+        comodel_name="res.company",
         required=True,
         default=lambda x: x._default_company_id(),
     )
 
     order_qty = fields.Integer(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Sale Orders Quantity",
+        string="Sale Orders Quantity", compute="_compute_order_multi", store=True
     )
 
     valid_order_qty = fields.Integer(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Valid Sale Orders Quantity",
+        string="Valid Sale Orders Quantity", compute="_compute_order_multi", store=True
     )
 
     picking_qty = fields.Integer(
-        compute="_compute_picking_multi",
-        multi="picking",
-        store=True,
-        string="Delivery Orders Quantity",
+        string="Delivery Orders Quantity", compute="_compute_picking_multi", store=True
     )
 
     valid_picking_qty = fields.Integer(
-        compute="_compute_picking_multi",
-        multi="picking",
-        store=True,
         string="Valid Delivery Orders Quantity",
+        compute="_compute_picking_multi",
+        store=True,
     )
 
     excl_total = fields.Float(
-        compute="_compute_total_multi",
-        multi="total",
-        store=True,
-        digits=dp.get_precision("Account"),
         string="Total (VAT Excluded)",
+        compute="_compute_total_multi",
+        store=True,
+        digits="Account",
     )
 
     incl_total = fields.Float(
-        compute="_compute_total_multi",
-        multi="total",
-        store=True,
-        digits=dp.get_precision("Account"),
         string="Total (VAT Included)",
+        compute="_compute_total_multi",
+        store=True,
+        digits="Account",
     )
 
     state = fields.Selection(
-        compute="_compute_state",
-        string="State",
-        search="_search_state",
-        selection=_STATE_SELECTION,
+        compute="_compute_state", search="_search_state", selection=_STATE_SELECTION
     )
 
     # Defaults Section
     @api.model
     def _default_company_id(self):
-        return self.env.user.company_id.id
+        return self.env.company
 
     # Overload Section
     @api.model_create_multi
@@ -129,7 +110,6 @@ class SaleRecoveryMomentGroup(models.Model):
         return super().create(vals_list)
 
     # Compute Section
-    @api.multi
     @api.depends("moment_ids.min_recovery_date", "moment_ids.max_recovery_date")
     def _compute_recovery_date(self):
         for moment_group in self:
@@ -142,7 +122,6 @@ class SaleRecoveryMomentGroup(models.Model):
                     [x.max_recovery_date for x in moments]
                 )
 
-    @api.multi
     @api.depends("moment_ids.order_qty", "moment_ids.valid_order_qty")
     def _compute_order_multi(self):
         for moment_group in self:
@@ -151,7 +130,6 @@ class SaleRecoveryMomentGroup(models.Model):
                 moment_group.mapped("moment_ids.valid_order_qty")
             )
 
-    @api.multi
     @api.depends("moment_ids.picking_qty", "moment_ids.valid_picking_qty")
     def _compute_picking_multi(self):
         for moment_group in self:
@@ -162,7 +140,6 @@ class SaleRecoveryMomentGroup(models.Model):
                 moment_group.mapped("moment_ids.valid_picking_qty")
             )
 
-    @api.multi
     @api.depends("valid_order_qty")
     def _compute_total_multi(self):
         for moment_group in self:
@@ -172,19 +149,18 @@ class SaleRecoveryMomentGroup(models.Model):
             moment_group.excl_total = sum(orders.mapped("amount_untaxed"))
             moment_group.incl_total = sum(orders.mapped("amount_total"))
 
-    @api.multi
     @api.depends("code", "short_name")
     def _compute_name(self):
         for moment_group in self:
             moment_group.name = f"{moment_group.code} - {moment_group.short_name}"
 
-    @api.multi
+    @api.depends(
+        "min_sale_date", "max_sale_date", "min_recovery_date", "max_recovery_date"
+    )
     def _compute_state(self):
         now = datetime.now()
         for moment_group in self:
-            if not moment_group.moment_ids:
-                moment_group.state = "undefined"
-            elif now < moment_group.min_sale_date:
+            if now < moment_group.min_sale_date:
                 moment_group.state = "futur"
             elif now < moment_group.max_sale_date:
                 moment_group.state = "pending_sale"
@@ -197,45 +173,36 @@ class SaleRecoveryMomentGroup(models.Model):
 
     # Search Functions Section
     def _search_state(self, operator, operand):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        domain = []
+        now = Datetime.now()
         if operator not in ("=", "in"):
             raise UserError(_("The Operator %s is not implemented !") % (operator))
         if operator == "=":
             lst = [operand]
         else:
             lst = operand
-        sql_lst = []
         if "futur" in lst:
-            sql_lst.append("('%s' < min_sale_date)" % (now))
+            expression.OR([domain, [("min_sale_date", ">", now)]])
         if "pending_sale" in lst:
-            sql_lst.append(
-                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)") % (now, now)
+            expression.OR(
+                [domain, [("min_sale_date", "<", now), ("max_sale_date", ">", now)]]
             )
         if "finished_sale" in lst:
-            sql_lst.append(
-                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)") % (now, now)
+            expression.OR(
+                [domain, [("max_sale_date", "<", now), ("min_recovery_date", ">", now)]]
             )
         if "pending_recovery" in lst:
-            sql_lst.append(
-                ("(min_recovery_date < '%s'" + " AND '%s' < max_recovery_date)")
-                % (now, now)
+            expression.OR(
+                [
+                    domain,
+                    [("min_recovery_date", "<", now), ("max_recovery_date", ">", now)],
+                ]
             )
         if "finished_recovery" in lst:
-            sql_lst.append("(max_recovery_date < '%s')" % (now))
-
-        where = sql_lst[0]
-        for item in sql_lst[1:]:
-            where += " OR %s" % (item)
-
-        req = "SELECT id FROM sale_recovery_moment_group WHERE %s;" % (where)
-
-        sql_req = req  # pylint: disable=sql-injection
-        self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
-        res = self.env.cr.fetchall()
-        return [("id", "in", [x[0] for x in res])]
+            expression.OR([domain, [("max_recovery_date", "<", now)]])
+        return domain
 
     # Constraint Section
-    @api.multi
     @api.constrains("min_sale_date", "max_sale_date")
     def _check_sale_dates(self):
         for moment_group in self:

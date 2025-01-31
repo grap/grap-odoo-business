@@ -2,11 +2,12 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning as UserError
+from odoo.fields import Datetime
+from odoo.osv import expression
 
 
 class SaleRecoveryMoment(models.Model):
@@ -23,15 +24,9 @@ class SaleRecoveryMoment(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    # Columns Section
-    code = fields.Char(
-        string="Code",
-        readonly=True,
-        required=True,
-        default="/",
-    )
+    code = fields.Char(readonly=True, required=True, default="/")
 
-    name = fields.Char(string="Name", compute="_compute_name", store=True)
+    name = fields.Char(compute="_compute_name", store=True)
 
     place_id = fields.Many2one(
         comodel_name="sale.recovery.place", string="Place", required=True
@@ -41,6 +36,7 @@ class SaleRecoveryMoment(models.Model):
         string="Recovery Group",
         comodel_name="sale.recovery.moment.group",
         ondelete="cascade",
+        readonly=True,
     )
 
     company_id = fields.Many2one(
@@ -50,24 +46,22 @@ class SaleRecoveryMoment(models.Model):
         default=lambda x: x._default_company_id(),
     )
 
-    specific_min_sale_date = fields.Datetime(
-        string="Specific Minimum date for the Sale"
-    )
-
-    specific_max_sale_date = fields.Datetime(
-        string="Specific Maximum date for the Sale"
-    )
-
     min_sale_date = fields.Datetime(
         string="Minimum date for the Sale",
         compute="_compute_sale_date",
         store=True,
+        readonly=False,
+        required=True,
+        precompute=True,
     )
 
     max_sale_date = fields.Datetime(
         string="Maximum date for the Sale",
         compute="_compute_sale_date",
         store=True,
+        readonly=False,
+        required=True,
+        precompute=True,
     )
 
     min_recovery_date = fields.Datetime(
@@ -78,77 +72,54 @@ class SaleRecoveryMoment(models.Model):
         string="Maximum date for the Recovery", required=True
     )
 
-    description = fields.Text(string="Description")
+    description = fields.Text()
 
-    max_order_qty = fields.Integer("Max Order Quantity")
+    max_order_qty = fields.Integer(string="Max Order Quantity")
 
     order_ids = fields.One2many(
+        string="Sale Orders",
         comodel_name="sale.order",
         inverse_name="recovery_moment_id",
-        string="Sale Orders",
         readonly=True,
     )
 
     order_qty = fields.Integer(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Sale Orders Quantity",
+        string="Sale Orders Quantity", compute="_compute_order_multi", store=True
     )
 
     valid_order_qty = fields.Integer(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Valid Sale Orders Quantity",
+        string="Valid Sale Orders Quantity", compute="_compute_order_multi", store=True
     )
 
-    is_complete = fields.Boolean(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Is Complete",
-    )
+    is_complete = fields.Boolean(compute="_compute_order_multi", store=True)
 
-    quota_description = fields.Char(
-        compute="_compute_order_multi",
-        multi="order",
-        store=True,
-        string="Quota Description",
-    )
+    quota_description = fields.Char(compute="_compute_order_multi", store=True)
 
     picking_ids = fields.One2many(
+        string="Delivery Orders",
         comodel_name="stock.picking",
         inverse_name="recovery_moment_id",
-        string="Delivery Orders",
         readonly=True,
     )
 
     picking_qty = fields.Integer(
-        compute="_compute_picking_multi",
-        multi="picking",
-        store=True,
-        string="Delivery Orders Quantity",
+        string="Delivery Orders Quantity", compute="_compute_picking_multi", store=True
     )
 
     valid_picking_qty = fields.Integer(
-        compute="_compute_picking_multi",
-        multi="picking",
-        store=True,
         string="Valid Delivery Orders Quantity",
+        compute="_compute_picking_multi",
+        store=True,
     )
 
     state = fields.Selection(
-        compute="_compute_state",
-        string="State",
-        search="_search_state",
-        selection=_STATE_SELECTION,
+        compute="_compute_state", search="_search_state", selection=_STATE_SELECTION
     )
 
     # Defaults Section
     @api.model
     def _default_company_id(self):
-        return self.env.user.company_id
+        return self.env.company
 
     # Overload Section
     @api.model_create_multi
@@ -157,7 +128,6 @@ class SaleRecoveryMoment(models.Model):
             vals["code"] = self.env["ir.sequence"].next_by_code("sale.recovery.moment")
         return super().create(vals_list)
 
-    @api.multi
     def unlink(self):
         if self.filtered(lambda x: x.valid_order_qty):
             raise UserError(
@@ -171,9 +141,11 @@ class SaleRecoveryMoment(models.Model):
         return super().unlink()
 
     # Compute Section
-    @api.multi
+    @api.depends(
+        "min_sale_date", "max_sale_date", "min_recovery_date", "max_recovery_date"
+    )
     def _compute_state(self):
-        now = datetime.now()
+        now = Datetime.now()
         for moment in self:
             if now < moment.min_sale_date:
                 moment.state = "futur"
@@ -186,29 +158,19 @@ class SaleRecoveryMoment(models.Model):
             else:
                 moment.state = "finished_recovery"
 
-    @api.multi
     @api.depends(
+        "group_id",
         "group_id.min_sale_date",
         "group_id.max_sale_date",
-        "specific_min_sale_date",
-        "specific_max_sale_date",
     )
     def _compute_sale_date(self):
-        for moment in self:
-            if moment.specific_min_sale_date:
-                moment.min_sale_date = moment.specific_min_sale_date
-            elif moment.group_id:
-                moment.min_sale_date = moment.group_id.min_sale_date
-            else:
-                moment.max_sale_date = False
-            if moment.specific_max_sale_date:
-                moment.max_sale_date = moment.specific_max_sale_date
-            elif moment.group_id:
-                moment.max_sale_date = moment.group_id.max_sale_date
-            else:
-                moment.min_sale_date = False
+        for moment in self.filtered(lambda x: x.group_id):
+            moment.min_sale_date = moment.group_id.min_sale_date
+            moment.max_sale_date = moment.group_id.max_sale_date
+        for moment in self.filtered(lambda x: not x.group_id):
+            moment.max_sale_date = False
+            moment.min_sale_date = False
 
-    @api.multi
     @api.depends(
         "order_ids",
         "order_ids.recovery_moment_id",
@@ -232,18 +194,19 @@ class SaleRecoveryMoment(models.Model):
 
             # Update Quota Description Field
             if recovery_moment.max_order_qty:
-                recovery_moment.quota_description = _("%d / %d Orders") % (
-                    recovery_moment.valid_order_qty,
-                    recovery_moment.max_order_qty,
+                recovery_moment.quota_description = _(
+                    "%(valid_order_qty)d / %(max_order_qty)d Orders",
+                    valid_order_qty=recovery_moment.valid_order_qty,
+                    max_order_qty=recovery_moment.max_order_qty,
                 )
             elif recovery_moment.valid_order_qty:
-                recovery_moment.quota_description = _("%d Order(s)") % (
-                    recovery_moment.valid_order_qty
+                recovery_moment.quota_description = _(
+                    "%(valid_order_qty)d Order(s)",
+                    valid_order_qty=recovery_moment.valid_order_qty,
                 )
             else:
                 recovery_moment.quota_description = _("No Orders")
 
-    @api.multi
     @api.depends("picking_ids", "picking_ids.recovery_moment_id", "picking_ids.state")
     def _compute_picking_multi(self):
         # We use sudo for the following case:
@@ -263,7 +226,6 @@ class SaleRecoveryMoment(models.Model):
                 )
             )
 
-    @api.multi
     @api.depends("code", "min_recovery_date", "place_id", "group_id.short_name")
     def _compute_name(self):
         for moment in self.filtered(lambda x: x.group_id):
@@ -282,44 +244,36 @@ class SaleRecoveryMoment(models.Model):
 
     # Search Functions Section
     def _search_state(self, operator, operand):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        domain = []
+        now = Datetime.now()
         if operator not in ("=", "in"):
             raise UserError(_("The Operator %s is not implemented !") % (operator))
         if operator == "=":
             lst = [operand]
         else:
             lst = operand
-        sql_lst = []
         if "futur" in lst:
-            sql_lst.append("('%s' < min_sale_date)" % (now))
+            expression.OR([domain, [("min_sale_date", ">", now)]])
         if "pending_sale" in lst:
-            sql_lst.append(
-                ("(min_sale_date < '%s'" + " AND '%s' < max_sale_date)") % (now, now)
+            expression.OR(
+                [domain, [("min_sale_date", "<", now), ("max_sale_date", ">", now)]]
             )
         if "finished_sale" in lst:
-            sql_lst.append(
-                ("(max_sale_date < '%s'" + " AND '%s'<min_recovery_date)") % (now, now)
+            expression.OR(
+                [domain, [("max_sale_date", "<", now), ("min_recovery_date", ">", now)]]
             )
         if "pending_recovery" in lst:
-            sql_lst.append(
-                ("(min_recovery_date < '%s'" + " AND '%s' < max_recovery_date)")
-                % (now, now)
+            expression.OR(
+                [
+                    domain,
+                    [("min_recovery_date", "<", now), ("max_recovery_date", ">", now)],
+                ]
             )
         if "finished_recovery" in lst:
-            sql_lst.append("(max_recovery_date < '%s')" % (now))
-
-        where = sql_lst[0]
-        for item in sql_lst[1:]:
-            where += " OR %s" % (item)
-
-        req = "SELECT id FROM sale_recovery_moment WHERE %s;" % (where)
-        sql_req = req  # pylint: disable=sql-injection
-        self.env.cr.execute(sql_req)  # pylint: disable=invalid-commit
-        res = self.env.cr.fetchall()
-        return [("id", "in", [x[0] for x in res])]
+            expression.OR([domain, [("max_recovery_date", "<", now)]])
+        return domain
 
     # Constraint Section
-    @api.multi
     @api.constrains("min_recovery_date", "max_recovery_date")
     def _check_recovery_dates(self):
         for moment in self:

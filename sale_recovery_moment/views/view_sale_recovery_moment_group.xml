@@ -64,33 +64,35 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="short_name"/>
                         <field name="min_sale_date"/>
                         <field name="max_sale_date"/>
-                        <field name="valid_order_qty"/>
-                        <field name="order_qty"/>
-                        <field name="valid_picking_qty"/>
-                        <field name="picking_qty"/>
                         <field name="excl_total"/>
                         <field name="incl_total"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                     </group>
                     <notebook>
                         <page string="Moments">
-                            <group col="4">
-                                <field name="min_recovery_date"/>
-                                <field name="max_recovery_date"/>
-                                <field name="moment_ids" nolabel="1" colspan="4">
+                            <group>
+                                <group>
+                                    <field name="min_recovery_date"/>
+                                </group>
+                                <group>
+                                    <field name="max_recovery_date"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="moment_ids" nolabel="1" colspan="2">
                                     <tree editable="bottom">
                                         <field name="place_id"/>
                                         <field name="max_order_qty" string="Max"/>
                                         <field name="min_recovery_date"/>
                                         <field name="max_recovery_date"/>
                                         <field name="description"/>
-                                        <field name="order_qty" string="S.O. Qty"/>
-                                        <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
-                                        <field name="valid_order_qty" string="V.S.O. Qty"/>
-                                        <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
-                                        <field name="picking_qty" string="D.O. Qty" />
-                                        <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" />
-                                        <field name="valid_picking_qty" string="V.D.O. Qty"/>
+                                        <field name="order_qty" string="S.O. Qty" sum="Total" optional="hide"/>
+                                        <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" optional="hide"/>
+                                        <field name="valid_order_qty" sum="Total" string="V.S.O. Qty"/>
+                                        <button name="%(action_recovery_moment_2_sale_order_valid)d" total="Total" icon="fa-shopping-basket" string="See" type="action" />
+                                        <field name="picking_qty" string="D.O. Qty" sum="Total" optional="hide"/>
+                                        <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" optional="hide"/>
+                                        <field name="valid_picking_qty" string="V.D.O. Qty" sum="Total"/>
                                         <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
                                     </tree>
                                 </field>
@@ -105,13 +107,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_sale_recovery_moment_group" model="ir.actions.act_window">
         <field name="name">Recovery Moment Groups</field>
         <field name="res_model">sale.recovery.moment.group</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_not_finished':1}</field>
     </record>
 
     <menuitem id="menu_sale_recovery_moment_group"
-        sequence="11"
+        sequence="210"
         parent="sale.sale_order_menu"
         action="action_sale_recovery_moment_group"/>
 

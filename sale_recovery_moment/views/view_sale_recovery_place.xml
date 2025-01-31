@@ -23,6 +23,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                     <div class="oe_title">
                         <h1>
                             <field name="complete_name"/>
@@ -30,17 +32,22 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <label for="name" class="oe_edit_only"/>
                         <h2><field name="name"/></h2>
                     </div>
-                    <group col="4">
+                    <group>
                         <field name="company_id" groups="base.group_multi_company"/>
-                        <field name="active"/>
+                        <field name="active" invisible="1"/>
                         <field name="shipping_product_id"/>
-                        <separator colspan="4"/>
-                        <field name="street" placeholder="Street..."/>
-                        <field name="street2" placeholder="Street...(Complement)"/>
-                        <field name="city" placeholder="City" style="width: 40%%"/>
-                        <field name="zip" placeholder="ZIP" style="width: 20%%"/>
-                        <field name="state_id" placeholder="State" style="width: 37%%" />
-                        <field name="country_id" placeholder="Country"/>
+                        <span class="o_form_label o_td_label" name="address_name">
+                            <b>Address</b>
+                        </span>
+                        <div class="o_address_format">
+                            <field name="street" class="o_address_street"/>
+                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                            <field name="city" placeholder="City" class="o_address_city"/>
+                            <div name="partner_address_country" class="d-flex justify-content-between">
+                                <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                            </div>
+                        </div>
                     </group>
                 </sheet>
             </form>
@@ -50,7 +57,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="action_sale_recovery_place" model="ir.actions.act_window">
         <field name="name">Recovery Places</field>
         <field name="res_model">sale.recovery.place</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 

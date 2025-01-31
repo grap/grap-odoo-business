@@ -57,7 +57,6 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
         return self.env.context.get("active_ids", [])
 
     # View Sections
-    @api.multi
     def duplicate_groups(self):
         self.ensure_one()
         SaleRecoveryMoment = self.env["sale.recovery.moment"]
@@ -115,7 +114,6 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
             self.next_min_sale_date = False
             self.next_max_sale_date = False
 
-    @api.multi
     def _prepare_group_vals(self, old_group):
         return {
             "short_name": _("%s (Copy)") % (old_group.short_name),

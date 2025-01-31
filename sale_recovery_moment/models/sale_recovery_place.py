@@ -10,52 +10,47 @@ class SaleRecoveryPlace(models.Model):
     _description = "Recovery Place"
     _order = "name"
 
-    @api.model
-    def _default_company_id(self):
-        return self.env.user.company_id.id
-
-    # Columns Section
-    name = fields.Char("Name", required=True)
+    name = fields.Char(required=True)
 
     complete_name = fields.Char(
-        compute="_compute_complete_name",
-        string="Complete Name",
-        index=True,
-        store=True,
+        compute="_compute_complete_name", index=True, store=True
     )
 
     company_id = fields.Many2one(
-        comodel_name="res.company",
         string="Company",
+        comodel_name="res.company",
         required=True,
-        default=_default_company_id,
+        default=lambda x: x._default_company_id(),
     )
 
-    active = fields.Boolean(string="Active", default=True)
+    active = fields.Boolean(default=True)
 
-    street = fields.Char(string="Street")
+    street = fields.Char()
 
-    street2 = fields.Char(string="Street2")
+    street2 = fields.Char()
 
-    zip = fields.Char(string="ZIP", change_default=True, size=24)
+    zip = fields.Char(change_default=True, size=24)
 
-    city = fields.Char("City")
+    city = fields.Char()
 
-    state_id = fields.Many2one(comodel_name="res.country.state", string="State")
+    state_id = fields.Many2one(string="State", comodel_name="res.country.state")
 
-    country_id = fields.Many2one(comodel_name="res.country", string="Country")
+    country_id = fields.Many2one(string="Country", comodel_name="res.country")
 
     shipping_product_id = fields.Many2one(
+        string="Shipping Cost Product",
         comodel_name="product.product",
         domain="[('type', '=', 'service')]",
-        string="Shipping Cost Product",
         help="If set, this product will"
         " be added automatically to the sale order, when it is confirmed,"
         " if the sale order is associated to this recovery place.",
     )
 
+    @api.model
+    def _default_company_id(self):
+        return self.env.company
+
     # Compute Section
-    @api.multi
     @api.depends("name", "street", "street2", "zip", "city", "state_id", "country_id")
     def _compute_complete_name(self):
         for place in self:

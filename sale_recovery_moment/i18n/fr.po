@@ -429,16 +429,6 @@ msgid "Short Name"
 msgstr "Nom court"
 
 #. module: sale_recovery_moment
-#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__specific_max_sale_date
-msgid "Specific Maximum date for the Sale"
-msgstr "Date maximum spécifique pour la vente"
-
-#. module: sale_recovery_moment
-#: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__specific_min_sale_date
-msgid "Specific Minimum date for the Sale"
-msgstr "Date minimum spécifique pour la vente"
-
-#. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__state
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment_group__state
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__state_id

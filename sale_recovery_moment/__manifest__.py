@@ -4,14 +4,16 @@
 
 {
     "name": "Sale - Recovery Moments",
-    "version": "12.0.1.2.2",
+    "version": "16.0.1.0.0",
     "summary": "Manage Recovery Moments and Places for Sale Order",
     "category": "Sale",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
+        # Odoo
         "sale_stock",
+        # OCA
         "stock_picking_report_summary",
     ],
     "data": [
@@ -27,6 +29,7 @@
         "views/view_sale_recovery_moment.xml",
         "views/view_sale_recovery_moment_group.xml",
         "views/view_sale_recovery_place.xml",
+        "reports/report_print_picking_summary_template.xml",
     ],
     "demo": [
         "demo/product_product.xml",
@@ -34,7 +37,6 @@
         "demo/sale_recovery_moment_group.xml",
         "demo/sale_recovery_moment.xml",
         "demo/sale_order.xml",
-        "demo/res_groups.xml",
     ],
     "images": [
         "static/description/sale_recovery_place_tree.png",
