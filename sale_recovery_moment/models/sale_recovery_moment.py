@@ -5,7 +5,8 @@
 from datetime import datetime
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError, Warning as UserError
+from odoo.exceptions import ValidationError
+from odoo.exceptions import Warning as UserError
 
 
 class SaleRecoveryMoment(models.Model):
