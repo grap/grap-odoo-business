@@ -121,9 +121,9 @@ class ProductTemplate(models.Model):
         templates = super().create(vals_list)
 
         # Handle pricelist exceptions
-        self.env["product.pricelist"].consignmment_create(
-            templates.filtered(lambda x: x.consignor_partner_id).ids
-        )
+        new_templates = templates.filtered(lambda x: x.consignor_partner_id)
+        if new_templates:
+            self.env["product.pricelist"].consignmment_create(new_templates)
         return templates
 
     def write(self, vals):
@@ -135,22 +135,22 @@ class ProductTemplate(models.Model):
 
         # Handle pricelist exceptions
         ProductPricelist = self.env["product.pricelist"]
-        drop_template_ids = []
-        new_template_ids = []
+        drop_templates = self.env["product.template"]
+        new_templates = self.env["product.template"]
         if "consignor_partner_id" in vals:
             for template in self:
                 if template.consignor_partner_id and not vals.get(
                     "consignor_partner_id"
                 ):
-                    drop_template_ids.append(template.id)
+                    drop_templates |= template
                 if not template.consignor_partner_id and vals.get(
                     "consignor_partner_id"
                 ):
-                    new_template_ids.append(template.id)
-        if drop_template_ids:
-            ProductPricelist.consignmment_drop(drop_template_ids)
-        if new_template_ids:
-            ProductPricelist.consignmment_create(new_template_ids)
+                    new_templates |= template
+        if drop_templates:
+            ProductPricelist.consignmment_drop(drop_templates)
+        if new_templates:
+            ProductPricelist.consignmment_create(new_templates)
 
         return super().write(vals)
 
