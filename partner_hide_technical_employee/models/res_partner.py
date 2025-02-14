@@ -24,7 +24,6 @@ class ResPartner(models.Model):
             for vals in vals_list:
                 vals["is_odoo_employee"] = True
         res = super().create(vals_list)
-        # import pdb; pdb.set_trace()
         return res
 
     # Overload Section

@@ -13,5 +13,5 @@ class HrEmployee(models.Model):
     def create(self, vals_list):
         return super(
             HrEmployee,
-            self.with_context(show_odoo_employee=True, create_hr_employee=True),
+            self.with_context(create_hr_employee=True),
         ).create(vals_list)
