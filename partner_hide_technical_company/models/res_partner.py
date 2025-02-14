@@ -3,9 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -19,62 +17,21 @@ class ResPartner(models.Model):
     )
 
     # Overload Section
+    @api.model
+    def _get_hidden_elements(self):
+        res = super()._get_hidden_elements()
+        res += [
+            {
+                "name": "company",
+                "model": "res.company",
+                "partner_fields": ["partner_id"],
+            }
+        ]
+        return res
+
     @api.model_create_multi
     def create(self, vals_list):
         if self.env.context.get("is_odoo_company"):
             for vals in vals_list:
                 vals["is_odoo_company"] = True
         return super().create(vals_list)
-
-    def write(self, vals):
-        self._check_technical_partner_access_company("write")
-        return super().write(vals)
-
-    def unlink(self):
-        self._check_technical_partner_access_company("unlink")
-        return super().unlink()
-
-    # Custom section
-    def _check_technical_partner_access_company(self, operation):
-        # We use SUPERUSER_ID to be sure to not skip some users, due to
-        # some custom access rules deployed on databases
-        ResCompany = self.env["res.company"]
-        companies = (
-            ResCompany.sudo()
-            .with_context(active_test=False)
-            .search([("partner_id", "in", self.ids)])
-        )
-        if len(companies):
-            # Check if current user has correct access right
-            if not ResCompany.check_access_rights(operation, raise_exception=False):
-                raise UserError(
-                    _(
-                        "You have no right to update partners associated to"
-                        " companies.\n- %s"
-                    )
-                    % ("\n- ".join(companies.mapped("name")))
-                )
-
-    # Overload the private _search function:
-    # This function is used by the other ORM functions
-    # (name_search, search_read)
-    @api.model
-    def _search(
-        self,
-        domain,
-        offset=0,
-        limit=None,
-        order=None,
-        count=False,
-        access_rights_uid=None,
-    ):
-        if not self.env.context.get("show_odoo_company", False):
-            domain = expression.AND([domain, [("is_odoo_company", "=", False)]])
-        return super()._search(
-            domain,
-            offset=offset,
-            limit=limit,
-            order=order,
-            count=count,
-            access_rights_uid=access_rights_uid,
-        )
