@@ -11,3 +11,4 @@ def post_init_hook(cr, pool):
     HrEmployee = env["hr.employee"]
     employees = HrEmployee.with_context(active_test=False).search([])
     employees.mapped("work_contact_id").write({"is_odoo_employee": True})
+    employees.mapped("address_home_id").write({"is_odoo_employee": True})

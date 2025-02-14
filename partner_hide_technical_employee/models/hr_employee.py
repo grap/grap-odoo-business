@@ -11,7 +11,22 @@ class HrEmployee(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        return super(
+        partners = super(
             HrEmployee,
             self.with_context(create_hr_employee=True),
         ).create(vals_list)
+        partners._hide_address_home_partners()
+        return partners
+
+    def write(self, vals):
+        res = super().write(vals)
+        if vals.get("address_home_id"):
+            self._hide_address_home_partners()
+        return res
+
+    def _hide_address_home_partners(self):
+        partners = self.mapped("address_home_id").filtered(
+            lambda x: not x.is_odoo_employee
+        )
+        if partners:
+            partners.write({"is_odoo_employee": True})

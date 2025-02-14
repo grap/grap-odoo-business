@@ -14,23 +14,28 @@ class TestModule(TransactionCase):
         cls.HrEmployee = cls.env["hr.employee"]
         cls.demo_user = cls.env.ref("base.user_demo")
         cls.demo_partner = cls.env.ref("base.partner_demo")
-        cls.employee_name = "technical_partner_access - hr.employee"
+        cls.employee_name = "technical_partner_access"
         cls.employee = cls.HrEmployee.create(
             {
-                "name": cls.employee_name,
+                "name": "technical_partner_access - work_contact_id",
                 # To create the work_contact_id
                 "work_email": "TEST@TEST.com",
             }
         )
         cls.employee_partner = cls.employee.work_contact_id
+        cls.employee.address_home_id = cls.ResPartner.create(
+            {
+                "name": "technical_partner_access - address_home_id",
+            }
+        )
 
     def test_01_search_partner(self):
         # Check access without context (by search)
-        result = self.ResPartner.search([("name", "=", self.employee_name)])
+        result = self.ResPartner.search([("name", "ilike", self.employee_name)])
         self.assertEqual(
             len(result),
             0,
-            "Search employee partner should not return result without context",
+            "'search' employee partner should not return result without context",
         )
 
         # Check access without context (by name_search)
@@ -38,15 +43,17 @@ class TestModule(TransactionCase):
         self.assertEqual(
             len(result),
             0,
-            "Name Search employee partner should not return result without context",
+            "'name_search' employee partner should not return result without context",
         )
 
         # Check access with context (by search)
         result = self.ResPartner.with_context(show_odoo_employee=True).search(
-            [("name", "=", self.employee_name)]
+            [("name", "ilike", self.employee_name)]
         )
         self.assertEqual(
-            len(result), 1, "Search employee partner should return result with context"
+            len(result),
+            2,
+            "'search' employee partners should return result with context",
         )
 
         # Check access with context (by name_search)
@@ -55,8 +62,8 @@ class TestModule(TransactionCase):
         )
         self.assertEqual(
             len(result),
-            1,
-            "Name Search employee partner should return result with context",
+            2,
+            "'name_search' employee partners should return result with context",
         )
 
     def test_02_write_on_partner_without_right(self):
