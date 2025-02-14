@@ -10,7 +10,7 @@
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
-    "depends": ["base"],
+    "depends": ["partner_hide_technical_abstract"],
     "post_init_hook": "post_init_hook",
     "installable": True,
 }
