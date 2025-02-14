@@ -3,9 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-from odoo.osv import expression
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -19,65 +17,20 @@ class ResPartner(models.Model):
     )
 
     # Overload Section
-    def write(self, vals):
-        self._check_technical_partner_access_user("write")
-        return super().write(vals)
-
-    def unlink(self):
-        self._check_technical_partner_access_user("unlink")
-        return super().unlink()
+    @api.model
+    def _get_hidden_elements(self):
+        res = super()._get_hidden_elements()
+        res += [
+            {"name": "user", "model": "res.users", "partner_fields": ["partner_id"]}
+        ]
+        return res
 
     # Custom section
-    def _check_technical_partner_access_user(self, operation):
-        # We use SUPERUSER_ID to be sure to not skip some users, due to
-        # some custom access rules deployed on databases
-        ResUsers = self.env["res.users"]
-        users = (
-            ResUsers.sudo()
-            .with_context(active_test=False)
-            .search([("partner_id", "in", self.ids)])
-        )
-        if not users:
-            return
-
-        if users.ids == self.env.user.ids and self.env.context.get(
-            "write_user_mode", False
-        ):
-            # The unique partner changed is the partner related
-            # to the current user
-            # AND the write is done via the write of the res.users.
-            # so it's a allowed write, done to change some personal fields
-            # like 'email', 'tz', etc.
-            return
-
-        # Check if current user has correct access right
-        if not ResUsers.check_access_rights(operation, raise_exception=False):
-            raise UserError(
-                _("You have no right to update partners associated to" " users.\n- %s")
-                % ("\n- ".join(users.mapped("name")))
-            )
-
-    # Overload the private _search function:
-    # This function is used by the other ORM functions
-    # (name_search, search_read)
     @api.model
-    def _search(
-        self,
-        domain,
-        offset=0,
-        limit=None,
-        order=None,
-        count=False,
-        access_rights_uid=None,
-    ):
-        if not self.env.context.get("show_odoo_user", False):
-            domain = expression.AND([domain, [("is_odoo_user", "=", False)]])
-
-        return super()._search(
-            domain,
-            offset=offset,
-            limit=limit,
-            order=order,
-            count=count,
-            access_rights_uid=access_rights_uid,
-        )
+    def _check_technical_partner_derogation(self, model_name, items):
+        result = super()._check_technical_partner_derogation(model_name, items)
+        if not result and model_name == "res.users":
+            return items.ids == self.env.user.ids and self.env.context.get(
+                "write_user_mode", False
+            )
+        return result
