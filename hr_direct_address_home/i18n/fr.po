@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * hr_direct_address_home
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-16 20:24+0000\n"
+"PO-Revision-Date: 2025-02-16 20:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "Address (Private)"
+msgstr "Adresse (Privée)"
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "City"
+msgstr "Ville"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_city
+msgid "City (Private)"
+msgstr "Ville (Privée)"
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "Country"
+msgstr "Pays"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_country_id
+msgid "Country (Private)"
+msgstr "Pays (Privé)"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_email
+msgid "Email (Private)"
+msgstr "Email (Privé)"
+
+#. module: hr_direct_address_home
+#: model:ir.model,name:hr_direct_address_home.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_mobile
+msgid "Mobile (Private)"
+msgstr "Téléphone portable (Privé)"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_phone
+msgid "Phone (Private)"
+msgstr "Téléphone fixe (Privé)"
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "State"
+msgstr "Région"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_state_id
+msgid "State (Private)"
+msgstr "Région (Privée)"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_street
+msgid "Street (Private)"
+msgstr "Rue (Privée)"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_street2
+msgid "Street 2 (Private)"
+msgstr "Rue 2 (Privée)"
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "Street 2..."
+msgstr "Rue 2 ... "
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "Street..."
+msgstr "Rue ..."
+
+#. module: hr_direct_address_home
+#: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
+msgid "ZIP"
+msgstr "Code Postal"
+
+#. module: hr_direct_address_home
+#: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_zip
+msgid "ZIP (Private)"
+msgstr "Code Postal (Privé)"

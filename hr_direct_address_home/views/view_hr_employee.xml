@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2025 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_hr_employee_form" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="address_home_id" position="before">
+                <label for="address_home_street" string="Address (Private)"/>
+                <div>
+                    <div class="o_address_format" name="div_address">
+                        <field name="address_home_street" placeholder="Street..." class="o_address_street"/>
+                        <field name="address_home_street2" placeholder="Street 2..." class="o_address_street"/>
+                        <field name="address_home_city" placeholder="City" class="o_address_city"/>
+                        <field name="address_home_state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': address_home_country_id, 'default_country_id': address_home_country_id, 'zip': address_home_zip}"/>
+                        <field name="address_home_zip" placeholder="ZIP" class="o_address_zip"/>
+                        <field name="address_home_country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                    </div>
+                </div>
+                <field name="address_home_phone" />
+                <field name="address_home_mobile" />
+                <field name="address_home_email" />
+            </field>
+            <field name="address_home_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="private_email" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="phone" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="lang" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
