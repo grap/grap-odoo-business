@@ -9,8 +9,8 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    is_odoo_company = fields.Boolean(
-        string="Is an Odoo Company",
+    is_odoo_employee = fields.Boolean(
+        string="Is an Odoo Employee",
         readonly=True,
         default=False,
         index=True,
@@ -22,16 +22,17 @@ class ResPartner(models.Model):
         res = super()._get_hidden_elements()
         res += [
             {
-                "name": "company",
-                "model": "res.company",
-                "partner_fields": ["partner_id"],
+                "name": "employee",
+                "model": "hr.employee",
+                "partner_fields": ["work_contact_id", "address_home_id"],
             }
         ]
         return res
 
     @api.model_create_multi
     def create(self, vals_list):
-        if self.env.context.get("is_odoo_company"):
+        if self.env.context.get("create_hr_employee", False):
             for vals in vals_list:
-                vals["is_odoo_company"] = True
-        return super().create(vals_list)
+                vals["is_odoo_employee"] = True
+        res = super().create(vals_list)
+        return res

@@ -1,0 +1,1 @@
+* remove top: 60px on o_employee_avatar.
