@@ -29,17 +29,16 @@ class ProductPricelist(models.Model):
         return res
 
     @api.model
-    def consignmment_create(self, template_ids):
+    def consignmment_create(self, templates):
         pricelists = self.search([("consignment_pricelist_id", "!=", False)])
-        templates = self.env["product.template"].browse(template_ids)
         pricelists._consignmment_update_multi(templates)
 
     @api.model
-    def consignmment_drop(self, template_ids):
+    def consignmment_drop(self, templates):
         # Drop all previous exceptions
         pricelists = self.search([])
         items = pricelists.mapped("item_ids").filtered(
-            lambda x: x.product_tmpl_id.id in template_ids
+            lambda x: x.product_tmpl_id.id in templates.ids
         )
         # We use sudo, to avoid error, if current user
         # doesn't have correct access write / delete
