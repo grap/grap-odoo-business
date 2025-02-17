@@ -5,7 +5,7 @@
 {
     "name": "Partner - Hide Users Partners",
     "summary": "Hide partners created when creating users.",
-    "version": "16.0.1.0.2",
+    "version": "16.0.2.0.0",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",

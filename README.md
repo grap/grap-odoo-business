@@ -26,9 +26,12 @@ addon | version | maintainers | summary
 [hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.1 |  | Prevent creation of many home partners at employee level.
 [mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.1 |  | Handle Product allergens on MRP BoM and BoM Lines.
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.0.1 |  | Adds menus to help manage price between BoMs and Products.
-[partner_hide_technical_company](partner_hide_technical_company/) | 16.0.1.1.0 |  | Hide partners created when creating companies.
-[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.1.0.2 |  | Hide partners created when creating users.
-[partner_hide_technical_user_calendar](partner_hide_technical_user_calendar/) | 16.0.1.0.0 |  | Glue module with calendar, to Hide partners created when creating users.
+[partner_hide_technical_abstract](partner_hide_technical_abstract/) | 16.0.2.0.0 |  | Technical module, used to to Hide partners created when creating other items in Odoo
+[partner_hide_technical_company](partner_hide_technical_company/) | 16.0.2.0.0 |  | Hide partners created when creating companies.
+[partner_hide_technical_employee](partner_hide_technical_employee/) | 16.0.2.0.0 |  | Hide partners created when creating employees.
+[partner_hide_technical_fix_calendar](partner_hide_technical_fix_calendar/) | 16.0.2.0.0 |  | Glue module with calendar, to Hide partners created when creating elements.
+[partner_hide_technical_fix_calendar_test](partner_hide_technical_fix_calendar_test/) | 16.0.2.0.0 |  | Test module
+[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.2.0.0 |  | Hide partners created when creating users.
 [product_food](product_food/) | 16.0.1.0.1 |  | Products - Food Informations
 [product_food_certification](product_food_certification/) | 16.0.1.0.0 |  | Products - Food Certification Informations
 [product_food_certification_account](product_food_certification_account/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Account
