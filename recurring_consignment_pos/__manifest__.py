@@ -18,9 +18,10 @@
     ],
     "data": ["views/view_account_move.xml"],
     "demo": [
+        "demo/product_product.xml",
+        "demo/account_journal.xml",
         "demo/pos_payment_method.xml",
         "demo/pos_config.xml",
-        "demo/product_product.xml",
     ],
     "installable": True,
     "auto_install": True,

@@ -16,13 +16,23 @@ class TestAbstract(TransactionCase):
         cls.env.user.company_id = cls.env.ref("recurring_consignment.company")
         cls.env.company = cls.env.ref("recurring_consignment.company")
         cls.config = cls.env.ref("recurring_consignment_pos.pos_config")
+        cls.payment_method_cash = cls.env.ref(
+            "recurring_consignment_pos.payment_method_cash"
+        )
+
         cls.product_E = cls.env.ref(
             "recurring_consignment_pos.consigned_product_consignor_1_vat_20_E"
         )
-        cls.cash_pm1 = cls.env.ref("recurring_consignment_pos.payment_method_cash")
-        cls.sales_account = cls.env.ref(
-            "recurring_consignment.account_income_commission"
-        )
+        # cls.payment_method_cash = cls.env["pos.payment.method"].create(
+        #     {
+        #         "name": "Cash",
+        #         "journal_id": cls.env.ref(
+        #             "recurring_consignment.account_journal_cash"
+        #         ).id,
+        #         "company_id": cls.env.company.id,
+        #     }
+        # )
+        # cls.config.payment_method_ids = cls.payment_method_cash.ids
 
     def _make_pos_order(self, product=False, close_session=False):
         self.config.open_ui()
@@ -41,7 +51,7 @@ class TestAbstract(TransactionCase):
         }
         statement_vals = {
             "name": "2024-06-26 23:28:47",
-            "payment_method_id": 1,
+            "payment_method_id": self.payment_method_cash.id,
             "amount": 1.20,
         }
 

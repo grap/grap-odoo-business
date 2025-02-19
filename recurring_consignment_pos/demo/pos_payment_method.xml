@@ -8,7 +8,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="payment_method_cash" model="pos.payment.method">
         <field name="name">Cash</field>
-        <field name="journal_id" ref="recurring_consignment.account_journal_cash" />
+        <field name="journal_id" ref="account_journal_cash_pos" />
         <field name="company_id" ref="recurring_consignment.company" />
     </record>
 
