@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="account_journal_cash_pos" model="account.journal">
+        <field name="name">Demo Cash Journal (PoS)</field>
+        <field name="type">cash</field>
+        <field name="code">CASHPOS</field>
+        <field name="company_id" ref="recurring_consignment.company" />
+        <field name="suspense_account_id" ref="recurring_consignment.account_cash_suspense_account" />
+        <field name="loss_account_id" ref="recurring_consignment.account_expense_extra" />
+        <field name="profit_account_id" ref="recurring_consignment.account_income_extra" />
+    </record>
+</odoo>

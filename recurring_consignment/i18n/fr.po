@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-23 15:55+0000\n"
-"PO-Revision-Date: 2024-06-23 15:55+0000\n"
+"POT-Creation-Date: 2024-06-27 11:47+0000\n"
+"PO-Revision-Date: 2024-06-27 11:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgid ""
 "<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Values set here "
 "are company-specific.\"/>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Les valeurs définies ici sont"
-" propres à l'entreprise.\"/>"
+"<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Les valeurs "
+"définies ici sont propres à l'entreprise.\"/>"
 
 #. module: recurring_consignment
 #. odoo-python
@@ -98,7 +98,9 @@ msgstr "Suffixe comptable"
 msgid ""
 "Account move Line that commissions the current line, if the related product "
 "is a product related to consignor."
-msgstr "Ligne comptable qui commissionne la ligne en cours, si le produit est un produit lié à un dépôt vendeur."
+msgstr ""
+"Ligne comptable qui commissionne la ligne en cours, si le produit est un "
+"produit lié à un dépôt vendeur."
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
@@ -121,7 +123,8 @@ msgstr "Encaissé"
 #: model:ir.model.fields,help:recurring_consignment.field_res_config_settings__recurring_consignment_account_prefix
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
 msgid "Code used as prefix to generate account code of the consignors."
-msgstr "Code utilisé comme préfixe, pour générer le code comptable du dépôt vendeur."
+msgstr ""
+"Code utilisé comme préfixe, pour générer le code comptable du dépôt vendeur."
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
@@ -188,11 +191,6 @@ msgstr "Paramètres de configuration"
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
 msgid "Confirm"
 msgstr "Confirmer"
-
-#. module: recurring_consignment
-#: model:ir.ui.menu,name:recurring_consignment.menu_consignment
-msgid "Consignment"
-msgstr "Dépôt Vente"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_res_partner__consignment_account_id
@@ -357,8 +355,8 @@ msgid ""
 "Incorrect fiscal settings block the possibility to generate commission "
 "invoices : Incorrect tax type on the tax %(tax_name)s"
 msgstr ""
-"Paramétrage fiscal incorrect qui empêche de générer les factures de commission: "
-"Type de taxe incorrecte sur la taxe %(tax_name)s"
+"Paramétrage fiscal incorrect qui empêche de générer les factures de "
+"commission: Type de taxe incorrecte sur la taxe %(tax_name)s"
 
 #. module: recurring_consignment
 #. odoo-python
@@ -367,7 +365,7 @@ msgstr ""
 msgid ""
 "Incorrect fiscal settings block the possibility to generate commission "
 "invoices: Too many taxes %(tax_names)s"
-"Paramétrage fiscal incorrect qui empêche de générer les factures de commission: "
+msgstr "Paramétrage fiscal incorrect qui empêche de générer les factures de commission: "
 "Trop de taxe %(tax_names)s"
 
 #. module: recurring_consignment
@@ -460,8 +458,9 @@ msgstr "Date maximum"
 msgid ""
 "Miscellaneous Journal, used to generate an entry that deducts the commission"
 " from the amount to be paid out."
-msgstr "Journal d'opérations diverses, utilisé pour générer les pièces comptables qui déduisent la commission"
-" du montant à reverser."
+msgstr ""
+"Journal d'opérations diverses, utilisé pour générer les pièces comptables "
+"qui déduisent la commission du montant à reverser."
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__move_line_qty
@@ -531,7 +530,7 @@ msgstr "Liste de prix"
 #. module: recurring_consignment
 #: model:ir.model,name:recurring_consignment.model_product_pricelist_item
 msgid "Pricelist Rule"
-msgstr "Élément de la liste de prix"
+msgstr "Règle des listes des prix"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_product_pricelist__consignment_pricelist_id
@@ -560,7 +559,8 @@ msgstr "Variante de produit"
 msgid ""
 "Product that will be used to generate consignment invoices to consignors."
 msgstr ""
-"Produit qui sera utilisé pour générer des factures de dépôt vente aux dépôt vendeurs."
+"Produit qui sera utilisé pour générer des factures de dépôt vente aux dépôt "
+"vendeurs."
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
@@ -574,7 +574,9 @@ msgstr "Qté"
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
-msgid "Recurring Consigment"
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_account_move_form
+#: model:ir.ui.menu,name:recurring_consignment.menu_consignment
+msgid "Recurring Consignment"
 msgstr "Dépôt vente"
 
 #. module: recurring_consignment
@@ -602,10 +604,10 @@ msgid ""
 "If you dont find the correct Fiscal Classification, Please create a new one "
 "or ask to your account manager if you don't have the access right."
 msgstr ""
-"Indiquer la combinaison de taxes pour ce produit. Ce champ est requis. Si "
+"Indiquez la combinaison de taxes pour ce produit. Ce champ est requis. Si "
 "vous ne trouvez pas la catégorie fiscale que vous cherchez, vous pouvez en "
-"créer une autre, ou demander à votre responsable comptable, si vous n'avez "
-"pas les droits d'accès."
+"créer une nouvelle, ou demander à votre responsable comptable de le faire si"
+" vous n'avez pas les droits d'accès."
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__is_vat_subject
@@ -639,8 +641,8 @@ msgid ""
 "The product '{product_name} has inconsistent consignor ({consignor_name}) "
 "and fiscal classification ({classification_name})."
 msgstr ""
-"Le produit '{product_name}' a un dépôt vente inconsistent ({consignor_name}) "
-"avec la catégorie fiscale ({classification_name})."
+"Le produit '{product_name}' a un dépôt vente inconsistent ({consignor_name})"
+" avec la catégorie fiscale ({classification_name})."
 
 #. module: recurring_consignment
 #. odoo-python
@@ -710,6 +712,11 @@ msgstr "TVA 10,0%"
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_200
 msgid "VAT 20,0%"
 msgstr "TVA 20,0%"
+
+#. module: recurring_consignment
+#: model_terms:ir.ui.view,arch_db:recurring_consignment.view_account_move_form
+msgid "View commissionned invoiced lines"
+msgstr "Voir les lignes de facture commissionnées"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_invoice_commission_wizard_line__wizard_id

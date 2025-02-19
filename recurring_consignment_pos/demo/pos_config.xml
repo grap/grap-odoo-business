@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="pos_config" model="pos.config">
+        <field name="name">Pos Config</field>
+        <field name="company_id" ref="recurring_consignment.company" />
+        <field name="journal_id" ref="recurring_consignment.account_journal_sale" />
+        <field name="picking_type_id" model="stock.picking.type" search="[('company_id', '=', ref('recurring_consignment.company')), ('code', '=', 'outgoing'), ('sequence_code', '=', 'POS')]" />
+        <field name="invoice_journal_id" ref="recurring_consignment.account_journal_sale" />
+        <field name="payment_method_ids" eval="[(4, ref('recurring_consignment_pos.payment_method_cash'))]" />
+        <field name="available_pricelist_ids" eval="[(4, ref('recurring_consignment.sale_pricelist_10'))]" />
+    </record>
+
+</odoo>

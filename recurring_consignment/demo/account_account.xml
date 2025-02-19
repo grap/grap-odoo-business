@@ -6,6 +6,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <!-- oca-hooks: disable=xml-duplicate-record-id -->
+
+
     <record id="account_receivable" model="account.account">
         <field name="name">Demo Account Receivable</field>
         <field name="code">411</field>
@@ -38,6 +41,27 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="company_id" ref="company" />
     </record>
 
+    <record id="account_cash_suspense_account" model="account.account">
+        <field name="name">Cash Suspense Account</field>
+        <field name="code">5xx</field>
+        <field name="account_type">asset_current</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_expense_extra" model="account.account">
+        <field name="name">Extra Expense</field>
+        <field name="code">658</field>
+        <field name="account_type">expense</field>
+        <field name="company_id" ref="company" />
+    </record>
+
+    <record id="account_income_extra" model="account.account">
+        <field name="name">Extra Revenue</field>
+        <field name="code">758</field>
+        <field name="account_type">income</field>
+        <field name="company_id" ref="company" />
+    </record>
+
     <record id="account_income_commission" model="account.account">
         <field name="name">Commission Account</field>
         <field name="code">706</field>
@@ -50,6 +74,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="code">44571</field>
         <field name="account_type">income</field>
         <field name="company_id" ref="company" />
+    </record>
+
+    <record id="company" model="res.company">
+        <field name="account_default_pos_receivable_account_id" ref="account_receivable"/>
     </record>
 
 </odoo>

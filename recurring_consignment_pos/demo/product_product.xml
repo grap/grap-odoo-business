@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="recurring_consignment.consigned_product_consignor_1_vat_5_A" model="product.product">
+        <field name="available_in_pos" eval="True"/>
+    </record>
+
+    <record id="recurring_consignment.consigned_product_consignor_1_vat_5_B" model="product.product">
+        <field name="available_in_pos" eval="True"/>
+    </record>
+
+    <record id="recurring_consignment.consigned_product_consignor_1_vat_20_C" model="product.product">
+        <field name="available_in_pos" eval="True"/>
+    </record>
+
+    <record id="recurring_consignment.consigned_product_consignor_1_vat_20_D" model="product.product">
+        <field name="available_in_pos" eval="True"/>
+    </record>
+
+    <record id="consigned_product_consignor_1_vat_20_E" model="product.product">
+        <field name="name">My Consigned Product E (VAT 20% - Consignor 1)</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="consignor_partner_id" ref="recurring_consignment.consignor_1"/>
+        <field name="fiscal_classification_id" ref="recurring_consignment.fiscal_classification_20_consignor_1"/>
+        <field name="available_in_pos" eval="True"/>
+    </record>
+
+</odoo>
