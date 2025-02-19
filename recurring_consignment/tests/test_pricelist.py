@@ -11,6 +11,7 @@ class TestPricelist(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.company = cls.env.ref("recurring_consignment.company")
         cls.ProductProduct = cls.env["product.product"]
 
         cls.sale_pricelist_10 = cls.env.ref("recurring_consignment.sale_pricelist_10")
@@ -58,6 +59,7 @@ class TestPricelist(TransactionCase):
         product = self.ProductProduct.create(
             {
                 "name": "New Product",
+                "company_id": self.company.id,
                 "categ_id": self.product_category.id,
                 "list_price": 100,
                 "consignor_partner_id": self.consignor_1.id,
@@ -72,6 +74,7 @@ class TestPricelist(TransactionCase):
         product = self.ProductProduct.create(
             {
                 "name": "New Product",
+                "company_id": self.company.id,
                 "categ_id": self.product_category.id,
                 "list_price": 100,
                 "consignor_partner_id": self.consignor_1.id,

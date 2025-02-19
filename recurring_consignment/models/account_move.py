@@ -21,7 +21,7 @@ class AccountMove(models.Model):
     def _recurring_consigment_mark_as_paid(self):
         # The first time a commission invoice is posted, create
         # a Miscellanious Operation to transfer amount from 'Receivable' account
-        # to 'Receiable / Payable' account
+        # to 'Receivable / Payable' account
         # and mark the invoice as paid
 
         for move in self:

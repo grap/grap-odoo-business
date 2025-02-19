@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo noupdate="1">
+
+    <!-- Partner Properties -->
+    <record id="property_account_receivable" model="ir.property">
+        <field name="name">property_account_receivable_id</field>
+        <field name="company_id" ref="company"/>
+        <field name="fields_id" ref="account.field_res_partner__property_account_receivable_id"/>
+        <field name="value" eval="'account.account,'+str(account_receivable)"/>
+    </record>
+
+    <record id="property_account_payable" model="ir.property">
+        <field name="name">property_account_payable_id</field>
+        <field name="company_id" ref="company"/>
+        <field name="fields_id" ref="account.field_res_partner__property_account_payable_id"/>
+        <field name="value" eval="'account.account,'+str(account_payable)"/>
+    </record>
+</odoo>

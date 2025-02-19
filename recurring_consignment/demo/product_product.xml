@@ -11,6 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="commission_product_vat_20" model="product.product" context="{'allowed_company_ids': [ref('recurring_consignment.company')]}">
         <field name="name">Commission (20% Price Excl)</field>
         <field name="detailed_type">service</field>
+        <field name="company_id" ref="recurring_consignment.company"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="fiscal_classification_id" ref="fiscal_classification_20_vat_exclude"/>
@@ -24,6 +25,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <!-- Product from Consignor #1 -->
     <record id="consigned_product_consignor_1_vat_5_A" model="product.product">
         <field name="name">My Consigned Product A (VAT 5% - Consignor 1)</field>
+        <field name="company_id" ref="recurring_consignment.company"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
@@ -32,6 +34,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="consigned_product_consignor_1_vat_5_B" model="product.product">
         <field name="name">My Consigned Product B (VAT 5% - Consignor 1)</field>
+        <field name="company_id" ref="recurring_consignment.company"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
@@ -40,6 +43,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="consigned_product_consignor_1_vat_20_C" model="product.product">
         <field name="name">My Consigned Product C (VAT 20% - Consignor 1)</field>
+        <field name="company_id" ref="recurring_consignment.company"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
@@ -48,6 +52,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="consigned_product_consignor_1_vat_20_D" model="product.product">
         <field name="name">My Consigned Product D (VAT 20% - Consignor 1)</field>
+        <field name="company_id" ref="recurring_consignment.company"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="consignor_partner_id" ref="consignor_1"/>
