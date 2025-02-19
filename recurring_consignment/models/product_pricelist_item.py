@@ -12,6 +12,7 @@ class ProductPricelistItem(models.Model):
     def _prepare_consignment_exception(self, pricelist, template):
         return {
             "pricelist_id": pricelist.id,
+            "company_id": template.company_id.id,
             "product_tmpl_id": template.id,
             "applied_on": "1_product",
             "base": "pricelist",

@@ -37,6 +37,7 @@
         "demo/product_product.xml",
         "demo/product_pricelist.xml",
         "demo/account_move.xml",
+        "demo/ir_property.xml",
     ],
     "post_init_hook": "create_consignor_sequence",
     "installable": True,

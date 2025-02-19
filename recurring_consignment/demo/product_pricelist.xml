@@ -7,11 +7,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <record id="sale_pricelist_10" model="product.pricelist">
+        <field name="company_id" ref="company" />
         <field name="name">My Pricelist (-10%)</field>
-        <field name="currency_id" ref="base.USD" />
+        <field name="currency_id" ref="base.EUR" />
     </record>
 
     <record id="sale_pricelist_item_10" model="product.pricelist.item">
+        <field name="company_id" ref="company" />
         <field name="applied_on">3_global</field>
         <field name="pricelist_id" ref="sale_pricelist_10" />
          <field name="compute_price">percentage</field>
@@ -20,12 +22,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <record id="sale_pricelist_50" model="product.pricelist">
+        <field name="company_id" ref="company" />
         <field name="name">My Pricelist (-50%)</field>
-        <field name="currency_id" ref="base.USD" />
+        <field name="currency_id" ref="base.EUR" />
         <field name="consignment_pricelist_id" ref="sale_pricelist_10"/>
     </record>
 
     <record id="sale_pricelist_item_50" model="product.pricelist.item">
+        <field name="company_id" ref="company" />
         <field name="applied_on">3_global</field>
         <field name="pricelist_id" ref="sale_pricelist_50" />
          <field name="compute_price">percentage</field>
