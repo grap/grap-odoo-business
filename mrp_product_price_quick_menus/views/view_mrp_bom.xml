@@ -13,7 +13,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_mrp_bom_intermediate" model="ir.ui.view">
         <field name="model">mrp.bom</field>
         <field name="inherit_id" ref="mrp_bom_product_price_margin.view_mrp_bom_tree" />
-        <field name="mode">primary</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='type']" position="attributes">
                 <attribute name="invisible">1</attribute>
