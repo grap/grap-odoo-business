@@ -11,7 +11,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <!-- ************************************************************ -->
     <menuitem id="mrp_product_price_quick_menus"
       name="Handle prices"
-      parent="mrp.menu_mrp_root" sequence="5"/>
+      parent="mrp.menu_mrp_root" sequence="20"/>
 
     <!-- Step 1 : Composants Products -->
     <menuitem id="mrp_product_price_quick_menus_market_pricelist"
