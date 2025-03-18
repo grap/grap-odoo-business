@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright (C) 2025-Today GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_product_product_form" model="ir.ui.view">
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="account_product_fiscal_classification_hr_expense.view_product_product_form" />
+        <field name="arch" type="xml">
+            <field name="fiscal_classification_id" position="before">
+                <field name="consignor_partner_id" invisible="1" />
+                <field name="company_id" invisible="1" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
