@@ -1,6 +1,7 @@
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from lxml import builder
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -181,3 +182,24 @@ class ProductTemplate(models.Model):
                 "expense": self.consignor_partner_id.consignment_account_id,
             }
         return super()._get_product_accounts()
+
+    @api.model
+    def _alter_view_fiscal_classification(self, arch, view_type):
+        # pylint: disable=W8110
+        super()._alter_view_fiscal_classification(arch, view_type)
+        if view_type in ("form", "tree"):
+            node_classification = arch.xpath(
+                "//field[@name='fiscal_classification_id']"
+            )
+            if node_classification:
+                node_classification = node_classification[0]
+
+                node_consignor = arch.xpath("//field[@name='consignor_partner_id']")
+                if not node_consignor:
+                    node_consignor = builder.E.field(
+                        name="consignor_partner_id", invisible="1"
+                    )
+                    node_classification.getparent().insert(
+                        node_classification.getparent().index(node_classification),
+                        node_consignor,
+                    )
