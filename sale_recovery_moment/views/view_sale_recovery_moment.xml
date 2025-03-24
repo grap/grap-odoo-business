@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2018 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_sale_recovery_moment_search" model="ir.ui.view">
+        <field name="model">sale.recovery.moment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="futur" string="Futur" domain="[('state','=','futur')]"/>
+                <filter name="pending" string="Pending" domain="[('state','in',('pending_sale', 'finished_sale', 'pending_recovery'))]"/>
+                <filter name="not_finished" string="Not Finished"
+                    domain="[('state','in', ('futur', 'pending_sale', 'finished_sale', 'pending_recovery'))]"/>
+                <filter name="finished" string="Finished" domain="[('state','=','finished_recovery')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_sale_recovery_moment_tree" model="ir.ui.view">
+        <field name="model">sale.recovery.moment</field>
+        <field name="arch" type="xml">
+            <tree
+                    decoration-muted="state=='finished_recovery'"
+                    decoration-info="state == 'futur'"
+                    decoration-success="state in ('finished_sale', 'pending_recovery')">
+                <field name="place_id"/>
+                <field name="max_order_qty" string="Max"/>
+                <field name="min_recovery_date"/>
+                <field name="max_recovery_date"/>
+                <field name="description"/>
+                <field name="state"/>
+                <field name="order_qty" string="S.O. Qty"/>
+                <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
+                <field name="valid_order_qty" string="V.S.O. Qty"/>
+                <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
+                <field name="picking_qty" string="D.O. Qty" />
+                <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" />
+                <field name="valid_picking_qty" string="V.D.O. Qty"/>
+                <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_recovery_moment_calendar" model="ir.ui.view">
+        <field name="model">sale.recovery.moment</field>
+        <field name="arch" type="xml">
+            <calendar date_start="min_recovery_date" date_stop="max_recovery_date"
+                event_open_popup="True" quick_add="False"
+                color="group_id" mode="week">
+                <field name="place_id"/>
+                <field name="quota_description"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_sale_recovery_moment_form" model="ir.ui.view">
+        <field name="model">sale.recovery.moment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="group_id"/>
+                            <field name="place_id"/>
+                            <field name="max_order_qty"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="min_sale_date" attrs="{'readonly': [('group_id', '!=', False)]}"/>
+                            <field name="max_sale_date" attrs="{'readonly': [('group_id', '!=', False)]}"/>
+                            <field name="min_recovery_date"/>
+                            <field name="max_recovery_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <group>
+                                <field name="order_qty"/>
+                                <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
+                                <field name="valid_order_qty"/>
+                                <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action"/>
+                            </group>
+                            <group>
+                                <field name="picking_qty"/>
+                                <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action"/>
+                                <field name="valid_picking_qty"/>
+                                <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
+                            </group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_recovery_moment" model="ir.actions.act_window">
+        <field name="name">Recovery Moments</field>
+        <field name="res_model">sale.recovery.moment</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="context">{'search_default_not_finished':1}</field>
+    </record>
+
+    <menuitem id="menu_sale_recovery_moment"
+        sequence="200"
+        parent="sale.sale_order_menu"
+        action="action_sale_recovery_moment"/>
+
+</odoo>
