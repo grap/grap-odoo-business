@@ -14,10 +14,13 @@
     }
 
     .main_price {
-        height: 0.7cm;
+        height: 0.75cm;
 
         .main_price_text {
             font-size: 24px;
+        }
+        .main_uom_text {
+            font-size: 10px;
         }
     }
 
