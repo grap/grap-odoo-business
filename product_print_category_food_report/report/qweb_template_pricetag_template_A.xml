@@ -23,7 +23,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <!-- Main Price -->
                         <div class="main_price">
                             <span class="main_price_text">
-                                <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
+                                <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/>€
                             </span>
                             <span class="main_uom_text">
                                 <t t-esc="line.product_id.pricetag_main_uom_text"/>
@@ -33,7 +33,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <!-- Secondary Price -->
                         <div class="secondary_price">
                             <span class="secondary_price_text" t-if="line.product_id.pricetag_secondary_price_value">
-                                <t t-esc="'%0.2f' % (line.product_id.pricetag_secondary_price_value)"/> €
+                                <t t-esc="'%0.2f' % (line.product_id.pricetag_secondary_price_value)"/>€
                             </span>
                             <span class="secondary_uom_text" t-if="line.product_id.pricetag_secondary_price_value">
                                 <t t-esc="line.product_id.pricetag_secondary_uom_text"/>
