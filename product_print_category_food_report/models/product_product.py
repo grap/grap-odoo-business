@@ -91,7 +91,6 @@ class ProductProduct(models.Model):
                 product.uom_id.category_id.measure_type == "weight"
                 and product.company_id.certifier_organization_id
             ):
-
                 if product.organic_type in ["01_organic"]:
                     res += _("Organic Product, certified by %s. ") % (
                         product.company_id.certifier_organization_id.code
