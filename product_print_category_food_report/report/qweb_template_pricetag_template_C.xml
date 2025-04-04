@@ -52,7 +52,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 <!-- Product Label -->
                                 <div class="product_labels">
                                     <t t-foreach="line.product_id.label_ids" t-as="label">
-                                        <img class="product_label" t-attf-src="data:image/*;base64,{{label.image}}" t-att-alt="label.name"/>
+                                        <img class="product_label" t-attf-src="data:image_128/*;base64,{{label.image_128}}" t-att-alt="label.name"/>
                                     </t>
                                 </div>
 
