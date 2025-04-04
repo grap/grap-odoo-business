@@ -4,7 +4,6 @@
 
 from odoo import _, api, fields, models
 
-import odoo.addons.decimal_precision as dp
 
 
 class ProductProduct(models.Model):
@@ -40,7 +39,6 @@ class ProductProduct(models.Model):
 
     pricetag_color = fields.Char(compute="_compute_pricetag_color")
 
-    @api.multi
     @api.depends("pricetag_type_id.color", "company_id.pricetag_color")
     def _compute_pricetag_color(self):
         for product in self:
@@ -51,7 +49,6 @@ class ProductProduct(models.Model):
 
     pricetag_print_date_text = fields.Char(compute="_compute_pricetag_print_date_text")
 
-    @api.multi
     def _compute_pricetag_print_date_text(self):
         for product in self:
             product.pricetag_print_date_text = _("Modified on %s") % (
@@ -60,7 +57,6 @@ class ProductProduct(models.Model):
 
     pricetag_organic_text = fields.Char(compute="_compute_pricetag_organic_text")
 
-    @api.multi
     @api.depends(
         "uom_id.category_id.measure_type",
         "is_alimentary",
@@ -105,7 +101,6 @@ class ProductProduct(models.Model):
     )
 
     @api.depends("state_id", "country_id", "department_id")
-    @api.multi
     def _compute_pricetag_origin(self):
         for product in self:
             if product.department_id:
@@ -122,14 +117,13 @@ class ProductProduct(models.Model):
 
     pricetag_main_price_value = fields.Float(
         compute="_compute_pricetag_main_price_info",
-        digits=dp.get_precision("Product Price"),
+        digits="Product Price",
     )
 
     pricetag_main_uom_text = fields.Char(
         compute="_compute_pricetag_main_price_info",
     )
 
-    @api.multi
     @api.depends(
         "pricetag_uom_id.pricetag_name",
         "pricetag_uom_id.name",
@@ -160,14 +154,13 @@ class ProductProduct(models.Model):
 
     pricetag_secondary_price_value = fields.Float(
         compute="_compute_pricetag_secondary_price_info",
-        digits=dp.get_precision("Product Price"),
+        digits="Product Price",
     )
 
     pricetag_secondary_uom_text = fields.Char(
         compute="_compute_pricetag_secondary_price_info",
     )
 
-    @api.multi
     @api.depends("list_price", "pricetag_uom_id", "uom_id.name", "net_weight", "volume")
     def _compute_pricetag_secondary_price_info(self):
         for product in self:
