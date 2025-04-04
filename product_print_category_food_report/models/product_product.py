@@ -39,13 +39,10 @@ class ProductProduct(models.Model):
 
     pricetag_color = fields.Char(compute="_compute_pricetag_color")
 
-    @api.depends("pricetag_type_id.color", "company_id.pricetag_color")
+    @api.depends("pricetag_type_id.color")
     def _compute_pricetag_color(self):
-        for product in self:
-            if product.pricetag_type_id:
-                product.pricetag_color = product.pricetag_type_id.color
-            else:
-                product.pricetag_color = product.company_id.pricetag_color
+        for product in self.filtered(lambda x: x.pricetag_type_id):
+            product.pricetag_color = product.pricetag_type_id.color
 
     pricetag_print_date_text = fields.Char(compute="_compute_pricetag_print_date_text")
 

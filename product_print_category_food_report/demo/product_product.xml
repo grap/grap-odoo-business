@@ -44,10 +44,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="volume">0.33</field>
         <field name="print_category_id" ref="print_category_pricetag_10"/>
         <field name="is_alimentary" eval="True"/>
-        <field name="is_alcohol" eval="True"/>
+        <field name="has_alcohol" eval="True"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
-            (4, ref('product_food.label_alcool_grossesse')),
+            (4, ref('product_food.label_vegan')),
             ]"/>
         <field name="ingredient_origin_type" >eu_no_eu</field>
         <field name="country_id" ref="base.fr"/>
@@ -84,10 +84,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="volume">0.75</field>
         <field name="print_category_id" ref="print_category_pricetag_12"/>
         <field name="is_alimentary" eval="True"/>
-        <field name="is_alcohol" eval="True"/>
+        <field name="has_alcohol" eval="True"/>
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
-            (4, ref('product_food.label_alcool_grossesse')),
+            (4, ref('product_food.label_vegan')),
             ]"/>
         <field name="ingredient_origin_type" >eu_no_eu</field>
         <field name="country_id" ref="base.fr"/>

@@ -15,7 +15,9 @@
         # OCA
         "product_print_category",
         "product_net_weight",
+        "product_uom_measure_type",
         # GRAP
+        "product_maker",
         "product_label",
         "product_origin",
         "product_food",
@@ -25,7 +27,6 @@
     "data": [
         "security/ir_rule.xml",
         "security/ir.model.access.csv",
-        "report/qweb_reports.xml",
         "report/qweb_components.xml",
         "report/qweb_template_pricetag_template_A.xml",
         "report/qweb_template_pricetag_template_B.xml",
@@ -41,7 +42,6 @@
         "report/qweb_template_pricetag_32.xml",
         "report/qweb_template_pricetag_33.xml",
         "report/qweb_template_pricetag_40.xml",
-        "views/view_res_company.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",
         "views/view_uom_uom.xml",
@@ -53,5 +53,12 @@
         "demo/product_pricetag_type.xml",
         "demo/product_product.xml",
     ],
+    "assets": {
+        "web.report_assets_common": [
+            'product_print_category_food_report/static/src/scss/**',
+            # Uncomment the following line to debug
+            # 'product_print_category_food_report/static/src/scss-debug/**',
+        ],
+    },
     "installable": True,
 }
