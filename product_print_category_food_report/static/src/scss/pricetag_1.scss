@@ -77,14 +77,15 @@
 
         .zone_barcode {
             height: 1.3cm;
+            padding-left:0.3cm;
 
             .wrap_barcode_image{
-                height: 1.2cm;
-                width: 3.78cm;
+                height: 90%;
+                width: 90%;
             }
             .wrap_barcode_image > img{
-                height: 1.2cm;
-                width: 3.78cm;
+                height: 90%;
+                width: 90%;
             }
         }
 

@@ -49,8 +49,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                         <!-- Barcode -->
                         <div class="zone_barcode">
-                            <t t-set="barcode_width" t-value="400"/>
-                            <t t-set="barcode_height" t-value="100"/>
                             <t t-call="product_print_category_food_report.qweb_component_barcode" />
                         </div>
 

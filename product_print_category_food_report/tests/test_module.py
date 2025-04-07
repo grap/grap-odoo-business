@@ -23,5 +23,8 @@ class TestModule(TransactionCase):
                 active_model="product.print.category",
                 active_ids=[category.id],
             ).create({})
-            result = wizard.print_report()
-            self.report.render_qweb_pdf(wizard.line_ids.ids, data=result["data"])
+            wizard.print_report()
+            self.env.ref("product_print_category.pricetag")._render_qweb_pdf(
+                "product_print_category.report_pricetag",
+                wizard.line_ids.ids,
+            )

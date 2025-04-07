@@ -65,7 +65,7 @@ class ProductProduct(models.Model):
         for product in self:
             res = ""
             if not product.is_alimentary:
-                continue
+                product.pricetag_organic_text = False
 
             if product.ingredient_origin_type:
                 if product.ingredient_origin_type == "fr":
