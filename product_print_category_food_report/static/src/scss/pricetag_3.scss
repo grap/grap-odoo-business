@@ -65,16 +65,16 @@
                 go up barcode and display code number */
             .zone_barcode {
                 height: 1.2cm;
+                width:100%;
 
                 .wrap_barcode_image{
-                    height: 1.5cm;
-                    width: 3.0cm;
+                    width: 100%;
+                    margin-top: 0.1cm;
                 }
+
                 .wrap_barcode_image > img{
-                    height: 1.5cm;
-                    width: 3.0cm;
                     position: relative;
-                    bottom: 15px
+                    bottom: 10px
                 }
             }
 

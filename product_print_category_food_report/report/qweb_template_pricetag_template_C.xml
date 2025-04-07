@@ -45,7 +45,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                         <span class="info_title">Traces:</span>&#160;<t t-esc="line.product_id.trace_allergen_text"/><br/>
                                     </t>
                                     <t t-if="line.product_id.ingredients">
-                                        <span class="info_title">Ingredients:</span>&#160;<span t-raw="line.product_id.ingredients"/>
+                                        <span class="info_title">Ingredients:</span>&#160;<span t-out="line.product_id.ingredients"/>
                                     </t>
                                 </div>
 
@@ -71,8 +71,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                                 <!-- Barcode -->
                                 <div class="zone_barcode">
-                                    <t t-set="barcode_width" t-value="300"/>
-                                    <t t-set="barcode_height" t-value="120"/>
                                     <t t-call="product_print_category_food_report.qweb_component_barcode" />
                                 </div>
 
