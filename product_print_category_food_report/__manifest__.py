@@ -55,7 +55,7 @@
     ],
     "assets": {
         "web.report_assets_common": [
-            'product_print_category_food_report/static/src/scss/**',
+            "product_print_category_food_report/static/src/scss/**",
             # Uncomment the following line to debug
             # 'product_print_category_food_report/static/src/scss-debug/**',
         ],
