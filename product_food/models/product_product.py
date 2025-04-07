@@ -30,7 +30,7 @@ class ProductProduct(models.Model):
 
     storage_method = fields.Selection(selection=_STORAGE_METHOD_SELECTION)
 
-    ingredients = fields.Text()
+    ingredients = fields.Html(sanitize=False)
 
     allergen_ids = fields.Many2many(
         comodel_name="product.allergen",

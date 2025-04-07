@@ -64,10 +64,11 @@ class ProductTemplate(models.Model):
         .selection,
     )
 
-    ingredients = fields.Text(
+    ingredients = fields.Html(
         compute=lambda x: x._compute_template_field_from_variant_field("ingredients"),
         inverse=lambda x: x._set_product_variant_field("ingredients"),
         readonly=False,
+        sanitize=False,
     )
 
     allergen_ids = fields.Many2many(
