@@ -17,10 +17,9 @@ class ProductPricetagType(models.Model):
         default=lambda s: s._default_company_id(),
     )
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(required=True)
 
     color = fields.Char(
-        string="Color",
         required=True,
         default="#FFFFFF",
         size=7,
