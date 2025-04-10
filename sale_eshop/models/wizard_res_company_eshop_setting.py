@@ -38,23 +38,23 @@ class WizardResCompanyEshopSetting(models.TransientModel):
     # Default Section
     @api.model
     def _default_company_id(self):
-        return self.env.user.company_id.id
+        return self.env.company.id
 
     @api.model
     def _default_social_facebook(self):
-        return self.env.user.company_id.social_facebook
+        return self.env.company.social_facebook
 
     @api.model
     def _default_social_linkedin(self):
-        return self.env.user.company_id.social_linkedin
+        return self.env.company.social_linkedin
 
     @api.model
     def _default_social_instagram(self):
-        return self.env.user.company_id.social_instagram
+        return self.env.company.social_instagram
 
     @api.model
     def _default_eshop_home_text(self):
-        return self.env.user.company_id.eshop_home_text
+        return self.env.company.eshop_home_text
 
     # View Section
     def button_apply_setting(self):

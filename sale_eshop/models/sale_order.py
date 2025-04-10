@@ -81,7 +81,7 @@ class SaleOrder(models.Model):
             if partner.property_product_pricelist:
                 pricelist_id = partner.property_product_pricelist.id
             else:
-                pricelist_id = self.env.user.company_id.eshop_pricelist_id.id
+                pricelist_id = self.env.company.eshop_pricelist_id.id
             order = self.create(
                 {
                     "partner_id": partner_id,

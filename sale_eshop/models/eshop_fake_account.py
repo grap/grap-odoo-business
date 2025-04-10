@@ -16,5 +16,5 @@ class EshopFakeAccount(models.Model):
     @api.model
     def eshop_log_fake_account(self, form_data):
         self.create(
-            {"form_data": str(form_data), "company_id": self.env.user.company_id.id}
+            {"form_data": str(form_data), "company_id": self.env.company.id}
         )

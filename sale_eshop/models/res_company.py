@@ -101,7 +101,7 @@ class ResCompany(models.Model):
     # Overwrite section
     @api.model
     def _get_eshop_domain(self):
-        return [("id", "=", self.env.user.company_id.id)]
+        return [("id", "=", self.env.company.id)]
 
     @api.model
     def create(self, vals):

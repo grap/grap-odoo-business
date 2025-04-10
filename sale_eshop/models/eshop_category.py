@@ -110,7 +110,7 @@ class EshopCategory(models.Model):
     # Default Section
     @api.model
     def _default_company_id(self):
-        return self.env.user.company_id.id
+        return self.env.company.id
 
     # Constraints Section
     @api.constrains("type", "product_ids", "child_ids")

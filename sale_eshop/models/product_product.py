@@ -135,7 +135,7 @@ class ProductProduct(models.Model):
                     "discount": order_line.discount,
                 }
 
-        company_id = self.env.user.company_id.id
+        company_id = self.env.company.id
 
         self.env.cr.execute(
             """
