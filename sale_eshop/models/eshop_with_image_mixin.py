@@ -23,7 +23,6 @@ class EshopWithImageMixin(models.AbstractModel):
     )
 
     # Compute Section
-    @api.multi
     @api.depends("image_write_date")
     def _compute_image_write_date_hash(self):
         for item in self:
@@ -45,7 +44,6 @@ class EshopWithImageMixin(models.AbstractModel):
         vals.update({"image_write_date": self._get_image_write_date()})
         return super().create(vals)
 
-    @api.multi
     def _write_eshop_invalidate(self, vals):
         if list(set(self._eshop_image_fields) & set(vals.keys())):
             vals.update({"image_write_date": self._get_image_write_date()})

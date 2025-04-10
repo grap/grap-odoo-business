@@ -29,7 +29,6 @@
     <record id="action_wizard_res_company_eshop_setting" model="ir.actions.act_window">
         <field name="name">eShop Settings</field>
         <field name="res_model">wizard.res.company.eshop.setting</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

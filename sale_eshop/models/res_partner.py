@@ -50,21 +50,17 @@ class ResPartner(models.Model):
     )
 
     # View - Section
-    @api.multi
     def button_enable_eshop(self):
         self.write({"eshop_state": "enabled"})
 
-    @api.multi
     def button_disable_eshop(self):
         self.write({"eshop_state": "disabled"})
 
-    @api.multi
     def button_generate_send_credentials(self):
         self._generate_credentials()
         self.send_credentials()
 
     # Eshop API - Section
-    @api.multi
     def send_credentials(self):
         template = self.env.ref("sale_eshop.eshop_send_crendential_template")
         for partner in self:
@@ -146,7 +142,6 @@ class ResPartner(models.Model):
         return "credential_maybe_sent"
 
     # Private Section
-    @api.multi
     def _generate_credentials(self):
         for partner in self:
             random.seed = os.urandom(1024)

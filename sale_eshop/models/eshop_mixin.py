@@ -62,12 +62,10 @@ class EshopMixin(models.AbstractModel):
         )
         requests.get(url, verify=False)
 
-    @api.multi
     def write(self, vals):
         self._write_eshop_invalidate(vals)
         return super().write(vals)
 
-    @api.multi
     def _write_eshop_invalidate(self, vals):
         ResCompany = self.env["res.company"]
 

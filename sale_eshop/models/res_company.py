@@ -109,13 +109,11 @@ class ResCompany(models.Model):
         res._create_parameter_if_not_exists()
         return res
 
-    @api.multi
     def write(self, vals):
         res = super().write(vals)
         self._create_parameter_if_not_exists()
         return res
 
-    @api.multi
     def _create_parameter_if_not_exists(self):
         IrConfigParameter = self.env["ir.config_parameter"].sudo()
         for company in self.filtered(lambda x: x.has_eshop):

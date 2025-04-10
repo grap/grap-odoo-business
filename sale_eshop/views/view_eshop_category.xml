@@ -9,7 +9,6 @@
     <record id="action_eshop_category" model="ir.actions.act_window">
         <field name="name">eShop Categories</field>
         <field name="res_model">eshop.category</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 

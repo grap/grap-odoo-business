@@ -57,7 +57,6 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         return self.env.user.company_id.eshop_home_text
 
     # View Section
-    @api.multi
     def button_apply_setting(self):
         self.ensure_one()
         self.company_id.sudo().write(

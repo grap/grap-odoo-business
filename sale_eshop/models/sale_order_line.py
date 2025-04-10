@@ -40,7 +40,6 @@ class SaleOrderLine(models.Model):
             item["product_uom_id"] = product_uom_id
         return items
 
-    @api.multi
     def eshop_apply_minimum_quantity(self):
         messages = []
         self.ensure_one()

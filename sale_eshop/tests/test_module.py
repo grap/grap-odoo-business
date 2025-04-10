@@ -18,9 +18,9 @@ class TestModule(TransactionCase):
         )
 
         self.eshop_user = self.env.ref("sale_eshop.eshop_user")
-        self.ResPartner = self.env["res.partner"].sudo(self.eshop_user)
-        self.SaleOrder = self.env["sale.order"].sudo(self.eshop_user)
-        self.ProductProduct = self.env["product.product"].sudo(self.eshop_user)
+        self.ResPartner = self.env["res.partner"].with_user(self.eshop_user)
+        self.SaleOrder = self.env["sale.order"].with_user(self.eshop_user)
+        self.ProductProduct = self.env["product.product"].with_user(self.eshop_user)
         self.customer = self.env.ref("sale_eshop.demo_eshop_user")
         self.banana = self.env.ref("sale_eshop.product_banana")
         self.apple = self.env.ref("sale_eshop.product_apple")

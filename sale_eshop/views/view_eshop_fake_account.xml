@@ -9,7 +9,6 @@
     <record id="action_eshop_fake_account" model="ir.actions.act_window">
         <field name="name">eShop Fake Accounts</field>
         <field name="res_model">eshop.fake.account</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
