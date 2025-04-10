@@ -185,7 +185,7 @@ order by category_sequence, category_name, name;
         for value in self.env.cr.fetchall():
             product_id = value[0]
             tmp = {}
-            for (index, column) in enumerate(value):
+            for index, column in enumerate(value):
                 if "_ids" in columns[index][0]:
                     tmp[columns[index][0]] = sorted(
                         [int(x) for x in column.split(",") if x]
@@ -252,9 +252,7 @@ order by category_sequence, category_name, name;
                     AND eshop_end_date is null)"""
             )
             for i in range(0, len(sql_lst)):
-                sql_lst[
-                    i
-                ] = """(
+                sql_lst[i] = """(
                     eshop_category_id IS NOT NULL
                     AND id in (
                         SELECT pp.id
@@ -263,9 +261,7 @@ order by category_sequence, category_name, name;
                             ON pp.product_tmpl_id = pt.id
                             AND pt.sale_ok is true)
                     AND active is true
-                    AND (%s))""" % (
-                    sql_lst[i]
-                )
+                    AND (%s))""" % (sql_lst[i])
         else:
             raise UserError(_("This arg %s is not implemented !" % (value)))
 

@@ -45,7 +45,6 @@ class SaleOrderLine(models.Model):
         messages = []
         self.ensure_one()
         if self.product_id.eshop_minimum_qty:
-
             if self.product_uom_qty < self.product_id.eshop_minimum_qty:
                 # The quantity will be augmented to the threshold
                 messages.append(
