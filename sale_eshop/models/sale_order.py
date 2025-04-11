@@ -106,12 +106,10 @@ class SaleOrder(models.Model):
                 new_line.product_id = product_id
                 new_line.order_id = order.id
                 new_line.product_uom_qty = quantity
-                new_line.product_id_change()
                 new_line_vals = SaleOrderLine._convert_to_write(new_line._cache)
                 current_line = SaleOrderLine.create(new_line_vals)
             else:
                 current_line.product_uom_qty = quantity
-                current_line.product_id_change()
             messages = current_line.eshop_apply_minimum_quantity()
 
             res = {

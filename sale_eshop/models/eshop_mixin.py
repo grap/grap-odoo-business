@@ -26,7 +26,7 @@ class EshopMixin(models.AbstractModel):
         has_image = False
         for field in fields:
             has_image = True
-            if "image" in field:
+            if "image_1920" in field:
                 fields.remove(field)
                 has_image = True
         if has_image:

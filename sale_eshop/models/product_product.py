@@ -18,8 +18,8 @@ class ProductProduct(models.Model):
     _eshop_fields = [
         "name",
         "uom_id",
-        "image",
-        "image_medium",
+        "image_1920",
+        "image_512",
         "list_price",
         "list_price_vat_excl",
         "eshop_category_id",
@@ -35,7 +35,7 @@ class ProductProduct(models.Model):
         "eshop_taxes_description",
     ]
 
-    _eshop_image_fields = ["image", "image_medium", "image_small"]
+    _eshop_image_fields = ["image_1920", "image_512", "image_128"]
 
     _ESHOP_STATE_SELECTION = [
         ("available", "Available for Sale"),

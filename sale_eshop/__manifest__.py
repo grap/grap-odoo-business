@@ -11,7 +11,7 @@
     "website": "https://github.com/grap/grap-odoo-business",
     "license": "AGPL-3",
     "depends": [
-        "sale",
+        "sale_management",
         "social_media",
         # OCA
         "l10n_fr_department",
@@ -19,6 +19,7 @@
         "queue_job",
         # GRAP
         "product_label",
+        "product_maker",
         "sale_recovery_moment",
         "l10n_fr_department_product_origin",
     ],

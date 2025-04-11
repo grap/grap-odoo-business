@@ -8,9 +8,10 @@ from odoo.exceptions import Warning as UserError
 
 class EshopCategory(models.Model):
     _name = "eshop.category"
-    _inherit = ["eshop.with.image.mixin"]
+    _inherit = ["eshop.with.image.mixin", "image.mixin"]
     _rec_name = "complete_name"
     _order = "sequence, complete_name"
+    _description = "Eshop category"
 
     # Inherit Section
     _eshop_invalidation_type = "single"
@@ -19,14 +20,14 @@ class EshopCategory(models.Model):
         "name",
         "available_product_qty",
         "child_qty",
-        "image_medium",
+        "image_512",
         "type",
         "parent_id",
         "product_ids",
         "complete_name",
     ]
 
-    _eshop_image_fields = ["image", "image_medium", "image_small"]
+    _eshop_image_fields = ["image_1920", "image_512", "image_128"]
 
     _TYPE_SELECTION = [
         ("view", "View"),
@@ -49,14 +50,15 @@ class EshopCategory(models.Model):
     complete_name = fields.Char(
         string="Complete Name",
         store=True,
+        recursive=True,
         compute="_compute_complete_name",
     )
 
-    image = fields.Binary(string="Image", attachment=True)
+    image_1920 = fields.Image(string="Image", max_width=1920, max_height=1920, store=True)
 
-    image_medium = fields.Binary(string="Medium-sized image", attachment=True)
+    image_512 = fields.Image(string="Medium-sized image", max_width=512, max_height=512, store=True)
 
-    image_small = fields.Binary(string="Small-sized image", attachment=True)
+    image_128 = fields.Image(string="Small-sized image", max_width=128, max_height=128, store=True)
 
     parent_id = fields.Many2one(
         comodel_name="eshop.category",
@@ -145,17 +147,6 @@ class EshopCategory(models.Model):
             category.available_product_ids = available_products
             category.available_product_qty = len(available_products)
             category.child_qty = len(category.child_ids)
-
-    # Overload Section
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            tools.image_resize_images(vals, sizes={"image": (1024, None)})
-        return super().create(vals_list)
-
-    def write(self, vals):
-        tools.image_resize_images(vals, sizes={"image": (1024, None)})
-        return super().write(vals)
 
     # Name Function
     @api.model

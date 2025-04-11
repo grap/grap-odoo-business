@@ -11,6 +11,7 @@ from odoo import api, fields, models
 class EshopWithImageMixin(models.AbstractModel):
     _name = "eshop.with.image.mixin"
     _inherit = "eshop.mixin"
+    _description = "Eshop With Image Mixin"
 
     _eshop_image_fields = []
 

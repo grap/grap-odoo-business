@@ -24,13 +24,13 @@ class ResCompany(models.Model):
         "social_facebook",
         "social_linkedin",
         "social_instagram",
-        "eshop_image_small",
+        "eshop_image_128",
         "eshop_vat_included",
         "eshop_register_allowed",
         "eshop_manage_recovery_moment",
     ]
 
-    _eshop_image_fields = ["eshop_image_small"]
+    _eshop_image_fields = ["eshop_image_128"]
 
     # Columns Section
     has_eshop = fields.Boolean(string="Has eShop")
@@ -47,7 +47,7 @@ class ResCompany(models.Model):
 
     eshop_home_text = fields.Html(string="Text for the eShop Home Page")
 
-    eshop_image_small = fields.Binary(string="Small Image for the eShop Menu")
+    eshop_image_128 = fields.Binary(string="Small Image 128 for the eShop Menu")
 
     eshop_vat_included = fields.Boolean(string="VAT Included")
 
