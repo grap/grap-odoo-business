@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2021-Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_barcode_nomenclature_template_form" model="ir.ui.view">
+        <field name="model">barcode.nomenclature.template</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="multi_company_barcodes.view_barcode_nomenclature_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_barcode_nomenclature_template_tree" model="ir.ui.view">
+        <field name="model">barcode.nomenclature.template</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="multi_company_barcodes.view_barcode_nomenclature_tree"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_barcode_nomenclature_template" model="ir.actions.act_window" >
+        <field name="name">Barcode Nomenclature Template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">barcode.nomenclature.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_barcode_nomenclature_template"
+        parent="base.menu_ir_property"
+        action="action_barcode_nomenclature_template"
+        sequence="50" groups="base.group_erp_manager"/>
+
+</odoo>

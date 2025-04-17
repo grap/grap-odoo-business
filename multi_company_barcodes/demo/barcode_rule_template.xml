@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2021-Today GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="barcode_rule_template" model="barcode.rule.template">
+        <field name="barcode_nomenclature_id" ref="barcode_nomenclature_template"/>
+        <field name="name">Rule Template</field>
+        <field name="pattern">.*</field>
+    </record>
+
+</odoo>

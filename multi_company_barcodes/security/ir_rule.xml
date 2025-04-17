@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2020-Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="res_barcode_nomenclature_multicompany_rule" model="ir.rule">
+        <field name="name" >Barcode Nomenclature - Multi Company</field>
+        <field model="ir.model" name="model_id" search="[('model', '=', u'barcode.nomenclature')]"/>
+        <field name="domain_force">['|',
+            ('company_id', '=', False),
+            ('company_id', 'child_of', [user.company_id.id])]
+        </field>
+    </record>
+
+    <record id="res_barcode_rule_multicompany_rule" model="ir.rule">
+        <field name="name" >Barcode Nomenclature - Multi Company</field>
+        <field model="ir.model" name="model_id" search="[('model', '=', u'barcode.rule')]"/>
+        <field name="domain_force">['|',
+            ('company_id', '=', False),
+            ('company_id', 'child_of', [user.company_id.id])]
+        </field>
+    </record>
+
+</odoo>
