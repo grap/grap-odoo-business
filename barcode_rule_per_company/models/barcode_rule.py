@@ -9,8 +9,9 @@ class Barcoderule(models.Model):
     _inherit = "barcode.rule"
 
     company_id = fields.Many2one(
-        comodel_name="res.company",
-        string="Company",
-        related="barcode_nomenclature_id.company_id",
-        store=True,
+        comodel_name="res.company", default=lambda x: x._default_company_id()
     )
+
+    def _default_company_id(self):
+        if self.env.context.get("created_by_ui"):
+            return self.env.company
