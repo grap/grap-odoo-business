@@ -120,92 +120,64 @@ class ProductProduct(models.Model):
     # API eshop Section
     @api.model
     def get_current_eshop_product_list(self, partner_id=False):
-        """The aim of this function is to deal with delay of response of
-        the odoo-eshop, module.
-        This will return a list of data, used for catalog inline view."""
         SaleOrder = self.env["sale.order"]
         order = SaleOrder.eshop_get_current_sale_order(partner_id)
-        res = []
         line_dict = {}
-        # Get current quantities ordered
         if order:
-            for order_line in order.order_line:
-                line_dict[order_line.product_id.id] = {
-                    "qty": order_line.product_uom_qty,
-                    "discount": order_line.discount,
+            for line in order.order_line:
+                line_dict[line.product_id.id] = {
+                    "qty": line.product_uom_qty,
+                    "discount": line.discount,
                 }
 
-        company_id = self.env.company.id
+        today = fields.Date.context_today(self)
+        Product = self.env['product.product']
+        products = Product.search([
+            ('active', '=', True),
+            ('product_tmpl_id.sale_ok', '=', True),
+            ('product_tmpl_id.company_id', '=', self.env.company.id),
+            '|', ('eshop_start_date', '=', False),
+                 ('eshop_start_date', '<=', today),
+            '|', ('eshop_end_date', '=', False),
+                 ('eshop_end_date', '>=', today),
+        ])
 
-        self.env.cr.execute(
-            """
-SELECT
-    distinct tmp.*,
-    array_to_string(array_agg(label_rel.label_id)
-        OVER (PARTITION BY label_rel.product_id), ',') label_ids
-FROM (
-    SELECT distinct
-    pp.id id,
-    pt.id as template_id,
-    pp.default_code default_code,
-    pt.name,
-    pt.list_price list_price,
-    pp.list_price_vat_excl list_price_vat_excl,
-    ec.id category_id,
-    ec.sequence category_sequence,
-    ec.name category_name,
-    ec.complete_name category_complete_name,
-    ec.image_write_date category_image_write_date,
-    ec.image_write_date_hash category_image_write_date_hash,
-    pp.image_write_date product_image_write_date,
-    pp.image_write_date_hash product_image_write_date_hash,
-    pt.uom_id,
-    uom.eshop_description uom_eshop_description,
-    pp.eshop_minimum_qty,
-    array_to_string(array_agg(tax_rel.tax_id)
-        OVER (PARTITION BY tax_rel.prod_id), ',') tax_ids
-    FROM product_product pp
-    INNER JOIN product_template pt on pt.id = pp.product_tmpl_id
-    INNER JOIN eshop_category ec on ec.id = pp.eshop_category_id
-    INNER JOIN uom_uom uom on uom.id = pt.uom_id
-    LEFT OUTER JOIN product_taxes_rel tax_rel ON tax_rel.prod_id = pt.id
-    WHERE pt.company_id = %s
-    AND pt.sale_ok
-    AND pp.active
-    AND (eshop_start_date < current_date or eshop_start_date is null)
-    AND (current_date < eshop_end_date or eshop_end_date is null)
-) as tmp
-LEFT OUTER JOIN product_label_product_rel label_rel
-    ON label_rel.product_id = tmp.id
-order by category_sequence, category_name, name;
-""",
-            (company_id,),
-        )
-        columns = self.env.cr.description
-        for value in self.env.cr.fetchall():
-            product_id = value[0]
-            tmp = {}
-            for index, column in enumerate(value):
-                if "_ids" in columns[index][0]:
-                    tmp[columns[index][0]] = sorted(
-                        [int(x) for x in column.split(",") if x]
-                    )
-                else:
-                    tmp[columns[index][0]] = column
-            if product_id in line_dict:
-                tmp.update(
-                    {
-                        "qty": line_dict[product_id]["qty"],
-                        "discount": line_dict[product_id]["discount"],
-                    }
-                )
-            else:
-                tmp.update({"qty": 0, "discount": 0})
-            if tmp["default_code"] is None:
-                tmp["default_code"] = False
+        res = []
+        for product in products:
+            tmpl = product.product_tmpl_id
+            category = product.eshop_category_id
+            tax_ids = tmpl.taxes_id.ids
+            label_ids = product.label_ids.ids if hasattr(product, 'label_ids') else []
+            data = {
+                "id": product.id,
+                "template_id": tmpl.id,
+                "default_code": product.default_code or False,
+                "name": tmpl.name,
+                "list_price": tmpl.list_price,
+                "list_price_vat_excl": product.list_price_vat_excl,
+                "category_id": category.id,
+                "category_sequence": category.sequence,
+                "category_name": category.name,
+                "category_complete_name": category.complete_name,
+                "category_image_write_date": category.image_512 and category.write_date,
+                "category_image_write_date_hash": category.image_512 and hash(category.write_date),
+                "product_image_write_date": product.image_512 and product.write_date,
+                "product_image_write_date_hash": product.image_512 and hash(product.write_date),
+                "uom_id": tmpl.uom_id.id,
+                "uom_eshop_description": tmpl.uom_id.eshop_description,
+                "eshop_minimum_qty": product.eshop_minimum_qty,
+                "tax_ids": sorted(tax_ids),
+                "label_ids": sorted(label_ids),
+                "qty": 0,
+                "discount": 0,
+            }
+            if product.id in line_dict:
+                data["qty"] = line_dict[product.id]["qty"]
+                data["discount"] = line_dict[product.id]["discount"]
 
-            res.append(tmp)
+            res.append(data)
 
+        res.sort(key=lambda x: (x["category_sequence"], x["category_name"], x["name"]))
         return res
 
     def _search_eshop_state(self, operator, value):

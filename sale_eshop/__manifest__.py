@@ -22,6 +22,8 @@
         "product_maker",
         "sale_recovery_moment",
         "l10n_fr_department_product_origin",
+        # CoopITeasy
+        "account_customer_wallet"
     ],
     "data": [
         "security/ir_rule.xml",
@@ -38,6 +40,7 @@
         "views/view_uom_uom.xml",
         "views/view_res_company.xml",
         "views/view_res_partner.xml",
+        "views/view_sale_order.xml",
         "views/view_wizard_res_company_eshop_setting.xml",
     ],
     "demo": [

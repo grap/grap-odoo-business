@@ -66,7 +66,7 @@
 
     <record id="job_function_sale_eshop_confirm_order" model="queue.job.function">
         <field name="model_id" ref="sale.model_sale_order" />
-        <field name="method">_eshop_confirm_sale_order</field>
+        <field name="method">eshop_confirm_sale_order</field>
         <field name="channel_id" ref="channel_sale_eshop_confirm_order"/>
         <field name="retry_pattern" eval="{1: 10 * 60, 6: 60 * 60, 12: 12 * 60 * 60}" />
     </record>

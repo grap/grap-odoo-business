@@ -28,6 +28,7 @@ class ResPartner(models.Model):
         "street2",
         "zip",
         "city",
+        "customer_wallet_balance",
     ]
 
     _PASSWORD_LENGTH = 6

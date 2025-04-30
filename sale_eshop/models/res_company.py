@@ -21,6 +21,7 @@ class ResCompany(models.Model):
         "website",
         "eshop_list_view_enabled",
         "eshop_tree_view_enabled",
+        "eshop_wallet_enabled",
         "social_facebook",
         "social_linkedin",
         "social_instagram",
@@ -65,6 +66,12 @@ class ResCompany(models.Model):
         string="Enable Tree View",
         default=True,
         help="Provide a Tree view to navigate into the catalog.",
+    )
+
+    eshop_wallet_enabled = fields.Boolean(
+        string="Enable Account Customer Wallet",
+        default=True,
+        help="Permits your customer to pay with their wallet.",
     )
 
     # fields related to ir.config_parameter
