@@ -2,7 +2,6 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
 
 from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
@@ -131,23 +130,27 @@ class ProductProduct(models.Model):
                 }
 
         today = fields.Date.context_today(self)
-        Product = self.env['product.product']
-        products = Product.search([
-            ('active', '=', True),
-            ('product_tmpl_id.sale_ok', '=', True),
-            ('product_tmpl_id.company_id', '=', self.env.company.id),
-            '|', ('eshop_start_date', '=', False),
-                 ('eshop_start_date', '<=', today),
-            '|', ('eshop_end_date', '=', False),
-                 ('eshop_end_date', '>=', today),
-        ])
+        Product = self.env["product.product"]
+        products = Product.search(
+            [
+                ("active", "=", True),
+                ("product_tmpl_id.sale_ok", "=", True),
+                ("product_tmpl_id.company_id", "=", self.env.company.id),
+                "|",
+                ("eshop_start_date", "=", False),
+                ("eshop_start_date", "<=", today),
+                "|",
+                ("eshop_end_date", "=", False),
+                ("eshop_end_date", ">=", today),
+            ]
+        )
 
         res = []
         for product in products:
             tmpl = product.product_tmpl_id
             category = product.eshop_category_id
             tax_ids = tmpl.taxes_id.ids
-            label_ids = product.label_ids.ids if hasattr(product, 'label_ids') else []
+            label_ids = product.label_ids.ids if hasattr(product, "label_ids") else []
             data = {
                 "id": product.id,
                 "template_id": tmpl.id,
@@ -160,9 +163,11 @@ class ProductProduct(models.Model):
                 "category_name": category.name,
                 "category_complete_name": category.complete_name,
                 "category_image_write_date": category.image_512 and category.write_date,
-                "category_image_write_date_hash": category.image_512 and hash(category.write_date),
+                "category_image_write_date_hash": category.image_512
+                and hash(category.write_date),
                 "product_image_write_date": product.image_512 and product.write_date,
-                "product_image_write_date_hash": product.image_512 and hash(product.write_date),
+                "product_image_write_date_hash": product.image_512
+                and hash(product.write_date),
                 "uom_id": tmpl.uom_id.id,
                 "uom_eshop_description": tmpl.uom_id.eshop_description,
                 "eshop_minimum_qty": product.eshop_minimum_qty,
@@ -180,71 +185,68 @@ class ProductProduct(models.Model):
         res.sort(key=lambda x: (x["category_sequence"], x["category_name"], x["name"]))
         return res
 
+    @api.model
     def _search_eshop_state(self, operator, value):
-        dateNow = datetime.now().strftime("%Y-%m-%d")
-        if operator not in ("=", "in"):
-            raise UserError(_("The Operator %s is not implemented !" % (operator)))
-        if operator == "=":
-            lst = [value]
-        else:
-            lst = value
-        sql_lst = []
-        if "available" in lst and len(lst) == 1:
-            sql_lst.append(
-                """((
-                        eshop_start_date is not null
-                        AND eshop_end_date is not null)
-                    AND (
-                        eshop_start_date <= '%s'
-                        AND '%s' <= eshop_end_date
-                    )
-                )"""
-                % (dateNow, dateNow)
-            )
-            sql_lst.append(
-                """((
-                        eshop_start_date is null
-                        AND eshop_end_date is not null)
-                    AND ('%s' <= eshop_end_date)
-                )"""
-                % (dateNow)
-            )
-            sql_lst.append(
-                """((
-                        eshop_start_date is not null
-                        AND eshop_end_date is null)
-                    AND (
-                        eshop_start_date <= '%s'
-                    )
-                )"""
-                % (dateNow)
-            )
-            sql_lst.append(
-                """(eshop_start_date is null
-                    AND eshop_end_date is null)"""
-            )
-            for i in range(0, len(sql_lst)):
-                sql_lst[i] = """(
-                    eshop_category_id IS NOT NULL
-                    AND id in (
-                        SELECT pp.id
-                        FROM product_product pp
-                        INNER JOIN product_template pt
-                            ON pp.product_tmpl_id = pt.id
-                            AND pt.sale_ok is true)
-                    AND active is true
-                    AND (%s))""" % (sql_lst[i])
-        else:
-            raise UserError(_("This arg %s is not implemented !" % (value)))
+        today = fields.Date.today()
 
-        where = sql_lst[0]
-        for item in sql_lst[1:]:
-            where += " OR %s" % (item)
-        sql_req = "SELECT id FROM product_product"
-        sql_req += " WHERE %s;" % (where)
-        self.env.cr.execute(sql_req)
-        res = self.env.cr.fetchall()
-        return [("id", "in", [x[0] for x in res])]
+        if operator not in ("=", "in", "!="):
+            raise UserError(_(f"The Operator {operator} is not implemented !"))
+
+        lst = [value] if operator in ("=", "!=") else value
+
+        # Domaine partagé : critères de validité eshop
+        eshop_valid_domain = [
+            ("eshop_category_id", "!=", False),
+            ("active", "=", True),
+            ("product_tmpl_id.sale_ok", "=", True),
+        ]
+
+        if "available" in lst and len(lst) == 1:
+            domain = eshop_valid_domain + [
+                "|",
+                "|",
+                "|",
+                "&",
+                ("eshop_start_date", "<=", today),
+                ("eshop_end_date", ">=", today),
+                "&",
+                ("eshop_start_date", "=", False),
+                ("eshop_end_date", ">=", today),
+                "&",
+                ("eshop_start_date", "<=", today),
+                ("eshop_end_date", "=", False),
+                "&",
+                ("eshop_start_date", "=", False),
+                ("eshop_end_date", "=", False),
+            ]
+
+        elif "disabled" in lst and len(lst) == 1:
+            domain = eshop_valid_domain + [
+                "|",
+                ("eshop_start_date", ">", today),
+                ("eshop_end_date", "<", today),
+            ]
+
+        elif "unavailable" in lst and len(lst) == 1:
+            domain = [
+                "|",
+                "|",
+                ("eshop_category_id", "=", False),
+                ("active", "=", False),
+                ("product_tmpl_id.sale_ok", "=", False),
+            ]
+
+        else:
+            raise UserError(_(f"This arg {value} is not implemented !"))
+
+        # Main search
+        products = self.search(domain)
+
+        # Handle "is not" search
+        if operator == "!=":
+            return [("id", "not in", products.ids)]
+        else:
+            return [("id", "in", products.ids)]
 
     # Overwrite section
     @api.model
