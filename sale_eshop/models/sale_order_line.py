@@ -48,16 +48,15 @@ class SaleOrderLine(models.Model):
                 # The quantity will be augmented to the threshold
                 messages.append(
                     _(
-                        "'%.3f' is not a valid quantity for %s, the "
-                        " minimum quantity is '%.3f'. The quantity has"
-                        " been automatically increased in your shopping"
-                        " cart."
+                        "'%(qty).3f' is not a valid quantity for %(product)s, the "
+                        "minimum quantity is '%(min_qty).3f'. The quantity has "
+                        "been automatically increased in your shopping cart."
                     )
-                    % (
-                        self.product_uom_qty,
-                        self.product_id.name,
-                        self.product_id.eshop_minimum_qty,
-                    )
+                    % {
+                        "qty": self.product_uom_qty,
+                        "product": self.product_id.name,
+                        "min_qty": self.product_id.eshop_minimum_qty,
+                    }
                 )
                 self.product_uom_qty = self.product_id.eshop_minimum_qty
 
@@ -67,14 +66,14 @@ class SaleOrderLine(models.Model):
                 # The quantity will be rounded
                 messages.append(
                     _(
-                        "'%.3f' is not a valid quantity for %s, the"
-                        " quantity has been rounded to '%.3f'."
+                        "'%(qty).3f' is not a valid quantity for %(product)s, the "
+                        "quantity has been rounded to '%(rounded).3f'."
                     )
-                    % (
-                        self.product_uom_qty,
-                        self.product_id.name,
-                        rounded_qty,
-                    )
+                    % {
+                        "qty": self.product_uom_qty,
+                        "product": self.product_id.name,
+                        "rounded": rounded_qty,
+                    }
                 )
                 self.product_uom_qty = rounded_qty
 

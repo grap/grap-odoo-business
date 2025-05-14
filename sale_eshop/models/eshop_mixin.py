@@ -60,7 +60,7 @@ class EshopMixin(models.AbstractModel):
             base_url,
             "invalidation_cache/%s/%s/%d/" % (private_key, self._name, item_identifier),
         )
-        requests.get(url, verify=False)
+        requests.get(url, verify=False, timeout=10)
 
     def write(self, vals):
         self._write_eshop_invalidate(vals)

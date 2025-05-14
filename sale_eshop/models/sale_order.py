@@ -11,9 +11,7 @@ class SaleOrder(models.Model):
     _name = "sale.order"
     _inherit = ["sale.order", "eshop.mixin"]
 
-    eshop_note = fields.Char(
-        help="Field set by eshop user during cart validation"
-    )
+    eshop_note = fields.Char(help="Field set by eshop user during cart validation")
 
     recovery_name = fields.Char(
         compute="_compute_recovery_name",
@@ -98,15 +96,19 @@ class SaleOrder(models.Model):
                 pricelist_id = partner.property_product_pricelist.id
             else:
                 pricelist_id = self.env.company.eshop_pricelist_id.id
-            order = self.create({
-                "partner_id": partner_id,
-                "partner_invoice_id": partner_id,
-                "partner_shipping_id": partner_id,
-                "pricelist_id": pricelist_id,
-            })
+            order = self.create(
+                {
+                    "partner_id": partner_id,
+                    "partner_invoice_id": partner_id,
+                    "partner_shipping_id": partner_id,
+                    "pricelist_id": pricelist_id,
+                }
+            )
 
         # Search Line With Product.
-        current_line = order.order_line.filtered(lambda l: l.product_id.id == product_id)
+        current_line = order.order_line.filtered(
+            lambda x: x.product_id.id == product_id
+        )
 
         # Add Qty if add method is used (in Catatog view)
         if current_line:
@@ -125,13 +127,17 @@ class SaleOrder(models.Model):
                     line_vals["qty_to_invoice"] = quantity
                 current_line = SaleOrderLine.create(line_vals)
             else:
-                current_line.write({
-                    "product_uom_qty": quantity,
-                })
+                current_line.write(
+                    {
+                        "product_uom_qty": quantity,
+                    }
+                )
                 if self.env.company.eshop_wallet_enabled:
-                    current_line.write({
-                        "qty_to_invoice": quantity,
-                    })
+                    current_line.write(
+                        {
+                            "qty_to_invoice": quantity,
+                        }
+                    )
             messages = current_line.eshop_apply_minimum_quantity()
 
             res = {
@@ -155,7 +161,9 @@ class SaleOrder(models.Model):
             if current_line:
                 if len(order.order_line) == 1:
                     order.unlink()
-                    res["messages"] = [_("The Shopping Cart has been successfully deleted.")]
+                    res["messages"] = [
+                        _("The Shopping Cart has been successfully deleted.")
+                    ]
                 else:
                     current_line.unlink()
                     res["messages"] = [_("The line has been successfully deleted.")]
@@ -177,24 +185,23 @@ class SaleOrder(models.Model):
     @api.model
     def eshop_confirm_sale_order(self, partner_id):
         order = self.eshop_get_current_sale_order(partner_id)
-        # order.with_context(send_email=True).with_delay().action_confirm()
-        # Quentin : temporaire car queue job ne se lance pas
-        confirmed = order.with_context(send_email=True).action_confirm()
+        order.with_context(send_email=True).with_delay().action_confirm()
+        # Quentin : pour dév car queue job ne se lance pas chez moi
+        # order.with_context(send_email=True).action_confirm()
         return True
 
     @api.model
     def eshop_invoice_with_wallet(self, order_id):
         order = self.browse(order_id)
 
-        wallet_journal = self.env['account.journal'].search([
-            ('type', '=', 'bank'), 
-            ('is_customer_wallet_journal', '=', True)
-        ], limit=1)
+        wallet_journal = self.env["account.journal"].search(
+            [("type", "=", "bank"), ("is_customer_wallet_journal", "=", True)], limit=1
+        )
 
         if not wallet_journal:
             raise UserError(_("Wallet journal can't be found. Check settings."))
 
-        payment_method = self.env.ref('account.account_payment_method_manual_in')
+        payment_method = self.env.ref("account.account_payment_method_manual_in")
         if not payment_method:
             raise UserError(_("Manuel payment method can't be found."))
 
@@ -204,26 +211,30 @@ class SaleOrder(models.Model):
             invoice = order._create_invoices()
             invoice.action_post()
 
-            # 2. Check if all went right 
-            if invoice.state != 'posted':
-                raise UserError("La facture n'a pas été validée correctement.")
+            # 2. Check if all went right
+            if invoice.state != "posted":
+                raise UserError(_("Invoice was not posted correctly."))
 
             # 3. Create payment with wallet journal
-            payment = self.env['account.payment'].create({
-                'payment_type': 'inbound',
-                'partner_type': 'customer',
-                'partner_id': invoice.partner_id.id,
-                'amount': invoice.amount_total,
-                'payment_method_id': payment_method.id,
-                'journal_id': wallet_journal.id,
-                'date': fields.Date.context_today(self),
-                'ref': "[eshop] " + invoice.name,
-            })
+            payment = self.env["account.payment"].create(
+                {
+                    "payment_type": "inbound",
+                    "partner_type": "customer",
+                    "partner_id": invoice.partner_id.id,
+                    "amount": invoice.amount_total,
+                    "payment_method_id": payment_method.id,
+                    "journal_id": wallet_journal.id,
+                    "date": fields.Date.context_today(self),
+                    "ref": "[eshop] " + invoice.name,
+                }
+            )
             payment.action_post()
 
             # 4. Reconcile payment and invoice
             lines_to_reconcile = (invoice.line_ids + payment.move_id.line_ids).filtered(
-                lambda l: l.account_id == invoice.partner_id.property_account_receivable_id and not l.reconciled
+                lambda x: x.account_id
+                == invoice.partner_id.property_account_receivable_id
+                and not x.reconciled
             )
 
             lines_to_reconcile.reconcile()

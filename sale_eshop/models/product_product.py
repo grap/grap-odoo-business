@@ -67,11 +67,10 @@ class ProductProduct(models.Model):
         string="Rounded Quantity for eShop", required=True, default=0
     )
 
-    eshop_description = fields.Text(type="Text", string="Eshop Description")
+    eshop_description = fields.Text(type="Text")
 
     eshop_taxes_description = fields.Char(
         compute="_compute_eshop_taxes_description",
-        string="Eshop Taxes Description",
     )
 
     # Compute Section

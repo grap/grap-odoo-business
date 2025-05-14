@@ -23,7 +23,7 @@
         "sale_recovery_moment",
         "l10n_fr_department_product_origin",
         # CoopITeasy
-        "account_customer_wallet"
+        "account_customer_wallet",
     ],
     "data": [
         "security/ir_rule.xml",

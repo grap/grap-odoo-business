@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models, tools
+from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
 
@@ -35,7 +35,7 @@ class EshopCategory(models.Model):
     ]
 
     # Columns Section
-    name = fields.Char(string="Name", required=True, index=True)
+    name = fields.Char(required=True, index=True)
 
     company_id = fields.Many2one(
         comodel_name="res.company",
@@ -45,20 +45,25 @@ class EshopCategory(models.Model):
         default=lambda s: s._default_company_id(),
     )
 
-    sequence = fields.Integer(string="Sequence", required=True, default=1)
+    sequence = fields.Integer(required=True, default=1)
 
     complete_name = fields.Char(
-        string="Complete Name",
         store=True,
         recursive=True,
         compute="_compute_complete_name",
     )
 
-    image_1920 = fields.Image(string="Image", max_width=1920, max_height=1920, store=True)
+    image_1920 = fields.Image(
+        string="Image", max_width=1920, max_height=1920, store=True
+    )
 
-    image_512 = fields.Image(string="Medium-sized image", max_width=512, max_height=512, store=True)
+    image_512 = fields.Image(
+        string="Medium-sized image", max_width=512, max_height=512, store=True
+    )
 
-    image_128 = fields.Image(string="Small-sized image", max_width=128, max_height=128, store=True)
+    image_128 = fields.Image(
+        string="Small-sized image", max_width=128, max_height=128, store=True
+    )
 
     parent_id = fields.Many2one(
         comodel_name="eshop.category",
@@ -130,10 +135,10 @@ class EshopCategory(models.Model):
     def _compute_complete_name(self):
         for category in self:
             if category.parent_id:
-                category.complete_name = _("%s / %s") % (
-                    category.parent_id.complete_name,
-                    category.name,
-                )
+                category.complete_name = _("%(parent)s / %(name)s") % {
+                    "parent": category.parent_id.complete_name,
+                    "name": category.name,
+                }
             else:
                 category.complete_name = category.name
 

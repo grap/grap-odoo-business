@@ -10,7 +10,7 @@ class EshopFakeAccount(models.Model):
     _description = "Eshop Fake Account"
     _order = "create_date desc"
 
-    form_data = fields.Char("Form Data")
+    form_data = fields.Char()
     company_id = fields.Many2one(string="Company", comodel_name="res.company")
 
     @api.model
