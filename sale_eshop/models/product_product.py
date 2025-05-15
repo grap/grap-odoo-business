@@ -4,7 +4,7 @@
 
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 
 
 class ProductProduct(models.Model):
@@ -118,7 +118,10 @@ class ProductProduct(models.Model):
     # API eshop Section
     @api.model
     def get_current_eshop_product_list(self, partner_id=False):
+        today = fields.Date.context_today(self)
         SaleOrder = self.env["sale.order"]
+        Product = self.env["product.product"]
+
         order = SaleOrder.eshop_get_current_sale_order(partner_id)
         line_dict = {}
         if order:
@@ -128,8 +131,6 @@ class ProductProduct(models.Model):
                     "discount": line.discount,
                 }
 
-        today = fields.Date.context_today(self)
-        Product = self.env["product.product"]
         products = Product.search(
             [
                 ("active", "=", True),
@@ -148,7 +149,6 @@ class ProductProduct(models.Model):
         for product in products:
             tmpl = product.product_tmpl_id
             category = product.eshop_category_id
-            tax_ids = tmpl.taxes_id.ids
             label_ids = product.label_ids.ids if hasattr(product, "label_ids") else []
             data = {
                 "id": product.id,
@@ -170,7 +170,7 @@ class ProductProduct(models.Model):
                 "uom_id": tmpl.uom_id.id,
                 "uom_eshop_description": tmpl.uom_id.eshop_description,
                 "eshop_minimum_qty": product.eshop_minimum_qty,
-                "tax_ids": sorted(tax_ids),
+                "tax_ids": sorted(tmpl.taxes_id.ids),
                 "label_ids": sorted(label_ids),
                 "qty": 0,
                 "discount": 0,

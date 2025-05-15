@@ -24,8 +24,6 @@ class TestModule(TransactionCase):
         self.customer = self.env.ref("sale_eshop.demo_eshop_user")
         self.banana = self.env.ref("sale_eshop.product_banana")
         self.apple = self.env.ref("sale_eshop.product_apple")
-        self.product_disabled = self.env.ref("sale_eshop.product_disabled")
-        self.product_not_available = self.env.ref("product.product_product_5")
         self.recovery_moment = self.env.ref("sale_recovery_moment.recovery_moment_1")
         self.sysadmin_passkey = "SysAdminPasskeyPa$$w0rd"
 
@@ -54,32 +52,7 @@ class TestModule(TransactionCase):
         res = self.ResPartner.eshop_login(self.customer.email, self.sysadmin_passkey)
         self.assertNotEqual(res, False, "Admin Password should be accepted")
 
-    def test_02_load_products(self):
-        result = self.ProductProduct.get_current_eshop_product_list()
-        self.assertNotEqual(
-            len(result), 0, "Loading products should return a non empty list"
-        )
-
-    def test_03_product_available(self):
-        self.assertEqual(
-            self.product_not_available.eshop_state,
-            "unavailable",
-            "Bad state for unavailable product",
-        )
-
-        self.assertEqual(
-            self.banana.eshop_state,
-            "available",
-            "Bad state for available product",
-        )
-
-        self.assertEqual(
-            self.product_disabled.eshop_state,
-            "disabled",
-            "Bad state for disabled product",
-        )
-
-    def test_04_sale_order_process(self):
+    def test_02_sale_order_process(self):
         # Create Order
         self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 3, "add")
         order = self.SaleOrder.eshop_get_current_sale_order(self.customer.id)

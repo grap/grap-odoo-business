@@ -110,11 +110,12 @@ class ResCompany(models.Model):
     def _get_eshop_domain(self):
         return [("id", "=", self.env.company.id)]
 
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
-        res._create_parameter_if_not_exists()
-        return res
+    @api.model_create_multi
+    def create(self, vals_list):
+        companies = super().create(vals_list)
+        for company in companies:
+            company._create_parameter_if_not_exists()
+        return companies
 
     def write(self, vals):
         res = super().write(vals)

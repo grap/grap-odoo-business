@@ -40,10 +40,12 @@ class EshopWithImageMixin(models.AbstractModel):
     def _get_image_write_date(self):
         return datetime.now()
 
-    @api.model
-    def create(self, vals):
-        vals.update({"image_write_date": self._get_image_write_date()})
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        now = self._get_image_write_date()
+        for vals in vals_list:
+            vals.update({"image_write_date": now})
+        return super().create(vals_list)
 
     def _write_eshop_invalidate(self, vals):
         if list(set(self._eshop_image_fields) & set(vals.keys())):
