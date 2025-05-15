@@ -22,6 +22,7 @@
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_strawberry">
@@ -42,6 +43,7 @@
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_apple">
@@ -58,6 +60,7 @@
         <field name="label_ids" eval="[
             (4, ref('product_label.label_agriculture_biologique')),
             ]"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_potato">
@@ -71,6 +74,7 @@
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
         <field name="description_sale">Description of Potato</field>
         <field name="image_1920" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_potato.jpg"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_leek">
@@ -88,6 +92,7 @@
             (4, ref('product_label.label_agriculture_biologique')),
             (4, ref('product_label.label_max_havelaar'))
             ]"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_onion">
@@ -101,6 +106,7 @@
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
         <field name="description_sale">Description of Onions</field>
         <field name="image_1920" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_onion.jpg"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_garlic">
@@ -114,6 +120,7 @@
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
         <field name="description_sale">Description of Garlic</field>
         <field name="image_1920" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_garlic.jpg"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_pepper">
@@ -127,6 +134,7 @@
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
         <field name="description_sale">Description of Pepper</field>
         <field name="image_1920" type="base64" file="sale_eshop/static/src/img/demo/product_product/product_pepper.jpg"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_without_image">
@@ -138,6 +146,7 @@
         <field name="eshop_rounded_qty">1.0</field>
         <field name="uom_id" ref="uom.product_uom_unit" />
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
     <record model="product.product" id="product_disabled">
@@ -151,6 +160,7 @@
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="eshop_end_date"
             eval="(DateTime.today() + relativedelta(months=-1)).strftime('%Y-%m-%d')"/>
+        <field name="company_id" ref="base.main_company"/>
     </record>
 
 </odoo>

@@ -13,7 +13,7 @@ class TestModule(TransactionCase):
         self.env = self.env(
             context=dict(
                 self.env.context,
-                test_queue_job_no_delay=True,
+                queue_job__no_delay=True,
             )
         )
 
@@ -25,7 +25,7 @@ class TestModule(TransactionCase):
         self.banana = self.env.ref("sale_eshop.product_banana")
         self.apple = self.env.ref("sale_eshop.product_apple")
         self.product_disabled = self.env.ref("sale_eshop.product_disabled")
-        self.product_not_available = self.env.ref("product.product_product_4d")
+        self.product_not_available = self.env.ref("product.product_product_5")
         self.recovery_moment = self.env.ref("sale_recovery_moment.recovery_moment_1")
         self.sysadmin_passkey = "SysAdminPasskeyPa$$w0rd"
 
@@ -79,7 +79,7 @@ class TestModule(TransactionCase):
             "Bad state for disabled product",
         )
 
-    def test_03_sale_order_process(self):
+    def test_04_sale_order_process(self):
         # Create Order
         self.SaleOrder.eshop_set_quantity(self.customer.id, self.banana.id, 3, "add")
         order = self.SaleOrder.eshop_get_current_sale_order(self.customer.id)
@@ -135,6 +135,16 @@ class TestModule(TransactionCase):
         # Select a recovery moment
         self.SaleOrder.eshop_select_recovery_moment(
             self.customer.id, self.recovery_moment.id
+        )
+        self.assertEqual(
+            order.recovery_moment_id.id,
+            self.recovery_moment.id,
+            "Sale order should have a recevory moment selected",
+        )
+
+        # Confirm sale
+        self.SaleOrder.eshop_confirm_sale_order(
+            self.customer.id,
         )
         self.assertEqual(
             order.state,

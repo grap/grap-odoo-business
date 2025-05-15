@@ -193,7 +193,6 @@ class ProductProduct(models.Model):
 
         lst = [value] if operator in ("=", "!=") else value
 
-        # Domaine partagé : critères de validité eshop
         eshop_valid_domain = [
             ("eshop_category_id", "!=", False),
             ("active", "=", True),
