@@ -24,6 +24,7 @@
                         <field name="eshop_list_view_enabled" />
                         <field name="eshop_tree_view_enabled" />
                         <field name="eshop_wallet_enabled" />
+                        <field name="eshop_wallet_recharge_bank_transfer" />
                         <newline/>
                         <field name="eshop_invalidation_key" colspan="4" />
                     </group>

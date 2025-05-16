@@ -22,6 +22,7 @@ class ResCompany(models.Model):
         "eshop_list_view_enabled",
         "eshop_tree_view_enabled",
         "eshop_wallet_enabled",
+        "eshop_wallet_recharge_bank_transfer",
         "social_facebook",
         "social_linkedin",
         "social_instagram",
@@ -72,6 +73,11 @@ class ResCompany(models.Model):
         string="Enable Account Customer Wallet",
         default=True,
         help="Permits your customer to pay with their wallet.",
+    )
+
+    eshop_wallet_recharge_bank_transfer = fields.Boolean(
+        string="Enable recharging Wallet account with bank transfer",
+        default=False,
     )
 
     # fields related to ir.config_parameter

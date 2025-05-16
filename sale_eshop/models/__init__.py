@@ -8,6 +8,7 @@ from . import product_label
 from . import product_product
 from . import uom_uom
 from . import res_partner
+from . import res_partner_bank
 from . import res_company
 from . import res_country
 from . import res_country_department
