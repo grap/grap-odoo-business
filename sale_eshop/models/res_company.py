@@ -20,7 +20,7 @@ class ResCompany(models.Model):
         "eshop_title",
         "website",
         "eshop_list_view_enabled",
-        "eshop_tree_view_enabled",
+        "eshop_catalog_view_enabled",
         "eshop_wallet_enabled",
         "eshop_wallet_recharge_bank_transfer",
         "social_facebook",
@@ -63,7 +63,7 @@ class ResCompany(models.Model):
         help="Provide a List view to realize quick purchase.",
     )
 
-    eshop_tree_view_enabled = fields.Boolean(
+    eshop_catalog_view_enabled = fields.Boolean(
         string="Enable Tree View",
         default=True,
         help="Provide a Tree view to navigate into the catalog.",

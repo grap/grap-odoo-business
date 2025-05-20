@@ -304,7 +304,7 @@ msgid "Enable List View"
 msgstr "Activer la vue liste"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_tree_view_enabled
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_catalog_view_enabled
 msgid "Enable Tree View"
 msgstr "Activer la vue arbre"
 
@@ -563,7 +563,7 @@ msgid "Provide a List view to realize quick purchase."
 msgstr "Fourni une vue liste pour réaliser des achats rapides"
 
 #. module: sale_eshop
-#: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_tree_view_enabled
+#: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_catalog_view_enabled
 msgid "Provide a Tree view to navigate into the catalog."
 msgstr "Fournit une vue arbre pour naviguer dans le catalogue."
 
