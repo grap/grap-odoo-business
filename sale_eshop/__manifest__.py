@@ -22,6 +22,7 @@
         "product_maker",
         "sale_recovery_moment",
         "l10n_fr_department_product_origin",
+        "base_company_legal_info",
         # CoopITeasy
         "account_customer_wallet",
     ],

@@ -15,6 +15,14 @@ class ResCompany(models.Model):
     _eshop_fields = [
         "eshop_home_text",
         "name",
+        "report_legal_description",
+        "street",
+        "zip",
+        "city",
+        "email",
+        "company_registry",
+        "vat",
+        "invoice_terms",
         "has_eshop",
         "eshop_minimum_price",
         "eshop_title",
@@ -31,6 +39,9 @@ class ResCompany(models.Model):
         "eshop_register_allowed",
         "eshop_register_phone_required",
         "eshop_manage_recovery_moment",
+        "eshop_hosting",
+        "eshop_registered_capital",
+        "eshop_consumer_mediation",
     ]
 
     _eshop_image_fields = ["eshop_image_128"]
@@ -96,6 +107,13 @@ class ResCompany(models.Model):
         string="Invalidation Key",
         compute="_compute_eshop_invalidation_key",
     )
+
+    # Legal notices field
+    eshop_hosting = fields.Html(
+        string="Web hosting informations",
+    )
+    eshop_registered_capital = fields.Float(string="Registered capital")
+    eshop_consumer_mediation = fields.Char(string="Consumer Mediator")
 
     def _get_eshop_config_name(self, param_name):
         self.ensure_one()
