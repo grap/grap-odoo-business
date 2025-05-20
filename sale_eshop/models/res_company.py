@@ -29,6 +29,7 @@ class ResCompany(models.Model):
         "eshop_image_128",
         "eshop_vat_included",
         "eshop_register_allowed",
+        "eshop_register_phone_required",
         "eshop_manage_recovery_moment",
     ]
 
@@ -55,6 +56,11 @@ class ResCompany(models.Model):
 
     eshop_register_allowed = fields.Boolean(
         string="Allow Register", help="Allow new customer to register on eShop"
+    )
+
+    eshop_register_phone_required = fields.Boolean(
+        string="Phone number is required",
+        default=False,
     )
 
     eshop_list_view_enabled = fields.Boolean(
