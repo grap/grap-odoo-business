@@ -36,7 +36,7 @@ class ResPartner(models.Model):
 
     _ESHOP_STATE_SELECTION = [
         ("disabled", "Disabled"),
-        ("email_to_confirm", "EMail To Confirm"),
+        ("email_to_confirm", "Email To Confirm"),
         ("enabled", "Enabled"),
     ]
 
@@ -63,9 +63,15 @@ class ResPartner(models.Model):
 
     # Eshop API - Section
     def send_credentials(self):
-        template = self.env.ref("sale_eshop.eshop_send_crendential_template")
+        template = self.env.ref("sale_eshop.eshop_send_credential_template")
         for partner in self:
-            template.send_mail(partner.id, force_send=True)
+            template.send_mail(
+                res_id=partner.id,
+                force_send=True,
+                email_values={
+                    "email_to": partner.email,
+                },
+            )
         return True
 
     @api.model
