@@ -31,7 +31,7 @@ class ResPartner(models.Model):
         "customer_wallet_balance",
     ]
 
-    _PASSWORD_LENGTH = 6
+    _PASSWORD_LENGTH = 10
     _PASSWORD_CHARS = string.ascii_letters + "23456789"
 
     _ESHOP_STATE_SELECTION = [
@@ -62,13 +62,21 @@ class ResPartner(models.Model):
         self.send_credentials()
 
     # Eshop API - Section
-    def send_credentials(self):
-        template = self.env.ref("sale_eshop.eshop_send_credential_template")
+    # email_step = 'login' | 'reset_password'
+    def send_credentials(self, email_step):
+        subject = str('[' + self.env.company.name + '] ')
+        if email_step == 'reset_password':
+            template = self.env.ref("sale_eshop.email_lost_password")
+            subject += "New password"
+        else:
+            template = self.env.ref("sale_eshop.email_create_account")
+            subject += "Your eShop access"
         for partner in self:
             template.send_mail(
                 res_id=partner.id,
                 force_send=True,
                 email_values={
+                    "subject": subject,
                     "email_to": partner.email,
                 },
             )
@@ -111,7 +119,7 @@ class ResPartner(models.Model):
         # Create partner
         partner = self.create(vals)
         # Send an email
-        return partner.send_credentials()
+        return partner.send_credentials(email_step="create_account")
 
     @api.model
     def update_from_eshop(self, partner_id, vals):
@@ -145,7 +153,8 @@ class ResPartner(models.Model):
         if len(partners) > 1:
             return "too_many_email"
         elif len(partners) == 1:
-            partners.send_credentials()
+            partners._generate_credentials()
+            partners.send_credentials(email_step="reset_password")
         return "credential_maybe_sent"
 
     # Private Section
@@ -159,7 +168,6 @@ class ResPartner(models.Model):
             partner.write(
                 {
                     "eshop_password": password,
-                    "eshop_state": "email_to_confirm",
                 }
             )
 

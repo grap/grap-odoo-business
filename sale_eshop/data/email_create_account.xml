@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<!--
+    Copyright (C) 2015 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    @author: Quentin DUPONT
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<!-- Email template is inspired mail_template_data_portal_welcome  -->
+<odoo>
+    <data>
+        <record id="email_create_account" model="mail.template">
+            <field name="name">eShop Access Email</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="partner_to">{{ object.id }}</field>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+
+                <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tr><td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                <tbody>
+                    <!-- HEADER -->
+                    <t t-call="sale_eshop.email_header" />
+
+                    <!-- CONTENT -->
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr><td valign="top" style="font-size: 13px;">
+                                    <div>
+                                        Dear <t t-out="object.name or ''"></t>,<br/> <br/>
+                                        Welcome to purchase website of <t t-out="user.company_id.name or ''"></t><br/><br/>
+                                        <b>Login:</b> An account has been created for you with the following login: <b><t t-out="object.email"></t></b><br/>
+                                        <b>Password:</b> The one you set during your registration
+                                        <br/><br/>
+
+                                        Click on the button below to pick a password and activate your account.
+                                        <div style="margin: 16px 0px 16px 0px; text-align: center;">
+                                            <a t-att-href="(user.company_id.eshop_url) + 'activate_account/' + str(object.id) + '/' + (object.email)" style="display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;">
+                                                <strong>Activate Account</strong>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td></tr>
+                                <tr><td style="text-align:center;">
+                                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- FOOTER -->
+                    <t t-call="sale_eshop.email_footer" />
+     
+                </tbody>
+                </table>
+                </td></tr>
+                </table>
+            </field>
+        </record>
+    </data>
+</odoo>
+
