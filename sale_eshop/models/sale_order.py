@@ -185,9 +185,9 @@ class SaleOrder(models.Model):
     @api.model
     def eshop_confirm_sale_order(self, partner_id):
         order = self.eshop_get_current_sale_order(partner_id)
-        order.with_context(send_email=True).with_delay().action_confirm()
-        # Quentin : pour dév car queue job ne se lance pas chez moi
-        # order.with_context(send_email=True).action_confirm()
+        # Remove .with_delay because we need sale to be confirm right now in order
+        # to create invoice
+        order.with_context(send_email=True).action_confirm()
         return True
 
     @api.model
@@ -207,6 +207,10 @@ class SaleOrder(models.Model):
 
         # savepoint to rollback if error ?
         with self.env.cr.savepoint():
+            # 0. Force lines to be invoiced (even if invoice_policy is in delivered)
+            for line in order.order_line:
+                line.qty_to_invoice = line.product_uom_qty - line.qty_invoiced
+
             # 1. Create invoice
             invoice = order._create_invoices()
             invoice.action_post()
