@@ -64,8 +64,8 @@ class ResPartner(models.Model):
     # Eshop API - Section
     # email_step = 'login' | 'reset_password'
     def send_credentials(self, email_step):
-        subject = str('[' + self.env.company.name + '] ')
-        if email_step == 'reset_password':
+        subject = str("[" + self.env.company.name + "] ")
+        if email_step == "reset_password":
             template = self.env.ref("sale_eshop.email_lost_password")
             subject += "New password"
         else:
