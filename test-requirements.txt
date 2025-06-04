@@ -2,11 +2,11 @@
 git+https://github.com/OCA/product-attributes@refs/pull/1840/head#subdirectory=setup/product_compute_template_field_from_variant_helper
 
 # Placeholder for future PRs 1
+git+https://github.com/grap/grap-odoo-custom@refs/pull/450/head#subdirectory=setup/product_maker
+# git+https://github.com/coopiteasy/addons#subdirectory=setup/account_customer_wallet
+git+https://github.com/OCA/multi-company@refs/pull/674/head#subdirectory=setup/base_company_legal_info
 
 # Placeholder for future PRs 2
-git+https://github.com/grap/grap-odoo-custom@refs/pull/450/head#subdirectory=setup/product_maker
-git+https://github.com/coopiteasy/addons#subdirectory=setup/account_customer_wallet
-git+https://github.com/OCA/multi-company/addons#subdirectory=setup/base_company_legal_info
 
 # Placeholder for future PRs 3
 
