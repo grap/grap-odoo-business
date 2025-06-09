@@ -63,8 +63,47 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <form>
                 <header>
                     <field name="state" widget="statusbar"/>
+
                 </header>
                 <sheet>
+                    <!-- Button box -->
+                    <div class="oe_button_box" name="button_box">
+                        <!-- Sale Orders -->
+                        <button
+                            class="oe_stat_button"
+                            type="action"
+                            icon="fa-shopping-basket"
+                            name="%(action_recovery_moment_2_sale_order_valid)d"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                              <span class="o_stat_value"><field
+                                        name="order_qty"
+                                        widget="statinfo"
+                                        nolabel="1"
+                                    /></span>
+                              <span class="o_stat_text">Customers Orders</span>
+                            </div>
+                        </button>
+
+                        <!-- Pickings -->
+                        <button
+                            class="oe_stat_button"
+                            type="action"
+                            icon="fa-truck"
+                            name="%(action_recovery_moment_2_stock_picking)d"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                              <span class="o_stat_value"><field
+                                        name="picking_qty"
+                                        widget="statinfo"
+                                        nolabel="1"
+                                    /></span>
+                              <span class="o_stat_text">Delivery Orders</span>
+                            </div>
+                        </button>
+
+                    </div>
+
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
@@ -72,36 +111,41 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     </div>
                     <group>
                         <group>
-                            <field name="code"/>
-                            <field name="group_id"/>
                             <field name="place_id"/>
-                            <field name="max_order_qty"/>
+                            <field name="max_order_qty" widget="numeric_step" options="{'step': 1, 'min': 0}"/>
+                            <field name="description" placeholder="e.g : Exceptional recovery moment : taste and buy amazing beers !"/>
+                            <field name="group_id"/>
                             <field name="company_id" groups="base.group_multi_company"/>
-                            <field name="description"/>
-                        </group>
-                        <group>
-                            <field name="min_sale_date" attrs="{'readonly': [('group_id', '!=', False)]}"/>
-                            <field name="max_sale_date" attrs="{'readonly': [('group_id', '!=', False)]}"/>
-                            <field name="min_recovery_date"/>
-                            <field name="max_recovery_date"/>
                         </group>
                     </group>
-                    <group>
-                        <group>
-                            <group>
-                                <field name="order_qty"/>
-                                <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
-                                <field name="valid_order_qty"/>
-                                <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action"/>
-                            </group>
-                            <group>
-                                <field name="picking_qty"/>
-                                <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action"/>
-                                <field name="valid_picking_qty"/>
-                                <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
-                            </group>
-                        </group>
-                    </group>
+
+                    <div class="my-4">
+                        <h4>
+                            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                            Customer Orders
+                        </h4>
+                        <span class="me-2">Customer could order between</span>
+                        <field name="min_sale_date" nolabel="1" class="me-2" attrs="{'readonly': [('group_id', '!=', False)]}"/>
+                        <span class="me-2">and</span>
+                        <field name="max_sale_date" nolabel="1" attrs="{'readonly': [('group_id', '!=', False)]}"/>
+                        <div class="alert alert-info w-50" role="alert" attrs="{'invisible': [('group_id', '==', False)]}">
+                          Modify this dates in recovery moment group : <field name="group_id" />
+
+                        </div>
+                    </div>
+
+                    <div class="my-4">
+                        <h4>
+                            <i class="fa fa-map-pin" aria-hidden="true"></i>
+                            Recovery moment
+                        </h4>                    
+                            <span class="me-2">Customer could get their order between</span>
+                            <field name="min_recovery_date" nolabel="1" class="me-2"/>
+                            <span class="me-2">and</span>
+                            <field name="max_recovery_date" nolabel="1"/>
+                    </div>
+
+
                 </sheet>
             </form>
         </field>

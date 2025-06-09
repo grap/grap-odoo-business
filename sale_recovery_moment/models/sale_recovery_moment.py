@@ -6,9 +6,8 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning as UserError
-from odoo.fields import Datetime
+from datetime import datetime, timedelta
 from odoo.osv import expression
-
 
 class SaleRecoveryMoment(models.Model):
     _description = "Recovery Moment"
@@ -24,9 +23,12 @@ class SaleRecoveryMoment(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    code = fields.Char(readonly=True, required=True, default="/")
+    code = fields.Char(readonly=True,)
 
-    name = fields.Char(compute="_compute_name", store=True)
+    name = fields.Char(
+        readonly=True,
+        default=lambda x: x._default_name(),
+    )
 
     place_id = fields.Many2one(
         comodel_name="sale.recovery.place", string="Place", required=True
@@ -65,16 +67,21 @@ class SaleRecoveryMoment(models.Model):
     )
 
     min_recovery_date = fields.Datetime(
-        string="Minimum date for the Recovery", required=True
+        string="Minimum date for the Recovery", required=True,
+        default=lambda x: x._default_min_recovery_date(),
     )
 
     max_recovery_date = fields.Datetime(
-        string="Maximum date for the Recovery", required=True
+        string="Maximum date for the Recovery", required=True,
+        default=lambda x: x._default_max_recovery_date(),
     )
 
     description = fields.Text()
 
-    max_order_qty = fields.Integer(string="Max Order Quantity")
+    max_order_qty = fields.Integer(
+        string="Max Order Quantity",
+        help="0 means no limit"
+    )
 
     order_ids = fields.One2many(
         string="Sale Orders",
@@ -121,11 +128,41 @@ class SaleRecoveryMoment(models.Model):
     def _default_company_id(self):
         return self.env.company
 
+    @api.model
+    def _default_name(self):
+        return _("Draft")
+
+    @api.model
+    def _default_min_recovery_date(self):
+        return datetime.now()
+
+    @api.model
+    def _default_max_recovery_date(self):
+        return datetime.now() + timedelta(hours=6)
+
     # Overload Section
     @api.model_create_multi
     def create(self, vals_list):
+        sequence = self.env['ir.sequence']
+        recovery_places = self.env['sale.recovery.place']
+        recovery_groups = self.env['sale.recovery.moment.group']
+
         for vals in vals_list:
-            vals["code"] = self.env["ir.sequence"].next_by_code("sale.recovery.moment")
+            code = sequence.next_by_code("sale.recovery.moment")
+            vals["code"] = code
+
+            place = recovery_places.browse(vals["place_id"])
+            place_name = place.name
+
+            min_date = vals["min_recovery_date"]
+
+            if "group_id" in vals:
+                group = recovery_groups.browse(vals["group_id"])
+                group_name = group.name
+                vals["name"] = f"{code} - {group_name} - {place_name} - {min_date}"
+            else:
+                vals["name"] = f"{code} - {place_name} - {min_date}"
+
         return super().create(vals_list)
 
     def unlink(self):
@@ -145,7 +182,7 @@ class SaleRecoveryMoment(models.Model):
         "min_sale_date", "max_sale_date", "min_recovery_date", "max_recovery_date"
     )
     def _compute_state(self):
-        now = Datetime.now()
+        now = datetime.now()
         for moment in self:
             if now < moment.min_sale_date:
                 moment.state = "futur"
@@ -168,8 +205,8 @@ class SaleRecoveryMoment(models.Model):
             moment.min_sale_date = moment.group_id.min_sale_date
             moment.max_sale_date = moment.group_id.max_sale_date
         for moment in self.filtered(lambda x: not x.group_id):
-            moment.max_sale_date = False
-            moment.min_sale_date = False
+            moment.max_sale_date = moment.max_recovery_date
+            moment.min_sale_date = moment.min_recovery_date
 
     @api.depends(
         "order_ids",
@@ -226,26 +263,31 @@ class SaleRecoveryMoment(models.Model):
                 )
             )
 
-    @api.depends("code", "min_recovery_date", "place_id", "group_id.short_name")
-    def _compute_name(self):
-        for moment in self.filtered(lambda x: x.group_id):
-            moment.name = "{} - {} - {} - {}".format(
-                moment.code,
-                moment.group_id.short_name,
-                moment.place_id.name,
-                moment.min_recovery_date,
-            )
-        for moment in self.filtered(lambda x: not x.group_id):
-            moment.name = "{} - {} - {}".format(
-                moment.code,
-                moment.place_id.name,
-                moment.min_recovery_date,
-            )
+    # @api.depends("code", "min_recovery_date", "place_id", "group_id.short_name")
+    # def _compute_name(self):
+    #     for moment in self:
+    #         # import pdb; pdb.set_trace()
+    #         moment.name = _("Draft")
+    #         elif (moment.group_id):
+    #             moment.name = "{} - {} - {} - {}".format(
+    #                 moment.code,
+    #                 moment.group_id.short_name,
+    #                 moment.place_id.name,
+    #                 moment.min_recovery_date,
+    #             )
+    #         else:
+    #             moment.name = "{} - {} - {}".format(
+    #                 moment.code,
+    #                 moment.place_id.name,
+    #                 moment.min_recovery_date,
+    #             )
+        # for moment in self.filtered(lambda x: x.group_id):
+        # for moment in self.filtered(lambda x: not x.group_id):
 
     # Search Functions Section
     def _search_state(self, operator, operand):
         domain = []
-        now = Datetime.now()
+        now = datetime.now()
         if operator not in ("=", "in"):
             raise UserError(_("The Operator %s is not implemented !") % (operator))
         if operator == "=":
