@@ -263,27 +263,6 @@ class SaleRecoveryMoment(models.Model):
                 )
             )
 
-    # @api.depends("code", "min_recovery_date", "place_id", "group_id.short_name")
-    # def _compute_name(self):
-    #     for moment in self:
-    #         # import pdb; pdb.set_trace()
-    #         moment.name = _("Draft")
-    #         elif (moment.group_id):
-    #             moment.name = "{} - {} - {} - {}".format(
-    #                 moment.code,
-    #                 moment.group_id.short_name,
-    #                 moment.place_id.name,
-    #                 moment.min_recovery_date,
-    #             )
-    #         else:
-    #             moment.name = "{} - {} - {}".format(
-    #                 moment.code,
-    #                 moment.place_id.name,
-    #                 moment.min_recovery_date,
-    #             )
-        # for moment in self.filtered(lambda x: x.group_id):
-        # for moment in self.filtered(lambda x: not x.group_id):
-
     # Search Functions Section
     def _search_state(self, operator, operand):
         domain = []
