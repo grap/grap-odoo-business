@@ -3,11 +3,13 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
+from datetime import datetime, timedelta
+
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.exceptions import Warning as UserError
-from datetime import datetime, timedelta
 from odoo.osv import expression
+
 
 class SaleRecoveryMoment(models.Model):
     _description = "Recovery Moment"
@@ -23,7 +25,9 @@ class SaleRecoveryMoment(models.Model):
         ("finished_recovery", "Finished Recovery"),
     ]
 
-    code = fields.Char(readonly=True,)
+    code = fields.Char(
+        readonly=True,
+    )
 
     name = fields.Char(
         readonly=True,
@@ -67,21 +71,20 @@ class SaleRecoveryMoment(models.Model):
     )
 
     min_recovery_date = fields.Datetime(
-        string="Minimum date for the Recovery", required=True,
+        string="Minimum date for the Recovery",
+        required=True,
         default=lambda x: x._default_min_recovery_date(),
     )
 
     max_recovery_date = fields.Datetime(
-        string="Maximum date for the Recovery", required=True,
+        string="Maximum date for the Recovery",
+        required=True,
         default=lambda x: x._default_max_recovery_date(),
     )
 
     description = fields.Text()
 
-    max_order_qty = fields.Integer(
-        string="Max Order Quantity",
-        help="0 means no limit"
-    )
+    max_order_qty = fields.Integer(string="Max Order Quantity", help="0 means no limit")
 
     order_ids = fields.One2many(
         string="Sale Orders",
@@ -143,9 +146,9 @@ class SaleRecoveryMoment(models.Model):
     # Overload Section
     @api.model_create_multi
     def create(self, vals_list):
-        sequence = self.env['ir.sequence']
-        recovery_places = self.env['sale.recovery.place']
-        recovery_groups = self.env['sale.recovery.moment.group']
+        sequence = self.env["ir.sequence"]
+        recovery_places = self.env["sale.recovery.place"]
+        recovery_groups = self.env["sale.recovery.moment.group"]
 
         for vals in vals_list:
             code = sequence.next_by_code("sale.recovery.moment")

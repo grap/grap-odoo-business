@@ -138,7 +138,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <h4>
                             <i class="fa fa-map-pin" aria-hidden="true"></i>
                             Recovery moment
-                        </h4>                    
+                        </h4>
                             <span class="me-2">Customer could get their order between</span>
                             <field name="min_recovery_date" nolabel="1" class="me-2"/>
                             <span class="me-2">and</span>
