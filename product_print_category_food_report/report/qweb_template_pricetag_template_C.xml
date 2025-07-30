@@ -8,115 +8,113 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 <odoo>
 
     <template id="qweb_template_pricetag_template_C">
-        <t t-call="web.basic_layout">
-            <t t-foreach="category_data['lines']" t-as="line">
-                <t t-foreach="line.quantity" t-as="q">
-                    <div t-att-class="'pricetag_product %s' % pricetag_name">
-                        <div class="margin_top" />
+        <t t-foreach="category_data['lines']" t-as="line">
+            <t t-foreach="line.quantity" t-as="q">
+                <div t-att-class="'pricetag_product %s' % pricetag_name">
+                    <div class="margin_top" />
 
-                        <div class="pricetag_top">
+                    <div class="pricetag_top">
 
-                            <!-- Product Name -->
-                            <div class="product_name"
-                                t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
-                                <t t-esc="line.product_id.name"/>
-                            </div>
+                        <!-- Product Name -->
+                        <div class="product_name"
+                            t-attf-style="background-color: {{ line.product_id.pricetag_type_id.color }};">
+                            <t t-esc="line.product_id.name"/>
                         </div>
-
-                        <div class="pricetag_center">
-
-                                <!-- &#160; is useful to have space and not underline css under this space -->
-                                <!-- Manufacturing Location -->
-                                <div class="product_origin" t-if="line.product_id.pricetag_origin">
-                                    <span class="info_title">Manufacturing:</span>&#160;<t t-esc="line.product_id.pricetag_origin"/>
-                                </div>
-
-                                <!-- Producer -->
-                                <div class="maker_description"  t-if="line.product_id.maker_description">
-                                    <span class="info_title">Producer:</span>&#160;<t t-esc="line.product_id.maker_description"/>
-                                </div>
-
-                                <!-- Feed Composition (allergens, ingredients, etc...) -->
-                                <div class="feed_composition">
-                                    <t t-if="line.product_id.allergen_text">
-                                        <span class="info_title">Allergens:</span>&#160;<t t-esc="line.product_id.allergen_text"/><br/>
-                                    </t>
-                                    <t t-if="line.product_id.trace_allergen_text">
-                                        <span class="info_title">Traces:</span>&#160;<t t-esc="line.product_id.trace_allergen_text"/><br/>
-                                    </t>
-                                    <t t-if="line.product_id.ingredients">
-                                        <span class="info_title">Ingredients:</span>&#160;<span t-out="line.product_id.ingredients"/>
-                                    </t>
-                                </div>
-
-                                <!-- Product Label -->
-                                <div class="product_labels">
-                                    <t t-foreach="line.product_id.label_ids" t-as="label">
-                                        <img class="product_label" t-attf-src="data:image_128/*;base64,{{label.image_128}}" t-att-alt="label.name"/>
-                                    </t>
-                                </div>
-
-                        </div>
-
-                        <div class="pricetag_bottom">
-
-                            <div class="pricetag_bottom_left">
-
-                                <!-- Organic Text -->
-                                <div class="organic_text">
-                                    <t t-if="line.product_id.pricetag_organic_text">
-                                        <t t-esc="line.product_id.pricetag_organic_text"/><br/>
-                                    </t>
-                                </div>
-
-                                <!-- Barcode -->
-                                <div class="zone_barcode">
-                                    <t t-call="product_print_category_food_report.qweb_component_barcode" />
-                                </div>
-
-                                <!-- Default Code + Write date -->
-                                <div class="shop_information">
-                                    <t t-esc="line.product_id.default_code" /> -
-                                    <t t-esc="line.product_id.pricetag_print_date_text" />
-                                </div>
-
-                            </div>
-
-                            <div class="pricetag_bottom_right">
-                                <div class="main_price">
-                                    <span class="main_price_text">
-                                        <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
-                                    </span>
-                                    <span class="main_uom_text">
-                                        <t t-esc="line.product_id.pricetag_main_uom_text"/>
-                                    </span>
-                                </div>
-
-                                <!-- Per Unit Quantity -->
-                                <div class="per_unit_quantity">
-                                    <t  t-if="line.product_id.pricetag_per_unit_quantity_text">
-                                        <t t-esc="line.product_id.pricetag_per_unit_quantity_text"/>
-                                        <t t-esc="line.product_id.pricetag_per_unit_quantity_value"/>
-                                    </t>
-                                </div>
-
-                                <!-- Secondary Price -->
-                                <div class="secondary_price">
-                                    <span class="secondary_uom_text" t-if="line.product_id.pricetag_secondary_price_value">
-                                        <t t-esc="line.product_id.pricetag_secondary_uom_text"/>
-                                    </span>
-                                    <span class="secondary_price_text" t-if="line.product_id.pricetag_secondary_price_value">
-                                        <t t-esc="'%0.2f' % (line.product_id.pricetag_secondary_price_value)"/> €
-                                    </span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="margin_bottom" />
                     </div>
-                </t>
+
+                    <div class="pricetag_center">
+
+                            <!-- &#160; is useful to have space and not underline css under this space -->
+                            <!-- Manufacturing Location -->
+                            <div class="product_origin" t-if="line.product_id.pricetag_origin">
+                                <span class="info_title">Manufacturing:</span>&#160;<t t-esc="line.product_id.pricetag_origin"/>
+                            </div>
+
+                            <!-- Producer -->
+                            <div class="maker_description"  t-if="line.product_id.maker_description">
+                                <span class="info_title">Producer:</span>&#160;<t t-esc="line.product_id.maker_description"/>
+                            </div>
+
+                            <!-- Feed Composition (allergens, ingredients, etc...) -->
+                            <div class="feed_composition">
+                                <t t-if="line.product_id.allergen_text">
+                                    <span class="info_title">Allergens:</span>&#160;<t t-esc="line.product_id.allergen_text"/><br/>
+                                </t>
+                                <t t-if="line.product_id.trace_allergen_text">
+                                    <span class="info_title">Traces:</span>&#160;<t t-esc="line.product_id.trace_allergen_text"/><br/>
+                                </t>
+                                <t t-if="line.product_id.ingredients">
+                                    <span class="info_title">Ingredients:</span>&#160;<span t-out="line.product_id.ingredients"/>
+                                </t>
+                            </div>
+
+                            <!-- Product Label -->
+                            <div class="product_labels">
+                                <t t-foreach="line.product_id.label_ids" t-as="label">
+                                    <img class="product_label" t-attf-src="data:image_128/*;base64,{{label.image_128}}" t-att-alt="label.name"/>
+                                </t>
+                            </div>
+
+                    </div>
+
+                    <div class="pricetag_bottom">
+
+                        <div class="pricetag_bottom_left">
+
+                            <!-- Organic Text -->
+                            <div class="organic_text">
+                                <t t-if="line.product_id.pricetag_organic_text">
+                                    <t t-esc="line.product_id.pricetag_organic_text"/><br/>
+                                </t>
+                            </div>
+
+                            <!-- Barcode -->
+                            <div class="zone_barcode">
+                                <t t-call="product_print_category_food_report.qweb_component_barcode" />
+                            </div>
+
+                            <!-- Default Code + Write date -->
+                            <div class="shop_information">
+                                <t t-esc="line.product_id.default_code" /> -
+                                <t t-esc="line.product_id.pricetag_print_date_text" />
+                            </div>
+
+                        </div>
+
+                        <div class="pricetag_bottom_right">
+                            <div class="main_price">
+                                <span class="main_price_text">
+                                    <t t-esc="'%0.2f' % (line.product_id.pricetag_main_price_value)"/> €
+                                </span>
+                                <span class="main_uom_text">
+                                    <t t-esc="line.product_id.pricetag_main_uom_text"/>
+                                </span>
+                            </div>
+
+                            <!-- Per Unit Quantity -->
+                            <div class="per_unit_quantity">
+                                <t  t-if="line.product_id.pricetag_per_unit_quantity_text">
+                                    <t t-esc="line.product_id.pricetag_per_unit_quantity_text"/>
+                                    <t t-esc="line.product_id.pricetag_per_unit_quantity_value"/>
+                                </t>
+                            </div>
+
+                            <!-- Secondary Price -->
+                            <div class="secondary_price">
+                                <span class="secondary_uom_text" t-if="line.product_id.pricetag_secondary_price_value">
+                                    <t t-esc="line.product_id.pricetag_secondary_uom_text"/>
+                                </span>
+                                <span class="secondary_price_text" t-if="line.product_id.pricetag_secondary_price_value">
+                                    <t t-esc="'%0.2f' % (line.product_id.pricetag_secondary_price_value)"/> €
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="margin_bottom" />
+                </div>
             </t>
         </t>
     </template>
