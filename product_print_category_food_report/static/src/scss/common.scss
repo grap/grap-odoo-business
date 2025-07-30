@@ -30,6 +30,7 @@
     }
     .product_origin, .maker_description, .product_labels, .organic_text {
         text-align: left;
+        text-wrap: nowrap;
     }
 
     .info_title {
