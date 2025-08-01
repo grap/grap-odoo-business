@@ -9,3 +9,5 @@ for instance, accountants can:
 - Select and install chart template on companies (``chart_template_id``)
 
 - Configure Lock Dates (``period_lock_date``, ``fiscalyear_lock_date``)
+
+- Configure Terms and Conditions (``invoice_terms``) for Sales / Invoices

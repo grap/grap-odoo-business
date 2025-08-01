@@ -71,6 +71,21 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                 </div>
 
                             </div>
+
+                            <h2>Terms and conditions</h2>
+                            <div class="row mt16 o_settings_container" name="users_setting_container_accounting">
+                                <div class="col-12 col-lg-12 o_setting_box" id="invoice_terms">
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">This is a preview of your Terms &amp; Conditions.</span>
+                                        <div class="text-muted">
+                                            Add your terms &amp; conditions at the bottom of invoices/orders/quotations
+                                        </div>
+                                        <div class="row mt8">
+                                            <field name="invoice_terms" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

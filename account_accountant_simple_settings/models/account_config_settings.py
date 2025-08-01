@@ -33,6 +33,10 @@ class AccountingConfigSettings(ResConfigSettings):
         readonly=False,
     )
 
+    invoice_terms = fields.Html(
+        related="company_id.invoice_terms",
+    )
+
     def name_get(self):
         """
         OVERWRITE Odoo original function name_get()
