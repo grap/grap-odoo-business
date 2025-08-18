@@ -28,11 +28,12 @@
                                 <div>
                                     Dear <t t-out="object.name or ''"></t>,<br/> <br/>
                                     Welcome to purchase website of <t t-out="user.company_id.name or ''"></t><br/><br/>
-                                    <b>Login:</b> An account has been created for you with the following login: <b><t t-out="object.email"></t></b><br/>
+                                    An account has been created for you with the following login:
+                                    <b>Login:</b><t t-out="object.email"></t><br/>
                                     <b>Password:</b> The one you set during your registration
                                     <br/><br/>
 
-                                    Click on the button below to pick a password and activate your account.
+                                    Click on the button below to activate your account.
                                     <div style="margin: 16px 0px 16px 0px; text-align: center;">
                                         <a t-att-href="(user.company_id.eshop_url) + 'activate_account/' + str(object.id) + '/' + (object.email)" style="display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;">
                                             <strong>Activate Account</strong>

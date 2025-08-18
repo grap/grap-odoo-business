@@ -67,7 +67,7 @@ class ProductProduct(models.Model):
         string="Rounded Quantity for eShop", required=True, default=0
     )
 
-    eshop_description = fields.Text(type="Text")
+    eshop_description = fields.Html()
 
     eshop_taxes_description = fields.Char(
         compute="_compute_eshop_taxes_description",
@@ -89,6 +89,13 @@ class ProductProduct(models.Model):
         "eshop_end_date",
     )
     def _compute_eshop_state(self):
+        self._get_eshop_state()
+
+    def _get_eshop_state(self):
+        """
+        - called by product.product in compute function
+        - called by product.template in onchange function
+        """
         for product in self:
             if not (product.eshop_category_id and product.sale_ok and product.active):
                 product.eshop_state = "unavailable"

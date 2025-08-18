@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * sale_eshop
+# 	* sale_eshop
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-18 12:39+0000\n"
-"PO-Revision-Date: 2020-09-18 12:39+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2025-08-18 13:45+0000\n"
+"PO-Revision-Date: 2025-08-18 13:45+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,59 +16,34 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/eshop_category.py:134
+#. odoo-python
+#: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
-msgid "%s / %s"
-msgstr "%s / %s"
+msgid "%(parent)s / %(name)s"
+msgstr ""
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order_line.py:52
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order_line.py:0
 #, python-format
-msgid "'%.3f' is not a valid quantity for %s, the  minimum quantity is '%.3f'. The quantity has been automatically increased in your shopping cart."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité minimale est '%.3f'. La quantité a été automatiquement augmenté dans votre panier."
+msgid ""
+"'%(qty).3f' is not a valid quantity for %(product)s, the minimum quantity is"
+" '%(min_qty).3f'. The quantity has been automatically increased in your "
+"shopping cart."
+msgstr ""
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité minimale est"
+" '%(min_qty).3f'. La quantité a été automatiquement augmenté dans votre panier."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order_line.py:72
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order_line.py:0
 #, python-format
-msgid "'%.3f' is not a valid quantity for %s, the quantity has been rounded to '%.3f'."
-msgstr "'%.3f' n'est pas une quantité valide pour %s, la quantité a été arrondi à '%.3f'."
-
-#. module: sale_eshop
-#: model:mail.template,body_html:sale_eshop.eshop_send_crendential_template
-msgid "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Hello, ${object.name}</p>\n"
-"    <p>Here is your credentials to access to the purchase website of ${object.company_id.name}:</p>\n"
-"    <p>\n"
-"        <ul>\n"
-"            <li>Web Site: ${object.company_id.eshop_url}</li>\n"
-"            <li>Login: ${object.email}</li>\n"
-"            <li>Password: ${object.eshop_password}</li>\n"
-"        </ul>\n"
-"    </p>\n"
-"    % if object.eshop_state == 'email_to_confirm':\n"
-"    Please finish your registration by clicking on this <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">activation link</a>.\n"
-"    % endif\n"
-"    <p>Have a nice day</p>\n"
-"</div>\n"
-"\n"
-"        "
-msgstr "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"<p>Bonjour, ${object.name}</p>\n"
-"<p>Vous trouverez ci-dessous vos identifiants pour accéder au site de commande en ligne de ${object.company_id.name} :</p>\n"
-"<p>\n"
-"    <ul>\n"
-"        <li>Site Web : ${object.company_id.eshop_url}</li>\n"
-"        <li>Identifiant : ${object.email}</li>\n"
-"        <li>Mot de passe : ${object.eshop_password}</li>\n"
-"    </ul>\n"
-"</p>\n"
-"% if object.eshop_state == 'email_to_confirm':\n"
-"Merci de finir votre inscription en cliquant sur ce <a href=\"${object.company_id.eshop_url}activate_account/${object.id}/${object.email}\">lien d'activation</a>.\n"
-"% endif\n"
-"<p>Bonne Journée.</p>\n"
-"</div>\n"
-"\n"
-"        "
+msgid ""
+"'%(qty).3f' is not a valid quantity for %(product)s, the quantity has been "
+"rounded to '%(rounded).3f'."
+msgstr ""
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité a été "
+" arrondi à '%(rounded).3f'."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_category_form
@@ -86,21 +61,227 @@ msgid "<span class=\"o_stat_text\">Products</span>"
 msgstr "<span class=\"o_stat_text\">Articles</span>"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/eshop_category.py:123
+#: model_terms:ir.ui.view,arch_db:sale_eshop.email_header
+msgid "<span style=\"font-size: 10px;\">Your Account</span><br/>"
+msgstr "<span style=\"font-size: 10px;\">Votre compte</span><br/>"
+
+#. module: sale_eshop
+#: model:mail.template,body_html:sale_eshop.email_lost_password
+msgid ""
+"<style>\n"
+"            .code_password {\n"
+"              font-family: monospace, 'Courier New', Courier, 'Lucida Console', Monaco;\n"
+"              font-size: 1em;\n"
+"              background-color: #f5f5f5;\n"
+"              padding: 0.2em 0.4em;\n"
+"              border-radius: 4px;\n"
+"              cursor: pointer;\n"
+"              user-select: all;\n"
+"            }\n"
+"            </style>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"            <tbody>\n"
+"                <!-- HEADER -->\n"
+"                <t t-call=\"sale_eshop.email_header\"></t>\n"
+"\n"
+"                <!-- CONTENT -->\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                <div>\n"
+"                                    Dear <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"\n"
+"                                    <b>Your password has been reset.</b>\n"
+"                                    <p>Here is a new password: <code class=\"code_password\"><t t-out=\"object.eshop_password or ''\"></t></code></p>\n"
+"\n"
+"                                    <b>Connect one first time with this password and change it on your account page.</b>\n"
+"\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"                                        <a t-att-href=\"(user.company_id.eshop_url) + 'account'\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
+"                                            <strong>Account page</strong>\n"
+"                                        </a>\n"
+"                                    </div>\n"
+"                                </div>\n"
+"                            </td></tr>\n"
+"                            <tr><td style=\"text-align:center;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                            </td></tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <!-- FOOTER -->\n"
+"                <t t-call=\"sale_eshop.email_footer\"></t>\n"
+"\n"
+"            </tbody>\n"
+"            </table>\n"
+"            </td></tr>\n"
+"            </table>\n"
+"        "
+msgstr ""
+"<style>\n"
+"            .code_password {\n"
+"              font-family: monospace, 'Courier New', Courier, 'Lucida Console', Monaco;\n"
+"              font-size: 1em;\n"
+"              background-color: #f5f5f5;\n"
+"              padding: 0.2em 0.4em;\n"
+"              border-radius: 4px;\n"
+"              cursor: pointer;\n"
+"              user-select: all;\n"
+"            }\n"
+"            </style>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"            <tbody>\n"
+"                <!-- HEADER -->\n"
+"                <t t-call=\"sale_eshop.email_header\"></t>\n"
+"\n"
+"                <!-- CONTENT -->\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                <div>\n"
+"                                    Cher·e <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"\n"
+"                                    <b>Votre mot de passe a été réinitialisé.</b>\n"
+"                                    <p>Voici le nouveau mot de passe : <code class=\"code_password\"><t t-out=\"object.eshop_password or ''\"></t></code></p>\n"
+"\n"
+"                                    <b>Connectez vous une première fois puis changez le dans la page de votre paramètre de compte.</b>\n"
+"\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"                                        <a t-att-href=\"(user.company_id.eshop_url) + 'account'\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
+"                                            <strong>Paramètres de compte</strong>\n"
+"                                        </a>\n"
+"                                    </div>\n"
+"                                </div>\n"
+"                            </td></tr>\n"
+"                            <tr><td style=\"text-align:center;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                            </td></tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <!-- FOOTER -->\n"
+"                <t t-call=\"sale_eshop.email_footer\"></t>\n"
+"\n"
+"            </tbody>\n"
+"            </table>\n"
+"            </td></tr>\n"
+"            </table>\n"
+"        "
+
+#. module: sale_eshop
+#: model:mail.template,body_html:sale_eshop.email_create_account
+msgid ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"            <tbody>\n"
+"                <!-- HEADER -->\n"
+"                <t t-call=\"sale_eshop.email_header\"></t>\n"
+"\n"
+"                <!-- CONTENT -->\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                <div>\n"
+"                                    Dear <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"                                    Welcome to purchase website of <t t-out=\"user.company_id.name or ''\"></t><br><br>\n"
+"                                    An account has been created for you with the following login:\n"
+"                                    <b>Login:</b><t t-out=\"object.email\"></t><br>\n"
+"                                    <b>Password:</b> The one you set during your registration\n"
+"                                    <br><br>\n"
+"\n"
+"                                    Click on the button below to activate your account.\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"                                        <a t-att-href=\"(user.company_id.eshop_url) + 'activate_account/' + str(object.id) + '/' + (object.email)\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
+"                                            <strong>Activate Account</strong>\n"
+"                                        </a>\n"
+"                                    </div>\n"
+"                                </div>\n"
+"                            </td></tr>\n"
+"                            <tr><td style=\"text-align:center;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                            </td></tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <!-- FOOTER -->\n"
+"                <t t-call=\"sale_eshop.email_footer\"></t>\n"
+"\n"
+"            </tbody>\n"
+"            </table>\n"
+"            </td></tr>\n"
+"            </table>\n"
+"        "
+msgstr ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"            <tbody>\n"
+"                <!-- HEADER -->\n"
+"                <t t-call=\"sale_eshop.email_header\"></t>\n"
+"\n"
+"                <!-- CONTENT -->\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                <div>\n"
+"                                    Cher·e <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"                                    Bienvenue sur la eBoutique de <t t-out=\"user.company_id.name or ''\"></t><br><br>\n"
+"                                    Votre compte a été crée avec les informations suivantes :\n"
+"                                    <b>Identifiant :</b><t t-out=\"object.email\"></t><br>\n"
+"                                    <b>Mot de passe :</b> The one you set during your registration\n"
+"                                    <br><br>\n"
+"\n"
+"                                    Cliquez sur ce bouton pour activer votre compte .\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
+"                                        <a t-att-href=\"(user.company_id.eshop_url) + 'activate_account/' + str(object.id) + '/' + (object.email)\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
+"                                            <strong>Activer votre compte</strong>\n"
+"                                        </a>\n"
+"                                    </div>\n"
+"                                </div>\n"
+"                            </td></tr>\n"
+"                            <tr><td style=\"text-align:center;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                            </td></tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <!-- FOOTER -->\n"
+"                <t t-call=\"sale_eshop.email_footer\"></t>\n"
+"\n"
+"            </tbody>\n"
+"            </table>\n"
+"            </td></tr>\n"
+"            </table>\n"
+"        "
+
+
+#. module: sale_eshop
+#. odoo-python
+#: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
 msgid "A 'normal' Category can not belongs childs categories"
 msgstr "Une catégorie 'normal' ne peut pas contenir de catégories enfant"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/eshop_category.py:120
+#. odoo-python
+#: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
 msgid "A 'view' Category can not belongs products"
 msgstr "Une catégorie 'vue' ne peut pas contenir d'articles"
 
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_eshop_category__type
-msgid "A category of the view type is a virtual category that can be used as the parent of another category to create a hierarchical structure."
-msgstr "Une catégorie de type 'vue' est une catégorie virtuelle qui peut être utilisée comme parent d'une autre catégorie, pour créer une architecture."
+msgid ""
+"A category of the view type is a virtual category that can be used as the "
+"parent of another category to create a hierarchical structure."
+msgstr ""
+"Une catégorie de type 'vue' est une catégorie virtuelle qui peut être "
+"utilisée comme parent d'une autre catégorie, pour créer une architecture."
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_register_allowed
@@ -119,12 +300,6 @@ msgid "Allow to use eShop"
 msgstr "Autoriser à utiliser la eBoutique"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_apple
-#: model:product.template,name:sale_eshop.product_apple_product_template
-msgid "Apple"
-msgstr ""
-
-#. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Apply Settings"
 msgstr "Appliquer le paramétrage"
@@ -140,20 +315,20 @@ msgid "Available Products Quantity"
 msgstr "Nombre d'articles disponibles"
 
 #. module: sale_eshop
-#: selection:product.product,eshop_state:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__product_product__eshop_state__available
 msgid "Available for Sale"
 msgstr "Disponible à la vente"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_product_search
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_search
 msgid "Available on eShop"
 msgstr "Disponible en eBoutique"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_banana
-#: model:product.template,name:sale_eshop.product_banana_product_template
-msgid "Banana"
-msgstr ""
+#: model:ir.model,name:sale_eshop.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Comptes bancaires"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
@@ -191,6 +366,11 @@ msgstr "Société"
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__complete_name
 msgid "Complete Name"
 msgstr "Nom Complet"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_consumer_mediation
+msgid "Consumer Mediator"
+msgstr "Médiateur à la consommation"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_partner
@@ -232,71 +412,26 @@ msgid "Description for the eShop"
 msgstr "Description pour la eBoutique"
 
 #. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_apple
-#: model:product.template,description_sale:sale_eshop.product_apple_product_template
-msgid "Description of Apple"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_banana
-#: model:product.template,description_sale:sale_eshop.product_banana_product_template
-msgid "Description of Banana"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_garlic
-#: model:product.template,description_sale:sale_eshop.product_garlic_product_template
-msgid "Description of Garlic"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_leek
-#: model:product.template,description_sale:sale_eshop.product_leek_product_template
-msgid "Description of Leek"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_onion
-#: model:product.template,description_sale:sale_eshop.product_onion_product_template
-msgid "Description of Onions"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_pepper
-#: model:product.template,description_sale:sale_eshop.product_pepper_product_template
-msgid "Description of Pepper"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_potato
-#: model:product.template,description_sale:sale_eshop.product_potato_product_template
-msgid "Description of Potato"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,description_sale:sale_eshop.product_strawberry
-#: model:product.template,description_sale:sale_eshop.product_strawberry_product_template
-msgid "Description of Strawberry. 250 gram container"
-msgstr ""
-
-#. module: sale_eshop
-#: selection:res.partner,eshop_state:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__res_partner__eshop_state__disabled
 msgid "Disabled"
 msgstr "Désactivé"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__display_name
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__display_name
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin__display_name
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin__display_name
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: sale_eshop
-#: selection:res.partner,eshop_state:0
-msgid "EMail To Confirm"
-msgstr "EMail à confirmer"
+#: model:ir.model.fields.selection,name:sale_eshop.selection__res_partner__eshop_state__email_to_confirm
+msgid "Email To Confirm"
+msgstr "Email à confirmer"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_wallet_enabled
+msgid "Enable Account Customer Wallet"
+msgstr "Activier les comptes client·es"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_list_view_enabled
@@ -309,7 +444,12 @@ msgid "Enable Tree View"
 msgstr "Activer la vue arbre"
 
 #. module: sale_eshop
-#: selection:res.partner,eshop_state:0
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_wallet_recharge_bank_transfer
+msgid "Enable recharging Wallet account with bank transfer"
+msgstr "Activer la recharge des comptes client·es par virement bancaire."
+
+#. module: sale_eshop
+#: model:ir.model.fields.selection,name:sale_eshop.selection__res_partner__eshop_state__enabled
 msgid "Enabled"
 msgstr "Activé"
 
@@ -319,9 +459,20 @@ msgid "End Date of Sale"
 msgstr "Date de Fin de Vente"
 
 #. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_category_id
+msgid "Eshop Category"
+msgstr "Catégorie eBoutique"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_description
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_description
 msgid "Eshop Description"
 msgstr "Description eBoutique"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_end_date
+msgid "Eshop End Date"
+msgstr "Date de fin de vente"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_fake_account
@@ -329,14 +480,50 @@ msgid "Eshop Fake Account"
 msgstr "Faux compte eBoutique"
 
 #. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_minimum_qty
+msgid "Eshop Minimum Qty"
+msgstr "Quantité minimum pour la eBoutique"
+
+#. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_mixin
 msgid "Eshop Mixin"
 msgstr "Mixin eBoutique"
 
 #. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_sale_order__eshop_note
+msgid "Eshop Note"
+msgstr "Notes"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_rounded_qty
+msgid "Eshop Rounded Qty"
+msgstr "Quantité arrondie"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_start_date
+msgid "Eshop Start Date"
+msgstr "Date de début de vente"
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_state
+msgid "Eshop State"
+msgstr "Etat dans la eBoutique"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_taxes_description
+#: model:ir.model.fields,field_description:sale_eshop.field_product_template__eshop_taxes_description
 msgid "Eshop Taxes Description"
 msgstr "Description des taxes sur la eBoutique"
+
+#. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_eshop_with_image_mixin
+msgid "Eshop With Image Mixin"
+msgstr ""
+
+#. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_eshop_category
+msgid "Eshop category"
+msgstr "Catégorie dans la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_facebook
@@ -344,15 +531,14 @@ msgid "Facebook URL"
 msgstr "URL Facebook"
 
 #. module: sale_eshop
+#: model:ir.model.fields,help:sale_eshop.field_sale_order__eshop_note
+msgid "Field set by eshop user during cart validation"
+msgstr "Champ défini par l'utilisateur·rice de la boutique en ligne lors de la validation du panier"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__form_data
 msgid "Form Data"
 msgstr "données du formulaire"
-
-#. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_garlic
-#: model:product.template,name:sale_eshop.product_garlic_product_template
-msgid "Garlic"
-msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__has_eshop
@@ -362,15 +548,23 @@ msgstr "A une eBoutique"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__id
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__id
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin__id
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin__id
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__id
 msgid "ID"
 msgstr ""
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_1920
 msgid "Image"
+msgstr ""
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_256
+msgid "Image 256"
 msgstr ""
 
 #. module: sale_eshop
@@ -407,6 +601,13 @@ msgid "Invalidation Key"
 msgstr "Clé d'invalidation"
 
 #. module: sale_eshop
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order.py:0
+#, python-format
+msgid "Invoice was not posted correctly."
+msgstr "La facture n'a pas été validée correctement."
+
+#. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_is_eshop
 msgid "Is eShop"
 msgstr "Est eBoutique"
@@ -414,8 +615,6 @@ msgstr "Est eBoutique"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category____last_update
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account____last_update
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin____last_update
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin____last_update
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
@@ -435,12 +634,6 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_leek
-#: model:product.template,name:sale_eshop.product_leek_product_template
-msgid "Leek"
-msgstr ""
-
-#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_linkedin
 msgid "LinkedIn URL"
 msgstr "URL LinkedIn"
@@ -456,9 +649,16 @@ msgid "Manager"
 msgstr "Gestionnaire"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_medium
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order.py:0
+#, python-format
+msgid "Manuel payment method can't be found."
+msgstr "Le paiement manuel n'a pas été trouvé."
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_512
 msgid "Medium-sized image"
-msgstr "Image de taille moyenne"
+msgstr ""
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_minimum_price
@@ -476,14 +676,8 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: sale_eshop
-#: selection:eshop.category,type:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__eshop_category__type__normal
 msgid "Normal"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_onion
-#: model:product.template,name:sale_eshop.product_onion_product_template
-msgid "Onion"
 msgstr ""
 
 #. module: sale_eshop
@@ -498,16 +692,14 @@ msgid "Password on eShop"
 msgstr "Mot de Passe sur la eBoutique"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_pepper
-#: model:product.template,name:sale_eshop.product_pepper_product_template
-msgid "Pepper"
-msgstr "Pepper"
+#: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_wallet_enabled
+msgid "Permits your customer to pay with their wallet."
+msgstr "Permettre les client·es de payer avec leur compte client·e"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_potato
-#: model:product.template,name:sale_eshop.product_potato_product_template
-msgid "Potato"
-msgstr "Potato"
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_register_phone_required
+msgid "Phone number is required"
+msgstr "Numéro de téléphone obligatoire"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
@@ -521,14 +713,14 @@ msgid "Pricelist Used"
 msgstr "Liste de prix utilisé"
 
 #. module: sale_eshop
-#: model:ir.model,name:sale_eshop.model_product_product
+#: model:ir.model,name:sale_eshop.model_product_template
 msgid "Product"
-msgstr "Article"
+msgstr "Produit"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_product_label
 msgid "Product Labels"
-msgstr "Labels d'articles"
+msgstr "Labels de produits"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_uom_uom
@@ -536,16 +728,9 @@ msgid "Product Unit of Measure"
 msgstr "Unité de mesure d'article"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_without_image
-#: model:product.template,name:sale_eshop.product_without_image_product_template
-msgid "Product Without Image"
-msgstr "Article sans image"
-
-#. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_disabled
-#: model:product.template,name:sale_eshop.product_disabled_product_template
-msgid "Product disabled for eshop"
-msgstr "Article désactivé pour la eBoutique"
+#: model:ir.model,name:sale_eshop.model_product_product
+msgid "Product Variant"
+msgstr "Variante d'article"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__product_ids
@@ -568,6 +753,16 @@ msgid "Provide a Tree view to navigate into the catalog."
 msgstr "Fournit une vue arbre pour naviguer dans le catalogue."
 
 #. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_sale_order__recovery_name
+msgid "Recovery Name"
+msgstr ""
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_registered_capital
+msgid "Registered capital"
+msgstr "Capital social"
+
+#. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_tree
 msgid "Reset and Send Credentials"
@@ -580,13 +775,13 @@ msgstr "Arrondie en Quantité sur la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_sale_order
-msgid "Sale Order"
-msgstr "Bon de commande"
+msgid "Sales Order"
+msgstr "Commande client"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_sale_order_line
 msgid "Sales Order Line"
-msgstr "Ligne de bons de commande"
+msgstr "Ligne de commande client"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__sequence
@@ -595,18 +790,19 @@ msgstr "Séquence"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_product_search
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_search
 msgid "Set On eShop"
 msgstr "Paramétré dans la eBoutique"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_image_small
-msgid "Small Image for the eShop Menu"
-msgstr "Petite image pour le menu de la eBoutique"
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_image_128
+msgid "Small Image 128 for the eShop Menu"
+msgstr ""
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_small
+#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_128
 msgid "Small-sized image"
-msgstr "Image de petite taille"
+msgstr ""
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
@@ -625,18 +821,12 @@ msgid "State on eShop"
 msgstr "Etat dans la eBoutique"
 
 #. module: sale_eshop
-#: model:product.product,name:sale_eshop.product_strawberry
-#: model:product.template,name:sale_eshop.product_strawberry_product_template
-msgid "Strawberry (250 gr)"
-msgstr ""
-
-#. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_account_tax
 msgid "Tax"
 msgstr "Taxe"
 
 #. module: sale_eshop
-#: selection:product.product,eshop_state:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__product_product__eshop_state__disabled
 msgid "Temporarily Disabled"
 msgstr "Désactivé temporairement"
 
@@ -652,43 +842,23 @@ msgid "Texts"
 msgstr "Textes"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/product_product.py:215
-#, python-format
-msgid "The Operator %s is not implemented !"
-msgstr "L'opérateur %s n'est pas implémenté !"
-
-#. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order.py:138
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
 msgid "The Shopping Cart has been successfully deleted."
 msgstr "Le panier a été supprimé avec succès."
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/sale_order.py:143
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
-msgid "The line has been successfully deleted"
+msgid "The line has been successfully deleted."
 msgstr "La ligne a été supprimée avec succès"
 
 #. module: sale_eshop
-#: code:addons/sale_eshop/models/product_product.py:271
-#, python-format
-msgid "This arg %s is not implemented !"
-msgstr "L'argument %s n'est pas implémenté !"
-
-#. module: sale_eshop
-#: selection:product.product,eshop_state:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__product_product__eshop_state__unavailable
 msgid "Unavailable for Sale"
 msgstr "Indisponible à la vente"
-
-#. module: sale_eshop
-#: model:product.product,uom_name:sale_eshop.product_disabled
-#: model:product.product,uom_name:sale_eshop.product_strawberry
-#: model:product.product,uom_name:sale_eshop.product_without_image
-#: model:product.template,uom_name:sale_eshop.product_disabled_product_template
-#: model:product.template,uom_name:sale_eshop.product_strawberry_product_template
-#: model:product.template,uom_name:sale_eshop.product_without_image_product_template
-msgid "Unit(s)"
-msgstr "Unité(s)"
 
 #. module: sale_eshop
 #: model:res.groups,name:sale_eshop.res_groups_eshop_user
@@ -701,9 +871,21 @@ msgid "VAT Included"
 msgstr ""
 
 #. module: sale_eshop
-#: selection:eshop.category,type:0
+#: model:ir.model.fields.selection,name:sale_eshop.selection__eshop_category__type__view
 msgid "View"
-msgstr "Vue"
+msgstr ""
+
+#. module: sale_eshop
+#. odoo-python
+#: code:addons/sale_eshop/models/sale_order.py:0
+#, python-format
+msgid "Wallet journal can't be found. Check settings."
+msgstr "Le journal de Compte client·e n'a pas été trouvé. Vérifier les paramètres."
+
+#. module: sale_eshop
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_hosting
+msgid "Web hosting informations"
+msgstr "Informations sur l'hébergement"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_wizard_res_company_eshop_setting
@@ -712,7 +894,7 @@ msgstr "Assistant de paramétrage eBoutique de la société"
 
 #. module: sale_eshop
 #: model:ir.module.category,name:sale_eshop.module_category_eshop
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_product_form
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
 msgid "eShop"
 msgstr "eBoutique"
@@ -728,16 +910,15 @@ msgid "eShop - Enabled"
 msgstr "eBoutique - Activé"
 
 #. module: sale_eshop
-#: model:mail.template,subject:sale_eshop.eshop_send_crendential_template
-msgid "eShop Access"
-msgstr "Accès à la eBoutique"
+#: model:mail.template,name:sale_eshop.email_create_account
+msgid "eShop Access Email"
+msgstr "Email d'accès à la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_eshop_category
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_category
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_category_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_category_search
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_category_tree
 msgid "eShop Categories"
 msgstr "Catégories eBoutique"
 
@@ -755,9 +936,23 @@ msgstr "Clients eBoutique"
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_eshop_fake_account
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_fake_account
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_fake_account_tree
 msgid "eShop Fake Accounts"
 msgstr "Faux comptes eBoutique"
+
+#. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
+msgid "eShop Legal Notices"
+msgstr "Mentions légales"
+
+#. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
+msgid "eShop Option"
+msgstr "Option eBoutique"
+
+#. module: sale_eshop
+#: model:mail.template,name:sale_eshop.email_lost_password
+msgid "eShop Reset password"
+msgstr "Réinitialiser le mot de passe"
 
 #. module: sale_eshop
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop
@@ -779,63 +974,14 @@ msgstr "Paramétrages eBoutique"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_state
 msgid "eShop State"
-msgstr ""
+msgstr "État de la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_title
 msgid "eShop Title"
-msgstr ""
+msgstr "Nom de la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_url
 msgid "eShop URL"
 msgstr "URL eBoutique"
-
-#. module: sale_eshop
-#: model:ir.model,name:sale_eshop.model_eshop_category
-msgid "eshop.category"
-msgstr ""
-
-#. module: sale_eshop
-#: model:ir.model,name:sale_eshop.model_eshop_with_image_mixin
-msgid "eshop.with.image.mixin"
-msgstr ""
-
-#. module: sale_eshop
-#: model:product.product,uom_name:sale_eshop.product_apple
-#: model:product.product,uom_name:sale_eshop.product_banana
-#: model:product.product,uom_name:sale_eshop.product_garlic
-#: model:product.product,uom_name:sale_eshop.product_leek
-#: model:product.product,uom_name:sale_eshop.product_onion
-#: model:product.product,uom_name:sale_eshop.product_pepper
-#: model:product.product,uom_name:sale_eshop.product_potato
-#: model:product.product,weight_uom_name:sale_eshop.product_apple
-#: model:product.product,weight_uom_name:sale_eshop.product_banana
-#: model:product.product,weight_uom_name:sale_eshop.product_disabled
-#: model:product.product,weight_uom_name:sale_eshop.product_garlic
-#: model:product.product,weight_uom_name:sale_eshop.product_leek
-#: model:product.product,weight_uom_name:sale_eshop.product_onion
-#: model:product.product,weight_uom_name:sale_eshop.product_pepper
-#: model:product.product,weight_uom_name:sale_eshop.product_potato
-#: model:product.product,weight_uom_name:sale_eshop.product_strawberry
-#: model:product.product,weight_uom_name:sale_eshop.product_without_image
-#: model:product.template,uom_name:sale_eshop.product_apple_product_template
-#: model:product.template,uom_name:sale_eshop.product_banana_product_template
-#: model:product.template,uom_name:sale_eshop.product_garlic_product_template
-#: model:product.template,uom_name:sale_eshop.product_leek_product_template
-#: model:product.template,uom_name:sale_eshop.product_onion_product_template
-#: model:product.template,uom_name:sale_eshop.product_pepper_product_template
-#: model:product.template,uom_name:sale_eshop.product_potato_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_apple_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_banana_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_disabled_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_garlic_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_leek_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_onion_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_pepper_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_potato_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_strawberry_product_template
-#: model:product.template,weight_uom_name:sale_eshop.product_without_image_product_template
-msgid "kg"
-msgstr ""
-

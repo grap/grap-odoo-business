@@ -6,6 +6,7 @@ from . import eshop_category
 from . import eshop_fake_account
 from . import product_label
 from . import product_product
+from . import product_template
 from . import uom_uom
 from . import res_partner
 from . import res_partner_bank

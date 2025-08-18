@@ -17,6 +17,7 @@
         "l10n_fr_department",
         "product_standard_margin",
         "queue_job",
+        "product_compute_template_field_from_variant_helper",
         # GRAP
         "product_label",
         "product_maker",
@@ -40,7 +41,7 @@
         "views/menu.xml",
         "views/view_eshop_category.xml",
         "views/view_eshop_fake_account.xml",
-        "views/view_product_product.xml",
+        "views/view_product.xml",
         "views/view_uom_uom.xml",
         "views/view_res_company.xml",
         "views/view_res_partner.xml",
