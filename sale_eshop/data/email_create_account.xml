@@ -28,7 +28,7 @@
                                 <div>
                                     Dear <t t-out="object.name or ''"></t>,<br/> <br/>
                                     Welcome to purchase website of <t t-out="user.company_id.name or ''"></t><br/><br/>
-                                    An account has been created for you with the following login:
+                                    An account has been created for you with the following login:<br/>
                                     <b>Login:</b><t t-out="object.email"></t><br/>
                                     <b>Password:</b> The one you set during your registration
                                     <br/><br/>
