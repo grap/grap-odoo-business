@@ -6,7 +6,7 @@ import os
 import random
 import string
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.tools import config
 
 
@@ -70,7 +70,7 @@ class ResPartner(models.Model):
             subject += "New password"
         else:
             template = self.env.ref("sale_eshop.email_create_account")
-            subject += "Your eShop access"
+            subject += _("Your eShop access")
         for partner in self:
             template.send_mail(
                 res_id=partner.id,

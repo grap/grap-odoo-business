@@ -893,6 +893,13 @@ msgid "Wizard Company Eshop Setting"
 msgstr "Assistant de paramétrage eBoutique de la société"
 
 #. module: sale_eshop
+#. odoo-python
+#: code:addons/sale_eshop/models/res_partner.py:0
+#, python-format
+msgid "Your eShop access"
+msgstr "Votre accès à la eBoutique"
+
+#. module: sale_eshop
 #: model:ir.module.category,name:sale_eshop.module_category_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
