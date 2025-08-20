@@ -29,10 +29,21 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
         " all the dates by the delay.",
     )
 
+    recurrence = fields.Integer(
+        default=1,
+        help="The wizard will duplicate the selected moments the specified number"
+        " of times on this recurrence.",
+    )
+
     @api.constrains("day_delay")
     def _check_day_delay(self):
         if self.day_delay <= 0:
             raise ValidationError(_("Delay should be strictly positive."))
+
+    @api.constrains("recurrence")
+    def _check_recurrence(self):
+        if self.recurrence <= 0:
+            raise ValidationError(_("Recurrence should be strictly positive."))
 
     # Defaults Section
     @api.model
@@ -52,18 +63,25 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
 
         # Create New Moments
         new_moments = []
-        for old_moment in self.moment_ids:
-            new_moment = SaleRecoveryMoment.create(
-                self._prepare_moment_vals(old_moment)
-            )
+        base_moments = self.moment_ids
 
-            new_moments.append(new_moment)
+        i = 0
+        for i in range(self.recurrence):
+            generated = []
+            for old_moment in base_moments:
+                new_moment = SaleRecoveryMoment.create(
+                    self._prepare_moment_vals(old_moment)
+                )
+                generated.append(new_moment)
+            new_moments.extend(generated)
+            base_moments = generated
+            i += 1
 
         action_data = self.env.ref(
             "sale_recovery_moment.action_sale_recovery_moment"
         ).read()[0]
         action_data["display_name"] = _("Duplicated Recovery Moments")
-        if len(self.moment_ids) == 1:
+        if len(new_moments) == 1:
             view = self.env.ref("sale_recovery_moment.view_sale_recovery_moment_form")
             action_data["views"] = [(view.id, "form")]
             action_data["res_id"] = new_moments[0].id

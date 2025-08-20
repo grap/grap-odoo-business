@@ -23,6 +23,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_sale_recovery_moment_tree" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
+             <header>
+                    <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments"/>
+            </header>
+
             <tree
                     decoration-muted="state=='finished_recovery'"
                     decoration-info="state == 'futur'"
@@ -34,13 +38,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="description"/>
                 <field name="state"/>
                 <field name="order_qty" string="S.O. Qty"/>
-                <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
-                <field name="valid_order_qty" string="V.S.O. Qty"/>
                 <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
                 <field name="picking_qty" string="D.O. Qty" />
                 <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" />
-                <field name="valid_picking_qty" string="V.D.O. Qty"/>
-                <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
             </tree>
         </field>
     </record>
@@ -50,8 +50,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <calendar date_start="min_recovery_date" date_stop="max_recovery_date"
                 event_open_popup="True" quick_add="False"
-                color="group_id" mode="week">
-                <field name="place_id"/>
+                color="place_id" mode="week">
+                <field name="place_id" filters="1"/>
                 <field name="quota_description"/>
             </calendar>
         </field>

@@ -126,6 +126,24 @@ class SaleRecoveryMoment(models.Model):
         compute="_compute_state", search="_search_state", selection=_STATE_SELECTION
     )
 
+    # Action view
+    def action_sale_recovery_moment_wizard_duplicate(self):
+        return {
+            "name": _("Duplicate moments"),
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "sale.recovery.moment.wizard.duplicate",
+            "views": [
+                [
+                    self.env.ref(
+                        "sale_recovery_moment.view_sale_recovery_moment_wizard_duplicate_form"
+                    ).id,
+                    "form",
+                ]
+            ],
+            "target": "new",
+        }
+
     # Defaults Section
     @api.model
     def _default_company_id(self):
@@ -277,24 +295,24 @@ class SaleRecoveryMoment(models.Model):
         else:
             lst = operand
         if "futur" in lst:
-            expression.OR([domain, [("min_sale_date", ">", now)]])
+            domain = expression.OR([domain, [("min_sale_date", ">", now)]])
         if "pending_sale" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [domain, [("min_sale_date", "<", now), ("max_sale_date", ">", now)]]
             )
         if "finished_sale" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [domain, [("max_sale_date", "<", now), ("min_recovery_date", ">", now)]]
             )
         if "pending_recovery" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [
                     domain,
                     [("min_recovery_date", "<", now), ("max_recovery_date", ">", now)],
                 ]
             )
         if "finished_recovery" in lst:
-            expression.OR([domain, [("max_recovery_date", "<", now)]])
+            domain = expression.OR([domain, [("max_recovery_date", "<", now)]])
         return domain
 
     # Constraint Section
