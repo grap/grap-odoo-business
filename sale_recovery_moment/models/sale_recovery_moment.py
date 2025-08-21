@@ -326,3 +326,18 @@ class SaleRecoveryMoment(models.Model):
                         " Date of Recovery."
                     )
                 )
+
+    # Onchange functions
+    @api.onchange("min_recovery_date")
+    def _onchange_recovery_date(self):
+        """Move max recovery date relatively with changes on min recovery date"""
+        for moment in self:
+            gap = moment._origin.max_recovery_date - moment._origin.min_recovery_date
+            moment.max_recovery_date = moment.min_recovery_date + gap
+
+    @api.onchange("min_sale_date")
+    def _onchange_sale_date(self):
+        """Move max sale date relatively with changes on min sale date"""
+        for moment in self:
+            gap = moment._origin.max_sale_date - moment._origin.min_sale_date
+            moment.max_sale_date = moment.min_sale_date + gap

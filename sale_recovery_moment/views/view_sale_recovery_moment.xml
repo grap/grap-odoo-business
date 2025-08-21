@@ -121,6 +121,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
                     <div class="my-4">
                         <h4>
+                            <i class="fa fa-map-pin" aria-hidden="true"></i>
+                            Recovery moment
+                        </h4>
+                            <span class="me-2">Customer could get their order between</span>
+                            <field name="min_recovery_date" nolabel="1" class="me-2"/>
+                            <span class="me-2">and</span>
+                            <field name="max_recovery_date" nolabel="1"/>
+                    </div>
+
+                    <div class="my-4">
+                        <h4>
                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                             Customer Orders
                         </h4>
@@ -132,17 +143,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                           Modify this dates in recovery moment group : <field name="group_id" />
 
                         </div>
-                    </div>
-
-                    <div class="my-4">
-                        <h4>
-                            <i class="fa fa-map-pin" aria-hidden="true"></i>
-                            Recovery moment
-                        </h4>
-                            <span class="me-2">Customer could get their order between</span>
-                            <field name="min_recovery_date" nolabel="1" class="me-2"/>
-                            <span class="me-2">and</span>
-                            <field name="max_recovery_date" nolabel="1"/>
                     </div>
 
 
