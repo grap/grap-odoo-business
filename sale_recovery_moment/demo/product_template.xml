@@ -6,10 +6,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-    <record id="product_shipping_cost" model="product.product">
+    <record id="product_shipping_cost" model="product.template">
         <field name="name">Shipping Cost</field>
         <field name="type">service</field>
-        <field name="lst_price" eval="1.5"/>
+        <field name="list_price" eval="1.5"/>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
         <field name="sale_ok" eval="True"/>

@@ -126,6 +126,15 @@ class SaleRecoveryMoment(models.Model):
         compute="_compute_state", search="_search_state", selection=_STATE_SELECTION
     )
 
+    limited_partners_ids = fields.Many2many(
+        comodel_name="res.partner",
+    )
+
+    is_limited = fields.Boolean(
+        compute="_compute_is_limited",
+        store=True,
+    )
+
     # Action view
     def action_sale_recovery_moment_wizard_duplicate(self):
         return {
@@ -284,6 +293,13 @@ class SaleRecoveryMoment(models.Model):
                 )
             )
 
+    @api.depends("limited_partners_ids")
+    def _compute_is_limited(self):
+        for recovery_moment in self:
+            recovery_moment.is_limited = (
+                True if len(recovery_moment.limited_partners_ids) != 0 else False
+            )
+
     # Search Functions Section
     def _search_state(self, operator, operand):
         domain = []
@@ -331,13 +347,17 @@ class SaleRecoveryMoment(models.Model):
     @api.onchange("min_recovery_date")
     def _onchange_recovery_date(self):
         """Move max recovery date relatively with changes on min recovery date"""
-        for moment in self:
+        for moment in self.filtered(
+            lambda x: x._origin.min_recovery_date and x._origin.max_recovery_date
+        ):
             gap = moment._origin.max_recovery_date - moment._origin.min_recovery_date
             moment.max_recovery_date = moment.min_recovery_date + gap
 
     @api.onchange("min_sale_date")
     def _onchange_sale_date(self):
         """Move max sale date relatively with changes on min sale date"""
-        for moment in self:
+        for moment in self.filtered(
+            lambda x: x._origin.min_sale_date and x._origin.max_sale_date
+        ):
             gap = moment._origin.max_sale_date - moment._origin.min_sale_date
             moment.max_sale_date = moment.min_sale_date + gap

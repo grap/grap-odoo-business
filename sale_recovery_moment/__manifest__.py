@@ -13,6 +13,7 @@
     "depends": [
         # Odoo
         "sale_stock",
+        "sale_management",
         # OCA
         "stock_picking_report_summary",
     ],
@@ -32,7 +33,7 @@
         "reports/report_print_picking_summary_template.xml",
     ],
     "demo": [
-        "demo/product_product.xml",
+        "demo/product_template.xml",
         "demo/sale_recovery_place.xml",
         "demo/sale_recovery_moment_group.xml",
         "demo/sale_recovery_moment.xml",
