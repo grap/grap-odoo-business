@@ -7,6 +7,8 @@
 
 <!-- /!\ do not modify above this line -->
 
+
+
 # Set of Odoo modules that meet the business needs of GRAP
 
 This repository contains Odoo modules developped by the company GRAP that meet the business needs of GRAP.
