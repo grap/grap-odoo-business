@@ -1,13 +1,7 @@
 # Unmerged OCA modules
 git+https://github.com/OCA/product-attributes@refs/pull/1840/head#subdirectory=setup/product_compute_template_field_from_variant_helper
-git+https://github.com/OCA/manufacture@refs/pull/1227/head#subdirectory=setup/mrp_bom_product_price_margin
-git+https://github.com/OCA/manufacture@refs/pull/1255/head#subdirectory=setup/mrp_product_characterisation
 
 # Placeholder for future PRs 1
-git+https://github.com/OCA/account-invoicing@refs/pull/1840/head#subdirectory=setup/account_invoice_triple_discount
-git+https://github.com/OCA/account-invoicing@refs/pull/1840/head#subdirectory=setup/account_invoice_supplierinfo_update
-git+https://github.com/OCA/account-invoicing@refs/pull/1840/head#subdirectory=setup/account_invoice_supplierinfo_update_discount
-git+https://github.com/OCA/account-invoicing@refs/pull/1840/head#subdirectory=setup/account_invoice_supplierinfo_update_triple_discount
 
 # Placeholder for future PRs 2
 
