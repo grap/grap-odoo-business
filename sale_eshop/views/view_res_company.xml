@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_res_company_form" model="ir.ui.view">
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="eShop">
+                    <group string="eShop Sale Setting">
+                        <field name="has_eshop"/>
+                        <field name="eshop_url"/>
+                        <field name="eshop_title"/>
+                        <field name="eshop_manage_recovery_moment"/>
+                        <field name="eshop_minimum_price"/>
+                        <field name="eshop_pricelist_id"/>
+                        <field name="eshop_vat_included"/>
+                        <newline/>
+                        <field name="eshop_invalidation_key"/>
+                    </group>
+                    <group string="eShop Legal Notices">
+                        <field name="eshop_hosting"/>
+                        <field name="eshop_registered_capital"/>
+                        <field name="eshop_consumer_mediation"/>
+                    </group>
+                    <group string="eShop Option">
+                        <field name="eshop_register_allowed" />
+                        <field name="eshop_register_phone_required" />
+                        <field name="eshop_list_view_enabled" />
+                        <field name="eshop_catalog_view_enabled" />
+                        <field name="eshop_wallet_enabled" />
+                        <field name="eshop_wallet_recharge_bank_transfer" />
+                    </group>
+                    <group string="Images and Texts">
+                        <field name="eshop_image_128" widget="image" img_height="50" img_width="50"/>
+                        <field name="eshop_home_text"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

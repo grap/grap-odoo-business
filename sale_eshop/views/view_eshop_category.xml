@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="action_eshop_category" model="ir.actions.act_window">
+        <field name="name">eShop Categories</field>
+        <field name="res_model">eshop.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_eshop_category_search" model="ir.ui.view">
+        <field name="model">eshop.category</field>
+        <field name="arch" type="xml">
+            <search string="eShop Categories">
+                <field name="name"/>
+                <field name="parent_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_eshop_category_tree" model="ir.ui.view">
+        <field name="model">eshop.category</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="type == 'view'"
+                decoration-muted="available_product_qty == 0">
+                <field name="sequence" widget="handle"/>
+                <field name="complete_name"/>
+                <field name="child_qty"/>
+                <field name="product_qty"/>
+                <field name="available_product_qty"/>
+                <field name="type" invisible="1"/>
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eshop_category_form" model="ir.ui.view">
+        <field name="model">eshop.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- Buttons -->
+                    <div class="oe_button_box" name="button_box">
+                        <button type="action" class="oe_stat_button"
+                            icon="fa-list-ol"
+                            name="%(product.product_normal_action)d"
+                            attrs="{'invisible': [('type', '=', 'view')]}" context="{'search_default_eshop_category_id': active_id,'default_eshop_category_id': active_id, 'search_default_filter_eshop_available': 1}">
+
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="available_product_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Available Products</span>
+                            </div>
+
+                        </button>
+
+                        <button type="action" class="oe_stat_button"
+                            icon="fa-list-ol"
+                            name="%(product.product_normal_action)d"
+                            attrs="{'invisible': [('type', '=', 'view')]}" context="{'search_default_eshop_category_id': active_id,'default_eshop_category_id': active_id,
+                            }">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="product_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Products</span>
+                            </div>
+                        </button>
+
+                        <button type="action" class="oe_stat_button"
+                            icon="fa-list-ul"
+                            name="%(sale_eshop.action_eshop_category)d"
+                            attrs="{'invisible': [('type', '=', 'normal')]}" context="{'search_default_parent_id': active_id,'default_parent_id': active_id}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="child_qty" widget="statinfo" nolabel="1"/></span>
+                                <span class="o_stat_text">Categories</span>
+                            </div>
+                        </button>
+
+                    </div>
+
+                    <!-- Form -->
+                    <field name="image_512" widget="image" class="oe_avatar" readonly="False"/>
+
+                    <div class="oe_title">
+                        <label for="name" string="Category name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" placeholder="e.g. Ground coffee"/>
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="parent_id"/>
+                            <field name="type"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_eshop_category"
+        parent="menu_eshop" sequence="1"
+        action="action_eshop_category"/>
+
+</odoo>

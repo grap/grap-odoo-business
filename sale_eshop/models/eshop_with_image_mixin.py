@@ -1,0 +1,64 @@
+# Copyright (C) 2014-Today GRAP (http://www.grap.coop)
+# @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+import hashlib
+from datetime import datetime
+
+from odoo import api, fields, models
+
+
+class EshopWithImageMixin(models.AbstractModel):
+    _name = "eshop.with.image.mixin"
+    _inherit = "eshop.mixin"
+    _description = "Eshop With Image Mixin"
+
+    _eshop_image_fields = []
+
+    image_write_date = fields.Datetime(
+        readonly=True, default=lambda s: s._default_image_write_date()
+    )
+
+    image_write_date_hash = fields.Char(
+        compute="_compute_image_write_date_hash", store=True
+    )
+
+    # Compute Section
+    @api.depends("image_write_date")
+    def _compute_image_write_date_hash(self):
+        for item in self:
+            item.image_write_date_hash = hashlib.sha1(
+                str(item.image_write_date).encode("utf8")
+            ).hexdigest()
+
+    # Default Part
+    @api.model
+    def _default_image_write_date(self):
+        return self._get_image_write_date()
+
+    @api.model
+    def _get_image_write_date(self):
+        return datetime.now()
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        now = self._get_image_write_date()
+        for vals in vals_list:
+            vals.update({"image_write_date": now})
+        return super().create(vals_list)
+
+    def _write_eshop_invalidate(self, vals):
+        if list(set(self._eshop_image_fields) & set(vals.keys())):
+            vals.update({"image_write_date": self._get_image_write_date()})
+        return super()._write_eshop_invalidate(vals)
+
+    # Overload section
+    @api.model
+    def _get_eshop_fields(self):
+        fields = super()._get_eshop_fields()
+        for field in fields:
+            if "image" in field:
+                fields.remove(field)
+        fields.append("image_write_date")
+        fields.append("image_write_date_hash")
+        return fields

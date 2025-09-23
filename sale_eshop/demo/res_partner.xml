@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+
+    <record id="demo_eshop_user" model="res.partner" >
+        <field name="name">Demo Eshop User</field>
+        <field name="email">demo@eshop.org</field>
+        <field name="tz">Europe/Brussels</field>
+        <field name="eshop_state">enabled</field>
+        <field name="eshop_password">demo</field>
+        <field name="zip">69001</field>
+        <field name="city">Lyon</field>
+        <field name="street">14 rue Lemot</field>
+        <field name="street2">Digicode, 1111X</field>
+        <field name="mobile">+33 6 01 23 45 67</field>
+
+    </record>
+
+</odoo>

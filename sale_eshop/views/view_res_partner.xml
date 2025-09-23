@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
+    @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <record id="view_res_partner_search" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="customer" position="before">
+                <filter string="eShop - Enabled" name="eshop_setup" domain="[('eshop_state', '=', 'enabled')]"/>
+                <filter string="eShop - Email to Confirm" name="eshop_waiting" domain="[('eshop_state', '=', 'email_to_confirm')]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_res_partner_tree" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree
+                    decoration-muted="eshop_state == 'disabled'"
+                    decoration-info="eshop_state == 'email_to_confirm'">
+                <field name="name" readonly="1"/>
+                <field name="email"/>
+                <field name="eshop_state"/>
+                <field name="eshop_password" password="True"/>
+                <button name="button_generate_send_credentials"
+                    string="Reset and Send Credentials" icon="fa-paper-plane"
+                    type="object"/>
+                <button name="button_disable_eshop"
+                    string="Prevent to use eShop" icon="fa-times-circle"
+                    type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
+                <button name="button_enable_eshop"
+                    string="Allow to use eShop" icon="fa-check-circle"
+                    type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
+                    ('eshop_password', '=', False)]}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="eShop Sale">
+                    <group name="eShop">
+                        <group>
+                            <field name="eshop_password" password="True"/>
+                            <field name="eshop_state" />
+                        </group>
+                        <group>
+                            <button name="button_generate_send_credentials"
+                                string="Reset and Send Credentials" class="btn fa fa-paper-plane"
+                                type="object"/>
+                            <button name="button_disable_eshop"
+                                string="Prevent to use eShop" class="btn fa fa-times-circle"
+                                type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
+                            <button name="button_enable_eshop"
+                                string="Allow to use eShop" class="btn fa fa-check-circle"
+                                type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
+                                ('eshop_password', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="action_res_partner" model="ir.actions.act_window">
+        <field name="name">eShop Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_eshop_setup':1}</field>
+        <field name="view_id" ref="view_res_partner_tree" />
+    </record>
+
+    <menuitem id="menu_res_partner"
+        parent="menu_eshop" sequence="20"
+        groups="sale_eshop.res_groups_eshop_user"
+        action="action_res_partner"/>
+
+</odoo>
