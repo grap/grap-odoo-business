@@ -1,0 +1,34 @@
+.pricetag_01, .pricetag_02 {
+    border: 1px solid grey;
+
+    .main_price {
+
+        .main_price_text {
+            font-weight: bold;
+        }
+
+        .main_uom_text {
+            font-size: 12px;
+        }
+    }
+
+    /* Image height is bigger than
+        zone height : permits to crop barcode
+        to make it smaller */
+    .zone_barcode {
+        height: 0.5cm;
+
+        .wrap_barcode_image{
+            height: 1.5cm;
+        }
+        .wrap_barcode_image > img{
+            height: 1.5cm;
+        }
+    }
+
+    .shop_information {
+        font-size: 5px;
+        height: 0.2cm;
+    }
+
+}

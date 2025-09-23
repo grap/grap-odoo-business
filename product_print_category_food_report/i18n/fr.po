@@ -1,0 +1,412 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_print_category_food_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-23 14:16+0000\n"
+"PO-Revision-Date: 2024-07-23 14:16+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:155
+#: code:addons/product_print_category_food_report/models/product_product.py:184
+#: code:addons/product_print_category_food_report/models/product_product.py:190
+#, python-format
+msgid " per kilo"
+msgstr "le kilo"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:194
+#, python-format
+msgid " per liter"
+msgstr "le litre"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:182
+#, python-format
+msgid " per piece"
+msgstr "la pièce"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:217
+#, python-format
+msgid "%.0f gr"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:227
+#, python-format
+msgid "%.0f mL"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:224
+#, python-format
+msgid "%.3f L"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:214
+#, python-format
+msgid "%.3f kg"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Allergens:</span>"
+msgstr "<span class=\"info_title\">Allergènes :</span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Ingredients:</span>"
+msgstr "<span class=\"info_title\">Ingrédients :</span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
+msgid "<span class=\"info_title\">Manufacturing: </span>"
+msgstr "<span class=\"info_title\">Fabrication : </span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Manufacturing:</span>"
+msgstr "<span class=\"info_title\">Fabrication :</span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_B
+msgid "<span class=\"info_title\">Producer: </span>"
+msgstr "<span class=\"info_title\">Fabricant·e : </span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Producer:</span>"
+msgstr "<span class=\"info_title\">Fabricant·e :</span>"
+
+#. module: product_print_category_food_report
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
+msgid "<span class=\"info_title\">Traces:</span>"
+msgstr "<span class=\"info_title\">Traces :</span>"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__allergen_text
+msgid "Allergen Text"
+msgstr "Texte sur les allergènes"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_uom_uom__pricetag_available
+msgid "Available for Pricetag"
+msgstr "Disponible pour les étiquettes"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_30
+msgid "Bulk - 54x105mm Applymage (N°30)"
+msgstr "Vrac - 54x105mm Applymage (N°30)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_33
+msgid "Bulk - 68x68mm (N°33)"
+msgstr "Vrac - 68x68mm (N°33)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_31
+msgid "Bulk - 96x88mm (N°31)"
+msgstr "Vrac - 96x88mm (N°31)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_32
+msgid "Bulk - 96x96mm (N°32)"
+msgstr "Vrac - 96x96mm (N°32)"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_available
+msgid "Check this box if you want to use this Unit of Mesure to display price per this unit on pricetags."
+msgstr "cochez cette case si vous souhaitez utiliser cette unité de mesure pour afficher le prix à l'unité, sur l'étiquette."
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__color
+msgid "Color"
+msgstr "Couleur"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,help:product_print_category_food_report.field_product_pricetag_type__color
+#: model:ir.model.fields,help:product_print_category_food_report.field_res_company__pricetag_color
+msgid "Color of the Pricetag by default. Format #RRGGBB"
+msgstr "Couleur de l'étiquette par défaut. Format #RRGGBB"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_20
+msgid "Counter - 97x58mm (N°20)"
+msgstr "Comptoir - 97x58mm (N°20)"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_res_country_group
+msgid "Country Group"
+msgstr "Groupe de pays"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:81
+#, python-format
+msgid "EU"
+msgstr "UE"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:85
+#, python-format
+msgid "EU / No EU"
+msgstr "UE / Non UE"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:79
+#, python-format
+msgid "France"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__id
+msgid "ID"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_uid
+msgid "Last Updated by"
+msgstr "Mis à jour par"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_date
+msgid "Last Updated on"
+msgstr "Mis à jour le"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:57
+#, python-format
+msgid "Modified on %s"
+msgstr "Modifié le %s"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:221
+#, python-format
+msgid "Net Volume"
+msgstr "Volume Net"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:211
+#, python-format
+msgid "Net Weight"
+msgstr "Poids Net"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:83
+#, python-format
+msgid "No EU"
+msgstr "Non UE"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:100
+#, python-format
+msgid "Not From Organic Farming. "
+msgstr "Non issus de l'agriculture biologique. "
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:96
+#, python-format
+msgid "Organic Product, certified by %s. "
+msgstr "Produit biologique, certifié par %s. "
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:86
+#, python-format
+msgid "Origin of Ingredients: %s. "
+msgstr "Origine des ingrédients: %s. "
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_origin
+msgid "Origin on pricetag"
+msgstr "Origine - rendu final sur l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_color
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_res_company__pricetag_color
+msgid "Pricetag Color"
+msgstr "Couleur de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_main_price_value
+msgid "Pricetag Main Price Value"
+msgstr "Valeur du prix principal de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_main_uom_text
+msgid "Pricetag Main Uom Text"
+msgstr "Texte de l'UdM principal de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_uom_uom__pricetag_name
+msgid "Pricetag Name"
+msgstr "Nom de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_organic_text
+msgid "Pricetag Organic Text"
+msgstr "Texte bio sur l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_per_unit_quantity_text
+msgid "Pricetag Per Unit Quantity Text"
+msgstr "Texte de la quantité par unité de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_per_unit_quantity_value
+msgid "Pricetag Per Unit Quantity Value"
+msgstr "Valeur de la quantité par unité de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_print_date_text
+msgid "Pricetag Print Date Text"
+msgstr "Texte de la date d'impression"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_secondary_price_value
+msgid "Pricetag Secondary Price Value"
+msgstr "Valeur du prix secondaire de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_secondary_uom_text
+msgid "Pricetag Secondary Uom Text"
+msgstr "Texte de l'unité secondaire de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_type_id
+msgid "Pricetag Type"
+msgstr "Type d'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.actions.act_window,name:product_print_category_food_report.action_product_pricetag_type
+#: model:ir.ui.menu,name:product_print_category_food_report.menu_product_pricetag_type
+msgid "Pricetag Types"
+msgstr "Types d'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_uom_id
+msgid "Pricetag UoM"
+msgstr "UdM de l'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_product_pricetag_type
+msgid "Product Pricetag Types"
+msgstr "Types d'étiquette"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_uom_uom
+msgid "Product Unit of Measure"
+msgstr "Unité de mesure d'article"
+
+#. module: product_print_category_food_report
+#: model:ir.actions.act_window,name:product_print_category_food_report.action_product_pricetag_type_2_product_product
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_ids
+#: model_terms:ir.ui.view,arch_db:product_print_category_food_report.view_product_pricetag_type_form
+msgid "Products"
+msgstr "Articles"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_qty
+msgid "Products Quantity"
+msgstr ""
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,help:product_print_category_food_report.field_product_product__pricetag_uom_id
+msgid "Set an alternative Unit of Mesure if you want to display the price on your pricetags relative to this Unit."
+msgstr "Définir une unité de mesure alternative si vous voulez afficher un prix relatif à cette unité sur votre étiquette"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_10
+msgid "Shelf Rectangular - 79x32mm (N°10)"
+msgstr "Etagère - 79x32mm Rectangulaire (N°10)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_11
+msgid "Shelf Rectangular Litle Margin - 79x37mm (N°11)"
+msgstr "Etagère - 79x37mm Rectangulaire marge petite (N°11)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_12
+msgid "Shelf Rectangular Middle Margin - 79x44mm (N°12)"
+msgstr "Etagère - 79x43mm Rectangulaire marge moyenne (N°12)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_13
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_40
+msgid "Shelf Small Size - Packaged Products (no label, no barcode) - 61x24 (N°40)"
+msgstr "Etagère - 61x24mm Produits emballés (pas de label, pas de code-barre) (N°40)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_01
+msgid "Shelf Square Middle - 42x38mm (N°01)"
+msgstr "Etagère - 42x38mm carré moyenne (N°01)"
+
+#. module: product_print_category_food_report
+#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_02
+msgid "Shelf Square Small - 32x32mm (N°02)"
+msgstr "Etagère - 32x32mm carré petite (N°02)"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__trace_allergen_text
+msgid "Trace Allergen Text"
+msgstr "Texte de traces d'allergènes"
+
+#. module: product_print_category_food_report
+#: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_name
+msgid "Used alternatively to the name field, on labels for displaying secondary unit prices"
+msgstr "Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher les prix aux unités secondaires"
+
+#. module: product_print_category_food_report
+#: code:addons/product_print_category_food_report/models/product_product.py:149
+#, python-format
+msgid "for %s"
+msgstr "Pour %s"
