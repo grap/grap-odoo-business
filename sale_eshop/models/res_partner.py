@@ -59,10 +59,10 @@ class ResPartner(models.Model):
 
     def button_generate_send_credentials(self):
         self._generate_credentials()
-        self.send_credentials()
+        self.send_credentials(email_step="reset_password")
 
     # Eshop API - Section
-    # email_step = 'login' | 'reset_password'
+    # email_step = 'create_account' | 'reset_password'
     def send_credentials(self, email_step):
         subject = str("[" + self.env.company.name + "] ")
         if email_step == "reset_password":
@@ -80,6 +80,7 @@ class ResPartner(models.Model):
                     "email_to": partner.email,
                 },
             )
+            partner.write({"eshop_state": "email_to_confirm"})
         return True
 
     @api.model
