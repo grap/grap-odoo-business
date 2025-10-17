@@ -66,7 +66,7 @@ msgid ""
 "                            Limited persons"
 msgstr ""
 "<i class=\"fa fa-person\" aria-hidden=\"true\"/>\n"
-"                            Restreint à ses client·es"
+"                            Restreint à certain·es client·es"
 
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
@@ -83,7 +83,7 @@ msgid ""
 "<span class=\"me-2\">Choose customers and only them would be able to see and"
 " pick this recovery:</span>"
 msgstr ""
-"<span class=\"me-2\">Choisir les clieny·es qui seront les seul·es à pouvoir voir et"
+"<span class=\"me-2\">Choisir les client·es qui seront les seul·es à pouvoir voir et"
 " choisir ce moment:</span>"
 
 #. module: sale_recovery_moment
@@ -265,7 +265,7 @@ msgstr "Dupliquer des Moments de récupération"
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 #, python-format
 msgid "Duplicate moments"
-msgstr "Moments dupliqués"
+msgstr "Dupliquer ces moments"
 
 #. module: sale_recovery_moment
 #. odoo-python
@@ -791,4 +791,4 @@ msgstr "Code postal"
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
 msgid "e.g : Exceptional recovery moment with beers testing"
-msgstr "ex: Dégustation de bières exceptionnel pendant le créneau"
+msgstr "ex: Dégustation exceptionnelle de bières pendant le créneau"
