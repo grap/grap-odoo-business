@@ -14,7 +14,7 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
 
     # Columns Section
     moment_ids = fields.Many2many(
-        string="Moment to Duplicate",
+        string="Moments to duplicate",
         comodel_name="sale.recovery.moment",
         relation="sale_recovery_moment_wizard_duplicate_moment_rel",
         required=True,
@@ -77,9 +77,9 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
             base_moments = generated
             i += 1
 
-        action_data = self.env.ref(
+        action_data = self.env["ir.actions.act_window"]._for_xml_id(
             "sale_recovery_moment.action_sale_recovery_moment"
-        ).read()[0]
+        )
         action_data["display_name"] = _("Duplicated Recovery Moments")
         if len(new_moments) == 1:
             view = self.env.ref("sale_recovery_moment.view_sale_recovery_moment_form")

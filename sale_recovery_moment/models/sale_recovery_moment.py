@@ -184,14 +184,12 @@ class SaleRecoveryMoment(models.Model):
             place = recovery_places.browse(vals["place_id"])
             place_name = place.name
 
-            min_date = vals["min_recovery_date"]
-
             if "group_id" in vals:
                 group = recovery_groups.browse(vals["group_id"])
                 group_name = group.name
-                vals["name"] = f"{code} - {group_name} - {place_name} - {min_date}"
+                vals["name"] = f"{code} - {group_name} - {place_name}"
             else:
-                vals["name"] = f"{code} - {place_name} - {min_date}"
+                vals["name"] = f"{code} - {place_name}"
 
         return super().create(vals_list)
 
