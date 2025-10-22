@@ -13,6 +13,7 @@ class HrEmployee(models.Model):
         string="Street (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -20,6 +21,7 @@ class HrEmployee(models.Model):
         string="Street 2 (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -28,6 +30,7 @@ class HrEmployee(models.Model):
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
         store=True,
+        groups="hr.group_hr_user",
     )
 
     address_home_state_id = fields.Many2one(
@@ -37,6 +40,7 @@ class HrEmployee(models.Model):
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
         domain="[('country_id', '=?', country_id)]",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -44,6 +48,7 @@ class HrEmployee(models.Model):
         string="ZIP (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -53,6 +58,7 @@ class HrEmployee(models.Model):
         ondelete="restrict",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -60,6 +66,7 @@ class HrEmployee(models.Model):
         string="Phone (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -67,6 +74,7 @@ class HrEmployee(models.Model):
         string="Mobile (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
@@ -74,6 +82,7 @@ class HrEmployee(models.Model):
         string="Email (Private)",
         compute="_compute_address_home_details",
         inverse="_inverse_address_home_details",
+        groups="hr.group_hr_user",
         store=True,
     )
 
