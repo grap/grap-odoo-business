@@ -14,7 +14,11 @@ class SaleOrder(models.Model):
     eshop_note = fields.Char(help="Field set by eshop user during cart validation")
 
     recovery_name = fields.Char(
-        compute="_compute_recovery_name",
+        compute="_compute_recovery_infos",
+    )
+
+    recovery_extra_cost = fields.Float(
+        compute="_compute_recovery_infos",
     )
 
     # Inherit Section
@@ -26,13 +30,20 @@ class SaleOrder(models.Model):
         "amount_tax",
         "recovery_moment_id",
         "recovery_name",
+        "recovery_extra_cost",
     ]
 
     # Compute Section
-    @api.depends("recovery_moment_id")
-    def _compute_recovery_name(self):
+    @api.depends("recovery_moment_id", "recovery_moment_id.place_id")
+    def _compute_recovery_infos(self):
         for sale in self:
-            sale.recovery_name = sale.recovery_moment_id.place_id.name
+            _place = sale.recovery_moment_id.place_id
+            sale.recovery_name = _place.name
+            sale.recovery_extra_cost = (
+                _place.shipping_product_id.product_variant_ids[0].list_price
+                if _place.shipping_product_id
+                else 0
+            )
 
     # API Section
     @api.model
