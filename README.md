@@ -45,7 +45,7 @@ addon | version | maintainers | summary
 [recurring_consignment](recurring_consignment/) | 16.0.2.3.0 |  | Sale - Handle Recurring Consignments
 [recurring_consignment_pos](recurring_consignment_pos/) | 16.0.1.1.0 |  | Glue module for Recurring Consignment and PoS modules
 [sale_eshop](sale_eshop/) | 16.0.1.1.0 |  | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 16.0.1.1.0 |  | Manage Recovery Moments and Places for Sale Order
+[sale_recovery_moment](sale_recovery_moment/) | 16.0.2.0.0 |  | Manage Recovery Moments and Places for Sale Order
 
 [//]: # (end addons)
 
