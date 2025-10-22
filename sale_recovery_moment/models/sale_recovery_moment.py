@@ -126,6 +126,33 @@ class SaleRecoveryMoment(models.Model):
         compute="_compute_state", search="_search_state", selection=_STATE_SELECTION
     )
 
+    limited_partners_ids = fields.Many2many(
+        comodel_name="res.partner",
+    )
+
+    is_limited = fields.Boolean(
+        compute="_compute_is_limited",
+        store=True,
+    )
+
+    # Action view
+    def action_sale_recovery_moment_wizard_duplicate(self):
+        return {
+            "name": _("Duplicate moments"),
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "res_model": "sale.recovery.moment.wizard.duplicate",
+            "views": [
+                [
+                    self.env.ref(
+                        "sale_recovery_moment.view_sale_recovery_moment_wizard_duplicate_form"
+                    ).id,
+                    "form",
+                ]
+            ],
+            "target": "new",
+        }
+
     # Defaults Section
     @api.model
     def _default_company_id(self):
@@ -157,14 +184,12 @@ class SaleRecoveryMoment(models.Model):
             place = recovery_places.browse(vals["place_id"])
             place_name = place.name
 
-            min_date = vals["min_recovery_date"]
-
             if "group_id" in vals:
                 group = recovery_groups.browse(vals["group_id"])
                 group_name = group.name
-                vals["name"] = f"{code} - {group_name} - {place_name} - {min_date}"
+                vals["name"] = f"{code} - {group_name} - {place_name}"
             else:
-                vals["name"] = f"{code} - {place_name} - {min_date}"
+                vals["name"] = f"{code} - {place_name}"
 
         return super().create(vals_list)
 
@@ -266,6 +291,13 @@ class SaleRecoveryMoment(models.Model):
                 )
             )
 
+    @api.depends("limited_partners_ids")
+    def _compute_is_limited(self):
+        for recovery_moment in self:
+            recovery_moment.is_limited = (
+                True if len(recovery_moment.limited_partners_ids) != 0 else False
+            )
+
     # Search Functions Section
     def _search_state(self, operator, operand):
         domain = []
@@ -277,24 +309,24 @@ class SaleRecoveryMoment(models.Model):
         else:
             lst = operand
         if "futur" in lst:
-            expression.OR([domain, [("min_sale_date", ">", now)]])
+            domain = expression.OR([domain, [("min_sale_date", ">", now)]])
         if "pending_sale" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [domain, [("min_sale_date", "<", now), ("max_sale_date", ">", now)]]
             )
         if "finished_sale" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [domain, [("max_sale_date", "<", now), ("min_recovery_date", ">", now)]]
             )
         if "pending_recovery" in lst:
-            expression.OR(
+            domain = expression.OR(
                 [
                     domain,
                     [("min_recovery_date", "<", now), ("max_recovery_date", ">", now)],
                 ]
             )
         if "finished_recovery" in lst:
-            expression.OR([domain, [("max_recovery_date", "<", now)]])
+            domain = expression.OR([domain, [("max_recovery_date", "<", now)]])
         return domain
 
     # Constraint Section
@@ -308,3 +340,22 @@ class SaleRecoveryMoment(models.Model):
                         " Date of Recovery."
                     )
                 )
+
+    # Onchange functions
+    @api.onchange("min_recovery_date")
+    def _onchange_recovery_date(self):
+        """Move max recovery date relatively with changes on min recovery date"""
+        for moment in self.filtered(
+            lambda x: x._origin.min_recovery_date and x._origin.max_recovery_date
+        ):
+            gap = moment._origin.max_recovery_date - moment._origin.min_recovery_date
+            moment.max_recovery_date = moment.min_recovery_date + gap
+
+    @api.onchange("min_sale_date")
+    def _onchange_sale_date(self):
+        """Move max sale date relatively with changes on min sale date"""
+        for moment in self.filtered(
+            lambda x: x._origin.min_sale_date and x._origin.max_sale_date
+        ):
+            gap = moment._origin.max_sale_date - moment._origin.min_sale_date
+            moment.max_sale_date = moment.min_sale_date + gap

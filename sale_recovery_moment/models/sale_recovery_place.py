@@ -39,7 +39,7 @@ class SaleRecoveryPlace(models.Model):
 
     shipping_product_id = fields.Many2one(
         string="Shipping Cost Product",
-        comodel_name="product.product",
+        comodel_name="product.template",
         domain="[('type', '=', 'service')]",
         help="If set, this product will"
         " be added automatically to the sale order, when it is confirmed,"

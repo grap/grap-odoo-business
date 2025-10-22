@@ -40,8 +40,11 @@ class SaleOrder(models.Model):
         # Add shipping product if the recovery moment
         # is related to a place with shipping product
         SaleOrderLine = self.env["sale.order.line"]
-        for order in self.filtered(lambda x: x.recovery_moment_id.place_id):
-            product = order.recovery_moment_id.place_id.shipping_product_id
+        for order in self.filtered(
+            lambda x: x.recovery_moment_id.place_id.shipping_product_id
+        ):
+            _place = order.recovery_moment_id.place_id
+            product = _place.shipping_product_id.product_variant_ids[0]
             if product:
                 SaleOrderLine.create(
                     {

@@ -21,6 +21,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 </group>
                 <group>
                     <field name="day_delay"/>
+                    <field name="recurrence"/>
                 </group>
                 <footer>
                     <button name="duplicate_moments" string="Duplicate" type="object" class="btn-primary"/>

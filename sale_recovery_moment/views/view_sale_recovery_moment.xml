@@ -6,20 +6,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <!-- SEARCH VIEW -->
     <record id="view_sale_recovery_moment_search" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
-                <filter name="futur" string="Futur" domain="[('state','=','futur')]"/>
-                <filter name="pending" string="Pending" domain="[('state','in',('pending_sale', 'finished_sale', 'pending_recovery'))]"/>
+                <filter name="futur" string="Futur Sale" domain="[('state','=','futur')]"/>
+                <filter name="pending" string="Pending Sale or Pending Recovery" domain="[('state','in',('pending_sale', 'finished_sale', 'pending_recovery'))]"/>
                 <filter name="not_finished" string="Not Finished"
                     domain="[('state','in', ('futur', 'pending_sale', 'finished_sale', 'pending_recovery'))]"/>
                 <filter name="finished" string="Finished" domain="[('state','=','finished_recovery')]"/>
+                <separator/>
+                <filter name="is_limited" string="Limited to some users" domain="[('is_limited','=',True)]"/>
             </search>
         </field>
     </record>
 
+    <!-- TREE VIEW -->
     <record id="view_sale_recovery_moment_tree" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
@@ -27,6 +31,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     decoration-muted="state=='finished_recovery'"
                     decoration-info="state == 'futur'"
                     decoration-success="state in ('finished_sale', 'pending_recovery')">
+            <header>
+                <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments"/>
+            </header>
                 <field name="place_id"/>
                 <field name="max_order_qty" string="Max"/>
                 <field name="min_recovery_date"/>
@@ -34,29 +41,28 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <field name="description"/>
                 <field name="state"/>
                 <field name="order_qty" string="S.O. Qty"/>
-                <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" />
-                <field name="valid_order_qty" string="V.S.O. Qty"/>
                 <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
                 <field name="picking_qty" string="D.O. Qty" />
                 <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" />
-                <field name="valid_picking_qty" string="V.D.O. Qty"/>
-                <button name="%(action_recovery_moment_2_stock_picking_valid)d" icon="fa-truck" string="See" type="action"/>
             </tree>
         </field>
     </record>
 
+    <!-- CALENDAR VIEW -->
     <record id="view_sale_recovery_moment_calendar" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
             <calendar date_start="min_recovery_date" date_stop="max_recovery_date"
                 event_open_popup="True" quick_add="False"
-                color="group_id" mode="week">
-                <field name="place_id"/>
+                color="place_id" mode="week">
+                <field name="place_id" filters="1"/>
                 <field name="quota_description"/>
+                <field name="limited_partners_ids"/>
             </calendar>
         </field>
     </record>
 
+    <!-- FORM VIEW -->
     <record id="view_sale_recovery_moment_form" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
@@ -113,12 +119,25 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <group>
                             <field name="place_id"/>
                             <field name="max_order_qty" widget="numeric_step" options="{'step': 1, 'min': 0}"/>
-                            <field name="description" placeholder="e.g : Exceptional recovery moment : taste and buy amazing beers !"/>
+                            <field name="description" placeholder="e.g : Exceptional recovery moment with beers testing"/>
                             <field name="group_id"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
 
+                    <!-- Orders schedule -->
+                    <div class="my-4">
+                        <h4>
+                            <i class="fa fa-map-pin" aria-hidden="true"></i>
+                            Recovery moment
+                        </h4>
+                            <span class="me-2">Customer could get their order between</span>
+                            <field name="min_recovery_date" nolabel="1" class="me-2"/>
+                            <span class="me-2">and</span>
+                            <field name="max_recovery_date" nolabel="1"/>
+                    </div>
+
+                    <!-- Recovery schedule -->
                     <div class="my-4">
                         <h4>
                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
@@ -134,15 +153,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         </div>
                     </div>
 
+                    <!-- Recovery limitations -->
                     <div class="my-4">
                         <h4>
-                            <i class="fa fa-map-pin" aria-hidden="true"></i>
-                            Recovery moment
+                            <i class="fa fa-person" aria-hidden="true"></i>
+                            Limited persons
                         </h4>
-                            <span class="me-2">Customer could get their order between</span>
-                            <field name="min_recovery_date" nolabel="1" class="me-2"/>
-                            <span class="me-2">and</span>
-                            <field name="max_recovery_date" nolabel="1"/>
+                        <span class="me-2">Choose customers and only them would be able to see and pick this recovery:</span>
+                        <field name="limited_partners_ids" widget="many2many_tags"/>
                     </div>
 
 
