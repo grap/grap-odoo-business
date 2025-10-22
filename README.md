@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_accountant_simple_settings](account_accountant_simple_settings/) | 16.0.1.1.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow accountants to make some simple accounting configuration without having administration rights.
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.1 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.0 |  | Barcodes Rule Per Company
 [hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.1 |  | Prevent creation of many home partners at employee level.
 [mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.1 |  | Handle Product allergens on MRP BoM and BoM Lines.
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.1.0 |  | Adds menus to help manage price between BoMs and Products.
