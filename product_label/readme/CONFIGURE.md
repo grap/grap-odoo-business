@@ -1,10 +1,10 @@
 - Go to "Setting \> Technical \> Parameters \> Labels"
 
-![](../static/description/product_label_kanban.png)
+![product_label_kanban](../static/description/product_label_kanban.png)
 
 - Edit or create a Label
 
-![](../static/description/product_label_form.png)
+![product_label_form](../static/description/product_label_form.png)
 
 If "Display on Reports" is checked, label will be displayed on reports
 by other glue modules, available in the same repository:

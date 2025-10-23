@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ============================
 Accountant - Simple Settings
 ============================
@@ -13,7 +17,7 @@ Accountant - Simple Settings
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,19 +26,18 @@ Accountant - Simple Settings
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of Accounting Odoo module, to
-add the possibility to set hidden accounting parameters.
+This module extends the functionality of Accounting Odoo module, to add
+the possibility to set hidden accounting parameters.
 
-It allows accountant **without administration settings right** to configure some
-accounting things.
+It allows accountant **without administration settings right** to
+configure some accounting things.
 
 for instance, accountants can:
 
 - Select and install chart template on companies (``chart_template_id``)
-
 - Configure Lock Dates (``period_lock_date``, ``fiscalyear_lock_date``)
-
-- Configure Terms and Conditions (``invoice_terms``) for Sales / Invoices
+- Configure Terms and Conditions (``invoice_terms``) for Sales /
+  Invoices
 
 **Table of contents**
 
@@ -44,18 +47,21 @@ for instance, accountants can:
 Usage
 =====
 
-* Go to Invoicing > Accounting Settings
+- Go to Invoicing > Accounting Settings
+- Configure your accounting settings
 
-* Configure your accounting settings
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/account_accountant_simple_settings/static/description/account_config_settings_form.png
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/account_accountant_simple_settings/static/description/account_config_settings_form.png
 
 Development
 ===========
 
-This module adds to accountant users:
-- new write access on ``res.company`` model, to be able to write on all the company related fields.
-- new read access on ``ir.module.module`` model, to prevent error in the execution of ``res.config.settings`` ``create()`` core function.
+This module adds to accountant users: - new write access on
+``res.company`` model, to be able to write on all the company related
+fields. - new read access on ``ir.module.module`` model, to prevent
+error in the execution of ``res.config.settings`` ``create()`` core
+function.
 
 Bug Tracker
 ===========
@@ -71,17 +77,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain

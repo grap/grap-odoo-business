@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =================================================
 Product - Food Certification Informations - Stock
 =================================================
@@ -13,7 +17,7 @@ Product - Food Certification Informations - Stock
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,16 +26,20 @@ Product - Food Certification Informations - Stock
 
 |badge1| |badge2| |badge3|
 
-This module is a glue module, auto installed when ``product_food_certification`` and ``account`` are installed.
+This module is a glue module, auto installed when
+``product_food_certification`` and ``account`` are installed.
 
-It adds a new column on invoice report, to mention if products are organic.
+It adds a new column on invoice report, to mention if products are
+organic.
 
-It also add a new text that specify which organization are certifying the products.
+It also add a new text that specify which organization are certifying
+the products.
 
 This information is required by law.
 
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food_certification_stock/static/description/report_stock_picking.png
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food_certification_stock/static/description/report_stock_picking.png
 
 **Table of contents**
 
@@ -52,17 +60,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/product_food_certification_stock>`_ project on GitHub.
 

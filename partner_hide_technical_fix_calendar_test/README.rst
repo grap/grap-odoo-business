@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ===============================================
 Partner - Hide Partners - Test for Calendar Fix
 ===============================================
@@ -13,7 +17,7 @@ Partner - Hide Partners - Test for Calendar Fix
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,7 +26,8 @@ Partner - Hide Partners - Test for Calendar Fix
 
 |badge1| |badge2| |badge3|
 
-this is a test module for the module ``partner_hide_technical_fix_calendar``.
+this is a test module for the module
+``partner_hide_technical_fix_calendar``.
 
 **Table of contents**
 
@@ -43,17 +48,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/partner_hide_technical_fix_calendar_test>`_ project on GitHub.
 

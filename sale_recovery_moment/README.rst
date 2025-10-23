@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =======================
 Sale - Recovery Moments
 =======================
@@ -13,7 +17,7 @@ Sale - Recovery Moments
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,8 +26,8 @@ Sale - Recovery Moments
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of sale module to provide extra models
-to handle sales with organized by the saler in a calendar.
+This module extends the functionality of sale module to provide extra
+models to handle sales with organized by the saler in a calendar.
 
 **Table of contents**
 
@@ -33,39 +37,45 @@ to handle sales with organized by the saler in a calendar.
 Configuration
 =============
 
-* A ``sale.recovery.place`` is a place where the customer can recover his
-  order.
+- A ``sale.recovery.place`` is a place where the customer can recover
+  his order.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_place_tree.png
+|image1|
 
 Note:
 
-If you set a shipping product on your recovery place, it will be added to
-the sale order, when confirming it.
+If you set a shipping product on your recovery place, it will be added
+to the sale order, when confirming it.
 
-* A ``sale.recovery.moment`` is a moment during the customers have the
-  possibility to recover their sales; A recovery moment is described by a min
-  date and a max date for the recovery and a place where the sale orders is
-  available.
+- A ``sale.recovery.moment`` is a moment during the customers have the
+  possibility to recover their sales; A recovery moment is described by
+  a min date and a max date for the recovery and a place where the sale
+  orders is available.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_moment_calendar.png
+|image2|
 
-* A ``sale.recovery.moment.group`` is a group of Recovery Moments with a
+- A ``sale.recovery.moment.group`` is a group of Recovery Moments with a
   start date and a end date of sale.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_moment_group_form.png
+|image3|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_place_tree.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_moment_calendar.png
+.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_recovery_moment/static/description/sale_recovery_moment_group_form.png
 
 Usage
 =====
 
-The picking created can be reordered by Prepare Categories if you install
-the extra OCA module mass_sorting.
+The picking created can be reordered by Prepare Categories if you
+install the extra OCA module mass_sorting.
 
 Known issues / Roadmap
 ======================
 
-* This module displays some totals of Sale Orders; This amount will be wrong in a multicurrencies context for the instance.
-* Could be great to make this module working with the `` delivery_dropoff_site`` / ``delivery-carrier`` OCA module.
+- This module displays some totals of Sale Orders; This amount will be
+  wrong in a multicurrencies context for the instance.
+- Could be great to make this module working with the
+  ``delivery_dropoff_site`` / ``delivery-carrier`` OCA module.
 
 Bug Tracker
 ===========
@@ -81,17 +91,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/sale_recovery_moment>`_ project on GitHub.
 

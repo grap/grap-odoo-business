@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ========================
 MRP BoM Product Allergen
 ========================
@@ -13,7 +17,7 @@ MRP BoM Product Allergen
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,10 +26,12 @@ MRP BoM Product Allergen
 
 |badge1| |badge2| |badge3|
 
-Handle Allergens on MRP BoM and BoM Lines.
-Allergens is computed from Product and Components Allergens.
+Handle Allergens on MRP BoM and BoM Lines. Allergens is computed from
+Product and Components Allergens.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/mrp_bom_product_allergen/static/description/mrp_bom_allergens.jpeg
+|image1|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/mrp_bom_product_allergen/static/description/mrp_bom_allergens.jpeg
 
 **Table of contents**
 
@@ -46,17 +52,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Quentin Dupont (quentin.dupont@grap.coop)
+- Quentin Dupont (quentin.dupont@grap.coop)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/mrp_bom_product_allergen>`_ project on GitHub.
 

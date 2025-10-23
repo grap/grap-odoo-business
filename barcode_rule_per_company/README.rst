@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =========================
 Barcodes Rule Per Company
 =========================
@@ -13,7 +17,7 @@ Barcodes Rule Per Company
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,16 +26,17 @@ Barcodes Rule Per Company
 
 |badge1| |badge2| |badge3|
 
-This module extend Odoo functionnalities, regarding multi companies features,
-for the Barcodes module.
+This module extend Odoo functionnalities, regarding multi companies
+features, for the Barcodes module.
 
-* It adds company field on  ``barcode.rule`` model with according ``ir.rule``
-  and add the field on the related views.
+- It adds company field on ``barcode.rule`` model with according
+  ``ir.rule`` and add the field on the related views.
 
-This module can be interested in multi company context, if barcode generator module
-are installed.
+This module can be interested in multi company context, if barcode
+generator module are installed.
 
-Note: when created via UI, the default company of the new ``barcode.rule`` is the current company.
+Note: when created via UI, the default company of the new
+``barcode.rule`` is the current company.
 
 **Table of contents**
 
@@ -52,17 +57,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/barcode_rule_per_company>`_ project on GitHub.
 

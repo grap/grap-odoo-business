@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================================
 Recurring Consignment - Point of Sale
 =====================================
@@ -13,7 +17,7 @@ Recurring Consignment - Point of Sale
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -25,11 +29,12 @@ Recurring Consignment - Point of Sale
 This module is a glue module between ``recurring_consignement`` module
 and ``Point Of Sale`` module.
 
-* Remove the consignors from the list of the customers in the Point Of Sale.
-
-* Add a button in a account invoice form view to see pos.order.lines that generated commission.
-
-* It will prevent to change consignor on a product, once the product has been saled in the PoS.
+- Remove the consignors from the list of the customers in the Point Of
+  Sale.
+- Add a button in a account invoice form view to see pos.order.lines
+  that generated commission.
+- It will prevent to change consignor on a product, once the product has
+  been saled in the PoS.
 
 **Table of contents**
 
@@ -50,18 +55,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Julien WESTE
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Julien WESTE
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/recurring_consignment_pos>`_ project on GitHub.
 

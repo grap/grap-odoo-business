@@ -1,1 +1,0 @@
-this is a test module for the module ``partner_hide_technical_fix_calendar``.

@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==================================
 Product print category food report
 ==================================
@@ -13,7 +17,7 @@ Product print category food report
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,69 +26,80 @@ Product print category food report
 
 |badge1| |badge2| |badge3|
 
-This module extends product_print_category by adding nice reports food related.
-At the moment, we create five different pricetag reports.
+This module extends product_print_category by adding nice reports food
+related. At the moment, we create five different pricetag reports.
 
 Specifications :
 
-- We add a ``pricetag_type`` which permits to assign a color for the pricetags.
-
-- We can choose a second unity of measure in order to display the price with a more appropriate unity (for example for very expensive products)
-
-- Thanks to ``product_food`` module, ingredients, allergens are displayed in bulk reports
-
-- Thanks to ``product_label`` and ``product_origin`` modules, we also display labels and production origin
-
-- Thanks to ``product_food_certification`` extra text can be displayed, depending if the company is certified, if an organic label is selected, if the
-  product is sold by kilogram, etc...
+- We add a ``pricetag_type`` which permits to assign a color for the
+  pricetags.
+- We can choose a second unity of measure in order to display the price
+  with a more appropriate unity (for example for very expensive
+  products)
+- Thanks to ``product_food`` module, ingredients, allergens are
+  displayed in bulk reports
+- Thanks to ``product_label`` and ``product_origin`` modules, we also
+  display labels and production origin
+- Thanks to ``product_food_certification`` extra text can be displayed,
+  depending if the company is certified, if an organic label is
+  selected, if the product is sold by kilogram, etc...
 
 Here is what's look like the reports :
 
 Pricetag n°01
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_01.png
+|image1|
 
 Pricetag n°02
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_02.png
+|image2|
 
 Pricetag n°10
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_10.png
+|image3|
 
 Pricetag n°11
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_11.png
-
+|image4|
 
 Pricetag n°12
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_12.png
+|image5|
 
 Pricetag n°20
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_20.png
+|image6|
 
 Pricetag n°30
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_30.png
+|image7|
 
 Pricetag n°31
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_31.png
+|image8|
 
 Pricetag n°32
-~~~~~~~~~~~~~
+-------------
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_32.png
+|image9|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_01.png
+.. |image2| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_02.png
+.. |image3| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_10.png
+.. |image4| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_11.png
+.. |image5| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_12.png
+.. |image6| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_20.png
+.. |image7| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_30.png
+.. |image8| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_31.png
+.. |image9| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_print_category_food_report/static/description/pricetag_32.png
 
 **Table of contents**
 
@@ -105,18 +120,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL <https://twitter.com/legalsylvain>
-* Quentin DUPONT  <https://twitter.com/pondupont>
+- Sylvain LE GAL
+  <`https://twitter.com/legalsylvain\\> <https://twitter.com/legalsylvain\>>`__
+- Quentin DUPONT
+  <`https://twitter.com/pondupont\\> <https://twitter.com/pondupont\>>`__
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/product_print_category_food_report>`_ project on GitHub.
 

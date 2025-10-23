@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =================================
 Partner - Hide Companies Partners
 =================================
@@ -13,7 +17,7 @@ Partner - Hide Companies Partners
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,17 +26,18 @@ Partner - Hide Companies Partners
 
 |badge1| |badge2| |badge3|
 
-In Odoo, acompany has a partner associated.
-This feature is great to manage commun fields, but it generates a lot
-of undesired partners, and change that technical partners could have
-undesired side effect. (specially in multi company context, if a user of
-a company A, change the data of a technical partner related to the partner B).
+In Odoo, acompany has a partner associated. This feature is great to
+manage commun fields, but it generates a lot of undesired partners, and
+change that technical partners could have undesired side effect.
+(specially in multi company context, if a user of a company A, change
+the data of a technical partner related to the partner B).
 
-With this module,the companies partners will not be accessible by default.
-This will force saler / purchaser to create new partner
-(if the company is a customer or a supplier too)
+With this module,the companies partners will not be accessible by
+default. This will force saler / purchaser to create new partner (if the
+company is a customer or a supplier too)
 
-Only members of 'Administration / Access Rights' can update those partners.
+Only members of 'Administration / Access Rights' can update those
+partners.
 
 **Table of contents**
 
@@ -44,8 +49,8 @@ Development
 
 All partners associated to a company:
 
-* have a field ``is_odoo_company`` checked
-* can be search, only if ``show_odoo_company=True`` is in the context
+- have a field ``is_odoo_company`` checked
+- can be search, only if ``show_odoo_company=True`` is in the context
 
 Bug Tracker
 ===========
@@ -61,18 +66,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
-* Quentin Dupont <quentin.dupont@grap.coop>
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Quentin Dupont <quentin.dupont@grap.coop>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/partner_hide_technical_company>`_ project on GitHub.
 
