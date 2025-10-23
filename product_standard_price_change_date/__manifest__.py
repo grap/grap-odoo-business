@@ -5,7 +5,7 @@
 {
     "name": "Product Standard Price Quick Change Date",
     "summary": "Adds Date field every time Product Standard Price change.",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "GRAP - Business",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",

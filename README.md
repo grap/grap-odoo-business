@@ -21,31 +21,31 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_accountant_simple_settings](account_accountant_simple_settings/) | 16.0.1.1.0 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow accountants to make some simple accounting configuration without having administration rights.
-[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.1 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
-[barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.0 |  | Barcodes Rule Per Company
-[hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.2 |  | Prevent creation of many home partners at employee level.
-[mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.1 |  | Handle Product allergens on MRP BoM and BoM Lines.
-[mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.1.0 |  | Adds menus to help manage price between BoMs and Products.
-[partner_hide_technical_abstract](partner_hide_technical_abstract/) | 16.0.2.0.0 |  | Technical module, used to to Hide partners created when creating other items in Odoo
-[partner_hide_technical_company](partner_hide_technical_company/) | 16.0.2.0.0 |  | Hide partners created when creating companies.
-[partner_hide_technical_employee](partner_hide_technical_employee/) | 16.0.2.0.0 |  | Hide partners created when creating employees.
-[partner_hide_technical_fix_calendar](partner_hide_technical_fix_calendar/) | 16.0.2.0.0 |  | Glue module with calendar, to Hide partners created when creating elements.
-[partner_hide_technical_fix_calendar_test](partner_hide_technical_fix_calendar_test/) | 16.0.2.0.0 |  | Test module
-[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.2.0.0 |  | Hide partners created when creating users.
-[product_food](product_food/) | 16.0.1.1.0 |  | Products - Food Informations
-[product_food_certification](product_food_certification/) | 16.0.1.0.0 |  | Products - Food Certification Informations
-[product_food_certification_account](product_food_certification_account/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Account
-[product_food_certification_sale](product_food_certification_sale/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Sale
-[product_food_certification_stock](product_food_certification_stock/) | 16.0.1.0.0 |  | Product - Food Certification Informations - Stock
-[product_label](product_label/) | 16.0.2.0.2 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
-[product_label_mrp](product_label_mrp/) | 16.0.1.1.0 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Adds labels in MRP BoMs
-[product_print_category_food_report](product_print_category_food_report/) | 16.0.1.1.0 |  | Food report like pricetags
-[product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.0 |  | Adds Date field every time Product Standard Price change.
-[recurring_consignment](recurring_consignment/) | 16.0.2.3.0 |  | Sale - Handle Recurring Consignments
-[recurring_consignment_pos](recurring_consignment_pos/) | 16.0.1.1.0 |  | Glue module for Recurring Consignment and PoS modules
-[sale_eshop](sale_eshop/) | 16.0.1.2.0 |  | Allow connection to Odoo eShop Project
-[sale_recovery_moment](sale_recovery_moment/) | 16.0.2.0.0 |  | Manage Recovery Moments and Places for Sale Order
+[account_accountant_simple_settings](account_accountant_simple_settings/) | 16.0.1.1.1 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) | Allow accountants to make some simple accounting configuration without having administration rights.
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.2 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.1 |  | Barcodes Rule Per Company
+[hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.3 |  | Prevent creation of many home partners at employee level.
+[mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.2 |  | Handle Product allergens on MRP BoM and BoM Lines.
+[mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.1.1 |  | Adds menus to help manage price between BoMs and Products.
+[partner_hide_technical_abstract](partner_hide_technical_abstract/) | 16.0.2.0.1 |  | Technical module, used to to Hide partners created when creating other items in Odoo
+[partner_hide_technical_company](partner_hide_technical_company/) | 16.0.2.0.1 |  | Hide partners created when creating companies.
+[partner_hide_technical_employee](partner_hide_technical_employee/) | 16.0.2.0.1 |  | Hide partners created when creating employees.
+[partner_hide_technical_fix_calendar](partner_hide_technical_fix_calendar/) | 16.0.2.0.1 |  | Glue module with calendar, to Hide partners created when creating elements.
+[partner_hide_technical_fix_calendar_test](partner_hide_technical_fix_calendar_test/) | 16.0.2.0.1 |  | Test module
+[partner_hide_technical_user](partner_hide_technical_user/) | 16.0.2.0.1 |  | Hide partners created when creating users.
+[product_food](product_food/) | 16.0.1.1.1 |  | Products - Food Informations
+[product_food_certification](product_food_certification/) | 16.0.1.0.1 |  | Products - Food Certification Informations
+[product_food_certification_account](product_food_certification_account/) | 16.0.1.0.1 |  | Product - Food Certification Informations - Account
+[product_food_certification_sale](product_food_certification_sale/) | 16.0.1.0.1 |  | Product - Food Certification Informations - Sale
+[product_food_certification_stock](product_food_certification_stock/) | 16.0.1.0.1 |  | Product - Food Certification Informations - Stock
+[product_label](product_label/) | 16.0.2.0.3 | [![legalsylvain](https://github.com/legalsylvain.png?size=30px)](https://github.com/legalsylvain) [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Product Labels
+[product_label_mrp](product_label_mrp/) | 16.0.1.1.1 | [![quentinDupont](https://github.com/quentinDupont.png?size=30px)](https://github.com/quentinDupont) | Adds labels in MRP BoMs
+[product_print_category_food_report](product_print_category_food_report/) | 16.0.1.1.1 |  | Food report like pricetags
+[product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.1 |  | Adds Date field every time Product Standard Price change.
+[recurring_consignment](recurring_consignment/) | 16.0.2.3.1 |  | Sale - Handle Recurring Consignments
+[recurring_consignment_pos](recurring_consignment_pos/) | 16.0.1.1.1 |  | Glue module for Recurring Consignment and PoS modules
+[sale_eshop](sale_eshop/) | 16.0.1.2.1 |  | Allow connection to Odoo eShop Project
+[sale_recovery_moment](sale_recovery_moment/) | 16.0.2.0.1 |  | Manage Recovery Moments and Places for Sale Order
 
 [//]: # (end addons)
 

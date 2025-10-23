@@ -4,7 +4,7 @@
 
 {
     "name": "Barcodes Rule Per Company",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Multi Company",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",

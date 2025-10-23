@@ -6,7 +6,7 @@
     "name": "Accountant - Simple Settings",
     "summary": "Allow accountants to make some simple accounting configuration"
     " without having administration rights.",
-    "version": "16.0.1.1.0",
+    "version": "16.0.1.1.1",
     "category": "Accounting",
     "author": "GRAP",
     "maintainers": ["legalsylvain"],
