@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ============
 Sale - eShop
 ============
@@ -13,7 +17,7 @@ Sale - eShop
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -26,93 +30,93 @@ This module is the 'odoo' part of the project Odoo eShop.
 
 the 'client' part is available here : https://github.com/grap/odoo-eshop
 
-
 eShop Categories
-~~~~~~~~~~~~~~~~
+----------------
 
-Add a new model ``eshop.category`` to have the possibility to dispatch products
-for the eshop.
+Add a new model ``eshop.category`` to have the possibility to dispatch
+products for the eshop.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/eshop_category_tree.png
-   :width: 800 px
+|eshop_category_tree|
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/eshop_category_form.png
-   :width: 800 px
-
+|eshop_category_form|
 
 Customers
-~~~~~~~~~
+---------
 
 Add new fields on ``res.partner`` to handle authentication on the eshop.
 It is maid with a couple ``email`` and ``eshop_password``.
 
-
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/res_partner_form.png
-   :width: 800 px
+|res_partner_form|
 
 Products
-~~~~~~~~
+--------
 
 Add new fields on ``product.product`` that handles display on eShop.
 
-* 'eShop Category': category in the eShop
-* 'Start date' and 'End Date' to disable temporarily the sale on the eShop
-* 'Minimum Quantity', that will force user to buy at least that quantity
-* 'Rounded Quantity', that will round quantity purchased
+- 'eShop Category': category in the eShop
+- 'Start date' and 'End Date' to disable temporarily the sale on the
+  eShop
+- 'Minimum Quantity', that will force user to buy at least that quantity
+- 'Rounded Quantity', that will round quantity purchased
 
-Furthermore, it is possible to allow consumers to buy less than the minimum
-quantity, setting 'Unpack Quantity' value. In that case, a surcharge can
-be applied in the field 'Unpack Surcharge'.
+Furthermore, it is possible to allow consumers to buy less than the
+minimum quantity, setting 'Unpack Quantity' value. In that case, a
+surcharge can be applied in the field 'Unpack Surcharge'.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/product_product_form.png
-   :width: 800 px
-
+|product_product_form|
 
 Companies
-~~~~~~~~~
+---------
 
 General settings are available via company form.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/res_company_form.png
-   :width: 800 px
+|res_company_form|
 
 The important fields are :
 
-* 'has Eshop', that enable all the connexion
-* 'eShop URL'
-* 'Invalidation Cache URL', to enable invalidation cache system. (see below)
+- 'has Eshop', that enable all the connexion
+- 'eShop URL'
+- 'Invalidation Cache URL', to enable invalidation cache system. (see
+  below)
 
-Some of cosmectics fields are available in a wizard, to be change by end users.
+Some of cosmectics fields are available in a wizard, to be change by end
+users.
 
-you have to go in 'Sale' / 'Configuration' / 'eShop Sale' / 'eShop Settings'
+you have to go in 'Sale' / 'Configuration' / 'eShop Sale' / 'eShop
+Settings'
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/wizard_res_company_eshop_setting_form.png
-   :width: 800 px
+|wizard_res_company_eshop_setting_form|
 
 Other models
-~~~~~~~~~~~~
+------------
 
-Furthermore, other models like ``account.tax`` has extra fields that will
-be displayed on the eshop.
+Furthermore, other models like ``account.tax`` has extra fields that
+will be displayed on the eshop.
 
 Technical Informations
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
-* The connection from the eShop into odoo, is made with a unique user, that
-  has to be member of the group "Is eShop".
-  Then, an extra authentication is available via partners.
-
-* Some datas are cached by the eShop, to avoid useless call to odoo. So,
+- The connection from the eShop into odoo, is made with a unique user,
+  that has to be member of the group "Is eShop". Then, an extra
+  authentication is available via partners.
+- Some datas are cached by the eShop, to avoid useless call to odoo. So,
   if data changes, the cached should be invalidated. for that purpose,
-  an extra abstract model ``eshop.mixin`` is available. Models synchronized
-  with eShop should inherit of that model, and defined two values :
-
+  an extra abstract model ``eshop.mixin`` is available. Models
+  synchronized with eShop should inherit of that model, and defined two
+  values :
 
 1. ``_eshop_invalidation_type`` : ``single`` / ``multiple`` to indicate
-   if all the eShops should be invalidated, or only the one of the current
-   object
+   if all the eShops should be invalidated, or only the one of the
+   current object
 2. ``_eshop_invalidation_fields`` : the list of the fields that trigger
    invalidation
+
+.. |eshop_category_tree| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/eshop_category_tree.png
+.. |eshop_category_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/eshop_category_form.png
+.. |res_partner_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/res_partner_form.png
+.. |product_product_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/product_product_form.png
+.. |res_company_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/res_company_form.png
+.. |wizard_res_company_eshop_setting_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/sale_eshop/static/description/wizard_res_company_eshop_setting_form.png
 
 **Table of contents**
 
@@ -122,25 +126,26 @@ Technical Informations
 Installation
 ============
 
-If ``auth_admin_passkey`` is installed, and correctly set,
-the authentication in the eshop can be used with the file password,
-present in the key ``auth_admin_passkey_password``.
+If ``auth_admin_passkey`` is installed, and correctly set, the
+authentication in the eshop can be used with the file password, present
+in the key ``auth_admin_passkey_password``.
 
 Configuration
 =============
 
-You should set the following key values in the ``ir.config_parameter`` table,
-(or in the ``[ir.config_parameter]`` section of your ``odoo.cfg`` file, if you
-are using the module ``server_environmnet_ir_config_parameter``)
+You should set the following key values in the ``ir.config_parameter``
+table, (or in the ``[ir.config_parameter]`` section of your ``odoo.cfg``
+file, if you are using the module
+``server_environmnet_ir_config_parameter``)
 
 Known issues / Roadmap
 ======================
 
 - For the time being, password are not encrypted in the database, for
   the partner authentication.
-
-- Note that if you restore your database, you should name the restored database with the same name
-  as the previous one. (eventually with a suffix.)
+- Note that if you restore your database, you should name the restored
+  database with the same name as the previous one. (eventually with a
+  suffix.)
 
 Bug Tracker
 ===========
@@ -156,18 +161,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
-* Quentin DUPONT
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Quentin DUPONT
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/sale_eshop>`_ project on GitHub.
 

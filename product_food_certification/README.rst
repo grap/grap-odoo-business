@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==========================================
 Products - Food Certification Informations
 ==========================================
@@ -13,7 +17,7 @@ Products - Food Certification Informations
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,16 +26,17 @@ Products - Food Certification Informations
 
 |badge1| |badge2| |badge3|
 
-* Add a Selection field ``ingredient_origin_type`` on product model,
-  that mention if the ingredients of the product come from EU and / or not
-  from EU.
+- Add a Selection field ``ingredient_origin_type`` on product model,
+  that mention if the ingredients of the product come from EU and / or
+  not from EU.
 
-* Provides a new model ``certifier.organization``.
+- Provides a new model ``certifier.organization``.
 
-* It also adds many fiels on product models. (templates and variants)
-    * ``certifier_organization_id``
-    * ``is_uncertifiable`` for alimentary products that can not be certifiable.
-      (like products that come from the sea)
+- It also adds many fiels on product models. (templates and variants)
+
+  - ``certifier_organization_id``
+  - ``is_uncertifiable`` for alimentary products that can not be
+    certifiable. (like products that come from the sea)
 
 **Table of contents**
 
@@ -41,15 +46,19 @@ Products - Food Certification Informations
 Configuration
 =============
 
-* Go to 'Product > Configuration > Certifier Organizations' and create new items.
+- Go to 'Product > Configuration > Certifier Organizations' and create
+  new items.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food_certification/static/description/certifier_organization_form.png
+|image1|
+
+.. |image1| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food_certification/static/description/certifier_organization_form.png
 
 Known issues / Roadmap
 ======================
 
-* make the field ``ingredient_origin_type`` mandatory if the label 'Euroleaf'
-  is used and the unit of the product is weighable, in compliance with current legislation.
+- make the field ``ingredient_origin_type`` mandatory if the label
+  'Euroleaf' is used and the unit of the product is weighable, in
+  compliance with current legislation.
 
 Bug Tracker
 ===========
@@ -65,17 +74,17 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/product_food_certification>`_ project on GitHub.
 

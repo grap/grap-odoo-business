@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ==============
 Product Labels
 ==============
@@ -13,7 +17,7 @@ Product Labels
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,8 +26,8 @@ Product Labels
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of Product module to support labels
-on products.
+This module extends the functionality of Product module to support
+labels on products.
 
 **Table of contents**
 
@@ -33,25 +37,31 @@ on products.
 Configuration
 =============
 
-* Go to "Setting > Technical > Parameters > Labels"
+- Go to "Setting > Technical > Parameters > Labels"
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_label_kanban.png
+|product_label_kanban|
 
-* Edit or create a Label
+- Edit or create a Label
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_label_form.png
+|product_label_form|
 
 If "Display on Reports" is checked, label will be displayed on reports
-by other glue modules, available in the same repository: ``product_label_account``, ``product_label_sale``, ...
+by other glue modules, available in the same repository:
+``product_label_account``, ``product_label_sale``, ...
+
+.. |product_label_kanban| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_label_kanban.png
+.. |product_label_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_label_form.png
 
 Usage
 =====
 
-* Go to your product form
+- Go to your product form
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_template_form.png
+|product_template_form|
 
-* Set one or many labels and save.
+- Set one or many labels and save.
+
+.. |product_template_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_label/static/description/product_template_form.png
 
 Bug Tracker
 ===========
@@ -67,19 +77,19 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Julien WESTE
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
-* Quentin DUPONT
+- Julien WESTE
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Quentin DUPONT
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 .. |maintainer-legalsylvain| image:: https://github.com/legalsylvain.png?size=40px
     :target: https://github.com/legalsylvain

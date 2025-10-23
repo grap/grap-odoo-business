@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =====================
 Recurring Consignment
 =====================
@@ -13,7 +17,7 @@ Recurring Consignment
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -25,29 +29,28 @@ Recurring Consignment
 For more information about consigment see:
 https://en.wikipedia.org/wiki/Consignment
 
-This module manage recurring consignment: A product will allways be provided
-by the same consignor and can not be provided by another way.
+This module manage recurring consignment: A product will allways be
+provided by the same consignor and can not be provided by another way.
 
 For other implementation of consigment you could see:
 
-* [vendor_consignment_stock](https://github.com/OCA/purchase-workflow)
-
+- [vendor_consignment_stock](https://github.com/OCA/purchase-workflow)
 
 **Functionality**
 
-TODO :
-- basic user can only change location and email.
-Partner Model
+TODO : - basic user can only change location and email. Partner Model
 
-* Add a 'is_consignor' field on Partner;
+- Add a 'is_consignor' field on Partner;
 
 Product Model
 
-* Add a consignor_partner_id field (res.partner), indicating which partner
-  provide the product;
-* if consignor_partner_id is defined:
-    * The product can not have seller_ids defined;
-    * The product has a special VAT defined;
+- Add a consignor_partner_id field (res.partner), indicating which
+  partner provide the product;
+
+- if consignor_partner_id is defined:
+
+  - The product can not have seller_ids defined;
+  - The product has a special VAT defined;
 
 TODO :
 
@@ -58,9 +61,10 @@ TODO :
   il y a un stock move associé au produit.
 
 - Créer nouveau module:
-    * recurring_consignment_sale_margin
-    * recurring_consignment_invoice_margin
-    * recurring_consignment_pos_margin
+
+  - recurring_consignment_sale_margin
+  - recurring_consignment_invoice_margin
+  - recurring_consignment_pos_margin
 
 **Table of contents**
 
@@ -71,15 +75,15 @@ Known issues / Roadmap
 ======================
 
 Limitation
-~~~~~~~~~~
+----------
 
-* For the time being, the wizard to create consignors contains
-  french fiscal settings, that restrict the usage to the creation
-  of french consignors.
-
+- For the time being, the wizard to create consignors contains french
+  fiscal settings, that restrict the usage to the creation of french
+  consignors.
 
 Migration
-~~~~~~~~~
+---------
+
 - all accounts 467 should become "reconcile" = True.
 
 Bug Tracker
@@ -96,18 +100,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Julien WESTE
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Julien WESTE
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/recurring_consignment>`_ project on GitHub.
 

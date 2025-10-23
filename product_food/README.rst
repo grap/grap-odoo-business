@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ============================
 Products - Food Informations
 ============================
@@ -13,7 +17,7 @@ Products - Food Informations
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-grap%2Fgrap--odoo--business-lightgray.png?logo=github
@@ -22,21 +26,22 @@ Products - Food Informations
 
 |badge1| |badge2| |badge3|
 
-This module extends the functionality of sale module to support food features.
+This module extends the functionality of sale module to support food
+features.
 
 It provides a new model ``product.allergen``
 
 It also adds many fields on product models. (templates and variants)
 
-* ``is_alimentary``, boolean for analysis purpose.
-* ``best_before_date_day`` that mentions for how many days a product can
+- ``is_alimentary``, boolean for analysis purpose.
+- ``best_before_date_day`` that mentions for how many days a product can
   be eaten, after having packed. (for cheese, meats, etc.)
-* ``has_alcohol``, boolean to mention if the product contains alcohol.
-* ``allergen_ids`` to mention the list of allergens.
-* ``ingredients``. (free text).
+- ``has_alcohol``, boolean to mention if the product contains alcohol.
+- ``allergen_ids`` to mention the list of allergens.
+- ``ingredients``. (free text).
 
-Alls the fields are defined on ``product.product`` model and can be set also
-on ``product.template`` models, in a mono variant context.
+Alls the fields are defined on ``product.product`` model and can be set
+also on ``product.template`` models, in a mono variant context.
 
 **Table of contents**
 
@@ -46,45 +51,52 @@ on ``product.template`` models, in a mono variant context.
 Configuration
 =============
 
-* Go to 'Sale > Configuration > Allergens' and create new items.
+- Go to 'Sale > Configuration > Allergens' and create new items.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_allergen_form.png
+|product_allergen_form|
 
 Note: Module lands with "official" allergens.
 
-* Go to 'Inventory > Configuration > Product Categories' and check new fields:
-    * ``Contain Alimentary Products``
-    * ``Contain Vegan Products``
-    * ``Contain Alcohol Products``
+- Go to 'Inventory > Configuration > Product Categories' and check new
+  fields:
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_category_form.png
+  - ``Contain Alimentary Products``
+  - ``Contain Vegan Products``
+  - ``Contain Alcohol Products``
 
-* Go to 'Sale > Configuration > Product Labels' and update your labels,
+|product_category_form|
+
+- Go to 'Sale > Configuration > Product Labels' and update your labels,
   setting new field ``Is Vegan``.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_label_form.png
+|product_label_form|
+
+.. |product_allergen_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_allergen_form.png
+.. |product_category_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_category_form.png
+.. |product_label_form| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_label_form.png
 
 Usage
 =====
 
-* Go to your product variants or templates form and set the information in the following two tabs.
+- Go to your product variants or templates form and set the information
+  in the following two tabs.
 
-.. figure:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_product_alimentary_tab.png
+|product_product_alimentary_tab|
+
+.. |product_product_alimentary_tab| image:: https://raw.githubusercontent.com/grap/grap-odoo-business/16.0/product_food/static/description/product_product_alimentary_tab.png
 
 Known issues / Roadmap
 ======================
 
-* It could be great to have the possibility to manage the certification
-  document that provide certification organization with the following model
-  ``res.company.certification`` and the fields ``company_id``,
+- It could be great to have the possibility to manage the certification
+  document that provide certification organization with the following
+  model ``res.company.certification`` and the fields ``company_id``,
   ``organization_id``, ``date_start``, ``date_end``
-
-* In the same way, it could be great to have the possibility to store
+- In the same way, it could be great to have the possibility to store
   the certification document of each supplier with the following model
   ``res.partner.certification`` and the fields ``partner_id``,
   ``organization_id``, ``date_start``, ``date_end``
-
-* Make a dependency to the new module ``product_net_weight`` and update
+- Make a dependency to the new module ``product_net_weight`` and update
   algorithm + create a new module ``product_volumen_price``.
   https://github.com/OCA/product-attribute/pull/894
 
@@ -102,18 +114,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * GRAP
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Julien WESTE
-* Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Julien WESTE
+- Sylvain LE GAL (https://www.twitter.com/legalsylvain)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is part of the `grap/grap-odoo-business <https://github.com/grap/grap-odoo-business/tree/16.0/product_food>`_ project on GitHub.
 
