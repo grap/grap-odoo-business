@@ -5,7 +5,7 @@
 {
     "name": "Partner - Hide Partners - Test for Calendar Fix",
     "summary": "Test module",
-    "version": "16.0.2.0.0",
+    "version": "16.0.2.0.1",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
