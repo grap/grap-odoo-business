@@ -34,3 +34,11 @@ class ResPartner(models.Model):
                 "write_user_mode", False
             )
         return result
+
+    def fetch(self, field_names):
+        # During prefetch feature, we don't prevent to load data.
+        # If removed, this will raise an error on login page
+        # (for exemple) because odoo prefetch user avatar images.
+        return super(ResPartner, self.with_context(show_odoo_user=True)).fetch(
+            field_names
+        )
