@@ -4,7 +4,7 @@
 
 
 from odoo import _, api, models
-from odoo.exceptions import UserError
+from odoo.exceptions import AccessError, UserError
 from odoo.osv import expression
 
 
@@ -54,7 +54,10 @@ class ResPartner(models.Model):
             ElementModel = self.env[element["model"]]
             domain = []
             for partner_field in element["partner_fields"]:
-                domain = expression.OR([domain, [(partner_field, "in", self.ids)]])
+                if domain:
+                    domain = expression.OR([domain, [(partner_field, "in", self.ids)]])
+                else:
+                    domain = [(partner_field, "in", self.ids)]
 
             items = ElementModel.sudo().with_context(active_test=False).search(domain)
 
@@ -62,38 +65,26 @@ class ResPartner(models.Model):
                 continue
 
             # Check if current user has correct access right
-            if not ElementModel.check_access_rights(operation, raise_exception=False):
+            try:
+                ElementModel.check_access(operation)
+            except AccessError as error:
                 raise UserError(
                     _(
-                        "You have no right to update partners associated to"
-                        " the elements.\n- %s"
+                        "You %(user_name)s have no right to update partners"
+                        " associated to the elements.\n- %(element_list)s",
+                        user_name=self.env.user.name,
+                        element_list="\n- ".join(items.mapped("name")),
                     )
-                    % ("\n- ".join(items.mapped("name")))
-                )
+                ) from error
 
     # Overload the private _search function:
     # This function is used by the other ORM functions
     # (name_search, search_read)
     @api.model
-    def _search(
-        self,
-        domain,
-        offset=0,
-        limit=None,
-        order=None,
-        count=False,
-        access_rights_uid=None,
-    ):
+    def _search(self, domain, **kwargs):
         for element in self._get_hidden_elements():
             if not self.env.context.get(f"show_odoo_{element['name']}", False):
                 domain = expression.AND(
                     [domain, [(f"is_odoo_{element['name']}", "=", False)]]
                 )
-        return super()._search(
-            domain,
-            offset=offset,
-            limit=limit,
-            order=order,
-            count=count,
-            access_rights_uid=access_rights_uid,
-        )
+        return super()._search(domain, **kwargs)
