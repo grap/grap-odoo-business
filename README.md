@@ -17,7 +17,11 @@ This repository contains Odoo modules developped by the company GRAP that meet t
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[partner_hide_technical_abstract](partner_hide_technical_abstract/) | 18.0.1.0.0 |  | Technical module, used to to Hide partners created when creating other items in Odoo
 
 [//]: # (end addons)
 
