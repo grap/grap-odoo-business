@@ -1,8 +1,9 @@
 [project]
 name = "odoo-addons-grap-grap-odoo-business"
-version = "18.0.20251112.0"
+version = "18.0.20251112.1"
 dependencies = [
     "odoo-addon-partner_hide_technical_abstract==18.0.*",
+    "odoo-addon-partner_hide_technical_user==18.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
