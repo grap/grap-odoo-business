@@ -43,15 +43,13 @@ class SaleOrder(models.Model):
         for order in self.filtered(
             lambda x: x.recovery_moment_id.place_id.shipping_product_id
         ):
-            _place = order.recovery_moment_id.place_id
-            product = _place.shipping_product_id.product_variant_ids[0]
-            if product:
-                SaleOrderLine.create(
-                    {
-                        "order_id": order.id,
-                        "product_id": product.id,
-                    }
-                )
+            product = order.recovery_moment_id.place_id.shipping_product_id
+            SaleOrderLine.create(
+                {
+                    "order_id": order.id,
+                    "product_id": product.id,
+                }
+            )
 
         return super().action_confirm()
 
