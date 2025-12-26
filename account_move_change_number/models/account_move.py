@@ -10,7 +10,6 @@ from odoo import _, api, models
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    @api.multi
     def rename_account_move_change_number(self):
         for move in self:
             old_name = move.name
