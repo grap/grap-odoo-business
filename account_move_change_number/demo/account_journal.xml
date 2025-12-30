@@ -10,7 +10,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="name">Demo Journal</field>
         <field name="code">S-DEM</field>
         <field name="type">sale</field>
-        <field name="update_posted" eval="True"/>
     </record>
 
 </odoo>

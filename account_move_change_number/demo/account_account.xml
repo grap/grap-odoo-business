@@ -9,7 +9,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="demo_account_1" model="account.account">
         <field name="code">DEMACC</field>
         <field name="name">Demo Account</field>
-        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+        <field name="account_type">asset_receivable</field>
     </record>
+
 
 </odoo>

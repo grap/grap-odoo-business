@@ -4,7 +4,7 @@
 
 from datetime import datetime
 
-from odoo import _, api, models
+from odoo import _, models
 
 
 class AccountMove(models.Model):
@@ -15,29 +15,19 @@ class AccountMove(models.Model):
             old_name = move.name
             old_narration = move.narration or ""
 
-            # unpost acount move
             move.button_cancel()
-
-            # set name to "/"
+            # need to reset name to trigger new name
             move.name = "/"
-
-            # Get related invoice
-            invoices = self.env["account.invoice"].search([("move_id", "=", move.id)])
-            if invoices:
-                invoice = invoices[0]
-                invoice.move_name = "/"
-            else:
-                invoice = False
-
-            # post account move
-            move.post(invoice=invoice)
-            new_name = move.name
+            move.action_post()
 
             # Add description of the change
-            date = datetime.today().strftime("%d/%m/%Y")
-            author_name = self.env.user.name
             move.narration = old_narration + _(
-                "\nAccount move renamed. Old name : %s."
-                " New name : %s. Rename date : %s. Author : %s."
-            ) % (old_name, new_name, date, author_name)
+                "\nAccount move renamed. Old name : %(oldname)s."
+                " New name : %(newname)s. Rename date : %(renamedate)s."
+                " Author : %(author)s.",
+                oldname=old_name,
+                newname=move.name,
+                renamedate=datetime.today().strftime("%d/%m/%Y"),
+                author=self.env.user.name,
+            )
         return True
