@@ -23,8 +23,8 @@ class AccountMove(models.Model):
             # Add description of the change
             move.narration = old_narration + _(
                 "\nAccount move renamed. Old name : %(oldname)s."
-                " New name : %(newname)s. Rename date : %(renamedate)s."
-                " Author : %(author)s.",
+                + " New name : %(newname)s. Rename date : %(renamedate)s."
+                + " Author : %(author)s.",
                 oldname=old_name,
                 newname=move.name,
                 renamedate=datetime.today().strftime("%d/%m/%Y"),

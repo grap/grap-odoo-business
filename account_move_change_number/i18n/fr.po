@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * account_move_change_number
+# 	* account_move_change_number
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-24 15:59+0000\n"
-"PO-Revision-Date: 2019-11-24 15:59+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2025-12-30 14:12+0000\n"
+"PO-Revision-Date: 2025-12-30 14:12+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,12 +16,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_move_change_number
-#: code:addons/account_move_change_number/models/account_move.py:34
+#. odoo-python
+#: code:addons/account_move_change_number/models/account_move.py:0
 #, python-format
-msgid "\n"
-"Account move renamed. Old name : %s. New name : %s. Rename date : %s. Author : %s."
-msgstr "\n"
-"Pièce comptable renommée. Ancien nom: %s. Nouveau nom: %s. Date de l'opération: %s. Auteur·e: %s."
+msgid ""
+"\n"
+"Account move renamed. Old name : %(oldname)s. New name : %(newname)s. Rename date : %(renamedate)s. Author : %(author)s."
+msgstr ""
+"\n"
+"Pièce comptable renommé. Ancien nom : %(oldname)s. Nouveau nom : %(newname)s. Nouvelle date : %(renamedate)s. Auteur·rice : %(author)s."
 
 #. module: account_move_change_number
 #: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form
@@ -35,8 +38,8 @@ msgstr "Changer la numérotation des pièces comptables"
 
 #. module: account_move_change_number
 #: model:ir.model,name:account_move_change_number.model_account_move
-msgid "Journal Entries"
-msgstr "Pièces comptables"
+msgid "Journal Entry"
+msgstr "Pièce comptable"
 
 #. module: account_move_change_number
 #: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form
