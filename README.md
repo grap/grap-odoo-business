@@ -27,7 +27,7 @@ addon | version | maintainers | summary
 [barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.1 |  | Barcodes Rule Per Company
 [hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.3 |  | Prevent creation of many home partners at employee level.
 [mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.2 |  | Handle Product allergens on MRP BoM and BoM Lines.
-[mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.1.1 |  | Adds menus to help manage price between BoMs and Products.
+[mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.2.0 |  | Adds menus to help manage price between BoMs and Products.
 [partner_hide_technical_abstract](partner_hide_technical_abstract/) | 16.0.2.0.1 |  | Technical module, used to to Hide partners created when creating other items in Odoo
 [partner_hide_technical_company](partner_hide_technical_company/) | 16.0.2.0.1 |  | Hide partners created when creating companies.
 [partner_hide_technical_employee](partner_hide_technical_employee/) | 16.0.2.0.1 |  | Hide partners created when creating employees.
