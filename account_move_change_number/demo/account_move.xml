@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2019 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo noupdate="1">
+
+    <record id="demo_move_1" model="account.move">
+        <field name="journal_id" ref="demo_journal_1"/>
+        <field name="partner_id" ref="base.res_partner_2"/>
+        <field name="move_type">out_invoice</field>
+    </record>
+
+    <record id="demo_move_line_1" model="account.move.line">
+        <field name="move_id" ref="demo_move_1"/>
+        <field name="product_id" ref="product.product_product_25_product_template"/>
+        <field name="account_id" ref="demo_account_1"/>
+        <field name="name">move line</field>
+        <field name="quantity">10</field>
+        <field name="price_unit">20</field>
+    </record>
+
+</odoo>
