@@ -54,10 +54,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     </record>
 
     <!-- ************************************************************ -->
-    <!-- Menu "Handle prices" - Step 3 : Finished Products -->
+    <!-- Menu "Handle prices" - Step 4 : Finished Products -->
     <!-- ************************************************************ -->
 
-    <!-- MRP Handling Prices Menu Step 3 : Products Update Margin and Sale Price -->
+    <!-- MRP Handling Prices Menu Step 4 : Products Update Margin and Sale Price -->
     <record id="view_handle_sale_price_tree" model="ir.ui.view">
         <field name="model">product.template</field>
         <field name="priority">100</field>
