@@ -125,7 +125,6 @@ class ProductProduct(models.Model):
     # API eshop Section
     @api.model
     def get_current_eshop_product_list(self, partner_id=False):
-        today = fields.Date.context_today(self)
         SaleOrder = self.env["sale.order"]
         Product = self.env["product.product"]
 
@@ -137,7 +136,6 @@ class ProductProduct(models.Model):
                     "qty": line.product_uom_qty,
                     "discount": line.discount,
                 }
-
 
         products = Product.search(
             [
