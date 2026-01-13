@@ -138,17 +138,11 @@ class ProductProduct(models.Model):
                     "discount": line.discount,
                 }
 
+
         products = Product.search(
             [
-                ("active", "=", True),
-                ("product_tmpl_id.sale_ok", "=", True),
-                ("product_tmpl_id.company_id", "=", self.env.company.id),
-                "|",
-                ("eshop_start_date", "=", False),
-                ("eshop_start_date", "<=", today),
-                "|",
-                ("eshop_end_date", "=", False),
-                ("eshop_end_date", ">=", today),
+                ("eshop_state", "=", "available"),
+                ("eshop_category_id", "!=", False),
             ]
         )
 
