@@ -31,6 +31,7 @@ class ResCompany(models.Model):
         "eshop_catalog_view_enabled",
         "eshop_wallet_enabled",
         "eshop_wallet_recharge_bank_transfer",
+        "eshop_mollie_enabled",
         "social_facebook",
         "social_linkedin",
         "social_instagram",
@@ -94,6 +95,11 @@ class ResCompany(models.Model):
 
     eshop_wallet_recharge_bank_transfer = fields.Boolean(
         string="Enable recharging Wallet account with bank transfer",
+        default=False,
+    )
+
+    eshop_mollie_enabled = fields.Boolean(
+        string="Enable online payment with Mollie.com",
         default=False,
     )
 
