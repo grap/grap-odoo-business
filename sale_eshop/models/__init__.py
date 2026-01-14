@@ -4,6 +4,7 @@ from . import eshop_with_image_mixin
 from . import account_tax
 from . import eshop_category
 from . import eshop_fake_account
+from . import payment_transaction
 from . import product_label
 from . import product_product
 from . import product_template

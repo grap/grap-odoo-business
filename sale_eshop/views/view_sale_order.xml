@@ -13,6 +13,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="note" position="before">
                 <field name="eshop_note" groups="sale_eshop.res_groups_eshop_user"/>
             </field>
+            <field name="source_id" position="after">
+                <field name="eshop_sale" groups="sale_eshop.res_groups_eshop_user" readonly='True'/>
+            </field>
         </field>
     </record>
 

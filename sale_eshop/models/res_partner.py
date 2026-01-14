@@ -28,6 +28,7 @@ class ResPartner(models.Model):
         "street2",
         "zip",
         "city",
+        "country_id",
         "customer_wallet_balance",
     ]
 
@@ -125,6 +126,9 @@ class ResPartner(models.Model):
     @api.model
     def update_from_eshop(self, partner_id, vals):
         partner = self.browse(partner_id)
+        vals["country_id"] = self.env["res.country"].search(
+            [("id", "=", vals.get("country_id" or None))]
+        )
         partner.write(vals)
         return True
 

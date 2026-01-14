@@ -1,5 +1,6 @@
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin DUPONT
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
@@ -11,6 +12,7 @@ class SaleOrder(models.Model):
     _name = "sale.order"
     _inherit = ["sale.order", "eshop.mixin"]
 
+    eshop_sale = fields.Boolean()
     eshop_note = fields.Char(help="Field set by eshop user during cart validation")
 
     recovery_name = fields.Char(
@@ -25,6 +27,8 @@ class SaleOrder(models.Model):
     _eshop_fields = [
         "amount_total",
         "note",
+        "name",
+        "eshop_sale",
         "eshop_note",
         "amount_untaxed",
         "amount_tax",
@@ -70,7 +74,7 @@ class SaleOrder(models.Model):
     def eshop_delete_current_sale_order(self, partner_id):
         order = self.eshop_get_current_sale_order(partner_id)
         if order:
-            order.unlink()
+            order._action_cancel()
         return True
 
     @api.model
@@ -113,6 +117,7 @@ class SaleOrder(models.Model):
                     "partner_invoice_id": partner_id,
                     "partner_shipping_id": partner_id,
                     "pricelist_id": pricelist_id,
+                    "eshop_sale": True,
                 }
             )
 
@@ -255,6 +260,31 @@ class SaleOrder(models.Model):
             lines_to_reconcile.reconcile()
 
         return True
+
+    @api.model
+    def eshop_invoice_online_payment(self, order_id, transaction_id):
+        order = self.browse(order_id)
+        transaction = self.env["payment.transaction"].browse(transaction_id)
+
+        # savepoint to rollback if error ?
+        with self.env.cr.savepoint():
+            # 0. Force lines to be invoiced (even if invoice_policy is in delivered)
+            for line in order.order_line:
+                line.qty_to_invoice = line.product_uom_qty - line.qty_invoiced
+
+            # 1. Create invoice
+            invoice = order._create_invoices()
+            invoice.action_post()
+
+            # 2. Check if all went right
+            if invoice.state != "posted":
+                raise UserError(_("Invoice was not posted correctly."))
+
+            # 3. Create payment through Mollie algorythm with transaction
+            # This function post payment and reconcile with invoice
+            payment_record = transaction.sudo()._create_payment()
+
+        return invoice.id
 
     # Custom Section
     def _eshop_sale_order_info(self, order):
