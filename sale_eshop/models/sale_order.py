@@ -1,5 +1,6 @@
 # Copyright (C) 2014 - Today: GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+# @author: Quentin DUPONT
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 
@@ -25,6 +26,7 @@ class SaleOrder(models.Model):
     _eshop_fields = [
         "amount_total",
         "note",
+        "name",
         "eshop_note",
         "amount_untaxed",
         "amount_tax",
@@ -46,12 +48,18 @@ class SaleOrder(models.Model):
             )
 
     # API Section
+    # TODO : creuser car j'ai l'impression que les deux fonctions
+    # sont utilisés pour trouver le sale order,
+    # un retourne un domain et l'autre le SO
+    # Et sinon factoriser le DOMAIN
+
     @api.model
     def eshop_custom_load_data(self, partner_id):
         domain = [
             ("partner_id", "=", partner_id),
             ("user_id", "=", self.env.user.id),
             ("state", "=", "draft"),
+            # ("state", "not in", ["done", "cancel"]),
         ]
         return self.eshop_load_data(domain)
 
@@ -62,6 +70,7 @@ class SaleOrder(models.Model):
                 ("partner_id", "=", partner_id),
                 ("user_id", "=", self.env.user.id),
                 ("state", "=", "draft"),
+                # ("state", "not in", ["done", "cancel"])
             ]
         )
         return order_ids and order_ids[0] or False
@@ -69,8 +78,9 @@ class SaleOrder(models.Model):
     @api.model
     def eshop_delete_current_sale_order(self, partner_id):
         order = self.eshop_get_current_sale_order(partner_id)
+        # import pdb; pdb.set_trace()
         if order:
-            order.unlink()
+            order._action_cancel()
         return True
 
     @api.model
@@ -255,6 +265,110 @@ class SaleOrder(models.Model):
             lines_to_reconcile.reconcile()
 
         return True
+
+    @api.model
+    def eshop_invoice_online_payment(self, order_id):
+        # order1 = self.eshop_get_current_sale_order(partner_id)
+        order = self.browse(order_id)
+        # order.ensure_one()
+
+        # Check si Mollie existe ? ou check fait après ?
+        # wallet_journal = self.env["account.journal"].search(
+        #     [("type", "=", "bank"), ("is_customer_wallet_journal", "=", True)], limit=1
+        # )
+
+        # if not wallet_journal:
+        #     raise UserError(_("Wallet journal can't be found. Check settings."))
+
+        # payment_method = self.env.ref("account.account_payment_method_manual_in")
+        # if not payment_method:
+        #     raise UserError(_("Manuel payment method can't be found."))
+
+        # savepoint to rollback if error ?
+        # with self.env.cr.savepoint():
+        # 0. Force lines to be invoiced (even if invoice_policy is in delivered)
+        for line in order.order_line:
+            line.qty_to_invoice = line.product_uom_qty - line.qty_invoiced
+
+        # 1. Create invoice
+        invoice = order._create_invoices()
+        invoice.action_post()
+
+        # 2. Check if all went right
+        if invoice.state != "posted":
+            raise UserError(_("Invoice was not posted correctly."))
+
+        # # 3. Générer le lien de paiement via le wizard Odoo
+        # ctx = {
+        #     'active_model': 'account.move',
+        #     'active_id': invoice.id,
+        # }
+
+        # wizard_vals = {
+        #     'res_model': 'account.move',
+        #     'res_id': invoice.id,
+        #     'amount': invoice.amount_total,
+        #     'currency_id': invoice.currency_id.id,
+        #     'partner_id': invoice.partner_id.id,
+        #     'description': invoice.name,
+        # }
+
+        # link = invoice.eshop_invoice_payment_link()
+
+        # en fait le soucis venait p-e de @model qui agit sur le model alors qu'on veut agir sur l'instance
+        # ça a l'air de déclencher d'autres soucis, à creuser !
+
+        #             base_url = invoice.get_base_url()
+        #             import pdb; pdb.set_trace()
+        #             access_token = payment_utils.generate_access_token( invoice.partner_id.id, invoice.amount_total, invoice.currency_id.id,)
+
+        # import pdb; pdb.set_trace()
+        # access_token = invoice.env['payment.link.wizard'].sudo()._get_access_token()
+
+        #             params = {
+        #                 'reference': invoice.name,
+        #                 'amount': invoice.amount_total,
+        #                 'access_token': access_token,
+        #                 'currency_id': invoice.currency_id.id,
+        #                 'partner_id': invoice.partner_id.id,
+        #                 'company_id': invoice.company_id.id,
+        #             }
+
+        #             payment_url = f"{base_url}/payment/pay?{urls.url_encode(params)}"
+
+        # wizard = self.env['payment.link.wizard'].with_context(ctx).create(wizard_vals)
+        # # wizard = self.env['payment.link.wizard'].browse(wizard.id)
+
+        # payment_url = wizard.link
+
+        # # Exemple : stocker le lien sur la commande
+        # order.payment_link = payment_url
+
+        # 3. Create payment with wallet journal
+        # payment = self.env["account.payment"].create(
+        #     {
+        #         "payment_type": "inbound",
+        #         "partner_type": "customer",
+        #         "partner_id": invoice.partner_id.id,
+        #         "amount": invoice.amount_total,
+        #         "payment_method_id": payment_method.id,
+        #         "journal_id": wallet_journal.id,
+        #         "date": fields.Date.context_today(self),
+        #         "ref": "[eshop] " + invoice.name,
+        #     }
+        # )
+        # payment.action_post()
+
+        # # 4. Reconcile payment and invoice
+        # lines_to_reconcile = (invoice.line_ids + payment.move_id.line_ids).filtered(
+        #     lambda x: x.account_id
+        #     == invoice.partner_id.property_account_receivable_id
+        #     and not x.reconciled
+        # )
+
+        # lines_to_reconcile.reconcile()
+
+        return invoice.id
 
     # Custom Section
     def _eshop_sale_order_info(self, order):
