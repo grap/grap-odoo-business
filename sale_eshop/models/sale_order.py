@@ -40,7 +40,7 @@ class SaleOrder(models.Model):
             _place = sale.recovery_moment_id.place_id
             sale.recovery_name = _place.name
             sale.recovery_extra_cost = (
-                _place.shipping_product_id.product_variant_ids[0].list_price
+                _place.shipping_product_id.list_price
                 if _place.shipping_product_id
                 else 0
             )
