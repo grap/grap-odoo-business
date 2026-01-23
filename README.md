@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.2 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_move_change_number](account_move_change_number/) | 16.0.1.1.0 |  | Allow special user to rename account move
 [barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.1 |  | Barcodes Rule Per Company
-[hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.3 |  | Prevent creation of many home partners at employee level.
+[hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.4 |  | Prevent creation of many home partners at employee level.
 [mrp_bom_product_allergen](mrp_bom_product_allergen/) | 16.0.1.0.2 |  | Handle Product allergens on MRP BoM and BoM Lines.
 [mrp_product_price_quick_menus](mrp_product_price_quick_menus/) | 16.0.1.2.0 |  | Adds menus to help manage price between BoMs and Products.
 [partner_hide_technical_abstract](partner_hide_technical_abstract/) | 16.0.2.0.1 |  | Technical module, used to to Hide partners created when creating other items in Odoo

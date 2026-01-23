@@ -5,7 +5,7 @@
 {
     "name": "Employee - Direct Access to home information",
     "summary": "Prevent creation of many home partners at" " employee level.",
-    "version": "16.0.1.0.3",
+    "version": "16.0.1.0.4",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
