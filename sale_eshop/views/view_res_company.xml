@@ -14,7 +14,7 @@
                 <page string="eShop" colspan="4">
                     <group>
                         <group string="Basic Settings">
-                            <field name="eshop_image_128" widget="image" img_height="50" img_width="50"/>
+                            <field name="eshop_image_128" widget="image" class="oe_avatar"/>
                             <field name="has_eshop"/>
                             <field name="eshop_title"/>
                             <field name="eshop_minimum_price"/>
@@ -28,17 +28,24 @@
                             <field name="eshop_consumer_mediation"/>
                         </group>
                         <group string="Register Options">
-                            <field name="eshop_register_allowed" />
-                            <field name="eshop_register_phone_required" />
+                            <field name="eshop_register_allowed"/>
+                            <field name="eshop_register_phone_required"/>
                         </group>
                         <group string="Screen Options">
-                            <field name="eshop_list_view_enabled" />
-                            <field name="eshop_catalog_view_enabled" />
+                            <field name="eshop_list_view_enabled"/>
+                            <field name="eshop_catalog_view_enabled"/>
                         </group>
                         <group string="Payment Options">
-                            <field name="eshop_wallet_enabled" />
-                            <field name="eshop_wallet_recharge_bank_transfer" />
-                            <field name="eshop_mollie_enabled" />
+                            <field name="eshop_pay_on_site" string="Option : Payment on site" />
+                            <field name="eshop_pay_on_site_text"
+                                   attrs="{'required' : [('eshop_pay_on_site', '=', True)], 'invisible' : [('eshop_pay_on_site', '=', False)]}"
+                                   string="Custom text for payment methods on site"
+                                   placeholder="E.g : On site, we accept cash and checks but not credit card."/>
+                            <br/><br/>
+                            <field name="eshop_wallet_enabled" string="Option : Payment with wallet"/>
+                            <field name="eshop_wallet_recharge_bank_transfer"/>
+                            <br/><br/>
+                            <field name="eshop_mollie_enabled" string="Option : Payment online with Mollie"/>
                         </group>
                         <group string="Technical Settings">
                             <field name="eshop_url"/>

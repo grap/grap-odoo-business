@@ -2,7 +2,8 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ResCompany(models.Model):
@@ -29,6 +30,8 @@ class ResCompany(models.Model):
         "website",
         "eshop_list_view_enabled",
         "eshop_catalog_view_enabled",
+        "eshop_pay_on_site",
+        "eshop_pay_on_site_text",
         "eshop_wallet_enabled",
         "eshop_wallet_recharge_bank_transfer",
         "eshop_mollie_enabled",
@@ -87,6 +90,7 @@ class ResCompany(models.Model):
         help="Provide a Tree view to navigate into the catalog.",
     )
 
+    # PAYMENT METHODS
     eshop_wallet_enabled = fields.Boolean(
         string="Enable Account Customer Wallet",
         default=True,
@@ -101,6 +105,17 @@ class ResCompany(models.Model):
     eshop_mollie_enabled = fields.Boolean(
         string="Enable online payment with Mollie.com",
         default=False,
+    )
+
+    eshop_pay_on_site = fields.Boolean(
+        string="Enable payment on site",
+        default=True,
+        help="Permits your customer to pay on site with cash/check etc.",
+    )
+
+    eshop_pay_on_site_text = fields.Html(
+        string="Payment methods on site",
+        help="Write your accepted payment methods : cash/check etc.",
     )
 
     # fields related to ir.config_parameter
@@ -156,6 +171,16 @@ class ResCompany(models.Model):
     def write(self, vals):
         res = super().write(vals)
         self._create_parameter_if_not_exists()
+        # At least one payment method
+        if (
+            not self.eshop_pay_on_site
+            and not self.eshop_mollie_enabled
+            and not self.eshop_wallet_enabled
+        ):
+            raise ValidationError(
+                _("Eshop : You should choose at least one payment method.")
+            )
+
         return res
 
     def _create_parameter_if_not_exists(self):

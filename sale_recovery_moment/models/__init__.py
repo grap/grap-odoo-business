@@ -1,4 +1,5 @@
 from . import sale_order
+from . import sale_order_line
 from . import sale_recovery_moment
 from . import sale_recovery_moment_group
 from . import sale_recovery_place

@@ -8,31 +8,47 @@ from odoo.tests.common import TransactionCase
 class TestShippingCost(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.sale_order = self.env.ref("sale_recovery_moment.sale_order_1")
+        # With
+        self.sale_order_with = self.env.ref("sale_recovery_moment.sale_order_1")
+        self.sale_order_with_qty = 3
+        # Without
+        self.sale_order_without = self.env.ref("sale_recovery_moment.sale_order_2")
+        self.sale_order_without_qty = 1
+        # Recovery Moment
         self.recovery_moment_with = self.env.ref(
             "sale_recovery_moment.recovery_moment_1"
         )
         self.recovery_moment_without = self.env.ref(
             "sale_recovery_moment.recovery_moment_2"
         )
-        self.order_line_qty = len(self.sale_order.order_line)
 
-    def test_01_confirm_without_shipping(self):
-        self.sale_order.recovery_moment_id = self.recovery_moment_without
-        self.sale_order.action_confirm()
+    def test_01_with_change_to_without(self):
+        # Shipping product is written on first write
         self.assertEqual(
-            len(self.sale_order.order_line),
-            self.order_line_qty,
-            "Confirming a sale order associated to a recovery place without"
-            " shipping cost should not create extra order line.",
+            len(self.sale_order_with.order_line),
+            self.sale_order_with_qty,
+            "Write a sale order associated to a recovery place with"
+            " shipping cost should create extra order line.",
+        )
+        self.sale_order_with.recovery_moment_id = self.recovery_moment_without
+        self.assertEqual(
+            len(self.sale_order_with.order_line),
+            self.sale_order_with_qty - 1,
+            "Setting recovery moment without shipping product should"
+            " remove associated line",
         )
 
-    def test_02_confirm_with_shipping(self):
-        self.sale_order.recovery_moment_id = self.recovery_moment_with
-        self.sale_order.action_confirm()
+    def test_02_without_change_to_with(self):
         self.assertEqual(
-            len(self.sale_order.order_line),
-            self.order_line_qty + 1,
-            "Confirming a sale order associated to a recovery place with"
-            " shipping cost should add an extra order line.",
+            len(self.sale_order_without.order_line),
+            self.sale_order_without_qty,
+            "Write a sale order associated to a recovery place without"
+            " shipping cost should not create extra order line.",
+        )
+        self.sale_order_without.recovery_moment_id = self.recovery_moment_with
+        self.assertEqual(
+            len(self.sale_order_without.order_line),
+            self.sale_order_without_qty + 1,
+            "Setting recovery moment with shipping product should"
+            " create an extra order line",
         )

@@ -282,9 +282,9 @@ class SaleOrder(models.Model):
 
             # 3. Create payment through Mollie algorythm with transaction
             # This function post payment and reconcile with invoice
-            payment_record = transaction.sudo()._create_payment()
+            transaction.sudo()._create_payment()
 
-        return invoice.id
+        return True
 
     # Custom Section
     def _eshop_sale_order_info(self, order):

@@ -11,6 +11,10 @@ class SaleOrder(http.Controller):
         "/api/sale_generate_payment_link/", type="json", auth="public", readonly=True
     )
     def generate_payment_link(self, **kwargs):
+        """Generating link needs to be in Odoo context.
+        So we open this public path to give sale order payment link with url
+        params to indicate that it's a sale_eshop sale.
+        """
         sale_id = kwargs.get("sale_id")
         if not sale_id:
             return {"error": "sale_id missing"}
@@ -36,7 +40,7 @@ class SaleOrder(http.Controller):
 
         wizard = (
             request.env["payment.link.wizard"]
-            .with_context(ctx)
+            .with_context(**ctx)
             .sudo()
             .create(wizard_vals)
         )

@@ -11,7 +11,7 @@ from odoo.addons.payment_mollie.controllers.main import MollieController
 class SaleEshopMollieController(MollieController):
 
     """
-    Inherit Odoo Payment Mollie Controller to redirect Mollie payment to sale_eshop website
+    Redirect Mollie payment to sale_eshop website
     See README for more informations.
     """
 

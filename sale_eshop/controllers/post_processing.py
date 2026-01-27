@@ -19,8 +19,7 @@ class SaleEshopPaymentPostProcessing(PaymentPostProcessing):
         "/payment/status", type="http", auth="public", website=True, sitemap=False
     )
     def display_status(self, **kwargs):
-        """
-        We go through /payment/status in case some works is done there
+        """We go through /payment/status in case some works is done there
         Its handle and override on post_processing.py
         """
         res = super().display_status()
@@ -36,11 +35,9 @@ class SaleEshopPaymentPostProcessing(PaymentPostProcessing):
                 transaction_id = kwargs.get("transaction_id")  # needed to get status
                 base_status = "payment_validation_online/status/"
                 param_status = str(sale_id) + "/" + str(transaction_id)
-                redirect_url = base_url + base_status + param_status
                 # Return to non-local url because we go to website → local=False
                 return request.redirect(
                     base_url + base_status + param_status, local=False
                 )
-            # todo: handle else error ?
 
         return res

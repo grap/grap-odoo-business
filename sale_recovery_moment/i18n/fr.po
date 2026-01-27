@@ -282,6 +282,13 @@ msgid "Duplicated Recovery Moments"
 msgstr "Moments de récupération dupliqués"
 
 #. module: sale_recovery_moment
+#. odoo-python
+#: code:addons/sale_recovery_moment/models/sale_order.py:0
+#, python-format
+msgid "Extra cost linked to Recovery Moment:"
+msgstr "Frais de livraison lié au Moment de Récupération :"
+
+#. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_search
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_search
 msgid "Finished"

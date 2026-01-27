@@ -39,10 +39,5 @@
         "demo/sale_recovery_moment.xml",
         "demo/sale_order.xml",
     ],
-    "images": [
-        "static/description/sale_recovery_place_tree.png",
-        "static/description/sale_recovery_moment_group_form.png",
-        "static/description/sale_recovery_moment_calendar.png",
-    ],
     "installable": True,
 }
