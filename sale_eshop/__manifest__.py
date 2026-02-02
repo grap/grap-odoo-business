@@ -29,6 +29,7 @@
         # Mollie https://github.com/mollie/mollie-odoo
         "payment_mollie_official",
     ],
+    "external_dependencies": {"python": ["phonenumbers"]},
     "data": [
         "security/ir_rule.xml",
         "security/ir_module_category.xml",

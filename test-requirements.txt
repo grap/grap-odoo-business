@@ -7,6 +7,7 @@ git+https://github.com/coopiteasy/addons#subdirectory=setup/account_customer_wal
 git+https://github.com/OCA/multi-company@refs/pull/674/head#subdirectory=setup/base_company_legal_info
 
 # Placeholder for future PRs 2
+odoo-addon-payment-mollie-official @ git+https://github.com/mollie/mollie-odoo.git@refs/pull/173/head#subdirectory=payment_mollie_official
 
 # Placeholder for future PRs 3
 
