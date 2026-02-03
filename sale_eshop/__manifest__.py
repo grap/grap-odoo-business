@@ -25,7 +25,7 @@
         "l10n_fr_department_product_origin",
         "base_company_legal_info",
         # CoopITeasy
-        "account_customer_wallet",
+        "customer_wallet",
         # Mollie https://github.com/mollie/mollie-odoo
         "payment_mollie_official",
     ],
