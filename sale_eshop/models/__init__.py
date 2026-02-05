@@ -17,4 +17,6 @@ from . import res_country_department
 from . import res_country_state
 from . import sale_order
 from . import sale_order_line
+from . import sale_recovery_moment
+from . import sale_recovery_place
 from . import wizard_res_company_eshop_setting
