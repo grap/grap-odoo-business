@@ -28,7 +28,7 @@ class SaleEshopPaymentPostProcessing(PaymentPostProcessing):
             and "company_id" in kwargs
             and "transaction_id" in kwargs
         ):
-            company_id = kwargs.get("company_id")
+            company_id = int(kwargs.get("company_id"))
             base_url = request.env["res.company"].browse(company_id).eshop_url
             if base_url:
                 sale_id = kwargs.get("eshop_sale_id")  # needed to confirm it

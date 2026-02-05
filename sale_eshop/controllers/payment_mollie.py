@@ -25,9 +25,8 @@ class SaleEshopMollieController(MollieController):
     )
     def mollie_return_from_checkout(self, **data):
         """
-        We go through /payment/status in case some works is done there
-        It's handle and override on post_processing.py
-        We set some fields to check transaction status, confirm SO etc.
+        If sale come from sale_eshop, we set some
+        fields to check transaction status, confirm SO etc.
         """
         res = super().mollie_return_from_checkout(**data)
 
