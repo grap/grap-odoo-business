@@ -10,4 +10,11 @@
         name="eShop Sale" sequence="30"
         parent="sale.menu_sale_config"/>
 
+    <menuitem
+        id="payment_transaction_menu_eshop"
+        parent="account.menu_finance_receivables"
+        groups="res_groups_eshop_user"
+        action="payment.action_payment_transaction"
+        sequence="150"
+    />
 </odoo>
