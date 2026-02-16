@@ -88,7 +88,7 @@
         </field>
     </record>
 
-    <record id="action_wizard_res_company_website" model="ir.actions.act_window">
+    <record id="action_wizard_res_company_eshop_website" model="ir.actions.act_window">
         <field name="name">eShop Website</field>
         <field name="res_model">wizard.res.company.eshop.setting</field>
         <field name="view_mode">form</field>
@@ -100,6 +100,6 @@
     <menuitem id="menu_wizard_res_company_eshop_website"
         parent="menu_eshop" sequence="60"
         groups="sale_eshop.res_groups_eshop_user"
-        action="action_wizard_res_company_website"/>
+        action="action_wizard_res_company_eshop_website"/>
 
 </odoo>

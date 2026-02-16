@@ -134,7 +134,7 @@
         id="menu_wizard_res_company_eshop_website_app"
         parent="menu_eshop_app"
         sequence="90"
-        action="action_wizard_res_company_website"
+        action="action_wizard_res_company_eshop_website"
     />
 
     <!-- eShop settings -->

@@ -41,7 +41,6 @@
         "data/email_footer.xml",
         "data/email_create_account.xml",
         "data/email_lost_password.xml",
-        "views/menu.xml",
         "views/view_eshop_category.xml",
         "views/view_eshop_fake_account.xml",
         "views/view_payment_portal_templates.xml",
@@ -51,6 +50,7 @@
         "views/view_res_partner.xml",
         "views/view_sale_order.xml",
         "views/view_wizard_res_company_eshop_setting.xml",
+        "views/menu.xml",
     ],
     "demo": [
         "demo/ir_config_parameter.xml",
@@ -64,9 +64,6 @@
         "demo/res_partner.xml",
     ],
     "assets": {
-        # "web.assets_common": [
-        #     "sale_eshop/static/src/scss/online_payment_portal.scss",
-        # ],
         "web.assets_frontend": [
             "sale_eshop/static/src/scss/online_payment_portal.scss",
         ],
