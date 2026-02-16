@@ -6,6 +6,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <!-- FORM -->
     <record id="view_sale_order_form" model="ir.ui.view">
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
@@ -16,6 +17,19 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <field name="source_id" position="after">
                 <field name="eshop_sale" groups="sale_eshop.res_groups_eshop_user" readonly='True'/>
             </field>
+        </field>
+    </record>
+
+    <!-- SEARCH -->
+    <record id="view_eshop_sale_order_search" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <filter name="my_sale_orders_filter" position="before">
+                <filter string="Eshop Sale" name="filter_eshop_sale"
+                    groups="sale_eshop.res_groups_eshop_user"
+                    domain="[('eshop_sale', '=', True)]"/>
+            </filter>
         </field>
     </record>
 
