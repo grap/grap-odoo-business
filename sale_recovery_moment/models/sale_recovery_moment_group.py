@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -30,9 +30,17 @@ class SaleRecoveryMomentGroup(models.Model):
 
     name = fields.Char(compute="_compute_name", store=True)
 
-    min_sale_date = fields.Datetime(string="Minimum date for the Sale", required=True)
+    min_sale_date = fields.Datetime(
+        string="Minimum date for the Sale",
+        required=True,
+        default=lambda x: x._default_min_sale_date(),
+    )
 
-    max_sale_date = fields.Datetime(string="Maximum date for the Sale", required=True)
+    max_sale_date = fields.Datetime(
+        string="Maximum date for the Sale",
+        required=True,
+        default=lambda x: x._default_max_sale_date(),
+    )
 
     min_recovery_date = fields.Datetime(
         string="Minimum date for the Recovery",
@@ -99,6 +107,14 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.model
     def _default_company_id(self):
         return self.env.company
+
+    @api.model
+    def _default_min_sale_date(self):
+        return datetime.now()
+
+    @api.model
+    def _default_max_sale_date(self):
+        return datetime.now() + timedelta(hours=6)
 
     # Overload Section
     @api.model_create_multi
