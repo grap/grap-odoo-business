@@ -35,6 +35,8 @@ class SaleOrder(models.Model):
         "recovery_moment_id",
         "recovery_name",
         "recovery_extra_cost",
+        "state",
+        "invoice_status",
     ]
 
     # Compute Section
