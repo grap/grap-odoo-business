@@ -37,6 +37,10 @@
                         <br/><br/>
                         <field name="eshop_mollie_enabled" string="Option : Payment online with Mollie"/>
                     </group>
+                    <group string="Technical Settings">
+                        <field name="eshop_url"/>
+                        <field name="eshop_invalidation_key"/>
+                    </group>
                 </group>
 
                 <footer>

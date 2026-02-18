@@ -114,6 +114,19 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         default=lambda s: s._default_eshop_home_text(),
     )
 
+    # Technical Settings
+    eshop_url = fields.Char(
+        string="eShop URL",
+        default=lambda s: s._default_eshop_url(),
+        readonly=True,
+    )
+
+    eshop_invalidation_key = fields.Char(
+        string="Invalidation Key",
+        default=lambda s: s._default_eshop_invalidation_key(),
+        readonly=True,
+    )
+
     # Default Section
     @api.model
     def _default_company_id(self):
@@ -203,6 +216,15 @@ class WizardResCompanyEshopSetting(models.TransientModel):
     @api.model
     def _default_eshop_home_text(self):
         return self.env.company.eshop_home_text
+
+    # Technical fields related to ir.config_parameter
+    @api.model
+    def _default_eshop_url(self):
+        return self.env.company.eshop_url
+
+    @api.model
+    def _default_eshop_invalidation_key(self):
+        return self.env.company.eshop_invalidation_key
 
     # View Section
     def button_apply_settings(self):
