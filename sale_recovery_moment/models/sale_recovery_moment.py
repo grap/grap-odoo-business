@@ -184,7 +184,7 @@ class SaleRecoveryMoment(models.Model):
             place = recovery_places.browse(vals["place_id"])
             place_name = place.name
 
-            if "group_id" in vals:
+            if vals.get("group_id"):
                 group = recovery_groups.browse(vals["group_id"])
                 group_name = group.name
                 vals["name"] = f"{code} - {group_name} - {place_name}"
