@@ -81,7 +81,8 @@ class ResPartner(models.Model):
                     "email_to": partner.email,
                 },
             )
-            partner.write({"eshop_state": "email_to_confirm"})
+            if email_step == "create_account":
+                partner.write({"eshop_state": "email_to_confirm"})
         return True
 
     @api.model
