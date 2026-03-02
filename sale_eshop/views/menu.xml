@@ -6,25 +6,11 @@
 -->
 <odoo>
 
-    <!-- Historic menu -->
-    <menuitem id="menu_eshop"
-        name="eShop Sale" sequence="30"
-        parent="sale.menu_sale_config"/>
-
-    <!-- Make this menu visible to eshop users -->
-    <menuitem
-        id="payment_transaction_menu_eshop"
-        parent="account.menu_finance_receivables"
-        groups="res_groups_eshop_user"
-        action="payment.action_payment_transaction"
-        sequence="150"
-    />
-
-    <!-- NEW VIEWS FOR APP  -->
+    <!-- ACTION WINDOWS  -->
     <!-- Product with filter -->
     <record id="action_eshop_products" model="ir.actions.act_window">
         <field name="name">eShop Products</field>
-        <field name="res_model">product.product</field>
+        <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_filter_eshop_available':1, 'search_default_filter_eshop_set':1}</field>
     </record>

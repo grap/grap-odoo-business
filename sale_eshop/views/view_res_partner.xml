@@ -48,7 +48,7 @@
             <sheet position="before">
                 <header>
                     <button name="button_generate_send_credentials"
-                        string="Send new Credentials" icon="fa-envelope" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
+                        string="Send new Credentials" icon="fa-paper-plane" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
                         type="object"/>
                     <button name="button_disable_eshop"
                         string="Prevent to use eShop" icon="fa-times-circle" class="btn-secondary"
@@ -78,10 +78,5 @@
         <field name="context">{'search_default_eshop_setup':1, 'search_default_eshop_waiting':1}</field>
         <field name="view_id" ref="view_res_partner_tree" />
     </record>
-
-    <menuitem id="menu_res_partner"
-        parent="menu_eshop" sequence="20"
-        groups="sale_eshop.res_groups_eshop_user"
-        action="action_res_partner"/>
 
 </odoo>

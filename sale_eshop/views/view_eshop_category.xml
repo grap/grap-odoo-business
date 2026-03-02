@@ -104,8 +104,4 @@
         </field>
     </record>
 
-    <menuitem id="menu_eshop_category"
-        parent="menu_eshop" sequence="1"
-        action="action_eshop_category"/>
-
 </odoo>

@@ -59,12 +59,6 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="menu_wizard_res_company_eshop_setting"
-        parent="menu_eshop" sequence="50"
-        groups="sale_eshop.res_groups_eshop_user"
-        action="action_wizard_res_company_eshop_setting"/>
-
-
     <!-- Simple view for first website page -->
     <record id="view_wizard_res_company_eshop_website_form" model="ir.ui.view">
         <field name="model">wizard.res.company.eshop.setting</field>
@@ -99,11 +93,5 @@
         <field name="view_id" ref="view_wizard_res_company_eshop_website_form"/>
         <field name="target">new</field>
     </record>
-
-
-    <menuitem id="menu_wizard_res_company_eshop_website"
-        parent="menu_eshop" sequence="60"
-        groups="sale_eshop.res_groups_eshop_user"
-        action="action_wizard_res_company_eshop_website"/>
 
 </odoo>
