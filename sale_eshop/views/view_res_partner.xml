@@ -36,8 +36,7 @@
                     type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
                 <button name="button_enable_eshop"
                     string="Allow to use eShop" icon="fa-check-circle"
-                    type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
-                    ('eshop_password', '=', False)]}"/>
+                    type="object" attrs="{'invisible':[('eshop_state','=', 'enabled')]}"/>
             </tree>
         </field>
     </record>
@@ -49,15 +48,14 @@
             <sheet position="before">
                 <header>
                     <button name="button_generate_send_credentials"
-                        string="Reset and Send Credentials" icon="fa-plane" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
+                        string="Send new Credentials" icon="fa-envelope" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
                         type="object"/>
                     <button name="button_disable_eshop"
                         string="Prevent to use eShop" icon="fa-times-circle" class="btn-secondary"
                         type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
                     <button name="button_enable_eshop"
                         string="Allow to use eShop" icon="fa-check-circle" class="btn-secondary"
-                        type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
-                        ('eshop_password', '=', False)]}"/>
+                        type="object" attrs="{'invisible':[('eshop_state','=', 'enabled')]}"/>
                 </header>
             </sheet>
             <notebook position="inside">

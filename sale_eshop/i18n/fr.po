@@ -941,8 +941,8 @@ msgstr "Capital social"
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_tree
-msgid "Reset and Send Credentials"
-msgstr "Réinitialiser et envoyer les identifiants"
+msgid "Send new Credentials"
+msgstr "Lui envoyer un nouveau mot de passe par mail"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_rounded_qty
