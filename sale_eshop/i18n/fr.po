@@ -446,6 +446,11 @@ msgid "Customers"
 msgstr "Client·es"
 
 #. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_sale_order_search
+msgid "Delivery date not passed"
+msgstr "Future date de livraison"
+
+#. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_country_department
 msgid "Department"
 msgstr "Département"

@@ -29,6 +29,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                 <filter string="Eshop Sale" name="filter_eshop_sale"
                     groups="sale_eshop.res_groups_eshop_user"
                     domain="[('eshop_sale', '=', True)]"/>
+                <separator/>
+                <filter string="Delivery date not passed" name="filter_sale_delivery_date_not_passed"
+                    domain="['|', ('commitment_date', '=', False), ('commitment_date', '&gt;',  context_today())]"/>
+                <separator/>
             </filter>
         </field>
     </record>
