@@ -109,4 +109,5 @@ class SaleRecoveryMomentWizardDuplicate(models.TransientModel):
             "place_id": old_moment.place_id.id,
             "max_order_qty": old_moment.max_order_qty,
             "description": old_moment.description,
+            "limited_partners_ids": old_moment.limited_partners_ids,
         }

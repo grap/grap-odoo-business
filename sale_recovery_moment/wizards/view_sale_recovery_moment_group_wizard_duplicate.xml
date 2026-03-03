@@ -19,9 +19,10 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                             <field name="max_sale_date"/>
                         </tree>
                     </field>
+                </group>
+                <group>
                     <field name="day_delay" widget="numeric_step" options="{'step': 1, 'min': 0}"/>
-                    <field name="group_qty"/>
-                    <newline/>
+                    <field name="group_qty" invisible="1"/>
                     <field name="next_min_sale_date" attrs="{'invisible': [('group_qty', '!=', 1)]}"/>
                     <field name="next_max_sale_date" attrs="{'invisible': [('group_qty', '!=', 1)]}"/>
                 </group>

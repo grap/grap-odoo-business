@@ -262,10 +262,14 @@ msgstr "Dupliquer des Moments de récupération"
 #. module: sale_recovery_moment
 #. odoo-python
 #: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:0
-#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
 #, python-format
 msgid "Duplicate moments"
 msgstr "Dupliquer ces moments"
+
+#. module: sale_recovery_moment
+#: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_tree
+msgid "Duplicate moments wizard"
+msgstr "Assistant de duplication"
 
 #. module: sale_recovery_moment
 #. odoo-python

@@ -32,7 +32,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     decoration-info="state == 'futur'"
                     decoration-success="state in ('finished_sale', 'pending_recovery')">
             <header>
-                <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments"/>
+                <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments wizard"/>
             </header>
                 <field name="place_id"/>
                 <field name="max_order_qty" string="Max"/>
