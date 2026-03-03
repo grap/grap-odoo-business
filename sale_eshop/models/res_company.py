@@ -33,7 +33,7 @@ class ResCompany(models.Model):
         "eshop_pay_on_site",
         "eshop_pay_on_site_text",
         "eshop_wallet_enabled",
-        "eshop_wallet_recharge_bank_transfer",
+        "eshop_wallet_recharge_bank",
         "eshop_mollie_enabled",
         "social_facebook",
         "social_linkedin",
@@ -97,7 +97,7 @@ class ResCompany(models.Model):
         help="Permits your customer to pay with their wallet.",
     )
 
-    eshop_wallet_recharge_bank_transfer = fields.Boolean(
+    eshop_wallet_recharge_bank = fields.Boolean(
         string="Enable recharging Wallet account with bank transfer",
         default=False,
     )

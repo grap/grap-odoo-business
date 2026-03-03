@@ -43,7 +43,7 @@
                                    placeholder="E.g : On site, we accept cash and checks but not credit card."/>
                             <br/><br/>
                             <field name="eshop_wallet_enabled" string="Option : Payment with wallet"/>
-                            <field name="eshop_wallet_recharge_bank_transfer"/>
+                            <field name="eshop_wallet_recharge_bank"/>
                             <br/><br/>
                             <field name="eshop_mollie_enabled" string="Option : Payment online with Mollie"/>
                         </group>

@@ -516,8 +516,8 @@ msgid "Enable payment on site"
 msgstr "Activer le paiement sur place"
 
 #. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_wallet_recharge_bank_transfer
-#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_wallet_recharge_bank_transfer
+#: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_wallet_recharge_bank
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_wallet_recharge_bank
 msgid "Enable recharging Wallet account with bank transfer"
 msgstr "Activer la recharge des comptes client·es par virement bancaire."
 

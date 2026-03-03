@@ -85,9 +85,9 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         string="Enable Account Customer Wallet",
         default=lambda s: s._default_eshop_wallet_enabled(),
     )
-    eshop_wallet_recharge_bank_transfer = fields.Boolean(
+    eshop_wallet_recharge_bank = fields.Boolean(
         string="Enable recharging Wallet account with bank transfer",
-        default=lambda s: s._default_eshop_wallet_recharge_bank_transfer(),
+        default=lambda s: s._default_eshop_wallet_recharge_bank(),
     )
     eshop_mollie_enabled = fields.Boolean(
         string="Enable online payment with Mollie.com",
@@ -193,8 +193,8 @@ class WizardResCompanyEshopSetting(models.TransientModel):
         return self.env.company.eshop_wallet_enabled
 
     @api.model
-    def _default_eshop_wallet_recharge_bank_transfer(self):
-        return self.env.company.eshop_wallet_recharge_bank_transfer
+    def _default_eshop_wallet_recharge_bank(self):
+        return self.env.company.eshop_wallet_recharge_bank
 
     @api.model
     def _default_eshop_mollie_enabled(self):
@@ -242,7 +242,7 @@ class WizardResCompanyEshopSetting(models.TransientModel):
                 "eshop_pay_on_site": self.eshop_pay_on_site,
                 "eshop_pay_on_site_text": self.eshop_pay_on_site_text,
                 "eshop_wallet_enabled": self.eshop_wallet_enabled,
-                "eshop_wallet_recharge_bank_transfer": self.eshop_wallet_recharge_bank_transfer,
+                "eshop_wallet_recharge_bank": self.eshop_wallet_recharge_bank,
                 "eshop_mollie_enabled": self.eshop_mollie_enabled,
                 "social_facebook": self.social_facebook,
                 "social_linkedin": self.social_linkedin,
