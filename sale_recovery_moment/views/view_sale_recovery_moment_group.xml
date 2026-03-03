@@ -49,7 +49,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_sale_recovery_moment_group_form" model="ir.ui.view">
         <field name="model">sale.recovery.moment.group</field>
         <field name="arch" type="xml">
-            <form>
+            <form duplicate="false">
                 <header>
                     <field name="state" widget="statusbar"/>
                 </header>
