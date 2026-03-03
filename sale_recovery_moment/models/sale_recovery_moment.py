@@ -6,8 +6,7 @@
 from datetime import datetime, timedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 
 
