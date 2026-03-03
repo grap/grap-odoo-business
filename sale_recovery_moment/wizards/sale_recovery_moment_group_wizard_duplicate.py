@@ -85,9 +85,11 @@ class SaleRecoveryMomentGroupWizardDuplicate(models.TransientModel):
                 SaleRecoveryMoment.create(moment_vals)
             new_groups.append(new_group)
 
-        action_data = self.env.ref(
-            "sale_recovery_moment.action_sale_recovery_moment_group"
-        ).read()[0]
+        action_data = (
+            self.env.ref("sale_recovery_moment.action_sale_recovery_moment_group")
+            .sudo()
+            .read()[0]
+        )
         action_data["display_name"] = _("Duplicated Recovery Moment Groups")
         if len(self.group_ids) == 1:
             view = self.env.ref(

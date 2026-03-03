@@ -129,6 +129,10 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.depends("moment_ids.min_recovery_date", "moment_ids.max_recovery_date")
     def _compute_recovery_date(self):
         for moment_group in self:
+            # Default value to not be False
+            moment_group.min_recovery_date = moment_group.min_sale_date
+            moment_group.max_recovery_date = moment_group.max_sale_date
+            # Value computed with moments
             if len(moment_group.moment_ids) > 0:
                 moments = moment_group.moment_ids
                 moment_group.min_recovery_date = min(
