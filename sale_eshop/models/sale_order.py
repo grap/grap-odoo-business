@@ -128,7 +128,7 @@ class SaleOrder(models.Model):
             lambda x: x.product_id.id == product_id
         )
 
-        # Add Qty if add method is used (in Catatog view)
+        # Add Qty if add method is used (in Catalog inline view)
         if current_line:
             current_line = current_line[0]
             if method == "add":
