@@ -339,9 +339,16 @@ class SaleRecoveryMoment(models.Model):
                         " Date of Recovery."
                     )
                 )
+            elif moment.max_recovery_date <= moment.min_sale_date:
+                raise ValidationError(
+                    _(
+                        "The maximum Date of Recovery must be after the minimum"
+                        " Date of Sale."
+                    )
+                )
 
     @api.constrains("min_sale_date", "max_sale_date")
-    def _check_recovery_dates(self):
+    def _check_sales_dates(self):
         for moment in self:
             if moment.min_sale_date >= moment.max_sale_date:
                 raise ValidationError(

@@ -708,6 +708,13 @@ msgstr "L'opérateur %s n'est pas implémenté' !"
 #. odoo-python
 #: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:0
 #, python-format
+msgid "The maximum Date of Recovery must be after the minimum Date of Sale."
+msgstr "La date de fin de récupération doit être postérieur à la date de début de vente."
+
+#. module: sale_recovery_moment
+#. odoo-python
+#: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:0
+#, python-format
 msgid "The minimum Date of Recovery must be before the maximum Date of Recovery."
 msgstr "La date de début de récupération doit précéder la date de fin de récupération."
 
