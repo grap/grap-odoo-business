@@ -86,7 +86,7 @@ class SaleOrder(models.Model):
             line = order.order_line.filtered(lambda x: x.id == line_id)
             if line:
                 if len(order.order_line) == 1:
-                    order.unlink()
+                    order._action_cancel()
                     return "order_deleted"
                 else:
                     line.unlink()
@@ -178,7 +178,7 @@ class SaleOrder(models.Model):
             }
             if current_line:
                 if len(order.order_line) == 1:
-                    order.unlink()
+                    order._action_cancel()
                     res["messages"] = [
                         _("The Shopping Cart has been successfully deleted.")
                     ]
