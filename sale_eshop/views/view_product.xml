@@ -6,6 +6,7 @@
 -->
 <odoo>
 
+    <!-- SEARCH VIEWS -->
     <record id="view_product_product_search" model="ir.ui.view">
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_search_form_view"/>
@@ -40,6 +41,7 @@
         </field>
     </record>
 
+    <!-- INHERIT FORM VIEW -->
     <record id="view_product_template_form" model="ir.ui.view">
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
@@ -55,6 +57,29 @@
                     <field name="eshop_state" force_save="1"/>
                 </group>
             </xpath>
+        </field>
+    </record>
+
+    <!-- INHERIT TREE VIEW -->
+    <record id="view_product_template_tree" model="ir.ui.view">
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name='categ_id' position="before">
+                <field name="eshop_category_id" optional="show"/>
+                <field name="eshop_start_date" optional="hide"/>
+                <field name="eshop_end_date" optional="hide"/>
+                <field name="eshop_minimum_qty" optional="show"/>
+                <field name="eshop_rounded_qty" optional="show"/>
+                <field name="eshop_description" optional="show"/>
+                <field name="eshop_state" force_save="1" optional="hide"/>
+            </field>
+            <field name='default_code' position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name='main_seller_id' position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
         </field>
     </record>
 
