@@ -927,9 +927,14 @@ msgid "Recovery Place"
 msgstr "Lieu de retrait"
 
 #. module: sale_eshop
+#: model:ir.ui.menu,name:sale_eshop.menu_sale_recovery_place_app
+msgid "Recovery Places"
+msgstr "Lieux de retrait"
+
+#. module: sale_eshop
 #: model:ir.ui.menu,name:sale_eshop.menu_sale_recovery_moment_menu_app
-msgid "Recovery moments"
-msgstr "Moments de récupération"
+msgid "Moments and Places"
+msgstr "Moments et Lieux"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form

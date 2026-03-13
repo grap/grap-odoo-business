@@ -97,24 +97,30 @@
         action="action_eshop_fake_account"
     />
 
-    <!-- Recovery moments -->
+    <!-- Recovery moments and Places -->
     <menuitem
         id="menu_sale_recovery_moment_menu_app"
-        name="Recovery moments"
+        name="Moments and Places"
         sequence="40"
         parent="menu_eshop_app"/>
 
     <menuitem
         id="menu_sale_recovery_moment_app"
-        sequence="10"
+        sequence="20"
         parent="menu_sale_recovery_moment_menu_app"
         action="sale_recovery_moment.action_sale_recovery_moment"/>
 
     <menuitem
         id="menu_sale_recovery_moment_group_app"
-        sequence="20"
+        sequence="30"
         parent="menu_sale_recovery_moment_menu_app"
         action="sale_recovery_moment.action_sale_recovery_moment_group"/>
+
+    <menuitem
+        id="menu_sale_recovery_place_app"
+        sequence="40"
+        parent="menu_sale_recovery_moment_menu_app"
+        action="sale_recovery_moment.action_sale_recovery_place"/>
 
     <!-- Website page -->
     <menuitem

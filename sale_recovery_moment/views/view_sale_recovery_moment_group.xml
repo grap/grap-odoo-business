@@ -111,9 +111,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="context">{'search_default_not_finished':1}</field>
     </record>
 
-    <menuitem id="menu_sale_recovery_moment_group"
-        sequence="210"
-        parent="sale.sale_order_menu"
-        action="action_sale_recovery_moment_group"/>
+    <!-- Menu is handled in sale_eshop -->
 
 </odoo>
