@@ -81,7 +81,12 @@ class ResPartner(models.Model):
                     "email_to": partner.email,
                 },
             )
-            if email_step == "create_account":
+            # don't set email_to_confirm if partner was already enabled
+            if (
+                email_step == "create_account"
+                or email_step == "reset_password"
+                and partner.eshop_state == "disabled"
+            ):
                 partner.write({"eshop_state": "email_to_confirm"})
         return True
 

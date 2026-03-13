@@ -60,11 +60,15 @@ class ProductProduct(models.Model):
     )
 
     eshop_minimum_qty = fields.Float(
-        string="Minimum Quantity for eShop", required=True, default=0
+        string="Minimum Quantity for eShop",
+        required=True,
+        default=0,
     )
 
     eshop_rounded_qty = fields.Float(
-        string="Rounded Quantity for eShop", required=True, default=0
+        string="Rounded Quantity for eShop",
+        required=True,
+        default=0,
     )
 
     eshop_description = fields.Html()
