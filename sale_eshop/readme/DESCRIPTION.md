@@ -77,3 +77,30 @@ be displayed on the eshop.
    object
 2. `_eshop_invalidation_fields` : the list of the fields that trigger
    invalidation
+
+## Technical override for Mollie Payment
+
+To handle online payment, we use Mollie provider and its Odoo modules.
+We need to override some functions to make it work outside Odoo website.
+
+To sum up :
+- each sale on sale_eshop has the Boolean eshop_sale=True
+- When customer choose online payment, we generate a payment link (with Odoo
+ core modules) for sale_order and retrieve it thanks to public custom route
+ `/api/sale_generate_payment_link/`` (controller/sale_order.py)
+
+We also need to add the info that the sale come from sale_eshop in order to go
+back to sale_eshop website and not Odoo. Here is the path and overrides.
+
+(Models payment_transaction.py | def _mollie_prepare_payment_payload() )
+Add `&eshop_sale=1` to payment_data["redirectUrl"]
+     |
+     |
+     v
+(Controller payment_mollie.py | route = /payment/mollie/return | def mollie_return_from_checkout
+After Mollie payment, retrieve payment_data and redirect to...
+     |
+     |
+     v
+(Controller post_processing.py route = /payment/status)
+Redirect to website

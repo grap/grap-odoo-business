@@ -19,6 +19,7 @@ class SaleOrderLine(models.Model):
         "price_unit",
         "tax_id",
         "discount",
+        "is_shipping",
         "product_uom_qty",
         "price_subtotal",
         "price_total",

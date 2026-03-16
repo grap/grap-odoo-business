@@ -2,7 +2,7 @@
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -30,9 +30,17 @@ class SaleRecoveryMomentGroup(models.Model):
 
     name = fields.Char(compute="_compute_name", store=True)
 
-    min_sale_date = fields.Datetime(string="Minimum date for the Sale", required=True)
+    min_sale_date = fields.Datetime(
+        string="Minimum date for the Sale",
+        required=True,
+        default=lambda x: x._default_min_sale_date(),
+    )
 
-    max_sale_date = fields.Datetime(string="Maximum date for the Sale", required=True)
+    max_sale_date = fields.Datetime(
+        string="Maximum date for the Sale",
+        required=True,
+        default=lambda x: x._default_max_sale_date(),
+    )
 
     min_recovery_date = fields.Datetime(
         string="Minimum date for the Recovery",
@@ -100,6 +108,14 @@ class SaleRecoveryMomentGroup(models.Model):
     def _default_company_id(self):
         return self.env.company
 
+    @api.model
+    def _default_min_sale_date(self):
+        return datetime.now()
+
+    @api.model
+    def _default_max_sale_date(self):
+        return datetime.now() + timedelta(hours=6)
+
     # Overload Section
     @api.model_create_multi
     def create(self, vals_list):
@@ -113,6 +129,10 @@ class SaleRecoveryMomentGroup(models.Model):
     @api.depends("moment_ids.min_recovery_date", "moment_ids.max_recovery_date")
     def _compute_recovery_date(self):
         for moment_group in self:
+            # Default value to not be False
+            moment_group.min_recovery_date = moment_group.min_sale_date
+            moment_group.max_recovery_date = moment_group.max_sale_date
+            # Value computed with moments
             if len(moment_group.moment_ids) > 0:
                 moments = moment_group.moment_ids
                 moment_group.min_recovery_date = min(

@@ -6,8 +6,137 @@
 -->
 <odoo>
 
-    <menuitem id="menu_eshop"
-        name="eShop Sale" sequence="30"
-        parent="sale.menu_sale_config"/>
+    <!-- ACTION WINDOWS  -->
+    <!-- Product with filter -->
+    <record id="action_eshop_products" model="ir.actions.act_window">
+        <field name="name">eShop Products</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_product_template_tree"/>
+        <field name="context">{'search_default_filter_eshop_available_t':1, 'search_default_filter_eshop_set_t':1}</field>
+    </record>
+
+    <!-- Sales with filter -->
+    <record id="action_eshop_sales" model="ir.actions.act_window">
+        <field name="name">eShop Sales</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_eshop_sale':1, 'search_default_filter_sale_delivery_date_not_passed':1}</field>
+    </record>
+
+    <!-- APP ESHOP MENU -->
+    <!-- App -->
+    <menuitem
+        id="menu_eshop_app"
+        name="eShop"
+        sequence="30"
+        web_icon="sale_eshop,static/description/icon.png"
+        groups="sale_eshop.res_groups_eshop_user"
+    />
+
+    <!-- Products and categories -->
+    <menuitem
+        id="menu_eshop_product_categories"
+        name="Products and categories"
+        sequence="10"
+        parent="menu_eshop_app"/>
+
+    <menuitem
+        id="menu_eshop_products"
+        parent="menu_eshop_product_categories"
+        sequence="10"
+        action="action_eshop_products"
+    />
+
+    <menuitem
+        id="menu_eshop_category_app"
+        parent="menu_eshop_product_categories"
+        sequence="20"
+        action="action_eshop_category"
+    />
+
+    <!-- Sales -->
+    <menuitem
+        id="menu_eshop_sales"
+        name="Sales"
+        sequence="20"
+        parent="menu_eshop_app"/>
+
+    <menuitem
+        id="menu_eshop_sales_sales"
+        parent="menu_eshop_sales"
+        sequence="10"
+        action="action_eshop_sales"
+    />
+    <menuitem
+        id="menu_eshop_sales_payment_transaction"
+        parent="menu_eshop_sales"
+        sequence="20"
+        action="payment.action_payment_transaction"
+    />
+
+    <!-- Customers -->
+    <menuitem
+        id="menu_eshop_customers"
+        name="Customers"
+        sequence="30"
+        parent="menu_eshop_app"/>
+
+    <menuitem
+        id="menu_res_partner_app"
+        parent="menu_eshop_customers"
+        sequence="10"
+        groups="sale_eshop.res_groups_eshop_user"
+        action="action_res_partner"
+    />
+
+    <menuitem
+        id="menu_eshop_fake_account_app"
+        parent="menu_eshop_customers"
+        sequence="20"
+        action="action_eshop_fake_account"
+    />
+
+    <!-- Recovery moments and Places -->
+    <menuitem
+        id="menu_sale_recovery_moment_menu_app"
+        name="Moments and Places"
+        sequence="40"
+        parent="menu_eshop_app"/>
+
+    <menuitem
+        id="menu_sale_recovery_moment_app"
+        sequence="20"
+        parent="menu_sale_recovery_moment_menu_app"
+        action="sale_recovery_moment.action_sale_recovery_moment"/>
+
+    <menuitem
+        id="menu_sale_recovery_moment_group_app"
+        sequence="30"
+        parent="menu_sale_recovery_moment_menu_app"
+        action="sale_recovery_moment.action_sale_recovery_moment_group"/>
+
+    <menuitem
+        id="menu_sale_recovery_place_app"
+        sequence="40"
+        parent="menu_sale_recovery_moment_menu_app"
+        action="sale_recovery_moment.action_sale_recovery_place"/>
+
+    <!-- Website page -->
+    <menuitem
+        id="menu_wizard_res_company_eshop_website_app"
+        parent="menu_eshop_app"
+        sequence="90"
+        action="action_wizard_res_company_eshop_website"
+    />
+
+    <!-- eShop settings -->
+    <menuitem
+        id="menu_wizard_res_company_eshop_setting_app"
+        parent="menu_eshop_app"
+        sequence="100"
+        action="action_wizard_res_company_eshop_setting"
+    />
+
 
 </odoo>

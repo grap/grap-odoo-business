@@ -1,9 +1,11 @@
 from . import eshop_mixin
 from . import eshop_with_image_mixin
 
+from . import account_move
 from . import account_tax
 from . import eshop_category
 from . import eshop_fake_account
+from . import payment_transaction
 from . import product_label
 from . import product_product
 from . import product_template
@@ -16,4 +18,6 @@ from . import res_country_department
 from . import res_country_state
 from . import sale_order
 from . import sale_order_line
+from . import sale_recovery_moment
+from . import sale_recovery_place
 from . import wizard_res_company_eshop_setting

@@ -35,7 +35,7 @@
 
                                     Click on the button below to activate your account.
                                     <div style="margin: 16px 0px 16px 0px; text-align: center;">
-                                        <a t-att-href="(user.company_id.eshop_url) + 'activate_account/' + str(object.id) + '/' + (object.email)" style="display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;">
+                                        <a t-att-href="(object.company_id.eshop_url or '') + 'activate_account/' + str(object.id) + '/' + (object.email)" style="display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;">
                                             <strong>Activate Account</strong>
                                         </a>
                                     </div>

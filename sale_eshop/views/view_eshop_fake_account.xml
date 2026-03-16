@@ -22,8 +22,4 @@
         </field>
     </record>
 
-    <menuitem id="menu_eshop_fake_account"
-        parent="menu_eshop" sequence="70"
-        action="action_eshop_fake_account"/>
-
 </odoo>

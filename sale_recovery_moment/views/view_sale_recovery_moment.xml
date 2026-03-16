@@ -12,6 +12,8 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
+                <field name="place_id"/>
+                <field name="description"/>
                 <filter name="futur" string="Futur Sale" domain="[('state','=','futur')]"/>
                 <filter name="pending" string="Pending Sale or Pending Recovery" domain="[('state','in',('pending_sale', 'finished_sale', 'pending_recovery'))]"/>
                 <filter name="not_finished" string="Not Finished"
@@ -32,13 +34,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     decoration-info="state == 'futur'"
                     decoration-success="state in ('finished_sale', 'pending_recovery')">
             <header>
-                <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments"/>
+                <button name="action_sale_recovery_moment_wizard_duplicate" type="object" string="Duplicate moments wizard"/>
             </header>
+                <field name="name" optional="show"/>
                 <field name="place_id"/>
-                <field name="max_order_qty" string="Max"/>
+                <field name="max_order_qty" string="Max" optional="show"/>
                 <field name="min_recovery_date"/>
                 <field name="max_recovery_date"/>
-                <field name="description"/>
+                <field name="description" optional="show"/>
                 <field name="state"/>
                 <field name="order_qty" string="S.O. Qty"/>
                 <button name="%(action_recovery_moment_2_sale_order_valid)d" icon="fa-shopping-basket" string="See" type="action" />
@@ -66,7 +69,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_sale_recovery_moment_form" model="ir.ui.view">
         <field name="model">sale.recovery.moment</field>
         <field name="arch" type="xml">
-            <form>
+            <form duplicate="false">
                 <header>
                     <field name="state" widget="statusbar"/>
 
@@ -176,9 +179,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="context">{'search_default_not_finished':1}</field>
     </record>
 
-    <menuitem id="menu_sale_recovery_moment"
-        sequence="200"
-        parent="sale.sale_order_menu"
-        action="action_sale_recovery_moment"/>
+    <!-- Menu is handled in sale_eshop -->
 
 </odoo>

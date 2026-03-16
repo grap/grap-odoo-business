@@ -45,7 +45,7 @@ Configuration
 Note:
 
 If you set a shipping product on your recovery place, it will be added
-to the sale order, when confirming it.
+to the sale order, when recovery moment is selected.
 
 - A ``sale.recovery.moment`` is a moment during the customers have the
   possibility to recover their sales; A recovery moment is described by
@@ -99,6 +99,7 @@ Contributors
 ------------
 
 - Sylvain LE GAL (https://www.twitter.com/legalsylvain)
+- Quentin DUPONT
 
 Maintainers
 -----------

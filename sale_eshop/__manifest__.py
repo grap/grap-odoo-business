@@ -25,8 +25,11 @@
         "l10n_fr_department_product_origin",
         "base_company_legal_info",
         # CoopITeasy
-        "account_customer_wallet",
+        "customer_wallet",
+        # Mollie https://github.com/mollie/mollie-odoo
+        "payment_mollie_official",
     ],
+    "external_dependencies": {"python": ["phonenumbers"]},
     "data": [
         "security/ir_rule.xml",
         "security/ir_module_category.xml",
@@ -38,15 +41,16 @@
         "data/email_footer.xml",
         "data/email_create_account.xml",
         "data/email_lost_password.xml",
-        "views/menu.xml",
         "views/view_eshop_category.xml",
         "views/view_eshop_fake_account.xml",
+        "views/view_payment_portal_templates.xml",
         "views/view_product.xml",
         "views/view_uom_uom.xml",
         "views/view_res_company.xml",
         "views/view_res_partner.xml",
         "views/view_sale_order.xml",
         "views/view_wizard_res_company_eshop_setting.xml",
+        "views/menu.xml",
     ],
     "demo": [
         "demo/ir_config_parameter.xml",
@@ -59,5 +63,10 @@
         "demo/res_groups.xml",
         "demo/res_partner.xml",
     ],
+    "assets": {
+        "web.assets_frontend": [
+            "sale_eshop/static/src/scss/online_payment_portal.scss",
+        ],
+    },
     "installable": True,
 }

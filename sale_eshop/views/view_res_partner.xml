@@ -36,8 +36,7 @@
                     type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
                 <button name="button_enable_eshop"
                     string="Allow to use eShop" icon="fa-check-circle"
-                    type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
-                    ('eshop_password', '=', False)]}"/>
+                    type="object" attrs="{'invisible':[('eshop_state','=', 'enabled')]}"/>
             </tree>
         </field>
     </record>
@@ -46,24 +45,25 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button name="button_generate_send_credentials"
+                        string="Send new Credentials" icon="fa-paper-plane" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
+                        type="object"/>
+                    <button name="button_disable_eshop"
+                        string="Prevent to use eShop" icon="fa-times-circle" class="btn-secondary"
+                        type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
+                    <button name="button_enable_eshop"
+                        string="Allow to use eShop" icon="fa-check-circle" class="btn-secondary"
+                        type="object" attrs="{'invisible':[('eshop_state','=', 'enabled')]}"/>
+                </header>
+            </sheet>
             <notebook position="inside">
                 <page string="eShop Sale">
                     <group name="eShop">
                         <group>
                             <field name="eshop_password" password="True"/>
                             <field name="eshop_state" />
-                        </group>
-                        <group>
-                            <button name="button_generate_send_credentials"
-                                string="Reset and Send Credentials" class="btn fa fa-paper-plane"
-                                type="object"/>
-                            <button name="button_disable_eshop"
-                                string="Prevent to use eShop" class="btn fa fa-times-circle"
-                                type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
-                            <button name="button_enable_eshop"
-                                string="Allow to use eShop" class="btn fa fa-check-circle"
-                                type="object" attrs="{'invisible':['|', ('eshop_state','!=', 'disabled'),
-                                ('eshop_password', '=', False)]}"/>
                         </group>
                     </group>
                 </page>
@@ -75,13 +75,8 @@
         <field name="name">eShop Customers</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_eshop_setup':1}</field>
+        <field name="context">{'search_default_eshop_setup':1, 'search_default_eshop_waiting':1}</field>
         <field name="view_id" ref="view_res_partner_tree" />
     </record>
-
-    <menuitem id="menu_res_partner"
-        parent="menu_eshop" sequence="20"
-        groups="sale_eshop.res_groups_eshop_user"
-        action="action_res_partner"/>
 
 </odoo>

@@ -3,10 +3,11 @@ git+https://github.com/OCA/product-attributes@refs/pull/1840/head#subdirectory=s
 
 # Placeholder for future PRs 1
 git+https://github.com/grap/grap-odoo-custom@refs/pull/450/head#subdirectory=setup/product_maker
-git+https://github.com/coopiteasy/addons#subdirectory=setup/account_customer_wallet
+git+https://github.com/coopiteasy/addons@refs/pull/397/head#subdirectory=setup/customer_wallet
 git+https://github.com/OCA/multi-company@refs/pull/674/head#subdirectory=setup/base_company_legal_info
 
 # Placeholder for future PRs 2
+odoo-addon-payment-mollie-official @ git+https://github.com/mollie/mollie-odoo.git@refs/pull/173/head#subdirectory=payment_mollie_official
 
 # Placeholder for future PRs 3
 

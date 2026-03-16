@@ -49,7 +49,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
     <record id="view_sale_recovery_moment_group_form" model="ir.ui.view">
         <field name="model">sale.recovery.moment.group</field>
         <field name="arch" type="xml">
-            <form>
+            <form duplicate="false">
                 <header>
                     <field name="state" widget="statusbar"/>
                 </header>
@@ -83,13 +83,13 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                                     <tree editable="bottom">
                                         <field name="place_id"/>
                                         <field name="max_order_qty" string="Max"/>
-                                        <field name="min_recovery_date"/>
-                                        <field name="max_recovery_date"/>
+                                        <field name="min_recovery_date" string="Recovery start"/>
+                                        <field name="max_recovery_date" string="Recovery end"/>
                                         <field name="description"/>
                                         <field name="order_qty" string="S.O. Qty" sum="Total" optional="hide"/>
                                         <button name="%(action_recovery_moment_2_sale_order)d" icon="fa-shopping-basket" string="See" type="action" optional="hide"/>
                                         <field name="valid_order_qty" sum="Total" string="V.S.O. Qty"/>
-                                        <button name="%(action_recovery_moment_2_sale_order_valid)d" total="Total" icon="fa-shopping-basket" string="See" type="action" />
+                                        <button name="%(action_recovery_moment_2_sale_order_valid)d" total="Total" icon="fa-shopping-basket" string="See" type="action"/>
                                         <field name="picking_qty" string="D.O. Qty" sum="Total" optional="hide"/>
                                         <button name="%(action_recovery_moment_2_stock_picking)d" icon="fa-truck" string="See" type="action" optional="hide"/>
                                         <field name="valid_picking_qty" string="V.D.O. Qty" sum="Total"/>
@@ -111,9 +111,6 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="context">{'search_default_not_finished':1}</field>
     </record>
 
-    <menuitem id="menu_sale_recovery_moment_group"
-        sequence="210"
-        parent="sale.sale_order_menu"
-        action="action_sale_recovery_moment_group"/>
+    <!-- Menu is handled in sale_eshop -->
 
 </odoo>

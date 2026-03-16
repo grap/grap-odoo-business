@@ -10,16 +10,41 @@
         <field name="model">wizard.res.company.eshop.setting</field>
         <field name="arch" type="xml">
             <form>
-                <group string="Social Network">
-                    <field name="social_facebook"/>
-                    <field name="social_linkedin"/>
-                    <field name="social_instagram"/>
+                <group>
+                    <group string="Basic Settings">
+                        <field name="eshop_title"/>
+                        <field name="eshop_minimum_price"/>
+                        <field name="eshop_pricelist_id"/>
+                        <field name="eshop_vat_included"/>
+                    </group>
+                    <group string="Register Options">
+                        <field name="eshop_register_allowed"/>
+                        <field name="eshop_register_phone_required"/>
+                    </group>
+                    <group string="Screen Options">
+                        <field name="eshop_list_view_enabled"/>
+                        <field name="eshop_catalog_view_enabled"/>
+                    </group>
+                    <group string="Payment Options" readonly="1">
+                        <field name="eshop_pay_on_site" string="Option : Payment on site" />
+                        <field name="eshop_pay_on_site_text"
+                               attrs="{'required' : [('eshop_pay_on_site', '=', True)], 'invisible' : [('eshop_pay_on_site', '=', False)]}"
+                               string="Custom text for payment methods on site"
+                               placeholder="E.g : On site, we accept cash and checks but not credit card."/>
+                        <br/><br/>
+                        <field name="eshop_wallet_enabled" string="Option : Payment with wallet"/>
+                        <field name="eshop_wallet_recharge_bank"/>
+                        <br/><br/>
+                        <field name="eshop_mollie_enabled" string="Option : Payment online with Mollie"/>
+                    </group>
+                    <group string="Technical Settings">
+                        <field name="eshop_url"/>
+                        <field name="eshop_invalidation_key"/>
+                    </group>
                 </group>
-                <group string="Texts">
-                    <field name="eshop_home_text"/>
-                </group>
+
                 <footer>
-                    <button name="button_apply_setting" string="Apply Settings" type="object" class="oe_highlight"/>
+                    <button name="button_apply_settings" string="Apply Settings" type="object" class="oe_highlight"/>
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
             </form>
@@ -30,12 +55,43 @@
         <field name="name">eShop Settings</field>
         <field name="res_model">wizard.res.company.eshop.setting</field>
         <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wizard_res_company_eshop_setting_form"/>
         <field name="target">new</field>
     </record>
 
-    <menuitem id="menu_wizard_res_company_eshop_setting"
-        parent="menu_eshop" sequence="50"
-        groups="sale_eshop.res_groups_eshop_user"
-        action="action_wizard_res_company_eshop_setting"/>
+    <!-- Simple view for first website page -->
+    <record id="view_wizard_res_company_eshop_website_form" model="ir.ui.view">
+        <field name="model">wizard.res.company.eshop.setting</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group string="Basic Settings">
+                        <field name="eshop_title"/>
+                    </group>
+                    <group string="Legal Notices">
+                        <field name="eshop_hosting"/>
+                        <field name="eshop_registered_capital"/>
+                        <field name="eshop_consumer_mediation"/>
+                    </group>
+                </group>
+                <group string="Welcome page on your eShop">
+                    <field name="eshop_home_text" style="height: 250px; width: 1000px;" nolabel="1"/>
+                </group>
+
+                <footer>
+                    <button name="button_apply_website" string="Apply Changes" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_res_company_eshop_website" model="ir.actions.act_window">
+        <field name="name">eShop Website</field>
+        <field name="res_model">wizard.res.company.eshop.setting</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wizard_res_company_eshop_website_form"/>
+        <field name="target">new</field>
+    </record>
 
 </odoo>

@@ -28,6 +28,7 @@ class ResPartner(models.Model):
         "street2",
         "zip",
         "city",
+        "country_id",
         "customer_wallet_balance",
     ]
 
@@ -80,7 +81,13 @@ class ResPartner(models.Model):
                     "email_to": partner.email,
                 },
             )
-            partner.write({"eshop_state": "email_to_confirm"})
+            # don't set email_to_confirm if partner was already enabled
+            if (
+                email_step == "create_account"
+                or email_step == "reset_password"
+                and partner.eshop_state == "disabled"
+            ):
+                partner.write({"eshop_state": "email_to_confirm"})
         return True
 
     @api.model
@@ -125,6 +132,9 @@ class ResPartner(models.Model):
     @api.model
     def update_from_eshop(self, partner_id, vals):
         partner = self.browse(partner_id)
+        vals["country_id"] = self.env["res.country"].search(
+            [("id", "=", vals.get("country_id" or None))]
+        )
         partner.write(vals)
         return True
 

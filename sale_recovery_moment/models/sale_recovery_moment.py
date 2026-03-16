@@ -6,8 +6,7 @@
 from datetime import datetime, timedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 
 
@@ -184,7 +183,7 @@ class SaleRecoveryMoment(models.Model):
             place = recovery_places.browse(vals["place_id"])
             place_name = place.name
 
-            if "group_id" in vals:
+            if vals.get("group_id"):
                 group = recovery_groups.browse(vals["group_id"])
                 group_name = group.name
                 vals["name"] = f"{code} - {group_name} - {place_name}"
@@ -339,6 +338,21 @@ class SaleRecoveryMoment(models.Model):
                         "The minimum Date of Recovery must be before the maximum"
                         " Date of Recovery."
                     )
+                )
+            elif moment.max_recovery_date <= moment.min_sale_date:
+                raise ValidationError(
+                    _(
+                        "The maximum Date of Recovery must be after the minimum"
+                        " Date of Sale."
+                    )
+                )
+
+    @api.constrains("min_sale_date", "max_sale_date")
+    def _check_sales_dates(self):
+        for moment in self:
+            if moment.min_sale_date >= moment.max_sale_date:
+                raise ValidationError(
+                    _("The minimum Sale Date must be before the maximum" " Sale Date.")
                 )
 
     # Onchange functions
