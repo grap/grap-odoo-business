@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
-Copyright (C) 2023-Today GRAP (http://www.grap.coop)
-@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
-License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
-
 <odoo>
 
     <record id="res_config_settings_view_form" model="ir.ui.view">
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field
+                name="inherit_id"
+                ref="account.res_config_settings_view_form"
+            />
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='print_vendor_checks_setting_container']" position="after">
 
+            <div data-key="account" position="inside">
                 <h2 groups="recurring_consignment.group_consignment_manager">Recurring Consignment</h2>
                 <div class="row mt16 o_settings_container" id="recurring_consignment"
                     groups="recurring_consignment.group_consignment_manager">
@@ -20,7 +20,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane mt16">
                             <label for="commission_product_id"/>
-                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific."/>
+                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific." groups="base.group_multi_company"/>
                             <div>
                                 <field name="commission_product_id"/>
                             </div>
@@ -31,7 +31,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane mt16">
                             <label for="commission_deduction_journal_id"/>
-                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific."/>
+                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific." groups="base.group_multi_company"/>
                             <div>
                                 <field name="commission_deduction_journal_id"/>
                             </div>
@@ -42,15 +42,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                     <div class="col-12 col-lg-6 o_setting_box">
                         <div class="o_setting_right_pane mt16">
                             <label for="recurring_consignment_account_prefix"/>
-                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific."/>
+                            <span class="fa fa-lg fa-building-o" role="img" title="Values set here are company-specific." groups="base.group_multi_company"/>
                             <div>
                                 <field name="recurring_consignment_account_prefix"/>
                             </div>
                             <div class="text-muted">Code used as prefix to generate account code of the consignors.</div>
                         </div>
                     </div>
+
                 </div>
-            </xpath>
+
+            </div>
+
         </field>
     </record>
 
