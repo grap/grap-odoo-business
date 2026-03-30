@@ -13,6 +13,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
             <form>
                 <group string="Settings">
                     <field name="consignor_name"/>
+                    <field name="account_prefix"/>
                     <field name="account_suffix"/>
                     <field name="account_code"/>
                     <field name="commission_rate"/>
