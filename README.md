@@ -44,7 +44,7 @@ addon | version | maintainers | summary
 [product_label_mrp](product_label_mrp/) | 16.0.1.1.1 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Adds labels in MRP BoMs
 [product_print_category_food_report](product_print_category_food_report/) | 16.0.1.1.1 |  | Food report like pricetags
 [product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.1 |  | Adds Date field every time Product Standard Price change.
-[recurring_consignment](recurring_consignment/) | 16.0.2.3.1 |  | Sale - Handle Recurring Consignments
+[recurring_consignment](recurring_consignment/) | 16.0.2.3.2 |  | Sale - Handle Recurring Consignments
 [recurring_consignment_pos](recurring_consignment_pos/) | 16.0.1.1.1 |  | Glue module for Recurring Consignment and PoS modules
 [sale_eshop](sale_eshop/) | 16.0.1.4.1 |  | Allow connection to Odoo eShop Project
 [sale_recovery_moment](sale_recovery_moment/) | 16.0.2.2.0 |  | Manage Recovery Moments and Places for Sale Order
