@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Product Labels MRP",
-    "summary": "Adds labels in MRP BoMs",
+    "summary": "Adds Product labels in MRP BoMs",
     "version": "16.0.1.1.2",
     "category": "Product",
     "author": "GRAP",
