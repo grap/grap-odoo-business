@@ -41,7 +41,7 @@ addon | version | maintainers | summary
 [product_food_certification_sale](product_food_certification_sale/) | 16.0.1.0.2 |  | Product - Food Certification Informations - Sale
 [product_food_certification_stock](product_food_certification_stock/) | 16.0.1.0.2 |  | Product - Food Certification Informations - Stock
 [product_label](product_label/) | 16.0.2.0.4 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Product Labels
-[product_label_mrp](product_label_mrp/) | 16.0.1.1.2 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Adds labels in MRP BoMs
+[product_label_mrp](product_label_mrp/) | 16.0.1.1.3 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Adds Product labels in MRP BoMs
 [product_print_category_food_report](product_print_category_food_report/) | 16.0.1.1.2 |  | Food report like pricetags
 [product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.2 |  | Adds Date field every time Product Standard Price change.
 [recurring_consignment](recurring_consignment/) | 16.0.2.4.1 |  | Sale - Handle Recurring Consignments

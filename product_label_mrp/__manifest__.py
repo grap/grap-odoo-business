@@ -4,7 +4,7 @@
 {
     "name": "Product Labels MRP",
     "summary": "Adds Product labels in MRP BoMs",
-    "version": "16.0.1.1.2",
+    "version": "16.0.1.1.3",
     "category": "Product",
     "author": "GRAP",
     "maintainers": ["quentinDupont"],
