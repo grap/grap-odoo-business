@@ -94,3 +94,4 @@ You can also take a look on the following repositories:
 * [odoo-addons-intercompany-trade](https://github.com/grap/odoo-addons-intercompany-trade)
 * [odoo-addons-multi-company](https://github.com/grap/odoo-addons-multi-company)
 * [odoo-addons-company-wizard](https://github.com/grap/odoo-addons-company-wizard)
+* [odoo-addons-driver](https://github.com/grap/odoo-addons-driver)
