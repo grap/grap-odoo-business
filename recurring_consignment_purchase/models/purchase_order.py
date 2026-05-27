@@ -14,7 +14,7 @@ class PurchaseOrder(models.Model):
         string="Consignment Trade", related="partner_id.is_consignor"
     )
 
-    def action_view_invoice(self):
+    def action_view_invoice(self, invoices=False):
         orders = self.filtered(lambda x: x.consignment_trade)
         if orders:
             raise UserError(
@@ -24,5 +24,5 @@ class PurchaseOrder(models.Model):
                 )
                 % (", ".join([x.name for x in orders]))
             )
-        res = super().action_view_invoice()
+        res = super().action_view_invoice(invoices=False)
         return res
