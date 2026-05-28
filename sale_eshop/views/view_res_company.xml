@@ -14,31 +14,31 @@
                 <page string="eShop" colspan="4">
                     <group>
                         <group string="Basic Settings">
-                            <field name="eshop_image_128" widget="image" class="oe_avatar"/>
                             <field name="has_eshop"/>
-                            <field name="eshop_title"/>
-                            <field name="eshop_minimum_price"/>
-                            <field name="eshop_pricelist_id"/>
-                            <field name="eshop_manage_recovery_moment"/>
-                            <field name="eshop_vat_included"/>
+                            <field name="eshop_image_128" widget="image" class="oe_avatar" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
+                            <field name="eshop_title" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
+                            <field name="eshop_minimum_price" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
+                            <field name="eshop_pricelist_id" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
+                            <field name="eshop_manage_recovery_moment" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
+                            <field name="eshop_vat_included" attrs="{'invisible' : [('has_eshop', '=', False)]}"/>
                         </group>
-                        <group string="Legal Notices">
+                        <group string="Legal Notices" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                             <field name="eshop_hosting"/>
                             <field name="eshop_registered_capital"/>
                             <field name="eshop_consumer_mediation"/>
                         </group>
-                        <group string="Register Options">
+                        <group string="Register Options" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                             <field name="eshop_register_allowed"/>
                             <field name="eshop_register_phone_required"/>
                         </group>
-                        <group string="Screen Options">
+                        <group string="Screen Options" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                             <field name="eshop_list_view_enabled"/>
                             <field name="eshop_catalog_view_enabled"/>
                         </group>
-                        <group string="Payment Options">
+                        <group string="Payment Options" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                             <field name="eshop_pay_on_site" string="Option : Payment on site" />
                             <field name="eshop_pay_on_site_text"
-                                   attrs="{'required' : [('eshop_pay_on_site', '=', True)], 'invisible' : [('eshop_pay_on_site', '=', False)]}"
+                                   attrs="{'required' : [('has_eshop', '=', True), ('eshop_pay_on_site', '=', True)], 'invisible' : [('eshop_pay_on_site', '=', False)]}"
                                    string="Custom text for payment methods on site"
                                    placeholder="E.g : On site, we accept cash and checks but not credit card."/>
                             <br/><br/>
@@ -47,12 +47,12 @@
                             <br/><br/>
                             <field name="eshop_mollie_enabled" string="Option : Payment online with Mollie"/>
                         </group>
-                        <group string="Technical Settings">
+                        <group string="Technical Settings" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                             <field name="eshop_url"/>
                             <field name="eshop_invalidation_key"/>
                         </group>
                     </group>
-                    <group string="Welcome page">
+                    <group string="Welcome page" attrs="{'invisible' : [('has_eshop', '=', False)]}">
                         <field name="eshop_home_text"/>
                     </group>
                 </page>
