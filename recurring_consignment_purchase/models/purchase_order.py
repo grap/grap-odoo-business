@@ -24,5 +24,5 @@ class PurchaseOrder(models.Model):
                 )
                 % (", ".join([x.name for x in orders]))
             )
-        res = super().action_view_invoice(invoices=False)
+        res = super().action_view_invoice(*args, **kwargs)
         return res
