@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2026-02-18 10:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -20,17 +21,19 @@ msgstr ""
 #: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
 msgid "%(parent)s / %(name)s"
-msgstr ""
+msgstr "%(parent)s / %(name)s"
 
 #. module: sale_eshop
 #. odoo-python
 #: code:addons/sale_eshop/models/sale_order_line.py:0
 #, python-format
 msgid ""
-"'%(qty).3f' is not a valid quantity for %(product)s, the minimum quantity is"
-" '%(min_qty).3f'. The quantity has been automatically increased in your "
+"'%(qty).3f' is not a valid quantity for %(product)s, the minimum quantity is "
+"'%(min_qty).3f'. The quantity has been automatically increased in your "
 "shopping cart."
 msgstr ""
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité minimum est "
+"'%(min_qty).3f'. La quantité a été automatiquement dans votre panier."
 
 #. module: sale_eshop
 #. odoo-python
@@ -40,6 +43,8 @@ msgid ""
 "'%(qty).3f' is not a valid quantity for %(product)s, the quantity has been "
 "rounded to '%(rounded).3f'."
 msgstr ""
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité a été arrondie "
+"à '%(rounded).3f'."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
@@ -75,10 +80,12 @@ msgstr "<span style=\"font-size: 10px;\">Votre compte</span><br/>"
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
 msgid ""
 "<strong>No suitable payment option could be found.</strong><br/>\n"
-"                                If you believe that it is an error, please contact the website administrator."
+"                                If you believe that it is an error, please "
+"contact the website administrator."
 msgstr ""
 "<strong>Aucun moyen de paiement n'a été trouvé.</strong><br/>\n"
-"                                Si vous pensez que c'est une erreur, contactez nous."
+"                                Si vous pensez que c'est une erreur, "
+"contactez nous."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
@@ -86,22 +93,30 @@ msgid ""
 "<strong>Warning</strong> Make sure your are logged in as the right partner "
 "before making this payment."
 msgstr ""
+"<strong>Attention</strong> Veuillez vérifier que vous êtes authentifié avec le partenaire "
+"correcte avant de réaliser le paiement."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
 msgid "<strong>Warning</strong> The currency is missing or incorrect."
-msgstr ""
+msgstr "<strong>Attention</strong> La devise est manquante, ou ne correspond pas."
+
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
 msgid "<strong>Warning</strong> You must be logged in to pay."
-msgstr ""
+msgstr "<strong>Attention</strong> Vous devez être identifié pour payer."
 
 #. module: sale_eshop
 #: model:mail.template,body_html:sale_eshop.email_lost_password
 msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: "
+"16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; "
+"color: #454748; width: 100%; border-collapse:separate;\"><tr><td "
+"align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "            <tbody>\n"
 "                <!-- HEADER -->\n"
 "                <t t-call=\"sale_eshop.email_header\"></t>\n"
@@ -109,25 +124,37 @@ msgid ""
 "                <!-- CONTENT -->\n"
 "                <tr>\n"
 "                    <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" "
+"cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: "
+"white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;"
+"\">\n"
 "                                <div>\n"
-"                                    Dear <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"                                    Dear <t t-out=\"object.name or ''\"></t>,"
+"<br> <br>\n"
 "\n"
 "                                    <b>Your password has been reset.</b>\n"
-"                                    <p>Here is a new password: <code><t t-out=\"object.eshop_password or ''\"></t></code></p>\n"
+"                                    <p>Here is a new password: <code><t t-"
+"out=\"object.eshop_password or ''\"></t></code></p>\n"
 "\n"
-"                                    <b>Connect one first time with this password and change it on your account page.</b>\n"
+"                                    <b>Connect one first time with this "
+"password and change it on your account page.</b>\n"
 "\n"
-"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
-"                                        <a t-att-href=\"(object.company_id.eshop_url or '') + 'account'\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; "
+"text-align: center;\">\n"
+"                                        <a t-att-href=\"(object.company_id."
+"eshop_url or '') + 'account'\" style=\"display: inline-block; padding: 10px; "
+"text-decoration: none; font-size: 12px; background-color: #895b2b; color: "
+"#fff; border-radius: 5px;\">\n"
 "                                            <strong>Account page</strong>\n"
 "                                        </a>\n"
 "                                    </div>\n"
 "                                </div>\n"
 "                            </td></tr>\n"
 "                            <tr><td style=\"text-align:center;\">\n"
-"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:"
+"rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;"
+"min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
 "                            </td></tr>\n"
 "                        </table>\n"
 "                    </td>\n"
@@ -141,8 +168,13 @@ msgid ""
 "            </table>\n"
 "        "
 msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: "
+"16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; "
+"color: #454748; width: 100%; border-collapse:separate;\"><tr><td "
+"align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "            <tbody>\n"
 "                <!-- HEADER -->\n"
 "                <t t-call=\"sale_eshop.email_header\"></t>\n"
@@ -150,25 +182,39 @@ msgstr ""
 "                <!-- CONTENT -->\n"
 "                <tr>\n"
 "                    <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" "
+"cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: "
+"white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;"
+"\">\n"
 "                                <div>\n"
-"                                    Dear <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
+"                                    Cher·e <t t-out=\"object.name or ''\"></t>,"
+"<br> <br>\n"
 "\n"
-"                                    <b> Votre mot de passe a été réinitialisé. </b>\n"
-"                                    <p>Voici le nouveau mot de passe : <code><t t-out=\"object.eshop_password or ''\"></t></code></p>\n"
+"                                    <b> Votre mot de passe a été "
+"réinitialisé. </b>\n"
+"                                    <p>Voici le nouveau mot de passe : "
+"<code><t t-out=\"object.eshop_password or ''\"></t></code></p>\n"
 "\n"
-"                                    <b>Connectez vous une première fois puis changez le dans la page de votre paramètre de compte.</b>\n"
+"                                    <b>Connectez vous une première fois puis "
+"changez le dans la page de votre paramètre de compte.</b>\n"
 "\n"
-"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
-"                                        <a t-att-href=\"(object.company_id.eshop_url or '') + 'account'\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
-"                                            <strong>Page de compte clien·te</strong>\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; "
+"text-align: center;\">\n"
+"                                        <a t-att-href=\"(object.company_id."
+"eshop_url or '') + 'account'\" style=\"display: inline-block; padding: 10px; "
+"text-decoration: none; font-size: 12px; background-color: #895b2b; color: "
+"#fff; border-radius: 5px;\">\n"
+"                                            <strong>Page de compte client·e</"
+"strong>\n"
 "                                        </a>\n"
 "                                    </div>\n"
 "                                </div>\n"
 "                            </td></tr>\n"
 "                            <tr><td style=\"text-align:center;\">\n"
-"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:"
+"rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;"
+"min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
 "                            </td></tr>\n"
 "                        </table>\n"
 "                    </td>\n"
@@ -185,8 +231,13 @@ msgstr ""
 #. module: sale_eshop
 #: model:mail.template,body_html:sale_eshop.email_create_account
 msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: "
+"16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; "
+"color: #454748; width: 100%; border-collapse:separate;\"><tr><td "
+"align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "            <tbody>\n"
 "                <!-- HEADER -->\n"
 "                <t t-call=\"sale_eshop.email_header\"></t>\n"
@@ -194,26 +245,43 @@ msgid ""
 "                <!-- CONTENT -->\n"
 "                <tr>\n"
 "                    <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" "
+"cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: "
+"white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;"
+"\">\n"
 "                                <div>\n"
-"                                    Dear <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
-"                                    Welcome to purchase website of <t t-out=\"user.company_id.name or ''\"></t><br><br>\n"
-"                                    An account has been created for you with the following login:<br>\n"
-"                                    <b>Login:</b><t t-out=\"object.email\"></t><br>\n"
-"                                    <b>Password:</b> The one you set during your registration\n"
+"                                    Dear <t t-out=\"object.name or ''\"></t>,"
+"<br> <br>\n"
+"                                    Welcome to purchase website of <t t-"
+"out=\"user.company_id.name or ''\"></t><br><br>\n"
+"                                    An account has been created for you with "
+"the following login:<br>\n"
+"                                    <b>Login:</b><t t-out=\"object.email\"></"
+"t><br>\n"
+"                                    <b>Password:</b> The one you set during "
+"your registration\n"
 "                                    <br><br>\n"
 "\n"
-"                                    Click on the button below to activate your account.\n"
-"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
-"                                        <a t-att-href=\"(object.company_id.eshop_url or '') + 'activate_account/' + str(object.id) + '/' + (object.email)\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
-"                                            <strong>Activate Account</strong>\n"
+"                                    Click on the button below to activate "
+"your account.\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; "
+"text-align: center;\">\n"
+"                                        <a t-att-href=\"(object.company_id."
+"eshop_url or '') + 'activate_account/' + str(object.id) + '/' + (object."
+"email)\" style=\"display: inline-block; padding: 10px; text-decoration: "
+"none; font-size: 12px; background-color: #895b2b; color: #fff; border-"
+"radius: 5px;\">\n"
+"                                            <strong>Activate Account</"
+"strong>\n"
 "                                        </a>\n"
 "                                    </div>\n"
 "                                </div>\n"
 "                            </td></tr>\n"
 "                            <tr><td style=\"text-align:center;\">\n"
-"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:"
+"rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;"
+"min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
 "                            </td></tr>\n"
 "                        </table>\n"
 "                    </td>\n"
@@ -227,8 +295,13 @@ msgid ""
 "            </table>\n"
 "        "
 msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
-"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: "
+"16px; background-color: #f1e9de; font-family:Verdana, Arial,sans-serif; "
+"color: #454748; width: 100%; border-collapse:separate;\"><tr><td "
+"align=\"center\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"padding: 16px; background-color: white; color: "
+"#454748; border-collapse:separate;\">\n"
 "            <tbody>\n"
 "                <!-- HEADER -->\n"
 "                <t t-call=\"sale_eshop.email_header\"></t>\n"
@@ -236,26 +309,43 @@ msgstr ""
 "                <!-- CONTENT -->\n"
 "                <tr>\n"
 "                    <td align=\"center\" style=\"min-width: 590px;\">\n"
-"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
-"                            <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" "
+"cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: "
+"white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                            <tr><td valign=\"top\" style=\"font-size: 13px;"
+"\">\n"
 "                                <div>\n"
-"                                    Cher·e <t t-out=\"object.name or ''\"></t>,<br> <br>\n"
-"                                    Bienvenue sur la eBoutique de <t t-out=\"user.company_id.name or ''\"></t><br><br>\n"
-"                                    Un compte vient d'être crée avec l'identifiant suivant :<br>\n"
-"                                    <b>Tdentifiant : </b><t t-out=\"object.email\"></t><br>\n"
-"                                    <b>Mot de passe :</b> Celui que vous avez écrit pendant la création du compte\n"
+"                                    Cher·e <t t-out=\"object.name or ''\"></"
+"t>,<br> <br>\n"
+"                                    Bienvenue sur la eBoutique de <t t-"
+"out=\"user.company_id.name or ''\"></t><br><br>\n"
+"                                    Un compte vient d'être crée avec "
+"l'identifiant suivant :<br>\n"
+"                                    <b>Identifiant : </b><t t-out=\"object."
+"email\"></t><br>\n"
+"                                    <b>Mot de passe :</b> Celui que vous "
+"avez écrit pendant la création du compte\n"
 "                                    <br><br>\n"
 "\n"
-"                                    Cliquer sur le bouton suivant pour activer votre compte.\n"
-"                                    <div style=\"margin: 16px 0px 16px 0px; text-align: center;\">\n"
-"                                        <a t-att-href=\"(object.company_id.eshop_url or '') + 'activate_account/' + str(object.id) + '/' + (object.email)\" style=\"display: inline-block; padding: 10px; text-decoration: none; font-size: 12px; background-color: #895b2b; color: #fff; border-radius: 5px;\">\n"
-"                                            <strong>Activer votre compte</strong>\n"
+"                                    Cliquer sur le bouton suivant pour "
+"activer votre compte.\n"
+"                                    <div style=\"margin: 16px 0px 16px 0px; "
+"text-align: center;\">\n"
+"                                        <a t-att-href=\"(object.company_id."
+"eshop_url or '') + 'activate_account/' + str(object.id) + '/' + (object."
+"email)\" style=\"display: inline-block; padding: 10px; text-decoration: "
+"none; font-size: 12px; background-color: #895b2b; color: #fff; border-"
+"radius: 5px;\">\n"
+"                                            <strong>Activer votre compte</"
+"strong>\n"
 "                                        </a>\n"
 "                                    </div>\n"
 "                                </div>\n"
 "                            </td></tr>\n"
 "                            <tr><td style=\"text-align:center;\">\n"
-"                              <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
+"                              <hr width=\"100%\" style=\"background-color:"
+"rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;"
+"min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\">\n"
 "                            </td></tr>\n"
 "                        </table>\n"
 "                    </td>\n"
@@ -274,14 +364,14 @@ msgstr ""
 #: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
 msgid "A 'normal' Category can not belongs childs categories"
-msgstr ""
+msgstr "Une catégorie 'normale' ne peut pas contenir de catégories enfants"
 
 #. module: sale_eshop
 #. odoo-python
 #: code:addons/sale_eshop/models/eshop_category.py:0
 #, python-format
 msgid "A 'view' Category can not belongs products"
-msgstr ""
+msgstr "Une catégorie 'vue' ne peut pas contenir de produits"
 
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_eshop_category__type
@@ -314,6 +404,11 @@ msgid "Allow to use eShop"
 msgstr "Autoriser à utiliser la eBoutique"
 
 #. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_apple_product_template
+msgid "Apple"
+msgstr "Pomme"
+
+#. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_website_form
 msgid "Apply Changes"
 msgstr "Appliquer les changements"
@@ -343,6 +438,11 @@ msgstr "Disponible à la vente"
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_search
 msgid "Available on eShop"
 msgstr "Disponible en eBoutique"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_banana_product_template
+msgid "Banana"
+msgstr "Banane"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_partner_bank
@@ -408,7 +508,7 @@ msgstr "Médiateur à la consommation"
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_res_country
@@ -459,6 +559,46 @@ msgstr "Département"
 #: model:ir.model.fields,field_description:sale_eshop.field_uom_uom__eshop_description
 msgid "Description for the eShop"
 msgstr "Description pour la eBoutique"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_apple_product_template
+msgid "Description of Apple"
+msgstr "Description pour la pomme"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_banana_product_template
+msgid "Description of Banana"
+msgstr "Description pour la banane"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_garlic_product_template
+msgid "Description of Garlic"
+msgstr "Description pour l'ail"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_leek_product_template
+msgid "Description of Leek"
+msgstr "Description pour les poireaux"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_onion_product_template
+msgid "Description of Onions"
+msgstr "Description pour les oignons"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_pepper_product_template
+msgid "Description of Pepper"
+msgstr "Description pour le piment"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_potato_product_template
+msgid "Description of Potato"
+msgstr "Description pour les pommes de terre"
+
+#. module: sale_eshop
+#: model:product.template,description_sale:sale_eshop.product_strawberry_product_template
+msgid "Description of Strawberry. 250 gram container"
+msgstr "Description pour la framboise. (250 grammes)"
 
 #. module: sale_eshop
 #: model:ir.model.fields.selection,name:sale_eshop.selection__res_partner__eshop_state__disabled
@@ -530,6 +670,11 @@ msgstr "Activé"
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_end_date
 msgid "End Date of Sale"
 msgstr "Date de Fin de Vente"
+
+#. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_form
+msgid "End of sales"
+msgstr "Fin des ventes"
 
 #. module: sale_eshop
 #. odoo-python
@@ -604,7 +749,7 @@ msgstr "Description des taxes sur la eBoutique"
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_with_image_mixin
 msgid "Eshop With Image Mixin"
-msgstr ""
+msgstr "Mixin des éléments eboutique avec image"
 
 #. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_eshop_category
@@ -629,6 +774,11 @@ msgid "Form Data"
 msgstr "données du formulaire"
 
 #. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_garlic_product_template
+msgid "Garlic"
+msgstr "Ail"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__has_eshop
 msgid "Has eShop"
 msgstr "A une eBoutique"
@@ -638,22 +788,22 @@ msgstr "A une eBoutique"
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__id
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_1920
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_1024
 msgid "Image 1024"
-msgstr ""
+msgstr "Image 1024"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_256
 msgid "Image 256"
-msgstr ""
+msgstr "Image 256"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_write_date
@@ -662,7 +812,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__image_write_date
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__image_write_date
 msgid "Image Write Date"
-msgstr ""
+msgstr "Date d'écriture de l'image"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_write_date_hash
@@ -671,7 +821,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__image_write_date_hash
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__image_write_date_hash
 msgid "Image Write Date Hash"
-msgstr ""
+msgstr "Hash de la date d'écriture de l'image"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__social_instagram
@@ -680,12 +830,12 @@ msgstr "URL Instagram"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_invalidation_key
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_invalidation_key
 msgid "Invalidation Key"
 msgstr "Clé d'invalidation"
 
 #. module: sale_eshop
 #. odoo-python
-#: code:addons/sale_eshop/models/sale_order.py:0
 #: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
 msgid "Invoice was not posted correctly."
@@ -695,6 +845,11 @@ msgstr "La facture n'a pas été validé correctement."
 #: model:res.groups,name:sale_eshop.res_groups_is_eshop
 msgid "Is eShop"
 msgstr "Est eBoutique"
+
+#. module: sale_eshop
+#: model:ir.model,name:sale_eshop.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category____last_update
@@ -716,6 +871,11 @@ msgstr "Dernière mise à jour par"
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_leek_product_template
+msgid "Leek"
+msgstr "Poireau"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
@@ -743,12 +903,12 @@ msgstr "Gestionnaire"
 #: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
 msgid "Manuel payment method can't be found."
-msgstr ""
+msgstr "Aucune méthode de paiement manuelle n'a été trouvée."
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_512
 msgid "Medium-sized image"
-msgstr ""
+msgstr "Image de taille moyenne"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_minimum_price
@@ -761,9 +921,19 @@ msgid "Minimum Price by eShop"
 msgstr "Prix minimum pour la eBoutique"
 
 #. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_form
+msgid "Minimum Quantity"
+msgstr "Quantité minimum"
+
+#. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_minimum_qty
 msgid "Minimum Quantity for eShop"
 msgstr "Quantité minimum pour la eBoutique"
+
+#. module: sale_eshop
+#: model:ir.ui.menu,name:sale_eshop.menu_sale_recovery_moment_menu_app
+msgid "Moments and Places"
+msgstr "Moments et Lieux"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__name
@@ -773,7 +943,12 @@ msgstr "Nom"
 #. module: sale_eshop
 #: model:ir.model.fields.selection,name:sale_eshop.selection__eshop_category__type__normal
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_onion_product_template
+msgid "Onion"
+msgstr "Oignon"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
@@ -817,7 +992,6 @@ msgstr "Transaction"
 
 #. module: sale_eshop
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_sales_payment_transaction
-#: model:ir.ui.menu,name:sale_eshop.payment_transaction_menu_eshop
 msgid "Payment Transactions"
 msgstr "Transactions de paiements"
 
@@ -826,6 +1000,11 @@ msgstr "Transactions de paiements"
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_pay_on_site_text
 msgid "Payment methods on site"
 msgstr "Méthodes de paiement sur place"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_pepper_product_template
+msgid "Pepper"
+msgstr "Piment"
 
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_pay_on_site
@@ -842,6 +1021,11 @@ msgstr "Permettre les client·es de payer avec leur compte client·e"
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_register_phone_required
 msgid "Phone number is required"
 msgstr "Numéro de téléphone obligatoire"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_potato_product_template
+msgid "Potato"
+msgstr "Pomme de terre"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
@@ -874,6 +1058,16 @@ msgstr "Unité de mesure du produit"
 #: model:ir.model,name:sale_eshop.model_product_product
 msgid "Product Variant"
 msgstr "Variante de produit"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_without_image_product_template
+msgid "Product Without Image"
+msgstr "Produit sans image"
+
+#. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_disabled_product_template
+msgid "Product disabled for eshop"
+msgstr "Produit désactivé pour la eboutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__product_ids
@@ -932,11 +1126,6 @@ msgid "Recovery Places"
 msgstr "Lieux de retrait"
 
 #. module: sale_eshop
-#: model:ir.ui.menu,name:sale_eshop.menu_sale_recovery_moment_menu_app
-msgid "Moments and Places"
-msgstr "Moments et Lieux"
-
-#. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Register Options"
@@ -949,9 +1138,9 @@ msgid "Registered capital"
 msgstr "Capital social"
 
 #. module: sale_eshop
-#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_tree
-msgid "Send new Credentials"
+#, fuzzy
+msgid "Reset and Send Credentials"
 msgstr "Lui envoyer un nouveau mot de passe par mail"
 
 #. module: sale_eshop
@@ -975,10 +1164,20 @@ msgid "Sales Order Line"
 msgstr "Ligne de bons de commande"
 
 #. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_product_template_form
+msgid "Sales Start"
+msgstr "Début des ventes"
+
+#. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Screen Options"
 msgstr "Options d'affichage"
+
+#. module: sale_eshop
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
+msgid "Send new Credentials"
+msgstr "Lui envoyer un nouveau mot de passe par mail"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__sequence
@@ -994,37 +1193,12 @@ msgstr "Paramétré dans la eBoutique"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_image_128
 msgid "Small Image 128 for the eShop Menu"
-msgstr ""
+msgstr "Petite image (128x128) pour le menu de la eboutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__image_128
 msgid "Small-sized image"
-msgstr ""
-
-#. module: sale_eshop
-#: model:ir.model.fields,field_description:sale_eshop.field_account_tax__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_category__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_mixin__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_eshop_with_image_mixin__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_payment_transaction__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_product_label__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_product_product__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_product_template__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_company__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_country__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_country_department__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_country_state__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_partner__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_res_partner_bank__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_sale_order__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_sale_order_line__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_sale_recovery_moment__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_sale_recovery_place__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_uom_uom__smart_search
-#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__smart_search
-msgid "Smart Search"
-msgstr ""
+msgstr "Image de petite taille"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_start_date
@@ -1038,12 +1212,18 @@ msgid "State on eShop"
 msgstr "Etat dans la eBoutique"
 
 #. module: sale_eshop
+#: model:product.template,name:sale_eshop.product_strawberry_product_template
+msgid "Strawberry (250 gr)"
+msgstr "Framboise (250 gr)"
+
+#. module: sale_eshop
 #: model:ir.model,name:sale_eshop.model_account_tax
 msgid "Tax"
 msgstr "Taxe"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_company_form
+#: model_terms:ir.ui.view,arch_db:sale_eshop.view_wizard_res_company_eshop_setting_form
 msgid "Technical Settings"
 msgstr "Paramètres techniques"
 
@@ -1103,7 +1283,8 @@ msgstr "Vue"
 #: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
 msgid "Wallet journal can't be found. Check settings."
-msgstr "Le journal de Porte-monnaie n'a pas été trouvé. Vérifier les paramétrages"
+msgstr ""
+"Le journal de Porte-monnaie n'a pas été trouvé. Vérifier les paramétrages"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_hosting
@@ -1168,7 +1349,6 @@ msgstr "Email d'accès à la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_eshop_category
-#: model:ir.ui.menu,name:sale_eshop.menu_eshop_category
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_category_app
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_eshop_category_search
 msgid "eShop Categories"
@@ -1181,14 +1361,12 @@ msgstr "Catégorie eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_res_partner
-#: model:ir.ui.menu,name:sale_eshop.menu_res_partner
 #: model:ir.ui.menu,name:sale_eshop.menu_res_partner_app
 msgid "eShop Customers"
 msgstr "Clients eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_eshop_fake_account
-#: model:ir.ui.menu,name:sale_eshop.menu_eshop_fake_account
 #: model:ir.ui.menu,name:sale_eshop.menu_eshop_fake_account_app
 msgid "eShop Fake Accounts"
 msgstr "Faux comptes eBoutique"
@@ -1205,7 +1383,6 @@ msgid "eShop Reset password"
 msgstr "Réinitialiser le mot de passe"
 
 #. module: sale_eshop
-#: model:ir.ui.menu,name:sale_eshop.menu_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
 msgid "eShop Sale"
 msgstr "Vente eBoutique"
@@ -1218,7 +1395,6 @@ msgstr "Ventes eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_wizard_res_company_eshop_setting
-#: model:ir.ui.menu,name:sale_eshop.menu_wizard_res_company_eshop_setting
 #: model:ir.ui.menu,name:sale_eshop.menu_wizard_res_company_eshop_setting_app
 msgid "eShop Settings"
 msgstr "Paramétrages eBoutique"
@@ -1236,12 +1412,12 @@ msgstr "Nom de la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_url
+#: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_url
 msgid "eShop URL"
 msgstr "URL eBoutique"
 
 #. module: sale_eshop
 #: model:ir.actions.act_window,name:sale_eshop.action_wizard_res_company_eshop_website
-#: model:ir.ui.menu,name:sale_eshop.menu_wizard_res_company_eshop_website
 #: model:ir.ui.menu,name:sale_eshop.menu_wizard_res_company_eshop_website_app
 msgid "eShop Website"
 msgstr "Site web"
