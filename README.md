@@ -21,7 +21,6 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_accountant_simple_settings](account_accountant_simple_settings/) | 16.0.1.1.2 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Allow accountants to make some simple accounting configuration without having administration rights.
 [account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.3 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_move_change_number](account_move_change_number/) | 16.0.1.1.1 |  | Allow special user to rename account move
 [barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.2 |  | Barcodes Rule Per Company
