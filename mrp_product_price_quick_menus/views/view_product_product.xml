@@ -76,6 +76,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
               <button name="use_theoretical_price" type="object" string="Apply Margin" icon="fa-arrow-down" attrs="{'invisible': [('margin_state', '!=', 'too_expensive')]}" help="Decrease the Sale Price down to Theoretical Price"/>
               <field name="theoretical_difference" string="Theorical&#160;difference" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
               <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+              <field name="company_id" invisible="1"/>
             </tree>
         </field>
     </record>
