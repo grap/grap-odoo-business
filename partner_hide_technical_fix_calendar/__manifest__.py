@@ -6,7 +6,7 @@
     "name": "Partner - Hide Partners - Calendar",
     "summary": "Glue module with calendar,"
     " to Hide partners created when creating elements.",
-    "version": "16.0.2.0.2",
+    "version": "18.0.1.0.0",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
