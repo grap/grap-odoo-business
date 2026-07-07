@@ -44,6 +44,7 @@
         "report/qweb_template_pricetag_40.xml",
         "views/view_product_pricetag_type.xml",
         "views/view_product_product.xml",
+        "views/view_product_template.xml",
         "views/view_uom_uom.xml",
         "data/product_print_category.xml",
     ],
