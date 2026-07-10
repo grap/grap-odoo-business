@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* product_print_category_food_report
+# 	* product_print_category_food_report
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-23 14:16+0000\n"
-"PO-Revision-Date: 2024-07-23 14:16+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2026-07-10 08:02+0000\n"
+"PO-Revision-Date: 2026-07-10 08:02+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,48 +16,60 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:155
-#: code:addons/product_print_category_food_report/models/product_product.py:184
-#: code:addons/product_print_category_food_report/models/product_product.py:190
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
+#: code:addons/product_print_category_food_report/models/product_product.py:0
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per kilo"
 msgstr "le kilo"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:194
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per liter"
 msgstr "le litre"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:182
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per piece"
 msgstr "la pièce"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:217
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "%.0f gr"
-msgstr ""
+msgstr "%.0f gr"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:227
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "%.0f mL"
-msgstr ""
+msgstr "%.0f mL"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:224
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
-msgid "%.3f L"
-msgstr ""
+msgid "%.2f L"
+msgstr "%.2f L"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:214
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "%.3f kg"
-msgstr ""
+msgstr "%.3f kg"
+
+#. module: product_print_category_food_report
+#: model:uom.uom,name:product_print_category_food_report.uom_100_gr
+msgid "100 gr"
+msgstr "100 gr"
 
 #. module: product_print_category_food_report
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.qweb_template_pricetag_template_C
@@ -126,8 +138,12 @@ msgstr "Vrac - 96x96mm (N°32)"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_available
-msgid "Check this box if you want to use this Unit of Mesure to display price per this unit on pricetags."
-msgstr "cochez cette case si vous souhaitez utiliser cette unité de mesure pour afficher le prix à l'unité, sur l'étiquette."
+msgid ""
+"Check this box if you want to use this Unit of Mesure to display price per "
+"this unit on pricetags."
+msgstr ""
+"Cochez cette case si vous souhaitez utiliser cette unité de mesure pour "
+"afficher le prix à l'unité, sur l'étiquette."
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__color
@@ -136,14 +152,8 @@ msgstr "Couleur"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_product_pricetag_type__color
-#: model:ir.model.fields,help:product_print_category_food_report.field_res_company__pricetag_color
 msgid "Color of the Pricetag by default. Format #RRGGBB"
 msgstr "Couleur de l'étiquette par défaut. Format #RRGGBB"
-
-#. module: product_print_category_food_report
-#: model:ir.model,name:product_print_category_food_report.model_res_company
-msgid "Companies"
-msgstr "Sociétés"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__company_id
@@ -154,11 +164,6 @@ msgstr "Société"
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_20
 msgid "Counter - 97x58mm (N°20)"
 msgstr "Comptoir - 97x58mm (N°20)"
-
-#. module: product_print_category_food_report
-#: model:ir.model,name:product_print_category_food_report.model_res_country_group
-msgid "Country Group"
-msgstr "Groupe de pays"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__create_uid
@@ -176,27 +181,30 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:81
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "EU"
 msgstr "UE"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:85
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "EU / No EU"
 msgstr "UE / Non UE"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:79
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "France"
-msgstr ""
+msgstr "France"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type____last_update
@@ -214,7 +222,8 @@ msgid "Last Updated on"
 msgstr "Mis à jour le"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:57
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Modified on %s"
 msgstr "Modifié le %s"
@@ -225,37 +234,43 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:221
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Net Volume"
 msgstr "Volume Net"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:211
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Net Weight"
 msgstr "Poids Net"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:83
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "No EU"
 msgstr "Non UE"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:100
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Not From Organic Farming. "
 msgstr "Non issus de l'agriculture biologique. "
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:96
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Organic Product, certified by %s. "
 msgstr "Produit biologique, certifié par %s. "
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:86
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Origin of Ingredients: %s. "
 msgstr "Origine des ingrédients: %s. "
@@ -266,8 +281,52 @@ msgid "Origin on pricetag"
 msgstr "Origine - rendu final sur l'étiquette"
 
 #. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_01_product_template
+msgid "Pricetag 01 - Abricot de Turquie moelleux 250gr"
+msgstr "Etiquette 01 - Abricot de Turquie moelleux 250gr"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_02_product_template
+msgid "Pricetag 02 - Acérola - 30comprimés 84gr"
+msgstr "Etiquette 02 - Acérola - 30comprimés 84gr"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_10_product_template
+msgid "Pricetag 10 - Acha Peu Gingembre 33cl"
+msgstr "Etiquette 10 - Acha Peu Gingembre 33cl"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_11_product_template
+msgid "Pricetag 11 - Abricot Le jardinier glacier (550mL)"
+msgstr "Etiquette 11 - Abricot Le jardinier glacier (550mL)"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_12_product_template
+msgid "Pricetag 12 - Antisèche blonde (75cl)"
+msgstr "Etiquette 12 - Antisèche blonde (75cl)"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_20_product_template
+msgid "Pricetag 20 - Nem végétarien vrac (unité)"
+msgstr "Etiquette 20 - Nem végétarien vrac (unité)"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_30_product_template
+msgid "Pricetag 30 - Amande au Caramel et Chocolat"
+msgstr "Etiquette 30 - Amande au Caramel et Chocolat"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_31_product_template
+msgid "Pricetag 31 - Biscuits Cookies noisettes chocolat"
+msgstr "Etiquette 31 - Biscuits Cookies noisettes chocolat"
+
+#. module: product_print_category_food_report
+#: model:product.template,name:product_print_category_food_report.product_with_pricetag_32_product_template
+msgid "Pricetag 32 - Caramel au beurre salé en VRAC"
+msgstr "Etiquette 32 - Caramel au beurre salé en VRAC"
+
+#. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_color
-#: model:ir.model.fields,field_description:product_print_category_food_report.field_res_company__pricetag_color
 msgid "Pricetag Color"
 msgstr "Couleur de l'étiquette"
 
@@ -318,6 +377,7 @@ msgstr "Texte de l'unité secondaire de l'étiquette"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_type_id
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_template__pricetag_type_id
 msgid "Pricetag Type"
 msgstr "Type d'étiquette"
 
@@ -329,13 +389,14 @@ msgstr "Types d'étiquette"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_product__pricetag_uom_id
+#: model:ir.model.fields,field_description:product_print_category_food_report.field_product_template__pricetag_uom_id
 msgid "Pricetag UoM"
 msgstr "UdM de l'étiquette"
 
 #. module: product_print_category_food_report
-#: model:ir.model,name:product_print_category_food_report.model_product_product
+#: model:ir.model,name:product_print_category_food_report.model_product_template
 msgid "Product"
-msgstr "Article"
+msgstr "Produit"
 
 #. module: product_print_category_food_report
 #: model:ir.model,name:product_print_category_food_report.model_product_pricetag_type
@@ -345,7 +406,12 @@ msgstr "Types d'étiquette"
 #. module: product_print_category_food_report
 #: model:ir.model,name:product_print_category_food_report.model_uom_uom
 msgid "Product Unit of Measure"
-msgstr "Unité de mesure d'article"
+msgstr "Unité de mesure du produit"
+
+#. module: product_print_category_food_report
+#: model:ir.model,name:product_print_category_food_report.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
 
 #. module: product_print_category_food_report
 #: model:ir.actions.act_window,name:product_print_category_food_report.action_product_pricetag_type_2_product_product
@@ -357,12 +423,17 @@ msgstr "Articles"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_qty
 msgid "Products Quantity"
-msgstr ""
+msgstr "Nombre de produits"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_product_product__pricetag_uom_id
-msgid "Set an alternative Unit of Mesure if you want to display the price on your pricetags relative to this Unit."
-msgstr "Définir une unité de mesure alternative si vous voulez afficher un prix relatif à cette unité sur votre étiquette"
+#: model:ir.model.fields,help:product_print_category_food_report.field_product_template__pricetag_uom_id
+msgid ""
+"Set an alternative Unit of Mesure if you want to display the price on your "
+"pricetags relative to this Unit."
+msgstr ""
+"Définir une unité de mesure alternative si vous voulez afficher un prix "
+"relatif à cette unité sur votre étiquette"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_10
@@ -380,10 +451,11 @@ msgid "Shelf Rectangular Middle Margin - 79x44mm (N°12)"
 msgstr "Etagère - 79x43mm Rectangulaire marge moyenne (N°12)"
 
 #. module: product_print_category_food_report
-#: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_13
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_40
-msgid "Shelf Small Size - Packaged Products (no label, no barcode) - 61x24 (N°40)"
-msgstr "Etagère - 61x24mm Produits emballés (pas de label, pas de code-barre) (N°40)"
+msgid ""
+"Shelf Small Size - Packaged Products (no label, no barcode) - 61x24 (N°40)"
+msgstr ""
+"Etagère - 61x24mm Produits emballés (pas de label, pas de code-barre) (N°40)"
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_01
@@ -402,11 +474,16 @@ msgstr "Texte de traces d'allergènes"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_uom_uom__pricetag_name
-msgid "Used alternatively to the name field, on labels for displaying secondary unit prices"
-msgstr "Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher les prix aux unités secondaires"
+msgid ""
+"Used alternatively to the name field, on labels for displaying secondary "
+"unit prices"
+msgstr ""
+"Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher"
+" les prix aux unités secondaires"
 
 #. module: product_print_category_food_report
-#: code:addons/product_print_category_food_report/models/product_product.py:149
+#. odoo-python
+#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "for %s"
 msgstr "Pour %s"
