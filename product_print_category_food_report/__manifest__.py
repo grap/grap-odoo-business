@@ -13,6 +13,7 @@
     "license": "AGPL-3",
     "depends": [
         # OCA
+        "product_usability",
         "product_print_category",
         "product_net_weight",
         "product_uom_measure_type",
