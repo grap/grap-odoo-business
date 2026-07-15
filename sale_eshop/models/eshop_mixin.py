@@ -63,8 +63,9 @@ class EshopMixin(models.AbstractModel):
         requests.get(url, verify=False, timeout=10)
 
     def write(self, vals):
+        res = super().write(vals)
         self._write_eshop_invalidate(vals)
-        return super().write(vals)
+        return res
 
     def _write_eshop_invalidate(self, vals):
         ResCompany = self.env["res.company"]
@@ -78,6 +79,9 @@ class EshopMixin(models.AbstractModel):
         # Some fields are loaded and cached by the eShop
         if self._eshop_invalidation_type == "single":
             for item in self:
+                # Dont invalidate NewId non yet created object
+                if isinstance(item.id, models.NewId):
+                    return
                 if self._name == "res.company" and item.has_eshop:
                     self.with_delay()._invalidate_eshop(item, item.id)
 
