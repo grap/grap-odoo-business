@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [partner_hide_technical_abstract](partner_hide_technical_abstract/) | 18.0.1.0.0 |  | Technical module, used to to Hide partners created when creating other items in Odoo
+[partner_hide_technical_fix_calendar](partner_hide_technical_fix_calendar/) | 18.0.1.0.0 |  | Glue module with calendar, to Hide partners created when creating elements.
 [partner_hide_technical_user](partner_hide_technical_user/) | 18.0.1.0.0 |  | Hide partners created when creating users.
 
 [//]: # (end addons)
