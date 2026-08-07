@@ -7,36 +7,38 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-10 08:02+0000\n"
-"PO-Revision-Date: 2026-07-10 08:02+0000\n"
+"PO-Revision-Date: 2026-08-07 12:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: product_print_category_food_report
 #. odoo-python
 #: code:addons/product_print_category_food_report/models/product_product.py:0
-#: code:addons/product_print_category_food_report/models/product_product.py:0
-#: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per kilo"
-msgstr "le kilo"
+msgstr " le kilo"
 
 #. module: product_print_category_food_report
 #. odoo-python
 #: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per liter"
-msgstr "le litre"
+msgstr " le litre"
 
 #. module: product_print_category_food_report
 #. odoo-python
 #: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid " per piece"
-msgstr "la pièce"
+msgstr ""
+" \n"
+"la pièce"
 
 #. module: product_print_category_food_report
 #. odoo-python
@@ -433,7 +435,7 @@ msgid ""
 "pricetags relative to this Unit."
 msgstr ""
 "Définir une unité de mesure alternative si vous voulez afficher un prix "
-"relatif à cette unité sur votre étiquette"
+"relatif à cette unité sur votre étiquette."
 
 #. module: product_print_category_food_report
 #: model:product.print.category,name:product_print_category_food_report.print_category_pricetag_10
@@ -478,12 +480,12 @@ msgid ""
 "Used alternatively to the name field, on labels for displaying secondary "
 "unit prices"
 msgstr ""
-"Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher"
-" les prix aux unités secondaires"
+"Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher "
+"les prix aux unités secondaires"
 
 #. module: product_print_category_food_report
 #. odoo-python
 #: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "for %s"
-msgstr "Pour %s"
+msgstr "pour %s"
