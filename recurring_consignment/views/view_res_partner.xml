@@ -43,7 +43,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
     <record id="view_res_partner_search" model="ir.ui.view">
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="inherit_id" ref="account.res_partner_view_search"/>
         <field name="arch" type="xml">
             <filter name="supplier" position="after">
                 <filter string="Is Consignor" name="is_consignor" domain="[('is_consignor', '=', True)]"/>
