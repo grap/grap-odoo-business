@@ -6,7 +6,7 @@
     "name": "Hide Technical Partners - Abstract Module",
     "summary": "Technical module, used to to Hide partners created when creating"
     " other items in Odoo",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "category": "base",
     "author": "GRAP",
     "website": "https://github.com/grap/grap-odoo-business",
