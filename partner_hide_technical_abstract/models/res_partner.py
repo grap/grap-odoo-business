@@ -81,10 +81,10 @@ class ResPartner(models.Model):
     # This function is used by the other ORM functions
     # (name_search, search_read)
     @api.model
-    def _search(self, domain, **kwargs):
+    def _search(self, domain, *args, **kwargs):
         for element in self._get_hidden_elements():
             if not self.env.context.get(f"show_odoo_{element['name']}", False):
                 domain = expression.AND(
                     [domain, [(f"is_odoo_{element['name']}", "=", False)]]
                 )
-        return super()._search(domain, **kwargs)
+        return super()._search(domain, *args, **kwargs)
