@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-18 10:54+0000\n"
-"PO-Revision-Date: 2026-02-18 10:54+0000\n"
+"PO-Revision-Date: 2026-08-07 12:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: sale_eshop
 #. odoo-python
@@ -32,8 +33,9 @@ msgid ""
 "'%(min_qty).3f'. The quantity has been automatically increased in your "
 "shopping cart."
 msgstr ""
-"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité minimum est "
-"'%(min_qty).3f'. La quantité a été automatiquement dans votre panier."
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité "
+"minimum est '%(min_qty).3f'. La quantité a été automatiquement dans votre "
+"panier."
 
 #. module: sale_eshop
 #. odoo-python
@@ -43,8 +45,8 @@ msgid ""
 "'%(qty).3f' is not a valid quantity for %(product)s, the quantity has been "
 "rounded to '%(rounded).3f'."
 msgstr ""
-"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité a été arrondie "
-"à '%(rounded).3f'."
+"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité a "
+"été arrondie à '%(rounded).3f'."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
@@ -93,14 +95,14 @@ msgid ""
 "<strong>Warning</strong> Make sure your are logged in as the right partner "
 "before making this payment."
 msgstr ""
-"<strong>Attention</strong> Veuillez vérifier que vous êtes authentifié avec le partenaire "
-"correcte avant de réaliser le paiement."
+"<strong>Attention</strong> Veuillez vérifier que vous êtes authentifié avec "
+"le partenaire correcte avant de réaliser le paiement."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
 msgid "<strong>Warning</strong> The currency is missing or incorrect."
-msgstr "<strong>Attention</strong> La devise est manquante, ou ne correspond pas."
-
+msgstr ""
+"<strong>Attention</strong> La devise est manquante, ou ne correspond pas."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
@@ -188,8 +190,8 @@ msgstr ""
 "                            <tr><td valign=\"top\" style=\"font-size: 13px;"
 "\">\n"
 "                                <div>\n"
-"                                    Cher·e <t t-out=\"object.name or ''\"></t>,"
-"<br> <br>\n"
+"                                    Cher·e <t t-out=\"object.name or ''\"></"
+"t>,<br> <br>\n"
 "\n"
 "                                    <b> Votre mot de passe a été "
 "réinitialisé. </b>\n"
@@ -659,7 +661,7 @@ msgstr "Activer le paiement sur place"
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_wallet_recharge_bank
 #: model:ir.model.fields,field_description:sale_eshop.field_wizard_res_company_eshop_setting__eshop_wallet_recharge_bank
 msgid "Enable recharging Wallet account with bank transfer"
-msgstr "Activer la recharge des comptes client·es par virement bancaire."
+msgstr "Activer la recharge des comptes client·es par virement bancaire"
 
 #. module: sale_eshop
 #: model:ir.model.fields.selection,name:sale_eshop.selection__res_partner__eshop_state__enabled
@@ -771,7 +773,7 @@ msgstr ""
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_eshop_fake_account__form_data
 msgid "Form Data"
-msgstr "données du formulaire"
+msgstr "Données du formulaire"
 
 #. module: sale_eshop
 #: model:product.template,name:sale_eshop.product_garlic_product_template
@@ -1014,7 +1016,7 @@ msgstr "Permettre aux client·es de payer sur place avec du cash/chèques etc."
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_wallet_enabled
 msgid "Permits your customer to pay with their wallet."
-msgstr "Permettre les client·es de payer avec leur compte client·e"
+msgstr "Permettre les client·es de payer avec leur compte client·e."
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_register_phone_required
@@ -1087,7 +1089,7 @@ msgstr "Produits & catégories"
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_list_view_enabled
 msgid "Provide a List view to realize quick purchase."
-msgstr "Fourni une vue liste pour réaliser des achats rapides"
+msgstr "Fourni une vue liste pour réaliser des achats rapides."
 
 #. module: sale_eshop
 #: model:ir.model.fields,help:sale_eshop.field_res_company__eshop_catalog_view_enabled
@@ -1139,9 +1141,8 @@ msgstr "Capital social"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_tree
-#, fuzzy
 msgid "Reset and Send Credentials"
-msgstr "Lui envoyer un nouveau mot de passe par mail"
+msgstr "Réinitialiser et renvoyer un nouveau mot de passe par mail"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_rounded_qty
@@ -1250,12 +1251,12 @@ msgstr "Le Panier a été supprimé avec succès."
 #: code:addons/sale_eshop/models/sale_order.py:0
 #, python-format
 msgid "The line has been successfully deleted."
-msgstr "La ligne de panier a été supprimé"
+msgstr "La ligne de panier a été supprimé."
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.payment_page_eshop_template
 msgid "There is nothing to pay."
-msgstr "Il n'y a rien à payer"
+msgstr "Il n'y a rien à payer."
 
 #. module: sale_eshop
 #: model:ir.model.fields.selection,name:sale_eshop.selection__product_product__eshop_state__unavailable
@@ -1284,7 +1285,7 @@ msgstr "Vue"
 #, python-format
 msgid "Wallet journal can't be found. Check settings."
 msgstr ""
-"Le journal de Porte-monnaie n'a pas été trouvé. Vérifier les paramétrages"
+"Le journal de Porte-monnaie n'a pas été trouvé. Vérifier les paramétrages."
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_hosting
@@ -1380,7 +1381,7 @@ msgstr "Produits eBoutique"
 #. module: sale_eshop
 #: model:mail.template,name:sale_eshop.email_lost_password
 msgid "eShop Reset password"
-msgstr "Réinitialiser le mot de passe"
+msgstr "réinitialiser le mot de passe"
 
 #. module: sale_eshop
 #: model_terms:ir.ui.view,arch_db:sale_eshop.view_res_partner_form
@@ -1402,7 +1403,7 @@ msgstr "Paramétrages eBoutique"
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_product_product__eshop_state
 msgid "eShop State"
-msgstr "État de la eBoutique"
+msgstr "Etat de la eBoutique"
 
 #. module: sale_eshop
 #: model:ir.model.fields,field_description:sale_eshop.field_res_company__eshop_title

@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-10 13:04+0000\n"
-"PO-Revision-Date: 2025-01-10 13:04+0000\n"
+"PO-Revision-Date: 2026-08-07 12:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__active
@@ -57,7 +59,7 @@ msgstr "Création d'allergènes"
 #. module: product_food
 #: model:product.template,name:product_food.product_arachide_toaste_product_template
 msgid "Arachide Bio Toasté - Jean Hervé"
-msgstr ""
+msgstr "Arachide Bio Toasté - Jean Hervé"
 
 #. module: product_food
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
@@ -73,12 +75,12 @@ msgstr "DLUO (j)"
 #. module: product_food
 #: model:product.template,name:product_food.product_biere_sans_gluten_product_template
 msgid "Bière Lammsbrau sans gluten 33cl"
-msgstr ""
+msgstr "Bière Lammsbrau sans gluten 33cl"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_category__has_alcohol
@@ -148,7 +150,7 @@ msgstr "Contient de l'alcool"
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: product_food
 #: model:ir.model.fields,help:product_food.field_product_category__is_alimentary
@@ -197,7 +199,7 @@ msgstr ""
 #. module: product_food
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__ingredients
@@ -246,7 +248,7 @@ msgstr "Nom"
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__note
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_template

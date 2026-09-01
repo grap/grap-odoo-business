@@ -7,29 +7,35 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-10 11:04+0000\n"
-"PO-Revision-Date: 2026-03-10 11:04+0000\n"
+"PO-Revision-Date: 2026-08-07 12:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: partner_distribution_channel_criterion
 #: model:ir.model.fields,help:partner_distribution_channel_criterion.field_res_partner__distribution_channel_criterion
 #: model:ir.model.fields,help:partner_distribution_channel_criterion.field_res_users__distribution_channel_criterion
 msgid ""
 "* Short: artisanal producer or transformer\n"
-"* Medium: cooperative processor, producers' cooperative or importers whose only activity is to work directly with producers from other countries.\n"
+"* Medium: cooperative processor, producers' cooperative or importers whose "
+"only activity is to work directly with producers from other countries.\n"
 "* Long: the rest"
-msgstr "* Court : fabricant·e ou transformateur·ice artisanal·e\n"
-"* Moyen : transformateur·ice de la coopérative, coopérative de producteur·ices ou importateur·ice dont la seule activité est de travailler directement avec des fabricant·e·s d'autres pays\n"
+msgstr ""
+"* Court : fabricant·e ou transformateur·ice artisanal·e\n"
+"* Moyen : transformateur·ice de la coopérative, coopérative de "
+"producteur·ices ou importateur·ice dont la seule activité est de travailler "
+"directement avec des fabricant·e·s d'autres pays\n"
 "* Circuit long : le reste"
 
 #. module: partner_distribution_channel_criterion
 #: model:ir.model,name:partner_distribution_channel_criterion.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #. module: partner_distribution_channel_criterion
 #: model:ir.model.fields,field_description:partner_distribution_channel_criterion.field_res_partner__distribution_channel_criterion
