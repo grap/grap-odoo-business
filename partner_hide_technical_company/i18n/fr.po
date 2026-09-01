@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * partner_hide_technical_company
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-21 09:48+0000\n"
+"PO-Revision-Date: 2024-06-21 09:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_hide_technical_company
+#: model:ir.model,name:partner_hide_technical_company.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: partner_hide_technical_company
+#: model:ir.model,name:partner_hide_technical_company.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: partner_hide_technical_company
+#: model:ir.model.fields,field_description:partner_hide_technical_company.field_res_partner__is_odoo_company
+#: model:ir.model.fields,field_description:partner_hide_technical_company.field_res_users__is_odoo_company
+msgid "Is an Odoo Company"
+msgstr "Est une société dans Odoo"
+
+#. module: partner_hide_technical_company
+#. odoo-python
+#: code:addons/partner_hide_technical_company/models/res_partner.py:0
+#, python-format
+msgid ""
+"You must be part of the group Administration / Access Rights to update partners associated to companies.\n"
+"- %s"
+msgstr "Vous devez être membre du groupe 'Administration / Groupe d'accès' pour mettre à jour les partenaires associés aux sociétés.\n"
+"- %s"
