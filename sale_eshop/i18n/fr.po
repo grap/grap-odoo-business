@@ -28,12 +28,11 @@ msgstr "%(parent)s / %(name)s"
 #: code:addons/sale_eshop/models/sale_order_line.py:0
 #, python-format
 msgid ""
-"'%(qty).3f' is not a valid quantity for %(product)s, the minimum quantity is "
-"'%(min_qty).3f'. The quantity has been automatically increased in your "
-"shopping cart."
+"The minimum quantity '%(min_qty).3f' for "
+"'%(product)s' has been applied in your cart."
 msgstr ""
-"'%(qty).3f' n'est pas une quantité valide pour %(product)s, la quantité minimum est "
-"'%(min_qty).3f'. La quantité a été automatiquement dans votre panier."
+"La quantité minimum '%(min_qty).3f' pour "
+"'%(product)s' a été automatiquement appliqué dans votre panier."
 
 #. module: sale_eshop
 #. odoo-python

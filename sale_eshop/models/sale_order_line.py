@@ -49,12 +49,10 @@ class SaleOrderLine(models.Model):
                 # The quantity will be augmented to the threshold
                 messages.append(
                     _(
-                        "'%(qty).3f' is not a valid quantity for %(product)s, the "
-                        "minimum quantity is '%(min_qty).3f'. The quantity has "
-                        "been automatically increased in your shopping cart."
+                        "The minimum quantity '%(min_qty).3f' for "
+                        "'%(product)s' has been applied in your cart."
                     )
                     % {
-                        "qty": self.product_uom_qty,
                         "product": self.product_id.name,
                         "min_qty": self.product_id.eshop_minimum_qty,
                     }
