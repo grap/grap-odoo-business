@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-13 12:58+0000\n"
-"PO-Revision-Date: 2025-01-13 12:58+0000\n"
+"PO-Revision-Date: 2026-08-07 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: mrp_bom_product_allergen
 #: model:ir.model,name:mrp_bom_product_allergen.model_product_allergen
@@ -44,8 +46,8 @@ msgstr "Fiches techniques"
 
 #. module: mrp_bom_product_allergen
 #: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_product_allergen__bom_qty
-msgid "BoM Quantity"
-msgstr "Qté de Fiche Techniques"
+msgid "BoMs Quantity"
+msgstr "Quantité de Fiches Techniques"
 
 #. module: mrp_bom_product_allergen
 #: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_product_allergen__bom_ids
@@ -58,6 +60,31 @@ msgid "Includes allergens of the product and its components"
 msgstr "Inclus les allergènes du produit et de ses composants"
 
 #. module: mrp_bom_product_allergen
+#: model:product.template,name:mrp_bom_product_allergen.demo_product_mustard_product_template
+msgid "Mustard"
+msgstr "Moutarde"
+
+#. module: mrp_bom_product_allergen
+#: model:product.template,name:mrp_bom_product_allergen.demo_product_pie_product_template
+msgid "Pie"
+msgstr "Tarte"
+
+#. module: mrp_bom_product_allergen
 #: model:ir.ui.menu,name:mrp_bom_product_allergen.menu_mrp_product_allergen
 msgid "Product Allergens"
 msgstr "Allergènes"
+
+#. module: mrp_bom_product_allergen
+#: model:product.template,name:mrp_bom_product_allergen.demo_product_spinach_product_template
+msgid "Spinach"
+msgstr "Epinard"
+
+#. module: mrp_bom_product_allergen
+#: model:product.template,name:mrp_bom_product_allergen.demo_product_template_tomato_tart
+msgid "Tomato pie"
+msgstr "Tarte à la tomate"
+
+#. module: mrp_bom_product_allergen
+#: model:product.template,name:mrp_bom_product_allergen.demo_product_tomato_product_template
+msgid "Tomatoes"
+msgstr "Tomates"

@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-30 14:12+0000\n"
-"PO-Revision-Date: 2025-12-30 14:12+0000\n"
+"PO-Revision-Date: 2026-08-07 12:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: account_move_change_number
 #. odoo-python
@@ -21,10 +23,12 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Account move renamed. Old name : %(oldname)s. New name : %(newname)s. Rename date : %(renamedate)s. Author : %(author)s."
+"Account move renamed. Old name : %(oldname)s. New name : %(newname)s. Rename "
+"date : %(renamedate)s. Author : %(author)s."
 msgstr ""
 "\n"
-"Pièce comptable renommé. Ancien nom : %(oldname)s. Nouveau nom : %(newname)s. Nouvelle date : %(renamedate)s. Auteur·rice : %(author)s."
+"Pièce comptable renommé. Ancien nom : %(oldname)s. Nouveau nom : "
+"%(newname)s. Nouvelle date : %(renamedate)s. Auteur·rice : %(author)s."
 
 #. module: account_move_change_number
 #: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form

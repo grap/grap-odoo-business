@@ -7,13 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-27 11:43+0000\n"
-"PO-Revision-Date: 2024-06-27 11:43+0000\n"
+"PO-Revision-Date: 2026-08-07 12:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. module: recurring_consignment_pos
 #: model:pos.payment.method,name:recurring_consignment_pos.payment_method_cash
@@ -28,7 +30,7 @@ msgstr "Pièce comptable"
 #. module: recurring_consignment_pos
 #: model:product.template,name:recurring_consignment_pos.consigned_product_consignor_1_vat_20_E_product_template
 msgid "My Consigned Product E (VAT 20% - Consignor 1)"
-msgstr ""
+msgstr "Mon produit consigné E (TVA 20% - Dépot vendeur 1)"
 
 #. module: recurring_consignment_pos
 #: model:ir.model,name:recurring_consignment_pos.model_product_template
@@ -47,18 +49,20 @@ msgstr "Voir les lignes du point de vente commissionnées"
 msgid ""
 "You can not change the value of the field 'Consignor' because a Pos Session "
 "is opened. Please make such changement when sessions are closed."
-msgstr "Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car une caisse"
-" est ouverte. Veuillez réaliser ce type de changement quand toutes les caisses sont fermées."
+msgstr ""
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car une caisse "
+"est ouverte. Veuillez réaliser ce type de changement quand toutes les "
+"caisses sont fermées."
 
 #. module: recurring_consignment_pos
 #. odoo-python
 #: code:addons/recurring_consignment_pos/models/product_template.py:0
 #, python-format
 msgid ""
-"You can not change the value of the field 'Consignor' because the product is"
-" associated to one or more PoS Order Lines. You should disable the product "
+"You can not change the value of the field 'Consignor' because the product is "
+"associated to one or more PoS Order Lines. You should disable the product "
 "and create a new one."
 msgstr ""
-"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit"
-" est associé à une ou plusieurs lignes de ventes en caisse. Vous devez "
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit "
+"est associé à une ou plusieurs lignes de ventes en caisse. Vous devez "
 "désactiver le produit, et en créer un nouveau."
