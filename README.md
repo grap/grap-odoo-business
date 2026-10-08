@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.0.4 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
+[account_invoice_supplierinfo_update_standard_price](account_invoice_supplierinfo_update_standard_price/) | 16.0.1.1.0 |  | In the supplier invoice, automatically update all products whose standard price on the line is different from the product standard price
 [account_move_change_number](account_move_change_number/) | 16.0.1.1.2 |  | Allow special user to rename account move
 [barcode_rule_per_company](barcode_rule_per_company/) | 16.0.1.0.3 |  | Barcodes Rule Per Company
 [hr_direct_address_home](hr_direct_address_home/) | 16.0.1.0.6 |  | Prevent creation of many home partners at employee level.
