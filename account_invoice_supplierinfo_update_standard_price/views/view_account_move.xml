@@ -11,15 +11,18 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tax_totals']" position="before">
-                <group class="oe_subtotal_footer oe_right" attrs="{'invisible': [
-                    '|',
-                    ('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt')),
-                    ('distributed_expense_total', '=', 0),
-                ]}">
-                    <field name="product_expense_total" />
-                    <field name="distributed_expense_total" />
-                </group>
-
+                <field name="product_expense_total"
+                    attrs="{'invisible': [
+                        '|',
+                        ('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt')),
+                        ('distributed_expense_total', '=', 0),
+                    ]}" />
+                <field name="distributed_expense_total"
+                    attrs="{'invisible': [
+                        '|',
+                        ('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt')),
+                        ('distributed_expense_total', '=', 0),
+                    ]}" />
             </xpath>
         </field>
     </record>
