@@ -22,7 +22,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="inherit_id" ref="stock.vpicktree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user"/>
+                <field name="recovery_moment_id" groups="sale_recovery_moment.recovery_user" optional="hide"/>
                 <field name="recovery_group_id" groups="sale_recovery_moment.recovery_user" invisible="1"/>
             </field>
         </field>
