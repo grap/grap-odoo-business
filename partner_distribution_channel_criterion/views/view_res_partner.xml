@@ -6,12 +6,24 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
+    <!-- FORM -->
     <record model="ir.ui.view" id="res_partner_form_view">
          <field name="model">res.partner</field>
          <field name="inherit_id" ref="base.view_partner_form"/>
          <field name="arch" type="xml">
             <xpath expr="//group[@name='purchase']" position="inside">
                 <field name="distribution_channel_criterion"/>
+            </xpath>
+         </field>
+     </record>
+
+    <!-- TREE -->
+    <record model="ir.ui.view" id="res_partner_tree_view">
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_tree"/>
+         <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="distribution_channel_criterion" optional="hide"/>
             </xpath>
          </field>
      </record>
