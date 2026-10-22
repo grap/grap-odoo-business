@@ -19,6 +19,7 @@
         "queue_job",
         "product_compute_template_field_from_variant_helper",
         # GRAP
+        "create_recursive_abstract",
         "product_label",
         "product_maker",
         "sale_recovery_moment",
