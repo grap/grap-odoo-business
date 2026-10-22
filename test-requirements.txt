@@ -1,3 +1,6 @@
+# GRAP: Extra modules Merged in custom repositories
+git+https://github.com/grap/grap-odoo-incubator@16.0#subdirectory=setup/create_recursive_abstract
+
 # Unmerged OCA modules
 git+https://github.com/OCA/product-attributes@refs/pull/1840/head#subdirectory=setup/product_compute_template_field_from_variant_helper
 

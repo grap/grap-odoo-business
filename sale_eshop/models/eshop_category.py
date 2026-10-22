@@ -8,7 +8,7 @@ from odoo.exceptions import Warning as UserError
 
 class EshopCategory(models.Model):
     _name = "eshop.category"
-    _inherit = ["eshop.with.image.mixin", "image.mixin"]
+    _inherit = ["eshop.with.image.mixin", "image.mixin", "create.recursive.mixin"]
     _rec_name = "complete_name"
     _order = "sequence, complete_name"
     _description = "Eshop category"
@@ -154,14 +154,12 @@ class EshopCategory(models.Model):
             category.child_qty = len(category.child_ids)
 
     # Name Function
-    @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        recs = self.search([("complete_name", operator, name)] + args, limit=limit)
-        return recs.name_get()
-
-    @api.depends("complete_name")
     def name_get(self):
         res = []
         for category in self:
             res.append((category.id, category.complete_name))
         return res
+
+    @api.model
+    def name_create(self, name):
+        return self._name_create(name)
