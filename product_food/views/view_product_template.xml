@@ -31,7 +31,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product_label.view_product_template_form" />
         <field name="arch" type="xml">
-            <notebook position="inside">
+            <xpath expr="//page[@name='general_information']" position="after">
                 <page name="alimentary_information" string="Alimentary Informations"
                     attrs="{'invisible': [('product_variant_count', '>', 1)]}">
                     <group>
@@ -54,7 +54,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
                         <field name="ingredients" widget="html" nolabel="1" colspan="2"/>
                     </group>
                 </page>
-            </notebook>
+            </xpath>
             <field name="is_alimentary" position="after">
                 <field name="label_ids" widget="many2many_tags" position="move"/>
             </field>
