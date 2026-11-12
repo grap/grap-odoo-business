@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import hashlib
-from datetime import datetime
 
 from odoo import api, fields, models
 
@@ -13,7 +12,7 @@ class EshopWithImageMixin(models.AbstractModel):
     _inherit = "eshop.mixin"
     _description = "Eshop With Image Mixin"
 
-    _eshop_image_fields = []
+    _eshop_image_fields = ["image_1920", "image_512", "image_128"]
 
     image_write_date = fields.Datetime(
         readonly=True, default=lambda s: s._default_image_write_date()
@@ -38,7 +37,7 @@ class EshopWithImageMixin(models.AbstractModel):
 
     @api.model
     def _get_image_write_date(self):
-        return datetime.now()
+        return fields.Datetime.now()
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -47,6 +46,7 @@ class EshopWithImageMixin(models.AbstractModel):
             vals.update({"image_write_date": now})
         return super().create(vals_list)
 
+    # todo : remove, useless ?
     def _write_eshop_invalidate(self, vals):
         if list(set(self._eshop_image_fields) & set(vals.keys())):
             vals.update({"image_write_date": self._get_image_write_date()})
