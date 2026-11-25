@@ -9,7 +9,19 @@ from .product_product import ProductProduct
 
 
 class ProductTemplate(models.Model):
-    _inherit = ["product.template"]
+    _name = "product.template"
+    _inherit = ["product.template", "eshop.with.image.mixin"]
+
+    # Inherit Section
+    _eshop_invalidation_type = "single"
+
+    _eshop_fields = [
+        "name",
+        "image_512",
+        "image_1920",
+    ]
+
+    _eshop_image_fields = ["image_1920"]
 
     eshop_category_id = fields.Many2one(
         comodel_name="eshop.category",

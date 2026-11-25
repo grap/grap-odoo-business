@@ -25,17 +25,9 @@ class EshopMixin(models.AbstractModel):
 
     @api.model
     def _get_eshop_fields(self):
-        fields = self._eshop_fields
-        fields.append("id")
-        has_image = False
-        for field in fields:
-            has_image = True
-            if "image_1920" in field:
-                fields.remove(field)
-                has_image = True
-        if has_image:
-            fields.append("write_date")
-        return fields
+        fields = list(self._eshop_fields)
+        fields.extend(["id", "write_date"])
+        return list(fields)
 
     @api.model
     def eshop_load_data(self, domain=False):
@@ -47,6 +39,10 @@ class EshopMixin(models.AbstractModel):
     @api.model
     def _get_eshop_domain(self):
         return []
+
+    @api.model
+    def _invalidate_eshop_request(self, url):
+        requests.get(url, verify=False, timeout=10)
 
     @api.model
     def _invalidate_eshop(self, company, item_identifier):
@@ -61,11 +57,22 @@ class EshopMixin(models.AbstractModel):
             )
             return
 
-        url = urljoin(
-            base_url,
-            "invalidation_cache/%s/%s/%d/" % (private_key, self._name, item_identifier),
-        )
-        requests.get(url, verify=False, timeout=10)
+        # Product template changed > propagate to variant
+        if self._name == "product.template":
+            for variant in self.product_variant_ids:
+                url = urljoin(
+                    base_url,
+                    "invalidation_cache/%s/%s/%d/"
+                    % (private_key, "product.product", variant.id),
+                )
+                self._invalidate_eshop_request(url)
+        else:
+            url = urljoin(
+                base_url,
+                "invalidation_cache/%s/%s/%d/"
+                % (private_key, self._name, item_identifier),
+            )
+            self._invalidate_eshop_request(url)
 
     def write(self, vals):
         vals = dict(vals)
@@ -77,6 +84,13 @@ class EshopMixin(models.AbstractModel):
             vals["image_write_date"] = fields.Datetime.now()
 
         res = super().write(vals)
+
+        # Product template changed > propagate to variant
+        if modified_image_fields and self._name == "product.template":
+            self.product_variant_ids.write(
+                {"image_write_date": vals["image_write_date"]}
+            )
+
         self._write_eshop_invalidate(vals)
         return res
 
@@ -95,11 +109,12 @@ class EshopMixin(models.AbstractModel):
                 # Dont invalidate NewId non yet created object
                 if isinstance(item.id, models.NewId):
                     return
+
                 if self._name == "res.company" and item.has_eshop:
                     self.with_delay()._invalidate_eshop(item, item.id)
 
                 elif self._name != "res.company" and item.company_id.has_eshop:
-                    self.with_delay()._invalidate_eshop(item.company_id, item.id)
+                    self._invalidate_eshop(item.company_id, item.id)
 
         elif self._eshop_invalidation_type == "multiple":
             for company in ResCompany.sudo().search([("has_eshop", "=", True)]):
