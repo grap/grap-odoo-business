@@ -116,6 +116,7 @@ class ResCompany(models.Model):
     eshop_pay_on_site_text = fields.Html(
         string="Payment methods on site",
         help="Write your accepted payment methods : cash/check etc.",
+        default="<p></p>",
     )
 
     # fields related to ir.config_parameter
