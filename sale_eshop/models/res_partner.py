@@ -76,9 +76,10 @@ class ResPartner(models.Model):
             template.send_mail(
                 res_id=partner.id,
                 force_send=True,
+                # email_to has not to be filled
+                # because res_id already fill partner_to
                 email_values={
                     "subject": subject,
-                    "email_to": partner.email,
                 },
             )
             # don't set email_to_confirm if partner was already enabled
