@@ -34,7 +34,7 @@ addon | version | maintainers | summary
 [partner_hide_technical_fix_calendar](partner_hide_technical_fix_calendar/) | 16.0.2.0.3 |  | Glue module with calendar, to Hide partners created when creating elements.
 [partner_hide_technical_fix_calendar_test](partner_hide_technical_fix_calendar_test/) | 16.0.2.0.3 |  | Test module
 [partner_hide_technical_user](partner_hide_technical_user/) | 16.0.2.0.3 |  | Hide partners created when creating users.
-[product_food](product_food/) | 16.0.1.1.3 |  | Products - Food Informations
+[product_food](product_food/) | 16.0.2.0.0 |  | Products - Food Informations
 [product_food_certification](product_food_certification/) | 16.0.1.0.3 |  | Products - Food Certification Informations
 [product_food_certification_account](product_food_certification_account/) | 16.0.1.0.3 |  | Product - Food Certification Informations - Account
 [product_food_certification_sale](product_food_certification_sale/) | 16.0.1.0.3 |  | Product - Food Certification Informations - Sale
