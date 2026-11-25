@@ -1,13 +1,12 @@
 # Copyright (C) 2014-Today GRAP (http://www.grap.coop)
 # @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
 import logging
 
 import requests
 from requests.compat import urljoin
 
-from odoo import api, models
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -18,6 +17,11 @@ class EshopMixin(models.AbstractModel):
 
     _eshop_fields = []
     _eshop_invalidation_type = False
+
+    @api.model
+    def _get_eshop_image_fields(self):
+        # Return image fields frem eshop image mixin
+        return getattr(type(self), "_eshop_image_fields", [])
 
     @api.model
     def _get_eshop_fields(self):
@@ -48,6 +52,7 @@ class EshopMixin(models.AbstractModel):
     def _invalidate_eshop(self, company, item_identifier):
         base_url = company.eshop_url
         private_key = company.eshop_invalidation_key
+
         if not (base_url and private_key):
             _logger.warning(
                 "Invalidation has not been possible because"
@@ -63,6 +68,14 @@ class EshopMixin(models.AbstractModel):
         requests.get(url, verify=False, timeout=10)
 
     def write(self, vals):
+        vals = dict(vals)
+        # Detect image modif before writing to database
+        image_fields = set(self._get_eshop_image_fields())
+        modified_image_fields = image_fields.intersection(vals.keys())
+
+        if modified_image_fields:
+            vals["image_write_date"] = fields.Datetime.now()
+
         res = super().write(vals)
         self._write_eshop_invalidate(vals)
         return res

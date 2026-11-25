@@ -27,7 +27,8 @@ class EshopCategory(models.Model):
         "complete_name",
     ]
 
-    _eshop_image_fields = ["image_1920", "image_512", "image_128"]
+    # from image.mixin, 1920 triggers computation of 512,128
+    _eshop_image_fields = ["image_1920"]
 
     _TYPE_SELECTION = [
         ("view", "View"),
@@ -51,18 +52,6 @@ class EshopCategory(models.Model):
         store=True,
         recursive=True,
         compute="_compute_complete_name",
-    )
-
-    image_1920 = fields.Image(
-        string="Image", max_width=1920, max_height=1920, store=True
-    )
-
-    image_512 = fields.Image(
-        string="Medium-sized image", max_width=512, max_height=512, store=True
-    )
-
-    image_128 = fields.Image(
-        string="Small-sized image", max_width=128, max_height=128, store=True
     )
 
     parent_id = fields.Many2one(
