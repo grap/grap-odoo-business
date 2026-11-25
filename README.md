@@ -42,7 +42,7 @@ addon | version | maintainers | summary
 [product_label](product_label/) | 16.0.2.0.5 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Product Labels
 [product_label_mrp](product_label_mrp/) | 16.0.1.1.4 | <a href='https://github.com/quentinDupont'><img src='https://github.com/quentinDupont.png' width='32' height='32' style='border-radius:50%;' alt='quentinDupont'/></a> | Adds Product labels in MRP BoMs
 [product_print_category_food_report](product_print_category_food_report/) | 16.0.1.1.4 |  | Food report like pricetags
-[product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.2 |  | Adds Date field every time Product Standard Price change.
+[product_standard_price_change_date](product_standard_price_change_date/) | 16.0.1.0.3 |  | Adds Date field every time Product Standard Price change.
 [recurring_consignment](recurring_consignment/) | 16.0.2.4.2 |  | Sale - Handle Recurring Consignments
 [recurring_consignment_pos](recurring_consignment_pos/) | 16.0.1.2.2 |  | Glue module for Recurring Consignment and PoS modules
 [recurring_consignment_purchase](recurring_consignment_purchase/) | 16.0.1.1.3 |  | Glue module for Recurring Consignment and Purchase modules
