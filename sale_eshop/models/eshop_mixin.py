@@ -91,7 +91,9 @@ class EshopMixin(models.AbstractModel):
                 {"image_write_date": vals["image_write_date"]}
             )
 
-        self._write_eshop_invalidate(vals)
+        if not self.env.context.get("install_mode"):
+            self._write_eshop_invalidate(vals)
+
         return res
 
     def _write_eshop_invalidate(self, vals):
@@ -114,7 +116,7 @@ class EshopMixin(models.AbstractModel):
                     self.with_delay()._invalidate_eshop(item, item.id)
 
                 elif self._name != "res.company" and item.company_id.has_eshop:
-                    self._invalidate_eshop(item.company_id, item.id)
+                    self.with_delay()._invalidate_eshop(item.company_id, item.id)
 
         elif self._eshop_invalidation_type == "multiple":
             for company in ResCompany.sudo().search([("has_eshop", "=", True)]):

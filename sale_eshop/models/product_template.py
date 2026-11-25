@@ -17,11 +17,25 @@ class ProductTemplate(models.Model):
 
     _eshop_fields = [
         "name",
-        "image_512",
+        "uom_id",
         "image_1920",
+        "image_512",
+        "list_price",
+        "list_price_vat_excl",
+        "eshop_category_id",
+        "label_ids",
+        "eshop_minimum_qty",
+        "eshop_rounded_qty",
+        "maker_description",
+        "eshop_description",
+        "country_id",
+        "state_id",
+        "department_id",
+        "default_code",
+        "eshop_taxes_description",
     ]
 
-    _eshop_image_fields = ["image_1920"]
+    _eshop_image_fields = ["image_1920", "image_512", "image_128"]
 
     eshop_category_id = fields.Many2one(
         comodel_name="eshop.category",
