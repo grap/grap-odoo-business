@@ -7,18 +7,22 @@
 
 <odoo>
 
-    <record id="config_parameter_eshop_url_main_company" model="ir.config_parameter" >
-        <field name="key"
-            model="res.company"
-            eval="obj().env.ref('base.main_company')._get_eshop_config_name('eshop_url')"/>
-        <field name="value">http://127.0.0.1:8080/</field>
-    </record>
+    <function
+        model="ir.config_parameter"
+        name="set_param"
+        eval="[
+            obj().env.ref('base.main_company')._get_eshop_config_name('eshop_url'),
+            'http://127.0.0.1:8080/'
+        ]"
+    />
 
-    <record id="config_parameter_eshop_invalidation_key_main_company" model="ir.config_parameter" >
-        <field name="key"
-            model="res.company"
-            eval="obj().env.ref('base.main_company')._get_eshop_config_name('eshop_invalidation_key')"/>
-        <field name="value">INVALIDATION_KEY</field>
-    </record>
+    <function
+        model="ir.config_parameter"
+        name="set_param"
+        eval="[
+            obj().env.ref('base.main_company')._get_eshop_config_name('eshop_invalidation_key'),
+            'INVALIDATION_KEY'
+        ]"
+    />
 
 </odoo>
