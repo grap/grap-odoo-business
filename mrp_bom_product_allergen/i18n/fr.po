@@ -52,7 +52,7 @@ msgstr "Quantité de Fiches Techniques"
 #. module: mrp_bom_product_allergen
 #: model:ir.model.fields,field_description:mrp_bom_product_allergen.field_product_allergen__bom_ids
 msgid "Bom"
-msgstr "FT"
+msgstr "Fiche technique"
 
 #. module: mrp_bom_product_allergen
 #: model:ir.model.fields,help:mrp_bom_product_allergen.field_mrp_bom__bom_allergen_ids

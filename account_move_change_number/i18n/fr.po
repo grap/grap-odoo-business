@@ -23,12 +23,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"Account move renamed. Old name : %(oldname)s. New name : %(newname)s. Rename "
-"date : %(renamedate)s. Author : %(author)s."
+"Account move renamed. Old name : %(oldname)s. New name : %(newname)s. Rename date : %(renamedate)s. Author : %(author)s."
 msgstr ""
 "\n"
-"Pièce comptable renommé. Ancien nom : %(oldname)s. Nouveau nom : "
-"%(newname)s. Nouvelle date : %(renamedate)s. Auteur·rice : %(author)s."
+"Pièce comptable renommé. Ancien nom : %(oldname)s. Nouveau nom : %(newname)s. Nouvelle date : %(renamedate)s. Auteur·rice : %(author)s."
 
 #. module: account_move_change_number
 #: model_terms:ir.ui.view,arch_db:account_move_change_number.view_account_move_form

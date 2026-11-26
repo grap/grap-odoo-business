@@ -129,7 +129,7 @@ msgstr "Nom affiché"
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_product_form_variant
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_template_form
 msgid "Food"
-msgstr "Alimentaire"
+msgstr "Alimentation"
 
 #. module: product_food
 #: model:ir.model.fields.selection,name:product_food.selection__product_product__storage_method__fresh
@@ -270,7 +270,7 @@ msgstr "Catégorie de produit"
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_label
 msgid "Product Labels"
-msgstr "Labels de produits"
+msgstr "Étiquettes de produits"
 
 #. module: product_food
 #: model:ir.model,name:product_food.model_product_product
@@ -281,12 +281,12 @@ msgstr "Variante de produit"
 #: model:ir.actions.act_window,name:product_food.action_product_allergen_2_product_product
 #: model_terms:ir.ui.view,arch_db:product_food.view_product_allergen_form
 msgid "Products"
-msgstr "Articles"
+msgstr "Produits"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__product_qty
 msgid "Products Quantity"
-msgstr "Quantité d'articles"
+msgstr "Nombre d'articles"
 
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_product__storage_method
@@ -303,4 +303,4 @@ msgstr "DLC (j)"
 #. module: product_food
 #: model:ir.model.fields,field_description:product_food.field_product_allergen__website
 msgid "Website"
-msgstr "Site Web"
+msgstr "Site web"

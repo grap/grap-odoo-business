@@ -31,4 +31,4 @@ msgstr "Est un utilisateur dans Odoo"
 #. module: partner_hide_technical_user
 #: model:ir.model,name:partner_hide_technical_user.model_res_users
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Utilisateur·rice"

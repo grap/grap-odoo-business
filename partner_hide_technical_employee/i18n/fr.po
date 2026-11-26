@@ -20,7 +20,7 @@ msgstr ""
 #. module: partner_hide_technical_employee
 #: model:ir.model,name:partner_hide_technical_employee.model_hr_employee_base
 msgid "Basic Employee"
-msgstr "Employé·e classique"
+msgstr "Employé de base"
 
 #. module: partner_hide_technical_employee
 #: model:ir.model,name:partner_hide_technical_employee.model_res_partner

@@ -22,14 +22,11 @@ msgstr ""
 #: model:ir.model.fields,help:partner_distribution_channel_criterion.field_res_users__distribution_channel_criterion
 msgid ""
 "* Short: artisanal producer or transformer\n"
-"* Medium: cooperative processor, producers' cooperative or importers whose "
-"only activity is to work directly with producers from other countries.\n"
+"* Medium: cooperative processor, producers' cooperative or importers whose only activity is to work directly with producers from other countries.\n"
 "* Long: the rest"
 msgstr ""
 "* Court : fabricant·e ou transformateur·ice artisanal·e\n"
-"* Moyen : transformateur·ice de la coopérative, coopérative de "
-"producteur·ices ou importateur·ice dont la seule activité est de travailler "
-"directement avec des fabricant·e·s d'autres pays\n"
+"* Moyen : transformateur·ice de la coopérative, coopérative de producteur·ices ou importateur·ice dont la seule activité est de travailler directement avec des fabricant·e·s d'autres pays\n"
 "* Circuit long : le reste"
 
 #. module: partner_distribution_channel_criterion

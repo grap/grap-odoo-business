@@ -41,7 +41,7 @@ msgstr "Aliment non certifiable"
 #. module: product_food_certification
 #: model_terms:ir.ui.view,arch_db:product_food_certification.view_certifier_organization_form
 msgid "Archived"
-msgstr "Archivée"
+msgstr "Archivé"
 
 #. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_certifier_organization
@@ -64,8 +64,8 @@ msgstr "Création d'organisations certificatrices"
 #: model:ir.model.fields,help:product_food_certification.field_product_product__is_uncertifiable
 #: model:ir.model.fields,help:product_food_certification.field_product_template__is_uncertifiable
 msgid ""
-"Check this box for alimentary products that are uncertifiable by definition. "
-"For exemple: Products that comes from the sea"
+"Check this box for alimentary products that are uncertifiable by definition."
+" For exemple: Products that comes from the sea"
 msgstr ""
 "Cocher cette case pour les articles alimentaires qui sont non certifiable "
 "par définition. par exemple, les produits issues de la mer."
@@ -189,7 +189,7 @@ msgstr "Produit"
 #. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_product_label
 msgid "Product Labels"
-msgstr "Labels de produits"
+msgstr "Étiquettes de produits"
 
 #. module: product_food_certification
 #: model:ir.model,name:product_food_certification.model_product_product
@@ -213,19 +213,15 @@ msgstr "Texte concernant la certification pour les rapports"
 #: model:ir.model.fields,help:product_food_certification.field_product_product__ingredient_origin_type
 #: model:ir.model.fields,help:product_food_certification.field_product_template__ingredient_origin_type
 msgid ""
-"The place of production of the agricultural raw materials making up the "
-"product. This information is mandatory if the 'Euro leaf' logo is used.\n"
+"The place of production of the agricultural raw materials making up the product. This information is mandatory if the 'Euro leaf' logo is used.\n"
 "\n"
-" More information : https://www.inao.gouv.fr/Les-signes-officiels-de-la-"
-"qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
+" More information : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
 msgstr ""
-"Le lieu de production des matières premières agricoles composant l'article. "
-"Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
+"Le lieu de production des matières premières agricoles composant l'article. Cette information est obligatoire si le logo 'Eurofeuille' est utilisé.\n"
 "\n"
-" Plus d'information  : https://www.inao.gouv.fr/Les-signes-officiels-de-la-"
-"qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
+" Plus d'information  : https://www.inao.gouv.fr/Les-signes-officiels-de-la-qualite-et-de-l-origine-SIQO/Agriculture-biologique#logosab"
 
 #. module: product_food_certification
 #: model:ir.model.fields,field_description:product_food_certification.field_certifier_organization__website
 msgid "Website"
-msgstr "Site Web"
+msgstr "Site web"

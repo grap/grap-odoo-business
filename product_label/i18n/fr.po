@@ -29,7 +29,7 @@ msgstr ""
 #. module: product_label
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
 msgid "<span class=\"o_stat_text\">Products</span>"
-msgstr "<span class=\"o_stat_text\">Produits</span>"
+msgstr "<span class=\"o_stat_text\">Articles</span>"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__active
@@ -93,22 +93,22 @@ msgstr "Image"
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image_1024
 msgid "Image 1024"
-msgstr "Image (1024)"
+msgstr "Image 1024"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image_128
 msgid "Image 128"
-msgstr "Image (128)"
+msgstr "Image 128"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image_256
 msgid "Image 256"
-msgstr "Image (256)"
+msgstr "Image 256"
 
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__image_512
 msgid "Image 512"
-msgstr "Image (512)"
+msgstr "Image 512"
 
 #. module: product_label
 #: model:product.template,name:product_label.infusion_girl_power_product_template
@@ -161,7 +161,7 @@ msgstr "Produit"
 #: model:ir.model,name:product_label.model_product_label
 #: model:ir.ui.menu,name:product_label.menu_product_label
 msgid "Product Labels"
-msgstr "Labels de produits"
+msgstr "Étiquettes de produits"
 
 #. module: product_label
 #: model:res.groups,name:product_label.group_label_manager
@@ -188,7 +188,7 @@ msgstr "Produits"
 #. module: product_label
 #: model:ir.model.fields,field_description:product_label.field_product_label__website
 msgid "Website"
-msgstr "Site Web"
+msgstr "Site web"
 
 #. module: product_label
 #: model_terms:ir.ui.view,arch_db:product_label.view_product_label_form
