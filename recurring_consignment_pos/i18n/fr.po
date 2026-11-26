@@ -20,7 +20,7 @@ msgstr ""
 #. module: recurring_consignment_pos
 #: model:pos.payment.method,name:recurring_consignment_pos.payment_method_cash
 msgid "Cash"
-msgstr "Espèce"
+msgstr "Espèces"
 
 #. module: recurring_consignment_pos
 #: model:ir.model,name:recurring_consignment_pos.model_account_move
@@ -50,8 +50,8 @@ msgid ""
 "You can not change the value of the field 'Consignor' because a Pos Session "
 "is opened. Please make such changement when sessions are closed."
 msgstr ""
-"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car une caisse "
-"est ouverte. Veuillez réaliser ce type de changement quand toutes les "
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car une caisse"
+" est ouverte. Veuillez réaliser ce type de changement quand toutes les "
 "caisses sont fermées."
 
 #. module: recurring_consignment_pos
@@ -59,10 +59,10 @@ msgstr ""
 #: code:addons/recurring_consignment_pos/models/product_template.py:0
 #, python-format
 msgid ""
-"You can not change the value of the field 'Consignor' because the product is "
-"associated to one or more PoS Order Lines. You should disable the product "
+"You can not change the value of the field 'Consignor' because the product is"
+" associated to one or more PoS Order Lines. You should disable the product "
 "and create a new one."
 msgstr ""
-"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit "
-"est associé à une ou plusieurs lignes de ventes en caisse. Vous devez "
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit"
+" est associé à une ou plusieurs lignes de ventes en caisse. Vous devez "
 "désactiver le produit, et en créer un nouveau."

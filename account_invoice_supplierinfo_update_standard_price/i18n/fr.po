@@ -21,12 +21,10 @@ msgstr ""
 #: model:ir.model.fields,help:account_invoice_supplierinfo_update_standard_price.field_product_product__is_impact_standard_price
 #: model:ir.model.fields,help:account_invoice_supplierinfo_update_standard_price.field_product_template__is_impact_standard_price
 msgid ""
-"Check this box if you want that purchasing this product impact the standard "
-"price of the products purchased with that product.\n"
+"Check this box if you want that purchasing this product impact the standard price of the products purchased with that product.\n"
 "A typical case is for Landing Cost."
 msgstr ""
-"En cochant cette case, acheter ce produit impactera le coût des produits "
-"achetés conjointement à ce produit.\n"
+"En cochant cette case, acheter ce produit impactera le coût des produits achetés conjointement à ce produit.\n"
 "Cas typique d'utilisation : les frais de transports."
 
 #. module: account_invoice_supplierinfo_update_standard_price
@@ -60,7 +58,7 @@ msgstr "Pièce comptable"
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_account_move_line
 msgid "Journal Item"
-msgstr "Ecriture comptable"
+msgstr "Écriture comptable"
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model.fields,field_description:account_invoice_supplierinfo_update_standard_price.field_wizard_update_invoice_supplierinfo_line__new_standard_price
@@ -89,9 +87,9 @@ msgstr "On ne peut pas vérifier les prix pour une facture nulle"
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo_line
 msgid "Wizard Line to update supplierinfo"
-msgstr "Line d'assistant pour mettre à jour les informations fournisseurs"
+msgstr ""
 
 #. module: account_invoice_supplierinfo_update_standard_price
 #: model:ir.model,name:account_invoice_supplierinfo_update_standard_price.model_wizard_update_invoice_supplierinfo
 msgid "Wizard to update supplierinfo"
-msgstr "Assistant de mise à jour des informations fournisseurs"
+msgstr "Mettre à jour les Informations Fournisseur"

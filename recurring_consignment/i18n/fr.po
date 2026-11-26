@@ -30,15 +30,16 @@ msgid ""
 "are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" role=\"img\" title=\"Les valeurs "
-"définies ici sont propres à l'entreprise.\" groups=\"base."
-"group_multi_company\"/>"
+"définies ici sont propres à l'entreprise.\" "
+"groups=\"base.group_multi_company\"/>"
 
 #. module: recurring_consignment
 #. odoo-python
 #: code:addons/recurring_consignment/models/res_partner.py:0
 #, python-format
 msgid "A Consignor must have a 'Consignment Account' defined."
-msgstr "Un dépôt vendeur doit avoir un compte comptable de dépôt vente défini."
+msgstr ""
+"Un dépôt vendeur doit avoir un compte comptable de dépôt vente défini."
 
 #. module: recurring_consignment
 #. odoo-python
@@ -172,12 +173,10 @@ msgstr "Résumé de la commission"
 #, python-format
 msgid ""
 "Commission on Sale or Refunds\n"
-"(Rate : %(rate).2f %%; Base : %(total_credit).2f € ; Period %(month)s-"
-"%(year)s)"
+"(Rate : %(rate).2f %%; Base : %(total_credit).2f € ; Period %(month)s-%(year)s)"
 msgstr ""
 "Commission sur ventes et avoirs\n"
-"(Taux : %(rate).2f %%; Base : %(total_credit).2f € ; Période %(month)s-"
-"%(year)s)"
+"(Taux : %(rate).2f %%; Base : %(total_credit).2f € ; Période %(month)s-%(year)s)"
 
 #. module: recurring_consignment
 #: model:ir.model,name:recurring_consignment.model_res_company
@@ -459,8 +458,8 @@ msgstr "Date maximum"
 #: model:ir.model.fields,help:recurring_consignment.field_res_config_settings__commission_deduction_journal_id
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.res_config_settings_view_form
 msgid ""
-"Miscellaneous Journal, used to generate an entry that deducts the commission "
-"from the amount to be paid out."
+"Miscellaneous Journal, used to generate an entry that deducts the commission"
+" from the amount to be paid out."
 msgstr ""
 "Journal d'opérations diverses, utilisé pour générer les pièces comptables "
 "qui déduisent la commission du montant à reverser."
@@ -510,20 +509,15 @@ msgstr "Nom"
 msgid ""
 "Note:<br/>\n"
 "                        the debit values may correspond to: <br/>\n"
-"                        * a return of products on the part of the customer,"
-"<br/>\n"
-"                        * a return of deposit in the case of returnable "
-"product,<br/>\n"
-"                        * a cancellation of all or part of a sale following "
-"an input error<br/>"
+"                        * a return of products on the part of the customer,<br/>\n"
+"                        * a return of deposit in the case of returnable product,<br/>\n"
+"                        * a cancellation of all or part of a sale following an input error<br/>"
 msgstr ""
 "Note:<br/>\n"
 "                    les valeurs au débit peuvent correspondre à : <br/>\n"
 "                    * un retour de produit de la part du client,<br/>\n"
-"                    * un retour de consigne, dans le cas d'article "
-"retournable, <br/>\n"
-"                    * une annulation de tout ou partie d'une vente, dû à une "
-"erreur de saisie<br/>"
+"                    * un retour de consigne, dans le cas d'article retournable, <br/>\n"
+"                    * une annulation de tout ou partie d'une vente, dû à une erreur de saisie<br/>"
 
 #. module: recurring_consignment
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.report_invoice_consignment
@@ -538,7 +532,7 @@ msgstr "Liste de prix"
 #. module: recurring_consignment
 #: model:ir.model,name:recurring_consignment.model_product_pricelist_item
 msgid "Pricelist Rule"
-msgstr "Règle des listes des prix"
+msgstr ""
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_product_pricelist__consignment_pricelist_id
@@ -602,7 +596,7 @@ msgstr "Vente - Dépôt Vente"
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_consignor_create_wizard_form
 #: model_terms:ir.ui.view,arch_db:recurring_consignment.view_invoice_commission_wizard_form
 msgid "Settings"
-msgstr "Configuration"
+msgstr "Paramètres"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,help:recurring_consignment.field_product_product__fiscal_classification_id
@@ -612,10 +606,10 @@ msgid ""
 "If you dont find the correct Fiscal Classification, Please create a new one "
 "or ask to your account manager if you don't have the access right."
 msgstr ""
-"Indiquez la combinaison de taxes pour ce produit. Ce champ est requis. Si "
+"Indiquez la combinaison de taxes pour cet article. Ce champ est requis. Si "
 "vous ne trouvez pas la catégorie fiscale que vous cherchez, vous pouvez en "
-"créer une nouvelle, ou demander à votre responsable comptable de le faire si "
-"vous n'avez pas les droits d'accès."
+"créer une nouvelle, ou demander à votre responsable comptable de le faire si"
+" vous n'avez pas les droits d'accès."
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__is_vat_subject
@@ -649,8 +643,8 @@ msgid ""
 "The product '{product_name} has inconsistent consignor ({consignor_name}) "
 "and fiscal classification ({classification_name})."
 msgstr ""
-"Le produit '{product_name}' a un dépôt vente inconsistent ({consignor_name}) "
-"avec la catégorie fiscale ({classification_name})."
+"Le produit '{product_name}' a un dépôt vente inconsistent ({consignor_name})"
+" avec la catégorie fiscale ({classification_name})."
 
 #. module: recurring_consignment
 #. odoo-python
@@ -685,8 +679,8 @@ msgstr "Prix unitaire"
 #. module: recurring_consignment
 #: model:ir.model.fields,help:recurring_consignment.field_res_company__commission_product_id
 msgid ""
-"Used for the Recurring Consignment features. Define the product that will be "
-"used to generate consignment invoices to consignors."
+"Used for the Recurring Consignment features. Define the product that will be"
+" used to generate consignment invoices to consignors."
 msgstr ""
 "Utilisé pour a fonctionnalité de dépôt vente. définir l'article qui sera "
 "utilisé pour générer des factures de commission aux dépôt-vendeurs."
@@ -694,7 +688,7 @@ msgstr ""
 #. module: recurring_consignment
 #: model:res.groups,name:recurring_consignment.group_consignment_user
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Utilisateur·rice"
 
 #. module: recurring_consignment
 #: model:ir.model.fields,field_description:recurring_consignment.field_consignor_create_wizard__has_vat_000
@@ -746,12 +740,12 @@ msgstr "Oui"
 #: code:addons/recurring_consignment/models/product_template.py:0
 #, python-format
 msgid ""
-"You can not change the value of the field 'Consignor' because the product is "
-"associated to one or more Account Invoice Lines. You should disable the "
+"You can not change the value of the field 'Consignor' because the product is"
+" associated to one or more Account Invoice Lines. You should disable the "
 "product and create a new one."
 msgstr ""
-"Vous ne pouvez pas changer la valeur du champ 'Dépôt vendeur' car ce produit "
-"est associé à une ou plusieurs lignes compables. Vous devez désactiver ce "
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt vendeur' car ce produit"
+" est associé à une ou plusieurs lignes compables. Vous devez désactiver ce "
 "produit, et en créer un nouveau"
 
 #. module: recurring_consignment

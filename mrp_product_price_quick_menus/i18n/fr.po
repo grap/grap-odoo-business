@@ -70,7 +70,7 @@ msgstr "Relevé Prix"
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_handle_sale_price_tree
 msgid "Decrease the Sale Price down to Theoretical Price"
-msgstr "Diminuer le prix jusqu'au prix théorique"
+msgstr "Baisser le prix de vente pour atteindre le prix théorique"
 
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_mrp_product_price_quick_menus_product_search
@@ -85,7 +85,7 @@ msgstr "Gérer les prix"
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_handle_sale_price_tree
 msgid "Increase the Sale Price up to Theoretical Price"
-msgstr "Augmenter le prix jusqu'au prix théorique"
+msgstr "Augmenter le prix de vente pour atteindre le prix théorique"
 
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_handle_sale_price_tree
@@ -116,7 +116,7 @@ msgstr "Réf."
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_handle_sale_price_tree
 msgid "Theorical Margin (%)"
-msgstr "Marge théorique (%)"
+msgstr "Taux de marque Théorique (%)"
 
 #. module: mrp_product_price_quick_menus
 #: model_terms:ir.ui.view,arch_db:mrp_product_price_quick_menus.view_handle_sale_price_tree

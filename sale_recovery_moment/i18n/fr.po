@@ -82,8 +82,8 @@ msgstr ""
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
 msgid ""
-"<span class=\"me-2\">Choose customers and only them would be able to see and "
-"pick this recovery:</span>"
+"<span class=\"me-2\">Choose customers and only them would be able to see and"
+" pick this recovery:</span>"
 msgstr ""
 "<span class=\"me-2\">Choisir les client·es qui seront les seul·es à pouvoir "
 "voir et choisir ce moment:</span>"
@@ -92,8 +92,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
 msgid "<span class=\"me-2\">Customer could get their order between</span>"
 msgstr ""
-"<span class=\"me-2\">Les client·es pourront récupérer leur commande entre</"
-"span>"
+"<span class=\"me-2\">Les client·es pourront récupérer leur commande "
+"entre</span>"
 
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_form
@@ -164,7 +164,7 @@ msgstr "Société"
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__complete_name
 msgid "Complete Name"
-msgstr "Nom Complet"
+msgstr "Nom complet"
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__country_id
@@ -216,7 +216,7 @@ msgstr "Le délai doit être strictement positif."
 #: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_stock_picking
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__picking_ids
 msgid "Delivery Orders"
-msgstr "Livraisons"
+msgstr "Bons de livraison"
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__picking_qty
@@ -515,14 +515,13 @@ msgstr "Vente ou récupération en cours"
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__place_id
 msgid "Place"
-msgstr "Lieu"
+msgstr "Emplacement"
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_moment_group_wizard_duplicate__day_delay
 msgid ""
 "Please set a positive number here.\n"
-"The wizard will duplicate the selected groups moving forward all the dates "
-"by the delay."
+"The wizard will duplicate the selected groups moving forward all the dates by the delay."
 msgstr ""
 "Merci de renseigner un nombre positif.\n"
 "Le Wizard va dupliquer le groupe en changeant les dates par le délai indiqué."
@@ -531,8 +530,7 @@ msgstr ""
 #: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_moment_wizard_duplicate__day_delay
 msgid ""
 "Please set a positive number here.\n"
-"The wizard will duplicate the selected moments moving forward all the dates "
-"by the delay."
+"The wizard will duplicate the selected moments moving forward all the dates by the delay."
 msgstr ""
 "Merci de renseigner un nombre positif.\n"
 "Le Wizard va dupliquer le groupe en changeant les dates par le délai indiqué."
@@ -636,7 +634,7 @@ msgstr "# Commandes"
 #: model:ir.actions.act_window,name:sale_recovery_moment.action_recovery_moment_group_2_sale_order
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__order_ids
 msgid "Sale Orders"
-msgstr "Ventes"
+msgstr "Commandes clients"
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_moment__order_qty
@@ -652,7 +650,7 @@ msgstr "Bon de commande"
 #. module: sale_recovery_moment
 #: model:ir.model,name:sale_recovery_moment.model_sale_order_line
 msgid "Sales Order Line"
-msgstr "Ligne de bons de commande"
+msgstr "Ligne de commande"
 
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
@@ -664,7 +662,7 @@ msgstr "Voir"
 #. module: sale_recovery_moment
 #: model:product.template,name:sale_recovery_moment.product_shipping_cost_product_template
 msgid "Shipping Cost"
-msgstr "Frais de livraison"
+msgstr "Frais d'expédition"
 
 #. module: sale_recovery_moment
 #: model:ir.model.fields,field_description:sale_recovery_moment.field_sale_recovery_place__shipping_product_id
@@ -747,8 +745,8 @@ msgstr "La date de début de vente doit précéder la date de fin de vente."
 #. module: sale_recovery_moment
 #: model:ir.model.fields,help:sale_recovery_moment.field_sale_recovery_moment_wizard_duplicate__recurrence
 msgid ""
-"The wizard will duplicate the selected moments the specified number of times "
-"on this recurrence."
+"The wizard will duplicate the selected moments the specified number of times"
+" on this recurrence."
 msgstr ""
 "L'assistant dupliquera les moments séléctionnées le nombre spécifié de "
 "récurrence."
@@ -777,7 +775,7 @@ msgstr "Transfert"
 #. module: sale_recovery_moment
 #: model:res.groups,name:sale_recovery_moment.recovery_user
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Utilisateur·rice"
 
 #. module: sale_recovery_moment
 #: model_terms:ir.ui.view,arch_db:sale_recovery_moment.view_sale_recovery_moment_group_form
@@ -820,15 +818,11 @@ msgstr "Nombre de bons de commande valides"
 #: code:addons/sale_recovery_moment/models/sale_recovery_moment.py:0
 #, python-format
 msgid ""
-"You can not delete this Recovery Moment because there is Valid Sale Orders "
-"associated.\n"
-"Please move Sale orders on an other Recovery Moment and contact your "
-"customers."
+"You can not delete this Recovery Moment because there is Valid Sale Orders associated.\n"
+"Please move Sale orders on an other Recovery Moment and contact your customers."
 msgstr ""
-"Vous ne pouvez pas supprimer ce moment de récupération car des bons de "
-"commandes valides lui sont associés.\n"
-"Veuillez déplacer ces bons de commandes dans un autre moment de récupération "
-"et contacter vos clients."
+"Vous ne pouvez pas supprimer ce moment de récupération car des bons de commandes valides lui sont associés.\n"
+"Veuillez déplacer ces bons de commandes dans un autre moment de récupération et contacter vos clients."
 
 #. module: sale_recovery_moment
 #. odoo-python

@@ -216,12 +216,12 @@ msgstr "Dernière modification le"
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_uid
 msgid "Last Updated by"
-msgstr "Mis à jour par"
+msgstr "Dernière mise à jour par"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__write_date
 msgid "Last Updated on"
-msgstr "Mis à jour le"
+msgstr "Dernière mise à jour le"
 
 #. module: product_print_category_food_report
 #. odoo-python
@@ -247,7 +247,7 @@ msgstr "Volume Net"
 #: code:addons/product_print_category_food_report/models/product_product.py:0
 #, python-format
 msgid "Net Weight"
-msgstr "Poids Net"
+msgstr "Poids net"
 
 #. module: product_print_category_food_report
 #. odoo-python
@@ -420,12 +420,12 @@ msgstr "Variante de produit"
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_ids
 #: model_terms:ir.ui.view,arch_db:product_print_category_food_report.view_product_pricetag_type_form
 msgid "Products"
-msgstr "Articles"
+msgstr "Produits"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,field_description:product_print_category_food_report.field_product_pricetag_type__product_qty
 msgid "Products Quantity"
-msgstr "Nombre de produits"
+msgstr "Nombre d'articles"
 
 #. module: product_print_category_food_report
 #: model:ir.model.fields,help:product_print_category_food_report.field_product_product__pricetag_uom_id
@@ -480,8 +480,8 @@ msgid ""
 "Used alternatively to the name field, on labels for displaying secondary "
 "unit prices"
 msgstr ""
-"Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher "
-"les prix aux unités secondaires"
+"Utilisé de façon alternative au champ nom, sur les étiquettes, pour afficher"
+" les prix aux unités secondaires"
 
 #. module: product_print_category_food_report
 #. odoo-python

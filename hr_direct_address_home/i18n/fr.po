@@ -55,7 +55,7 @@ msgstr "Email (Privé)"
 #. module: hr_direct_address_home
 #: model:ir.model,name:hr_direct_address_home.model_hr_employee
 msgid "Employee"
-msgstr "Employé"
+msgstr "Employé·e"
 
 #. module: hr_direct_address_home
 #: model:ir.model.fields,help:hr_direct_address_home.field_hr_employee__address_home_id
@@ -63,8 +63,8 @@ msgid ""
 "Enter here the private address of the employee, not the one linked to your "
 "company."
 msgstr ""
-"Saisir ici l'adresse privée du ou de l'employé·e. (pas celle où travaille "
-"l'employé·e)."
+"Saisissez ici l'adresse personnelle de l'employé, mais pas celle associée à "
+"votre entreprise."
 
 #. module: hr_direct_address_home
 #: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_mobile
@@ -79,7 +79,7 @@ msgstr "Téléphone fixe (Privé)"
 #. module: hr_direct_address_home
 #: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
 msgid "State"
-msgstr "Région"
+msgstr "État"
 
 #. module: hr_direct_address_home
 #: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_state_id
@@ -99,17 +99,17 @@ msgstr "Rue 2 (Privée)"
 #. module: hr_direct_address_home
 #: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
 msgid "Street 2..."
-msgstr "Rue 2 ..."
+msgstr "Rue 2..."
 
 #. module: hr_direct_address_home
 #: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
 msgid "Street..."
-msgstr "Rue ..."
+msgstr "Rue..."
 
 #. module: hr_direct_address_home
 #: model_terms:ir.ui.view,arch_db:hr_direct_address_home.view_hr_employee_form
 msgid "ZIP"
-msgstr "Code Postal"
+msgstr "Code postal"
 
 #. module: hr_direct_address_home
 #: model:ir.model.fields,field_description:hr_direct_address_home.field_hr_employee__address_home_zip

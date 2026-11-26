@@ -30,12 +30,12 @@ msgstr "Produit"
 #. module: recurring_consignment_purchase
 #: model:ir.model,name:recurring_consignment_purchase.model_purchase_order
 msgid "Purchase Order"
-msgstr "Commande fournisseur"
+msgstr "Bon de commande"
 
 #. module: recurring_consignment_purchase
 #: model:ir.model,name:recurring_consignment_purchase.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Ligne de commande fournisseur"
+msgstr "Ligne de commande d'achat"
 
 #. module: recurring_consignment_purchase
 #: model:ir.model,name:recurring_consignment_purchase.model_stock_picking
@@ -47,12 +47,12 @@ msgstr "Transfert"
 #: code:addons/recurring_consignment_purchase/models/product_template.py:0
 #, python-format
 msgid ""
-"You can not change the value of the field 'Consignor' because the product is "
-"associated to one or more Purchase Order Lines. You should disable the "
+"You can not change the value of the field 'Consignor' because the product is"
+" associated to one or more Purchase Order Lines. You should disable the "
 "product and create a new one."
 msgstr ""
-"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit "
-"est associé à une ou plusieurs lignes de commandes d'achats. Vous devez "
+"Vous ne pouvez pas changer la valeur du champ 'Dépôt-vendeur' car le produit"
+" est associé à une ou plusieurs lignes de commandes d'achats. Vous devez "
 "désactiver le produit, et en créer un nouveau."
 
 #. module: recurring_consignment_purchase
@@ -71,8 +71,8 @@ msgstr ""
 #: code:addons/recurring_consignment_purchase/models/purchase_order_line.py:0
 #, python-format
 msgid ""
-"You can not purchase consigned products to a supplier that is not flagged as "
-"consignor."
+"You can not purchase consigned products to a supplier that is not flagged as"
+" consignor."
 msgstr ""
 "Vous ne pouvez pas acheter de produit de dépôt vendeur à un fournisseur, si "
 "celui ci n'est pas un dépôt vendeur."
@@ -83,4 +83,5 @@ msgstr ""
 #, python-format
 msgid "You can only purchase consigned products to consignor."
 msgstr ""
-"Vous pouvez seulement acheter des produits de dépôt-vente à un dépôt vendeur."
+"Vous pouvez seulement acheter des produits de dépôt-vente à un dépôt "
+"vendeur."
