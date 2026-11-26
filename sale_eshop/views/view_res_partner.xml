@@ -11,8 +11,12 @@
         <field name="inherit_id" ref="base.view_res_partner_filter"/>
         <field name="arch" type="xml">
             <filter name="customer" position="before">
-                <filter string="eShop - Enabled" name="eshop_setup" domain="[('eshop_state', '=', 'enabled')]"/>
-                <filter string="eShop - Email to Confirm" name="eshop_waiting" domain="[('eshop_state', '=', 'email_to_confirm')]"/>
+                <filter string="eShop - Enabled"
+                    name="eshop_setup" groups="sale_eshop.res_groups_eshop_user"
+                    domain="[('eshop_state', '=', 'enabled')]"/>
+                <filter string="eShop - Email to Confirm"
+                    name="eshop_waiting" groups="sale_eshop.res_groups_eshop_user"
+                    domain="[('eshop_state', '=', 'email_to_confirm')]"/>
                 <separator/>
             </filter>
         </field>
@@ -49,17 +53,17 @@
                 <header>
                     <button name="button_generate_send_credentials"
                         string="Send new Credentials" icon="fa-paper-plane" class="btn-secondary" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"
-                        type="object"/>
-                    <button name="button_disable_eshop"
+                        type="object" groups="sale_eshop.res_groups_eshop_user"/>
+                    <button name="button_disable_eshop" groups="sale_eshop.res_groups_eshop_user"
                         string="Prevent to use eShop" icon="fa-times-circle" class="btn-secondary"
                         type="object" attrs="{'invisible':[('eshop_state','=', 'disabled')]}"/>
-                    <button name="button_enable_eshop"
+                    <button name="button_enable_eshop" groups="sale_eshop.res_groups_eshop_user"
                         string="Allow to use eShop" icon="fa-check-circle" class="btn-secondary"
                         type="object" attrs="{'invisible':[('eshop_state','=', 'enabled')]}"/>
                 </header>
             </sheet>
             <notebook position="inside">
-                <page string="eShop Sale">
+                <page string="eShop Sale" groups="sale_eshop.res_groups_eshop_user">
                     <group name="eShop">
                         <group>
                             <field name="eshop_password" password="True"/>
